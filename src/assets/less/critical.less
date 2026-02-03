@@ -64,9 +64,9 @@
 
         .cs-button-group {
             display: flex;
-            justify-content: flex-start;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
             gap: (16/16rem);
         }
 
@@ -135,7 +135,7 @@
         .cs-review {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
             gap: (4/16rem);
         }
 
@@ -226,6 +226,8 @@
         }
 
         .cs-button-group {
+            flex-direction: row;
+            justify-content: flex-start;
             gap: (24/16rem);
         }
         
