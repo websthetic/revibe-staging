@@ -350,8 +350,11 @@ html {
 
         &.scroll {
             #cs-navigation {
+                background-color: transparent;
+                
                 &:after {
-                    width: 100%;
+                    width: 0%;
+                    opacity: 0;
                 }
             }
         }
@@ -364,12 +367,13 @@ html {
         background-color: #fff;
         position: fixed;
         z-index: 10000;
+        transition: background-color 0.3s;
 
         &:before {
             /* mobile nav overlay on open */
             content: "";
-            width: 100%;
-            height: 0vh;
+            width: 0%;
+            height: 0%;
             background: rgba(0, 0, 0, 0.6);
             -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
@@ -403,8 +407,8 @@ html {
 
         &.cs-active {
             &:before {
-                height: 150vh;
-                opacity: 1;
+                height: 0%;
+                opacity: 0;
             }
             .cs-ul-wrapper {
                 opacity: 1;
@@ -420,7 +424,7 @@ html {
 
         .cs-container {
             width: 100%;
-            padding: (16/16rem);
+            padding: (10/16rem) (16/16rem);
             /* prevents padding and border from affecting height and width */
             box-sizing: border-box;
             display: flex;
@@ -452,7 +456,7 @@ html {
             width: (56/16rem);
             height: (56/16rem);
             margin: 0 0 0 auto;
-            background-color: #484848;
+            background-color: transparent;
             border: none;
             display: flex;
             justify-content: center;
@@ -488,7 +492,7 @@ html {
             width: 100%;
             height: 2px;
             border-radius: 2px;
-            background-color: #fafbfc;
+            background-color: #000;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -529,14 +533,14 @@ html {
 
         .cs-ul-wrapper {
             width: 100%;
-            height: auto;
-            padding-bottom: (48/16rem);
+            height: 100vh;
+            padding: (80/16rem) (16/16rem) (48/16rem);
             opacity: 0;
             background-color: #1a1a1a;
             box-shadow: inset rgba(0, 0, 0, 0.2) 0px 8px 24px;
             overflow: hidden;
-            position: absolute;
-            top: 100%;
+            position: fixed;
+            top: 0;
             left: 0;
             z-index: -1;
             transform: scaleY(0);
@@ -548,13 +552,13 @@ html {
 
         .cs-ul {
             margin: 0;
-            padding: (48/16rem) 0 0 0;
+            padding: 0;
             width: 100%;
-            height: auto;
-            max-height: 65vh;
-            overflow: scroll;
+            height: 100%;
+            max-height: none;
+            overflow: auto;
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             flex-direction: column;
             align-items: center;
             gap: (20/16rem);
