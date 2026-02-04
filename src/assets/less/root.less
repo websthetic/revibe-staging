@@ -791,37 +791,23 @@ html {
             font-weight: 700;
             text-align: center;
             margin: 0;
-            color: #fff;
+            color: #000;
             min-width: (150/16rem);
             padding: 0 (32/16rem);
-            background-color: var(--primary);
+            background: transparent;
             border-radius: (50/16rem);
+            border: solid 2px var(--primary);
             display: inline-block;
             position: relative;
             z-index: 1;
             /* prevents padding from adding to the width */
             box-sizing: border-box;
-            transition: color 0.3s;
-
-            &:before {
-                content: "";
-                position: absolute;
-                height: 100%;
-                width: 0%;
-                background: #000;
-                opacity: 1;
-                top: 0;
-                left: 0;
-                border-radius: (50/16rem);
-                z-index: -1;
-                transition: width 0.3s;
-            }
+            transition: color 0.3s, background-color 0.3s, border-color 0.3s;
 
             &:hover {
                 color: #fff;
-                &:before {
-                    width: 100%;
-                }
+                
+                border-color: #000;
             }
         }
 
@@ -850,8 +836,7 @@ html {
             }
         }
     }
-}
-                                
+}                          
 
 /*-- -------------------------- -->
 <---          Banner            -->
