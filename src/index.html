@@ -72,10 +72,10 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
 <section id="RTsbsr-601">
     <div class="cs-container">
         <div class="cs-content">
-            <h2 class="cs-title">
-                OUR PHILOSOPHY - <br>
-                <span class="cs-title-accent">LIFE IS THE REAL SPORT.</span>
-            </h2>
+           <h2 class="cs-title">
+    <span class="cs-title-line">OUR PHILOSOPHY -</span> <br>
+    <span class="cs-title-accent">LIFE IS THE REAL SPORT.</span>
+</h2>
             <p class="cs-text">
                 It's aging well, moving confidently, and feeling capable in your body.
             </p>
@@ -94,6 +94,8 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
         </div>
     </div>
 </section>
+
+
 
 
 <!-- ============================================ -->
@@ -620,5 +622,100 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
         </div>
     </section>
 
+<!-- GSAP CDN -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     
+<script>document.addEventListener('DOMContentLoaded', function() {
+    if (typeof gsap === 'undefined') return;
+    
+    gsap.registerPlugin(ScrollTrigger);
+
+    const section = document.querySelector('#RTsbsr-601');
+    if (!section) return;
+
+    const titleElement = section.querySelector('.cs-title');
+    const texts = section.querySelectorAll('.cs-text');
+
+    // Extract text from both lines
+    const line1Text = "OUR PHILOSOPHY -";
+    const line2Text = "LIFE IS THE REAL SPORT.";
+    
+    // Split into words
+    const line1Words = line1Text.split(' ').map(w => `<span class="word">${w}</span>`).join(' ');
+    const line2Words = line2Text.split(' ').map(w => `<span class="word">${w}</span>`).join(' ');
+    
+    // Rebuild title HTML
+    titleElement.innerHTML = `${line1Words} <br><span class="cs-title-accent">${line2Words}</span>`;
+    
+    // Get title words separately
+    const titleLine1Words = Array.from(titleElement.querySelectorAll('.word')).filter(word => 
+        !word.closest('.cs-title-accent')
+    );
+    const titleAccentWords = section.querySelectorAll('.cs-title-accent .word');
+
+    // Split paragraphs into characters - KEEP WORDS TOGETHER
+    const text1Chars = [];
+    const text2Chars = [];
+    
+    texts[0].innerHTML = texts[0].textContent.trim().split(' ').map(word => {
+        const chars = word.split('').map(c => `<span class="char">${c}</span>`).join('');
+        return `<span class="word-wrapper">${chars}</span>`;
+    }).join('<span class="char">&nbsp;</span>');
+    
+    texts[1].innerHTML = texts[1].textContent.trim().split(' ').map(word => {
+        const chars = word.split('').map(c => `<span class="char">${c}</span>`).join('');
+        return `<span class="word-wrapper">${chars}</span>`;
+    }).join('<span class="char">&nbsp;</span>');
+    
+    text1Chars.push(...texts[0].querySelectorAll('.char'));
+    text2Chars.push(...texts[1].querySelectorAll('.char'));
+
+    // Set initial state - DIMMED/BARELY VISIBLE
+    gsap.set([...titleLine1Words, ...titleAccentWords], { 
+        opacity: 0.2,
+        color: '#666666'
+    });
+    gsap.set([...text1Chars, ...text2Chars], { 
+        opacity: 0.2,
+        color: '#666666'
+    });
+
+    // Animate - HIGHLIGHT/BRIGHTEN on scroll
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: '#RTsbsr-601',
+            start: 'top top',
+            end: '+=100vh',
+            scrub: 1,
+            pin: '#RTsbsr-601 .cs-container'
+        }
+    })
+    // Animate first line to black
+    .to(titleLine1Words, {
+        opacity: 1,
+        color: '#000000',
+        stagger: 0.05,
+        ease: 'power2.out'
+    }, 0)
+    // Animate accent line to GREEN
+    .to(titleAccentWords, {
+        opacity: 1,
+        color: 'var(--primary)',  // GREEN!
+        stagger: 0.05,
+        ease: 'power2.out'
+    }, 0)
+    .to(text1Chars, {
+        opacity: 1,
+        color: '#333333',
+        stagger: 0.01,
+        ease: 'power2.out'
+    }, 0.5)
+    .to(text2Chars, {
+        opacity: 1,
+        color: '#333333',
+        stagger: 0.005,
+        ease: 'power2.out'
+    }, 0.7);
+});</script>
 {% endblock %}
