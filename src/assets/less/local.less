@@ -129,6 +129,7 @@
         padding: 6rem 5rem;
     }
 }
+
 /*-- -------------------------- -->
 <---   Side By Side Reverse     -->
 <--- -------------------------- -*/
@@ -136,7 +137,8 @@
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
     #sbsr-1592 {
-        padding: var(--sectionPadding);
+        padding: clamp(8rem, 12vw, 12rem) var(--sectionPadding);
+        padding-bottom: clamp(10rem, 15vw, 15rem); /* Add bottom padding for scaled SVG */
         background-color: #f7f7f7;
         
         .cs-container {
@@ -166,7 +168,7 @@
             color: #000000;
             text-transform: uppercase;
             letter-spacing: -0.02em;
-            max-width: (350/16rem); /* Constrains title width */
+            max-width: (350/16rem);
         }
 
         .cs-color {
@@ -187,14 +189,12 @@
         .cs-button-solid {
             font-size: clamp(21px, 0.9vw, 24px);
             font-weight: 700;
-            /* 46px - 56px */
             line-height: clamp(2.875rem, 5.5vw, 3.5rem);
             text-align: center;
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin: 0;
-            /* prevents padding from adding to the width */
             box-sizing: border-box;
             padding: 0 (32/16rem) 0 (32/16rem);
             background: transparent;
@@ -215,12 +215,12 @@
                 left: 0;
                 top: 50%;
                 transform: translateY(-50%);
-                width: 25%; /* Takes up about 1/4 of button width */
+                width: 25%;
                 height: 100%;
                 background-color: var(--secondary);
                 border-radius: 100px;
                 z-index: -1;
-                transition: width 0.3s ease; /* Smooth expansion animation */
+                transition: width 0.3s ease;
             }
 
             &:after {
@@ -240,36 +240,39 @@
                 transform: translateY(-2px);
                 
                 &:before {
-                    width: 100%; /* Expands to fill entire button */
+                    width: 100%;
                 }
             }
         }
 
         .cs-image-group {
             width: 100%;
-            max-width: (630/16rem);
+            max-width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-        }
+            overflow: visible;}
 
         .cs-picture {
             width: 100%;
+            max-width: 100%;
             display: block;
             position: relative;
-
-            img {
-                width: 100%;
-                height: auto;
-                object-fit: contain;
-                display: block;
-            }
         }
 
         .cs-picture-single {
             width: 100%;
             max-width: 100%;
+        }
+        
+       svg {
+            width: 100% !important;
+            height: auto !important;
+            display: block !important;
+            transform: scale(2.8) translateX(0); /* Add translateX for fine-tuning */
+            transform-origin: 50% 50%; /* Ensure true center */
+            margin: 0 auto; /* Additional centering */
         }
     }
 }
@@ -277,6 +280,8 @@
 /* Tablet 768px */
 @media only screen and (min-width: 48rem) {
     #sbsr-1592 {
+        padding-bottom: clamp(12rem, 15vw, 18rem); /* Adjust for tablet */
+        
         .cs-container {
             flex-direction: row;
             justify-content: space-between;
@@ -285,14 +290,15 @@
         }
 
         .cs-content {
-            flex: 1;
-            max-width: (550/16rem);
+            flex: 0 0 40%;
+            max-width: 40%;
             padding: (20/16rem) 0;
         }
 
         .cs-image-group {
-            flex: 1;
-            max-width: (630/16rem);
+            flex: 0 0 60%;
+            max-width: 60%;
+            overflow: visible; /* Allow SVG to overflow */
         }
     }
 }
@@ -300,8 +306,30 @@
 /* Desktop 1024px */
 @media only screen and (min-width: 64rem) {
     #sbsr-1592 {
+        padding-bottom: clamp(8rem, 12vw, 12rem);
+        
+        .cs-container {
+            align-items: center;
+        }
+        
         .cs-content {
-            max-width: (586/16rem);
+            flex: 0 0 35%;
+            max-width: 35%;
+        }
+
+        .cs-image-group {
+            flex: 0 0 65%;
+            max-width: 65%;
+            overflow: visible;
+            padding-bottom: 8rem; /* Additional padding on the image container */
+        }
+        
+        svg {
+            width: 100% !important;
+            height: auto !important;
+            display: block !important;
+            transform: scale(2.8);
+            transform-origin: center center;
         }
     }
 }
