@@ -1,5 +1,5 @@
 ---
-title: "Pixel Perfect Websites | Code Stitch Web Designs | Denver, CO"
+title: "Revibe Staging | Websthetic | Toronto, ON"
 description: "Meta description for the page"
 permalink: "/"
 tags: "sitemap" # content/content.json will make sure that all pages in content/ are marked with a "sitemap" tag, for automatic sitemap generation. As index.html is not in content/, we need to add it here to ensure the root page is included in the sitemap generation
@@ -66,16 +66,16 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
 </section>
                                 
 <!-- ============================================ -->
-<!--              Side By Side Reverse            -->
+<!--              Side By Side Carousel           -->
 <!-- ============================================ -->
 
 <section id="RTsbsr-601">
     <div class="cs-container">
         <div class="cs-content">
-           <h2 class="cs-title">
-    <span class="cs-title-line">OUR PHILOSOPHY -</span> <br>
-    <span class="cs-title-accent">LIFE IS THE REAL SPORT.</span>
-</h2>
+            <h2 class="cs-title">
+                <span class="cs-title-line">OUR PHILOSOPHY -</span> <br>
+                <span class="cs-title-accent">LIFE IS THE REAL SPORT.</span>
+            </h2>
             <p class="cs-text">
                 It's aging well, moving confidently, and feeling capable in your body.
             </p>
@@ -83,15 +83,47 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
                 At Revibe, we believe performance belongs to EveryBody — not just elite athletes. That's why we deliver athlete-grade care designed for real bodies, real schedules, and real lives.
             </p>
         </div>
-        <div class="cs-image-wrapper">
+        
+        <!-- Carousel Wrapper -->
+  <div class="cs-carousel-wrapper">
+    <div class="cs-carousel">
+        <!-- Slide 1 -->
+        <div class="cs-slide">
             <picture class="cs-picture">
-                <!--Mobile Image-->
-                <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/what-to-expect-img.jpg">
-                <!--Tablet and above Image-->
-                <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/SideBySide/room3.jpg">
-                <img loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/SideBySide/room3.jpg" alt="Father helping child on skateboard" width="960" height="796">
+                <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-exercising.jpg">
+                <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-exercising.jpg">
+                <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-exercising.jpg" alt="Father helping child on skateboard" width="960" height="796">
             </picture>
+            <div class="cs-slide-text">
+                IT'S KEEPING UP WITH YOUR KIDS
+            </div>
         </div>
+        
+        <!-- Slide 2 -->
+        <div class="cs-slide">
+            <picture class="cs-picture">
+                <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/man-smiling-working.jpg">
+                <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/man-smiling-working.jpg">
+                <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/man-smiling-working.jpg" alt="Slide 2 description" width="960" height="796">
+            </picture>
+            <div class="cs-slide-text">
+                IT'S MOVING WITHOUT PAIN
+            </div>
+        </div>
+        
+        <!-- Slide 3 -->
+        <div class="cs-slide">
+            <picture class="cs-picture">
+                <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-running.jpg">
+                <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-running.jpg">
+                <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-running.jpg" alt="Slide 3 description" width="960" height="796">
+            </picture>
+            <div class="cs-slide-text">
+                IT'S FEELING CONFIDENT AGAIN
+            </div>
+        </div>
+    </div>
+</div>
     </div>
 </section>
 
@@ -846,7 +878,8 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
  
 <!-- Philosophy Question -->
-<script>document.addEventListener('DOMContentLoaded', function() {
+<script>
+document.addEventListener('DOMContentLoaded', function() {
     if (typeof gsap === 'undefined') return;
     
     gsap.registerPlugin(ScrollTrigger);
@@ -906,23 +939,21 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
         scrollTrigger: {
             trigger: '#RTsbsr-601',
             start: 'top top',
-            end: '+=300vh',  // CHANGED: Extended to add delay at end
+            end: '+=400vh',
             scrub: 1.5,
             pin: '#RTsbsr-601 .cs-container'
         }
     })
-    // Animate first line to black
     .to(titleLine1Words, {
         opacity: 1,
         color: '#000000',
-        stagger: 0.05,
+        stagger: 0.1,
         ease: 'power2.out'
     }, 0)
-    // Animate accent line to GREEN
     .to(titleAccentWords, {
         opacity: 1,
-        color: 'var(--primary)',  // GREEN!
-        stagger: 0.05,
+        color: 'var(--primary)',
+        stagger: 0.1,
         ease: 'power2.out'
     }, 0)
     .to(text1Chars, {
@@ -934,12 +965,49 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
     .to(text2Chars, {
         opacity: 1,
         color: '#333333',
-        stagger: 0.005,
+        stagger: 0.01,
         ease: 'power2.out'
     }, 0.7)
-    // Add empty tween to create pause at the end
-    .to({}, { duration: 1 }, '+=0.5');  // ADDED: Holds the section pinned after animation
-});</script>
+    .to({}, { duration: 2 }, '+=0.5');
+
+    // ============================================
+    // CAROUSEL ANIMATION - MINIMAL FADE
+    // ============================================
+    
+    const slides = section.querySelectorAll('.cs-slide');
+    const totalSlides = slides.length;
+    
+    if (totalSlides > 1) {
+        let currentSlide = 0;
+        
+        // Set initial state
+        gsap.set(slides, { opacity: 0 });
+        gsap.set(slides[0], { opacity: 1 });
+        
+        function nextSlide() {
+            const current = slides[currentSlide];
+            currentSlide = (currentSlide + 1) % totalSlides;
+            const next = slides[currentSlide];
+            
+            // Simple crossfade - nothing else
+            gsap.timeline()
+                .to(current, {
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power2.inOut"
+                })
+                .to(next, {
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power2.inOut"
+                }, "-=0.5");
+        }
+        
+        // Start carousel after initial load
+        setInterval(nextSlide, 5000);
+    }
+});
+</script>
 
 <!-- Care Map -->
 <script>document.addEventListener('DOMContentLoaded', function() {
@@ -1238,21 +1306,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Animate with scroll scrub and pin
-        gsap.to(lines, {
-            strokeDashoffset: 0,
-            ease: 'none',
-            stagger: 0.15, // Slightly longer stagger
+        const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: '#sbsr-1592',
                 start: 'top top',
-                end: '+=150vh', // Longer animation duration
-                scrub: 1,
+                end: '+=300vh', // CHANGED: Increased from +=150vh to +=300vh (2x slower)
+                scrub: 1.5, // CHANGED: Slightly increased for smoother animation
                 pin: true,
                 markers: false, // Set to true for debugging
                 anticipatePin: 1, // Smooth pin behavior
                 onUpdate: (self) => console.log('Progress:', Math.round(self.progress * 100) + '%'),
             }
         });
+        
+        tl.to(lines, {
+            strokeDashoffset: 0,
+            ease: 'none',
+            stagger: 0.15, // Slightly longer stagger
+        })
+        // Add delay at the end before unpinning
+        .to({}, { duration: 1 }, '+=0.5'); // ADDED: Holds the section pinned after animation
         
         console.log('✅ Animation initialized!');
         

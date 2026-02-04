@@ -6,7 +6,6 @@
 @media only screen and (min-width: 0rem) {
     #RTsbsr-601 {
         background-color: #f5f5f5;
-        
     }
     
     #RTsbsr-601 .cs-container {
@@ -14,7 +13,7 @@
         display: flex;
         flex-direction: column;
         align-items: stretch;
-        height: 100vh; /* Full viewport height */
+        height: 100vh;
     }
     
     #RTsbsr-601 .cs-content {
@@ -26,8 +25,8 @@
     
     #RTsbsr-601 .cs-title {
         font-size: clamp(2.438rem, 5vw, 3.813rem);
-        font-weight: 900;
-        line-height: 1.15; /* Slightly increased for better spacing */
+        font-weight: 700;
+        line-height: 1.15;
         margin: 0 0 1.5rem 0;
         color: #000000;
         text-transform: uppercase;
@@ -51,10 +50,32 @@
         margin-bottom: 0;
     }
     
-    #RTsbsr-601 .cs-image-wrapper {
+    /* Carousel Wrapper */
+    #RTsbsr-601 .cs-carousel-wrapper {
+        position: relative;
         width: 100%;
         height: 25rem;
         overflow: hidden;
+    }
+    
+    #RTsbsr-601 .cs-carousel {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    
+    #RTsbsr-601 .cs-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+    
+    #RTsbsr-601 .cs-slide:first-child {
+        position: relative;
+        opacity: 1;
     }
     
     #RTsbsr-601 .cs-picture {
@@ -71,18 +92,53 @@
     }
     
     /* GSAP Animation Styles */
-.word {
-    display: inline-block;
-    margin-right: 0.15em; /* Changed from 0.28em to 0.15em */
-}
+    .word {
+        display: inline-block;
+        margin-right: 0.15em;
+    }
 
-.char {
-    display: inline-block;
-    white-space: pre;
-}
-.word-wrapper {
-    display: inline-block; /* Keeps word characters together */
-}
+    .char {
+        display: inline-block;
+        white-space: pre;
+    }
+    
+    .word-wrapper {
+        display: inline-block;
+    }
+
+    /* Dark gradient overlay for better text readability */
+    #RTsbsr-601 .cs-slide::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
+        z-index: 5;
+        pointer-events: none;
+    }
+    
+    /* Centered text overlay - ONE LINE */
+    #RTsbsr-601 .cs-slide-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        color: #ffffff;
+        font-size: clamp(1.5rem, 4vw, 3rem);
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: 0.02em;
+        line-height: 1.2;
+        white-space: nowrap;
+        text-shadow: 
+            0 2px 10px rgba(0, 0, 0, 0.5),
+            0 4px 20px rgba(0, 0, 0, 0.3);
+        padding: 0 1rem;
+    }
 }
 
 /* Tablet - 768px */
@@ -105,10 +161,14 @@
         margin: 0 0 1rem 0;
     }
     
-    #RTsbsr-601 .cs-image-wrapper {
+    #RTsbsr-601 .cs-carousel-wrapper {
         width: 50%;
         height: auto;
         min-height: 35rem;
+    }
+
+    #RTsbsr-601 .cs-slide-text {
+        font-size: clamp(2rem, 3vw, 3.5rem);
     }
 }
 
@@ -118,8 +178,12 @@
         padding: 5rem 4rem;
     }
     
-    #RTsbsr-601 .cs-image-wrapper {
+    #RTsbsr-601 .cs-carousel-wrapper {
         min-height: 40rem;
+    }
+
+    #RTsbsr-601 .cs-slide-text {
+        font-size: clamp(1rem, 2vw, 3rem);
     }
 }
 
