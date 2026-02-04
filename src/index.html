@@ -844,7 +844,8 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
 <!-- GSAP CDN -->
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    
+ 
+<!-- Philosophy Question -->
 <script>document.addEventListener('DOMContentLoaded', function() {
     if (typeof gsap === 'undefined') return;
     
@@ -905,8 +906,8 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
         scrollTrigger: {
             trigger: '#RTsbsr-601',
             start: 'top top',
-            end: '+=100vh',
-            scrub: 1,
+            end: '+=300vh',  // CHANGED: Extended to add delay at end
+            scrub: 1.5,
             pin: '#RTsbsr-601 .cs-container'
         }
     })
@@ -935,7 +936,9 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
         color: '#333333',
         stagger: 0.005,
         ease: 'power2.out'
-    }, 0.7);
+    }, 0.7)
+    // Add empty tween to create pause at the end
+    .to({}, { duration: 1 }, '+=0.5');  // ADDED: Holds the section pinned after animation
 });</script>
 
 <!-- Care Map -->
