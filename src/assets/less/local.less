@@ -1385,22 +1385,24 @@
 #testimonials-1842 {
     padding: 80px 20px;
     background-color: #f5f5f5;
+    position: relative; 
 
     .testimonial-container {
-        max-width: 1000px;
-        margin: 0 auto;
-        background-color: white;
-        border: 20px solid #1bad8c;
-        padding: 20px;
-        position: relative;
-        /* Clip the top-right corner at 60px */
-        clip-path: polygon(
-            0 0, 
-            calc(100% - 80px) 0, 
-            100% 80px, 
-            100% 100%, 
-            0 100%
-        );
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    border: 20px solid #1bad8c;
+    padding: 20px;
+    position: relative;
+    overflow: visible; /* ← ADD THIS LINE */
+    /* Clip the top-right corner at 60px */
+    clip-path: polygon(
+        0 0, 
+        calc(100% - 80px) 0, 
+        100% 80px, 
+        100% 100%, 
+        0 100%
+    );
 
         /* Gray folded corner triangle - positioned to match clip exactly */
         &::after {
@@ -1501,11 +1503,30 @@
     }
 }
 
-    .testimonial-content {
-        display: flex;
-        gap: 40px;
-        align-items: center;
+    .testimonials-wrapper {
+    position: relative;
+    /* Height will be set dynamically by JS */
+}
+
+.testimonial-content {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+
+    &.active {
+        opacity: 1;
+        pointer-events: auto;
     }
+}
+
+
 
     .testimonial-image {
         flex-shrink: 0;
@@ -1546,33 +1567,33 @@
         font-weight: 500;
     }
 
-    .nav-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: transparent;
-        border: none;
-        font-size: 60px;
-        color: #b8b8b8;
-        cursor: pointer;
-        padding: 10px 20px;
-        transition: all 0.3s ease;
-        font-weight: 300;
-        line-height: 1;
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    font-size: 60px;
+    color: #b8b8b8;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    font-weight: 300;
+    line-height: 1;
 
-        &:hover {
-            color: #888;
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        &.left {
-            left: -80px;
-        }
-
-        &.right {
-            right: -80px;
-        }
+    &:hover {
+        color: #888;
+        transform: translateY(-50%) scale(1.1);
     }
+
+    &.left {
+        left: calc(50% - 600px); /* Changed from -80px */
+    }
+
+    &.right {
+        right: calc(50% - 600px); /* Changed from -80px */
+    }
+}
 }
 
 /* Mobile - 768px */
