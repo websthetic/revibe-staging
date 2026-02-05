@@ -37,13 +37,13 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
     <div class="cs-container">
         <div class="cs-content">
           
-            <h1 class="cs-title">Athlete Grade Care, Built For How You Live.</h1>
-            <p class="cs-text">
+            <h1 class="cs-title fade-up">Athlete Grade Care, Built For How You Live.</h1>
+            <p class="cs-text fade-up">
                 Integrated performance care guided by a personalized Care Map - helping you move better, recover stronger, and perform in real life.
             </p>
-            <h2 class="cs-subtitle">At Revibe, we offer care with a plan.</h2>
+            <h2 class="cs-subtitle fade-up">At Revibe, we offer care with a plan.</h2>
             
-            <div class="cs-button-group">
+            <div class="cs-button-group fade-up">
                 <a href="" class="cs-button-solid">Book Your Session</a>
                 <div class="cs-review">
                     <div class="cs-stars">
@@ -434,7 +434,7 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
     <div class="cs-container">
         <div class="cs-content">
            
-            <h2 class="cs-title">What To Expect In Your First Session </h2>
+            <h2 class="cs-title">What To Expect In Your First Session</h2>
             <p class="cs-subtitle">
                 What's Included: 
             </p>
@@ -877,6 +877,29 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
  
+<!-- Hero Fade Up Animations -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof gsap === 'undefined') return;
+    
+    // Hero section animations - plays on page load
+    const heroSection = document.querySelector('#hero-2042');
+    if (heroSection) {
+        const fadeUpElements = heroSection.querySelectorAll('.fade-up');
+        
+        // Animate all fade-up elements in sequence
+        gsap.to(fadeUpElements, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.2, // 0.2s delay between each element
+            ease: 'power3.out',
+            delay: 0.3 // Small delay after page loads
+        });
+    }
+});
+</script>
+
 <!-- Philosophy Question -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {

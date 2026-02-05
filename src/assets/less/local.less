@@ -784,22 +784,17 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* 48px - 64px */
             gap: clamp(3rem, 6vw, 4rem);
         }
 
         .cs-content {
-            /* set text align to left if content needs to be left aligned */
             text-align: left;
             width: 100%;
             max-width: (522/16rem);
-            /* moved section padding to cs-content so the cs-background can be full width */
             padding: var(--sectionPadding);
-            /* prevents padding and border from affecting height and width */
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            /* centers content horizontally, set to flex-start to left align */
             align-items: flex-start;
         }
 
@@ -834,67 +829,64 @@
             max-width: 40rem;
         }
 
+        .cs-button-solid {
+            font-size: clamp(21px, 0.9vw, 24px);
+            font-weight: 700;
+            line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0 (32/16rem) 0 (32/16rem);
+            background: transparent;
+            border: 3px solid var(--primary);
+            pointer-events: auto;
+            color: #000;
+            border-radius: 50px;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(8px);
+            overflow: visible;
+            transition: transform 0.3s, border-color 0.3s;
 
-.cs-button-solid {
-    font-size: clamp(21px, 0.9vw, 24px);
-    font-weight: 700;
-    /* 46px - 56px */
-    line-height: clamp(2.875rem, 5.5vw, 3.5rem);
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin: 0;
-    /* prevents padding from adding to the width */
-    box-sizing: border-box;
-    padding: 0 (32/16rem) 0 (32/16rem);
-    background: transparent;
-    border: 3px solid var(--primary);
-    pointer-events: auto;
-    color: #000;
-    border-radius: 50px;
-    display: inline-block;
-    position: relative;
-    z-index: 1;
-    backdrop-filter: blur(8px);
-    overflow: visible;
-    transition: transform 0.3s, border-color 0.3s;
+            &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 25%;
+                height: 100%;
+                background-color: var(--primary);
+                border-radius: 100px;
+                z-index: -1;
+                transition: width 0.3s ease;
+            }
 
-    &:before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 25%; /* Takes up about 1/4 of button width */
-        height: 100%;
-        background-color: var(--primary);
-        border-radius: 100px;
-        z-index: -1;
-        transition: width 0.3s ease; /* Smooth expansion animation */
-    }
+            &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(20, 184, 166, 0);
+                border-radius: 50px;
+                z-index: -2;
+                transition: background-color 0.3s;
+            }
 
-    &:after {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(20, 184, 166, 0);
-        border-radius: 50px;
-        z-index: -2;
-        transition: background-color 0.3s;
-    }
-
-    &:hover {
-        transform: translateY(-2px);
-        
-        &:before {
-            width: 100%; /* Expands to fill entire button */
+            &:hover {
+                transform: translateY(-2px);
+                
+                &:before {
+                    width: 100%;
+                }
+            }
         }
-    }
-}
 
         .cs-background {
             display: block;
@@ -912,14 +904,13 @@
                 object-fit: cover;
             }
         }
+
     }
 }
 
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
     #sbsr-598 {
-        /* 90px - 150px */
-        /* returned section padding to the section container, this Stitch has 1.5X padding top and bottom than the normal Stitch */
         padding: clamp(5.625rem, 9vw, 9.375rem) (16/16rem);
         
         .cs-container {
