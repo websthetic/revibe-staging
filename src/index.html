@@ -1072,7 +1072,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- Care Map Animation -->
+<!-- Care Map Animation + Slide Panel -->
 <script>
 // 🔥 Hide text paths immediately (WITHOUT !important)
 (function hideTextImmediately() {
@@ -1105,6 +1105,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         console.log('✅ SVG found!');
+        
+        // 🔧 Reorder SVG DOM: move circles after lines in Layer_1
+        // so circles always paint on top of lines
+        const layer1 = svgElement.querySelector('#Layer_1');
+        const svgCircles = layer1.querySelectorAll('circle');
+        svgCircles.forEach(c => layer1.appendChild(c));
+        console.log('🔧 SVG reordered: circles now render on top of lines');
         
         // Separate hexagon edges and internal connections
         const hexagonEdges = svgElement.querySelectorAll('line.hexagon-edge');
@@ -1171,7 +1178,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         self.kill(false);
                         
                         // Clean up pin-related inline styles on the trigger element
-                        // (these are left behind by kill(false) and cause white space)
                         triggerEl.style.position = '';
                         triggerEl.style.top = '';
                         triggerEl.style.left = '';
@@ -1194,22 +1200,18 @@ document.addEventListener('DOMContentLoaded', function() {
                             pinSpacer.classList.contains('pin-spacer') ||
                             pinSpacer.style.height && parseInt(pinSpacer.style.height) > 1000
                         )) {
-                            // Reset pin spacer height to collapse it
                             pinSpacer.style.height = '0';
                             pinSpacer.style.padding = '0';
                             pinSpacer.style.margin = '0';
                             pinSpacer.style.overflow = 'visible';
                             pinSpacer.style.display = 'block';
                             
-                            // Unwrap the trigger element
                             pinSpacer.parentNode.insertBefore(triggerEl, pinSpacer);
                             pinSpacer.remove();
                             console.log('🧹 Pin spacer removed');
                         } else {
-                            // Fallback: look for any sibling/nearby element with large height
                             console.log('⚠️ Pin spacer not found via parent. Parent tag:', pinSpacer?.tagName, 'Parent classes:', pinSpacer?.className, 'Parent height:', pinSpacer?.style.height);
                             
-                            // Try removing any pin-spacer in the DOM
                             const allSpacers = document.querySelectorAll('[data-pin-spacer], .pin-spacer');
                             allSpacers.forEach(spacer => {
                                 spacer.style.height = '0';
@@ -1280,7 +1282,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             console.log(`Building ${step.label}: hexEdge=${step.edgeIndex}, spoke=${step.performanceSpoke}`);
             
-            // Animate hexagon edge (if exists)
             if (step.edgeIndex !== null) {
                 tl.to(hexagonEdges[step.edgeIndex], {
                     strokeDashoffset: 0,
@@ -1289,7 +1290,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
             
-            // Animate Performance spoke (SIMULTANEOUSLY with hexagon edge)
             if (spokeLine) {
                 tl.to(spokeLine, {
                     strokeDashoffset: 0,
@@ -1298,7 +1298,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, "<");
             }
             
-            // Circle pops in (at same time as lines)
             tl.to(circle, {
                 scale: 1,
                 opacity: 1,
@@ -1306,7 +1305,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 duration: 50,
             }, "<");
             
-            // Text appears with the circle
             if (circleTexts.length > 0) {
                 tl.to(circleTexts, {
                     opacity: 1,
@@ -1325,10 +1323,9 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: 50,
         });
 
-        // 🔥 PHASE 2: ADD CROSS-CONNECTIONS (lines between hexagon circles, NOT to Performance)
+        // 🔥 PHASE 2: ADD CROSS-CONNECTIONS
         console.log('🔥 PHASE 2: Adding cross-connections between hexagon circles');
         
-        // These are the connections between hexagon circles (not including Performance spokes)
         const crossConnections = [
             'readiness-activity',
             'readiness-health',
@@ -1361,24 +1358,397 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('✅ Animation initialized!');
         
         // ============================================
-        // 🎯 GSAP HOVER EFFECTS FOR CIRCLES
+        // 🎯 SLIDE PANEL SETUP
+        // ============================================
+        
+        // Panel content for each circle
+        const panelContent = {
+            performance: {
+                title: 'Performance',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.',
+                bullets: [
+                    'Lorem ipsum dolor sit amet, consectetur',
+                    'Sed do eiusmod tempor incididunt',
+                    'Labore Duis aute irure dolor',
+                    'Duis aute irure dolor',
+                    'Ut enim ad minim veniam, quis nostrud'
+                ]
+            },
+            readiness: {
+                title: 'Readiness',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.',
+                bullets: [
+                    'Lorem ipsum dolor sit amet, consectetur',
+                    'Sed do eiusmod tempor incididunt',
+                    'Labore Duis aute irure dolor',
+                    'Duis aute irure dolor',
+                    'Ut enim ad minim veniam, quis nostrud'
+                ]
+            },
+            recovery: {
+                title: 'Recovery',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.',
+                bullets: [
+                    'Lorem ipsum dolor sit amet, consectetur',
+                    'Sed do eiusmod tempor incididunt',
+                    'Labore Duis aute irure dolor',
+                    'Duis aute irure dolor',
+                    'Ut enim ad minim veniam, quis nostrud'
+                ]
+            },
+            activity: {
+                title: 'Activity',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.',
+                bullets: [
+                    'Lorem ipsum dolor sit amet, consectetur',
+                    'Sed do eiusmod tempor incididunt',
+                    'Labore Duis aute irure dolor',
+                    'Duis aute irure dolor',
+                    'Ut enim ad minim veniam, quis nostrud'
+                ]
+            },
+            health: {
+                title: 'Health',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.',
+                bullets: [
+                    'Lorem ipsum dolor sit amet, consectetur',
+                    'Sed do eiusmod tempor incididunt',
+                    'Labore Duis aute irure dolor',
+                    'Duis aute irure dolor',
+                    'Ut enim ad minim veniam, quis nostrud'
+                ]
+            },
+            capacity: {
+                title: 'Capacity',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.',
+                bullets: [
+                    'Lorem ipsum dolor sit amet, consectetur',
+                    'Sed do eiusmod tempor incididunt',
+                    'Labore Duis aute irure dolor',
+                    'Duis aute irure dolor',
+                    'Ut enim ad minim veniam, quis nostrud'
+                ]
+            },
+            mindset: {
+                title: 'Mindset',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.',
+                bullets: [
+                    'Lorem ipsum dolor sit amet, consectetur',
+                    'Sed do eiusmod tempor incididunt',
+                    'Labore Duis aute irure dolor',
+                    'Duis aute irure dolor',
+                    'Ut enim ad minim veniam, quis nostrud'
+                ]
+            }
+        };
+        
+        // Create panel HTML and inject into the section
+        const section = document.querySelector('#sbsr-1592');
+        const panel = document.createElement('div');
+        panel.className = 'care-map-panel';
+        panel.innerHTML = `
+            <div class="care-map-panel-inner">
+                <h2 class="care-map-panel-title"></h2>
+                <p class="care-map-panel-description"></p>
+                <ul class="care-map-panel-list"></ul>
+                <a href="" class="care-map-panel-cta">START YOUR CARE MAP</a>
+            </div>
+        `;
+        section.appendChild(panel);
+        
+        const panelInner = panel.querySelector('.care-map-panel-inner');
+        const panelTitle = panel.querySelector('.care-map-panel-title');
+        const panelDesc = panel.querySelector('.care-map-panel-description');
+        const panelList = panel.querySelector('.care-map-panel-list');
+        const panelCta = panel.querySelector('.care-map-panel-cta');
+        
+        // References for animation
+        const csContent = section.querySelector('.cs-content');
+        const csImageGroup = section.querySelector('.cs-image-group');
+        
+        let panelOpen = false;
+        let currentLabel = null;
+        
+        // ============================================
+        // 🔒 SCROLL LOCK HELPERS
+        // ============================================
+        let savedScrollY = 0;
+        
+        function lockScroll() {
+            savedScrollY = window.scrollY;
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${savedScrollY}px`;
+            document.body.style.width = '100%';
+        }
+        
+        function unlockScroll() {
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo(0, savedScrollY);
+        }
+        
+        // ============================================
+        // 🖱️ WHITESPACE CLICK HANDLER
+        // ============================================
+        function handleWhitespaceClick(e) {
+            // Don't close if clicking inside the panel or on a circle
+            if (panel.contains(e.target) || e.target.closest('circle[data-label]')) return;
+            closePanel();
+        }
+        
+        // ============================================
+        // 📌 OPEN PANEL
+        // ============================================
+        function openPanel(label) {
+            const content = panelContent[label];
+            if (!content) return;
+            
+            // If panel is already open with different content, swap it
+            if (panelOpen && currentLabel !== label) {
+                swapPanelContent(label);
+                return;
+            }
+            
+            if (panelOpen) return;
+            
+            panelOpen = true;
+            currentLabel = label;
+            
+            // Reset all circles to default state
+            resetAllCircles();
+            
+            // Highlight the active circle
+            highlightCircle(label);
+            
+            // Lock scroll
+            lockScroll();
+            
+            // Set content
+            updatePanelContent(content, label);
+            
+            // Set initial states for content items
+            gsap.set([panelTitle, panelDesc, panelList, panelCta], {
+                opacity: 0,
+                y: 30
+            });
+            
+            // Create open timeline
+            const openTl = gsap.timeline();
+            
+            // Hide original left content
+            openTl.to(csContent, {
+                opacity: 0,
+                x: -30,
+                duration: 0.3,
+                ease: 'power2.in'
+            });
+            
+            // Shift SVG to the left and scale down to fit left half
+            openTl.to(csImageGroup, {
+                x: '-70%',
+                scale: 1,
+                duration: 0.6,
+                ease: 'power3.inOut'
+            }, '-=0.1');
+            
+            // Slide panel in
+            openTl.to(panel, {
+                x: 0,
+                opacity: 1,
+                pointerEvents: 'auto',
+                duration: 0.6,
+                ease: 'power3.inOut'
+            }, '-=0.5');
+            
+            // Fade up content with stagger
+            openTl.to([panelTitle, panelDesc, panelList, panelCta], {
+                opacity: 1,
+                y: 0,
+                duration: 0.4,
+                stagger: 0.08,
+                ease: 'power2.out'
+            }, '-=0.2');
+            
+            // Add whitespace click listener (delay so opening click doesn't immediately close)
+            setTimeout(() => {
+                document.addEventListener('click', handleWhitespaceClick);
+            }, 100);
+            
+            console.log(`📖 Panel opened: ${label}`);
+        }
+        
+        // ============================================
+        // 🔄 SWAP PANEL CONTENT (when clicking different circle)
+        // ============================================
+        function swapPanelContent(label) {
+            const content = panelContent[label];
+            if (!content) return;
+            
+            currentLabel = label;
+            
+            // Reset all circles then highlight the new active one
+            resetAllCircles();
+            highlightCircle(label);
+            
+            // Fade out current content
+            const swapTl = gsap.timeline();
+            
+            swapTl.to([panelTitle, panelDesc, panelList, panelCta], {
+                opacity: 0,
+                y: -15,
+                duration: 0.25,
+                ease: 'power2.in'
+            });
+            
+            // Update and fade in new content
+            swapTl.call(() => {
+                updatePanelContent(content, label);
+                gsap.set([panelTitle, panelDesc, panelList, panelCta], {
+                    y: 30
+                });
+            });
+            
+            swapTl.to([panelTitle, panelDesc, panelList, panelCta], {
+                opacity: 1,
+                y: 0,
+                duration: 0.4,
+                stagger: 0.08,
+                ease: 'power2.out'
+            });
+            
+            console.log(`🔄 Panel swapped to: ${label}`);
+        }
+        
+        // ============================================
+        // ❌ CLOSE PANEL
+        // ============================================
+        function closePanel() {
+            if (!panelOpen) return;
+            
+            // Remove whitespace click listener
+            document.removeEventListener('click', handleWhitespaceClick);
+            
+            const closeTl = gsap.timeline({
+                onComplete: () => {
+                    panelOpen = false;
+                    currentLabel = null;
+                    // Unlock scroll
+                    unlockScroll();
+                    // Clear GSAP inline styles so elements return to pure CSS
+                    gsap.set(csContent, { clearProps: 'all' });
+                    gsap.set(csImageGroup, { clearProps: 'all' });
+                    // Reset circles to default state
+                    resetAllCircles();
+                    // Reset panel position for next open
+                    gsap.set(panel, { x: '100%', opacity: 0, pointerEvents: 'none' });
+                }
+            });
+            
+            // Fade out content
+            closeTl.to([panelCta, panelList, panelDesc, panelTitle], {
+                opacity: 0,
+                y: 15,
+                duration: 0.25,
+                stagger: 0.04,
+                ease: 'power2.in'
+            });
+            
+            // Slide panel out
+            closeTl.to(panel, {
+                x: '100%',
+                opacity: 0,
+                duration: 0.5,
+                ease: 'power3.inOut'
+            }, '-=0.1');
+            
+            // Move SVG back to center
+            closeTl.to(csImageGroup, {
+                x: 0,
+                scale: 1,
+                duration: 0.6,
+                ease: 'power3.inOut'
+            }, '-=0.4');
+            
+            // Bring back original left content
+            closeTl.to(csContent, {
+                opacity: 1,
+                x: 0,
+                duration: 0.4,
+                ease: 'power2.out'
+            }, '-=0.3');
+            
+            console.log('❌ Panel closed');
+        }
+        
+        // ============================================
+        // 📝 UPDATE PANEL CONTENT HELPER
+        // ============================================
+        function updatePanelContent(content, label) {
+            panelTitle.textContent = content.title;
+            panelDesc.textContent = content.description;
+            panelList.innerHTML = content.bullets.map(b => `<li>${b}</li>`).join('');
+            panelCta.href = `/care-map/${label}`;
+        }
+        
+        // ============================================
+        // 🎯 GSAP HOVER EFFECTS + CLICK → PANEL
         // ============================================
         
         const allCircles = svgElement.querySelectorAll('circle[data-label]');
+        
+        // Reset all circles to default state
+        function resetAllCircles() {
+            allCircles.forEach((c) => {
+                c.classList.remove('hovered');
+                c.style.zIndex = '';
+                gsap.killTweensOf(c);
+                gsap.set(c, {
+                    scale: 1,
+                    fill: '#00ae80',
+                    stroke: '#00ae80',
+                    strokeWidth: 0,
+                    filter: 'none'
+                });
+                const tg = svgElement.querySelector(`#text-${c.getAttribute('data-label')}`);
+                const tPaths = tg ? tg.querySelectorAll('path.st1') : [];
+                tPaths.forEach(t => {
+                    t.classList.remove('hovered-text');
+                    t.style.zIndex = '';
+                    gsap.set(t, { fill: '#ffffff' });
+                });
+            });
+        }
+        
+        // Highlight the active circle (white fill, green stroke, green text)
+        function highlightCircle(label) {
+            const c = svgElement.querySelector(`circle[data-label="${label}"]`);
+            if (!c) return;
+            gsap.set(c, {
+                fill: '#ffffff',
+                stroke: '#00ae80',
+                strokeWidth: 4
+            });
+            const tg = svgElement.querySelector(`#text-${label}`);
+            const tPaths = tg ? tg.querySelectorAll('path.st1') : [];
+            tPaths.forEach(t => {
+                gsap.set(t, { fill: '#00ae80' });
+            });
+        }
 
         allCircles.forEach((circle) => {
             const label = circle.getAttribute('data-label');
             
-            // Add cursor pointer
             circle.style.cursor = 'pointer';
             
-            // Find the corresponding text group by ID
             const textGroup = svgElement.querySelector(`#text-${label}`);
             const circleTexts = textGroup ? textGroup.querySelectorAll('path.st1') : [];
             
             console.log(`Circle (${label}): found text group with ${circleTexts.length} paths`);
             
-            // Mouse enter - white circle, green text
+            // Mouse enter
             circle.addEventListener('mouseenter', function() {
                 this.classList.add('hovered');
                 this.style.zIndex = '999';
@@ -1386,10 +1756,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 circleTexts.forEach(text => {
                     text.classList.add('hovered-text');
                     text.style.zIndex = '1000';
+                    gsap.set(text, { fill: '#00ae80' });
                 });
                 
                 gsap.to(this, {
                     scale: 1.08,
+                    fill: '#ffffff',
+                    stroke: '#00ae80',
+                    strokeWidth: 4,
                     filter: 'drop-shadow(0 0 12px rgba(0, 174, 128, 0.5))',
                     duration: 0.3,
                     ease: 'power2.out',
@@ -1397,18 +1771,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
             
-            // Mouse leave - restore original colors
+            // Mouse leave
             circle.addEventListener('mouseleave', function() {
                 this.classList.remove('hovered');
                 this.style.zIndex = '';
                 
+                // If this is the active circle and panel is open, keep it highlighted
+                if (panelOpen && currentLabel === label) {
+                    gsap.to(this, {
+                        scale: 1,
+                        filter: 'none',
+                        duration: 0.3,
+                        ease: 'power2.out',
+                        overwrite: 'auto'
+                    });
+                    return;
+                }
+                
                 circleTexts.forEach(text => {
                     text.classList.remove('hovered-text');
                     text.style.zIndex = '';
+                    gsap.set(text, { fill: '#ffffff' });
                 });
                 
                 gsap.to(this, {
                     scale: 1,
+                    fill: '#00ae80',
+                    stroke: '#00ae80',
+                    strokeWidth: 0,
                     filter: 'none',
                     duration: 0.3,
                     ease: 'power2.out',
@@ -1416,34 +1806,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
             
-            // Click handler with GSAP bounce effect
+            // 🔥 Click → Open panel (replaces navigation)
             circle.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                gsap.to(this, {
-                    scale: 0.95,
-                    duration: 0.1,
-                    ease: 'power2.in',
-                    overwrite: 'auto',
-                    onComplete: () => {
-                        gsap.to(this, {
-                            scale: 1.08,
-                            duration: 0.2,
-                            ease: 'back.out(2)',
-                            overwrite: 'auto'
-                        });
-                    }
-                });
-                
                 console.log(`Clicked: ${label}`);
                 
-                setTimeout(() => {
-                    window.location.href = `/care-map/${label}`;
-                }, 300);
+                // Reset hover state immediately
+                resetAllCircles();
+                
+                // Open panel
+                openPanel(label);
             });
         });
         
-        console.log('✅ Hover effects initialized!');
+        console.log('✅ Hover effects + panel initialized!');
         
     }, 500);
 });

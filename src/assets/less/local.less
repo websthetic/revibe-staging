@@ -422,6 +422,145 @@
     }
 }
 
+/* ============================================ */
+/*          Care Map Slide Panel Styles          */
+/* ============================================ */
+
+/* Panel overlay container */
+.care-map-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #00ae80;
+    z-index: 100;
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(2rem, 4vw, 4rem);
+    padding-left: clamp(3rem, 6vw, 6rem);
+    box-sizing: border-box;
+    overflow-y: auto;
+    border-radius: 40% 0 0 40% / 50% 0 0 50%;
+}
+
+.care-map-panel-inner {
+    max-width: 500px;
+}
+
+.care-map-panel-title {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 900;
+    line-height: 1;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem 0;
+}
+
+.care-map-panel-description {
+    font-size: clamp(0.95rem, 1.2vw, 1.125rem);
+    line-height: 1.7;
+    color: #fff;
+    margin: 0 0 1.5rem 0;
+}
+
+.care-map-panel-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+}
+
+.care-map-panel-list li {
+    font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+    font-weight: 700;
+    line-height: 1.6;
+    color: #fff;
+    padding: 0.25rem 0;
+}
+
+.care-map-panel-list li::before {
+    content: "·  ";
+    font-weight: 900;
+    font-size: 1.2em;
+}
+
+/* CTA Button inside panel - matches cs-button-solid style, white outline + black text */
+.care-map-panel-cta {
+    font-size: clamp(12px, 0.7vw, 14px);
+    font-weight: 700;
+    line-height: clamp(2rem, 3.5vw, 2.5rem);
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0 1.25rem;
+    background: transparent;
+    border: 3px solid #fff;
+    color: #000;
+    border-radius: 50px;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+    cursor: pointer;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.care-map-panel-cta::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 100px;
+    z-index: -1;
+    transition: width 0.3s ease;
+}
+
+.care-map-panel-cta::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border-radius: 50px;
+    z-index: -2;
+    transition: background-color 0.3s;
+}
+
+.care-map-panel-cta:hover {
+    transform: translateY(-2px);
+}
+
+.care-map-panel-cta:hover::before {
+    width: 100%;
+}
+
+/* Make the section relative for panel positioning */
+#sbsr-1592 {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Prevent text paths from blocking circle hover/click */
+#sbsr-1592 svg path.st1,
+#sbsr-1592 svg #Layer_2,
+#sbsr-1592 svg [id^="text-"] {
+    pointer-events: none;
+}
+
 /*-- -------------------------- -->
 <---      Care Map Tools        -->
 <--- -------------------------- -*/
