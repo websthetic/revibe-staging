@@ -211,6 +211,20 @@
         visibility: hidden;
     }
     
+/* Hover states for circles */
+#sbsr-1592 svg circle {
+    transition: none; /* Let GSAP handle transitions */
+}
+
+#sbsr-1592 svg circle.hovered {
+    fill: #ffffff !important;
+    stroke: #00ae80 !important;
+    stroke-width: 4px !important;  /* Reduced from 10px to 4px so white fill is visible */
+}
+
+#sbsr-1592 svg path.st1.hovered-text {
+    fill: #00ae80 !important;
+}
    
         
         .cs-container {
