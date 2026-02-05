@@ -85,45 +85,45 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
         </div>
         
         <!-- Carousel Wrapper -->
-  <div class="cs-carousel-wrapper">
-    <div class="cs-carousel">
-        <!-- Slide 1 -->
-        <div class="cs-slide">
-            <picture class="cs-picture">
-                <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-exercising.jpg">
-                <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-exercising.jpg">
-                <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-exercising.jpg" alt="Father helping child on skateboard" width="960" height="796">
-            </picture>
-            <div class="cs-slide-text">
-                IT'S KEEPING UP WITH YOUR KIDS
+        <div class="cs-carousel-wrapper">
+            <div class="cs-carousel">
+                <!-- Slide 1 -->
+                <div class="cs-slide">
+                    <picture class="cs-picture">
+                        <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-exercising.jpg">
+                        <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-exercising.jpg">
+                        <img decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-exercising.jpg" alt="Father helping child on skateboard" width="960" height="796">
+                    </picture>
+                    <div class="cs-slide-text">
+                        IT'S KEEPING UP WITH YOUR KIDS
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="cs-slide">
+                    <picture class="cs-picture">
+                        <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/man-smiling-working.jpg">
+                        <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/man-smiling-working.jpg">
+                        <img decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/man-smiling-working.jpg" alt="Slide 2 description" width="960" height="796">
+                    </picture>
+                    <div class="cs-slide-text">
+                        IT'S MOVING WITHOUT PAIN
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="cs-slide">
+                    <picture class="cs-picture">
+                        <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-running.jpg">
+                        <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-running.jpg">
+                        <img decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-running.jpg" alt="Slide 3 description" width="960" height="796">
+                    </picture>
+                    <div class="cs-slide-text">
+                        IT'S FEELING CONFIDENT AGAIN
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <!-- Slide 2 -->
-        <div class="cs-slide">
-            <picture class="cs-picture">
-                <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/man-smiling-working.jpg">
-                <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/man-smiling-working.jpg">
-                <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/man-smiling-working.jpg" alt="Slide 2 description" width="960" height="796">
-            </picture>
-            <div class="cs-slide-text">
-                IT'S MOVING WITHOUT PAIN
-            </div>
-        </div>
-        
-        <!-- Slide 3 -->
-        <div class="cs-slide">
-            <picture class="cs-picture">
-                <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-running.jpg">
-                <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-running.jpg">
-                <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-running.jpg" alt="Slide 3 description" width="960" height="796">
-            </picture>
-            <div class="cs-slide-text">
-                IT'S FEELING CONFIDENT AGAIN
-            </div>
-        </div>
-    </div>
-</div>
     </div>
 </section>
 
@@ -907,29 +907,24 @@ document.addEventListener('DOMContentLoaded', function() {
     );
     const titleAccentWords = section.querySelectorAll('.cs-title-accent .word');
 
-    // Split paragraphs into characters - KEEP WORDS TOGETHER
-    const text1Chars = [];
-    const text2Chars = [];
-    
+    // Split paragraphs into WORDS
     texts[0].innerHTML = texts[0].textContent.trim().split(' ').map(word => {
-        const chars = word.split('').map(c => `<span class="char">${c}</span>`).join('');
-        return `<span class="word-wrapper">${chars}</span>`;
-    }).join('<span class="char">&nbsp;</span>');
+        return `<span class="word">${word}</span>`;
+    }).join(' ');
     
     texts[1].innerHTML = texts[1].textContent.trim().split(' ').map(word => {
-        const chars = word.split('').map(c => `<span class="char">${c}</span>`).join('');
-        return `<span class="word-wrapper">${chars}</span>`;
-    }).join('<span class="char">&nbsp;</span>');
+        return `<span class="word">${word}</span>`;
+    }).join(' ');
     
-    text1Chars.push(...texts[0].querySelectorAll('.char'));
-    text2Chars.push(...texts[1].querySelectorAll('.char'));
+    const text1Words = texts[0].querySelectorAll('.word');
+    const text2Words = texts[1].querySelectorAll('.word');
 
     // Set initial state - DIMMED/BARELY VISIBLE
     gsap.set([...titleLine1Words, ...titleAccentWords], { 
         opacity: 0.2,
         color: '#666666'
     });
-    gsap.set([...text1Chars, ...text2Chars], { 
+    gsap.set([...text1Words, ...text2Words], { 
         opacity: 0.2,
         color: '#666666'
     });
@@ -939,7 +934,7 @@ document.addEventListener('DOMContentLoaded', function() {
         scrollTrigger: {
             trigger: '#RTsbsr-601',
             start: 'top top',
-            end: '+=400vh',
+            end: 'bottom+=500 top',
             scrub: 1.5,
             pin: '#RTsbsr-601 .cs-container'
         }
@@ -947,64 +942,80 @@ document.addEventListener('DOMContentLoaded', function() {
     .to(titleLine1Words, {
         opacity: 1,
         color: '#000000',
-        stagger: 0.1,
-        ease: 'power2.out'
+        stagger: 0.3,
+        ease: 'power4.out'
     }, 0)
     .to(titleAccentWords, {
         opacity: 1,
         color: 'var(--primary)',
-        stagger: 0.1,
-        ease: 'power2.out'
+        stagger: 0.3,
+        ease: 'power4.out'
     }, 0)
-    .to(text1Chars, {
+    .to(text1Words, {
         opacity: 1,
         color: '#333333',
-        stagger: 0.01,
-        ease: 'power2.out'
+        stagger: 0.1,
+        ease: 'power4.out'
     }, 0.5)
-    .to(text2Chars, {
+    .to(text2Words, {
         opacity: 1,
         color: '#333333',
-        stagger: 0.01,
-        ease: 'power2.out'
-    }, 0.7)
-    .to({}, { duration: 2 }, '+=0.5');
+        stagger: 0.1,
+        ease: 'power4.out'
+    }, ">")
+    .to({}, { duration: 5 }, '+=0.5');
 
     // ============================================
-    // CAROUSEL ANIMATION - MINIMAL FADE
+    // CAROUSEL ANIMATION - WITH PRELOADING
     // ============================================
     
     const slides = section.querySelectorAll('.cs-slide');
     const totalSlides = slides.length;
     
     if (totalSlides > 1) {
-        let currentSlide = 0;
-        
-        // Set initial state
-        gsap.set(slides, { opacity: 0 });
-        gsap.set(slides[0], { opacity: 1 });
-        
-        function nextSlide() {
-            const current = slides[currentSlide];
-            currentSlide = (currentSlide + 1) % totalSlides;
-            const next = slides[currentSlide];
+        // PRELOAD ALL IMAGES FIRST
+        const imagePromises = Array.from(slides).map(slide => {
+            return new Promise((resolve) => {
+                const img = slide.querySelector('img');
+                if (img.complete) {
+                    resolve();
+                } else {
+                    img.onload = resolve;
+                    img.onerror = resolve;
+                }
+            });
+        });
+
+        // Wait for images to load, then start carousel
+        Promise.all(imagePromises).then(() => {
+            let currentSlide = 0;
             
-            // Simple crossfade - nothing else
-            gsap.timeline()
-                .to(current, {
-                    opacity: 0,
-                    duration: 1,
-                    ease: "power2.inOut"
-                })
-                .to(next, {
-                    opacity: 1,
-                    duration: 1,
-                    ease: "power2.inOut"
-                }, "-=0.5");
-        }
-        
-        // Start carousel after initial load
-        setInterval(nextSlide, 5000);
+            // Set initial state
+            gsap.set(slides, { opacity: 0 });
+            gsap.set(slides[0], { opacity: 1 });
+            
+            function nextSlide() {
+                const current = slides[currentSlide];
+                currentSlide = (currentSlide + 1) % totalSlides;
+                const next = slides[currentSlide];
+                
+                // Simple crossfade
+                gsap.timeline()
+                    .to(current, {
+                        opacity: 0,
+                        duration: 1,
+                        ease: "power2.inOut"
+                    })
+                    .to(next, {
+                        opacity: 1,
+                        duration: 1,
+                        ease: "power2.inOut"
+                    }, "-=0.5");
+            }
+            
+            // Start carousel after images are loaded
+            setInterval(nextSlide, 5000);
+        });
     }
 });
 </script>
@@ -1268,6 +1279,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- Care Map Animation -->
 <script>
+// 🔥 Hide text paths immediately (WITHOUT !important)
+(function hideTextImmediately() {
+    const svg = document.querySelector('#sbsr-1592 svg');
+    if (svg) {
+        const textPaths = svg.querySelectorAll('path.st1');
+        textPaths.forEach(path => {
+            path.style.opacity = '0';
+            path.style.visibility = 'hidden';
+        });
+        console.log('🔥 IMMEDIATELY hid', textPaths.length, 'text paths');
+    }
+})();
+
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
         if (typeof gsap === 'undefined') {
@@ -1287,15 +1311,17 @@ document.addEventListener('DOMContentLoaded', function() {
         
         console.log('✅ SVG found!');
         
-        // Get lines/paths for animation
-        const lines = svgElement.querySelectorAll('line, polygon, polyline');
+        const lines = svgElement.querySelectorAll('line, polygon, polyline, path:not(.st1)');
+        const circles = svgElement.querySelectorAll('circle');
+        const texts = svgElement.querySelectorAll('path.st1');
         
         console.log('Found', lines.length, 'lines to animate');
+        console.log('Found', circles.length, 'circles to animate');
+        console.log('Found', texts.length, 'text paths to animate');
         
-        // Set initial state
+        // Set initial state for lines
         gsap.set(lines, {
             strokeDasharray: function(index, target) {
-                // polygon doesn't have getTotalLength(), so we need a fallback
                 const length = target.getTotalLength ? target.getTotalLength() : 500;
                 return length;
             },
@@ -1305,32 +1331,86 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
+        // Set initial state for circles
+        gsap.set(circles, {
+            scale: 0,
+            transformOrigin: 'center center',
+            opacity: 0
+        });
+        
+        // Set initial state for text PATHS
+        gsap.set(texts, {
+            opacity: 0,
+            visibility: 'hidden'
+        });
+        
         // Animate with scroll scrub and pin
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: '#sbsr-1592',
                 start: 'top top',
-                end: '+=300vh', // CHANGED: Increased from +=150vh to +=300vh (2x slower)
-                scrub: 1.5, // CHANGED: Slightly increased for smoother animation
+                end: '+=5000vh',
+                scrub: 3,
                 pin: true,
-                markers: false, // Set to true for debugging
-                anticipatePin: 1, // Smooth pin behavior
+                markers: false,
+                anticipatePin: 1,
                 onUpdate: (self) => console.log('Progress:', Math.round(self.progress * 100) + '%'),
             }
         });
+
         
-        tl.to(lines, {
-            strokeDashoffset: 0,
-            ease: 'none',
-            stagger: 0.15, // Slightly longer stagger
-        })
-        // Add delay at the end before unpinning
-        .to({}, { duration: 1 }, '+=0.5'); // ADDED: Holds the section pinned after animation
+        
+        // 🔥 Calculate how many text paths per circle
+        const textsPerCircle = Math.ceil(texts.length / circles.length);
+        console.log('Text paths per circle:', textsPerCircle);
+        
+        // 🔥 STEP 1: Animate ALL circles and text first (from middle outward)
+        circles.forEach((circle, index) => {
+            // Circle pops in
+            tl.to(circle, {
+                scale: 1,
+                opacity: 1,
+                ease: 'back.out(1.7)',
+                duration: 50,
+            });
+            
+            // Get the text paths for THIS circle
+            const startIdx = index * textsPerCircle;
+            const endIdx = Math.min(startIdx + textsPerCircle, texts.length);
+            const circleTexts = Array.from(texts).slice(startIdx, endIdx);
+            
+            // 🔥 DEBUG: Log which text paths belong to which circle
+            console.log(`Circle ${index}: text paths ${startIdx} to ${endIdx-1} (${circleTexts.length} paths)`);
+            
+            // Text for this circle appears WITH the circle
+            if (circleTexts.length > 0) {
+                tl.to(circleTexts, {
+                    opacity: 1,
+                    visibility: 'visible',
+                    ease: 'power2.out',
+                    stagger: 0.015,
+                    duration: 50, // 🔥 MATCHED to circle duration
+                }, "<");
+            }
+        });
+        
+        // 🔥 STEP 2: Now animate ALL the lines
+        lines.forEach((line, index) => {
+            tl.to(line, {
+                strokeDashoffset: 0,
+                ease: 'none',
+                duration: 100,
+            });
+        });
+        
+        // 🔥 Hold at the end
+        tl.to({}, { duration: 100 }, '+=1');
         
         console.log('✅ Animation initialized!');
         
-    }, 500); // Reduced timeout
+    }, 500);
 });
 </script>
+
 
 {% endblock %}

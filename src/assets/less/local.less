@@ -71,6 +71,7 @@
         width: 100%;
         height: 100%;
         opacity: 0;
+        will-change: opacity;
     }
     
     #RTsbsr-601 .cs-slide:first-child {
@@ -128,7 +129,7 @@
         z-index: 10;
         color: #ffffff;
         font-size: clamp(1.5rem, 4vw, 3rem);
-        font-weight: 700;
+        font-weight: 00;
         text-transform: uppercase;
         text-align: center;
         letter-spacing: 0.02em;
@@ -203,7 +204,14 @@
     #sbsr-1592 {
         padding: clamp(8rem, 12vw, 12rem) var(--sectionPadding);
         padding-bottom: clamp(10rem, 15vw, 15rem); /* Add bottom padding for scaled SVG */
-        background-color: #f7f7f7;
+        background-color: #ffffff; /* 🔥 Changed from #f7f7f7 to white */
+
+        svg path.st1 {
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+   
         
         .cs-container {
             width: 100%;
@@ -338,6 +346,8 @@
             transform-origin: 50% 50%; /* Ensure true center */
             margin: 0 auto; /* Additional centering */
         }
+
+        
     }
 }
 
