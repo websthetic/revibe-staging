@@ -231,8 +231,8 @@
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
     #sbsr-1592 {
-        padding: clamp(8rem, 12vw, 12rem) var(--sectionPadding);
-        padding-bottom: clamp(10rem, 15vw, 15rem); /* Add bottom padding for scaled SVG */
+        padding: 6.5rem 1rem 0;
+        padding-bottom: clamp(15rem, 20vw, 20rem); /* Increased bottom padding for scaled SVG */
         background-color: #ffffff; /* 🔥 Changed from #f7f7f7 to white */
 
         svg path.st1 {
@@ -267,12 +267,12 @@
         }
 
         .cs-content {
-            text-align: left;
+            text-align: center;
             width: 100%;
             max-width: (586/16rem);
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
         }
 
         .cs-title {
@@ -385,7 +385,7 @@
             width: 100% !important;
             height: auto !important;
             display: block !important;
-            transform: scale(2.8) translateX(0); /* Add translateX for fine-tuning */
+            transform: scale(4) translateY(10%) translateX(3%) ; /* Center the scaled SVG */
             transform-origin: 50% 50%; /* Ensure true center */
             margin: 0 auto; /* Additional centering */
         }
@@ -407,6 +407,8 @@
         }
 
         .cs-content {
+            text-align: left;
+            align-items: flex-start;
             flex: 0 0 40%;
             max-width: 40%;
             padding: (20/16rem) 0;
@@ -451,11 +453,12 @@
     }
 }
 
+
 /* ============================================ */
 /*          Care Map Slide Panel Styles          */
 /* ============================================ */
 
-/* Panel overlay container */
+/* Panel overlay container - DESKTOP */
 .care-map-panel {
     position: absolute;
     top: 0;
@@ -469,12 +472,12 @@
     pointer-events: none;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: clamp(2rem, 4vw, 4rem);
+    justify-content: flex-start;
+    padding: clamp(4rem, 6vw, 6rem) clamp(2rem, 4vw, 4rem);
     padding-left: clamp(3rem, 6vw, 6rem);
     box-sizing: border-box;
     overflow-y: auto;
-    border-radius: 40% 0 0 40% / 50% 0 0 50%;
+    border-radius: 20% 0 0 20% / 25% 0 0 25%;
 }
 
 .care-map-panel-inner {
@@ -518,7 +521,7 @@
     font-size: 1.2em;
 }
 
-/* CTA Button inside panel - matches cs-button-solid style, white outline + black text */
+/* CTA Button inside panel */
 .care-map-panel-cta {
     font-size: clamp(12px, 0.7vw, 14px);
     font-weight: 700;
@@ -575,6 +578,113 @@
 
 .care-map-panel-cta:hover::before {
     width: 100%;
+}
+
+/* Close Button - Desktop only */
+.care-map-panel-close {
+    position: absolute;
+    top: clamp(1.5rem, 3vw, 2rem);
+    right: clamp(1.5rem, 3vw, 2rem);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid #fff;
+    border-radius: 50%;
+    display: none; /* Hidden by default (mobile doesn't use it) */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 101;
+    padding: 0;
+    backdrop-filter: blur(4px);
+}
+
+.care-map-panel-close svg {
+    width: 20px;
+    height: 20px;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.care-map-panel-close:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.care-map-panel-close:hover svg {
+    transform: scale(1.1);
+}
+
+.care-map-panel-close:active {
+    transform: rotate(90deg) scale(0.95);
+}
+
+/* 🔥 MOBILE BACKDROP - Semi-transparent overlay */
+.care-map-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 99;
+    transition: opacity 0.3s ease;
+}
+
+/* 🔥 MOBILE DRAG HANDLE - Visual indicator */
+.care-map-panel-handle {
+    display: none; /* Hidden on desktop */
+    width: 40px;
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    margin: 0 auto 1.5rem;
+    flex-shrink: 0;
+}
+
+/* Mobile Panel Styles - 60% Bottom Sheet */
+@media only screen and (max-width: 47.9375rem) {
+    .care-map-panel {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 60vh; /* 60% of viewport height */
+        border-radius: 20px 20px 0 0; /* Rounded top-left and top-right */
+        transform: translateY(100%);
+        padding: 1.5rem 1.5rem 2rem;
+        justify-content: flex-start;
+        z-index: 100;
+        overflow-y: auto;
+        /* Add subtle curve on right edge too */
+        box-shadow: -2px 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .care-map-panel-inner {
+        max-width: 100%;
+    }
+    
+    /* Show drag handle on mobile */
+    .care-map-panel-handle {
+        display: block;
+    }
+    
+    /* Hide close button on mobile (we use backdrop + swipe) */
+    .care-map-panel-close {
+        display: none !important;
+    }
+}
+
+/* Desktop - Show close button */
+@media only screen and (min-width: 48rem) {
+    .care-map-panel-close {
+        display: flex;
+    }
 }
 
 /* Make the section relative for panel positioning */
@@ -681,19 +791,20 @@
         align-items: flex-start;
     }
 
-    #care-map-3847 .cs-image-wrapper {
-        width: 100%;
-        max-width: 20rem;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 10;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        pointer-events: none;
-    }
+   #care-map-3847 .cs-image-wrapper {
+    width: 100%;
+    max-width: 20rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: none; /* Hidden on mobile */
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
 
     #care-map-3847 .cs-picture {
         width: 100%;
@@ -870,6 +981,8 @@
         min-height: auto;
     }
 
+   
+
     #care-map-3847 .cs-wrapper {
         grid-template-columns: 1fr 1fr;
         align-items: stretch;
@@ -889,6 +1002,7 @@
 
     #care-map-3847 .cs-image-wrapper {
         max-width: 25rem;
+        display: flex; /* Show on desktop */
     }
 
     #care-map-3847 .cs-right {

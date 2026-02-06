@@ -1107,7 +1107,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('✅ SVG found!');
         
         // 🔧 Reorder SVG DOM: move circles after lines in Layer_1
-        // so circles always paint on top of lines
         const layer1 = svgElement.querySelector('#Layer_1');
         const svgCircles = layer1.querySelectorAll('circle');
         svgCircles.forEach(c => layer1.appendChild(c));
@@ -1152,6 +1151,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Track if animation has completed
         let animationCompleted = false;
+        let scrollTriggerInstance = null;
         
         // Animate with scroll scrub and pin
         const tl = gsap.timeline({
@@ -1164,79 +1164,74 @@ document.addEventListener('DOMContentLoaded', function() {
                 markers: false,
                 anticipatePin: 1,
                 onUpdate: (self) => {
-                    // Once animation reaches 100%, lock it and kill ScrollTrigger
+                    scrollTriggerInstance = self;
+                    
                     if (self.progress >= 1 && !animationCompleted) {
                         animationCompleted = true;
                         console.log('🔒 Animation complete — locking state');
-                        
-                        // Force timeline to fully complete
                         tl.progress(1);
-                        
-                        const triggerEl = document.querySelector('#sbsr-1592');
-                        
-                        // Kill ScrollTrigger but preserve animation styles on SVG elements
-                        self.kill(false);
-                        
-                        // Clean up pin-related inline styles on the trigger element
-                        triggerEl.style.position = '';
-                        triggerEl.style.top = '';
-                        triggerEl.style.left = '';
-                        triggerEl.style.right = '';
-                        triggerEl.style.bottom = '';
-                        triggerEl.style.width = '';
-                        triggerEl.style.height = '';
-                        triggerEl.style.maxWidth = '';
-                        triggerEl.style.maxHeight = '';
-                        triggerEl.style.padding = '';
-                        triggerEl.style.margin = '';
-                        triggerEl.style.boxSizing = '';
-                        triggerEl.style.transform = '';
-                        triggerEl.style.overflow = '';
-                        
-                        // Remove the pin spacer wrapper GSAP created
-                        const pinSpacer = triggerEl.parentElement;
-                        if (pinSpacer && (
-                            pinSpacer.hasAttribute('data-pin-spacer') || 
-                            pinSpacer.classList.contains('pin-spacer') ||
-                            pinSpacer.style.height && parseInt(pinSpacer.style.height) > 1000
-                        )) {
-                            pinSpacer.style.height = '0';
-                            pinSpacer.style.padding = '0';
-                            pinSpacer.style.margin = '0';
-                            pinSpacer.style.overflow = 'visible';
-                            pinSpacer.style.display = 'block';
-                            
-                            pinSpacer.parentNode.insertBefore(triggerEl, pinSpacer);
-                            pinSpacer.remove();
-                            console.log('🧹 Pin spacer removed');
-                        } else {
-                            console.log('⚠️ Pin spacer not found via parent. Parent tag:', pinSpacer?.tagName, 'Parent classes:', pinSpacer?.className, 'Parent height:', pinSpacer?.style.height);
-                            
-                            const allSpacers = document.querySelectorAll('[data-pin-spacer], .pin-spacer');
-                            allSpacers.forEach(spacer => {
-                                spacer.style.height = '0';
-                                spacer.style.padding = '0';
-                                spacer.style.margin = '0';
-                                console.log('🧹 Found and collapsed spacer:', spacer);
-                            });
-                        }
-                        
-                        // Correct scroll position
-                        requestAnimationFrame(() => {
-                            const newRect = triggerEl.getBoundingClientRect();
-                            const newTop = newRect.top + window.scrollY;
-                            window.scrollTo(0, newTop);
-                            console.log('📍 Scroll position corrected');
-                        });
+                        cleanupScrollTrigger(self);
                     }
                 },
             }
         });
 
-        // 🔥 PHASE 1: BUILD HEXAGON + PERFORMANCE SPOKES SIMULTANEOUSLY
+        // 🔥 CLEANUP FUNCTION
+        function cleanupScrollTrigger(scrollTriggerRef) {
+            const triggerEl = document.querySelector('#sbsr-1592');
+            
+            scrollTriggerRef.kill(false);
+            
+            triggerEl.style.position = '';
+            triggerEl.style.top = '';
+            triggerEl.style.left = '';
+            triggerEl.style.right = '';
+            triggerEl.style.bottom = '';
+            triggerEl.style.width = '';
+            triggerEl.style.height = '';
+            triggerEl.style.maxWidth = '';
+            triggerEl.style.maxHeight = '';
+            triggerEl.style.padding = '';
+            triggerEl.style.margin = '';
+            triggerEl.style.boxSizing = '';
+            triggerEl.style.transform = '';
+            triggerEl.style.overflow = '';
+            
+            const pinSpacer = triggerEl.parentElement;
+            if (pinSpacer && (
+                pinSpacer.hasAttribute('data-pin-spacer') || 
+                pinSpacer.classList.contains('pin-spacer') ||
+                pinSpacer.style.height && parseInt(pinSpacer.style.height) > 1000
+            )) {
+                pinSpacer.style.height = '0';
+                pinSpacer.style.padding = '0';
+                pinSpacer.style.margin = '0';
+                pinSpacer.style.overflow = 'visible';
+                pinSpacer.style.display = 'block';
+                
+                pinSpacer.parentNode.insertBefore(triggerEl, pinSpacer);
+                pinSpacer.remove();
+                console.log('🧹 Pin spacer removed');
+            } else {
+                const allSpacers = document.querySelectorAll('[data-pin-spacer], .pin-spacer');
+                allSpacers.forEach(spacer => {
+                    spacer.style.height = '0';
+                    spacer.style.padding = '0';
+                    spacer.style.margin = '0';
+                });
+            }
+            
+            requestAnimationFrame(() => {
+                const newRect = triggerEl.getBoundingClientRect();
+                const newTop = newRect.top + window.scrollY;
+                window.scrollTo(0, newTop);
+                console.log('📍 Scroll position corrected');
+            });
+        }
+
+        // 🔥 PHASE 1: BUILD HEXAGON + PERFORMANCE SPOKES
         console.log('🔥 PHASE 1: Building hexagon with Performance spokes');
         
-        // Step 1: Performance (center) appears first
         const performanceCircle = svgElement.querySelector(`circle[data-label="performance"]`);
         const performanceTextGroup = svgElement.querySelector(`#text-performance`);
         const performanceTexts = performanceTextGroup ? performanceTextGroup.querySelectorAll('path.st1') : [];
@@ -1257,14 +1252,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }, "<");
         }
 
-        // Helper function to find internal connection by data-connection attribute
         function findInternalConnection(connectionName) {
             return Array.from(internalConnections).find(line => 
                 line.getAttribute('data-connection') === connectionName
             );
         }
 
-        // Step 2: Build hexagon ring with Performance spokes
         const hexagonSequence = [
             { label: 'readiness', edgeIndex: null, performanceSpoke: 'performance-readiness' },
             { label: 'recovery', edgeIndex: 0, performanceSpoke: 'performance-recovery' },
@@ -1279,8 +1272,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const textGroup = svgElement.querySelector(`#text-${step.label}`);
             const circleTexts = textGroup ? textGroup.querySelectorAll('path.st1') : [];
             const spokeLine = findInternalConnection(step.performanceSpoke);
-            
-            console.log(`Building ${step.label}: hexEdge=${step.edgeIndex}, spoke=${step.performanceSpoke}`);
             
             if (step.edgeIndex !== null) {
                 tl.to(hexagonEdges[step.edgeIndex], {
@@ -1315,7 +1306,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Close the hexagon loop: mindset → readiness
         console.log('✅ Closing hexagon: Mindset → Readiness');
         tl.to(hexagonEdges[5], {
             strokeDashoffset: 0,
@@ -1324,7 +1314,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // 🔥 PHASE 2: ADD CROSS-CONNECTIONS
-        console.log('🔥 PHASE 2: Adding cross-connections between hexagon circles');
+        console.log('🔥 PHASE 2: Adding cross-connections');
         
         const crossConnections = [
             'readiness-activity',
@@ -1341,18 +1331,14 @@ document.addEventListener('DOMContentLoaded', function() {
         crossConnections.forEach((connectionName) => {
             const line = findInternalConnection(connectionName);
             if (line) {
-                console.log(`Drawing cross-connection: ${connectionName}`);
                 tl.to(line, {
                     strokeDashoffset: 0,
                     ease: 'power2.out',
                     duration: 40,
                 });
-            } else {
-                console.warn(`⚠️ Cross-connection not found: ${connectionName}`);
             }
         });
         
-        // 🔥 Hold at the end
         tl.to({}, { duration: 60 }, '+=1');
         
         console.log('✅ Animation initialized!');
@@ -1361,7 +1347,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // 🎯 SLIDE PANEL SETUP
         // ============================================
         
-        // Panel content for each circle
         const panelContent = {
             performance: {
                 title: 'Performance',
@@ -1442,11 +1427,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
         
-        // Create panel HTML and inject into the section
+        // Create backdrop
         const section = document.querySelector('#sbsr-1592');
+        const backdrop = document.createElement('div');
+        backdrop.className = 'care-map-backdrop';
+        document.body.appendChild(backdrop);
+        
+        // Create panel
         const panel = document.createElement('div');
         panel.className = 'care-map-panel';
         panel.innerHTML = `
+            <div class="care-map-panel-handle"></div>
+            <button class="care-map-panel-close" aria-label="Close panel">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
             <div class="care-map-panel-inner">
                 <h2 class="care-map-panel-title"></h2>
                 <p class="care-map-panel-description"></p>
@@ -1456,18 +1453,96 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         section.appendChild(panel);
         
+        const panelHandle = panel.querySelector('.care-map-panel-handle');
         const panelInner = panel.querySelector('.care-map-panel-inner');
         const panelTitle = panel.querySelector('.care-map-panel-title');
         const panelDesc = panel.querySelector('.care-map-panel-description');
         const panelList = panel.querySelector('.care-map-panel-list');
         const panelCta = panel.querySelector('.care-map-panel-cta');
+        const panelCloseBtn = panel.querySelector('.care-map-panel-close');
         
-        // References for animation
         const csContent = section.querySelector('.cs-content');
         const csImageGroup = section.querySelector('.cs-image-group');
         
         let panelOpen = false;
         let currentLabel = null;
+        
+        // 🔥 CLOSE BUTTON CLICK (Desktop only)
+        panelCloseBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            closePanel();
+        });
+        
+        // 🔥 BACKDROP CLICK (Mobile - tap outside to close)
+        backdrop.addEventListener('click', function(e) {
+            if (panelOpen) {
+                closePanel();
+            }
+        });
+        
+        // ============================================
+        // 📱 MOBILE SWIPE DOWN TO CLOSE
+        // ============================================
+        let touchStartY = 0;
+        let touchStartTime = 0;
+        let isDragging = false;
+        let currentTranslateY = 0;
+        
+        panel.addEventListener('touchstart', function(e) {
+            const isMobile = window.innerWidth < 768;
+            if (!isMobile || !panelOpen) return;
+            
+            // Only start drag if touching the handle or top area
+            const touchY = e.touches[0].clientY;
+            const panelRect = panel.getBoundingClientRect();
+            const touchInTopArea = touchY < panelRect.top + 80; // Top 80px
+            
+            if (touchInTopArea) {
+                touchStartY = e.touches[0].clientY;
+                touchStartTime = Date.now();
+                isDragging = true;
+                currentTranslateY = 0;
+            }
+        }, { passive: true });
+        
+        panel.addEventListener('touchmove', function(e) {
+            if (!isDragging) return;
+            
+            const touchY = e.touches[0].clientY;
+            const deltaY = touchY - touchStartY;
+            
+            // Only allow dragging down (positive deltaY)
+            if (deltaY > 0) {
+                currentTranslateY = deltaY;
+                panel.style.transform = `translateY(${deltaY}px)`;
+            }
+        }, { passive: true });
+        
+        panel.addEventListener('touchend', function(e) {
+            if (!isDragging) return;
+            
+            isDragging = false;
+            
+            const touchEndTime = Date.now();
+            const touchDuration = touchEndTime - touchStartTime;
+            const velocity = currentTranslateY / touchDuration; // px per ms
+            
+            const panelHeight = panel.offsetHeight;
+            const dragThreshold = panelHeight * 0.25; // 25% of panel height
+            const velocityThreshold = 0.5; // Fast swipe
+            
+            // Close if: fast swipe down OR dragged more than 25%
+            if (velocity > velocityThreshold || currentTranslateY > dragThreshold) {
+                closePanel();
+            } else {
+                // Snap back to open position with spring
+                gsap.to(panel, {
+                    y: 0,
+                    duration: 0.4,
+                    ease: 'back.out(1.2)'
+                });
+            }
+        });
         
         // ============================================
         // 🔒 SCROLL LOCK HELPERS
@@ -1491,12 +1566,83 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // ============================================
-        // 🖱️ WHITESPACE CLICK HANDLER
+        // 🖱️ WHITESPACE CLICK (Desktop only)
         // ============================================
         function handleWhitespaceClick(e) {
-            // Don't close if clicking inside the panel or on a circle
+            const isMobile = window.innerWidth < 768;
+            if (isMobile) return; // Mobile uses backdrop
+            
             if (panel.contains(e.target) || e.target.closest('circle[data-label]')) return;
             closePanel();
+        }
+        
+        // ============================================
+        // 🚀 COMPLETE ANIMATION INSTANTLY
+        // ============================================
+        function completeAnimationInstantly() {
+            if (animationCompleted) return;
+            
+            console.log('⚡ Fast-forwarding animation...');
+            
+            tl.progress(1, false);
+            gsap.ticker.tick();
+            
+            // Manual fallbacks
+            const allCircles = svgElement.querySelectorAll('circle[data-label]');
+            allCircles.forEach(circle => {
+                gsap.set(circle, { scale: 1, opacity: 1 });
+            });
+            
+            const allTexts = svgElement.querySelectorAll('path.st1');
+            allTexts.forEach(text => {
+                gsap.set(text, { opacity: 1, visibility: 'visible' });
+            });
+            
+            const allLinesEl = svgElement.querySelectorAll('line');
+            allLinesEl.forEach(line => {
+                gsap.set(line, { strokeDashoffset: 0 });
+            });
+            
+            if (scrollTriggerInstance) {
+                cleanupScrollTrigger(scrollTriggerInstance);
+                scrollTriggerInstance = null;
+            }
+            
+            animationCompleted = true;
+            console.log('✅ Animation completed');
+        }
+        
+        // ============================================
+        // 📍 SCROLL SECTION TO TOP (Desktop only)
+        // ============================================
+        function scrollSectionToTop(callback) {
+            const isMobile = window.innerWidth < 768;
+            
+            if (isMobile) {
+                callback();
+                return;
+            }
+            
+            const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+            const currentScroll = window.scrollY;
+            
+            if (Math.abs(currentScroll - sectionTop) < 10) {
+                console.log('✅ Section already at top');
+                callback();
+                return;
+            }
+            
+            console.log('📍 Scrolling section to top...');
+            
+            window.scrollTo({
+                top: sectionTop,
+                behavior: 'smooth'
+            });
+            
+            setTimeout(() => {
+                console.log('✅ Section scrolled');
+                callback();
+            }, 500);
         }
         
         // ============================================
@@ -1506,7 +1652,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const content = panelContent[label];
             if (!content) return;
             
-            // If panel is already open with different content, swap it
             if (panelOpen && currentLabel !== label) {
                 swapPanelContent(label);
                 return;
@@ -1517,53 +1662,78 @@ document.addEventListener('DOMContentLoaded', function() {
             panelOpen = true;
             currentLabel = label;
             
-            // Reset all circles to default state
             resetAllCircles();
-            
-            // Highlight the active circle
             highlightCircle(label);
-            
-            // Lock scroll
             lockScroll();
-            
-            // Set content
             updatePanelContent(content, label);
             
-            // Set initial states for content items
             gsap.set([panelTitle, panelDesc, panelList, panelCta], {
                 opacity: 0,
                 y: 30
             });
             
-            // Create open timeline
-            const openTl = gsap.timeline();
-            
-            // Hide original left content
-            openTl.to(csContent, {
+            gsap.set(panelCloseBtn, {
                 opacity: 0,
-                x: -30,
-                duration: 0.3,
-                ease: 'power2.in'
+                scale: 0.8
             });
             
-            // Shift SVG to the left and scale down to fit left half
-            openTl.to(csImageGroup, {
-                x: '-70%',
-                scale: 1,
-                duration: 0.6,
-                ease: 'power3.inOut'
-            }, '-=0.1');
+            const isMobile = window.innerWidth < 768;
+            const openTl = gsap.timeline();
             
-            // Slide panel in
-            openTl.to(panel, {
-                x: 0,
-                opacity: 1,
-                pointerEvents: 'auto',
-                duration: 0.6,
-                ease: 'power3.inOut'
-            }, '-=0.5');
+            if (isMobile) {
+                // 📱 MOBILE: Show backdrop + bottom sheet
+                openTl.to(backdrop, {
+                    opacity: 1,
+                    pointerEvents: 'auto',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+                
+                openTl.to(csImageGroup, {
+                    opacity: 0,
+                    duration: 0.3,
+                    ease: 'power2.in'
+                }, '<');
+                
+                openTl.to(csContent, {
+                    opacity: 0,
+                    duration: 0.3,
+                    ease: 'power2.in'
+                }, '<');
+                
+                openTl.to(panel, {
+                    y: 0,
+                    opacity: 1,
+                    pointerEvents: 'auto',
+                    duration: 0.5,
+                    ease: 'back.out(1.2)' // Spring physics
+                }, '-=0.1');
+                
+            } else {
+                // 💻 DESKTOP: Side-by-side
+                openTl.to(csContent, {
+                    opacity: 0,
+                    x: -30,
+                    duration: 0.3,
+                    ease: 'power2.in'
+                });
+                
+                openTl.to(csImageGroup, {
+                    x: '-70%',
+                    scale: 1,
+                    duration: 0.6,
+                    ease: 'power3.inOut'
+                }, '-=0.1');
+                
+                openTl.to(panel, {
+                    x: 0,
+                    opacity: 1,
+                    pointerEvents: 'auto',
+                    duration: 0.6,
+                    ease: 'power3.inOut'
+                }, '-=0.5');
+            }
             
-            // Fade up content with stagger
             openTl.to([panelTitle, panelDesc, panelList, panelCta], {
                 opacity: 1,
                 y: 0,
@@ -1572,7 +1742,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 ease: 'power2.out'
             }, '-=0.2');
             
-            // Add whitespace click listener (delay so opening click doesn't immediately close)
+            if (!isMobile) {
+                openTl.to(panelCloseBtn, {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.3,
+                    ease: 'back.out(1.7)'
+                }, '-=0.3');
+            }
+            
             setTimeout(() => {
                 document.addEventListener('click', handleWhitespaceClick);
             }, 100);
@@ -1581,19 +1759,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // ============================================
-        // 🔄 SWAP PANEL CONTENT (when clicking different circle)
+        // 🔄 SWAP PANEL CONTENT
         // ============================================
         function swapPanelContent(label) {
             const content = panelContent[label];
             if (!content) return;
             
             currentLabel = label;
-            
-            // Reset all circles then highlight the new active one
             resetAllCircles();
             highlightCircle(label);
             
-            // Fade out current content
             const swapTl = gsap.timeline();
             
             swapTl.to([panelTitle, panelDesc, panelList, panelCta], {
@@ -1603,12 +1778,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 ease: 'power2.in'
             });
             
-            // Update and fade in new content
             swapTl.call(() => {
                 updatePanelContent(content, label);
-                gsap.set([panelTitle, panelDesc, panelList, panelCta], {
-                    y: 30
-                });
+                gsap.set([panelTitle, panelDesc, panelList, panelCta], { y: 30 });
             });
             
             swapTl.to([panelTitle, panelDesc, panelList, panelCta], {
@@ -1619,7 +1791,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ease: 'power2.out'
             });
             
-            console.log(`🔄 Panel swapped to: ${label}`);
+            console.log(`🔄 Swapped to: ${label}`);
         }
         
         // ============================================
@@ -1628,26 +1800,28 @@ document.addEventListener('DOMContentLoaded', function() {
         function closePanel() {
             if (!panelOpen) return;
             
-            // Remove whitespace click listener
             document.removeEventListener('click', handleWhitespaceClick);
+            
+            const isMobile = window.innerWidth < 768;
             
             const closeTl = gsap.timeline({
                 onComplete: () => {
                     panelOpen = false;
                     currentLabel = null;
-                    // Unlock scroll
                     unlockScroll();
-                    // Clear GSAP inline styles so elements return to pure CSS
                     gsap.set(csContent, { clearProps: 'all' });
                     gsap.set(csImageGroup, { clearProps: 'all' });
-                    // Reset circles to default state
                     resetAllCircles();
-                    // Reset panel position for next open
-                    gsap.set(panel, { x: '100%', opacity: 0, pointerEvents: 'none' });
+                    
+                    if (isMobile) {
+                        gsap.set(panel, { y: '100%', opacity: 0, pointerEvents: 'none' });
+                        gsap.set(backdrop, { opacity: 0, pointerEvents: 'none' });
+                    } else {
+                        gsap.set(panel, { x: '100%', opacity: 0, pointerEvents: 'none' });
+                    }
                 }
             });
             
-            // Fade out content
             closeTl.to([panelCta, panelList, panelDesc, panelTitle], {
                 opacity: 0,
                 y: 15,
@@ -1656,35 +1830,62 @@ document.addEventListener('DOMContentLoaded', function() {
                 ease: 'power2.in'
             });
             
-            // Slide panel out
-            closeTl.to(panel, {
-                x: '100%',
-                opacity: 0,
-                duration: 0.5,
-                ease: 'power3.inOut'
-            }, '-=0.1');
-            
-            // Move SVG back to center
-            closeTl.to(csImageGroup, {
-                x: 0,
-                scale: 1,
-                duration: 0.6,
-                ease: 'power3.inOut'
-            }, '-=0.4');
-            
-            // Bring back original left content
-            closeTl.to(csContent, {
-                opacity: 1,
-                x: 0,
-                duration: 0.4,
-                ease: 'power2.out'
-            }, '-=0.3');
+            if (isMobile) {
+                // 📱 MOBILE
+                closeTl.to(panel, {
+                    y: '100%',
+                    opacity: 0,
+                    duration: 0.5,
+                    ease: 'power3.inOut'
+                }, '-=0.1');
+                
+                closeTl.to(backdrop, {
+                    opacity: 0,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                }, '<');
+                
+                closeTl.to(csImageGroup, {
+                    opacity: 1,
+                    duration: 0.4,
+                    ease: 'power2.out'
+                }, '-=0.3');
+                
+                closeTl.to(csContent, {
+                    opacity: 1,
+                    duration: 0.4,
+                    ease: 'power2.out'
+                }, '-=0.3');
+                
+            } else {
+                // 💻 DESKTOP
+                closeTl.to(panel, {
+                    x: '100%',
+                    opacity: 0,
+                    duration: 0.5,
+                    ease: 'power3.inOut'
+                }, '-=0.1');
+                
+                closeTl.to(csImageGroup, {
+                    x: 0,
+                    scale: 1,
+                    duration: 0.6,
+                    ease: 'power3.inOut'
+                }, '-=0.4');
+                
+                closeTl.to(csContent, {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.4,
+                    ease: 'power2.out'
+                }, '-=0.3');
+            }
             
             console.log('❌ Panel closed');
         }
         
         // ============================================
-        // 📝 UPDATE PANEL CONTENT HELPER
+        // 📝 UPDATE PANEL CONTENT
         // ============================================
         function updatePanelContent(content, label) {
             panelTitle.textContent = content.title;
@@ -1694,12 +1895,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // ============================================
-        // 🎯 GSAP HOVER EFFECTS + CLICK → PANEL
+        // 🎯 CIRCLE INTERACTIONS
         // ============================================
-        
         const allCircles = svgElement.querySelectorAll('circle[data-label]');
         
-        // Reset all circles to default state
         function resetAllCircles() {
             allCircles.forEach((c) => {
                 c.classList.remove('hovered');
@@ -1722,7 +1921,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Highlight the active circle (white fill, green stroke, green text)
         function highlightCircle(label) {
             const c = svgElement.querySelector(`circle[data-label="${label}"]`);
             if (!c) return;
@@ -1746,9 +1944,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const textGroup = svgElement.querySelector(`#text-${label}`);
             const circleTexts = textGroup ? textGroup.querySelectorAll('path.st1') : [];
             
-            console.log(`Circle (${label}): found text group with ${circleTexts.length} paths`);
-            
-            // Mouse enter
             circle.addEventListener('mouseenter', function() {
                 this.classList.add('hovered');
                 this.style.zIndex = '999';
@@ -1771,12 +1966,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
             
-            // Mouse leave
             circle.addEventListener('mouseleave', function() {
                 this.classList.remove('hovered');
                 this.style.zIndex = '';
                 
-                // If this is the active circle and panel is open, keep it highlighted
                 if (panelOpen && currentLabel === label) {
                     gsap.to(this, {
                         scale: 1,
@@ -1806,21 +1999,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
             
-            // 🔥 Click → Open panel (replaces navigation)
             circle.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                console.log(`Clicked: ${label}`);
+                console.log(`🖱️ Clicked: ${label}`);
                 
-                // Reset hover state immediately
                 resetAllCircles();
+                completeAnimationInstantly();
                 
-                // Open panel
-                openPanel(label);
+                setTimeout(() => {
+                    scrollSectionToTop(() => {
+                        openPanel(label);
+                    });
+                }, 300);
             });
         });
         
-        console.log('✅ Hover effects + panel initialized!');
+        console.log('✅ Everything initialized!');
         
     }, 500);
 });

@@ -223,6 +223,42 @@
 @media only screen and (min-width: 48rem) {
     #hero-2042 {
         .cs-container {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cs-content {
+            text-align: center;
+            max-width: (328/16rem);
+            align-items: center;
+        }
+
+        .cs-button-group {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: (16/16rem);
+        }
+        
+        .cs-review {
+            flex-direction: column;
+            align-items: center;
+            gap: (4/16rem);
+        }
+
+        .cs-video-wrapper {
+            &::before {
+                background: linear-gradient(0deg, rgba(0, 0, 0, 0) 16.54%, rgba(0, 0, 0, 0.64) 59.41%), linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+            }
+        }
+    }
+}
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #hero-2042 {
+        .cs-container {
             padding-right: (100/16rem);
             flex-direction: row;
             justify-content: flex-start;
