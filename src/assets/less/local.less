@@ -14,13 +14,18 @@
         flex-direction: column;
         align-items: stretch;
         height: 100vh;
+        overflow: hidden;
     }
     
     #RTsbsr-601 .cs-content {
         width: 100%;
-        padding: 3rem 1rem;
+        padding: 6.5rem 1rem 0;
         background-color: #ffffff;
         text-align: center;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     
     #RTsbsr-601 .cs-title {
@@ -54,8 +59,10 @@
     #RTsbsr-601 .cs-carousel-wrapper {
         position: relative;
         width: 100%;
-        height: 25rem;
+        height: 40vh;
+        max-height: 40vh;
         overflow: hidden;
+        flex-shrink: 0;
     }
     
     #RTsbsr-601 .cs-carousel {
@@ -128,8 +135,8 @@
         transform: translate(-50%, -50%);
         z-index: 10;
         color: #ffffff;
-        font-size: clamp(1.5rem, 4vw, 3rem);
-        font-weight: 00;
+        font-size: clamp(1.25rem, 4vw, 1.75rem);
+        font-weight: 700;
         text-transform: uppercase;
         text-align: center;
         letter-spacing: 0.02em;
@@ -145,16 +152,52 @@
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
     #RTsbsr-601 .cs-container {
+        flex-direction: column;
+        overflow: hidden;
+    }
+    
+    #RTsbsr-601 .cs-content {
+        width: 100%;
+        padding: 6.5rem 3rem 0;
+        text-align: center;
+        flex: 1 1 auto;
+    }
+    
+    #RTsbsr-601 .cs-title {
+        font-size: clamp(2.438rem, 5vw, 3.813rem);
+        margin: 0 0 1.5rem 0;
+    }
+    
+    #RTsbsr-601 .cs-text {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0 auto 1rem auto;
+    }
+    
+    #RTsbsr-601 .cs-carousel-wrapper {
+        width: 100%;
+        height: 40vh;
+        max-height: 40vh;
+        flex-shrink: 0;
+    }
+
+    #RTsbsr-601 .cs-slide-text {
+        font-size: clamp(1.25rem, 4vw, 1.75rem);
+    }
+}
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #RTsbsr-601 .cs-container {
         flex-direction: row;
+        overflow: visible;
     }
     
     #RTsbsr-601 .cs-content {
         width: 50%;
-        padding: 4rem 3rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        padding: 5rem 4rem;
         text-align: left;
+        flex: none;
     }
     
     #RTsbsr-601 .cs-text {
@@ -165,21 +208,7 @@
     #RTsbsr-601 .cs-carousel-wrapper {
         width: 50%;
         height: auto;
-        min-height: 35rem;
-    }
-
-    #RTsbsr-601 .cs-slide-text {
-        font-size: clamp(2rem, 3vw, 3.5rem);
-    }
-}
-
-/* Desktop - 1024px */
-@media only screen and (min-width: 64rem) {
-    #RTsbsr-601 .cs-content {
-        padding: 5rem 4rem;
-    }
-    
-    #RTsbsr-601 .cs-carousel-wrapper {
+        max-height: none;
         min-height: 40rem;
     }
 
