@@ -1642,26 +1642,26 @@
         display: flex;
         flex-direction: column;
         align-items: stretch;
-        height: 100vh;
+        height: auto;
         overflow: hidden;
     }
     
     #RTsbsr-597 .cs-content {
         width: 100%;
-        padding: 0.5rem 1rem 0;
+        padding: 2rem 1rem 1.5rem;
         background-color: var(--primary);
         text-align: center;
-        flex: 1 1 auto;
+        flex: 0 0 auto;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
     }
     
     #RTsbsr-597 .cs-title {
         font-size: clamp(2.438rem, 5vw, 3.813rem);
         font-weight: 700;
         line-height: 1.15;
-        margin: 0 0 1.5rem 0;
+        margin: 0 0 1rem 0;
         color: #fff;
         text-transform: uppercase;
         letter-spacing: -0.02em;
@@ -1675,34 +1675,34 @@
     #RTsbsr-597 .cs-text {
         font-size: 1rem;
         line-height: 1.6;
-        margin: 0 auto 1rem auto;
+        margin: 0 auto 0.75rem auto;
         color: #fff;
         max-width: 40rem;
     }
     
     #RTsbsr-597 .cs-text:last-of-type {
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
     }
     
 #RTsbsr-597 .cs-button-solid {
     font-size: clamp(21px, 0.9vw, 24px);
     font-weight: 700;
     line-height: clamp(2.875rem, 5.5vw, 3.5rem);
-    text-align: left;  /* Changed from center */
+    text-align: left;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin: 0 auto;
     box-sizing: border-box;
-    padding: 0 2rem 0 3rem;  /* Added more left padding for spacing from the white bar */
+    padding: 0 2rem 0 3rem;
     background: transparent;
     border: 3px solid #fff;
     pointer-events: auto;
     color: #000;
     border-radius: 50px;
-    display: flex;  /* Changed to flex */
+    display: flex;
     align-items: flex-start;
-    justify-content: flex-start;  /* Aligns text to left */
+    justify-content: flex-start;
     position: relative;
     z-index: 1;
     overflow: visible;
@@ -1834,24 +1834,30 @@
     #RTsbsr-597 .cs-container {
         flex-direction: column;
         overflow: hidden;
+        height: auto;
     }
     
     #RTsbsr-597 .cs-content {
         width: 100%;
-        padding: 0.5rem 3rem 0;
+        padding: 2rem 3rem 1.5rem;
         text-align: center;
-        flex: 1 1 auto;
+        flex: 0 0 auto;
+        justify-content: flex-start;
     }
     
     #RTsbsr-597 .cs-title {
         font-size: clamp(2.438rem, 5vw, 3.813rem);
-        margin: 0 0 1.5rem 0;
+        margin: 0 0 1rem 0;
     }
     
     #RTsbsr-597 .cs-text {
         font-size: 1rem;
         line-height: 1.6;
-        margin: 0 auto 1rem auto;
+        margin: 0 auto 0.75rem auto;
+    }
+    
+    #RTsbsr-597 .cs-text:last-of-type {
+        margin-bottom: 1.5rem;
     }
     
     #RTsbsr-597 .cs-carousel-wrapper {
@@ -1878,7 +1884,7 @@
     #RTsbsr-597 .cs-content {
         width: 40%;
         padding: 3rem 4rem;
-        text-align: left;  /* Keep left-aligned like reference */
+        text-align: left;
         flex: none;
         display: flex;
         flex-direction: column;
@@ -1888,11 +1894,11 @@
     #RTsbsr-597 .cs-text {
         font-size: 1.125rem;
         margin: 0 0 1rem 0;
-        max-width: 35rem;  /* Add max-width to control text block width */
+        max-width: 35rem;
     }
     
     #RTsbsr-597 .cs-button-solid {
-        margin: 0;  /* Keep left-aligned */
+        margin: 0;
     }
     
     #RTsbsr-597 .cs-carousel-wrapper {
