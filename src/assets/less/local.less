@@ -193,13 +193,17 @@
     #RTsbsr-601 .cs-container {
         flex-direction: row;
         overflow: visible;
+        height: auto;  /* Override the 100vh from mobile */
     }
     
     #RTsbsr-601 .cs-content {
         width: 40%;
-        padding: 5rem 4rem;
+        padding: 3rem 4rem;
         text-align: left;
         flex: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     
     #RTsbsr-601 .cs-text {
@@ -211,7 +215,7 @@
         width: 60%;
         height: auto;
         max-height: none;
-        min-height: 35rem;
+        min-height: 25rem;  /* Try this smaller height */
     }
 
     #RTsbsr-601 .cs-slide-text {
@@ -223,7 +227,10 @@
 @media only screen and (min-width: 81.25rem) {
     #RTsbsr-601 .cs-content {
         width: 40%;
-        padding: 6rem 5rem;
+        padding: 3rem 5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     
     #RTsbsr-601 .cs-carousel-wrapper {
