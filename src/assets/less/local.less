@@ -1252,6 +1252,19 @@
     }
 }
 
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #sbsr-598 {
+        .cs-background {
+            width: 50%;
+            left: 50%;
+        }
+
+        .cs-content {
+            width: 60%;
+        }
+    }}
+
 /*-- -------------------------- -->
 <---            Hero            -->
 <--- -------------------------- -*/
@@ -1620,167 +1633,294 @@
 
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
-    #sbsr-597 {
-        position: relative;
-        background: var(--primary);
-
-        .cs-container {
-            width: 100%;
-            max-width: (1280/16rem);
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            /* 48px - 64px */
-            gap: clamp(3rem, 6vw, 4rem);
-        }
-
-        .cs-content {
-            /* set text align to left if content needs to be left aligned */
-            text-align: left;
-            width: 100%;
-            max-width: (522/16rem);
-            /* moved section padding to cs-content so the cs-background can be full width */
-            padding: var(--sectionPadding);
-            /* prevents padding and border from affecting height and width */
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            /* centers content horizontally, set to flex-start to left align */
-            align-items: flex-start;
-        }
-
-        .cs-title {
-            font-size: clamp(2.438rem, 5vw, 3.813rem);
-            font-weight: 900;
-            line-height: 1;
-            margin: 0 0 1.5rem 0;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: -0.02em;
-        }
-
-        
-        .cs-text {
-            margin-bottom: (16/16rem);
-            &:last-of-type {
-                margin-bottom: (32/16rem);
-            }
+    #RTsbsr-597 {
+        background-color: var(--primary);
+    }
+    
+    #RTsbsr-597 .cs-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        height: 100vh;
+        overflow: hidden;
+    }
+    
+    #RTsbsr-597 .cs-content {
+        width: 100%;
+        padding: 0.5rem 1rem 0;
+        background-color: var(--primary);
+        text-align: center;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    #RTsbsr-597 .cs-title {
+        font-size: clamp(2.438rem, 5vw, 3.813rem);
+        font-weight: 700;
+        line-height: 1.15;
+        margin: 0 0 1.5rem 0;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+    }
+    
+    #RTsbsr-597 .cs-title-accent {
+        color: var(--primary);
+        display: block;
+    }
+    
+    #RTsbsr-597 .cs-text {
         font-size: 1rem;
         line-height: 1.6;
-        margin: 0 0 1rem 0;
+        margin: 0 auto 1rem auto;
         color: #fff;
         max-width: 40rem;
     }
-
-
-.cs-button-solid {
+    
+    #RTsbsr-597 .cs-text:last-of-type {
+        margin-bottom: 2rem;
+    }
+    
+#RTsbsr-597 .cs-button-solid {
     font-size: clamp(21px, 0.9vw, 24px);
     font-weight: 700;
-    /* 46px - 56px */
     line-height: clamp(2.875rem, 5.5vw, 3.5rem);
-    text-align: center;
+    text-align: left;  /* Changed from center */
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin: 0;
-    /* prevents padding from adding to the width */
+    margin: 0 auto;
     box-sizing: border-box;
-    padding: 0 (32/16rem) 0 (32/16rem);
+    padding: 0 2rem 0 3rem;  /* Added more left padding for spacing from the white bar */
     background: transparent;
     border: 3px solid #fff;
     pointer-events: auto;
     color: #000;
     border-radius: 50px;
-    display: inline-block;
+    display: flex;  /* Changed to flex */
+    align-items: flex-start;
+    justify-content: flex-start;  /* Aligns text to left */
     position: relative;
     z-index: 1;
-    backdrop-filter: blur(8px);
     overflow: visible;
     transition: transform 0.3s, border-color 0.3s;
-
-    &:before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 25%; /* Takes up about 1/4 of button width */
-        height: 100%;
-        background-color: #fff;
-        border-radius: 100px;
-        z-index: -1;
-        transition: width 0.3s ease; /* Smooth expansion animation */
-    }
-
-    &:after {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(20, 184, 166, 0);
-        border-radius: 50px;
-        z-index: -2;
-        transition: background-color 0.3s;
-    }
-
-    &:hover {
-        transform: translateY(-2px);
-        
-        &:before {
-            width: 100%; /* Expands to fill entire button */
-        }
-    }
+    max-width: 250px;
 }
 
-        .cs-background {
-            display: block;
-            position: relative;
-            width: 100%;
-            height: (256/16rem);
-            z-index: 1;
+#RTsbsr-597 .cs-button-solid:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 100px;
+    z-index: -1;
+    transition: width 0.3s ease;
+}
 
-            img {
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 100%;
-                width: 100%;
-                object-fit: cover;
-            }
-        }
+#RTsbsr-597 .cs-button-solid:hover {
+    transform: translateY(-2px);
+}
+
+#RTsbsr-597 .cs-button-solid:hover:before {
+    width: 100%;
+}
+    
+   
+    
+    /* Carousel Wrapper */
+    #RTsbsr-597 .cs-carousel-wrapper {
+        position: relative;
+        width: 100%;
+        height: 40vh;
+        max-height: 40vh;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+    
+    #RTsbsr-597 .cs-carousel {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    
+    #RTsbsr-597 .cs-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        will-change: opacity;
+    }
+    
+    #RTsbsr-597 .cs-slide:first-child {
+        position: relative;
+        opacity: 1;
+    }
+    
+    #RTsbsr-597 .cs-picture {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+    
+    #RTsbsr-597 .cs-picture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    
+    /* GSAP Animation Styles */
+    .word {
+        display: inline-block;
+        margin-right: 0.15em;
+    }
+
+    .char {
+        display: inline-block;
+        white-space: pre;
+    }
+    
+    .word-wrapper {
+        display: inline-block;
+    }
+
+    /* Dark gradient overlay for better text readability */
+    #RTsbsr-597 .cs-slide::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
+        z-index: 5;
+        pointer-events: none;
+    }
+    
+   /* Centered text overlay - ONE LINE */
+    #RTsbsr-597 .cs-slide-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        color: #ffffff;
+        font-size: clamp(1.25rem, 4vw, 1.75rem);
+        font-weight: 700;
+        font-family: 'Bebas Neue', sans-serif;
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: 0.02em;
+        line-height: 1.2;
+        white-space: nowrap;
+        text-shadow: 
+            0 2px 10px rgba(0, 0, 0, 0.5),
+            0 4px 20px rgba(0, 0, 0, 0.3);
+        padding: 0 1rem;
     }
 }
 
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
-    #sbsr-597 {
-        /* 90px - 150px */
-        /* returned section padding to the section container, this Stitch has 1.5X padding top and bottom than the normal Stitch */
-        padding: clamp(5.625rem, 9vw, 9.375rem) (16/16rem);
-        .cs-container {
-            flex-direction: row;
-            justify-content: flex-start;
-        }
+    #RTsbsr-597 .cs-container {
+        flex-direction: column;
+        overflow: hidden;
+    }
+    
+    #RTsbsr-597 .cs-content {
+        width: 100%;
+        padding: 0.5rem 3rem 0;
+        text-align: center;
+        flex: 1 1 auto;
+    }
+    
+    #RTsbsr-597 .cs-title {
+        font-size: clamp(2.438rem, 5vw, 3.813rem);
+        margin: 0 0 1.5rem 0;
+    }
+    
+    #RTsbsr-597 .cs-text {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0 auto 1rem auto;
+    }
+    
+    #RTsbsr-597 .cs-carousel-wrapper {
+        width: 100%;
+        height: 40vh;
+        max-height: 40vh;
+        flex-shrink: 0;
+    }
 
-        .cs-background {
-            width: 50%;
-            height: auto;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-        }
-
-        .cs-content {
-            width: 45%;
-            padding: 0;
-        }
+    #RTsbsr-597 .cs-slide-text {
+        font-size: clamp(1.25rem, 4vw, 1.75rem);
     }
 }
 
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #RTsbsr-597 .cs-container {
+        flex-direction: row;
+        overflow: visible;
+        height: auto;
+    }
+    
+    #RTsbsr-597 .cs-content {
+        width: 40%;
+        padding: 3rem 4rem;
+        text-align: left;  /* Keep left-aligned like reference */
+        flex: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    #RTsbsr-597 .cs-text {
+        font-size: 1.125rem;
+        margin: 0 0 1rem 0;
+        max-width: 35rem;  /* Add max-width to control text block width */
+    }
+    
+    #RTsbsr-597 .cs-button-solid {
+        margin: 0;  /* Keep left-aligned */
+    }
+    
+    #RTsbsr-597 .cs-carousel-wrapper {
+        width: 60%;
+        height: auto;
+        max-height: none;
+        min-height: 25rem;
+    }
+
+    #RTsbsr-597 .cs-slide-text {
+        font-size: 38px;
+    }
+}
+
+/* Large Desktop - 1300px */
+@media only screen and (min-width: 81.25rem) {
+    #RTsbsr-597 .cs-content {
+        width: 40%;
+        padding: 3rem 5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    #RTsbsr-597 .cs-carousel-wrapper {
+        width: 60%;
+    }
+}
 /*-- -------------------------- -->
 <---       Testimonials         -->
 <--- -------------------------- -*/
