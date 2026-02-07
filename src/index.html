@@ -941,88 +941,8 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     if (typeof gsap === 'undefined') return;
     
-    gsap.registerPlugin(ScrollTrigger);
-
     const section = document.querySelector('#RTsbsr-601');
     if (!section) return;
-
-    const titleElement = section.querySelector('.cs-title');
-    const texts = section.querySelectorAll('.cs-text');
-
-    // Extract text from both lines
-    const line1Text = "OUR PHILOSOPHY -";
-    const line2Text = "LIFE IS THE REAL SPORT.";
-    
-    // Split into words
-    const line1Words = line1Text.split(' ').map(w => `<span class="word">${w}</span>`).join(' ');
-    const line2Words = line2Text.split(' ').map(w => `<span class="word">${w}</span>`).join(' ');
-    
-    // Rebuild title HTML
-    titleElement.innerHTML = `${line1Words} <br><span class="cs-title-accent">${line2Words}</span>`;
-    
-    // Get title words separately
-    const titleLine1Words = Array.from(titleElement.querySelectorAll('.word')).filter(word => 
-        !word.closest('.cs-title-accent')
-    );
-    const titleAccentWords = section.querySelectorAll('.cs-title-accent .word');
-
-    // Split paragraphs into WORDS
-    texts[0].innerHTML = texts[0].textContent.trim().split(' ').map(word => {
-        return `<span class="word">${word}</span>`;
-    }).join(' ');
-    
-    texts[1].innerHTML = texts[1].textContent.trim().split(' ').map(word => {
-        return `<span class="word">${word}</span>`;
-    }).join(' ');
-    
-    const text1Words = texts[0].querySelectorAll('.word');
-    const text2Words = texts[1].querySelectorAll('.word');
-
-    // Set initial state - DIMMED/BARELY VISIBLE
-    gsap.set([...titleLine1Words, ...titleAccentWords], { 
-        opacity: 0.2,
-        color: '#666666'
-    });
-    gsap.set([...text1Words, ...text2Words], { 
-        opacity: 0.2,
-        color: '#666666'
-    });
-
-    // Animate - HIGHLIGHT/BRIGHTEN on scroll
-    gsap.timeline({
-        scrollTrigger: {
-            trigger: '#RTsbsr-601',
-            start: 'top top',
-            end: 'bottom+=500 top',
-            scrub: 1.5,
-            pin: '#RTsbsr-601 .cs-container'
-        }
-    })
-    .to(titleLine1Words, {
-        opacity: 1,
-        color: '#000000',
-        stagger: 0.3,
-        ease: 'power4.out'
-    }, 0)
-    .to(titleAccentWords, {
-        opacity: 1,
-        color: 'var(--primary)',
-        stagger: 0.3,
-        ease: 'power4.out'
-    }, 0)
-    .to(text1Words, {
-        opacity: 1,
-        color: '#333333',
-        stagger: 0.1,
-        ease: 'power4.out'
-    }, 0.5)
-    .to(text2Words, {
-        opacity: 1,
-        color: '#333333',
-        stagger: 0.1,
-        ease: 'power4.out'
-    }, ">")
-    .to({}, { duration: 5 }, '+=0.5');
 
     // ============================================
     // CAROUSEL ANIMATION - WITH PRELOADING
