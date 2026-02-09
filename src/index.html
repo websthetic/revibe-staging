@@ -1008,7 +1008,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             // Start carousel after images are loaded
-            setInterval(nextSlide, 5000);
+            setInterval(nextSlide, 3000);
         });
     }
 });
@@ -1519,41 +1519,51 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // ============================================
-        // 🚀 COMPLETE ANIMATION INSTANTLY
-        // ============================================
-        function completeAnimationInstantly() {
-            if (animationCompleted) return;
-            
-            console.log('⚡ Fast-forwarding animation...');
-            
-            tl.progress(1, false);
-            gsap.ticker.tick();
-            
-            // Manual fallbacks
-            const allCircles = svgElement.querySelectorAll('circle[data-label]');
-            allCircles.forEach(circle => {
-                gsap.set(circle, { scale: 1, opacity: 1 });
-            });
-            
-            const allTexts = svgElement.querySelectorAll('path.st1');
-            allTexts.forEach(text => {
-                gsap.set(text, { opacity: 1, visibility: 'visible' });
-            });
-            
-            const allLinesEl = svgElement.querySelectorAll('line');
-            allLinesEl.forEach(line => {
-                gsap.set(line, { strokeDashoffset: 0 });
-            });
-            
-            if (scrollTriggerInstance) {
-                cleanupScrollTrigger(scrollTriggerInstance);
-                scrollTriggerInstance = null;
-            }
-            
-            animationCompleted = true;
-            console.log('✅ Animation completed');
-        }
-        
+// 🚀 COMPLETE ANIMATION INSTANTLY
+// ============================================
+function completeAnimationInstantly() {
+    if (animationCompleted) return;
+    
+    console.log('⚡ Fast-forwarding animation...');
+    
+    tl.progress(1, false);
+    gsap.ticker.tick();
+    
+    // Manual fallbacks
+    const allCircles = svgElement.querySelectorAll('circle[data-label]');
+    allCircles.forEach(circle => {
+        gsap.set(circle, { scale: 1, opacity: 1 });
+    });
+    
+    const allTexts = svgElement.querySelectorAll('path.st1');
+    allTexts.forEach(text => {
+        gsap.set(text, { opacity: 1, visibility: 'visible' });
+    });
+    
+    const allLinesEl = svgElement.querySelectorAll('line');
+    allLinesEl.forEach(line => {
+        gsap.set(line, { strokeDashoffset: 0 });
+    });
+    
+    // 🔥 FIX: Clear ALL transforms to prevent blurriness
+    gsap.set([allCircles, allTexts, allLinesEl], {
+        clearProps: 'transform,scale,x,y,rotation,skewX,skewY'
+    });
+    
+    // Force a repaint
+    svgElement.style.transform = 'translateZ(0)';
+    requestAnimationFrame(() => {
+        svgElement.style.transform = '';
+    });
+    
+    if (scrollTriggerInstance) {
+        cleanupScrollTrigger(scrollTriggerInstance);
+        scrollTriggerInstance = null;
+    }
+    
+    animationCompleted = true;
+    console.log('✅ Animation completed');
+}
         // ============================================
         // 📍 SCROLL SECTION TO TOP (Desktop only)
         // ============================================
@@ -1961,6 +1971,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
     }, 500);
 });
+
+
 </script>
 
 <!-- Care Map -->
@@ -2022,14 +2034,13 @@ document.addEventListener('DOMContentLoaded', function() {
             content.style.height = '6rem';
         }
         
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
+        // Change from 'click' to 'mouseenter' (hover)
+        accordion.addEventListener('mouseenter', function(e) {
             const isActive = accordion.classList.contains('active');
             const newImage = accordion.getAttribute('data-image');
             const newAlt = accordion.getAttribute('data-alt');
             
-            // Don't do anything if clicking already active accordion
+            // Don't do anything if already active
             if (isActive) return;
             
             // Change image
@@ -2084,7 +2095,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 duration: 0.3
             });
         });
-        
     });
 });</script>
 
