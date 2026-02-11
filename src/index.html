@@ -1380,11 +1380,11 @@ document.addEventListener('DOMContentLoaded', function() {
         panel.className = 'care-map-panel';
         panel.innerHTML = `
             <div class="care-map-panel-handle"></div>
-            <button class="care-map-panel-close" aria-label="Close panel">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
+           <button class="care-map-panel-close" aria-label="Close panel" style="width: 40px; height: 40px;">
+    <svg style="width: 18px !important; height: 18px !important;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
             </button>
             <div class="care-map-panel-inner">
                 <h2 class="care-map-panel-title"></h2>
@@ -1405,6 +1405,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const csContent = section.querySelector('.cs-content');
         const csImageGroup = section.querySelector('.cs-image-group');
+        
+        // 🔥 NEW: CENTER THE SVG CONTAINER
+        if (csImageGroup) {
+            gsap.set(csImageGroup, {
+                position: 'relative', // Keep it in flow for flexbox centering
+                margin: 'auto'
+            });
+            console.log('✅ SVG container centered');
+        }
         
         let panelOpen = false;
         let currentLabel = null;
@@ -1672,6 +1681,7 @@ function completeAnimationInstantly() {
                 
                 openTl.to(csImageGroup, {
                     x: '-70%',
+                    y: 0,
                     scale: 1,
                     duration: 0.6,
                     ease: 'power3.inOut'
@@ -1763,6 +1773,15 @@ function completeAnimationInstantly() {
                     unlockScroll();
                     gsap.set(csContent, { clearProps: 'all' });
                     gsap.set(csImageGroup, { clearProps: 'all' });
+                    
+                    // 🔥 RESTORE CENTER POSITIONING
+                    if (csImageGroup) {
+                        gsap.set(csImageGroup, {
+                            position: 'relative',
+                            margin: 'auto'
+                        });
+                    }
+                    
                     resetAllCircles();
                     
                     if (isMobile) {
@@ -1911,7 +1930,7 @@ function completeAnimationInstantly() {
                     fill: '#ffffff',
                     stroke: '#00ae80',
                     strokeWidth: 4,
-                    filter: 'drop-shadow(0 0 12px rgba(0, 174, 128, 0.5))',
+                    
                     duration: 0.3,
                     ease: 'power2.out',
                     overwrite: 'auto'
