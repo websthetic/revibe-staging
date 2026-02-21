@@ -241,52 +241,47 @@
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
     #sbsr-1592 {
-        padding: 4rem 1rem 0;
-        padding-bottom: clamp(15rem, 20vw, 20rem); /* Increased bottom padding for scaled SVG */
-        background-color: #ffffff; /* 🔥 Changed from #f7f7f7 to white */
+        padding: 2rem 1rem;
+        padding-bottom: clamp(5rem, 10vw, 10rem);
+        background-color: #ffffff;
 
         svg path.st1 {
-        opacity: 0;
-        visibility: hidden;
-    }
-    
-/* Hover states for circles */
-#sbsr-1592 svg circle {
-    transition: none; /* Let GSAP handle transitions */
-}
+            opacity: 0;
+            visibility: hidden;
+        }
 
-#sbsr-1592 svg circle.hovered {
-    fill: #ffffff !important;
-    stroke: #00ae80 !important;
-    stroke-width: 4px !important;  /* Reduced from 10px to 4px so white fill is visible */
-}
+        /* Hover states for circles */
+        svg circle {
+            transition: none;
+        }
 
-#sbsr-1592 svg path.st1.hovered-text {
-    fill: #00ae80 !important;
-}
-   
-        
+        svg circle.hovered {
+            fill: #ffffff !important;
+            stroke: #00ae80 !important;
+            stroke-width: 4px !important;
+        }
+
+        svg path.st1.hovered-text {
+            fill: #00ae80 !important;
+        }
+
         .cs-container {
-    width: 100%;
-    /* Remove max-width entirely */
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: clamp(3rem, 6vw, 4rem);
-}
+            width: 100%;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(3rem, 6vw, 4rem);
+        }
 
-/* Add padding to content instead */
-.cs-content {
-    text-align: center;
-    width: 100%;
-    
-    padding: 0 clamp(2rem, 4vw, 4rem); /* Control spacing with padding */
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        .cs-content {
+            text-align: center;
+            width: 100%;
+            padding: 0 clamp(2rem, 4vw, 4rem);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
         .cs-title {
             font-size: clamp(2.438rem, 5vw, 3.813rem);
@@ -308,7 +303,7 @@
             line-height: 1.6;
             margin-bottom: (32/16rem);
             color: #333;
-            
+
             &:last-of-type {
                 margin-bottom: (32/16rem);
             }
@@ -366,7 +361,7 @@
 
             &:hover {
                 transform: translateY(-2px);
-                
+
                 &:before {
                     width: 100%;
                 }
@@ -376,36 +371,25 @@
         .cs-image-group {
             width: 100%;
             max-width: 100%;
+            height: 30vh; /* 🔥 Fixed height so SVG has room to center */
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: visible;}
-
-        .cs-picture {
-            width: 100%;
-            max-width: 100%;
-            display: block;
-            position: relative;
+            overflow: visible;
         }
 
-        .cs-picture-single {
-            width: 100%;
-            max-width: 100%;
-        }
-        
-       svg {
+        svg {
             width: 100% !important;
             height: auto !important;
             display: block !important;
-            transform: scale(4) translateY(10%) translateX(3%) ; /* Center the scaled SVG */
-            transform-origin: 50% 50%; /* Ensure true center */
-            margin: 0 auto; /* Additional centering */
+            transform: scale(4) translateX(3%); /* 🔥 Removed translateY — flexbox handles centering */
+            transform-origin: 50% 50%;
+            margin: 0 auto;
         }
-
-        
     }
 }
+
 
 /* Tablet 768px */
 @media only screen and (min-width: 48rem) {
