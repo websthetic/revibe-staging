@@ -1099,8 +1099,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: '#sbsr-1592',
-                start: 'top top',
-                end: '+=5000vh',
+        start: window.innerWidth < 768 ? 'top -15%' : 'top top',
+                end: window.innerWidth < 768 ? '+=2500vh' : '+=5000vh',
                 scrub: 3,
                 pin: true,
                 markers: false,
@@ -1291,82 +1291,96 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const panelContent = {
             performance: {
-                title: 'Performance',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.',
-                bullets: [
-                    'Lorem ipsum dolor sit amet, consectetur',
-                    'Sed do eiusmod tempor incididunt',
-                    'Labore Duis aute irure dolor',
-                    'Duis aute irure dolor',
-                    'Ut enim ad minim veniam, quis nostrud'
-                ]
-            },
+    title: 'Performance for Real Life',
+    description: 'The Care Map is how we understand your body clearly and completely. Instead of chasing symptoms, we look at what\'s limiting your performance right now and build a plan around it.',
+    bullets: [
+        'Whether you\'re training hard, rebuilding from injury, or simply trying to feel better in your body, your Care Map gives you direction, not guesswork.',
+        'Athlete-grade care. Built for real life. Built for everyBody.'
+    ]
+},
             readiness: {
-                title: 'Readiness',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.',
-                bullets: [
-                    'Lorem ipsum dolor sit amet, consectetur',
-                    'Sed do eiusmod tempor incididunt',
-                    'Labore Duis aute irure dolor',
-                    'Duis aute irure dolor',
-                    'Ut enim ad minim veniam, quis nostrud'
-                ]
-            },
+    title: 'Readiness',
+    description: 'What your body can handle today. Your current state, not your long-term potential. Some days you\'re ready to push. Other days you need support first. You may feel this if:',
+    bullets: [
+        'Body feels tight, heavy, or off',
+        'Pain or stiffness shows up unpredictably',
+        'Energy feels low before activity',
+        'Revibe tools that support this:',
+        'Massage therapy + hands-on care',
+        'Osteopathy to reset the system',
+        'Sauna + cold plunge support'
+    ]
+},
             recovery: {
-                title: 'Recovery',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.',
-                bullets: [
-                    'Lorem ipsum dolor sit amet, consectetur',
-                    'Sed do eiusmod tempor incididunt',
-                    'Labore Duis aute irure dolor',
-                    'Duis aute irure dolor',
-                    'Ut enim ad minim veniam, quis nostrud'
-                ]
-            },
+    title: 'Recovery',
+    description: 'How well your body recharges. Effort only becomes progress if recovery happens.',
+    bullets: [
+        'You may feel this if:',
+        'Sore or stiff most days',
+        'Progress has stalled',
+        'Sleep or energy feels inconsistent',
+        'Revibe tools that support this:',
+        'Cold plunge',
+        'Sauna',
+        'Massage + recovery planning'
+    ]
+},
             activity: {
-                title: 'Activity',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.',
-                bullets: [
-                    'Lorem ipsum dolor sit amet, consectetur',
-                    'Sed do eiusmod tempor incididunt',
-                    'Labore Duis aute irure dolor',
-                    'Duis aute irure dolor',
-                    'Ut enim ad minim veniam, quis nostrud'
-                ]
-            },
+    title: 'Activity',
+    description: 'How much stress your body is under. Stress includes workouts, work, sleep, and mental load. The goal isn\'t doing more — it\'s managing demand wisely.',
+    bullets: [
+        'You may feel this if:',
+        'Always pushing with little recovery',
+        'Fatigue builds faster than expected',
+        'Unsure how much is too much',
+        'Revibe tools that support this:',
+        'Personal training',
+        'Strength & conditioning',
+        'Lifestyle + load management'
+    ]
+},
             health: {
-                title: 'Health',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.',
-                bullets: [
-                    'Lorem ipsum dolor sit amet, consectetur',
-                    'Sed do eiusmod tempor incididunt',
-                    'Labore Duis aute irure dolor',
-                    'Duis aute irure dolor',
-                    'Ut enim ad minim veniam, quis nostrud'
-                ]
-            },
+    title: 'Health',
+    description: 'What\'s happening inside your body. Internal systems support healing, energy, and adaptation.',
+    bullets: [
+        'You may feel this if:',
+        'Energy fluctuates',
+        'Recovery feels slow',
+        'Progress feels harder than it should',
+        'Revibe tools that support this:',
+        'Naturopathic care',
+        'Nutrition guidance',
+        'Supplement strategy'
+    ]
+},
             capacity: {
-                title: 'Capacity',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.',
-                bullets: [
-                    'Lorem ipsum dolor sit amet, consectetur',
-                    'Sed do eiusmod tempor incididunt',
-                    'Labore Duis aute irure dolor',
-                    'Duis aute irure dolor',
-                    'Ut enim ad minim veniam, quis nostrud'
-                ]
-            },
+    title: 'Capacity',
+    description: 'What your body can sustain long-term. Your foundation. Can your body handle repeated effort without breaking down?',
+    bullets: [
+        'You may feel this if:',
+        'Weakness or instability',
+        'Recurring injuries',
+        'Easily fatigued under load',
+        'Revibe tools that support this:',
+        'Physiotherapy',
+        'Chiropractic care',
+        'Progressive strength programming'
+    ]
+},
             mindset: {
-                title: 'Mindset',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.',
-                bullets: [
-                    'Lorem ipsum dolor sit amet, consectetur',
-                    'Sed do eiusmod tempor incididunt',
-                    'Labore Duis aute irure dolor',
-                    'Duis aute irure dolor',
-                    'Ut enim ad minim veniam, quis nostrud'
-                ]
-            }
+    title: 'Mindset',
+    description: 'How you respond to pressure. Confidence and clarity shape consistency.',
+    bullets: [
+        'You may feel this if:',
+        'Stress affects motivation',
+        'Fear slows progress',
+        'Frustration with your body',
+        'Revibe tools that support this:',
+        'Coaching conversations',
+        'Care Map planning',
+        'Education during sessions'
+    ]
+},
         };
         
         // Create backdrop
