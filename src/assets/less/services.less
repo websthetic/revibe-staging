@@ -1,0 +1,325 @@
+/*-- -------------------------- -->
+<---     Luxury Carousel        -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #luxury-carousel {
+        --text-primary: #1a1a18;
+        --text-muted: #6a6a65;
+        --radius: 12px;
+        --card-width: 280px;
+        --card-gap: 16px;
+        --left-col: 100%;
+
+        position: relative;
+        width: 100%;
+        background-color: #ffffff;
+        padding: clamp(7rem, 12vw, 10rem) 1.5rem 4rem;
+        overflow: hidden;
+
+        .intro {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .intro h2 {
+            font-size: clamp(1.75rem, 7vw, 2.2rem);
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .intro p {
+            font-size: (14/16rem);
+            line-height: 1.78;
+            color: var(--text-muted);
+            font-weight: 300;
+            margin: 0;
+        }
+
+        .intro ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .intro ul li {
+            font-size: 0.8125rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            padding-left: 1rem;
+            position: relative;
+
+            &::before {
+                content: "•";
+                position: absolute;
+                left: 0;
+                color: var(--text-muted);
+                opacity: 0.5;
+            }
+        }
+
+        .intro strong {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .cs-reasons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .cs-reasons p {
+            margin: 0;
+        }
+
+        .nav-arrows {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-top: 0.25rem;
+        }
+
+        .arrow-btn {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.06);
+            }
+
+            &:disabled {
+                opacity: 0.28;
+                cursor: default;
+
+                &:hover {
+                    background: none;
+                }
+            }
+        }
+
+        .cards-outer {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            -webkit-mask-image: none;
+            mask-image: none;
+        }
+
+        .cards-track {
+            display: flex;
+            gap: var(--card-gap);
+            align-items: flex-start;
+            padding-bottom: 1rem;
+            will-change: transform;
+        }
+
+        .card {
+            flex: 0 0 var(--card-width);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 340px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                filter: brightness(0.88) saturate(0.8);
+                transition: transform 0.6s ease, filter 0.3s;
+            }
+
+            svg {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.03);
+            filter: brightness(0.95) saturate(0.85);
+        }
+
+        /* Placeholder colour backgrounds */
+        .ph1 { background: linear-gradient(155deg, #b0a898 0%, #6a6055 45%, #2c2824 100%); }
+        .ph2 { background: linear-gradient(155deg, #c4a98e 0%, #9a7060 50%, #3a2a22 100%); }
+        .ph3 { background: linear-gradient(155deg, #6a7060 0%, #454e40 50%, #22271e 100%); }
+        .ph4 { background: linear-gradient(155deg, #8a7a6a 0%, #5a6050 50%, #242820 100%); }
+
+        .card-label {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 0 2px;
+
+            h3 {
+                font-size: 1rem;
+                font-weight: 500;
+                letter-spacing: 0.01em;
+                color: var(--text-primary);
+                margin: 0;
+            }
+
+            p {
+                font-size: 0.8125rem;
+                line-height: 1.65;
+                color: var(--text-muted);
+                font-weight: 300;
+                margin: 0;
+            }
+        }
+    }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #luxury-carousel {
+        --card-width: 340px;
+        --card-gap: 20px;
+
+        padding: clamp(6rem, 10vw, 10rem) 2rem 5rem;
+
+        .intro {
+            width: 60%;
+            max-width: 400px;
+            margin-bottom: 2.5rem;
+        }
+
+        .intro h2 {
+            font-size: clamp(2rem, 4vw, 2.65rem);
+        }
+
+        .cards-outer {
+            -webkit-mask-image: linear-gradient(
+                to right,
+                black 0%,
+                black 100%
+            );
+            mask-image: linear-gradient(
+                to right,
+                black 0%,
+                black 100%
+            );
+        }
+
+        .card-image {
+            height: 420px;
+        }
+    }
+}
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #luxury-carousel {
+        --card-width: 370px;
+        --card-gap: 20px;
+        --left-col: 420px;
+
+        padding: 0 0 5rem 3.75rem;
+        margin-top: clamp(5rem, 8vw, 8rem);
+        height: 780px;
+
+        .intro {
+            position: absolute;
+            top: 5rem;
+            transform: none;
+            z-index: 2;
+            width: var(--left-col);
+            max-width: var(--left-col);
+            margin-bottom: 0;
+            gap: 1.75rem;
+            padding-top: 0;
+        }
+
+        .intro h2 {
+            font-size: clamp(1.9rem, 2.8vw, 2.65rem);
+        }
+
+        .intro p {
+            max-width: 285px;
+        }
+
+        .cards-outer {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+            -webkit-mask-image: linear-gradient(
+                to right,
+                transparent 0px,
+                transparent calc(var(--left-col) - 40px),
+                black calc(var(--left-col) + 60px),
+                black 100%
+            );
+            mask-image: linear-gradient(
+                to right,
+                transparent 0px,
+                transparent calc(var(--left-col) - 40px),
+                black calc(var(--left-col) + 60px),
+                black 100%
+            );
+        }
+
+        .cards-track {
+            align-items: flex-start;
+            height: 100%;
+            padding-left: calc(var(--left-col) + 60px);
+            padding-right: 200px;
+            padding-top: 5rem;
+            padding-bottom: 0;
+        }
+
+        .card-image {
+            height: 440px;
+        }
+    }
+}
+
+/* Force bold on intro strong regardless of nesting support */
+#luxury-carousel .intro strong {
+    font-weight: 700 !important;
+    color: #1a1a18;
+}
+
+/* Bullet style override */
+#luxury-carousel .intro ul li::before {
+    content: "•" !important;
+}
