@@ -207,34 +207,57 @@ permalink: "/performance-therapy/"
 
 </section>
 
-<!-- Load GSAP — place in your base.html <head> or just before </body> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
 <script>
-  const track   = document.getElementById('track');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const cards   = Array.from(track.querySelectorAll('.card'));
-  const total   = cards.length;
-  const maxIndex = total - 2;
-  let current = 0;
+  const track      = document.getElementById('track');
+  const outer      = document.getElementById('cardsOuter');
+  const prevBtn    = document.getElementById('prevBtn');
+  const nextBtn    = document.getElementById('nextBtn');
+  const cards      = Array.from(track.querySelectorAll('.card'));
+  const total      = cards.length;
+  const maxIndex   = total - 2;
+  let current      = 0;
 
-  function step() {
-    return cards[0].offsetWidth + 20; // card width + gap
+  function isMobile() {
+    return window.innerWidth < 1024;
+  }
+
+  function cardStep() {
+    return cards[0].offsetWidth + 20;
   }
 
   function goTo(idx) {
     current = Math.max(0, Math.min(idx, maxIndex));
 
-    gsap.to(track, {
-      x: -(current * step()),
-      duration: 0.45,
-      ease: 'power2.out'
-    });
+    if (isMobile()) {
+      // Use native scroll on mobile/tablet
+      outer.scrollTo({
+        left: current * cardStep(),
+        behavior: 'smooth'
+      });
+    } else {
+      // Use GSAP on desktop
+      gsap.to(track, {
+        x: -(current * cardStep()),
+        duration: 0.45,
+        ease: 'power2.out',
+        overwrite: true
+      });
+    }
 
     prevBtn.disabled = current === 0;
     nextBtn.disabled = current >= maxIndex;
   }
+
+  // Sync arrow state when user swipes manually on mobile
+  outer.addEventListener('scroll', () => {
+    if (isMobile()) {
+      current = Math.round(outer.scrollLeft / cardStep());
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current >= maxIndex;
+    }
+  });
 
   prevBtn.addEventListener('click', () => goTo(current - 1));
   nextBtn.addEventListener('click', () => goTo(current + 1));

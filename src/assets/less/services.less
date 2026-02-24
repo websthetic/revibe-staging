@@ -29,9 +29,9 @@
         }
 
         .intro h2 {
-            font-size: clamp(1.75rem, 7vw, 2.2rem);
-            line-height: 1.15;
-            letter-spacing: -0.01em;
+            font-size: clamp(2.5rem, 10vw, 3.5rem);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
             color: var(--text-primary);
             margin: 0;
         }
@@ -127,9 +127,17 @@
         .cards-outer {
             position: relative;
             width: 100%;
-            overflow: hidden;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
             -webkit-mask-image: none;
             mask-image: none;
+        }
+
+        .cards-outer::-webkit-scrollbar {
+            display: none;
         }
 
         .cards-track {
@@ -137,6 +145,8 @@
             gap: var(--card-gap);
             align-items: flex-start;
             padding-bottom: 1rem;
+            padding-right: 1.5rem;
+            width: max-content;
             will-change: transform;
         }
 
@@ -268,7 +278,7 @@
         }
 
         .intro h2 {
-            font-size: clamp(1.9rem, 2.8vw, 2.65rem);
+            font-size: clamp(2.5rem, 3.5vw, 3.5rem);
         }
 
         .intro p {
