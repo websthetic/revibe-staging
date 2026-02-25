@@ -1,0 +1,481 @@
+---
+title: "Services | Websthetic"
+description: "Meta description for the page"
+permalink: "/services/"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/services.css">
+    <style>
+      /* ── Sticky fix: overflow:hidden on any ancestor breaks position:sticky.
+            overflow-x:clip does NOT create a scroll container, so sticky works. ── */
+      body,
+      main,
+      .page-wrapper {
+        overflow-x: clip !important; /* replaces any overflow:hidden */
+      }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+<div class="page-wrapper">
+
+  <!-- ══════════════════════════════════ -->
+  <!--           SERVICES HERO           -->
+  <!-- ══════════════════════════════════ -->
+  <section id="services-hero">
+
+    <div class="hero-top">
+
+      <!-- Left: eyebrow + giant heading -->
+      <div class="hero-left">
+        <h1 class="hero-heading">
+          Care,<br>
+          <span class="accent">designed</span> for<br>
+          how you live.
+        </h1>
+      </div>
+
+      <!-- Right: description text (desktop only) -->
+      <div class="hero-right">
+        <p>Revibe offers a curated range of performance, recovery, and health services designed to support how your body actually functions. Whether you're recovering from pain, managing stress, or building long-term performance, our services work better together — all under one roof.</p>
+      </div>
+
+    </div>
+
+    <!-- Bottom strip -->
+    <div class="hero-bottom">
+      <p class="hero-subtext-mobile">
+        Revibe offers a curated range of performance, recovery, and health services designed to support how your body actually functions. Whether you're recovering from pain, managing stress, or building long-term performance, our services work better together — all under one roof.
+      </p>
+      <div class="scroll-indicator" aria-hidden="true">
+        <span class="scroll-label">Learn More</span>
+        <div class="scroll-line">
+          <div class="scroll-dot"></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════ -->
+  <!--       CONTENT SLIDES OVER HERO    -->
+  <!-- ══════════════════════════════════ -->
+  <div class="content-stack">
+
+    <!-- ============================================ -->
+    <!--          Carousel 1: Performance Therapy     -->
+    <!-- ============================================ -->
+    <section id="carousel-performance" class="luxury-carousel stack-section">
+
+      <div class="intro">
+        <h2>Performance<br>Therapy</h2>
+        <p>Hands-on, evidence-based care focused on reducing pain, restoring movement, and improving how your body functions day to day. Performance Therapy is ideal for injury recovery, ongoing aches, or when your body just doesn't feel like it should; whether from sport, work or life.</p>
+        <div class="cs-reasons">
+          <p><strong>Common reasons people book:</strong> Pain · Injuries · Post-surgery · Stiffness · Movement limitations</p>
+        </div>
+        <div class="nav-arrows">
+          <button class="arrow-btn prev-btn" disabled aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 12H5M12 5l-7 7 7 7"/>
+            </svg>
+          </button>
+          <button class="arrow-btn next-btn" aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="cards-outer">
+        <div class="cards-track">
+
+          <div class="card">
+            <div class="card-image">
+              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/social-wellness1.webp" alt="Physiotherapy" draggable="false" />
+            </div>
+            <div class="card-label">
+              <h3>Physiotherapy</h3>
+              <p>Injury rehab, pain management, post-surgical recovery.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/spinal-adjustment.jpeg" alt="Chiropractic Care" draggable="false" />
+            </div>
+            <div class="card-label">
+              <h3>Chiropractic Care</h3>
+              <p>Joint mechanics, spinal health, nervous system support.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/sports-physiotherapy.jpeg" alt="Athletic Therapy" draggable="false" />
+            </div>
+            <div class="card-label">
+              <h3>Athletic Therapy</h3>
+              <p>Sport-specific rehab and return-to-play support.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/erica-osteo-manual-therapy-website-1-1.png" alt="Osteopathy" draggable="false" />
+            </div>
+            <div class="card-label">
+              <h3>Osteopathy</h3>
+              <p>Whole-body manual treatment for complex or persistent issues.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/REVIBE_JAN_11%20(5%20of%20107).jpg" alt="Massage Therapy" draggable="false" />
+            </div>
+            <div class="card-label">
+              <h3>Massage Therapy</h3>
+              <p>Muscle tension, recovery, and stress relief.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Untitled-design-1.jpg" alt="Stretch Therapy" draggable="false" />
+            </div>
+            <div class="card-label">
+              <h3>Stretch Therapy</h3>
+              <p>Assisted stretching to improve mobility, flexibility, and movement efficiency.</p>
+            </div>
+          </div>
+
+        </div><!-- /cards-track -->
+      </div><!-- /cards-outer -->
+
+    </section>
+
+    <!-- ============================================ -->
+    <!--       Carousel 2: Recovery & Regeneration    -->
+    <!-- ============================================ -->
+    <section id="carousel-recovery" class="luxury-carousel stack-section">
+
+      <div class="intro">
+        <h2>Recovery &<br>Regeneration</h2>
+        <p>Recovery & Regeneration focuses on helping your body reset, recharge, and keep up with the demands of daily life and training. These services support your nervous system, reduce soreness, and improve recovery so you can stay consistent without burning out.</p>
+        <div class="cs-reasons">
+          <p><strong>Common reasons people book:</strong> Soreness · Fatigue · High stress · Training volume · General recovery</p>
+        </div>
+        <div class="nav-arrows">
+          <button class="arrow-btn prev-btn" disabled aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 12H5M12 5l-7 7 7 7"/>
+            </svg>
+          </button>
+          <button class="arrow-btn next-btn" aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="cards-outer">
+        <div class="cards-track">
+
+          <div class="card">
+            <div class="card-image">
+              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Contrast_Therapy_WEB-55-of-61-1-scaled.jpg" alt="Cold Plunge" draggable="false" />
+            </div>
+            <div class="card-label">
+              <h3>Cold Plunge</h3>
+              <p>Inflammation control, nervous system regulation.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Contrast_Therapy_WEB%20(12%20of%2061).jpg" alt="Infrared Sauna" draggable="false" />
+            </div>
+            <div class="card-label">
+              <h3>Infrared Sauna</h3>
+              <p>Circulation, muscle relaxation, stress support.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/REVIBE_JAN_11-90-of-107-scaled.jpg" alt="Compression Therapy" draggable="false" />
+            </div>
+            <div class="card-label">
+              <h3>Compression Therapy</h3>
+              <p>Training recovery and swelling reduction.</p>
+            </div>
+          </div>
+
+        </div><!-- /cards-track -->
+      </div><!-- /cards-outer -->
+
+    </section>
+
+    <!-- ============================================ -->
+    <!--       Carousel 3: Performance Coaching       -->
+    <!-- ============================================ -->
+    <section id="carousel-coaching" class="luxury-carousel stack-section">
+
+      <div class="intro">
+        <h2>Performance<br>Coaching</h2>
+        <p>Performance Coaching is about building a body that can handle more — safely and sustainably. Whether you're returning from injury, training toward a goal, or simply want to feel stronger and more capable, coaching helps turn good intentions into real progress.</p>
+        <div class="cs-reasons">
+          <p><strong>Common reasons people book:</strong> Performance goals · Injury prevention · Confidence rebuilding · Longevity</p>
+        </div>
+        <div class="nav-arrows">
+          <button class="arrow-btn prev-btn" disabled aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 12H5M12 5l-7 7 7 7"/>
+            </svg>
+          </button>
+          <button class="arrow-btn next-btn" aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="cards-outer">
+        <div class="cards-track">
+
+          <div class="card">
+            <div class="card-image">
+              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/performance-coaching.webp" alt="Performance Coaching" draggable="false" />
+            </div>
+            <div class="card-label">
+              <h3>Performance Coaching</h3>
+              <p>Goal-driven coaching tailored to your body and lifestyle.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/movement-strength-mobility-work.webp" alt="Strength & Conditioning" draggable="false" />
+            </div>
+            <div class="card-label">
+              <h3>Strength & Conditioning</h3>
+              <p>Structured programs to build capacity, power, and resilience.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Mar_3_%20(38%20of%20116).jpg" alt="Return-to-Sport Training" draggable="false" />
+            </div>
+            <div class="card-label">
+              <h3>Return-to-Sport & Life Training</h3>
+              <p>Guided progressions back to full activity after injury.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/manual-care-hands-on-treatment.webp" alt="Injury Prevention" draggable="false" />
+            </div>
+            <div class="card-label">
+              <h3>Injury Prevention & Load Management</h3>
+              <p>Smart training strategies to stay healthy and keep progressing.</p>
+            </div>
+          </div>
+
+        </div><!-- /cards-track -->
+      </div><!-- /cards-outer -->
+
+    </section>
+
+    <!-- ============================================ -->
+    <!--    Carousel 4: Naturopathic & Integrated     -->
+    <!-- ============================================ -->
+    <section id="carousel-naturopathic" class="luxury-carousel stack-section">
+
+      <div class="intro">
+        <h2>Naturopathic &<br>Integrated Health</h2>
+        <p>Naturopathic & Integrated Health addresses the internal factors that influence how you feel, move, and recover. This approach is especially helpful when issues like low energy, poor sleep, digestion, or inflammation are holding you back despite doing "all the right things."</p>
+        <div class="cs-reasons">
+          <p><strong>Common reasons people book:</strong> Low energy · Hormone concerns · Digestion issues · Inflammation · Sleep challenges</p>
+        </div>
+        <div class="nav-arrows">
+          <button class="arrow-btn prev-btn" disabled aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 12H5M12 5l-7 7 7 7"/>
+            </svg>
+          </button>
+          <button class="arrow-btn next-btn" aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="cards-outer">
+        <div class="cards-track">
+
+          <div class="card">
+            <div class="card-image">
+              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/REVIBE_JAN_25%20(15%20of%2052).jpg" alt="Naturopathic Medicine" draggable="false" />
+            </div>
+            <div class="card-label">
+              <h3>Naturopathic Medicine</h3>
+              <p>Root-cause care using evidence-informed natural therapies.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/EBBC/image-placeholder.png" alt="DUTCH Test" draggable="false" />
+            </div>
+            <div class="card-label">
+              <h3>DUTCH Test</h3>
+              <p>Advanced hormone testing to identify imbalances and guide treatment.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/REVIBE_JAN_25%20(1%20of%2052).jpg" alt="IV Drip" draggable="false" />
+            </div>
+            <div class="card-label">
+              <h3>IV Drip</h3>
+              <p>Targeted nutrient infusions for energy, immunity, and recovery.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/EBBC/image-placeholder.png" alt="Meal Plans" draggable="false" />
+            </div>
+            <div class="card-label">
+              <h3>Meal Plans</h3>
+              <p>Personalised nutrition strategies to support your health goals.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/EBBC/image-placeholder.png" alt="Sleep & Energy Optimization" draggable="false" />
+            </div>
+            <div class="card-label">
+              <h3>Sleep & Energy Optimization</h3>
+              <p>Protocols to improve rest, reduce fatigue, and restore vitality.</p>
+            </div>
+          </div>
+
+        </div><!-- /cards-track -->
+      </div><!-- /cards-outer -->
+
+    </section>
+
+  </div><!-- /content-stack -->
+
+</div><!-- /page-wrapper -->
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<script>
+  /* ── Carousel ── */
+  function initCarousel(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    const track   = section.querySelector('.cards-track');
+    const outer   = section.querySelector('.cards-outer');
+    const prevBtn = section.querySelector('.prev-btn');
+    const nextBtn = section.querySelector('.next-btn');
+    const cards   = Array.from(track.querySelectorAll('.card'));
+    const total   = cards.length;
+    const maxIndex = total - 2;
+    let current = 0;
+
+    let isDragging   = false;
+    let dragStartX   = 0;
+    let dragStartPos = 0;
+    let dragMoved    = false;
+
+    function isMobile() { return window.innerWidth < 1024; }
+    function cardStep() { return cards[0].offsetWidth + 20; }
+    function maxOffset() { return (total - 1) * cardStep(); }
+    function getCurrentX() { return gsap.getProperty(track, 'x'); }
+
+    function goTo(idx) {
+      current = Math.max(0, Math.min(idx, maxIndex));
+      if (isMobile()) {
+        outer.scrollTo({ left: current * cardStep(), behavior: 'smooth' });
+      } else {
+        gsap.to(track, { x: -(current * cardStep()), duration: 0.45, ease: 'power2.out', overwrite: true });
+      }
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current >= maxIndex;
+    }
+
+    outer.addEventListener('mousedown', (e) => {
+      if (isMobile()) return;
+      isDragging = true; dragMoved = false;
+      dragStartX = e.clientX; dragStartPos = getCurrentX();
+      outer.style.cursor = 'grabbing';
+      gsap.killTweensOf(track);
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging || isMobile()) return;
+      const delta = e.clientX - dragStartX;
+      if (Math.abs(delta) > 4) dragMoved = true;
+      let newX = dragStartPos + delta;
+      const minX = -maxOffset();
+      if (newX > 0)    newX = newX * 0.25;
+      if (newX < minX) newX = minX + (newX - minX) * 0.25;
+      gsap.set(track, { x: newX });
+    });
+
+    window.addEventListener('mouseup', (e) => {
+      if (!isDragging || isMobile()) return;
+      isDragging = false;
+      outer.style.cursor = '';
+      const delta = e.clientX - dragStartX;
+      const absDelta = Math.abs(delta);
+      if (absDelta > 60) {
+        goTo(delta < 0 ? current + Math.round(absDelta / cardStep()) : current - Math.round(absDelta / cardStep()));
+      } else {
+        goTo(current);
+      }
+    });
+
+    outer.addEventListener('click', (e) => { if (dragMoved) e.stopPropagation(); }, true);
+
+    outer.addEventListener('scroll', () => {
+      if (isMobile()) {
+        current = Math.round(outer.scrollLeft / cardStep());
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current >= maxIndex;
+      }
+    });
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+    window.addEventListener('resize', () => goTo(current));
+    goTo(0);
+  }
+
+  initCarousel('carousel-performance');
+  initCarousel('carousel-recovery');
+  initCarousel('carousel-coaching');
+  initCarousel('carousel-naturopathic');
+
+ 
+</script>
+
+{% endblock %}
