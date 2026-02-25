@@ -777,7 +777,7 @@
         width: 100%;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
+        grid-template-rows: auto auto;
         gap: 0;
         position: relative;
         min-height: auto;
@@ -792,26 +792,12 @@
         display: flex;
         align-items: flex-start;
         grid-column: 1;
-        grid-row: 1;
+        grid-row: 1; /* LEFT on top on mobile/tablet */
     }
 
+    /* Hide the standalone center image below 1400px */
     #care-map-3847 .cs-image-wrapper {
-        width: 100%;
-        max-width: 16rem;
-        position: relative;
-        left: unset;
-        top: unset;
-        transform: unset;
-        z-index: 10;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        pointer-events: none;
-        margin: 0 auto;
-        padding: 1rem 0;
-        background-color: #f9f9f9;
-        grid-column: 1;
-        grid-row: 2;
+        display: none;
     }
 
     #care-map-3847 .cs-picture {
@@ -849,7 +835,7 @@
         position: relative;
         z-index: 2;
         grid-column: 1;
-        grid-row: 3;
+        grid-row: 2; /* RIGHT below LEFT on mobile/tablet */
     }
 
     #care-map-3847 .cs-right-title {
@@ -963,18 +949,48 @@
 
     #care-map-3847 .cs-accordion-content {
         width: 100%;
-        padding-left: 3.5rem;
+        padding-left: 0;
         height: 0;
         overflow: hidden;
         background: #ffffff;
         will-change: height;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     #care-map-3847 .cs-accordion-text {
         font-size: 0.9375rem;
         line-height: 1.6em;
         color: var(--bodyTextColor);
-        padding: 1rem 1rem 0 0;
+        padding: 0.5rem 1rem 0 1rem;
+        text-align: left;
+        width: 100%;
+    }
+
+    /* Inner wrapper — stays full size, slides in/out of the clipped outer */
+    #care-map-3847 .cs-accordion-inner {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Inline accordion image (visible below 1400px) */
+    #care-map-3847 .cs-accordion-img-wrap {
+        width: 14rem;
+        height: 14rem;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0.75rem auto 0 auto;
+        display: block;
+    }
+
+    #care-map-3847 .cs-accordion-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
     }
 }
 
@@ -982,6 +998,14 @@
 @media only screen and (min-width: 75rem) {
     #care-map-3847 .cs-wrapper {
         grid-template-columns: 1fr 1fr;
+    }
+
+    #care-map-3847 .cs-left {
+        padding: clamp(2.5rem, 7.82vw, 3.75rem) clamp(1.5rem, 5vw, 4rem);
+    }
+
+    #care-map-3847 .cs-right {
+        padding: clamp(2.5rem, 7.82vw, 3.75rem) clamp(1.5rem, 5vw, 4rem);
     }
 }
 
@@ -1002,16 +1026,25 @@
         min-height: auto;
     }
 
+    /* Restore original left/right positions at 1400px+ */
     #care-map-3847 .cs-left {
         grid-column: 1;
         grid-row: 1;
         min-height: 100%;
     }
 
+    #care-map-3847 .cs-right {
+        grid-column: 2;
+        grid-row: 1;
+        min-height: 100%;
+        align-items: flex-end;
+    }
+
     #care-map-3847 .cs-content {
         max-width: 28rem;
     }
 
+    /* Restore standalone center image at 1400px+ */
     #care-map-3847 .cs-image-wrapper {
         max-width: 25rem;
         display: flex;
@@ -1024,13 +1057,25 @@
         grid-column: unset;
         grid-row: unset;
         margin: 0;
+        z-index: 10;
     }
 
-    #care-map-3847 .cs-right {
-        grid-column: 2;
-        grid-row: 1;
-        min-height: 100%;
-        align-items: flex-end;
+    /* Hide inline accordion images at 1400px+ */
+    #care-map-3847 .cs-accordion-img-wrap {
+        display: none;
+    }
+
+    /* Restore original accordion content layout at 1400px+ */
+    #care-map-3847 .cs-accordion-content {
+        padding-left: 3.5rem;
+        display: block;
+        text-align: left;
+        align-items: unset;
+    }
+
+    #care-map-3847 .cs-accordion-text {
+        padding: 1rem 1rem 0 0;
+        text-align: left;
     }
 
     #care-map-3847 .cs-right-title {

@@ -334,7 +334,7 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
                 </div>
             </div>
 
-            <!-- Center Circle Image -->
+            <!-- Center Circle Image (visible at 1400px+) -->
             <div class="cs-image-wrapper">
                 <picture class="cs-picture">
                     <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/manual-care-hands-on-treatment.webp">
@@ -360,8 +360,14 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
                             <span class="cs-indicator">+</span>
                         </button>
                         <div class="cs-accordion-content">
-                            <p class="cs-accordion-text">
-Physiotherapy, Chiropractic, Osteopathy, and Massage delivered with intent.                            </p>
+                            <div class="cs-accordion-inner">
+                                <div class="cs-accordion-img-wrap">
+                                    <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/manual-care-hands-on-treatment.webp" alt="Manual care treatment">
+                                </div>
+                                <p class="cs-accordion-text">
+                                    Physiotherapy, Chiropractic, Osteopathy, and Massage delivered with intent.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
@@ -377,9 +383,14 @@ Physiotherapy, Chiropractic, Osteopathy, and Massage delivered with intent.     
                             <span class="cs-indicator">+</span>
                         </button>
                         <div class="cs-accordion-content">
-                            <p class="cs-accordion-text">
-Training your body to move well, stay strong, and perform in real life.
-                            </p>
+                            <div class="cs-accordion-inner">
+                                <div class="cs-accordion-img-wrap">
+                                    <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/movement-strength-mobility-work.webp" alt="Movement and strength training">
+                                </div>
+                                <p class="cs-accordion-text">
+                                    Training your body to move well, stay strong, and perform in real life.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
@@ -395,9 +406,14 @@ Training your body to move well, stay strong, and perform in real life.
                             <span class="cs-indicator">+</span>
                         </button>
                         <div class="cs-accordion-content">
-                            <p class="cs-accordion-text">
-Guided coaching that builds capacity, confidence, and real‑life performance.
-                            </p>
+                            <div class="cs-accordion-inner">
+                                <div class="cs-accordion-img-wrap">
+                                    <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/performance-coaching.webp" alt="Performance coaching">
+                                </div>
+                                <p class="cs-accordion-text">
+                                    Guided coaching that builds capacity, confidence, and real‑life performance.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
@@ -413,9 +429,14 @@ Guided coaching that builds capacity, confidence, and real‑life performance.
                             <span class="cs-indicator">+</span>
                         </button>
                         <div class="cs-accordion-content">
-                            <p class="cs-accordion-text">
-                                Cold plunge and sauna to support adaptation, resilience, and momentum.
-                            </p>
+                            <div class="cs-accordion-inner">
+                                <div class="cs-accordion-img-wrap">
+                                    <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/recovery-tools.webp" alt="Person in ice bath for recovery">
+                                </div>
+                                <p class="cs-accordion-text">
+                                    Cold plunge and sauna to support adaptation, resilience, and momentum.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
@@ -431,9 +452,14 @@ Guided coaching that builds capacity, confidence, and real‑life performance.
                             <span class="cs-indicator">+</span>
                         </button>
                         <div class="cs-accordion-content">
-                            <p class="cs-accordion-text">
-                                Naturopathic medicine and lifestyle care that support long‑term performance and health.
-                            </p>
+                            <div class="cs-accordion-inner">
+                                <div class="cs-accordion-img-wrap">
+                                    <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/longevity-lifestyle-support.webp" alt="Longevity and lifestyle support">
+                                </div>
+                                <p class="cs-accordion-text">
+                                    Naturopathic medicine and lifestyle care that support long‑term performance and health.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2024,26 +2050,27 @@ function completeAnimationInstantly() {
             img.src = imgUrl;
         }
     });
+
+    // Returns the correct open height depending on breakpoint
+    function getOpenHeight() {
+        return window.innerWidth < 1400 ? '20rem' : '6rem';
+    }
     
     // Function to change image with smoother fade in
     function changeImage(newImage, newAlt) {
         if (!newImage || !mainImage) return;
         
-        // Check if image is already displayed
         const currentSrc = mainImage.getAttribute('src');
         if (currentSrc === newImage) return;
         
-        // Change the image immediately
         mainImage.setAttribute('src', newImage);
         mainImage.setAttribute('alt', newAlt);
         
-        // Update source elements
         const sources = picture.querySelectorAll('source');
         sources.forEach(source => {
             source.setAttribute('srcset', newImage);
         });
         
-        // Smoother fade in from 0
         gsap.fromTo(picture, 
             { opacity: 0 },
             { 
@@ -2053,80 +2080,100 @@ function completeAnimationInstantly() {
             }
         );
     }
+
+    // Close an accordion with slide-up animation
+    function closeAccordion(item) {
+        item.classList.remove('active');
+        item.querySelector('.cs-accordion-button').setAttribute('aria-expanded', 'false');
+
+        const itemContent = item.querySelector('.cs-accordion-content');
+        const itemInner  = item.querySelector('.cs-accordion-inner');
+        const itemText   = item.querySelector('.cs-button-text');
+        const itemIndicator = item.querySelector('.cs-indicator');
+
+        // Slide inner content up while container shrinks
+        gsap.to(itemInner, {
+            y: '-100%',
+            duration: 0.4,
+            ease: 'power2.inOut'
+        });
+        gsap.to(itemContent, {
+            height: 0,
+            duration: 0.4,
+            ease: 'power2.inOut'
+        });
+        gsap.to(itemText, {
+            color: 'var(--primary)',
+            duration: 0.3
+        });
+        gsap.to(itemIndicator, {
+            rotation: 0,
+            duration: 0.3
+        });
+    }
+
+    // Open an accordion with slide-down animation
+    function openAccordion(accordion) {
+        const button  = accordion.querySelector('.cs-accordion-button');
+        const content = accordion.querySelector('.cs-accordion-content');
+        const inner   = accordion.querySelector('.cs-accordion-inner');
+        const buttonText = accordion.querySelector('.cs-button-text');
+        const indicator  = accordion.querySelector('.cs-indicator');
+
+        accordion.classList.add('active');
+        button.setAttribute('aria-expanded', 'true');
+
+        // Reset inner to top (above the clip) then slide down
+        gsap.set(inner, { y: '-100%' });
+        gsap.to(content, {
+            height: getOpenHeight(),
+            duration: 0.4,
+            ease: 'power2.inOut'
+        });
+        gsap.to(inner, {
+            y: '0%',
+            duration: 0.4,
+            ease: 'power2.inOut'
+        });
+        gsap.to(buttonText, {
+            color: 'var(--bodyTextColor)',
+            duration: 0.3
+        });
+        gsap.to(indicator, {
+            rotation: 45,
+            duration: 0.3
+        });
+    }
     
     accordions.forEach(accordion => {
-        const button = accordion.querySelector('.cs-accordion-button');
         const content = accordion.querySelector('.cs-accordion-content');
-        const buttonText = accordion.querySelector('.cs-button-text');
-        const indicator = accordion.querySelector('.cs-indicator');
-        
+        const inner   = accordion.querySelector('.cs-accordion-inner');
+
         // Set initial state
         if (!accordion.classList.contains('active')) {
             content.style.height = '0';
+            gsap.set(inner, { y: '-100%' });
         } else {
-            content.style.height = '6rem';
+            content.style.height = getOpenHeight();
+            gsap.set(inner, { y: '0%' });
         }
         
-        // Change from 'click' to 'mouseenter' (hover)
-        accordion.addEventListener('mouseenter', function(e) {
-            const isActive = accordion.classList.contains('active');
+        accordion.addEventListener('mouseenter', function() {
+            if (accordion.classList.contains('active')) return;
+
             const newImage = accordion.getAttribute('data-image');
-            const newAlt = accordion.getAttribute('data-alt');
-            
-            // Don't do anything if already active
-            if (isActive) return;
-            
-            // Change image
+            const newAlt   = accordion.getAttribute('data-alt');
             changeImage(newImage, newAlt);
-            
-            // Close all other accordions
+
+            // Close all others
             accordions.forEach(item => {
-                if (item !== accordion) {
-                    item.classList.remove('active');
-                    item.querySelector('.cs-accordion-button').setAttribute('aria-expanded', 'false');
-                    
-                    const itemContent = item.querySelector('.cs-accordion-content');
-                    const itemText = item.querySelector('.cs-button-text');
-                    const itemIndicator = item.querySelector('.cs-indicator');
-                    
-                    gsap.to(itemContent, {
-                        height: 0,
-                        duration: 0.4,
-                        ease: 'power2.inOut'
-                    });
-                    
-                    gsap.to(itemText, {
-                        color: 'var(--primary)',
-                        duration: 0.3
-                    });
-                    
-                    gsap.to(itemIndicator, {
-                        rotation: 0,
-                        duration: 0.3
-                    });
+                if (item !== accordion && item.classList.contains('active')) {
+                    closeAccordion(item);
                 }
             });
-            
-            // Open current accordion
-            accordion.classList.add('active');
-            button.setAttribute('aria-expanded', 'true');
-            
-            // Animate to fixed height
-            gsap.to(content, {
-                height: '6rem',
-                duration: 0.4,
-                ease: 'power2.inOut'
-            });
-            
-            gsap.to(buttonText, {
-                color: 'var(--bodyTextColor)',
-                duration: 0.3
-            });
-            
-            gsap.to(indicator, {
-                rotation: 45,
-                duration: 0.3
-            });
+
+            // Open this one
+            openAccordion(accordion);
         });
     });
 });</script>
