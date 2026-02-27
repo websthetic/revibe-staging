@@ -1,0 +1,483 @@
+---
+title: "Homepage | Code Stitch Web Designs"
+description: "Meta description for the page"
+permalink: "/homepage/"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/homepage.css">
+{% endblock %}
+
+{% block body %}
+
+ <!-- ============================================ -->
+<!--                    Hero                      -->
+<!-- ============================================ -->
+
+<section id="hero-2042">
+    <div class="cs-container">
+        <div class="cs-content">
+            <h1 class="cs-title">Athlete Grade Care, Built For How You live.</h1>
+            <p class="cs-text">
+                Integrated perfomance care guided by a personalized Care Map, helping you move better, recover stronger, and perform in real life.
+            </p>
+            <h2 class="cs-subtitle">Real Life Is The Sport.</h2>
+             <div class="cs-button-group">
+                <a href="" class="cs-button-solid">Book Your Session</a>
+                <div class="cs-review">
+                    <div class="cs-stars">
+                        <span class="cs-star">★</span>
+                        <span class="cs-star">★</span>
+                        <span class="cs-star">★</span>
+                        <span class="cs-star">★</span>
+                        <span class="cs-star">★</span>
+                    </div>
+                    <span class="cs-review-text">from 600+ reviews</span>
+                </div>
+        </div>
+    </div>
+
+    <div class="cs-video-wrapper">
+        <video loading="lazy" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/Revibe-Philosophy-Video-V2-Jan26-2026.mp4" muted autoplay loop playsinline></video>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!--              Side By Side Carousel           -->
+<!-- ============================================ -->
+
+<section id="RTsbsr-601">
+    <div class="cs-container">
+        <div class="cs-content">
+            <h2 class="cs-title">
+                <span class="cs-title-line">OUR PHILOSOPHY -</span> <br>
+                <span class="cs-title-accent">LIFE IS THE REAL SPORT.</span>
+            </h2>
+            <p class="cs-text">
+                It's aging well, moving confidently, and feeling capable in your body.
+            </p>
+            <p class="cs-text">
+                At Revibe, we believe performance belongs to EveryBody, not just elite athletes. That's why we deliver athlete-grade care designed for real bodies, real schedules, and real lives.
+            </p>
+        </div>
+        
+        <!-- Carousel Wrapper -->
+        <div class="cs-carousel-wrapper">
+            <div class="cs-carousel">
+                <!-- Slide 1 -->
+                <div class="cs-slide">
+                    <picture class="cs-picture">
+                        <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/man-smiling-working.jpg">
+                        <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/man-smiling-working.jpg">
+                        <img decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/man-smiling-working.jpg" alt="Father helping child on skateboard" width="960" height="796">
+                    </picture>
+                    <div class="cs-slide-text">
+                        Performance is showing up for work with energy.
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="cs-slide">
+                    <picture class="cs-picture">
+                        <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-exercising.jpg">
+                        <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-exercising.jpg">
+                        <img decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-exercising.jpg" alt="Slide 2 description" width="960" height="796">
+                    </picture>
+                    <div class="cs-slide-text">
+                        It’s training without pain.
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="cs-slide">
+                    <picture class="cs-picture">
+                        <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/father-seeing-his%20kid-after-work.jpg">
+                        <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/father-seeing-his%20kid-after-work.jpg">
+                        <img decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/father-seeing-his%20kid-after-work.jpg" alt="Slide 2 description" width="960" height="796">
+                    </picture>
+                    <div class="cs-slide-text">
+                        It’s keeping up with your kids.
+                    </div>
+                </div>
+                
+<!-- Slide 4 -->
+<div class="cs-slide">
+    <picture class="cs-picture">
+        <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-running.jpg">
+        <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-running.jpg">
+        <img decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-running.jpg" alt="Slide 3 description" width="960" height="796">
+    </picture>
+    <div class="cs-slide-text">
+        It's aging well, moving confidently, <br> and feeling capable in your body.
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+</section>
+                                
+<!-- Philosophy Question -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof gsap === 'undefined') return;
+    
+    const section = document.querySelector('#RTsbsr-601');
+    if (!section) return;
+
+    // ============================================
+    // CAROUSEL ANIMATION - WITH PRELOADING
+    // ============================================
+    
+    const slides = section.querySelectorAll('.cs-slide');
+    const totalSlides = slides.length;
+    
+    if (totalSlides > 1) {
+        // PRELOAD ALL IMAGES FIRST
+        const imagePromises = Array.from(slides).map(slide => {
+            return new Promise((resolve) => {
+                const img = slide.querySelector('img');
+                if (img.complete) {
+                    resolve();
+                } else {
+                    img.onload = resolve;
+                    img.onerror = resolve;
+                }
+            });
+        });
+
+        // Wait for images to load, then start carousel
+        Promise.all(imagePromises).then(() => {
+            let currentSlide = 0;
+            
+            // Set initial state
+            gsap.set(slides, { opacity: 0 });
+            gsap.set(slides[0], { opacity: 1 });
+            
+            function nextSlide() {
+                const current = slides[currentSlide];
+                currentSlide = (currentSlide + 1) % totalSlides;
+                const next = slides[currentSlide];
+                
+                // Simple crossfade
+                gsap.timeline()
+                    .to(current, {
+                        opacity: 0,
+                        duration: 1,
+                        ease: "power2.inOut"
+                    })
+                    .to(next, {
+                        opacity: 1,
+                        duration: 1,
+                        ease: "power2.inOut"
+                    }, "-=0.5");
+            }
+            
+            // Start carousel after images are loaded
+            setInterval(nextSlide, 3000);
+        });
+    }
+});
+</script>
+
+<!-- ============================================ -->
+<!--             Care Map Tools                   -->
+<!-- ============================================ -->
+
+<section id="care-map-3847">
+    <div class="cs-container">
+        <div class="cs-wrapper">
+            <!-- Left Side -->
+            <div class="cs-left">
+                <div class="cs-content">
+                    <h2 class="cs-title">Tools That Support Your Care Map</h2>
+                    <p class="cs-tagline">Everything Works Together — For A Reason.</p>
+                    <p class="cs-text">
+                        Your Care Map may include a combination of performance-driven tools, all working toward one outcome: helping you live and move better.
+                    </p>
+                    <p class="cs-text">
+                        These aren't services in isolation — they're tools within a system built for how you live.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Center Circle Image (visible at 1400px+) -->
+            <div class="cs-image-wrapper">
+                <picture class="cs-picture">
+                    <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/manual-care-hands-on-treatment.webp">
+                    <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/manual-care-hands-on-treatment.webp">
+                    <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/manual-care-hands-on-treatment.webp" alt="Manual care treatment" width="400" height="400" class="cs-main-img">
+                </picture>
+            </div>
+
+            <!-- Right Side -->
+            <div class="cs-right">
+                <h3 class="cs-right-title">Care Map Tools</h3>
+                
+                <div class="cs-accordion-group">
+                    <!-- Accordion Item 1 - Active -->
+                    <div class="cs-accordion active" data-image="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/manual-care-hands-on-treatment.webp" data-alt="Manual care treatment">
+                        <button class="cs-accordion-button" aria-expanded="true">
+                            <div class="cs-button-content">
+                                <div class="cs-icon-wrapper">
+                                    <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/manual-care-icon.svg" alt="Manual Care Icon" class="cs-icon">
+                                </div>
+                                <span class="cs-button-text">MANUAL CARE<br>& HANDS ON TREATMENT</span>
+                            </div>
+                            <span class="cs-indicator">+</span>
+                        </button>
+                        <div class="cs-accordion-content">
+                            <div class="cs-accordion-inner">
+                                <div class="cs-accordion-img-wrap">
+                                    <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/manual-care-hands-on-treatment.webp" alt="Manual care treatment">
+                                </div>
+                                <p class="cs-accordion-text">
+                                    Physiotherapy, Chiropractic, Osteopathy, and Massage delivered with intent.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 2 -->
+                    <div class="cs-accordion" data-image="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/movement-strength-mobility-work.webp" data-alt="Movement and strength training">
+                        <button class="cs-accordion-button" aria-expanded="false">
+                            <div class="cs-button-content">
+                                <div class="cs-icon-wrapper">
+                                    <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/msm-work-icon.svg" alt="Movement Strength Mobility Icon" class="cs-icon">
+                                </div>
+                                <span class="cs-button-text">MOVEMENT, STRENGTH<br>& MOBILITY WORK</span>
+                            </div>
+                            <span class="cs-indicator">+</span>
+                        </button>
+                        <div class="cs-accordion-content">
+                            <div class="cs-accordion-inner">
+                                <div class="cs-accordion-img-wrap">
+                                    <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/movement-strength-mobility-work.webp" alt="Movement and strength training">
+                                </div>
+                                <p class="cs-accordion-text">
+                                    Training your body to move well, stay strong, and perform in real life.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 3 -->
+                    <div class="cs-accordion" data-image="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/performance-coaching.webp" data-alt="Performance coaching">
+                        <button class="cs-accordion-button" aria-expanded="false">
+                            <div class="cs-button-content">
+                                <div class="cs-icon-wrapper">
+                                    <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/performance-coaching-icon.svg" alt="Performance Coaching Icon" class="cs-icon">
+                                </div>
+                                <span class="cs-button-text">PERFORMANCE COACHING<br>(TRAINING)</span>
+                            </div>
+                            <span class="cs-indicator">+</span>
+                        </button>
+                        <div class="cs-accordion-content">
+                            <div class="cs-accordion-inner">
+                                <div class="cs-accordion-img-wrap">
+                                    <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/performance-coaching.webp" alt="Performance coaching">
+                                </div>
+                                <p class="cs-accordion-text">
+                                    Guided coaching that builds capacity, confidence, and real‑life performance.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 4 -->
+                    <div class="cs-accordion" data-image="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/recovery-tools.webp" data-alt="Person in ice bath for recovery">
+                        <button class="cs-accordion-button" aria-expanded="false">
+                            <div class="cs-button-content">
+                                <div class="cs-icon-wrapper">
+                                    <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/cold-plunge-icon.svg" alt="Recovery Tools Icon" class="cs-icon">
+                                </div>
+                                <span class="cs-button-text">RECOVERY TOOLS</span>
+                            </div>
+                            <span class="cs-indicator">+</span>
+                        </button>
+                        <div class="cs-accordion-content">
+                            <div class="cs-accordion-inner">
+                                <div class="cs-accordion-img-wrap">
+                                    <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/recovery-tools.webp" alt="Person in ice bath for recovery">
+                                </div>
+                                <p class="cs-accordion-text">
+                                    Cold plunge and sauna to support adaptation, resilience, and momentum.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 5 -->
+                    <div class="cs-accordion" data-image="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/longevity-lifestyle-support.webp" data-alt="Longevity and lifestyle support">
+                        <button class="cs-accordion-button" aria-expanded="false">
+                            <div class="cs-button-content">
+                                <div class="cs-icon-wrapper">
+                                    <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/longevity-support-icon.svg" alt="Longevity Support Icon" class="cs-icon">
+                                </div>
+                                <span class="cs-button-text">LONGEVITY<br>& LIFESTYLE SUPPORT</span>
+                            </div>
+                            <span class="cs-indicator">+</span>
+                        </button>
+                        <div class="cs-accordion-content">
+                            <div class="cs-accordion-inner">
+                                <div class="cs-accordion-img-wrap">
+                                    <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/longevity-lifestyle-support.webp" alt="Longevity and lifestyle support">
+                                </div>
+                                <p class="cs-accordion-text">
+                                    Naturopathic medicine and lifestyle care that support long‑term performance and health.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Care Map -->
+<script>document.addEventListener('DOMContentLoaded', function() {
+    if (typeof gsap === 'undefined') return;
+    
+    const accordions = document.querySelectorAll('#care-map-3847 .cs-accordion');
+    const mainImage = document.querySelector('#care-map-3847 .cs-main-img');
+    const picture = document.querySelector('#care-map-3847 .cs-picture');
+    
+    // Preload all images
+    accordions.forEach(accordion => {
+        const imgUrl = accordion.getAttribute('data-image');
+        if (imgUrl) {
+            const img = new Image();
+            img.src = imgUrl;
+        }
+    });
+
+    // Returns the correct open height depending on breakpoint
+    function getOpenHeight() {
+        return window.innerWidth < 1400 ? '20rem' : '6rem';
+    }
+    
+    // Function to change image with smoother fade in
+    function changeImage(newImage, newAlt) {
+        if (!newImage || !mainImage) return;
+        
+        const currentSrc = mainImage.getAttribute('src');
+        if (currentSrc === newImage) return;
+        
+        mainImage.setAttribute('src', newImage);
+        mainImage.setAttribute('alt', newAlt);
+        
+        const sources = picture.querySelectorAll('source');
+        sources.forEach(source => {
+            source.setAttribute('srcset', newImage);
+        });
+        
+        gsap.fromTo(picture, 
+            { opacity: 0 },
+            { 
+                opacity: 1, 
+                duration: 0.5,
+                ease: 'power2.out'
+            }
+        );
+    }
+
+    // Close an accordion with slide-up animation
+    function closeAccordion(item) {
+        item.classList.remove('active');
+        item.querySelector('.cs-accordion-button').setAttribute('aria-expanded', 'false');
+
+        const itemContent = item.querySelector('.cs-accordion-content');
+        const itemInner  = item.querySelector('.cs-accordion-inner');
+        const itemText   = item.querySelector('.cs-button-text');
+        const itemIndicator = item.querySelector('.cs-indicator');
+
+        // Slide inner content up while container shrinks
+        gsap.to(itemInner, {
+            y: '-100%',
+            duration: 0.4,
+            ease: 'power2.inOut'
+        });
+        gsap.to(itemContent, {
+            height: 0,
+            duration: 0.4,
+            ease: 'power2.inOut'
+        });
+        gsap.to(itemText, {
+            color: 'var(--primary)',
+            duration: 0.3
+        });
+        gsap.to(itemIndicator, {
+            rotation: 0,
+            duration: 0.3
+        });
+    }
+
+    // Open an accordion with slide-down animation
+    function openAccordion(accordion) {
+        const button  = accordion.querySelector('.cs-accordion-button');
+        const content = accordion.querySelector('.cs-accordion-content');
+        const inner   = accordion.querySelector('.cs-accordion-inner');
+        const buttonText = accordion.querySelector('.cs-button-text');
+        const indicator  = accordion.querySelector('.cs-indicator');
+
+        accordion.classList.add('active');
+        button.setAttribute('aria-expanded', 'true');
+
+        // Reset inner to top (above the clip) then slide down
+        gsap.set(inner, { y: '-100%' });
+        gsap.to(content, {
+            height: getOpenHeight(),
+            duration: 0.4,
+            ease: 'power2.inOut'
+        });
+        gsap.to(inner, {
+            y: '0%',
+            duration: 0.4,
+            ease: 'power2.inOut'
+        });
+        gsap.to(buttonText, {
+            color: 'var(--bodyTextColor)',
+            duration: 0.3
+        });
+        gsap.to(indicator, {
+            rotation: 45,
+            duration: 0.3
+        });
+    }
+    
+    accordions.forEach(accordion => {
+        const content = accordion.querySelector('.cs-accordion-content');
+        const inner   = accordion.querySelector('.cs-accordion-inner');
+
+        // Set initial state
+        if (!accordion.classList.contains('active')) {
+            content.style.height = '0';
+            gsap.set(inner, { y: '-100%' });
+        } else {
+            content.style.height = getOpenHeight();
+            gsap.set(inner, { y: '0%' });
+        }
+        
+        accordion.addEventListener('mouseenter', function() {
+            if (accordion.classList.contains('active')) return;
+
+            const newImage = accordion.getAttribute('data-image');
+            const newAlt   = accordion.getAttribute('data-alt');
+            changeImage(newImage, newAlt);
+
+            // Close all others
+            accordions.forEach(item => {
+                if (item !== accordion && item.classList.contains('active')) {
+                    closeAccordion(item);
+                }
+            });
+
+            // Open this one
+            openAccordion(accordion);
+        });
+    });
+});</script>
+
+{% endblock %}
