@@ -289,205 +289,6 @@
 }
 
 /*-- -------------------------- -->
-<---   Side By Side Reverse     -->
-<--- -------------------------- -*/
-
-.word {
-    display: inline-block;
-    margin-right: 0.15em;
-}
-
-.char {
-    display: inline-block;
-    white-space: pre;
-}
-
-.word-wrapper {
-    display: inline-block;
-}
-
-
-/* Mobile - 360px */
-@media only screen and (min-width: 0rem) {
-    #RTsbsr-601 .cs-container {
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        overflow: hidden;
-    }
-
-    #RTsbsr-601 .cs-content {
-        width: 100%;
-        padding: 2rem 1rem;
-        background-color: #ffffff;
-        text-align: center;
-        flex: none;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    #RTsbsr-601 .cs-title {
-        font-size: clamp(2.438rem, 5vw, 3.813rem);
-        font-weight: 700;
-        line-height: 1.15;
-        margin: 0 auto 1.5rem auto;
-        color: #000000;
-        text-transform: uppercase;
-        letter-spacing: -0.02em;
-        text-align: center !important;
-        width: 100%;
-    }
-
-    #RTsbsr-601 .cs-title-accent {
-        color: var(--primary);
-        display: block;
-    }
-
-    #RTsbsr-601 .cs-text {
-        font-size: 1rem;
-        line-height: 1.6;
-        margin: 0 auto 1rem auto;
-        color: #333333;
-        max-width: 40rem;
-    }
-
-    #RTsbsr-601 .cs-text:last-of-type {
-        margin-bottom: 0;
-    }
-
-    /* Carousel */
-    #RTsbsr-601 .cs-carousel-wrapper {
-        position: relative;
-        width: 100%;
-        height: 40vh;
-        overflow: hidden;
-        flex-shrink: 0;
-    }
-
-    #RTsbsr-601 .cs-carousel {
-        position: relative;
-        width: 100%;
-        height: 100%;
-    }
-
-    #RTsbsr-601 .cs-slide {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-    }
-
-    #RTsbsr-601 .cs-picture {
-        width: 100%;
-        height: 100%;
-        display: block;
-    }
-
-    #RTsbsr-601 .cs-picture img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-
-    /* Dark gradient overlay */
-    #RTsbsr-601 .cs-slide::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
-        z-index: 5;
-        pointer-events: none;
-    }
-
-    /* Slide text overlay */
-    #RTsbsr-601 .cs-slide-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 10;
-        color: #ffffff;
-        font-size: clamp(1.25rem, 4vw, 1.75rem);
-        font-weight: 700;
-        font-family: 'Bebas Neue', sans-serif;
-        text-transform: uppercase;
-        text-align: center;
-        letter-spacing: 0.02em;
-        line-height: 1.2;
-        white-space: nowrap;
-        text-shadow:
-            0 2px 10px rgba(0, 0, 0, 0.5),
-            0 4px 20px rgba(0, 0, 0, 0.3);
-        padding: 0 1rem;
-    }
-}
-
-
-/* Tablet - 768px */
-@media only screen and (min-width: 48rem) {
-    #RTsbsr-601 .cs-content {
-        width: 100%;
-        padding: 3rem 3rem;
-        text-align: center;
-        flex: 1 1 auto;
-    }
-
-    #RTsbsr-601 .cs-title {
-        margin: 0 auto 1.5rem auto;
-        text-align: center !important;
-    }
-
-    #RTsbsr-601 .cs-text {
-        text-align: center;
-    }
-}
-
-
-/* Desktop - 1300px */
-@media only screen and (min-width: 81.25rem) {
-    #RTsbsr-601 .cs-container {
-        flex-direction: row;
-        overflow: visible;
-        height: 80vh;
-        max-height: 900px;
-    }
-
-    #RTsbsr-601 .cs-content {
-        width: 40%;
-        padding: 3rem 5rem;
-        text-align: left;
-        flex: none;
-    }
-
-    #RTsbsr-601 .cs-title {
-        text-align: left !important;
-        margin: 0 0 1.5rem 0;
-    }
-
-    #RTsbsr-601 .cs-text {
-        font-size: 1.125rem;
-        margin: 0 0 1rem 0;
-        text-align: left;
-    }
-
-    #RTsbsr-601 .cs-carousel-wrapper {
-        width: 60%;
-        align-self: stretch;
-        height: 100%;
-    }
-
-    #RTsbsr-601 .cs-slide-text {
-        font-size: 38px;
-    }
-}
-
-/*-- -------------------------- -->
 <---      Care Map Tools        -->
 <--- -------------------------- -*/
 
@@ -498,7 +299,8 @@
         background-color: #f9f9f9;
         position: relative;
         overflow: hidden;
-        min-height: auto;
+        height: auto;
+        min-height: 90vh;
     }
 
     #care-map-3847 .cs-container {
@@ -509,7 +311,7 @@
         flex-direction: column;
         align-items: center;
         gap: 0;
-        min-height: auto;
+        height: 100%;
         position: relative;
     }
 
@@ -566,22 +368,27 @@
         grid-template-rows: auto auto;
         gap: 0;
         position: relative;
-        min-height: auto;
+        height: auto;
+        overflow: visible;
     }
 
     #care-map-3847 .cs-left {
         background: var(--primary);
         padding: 2rem 1rem;
+        padding-top: 2rem;
         border-radius: 0;
         position: relative;
         z-index: 2;
         display: flex;
+        flex-direction: column;
         align-items: flex-start;
+        justify-content: flex-start;
         grid-column: 1;
-        grid-row: 1; /* LEFT on top on mobile/tablet */
+        grid-row: 1;
+        height: auto;
+        min-height: unset;
     }
 
-    /* Hide the standalone center image below 1400px */
     #care-map-3847 .cs-image-wrapper {
         display: none;
     }
@@ -613,15 +420,20 @@
     #care-map-3847 .cs-right {
         background-color: #ffffff;
         padding: 2rem 1rem;
+        padding-top: 2rem;
         border-radius: 0;
         box-shadow: none;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        justify-content: flex-start;
         position: relative;
         z-index: 2;
         grid-column: 1;
-        grid-row: 2; /* RIGHT below LEFT on mobile/tablet */
+        grid-row: 2;
+        height: auto;
+        min-height: unset;
+        overflow: visible;
     }
 
     #care-map-3847 .cs-right-title {
@@ -754,7 +566,6 @@
         width: 100%;
     }
 
-    /* Inner wrapper — stays full size, slides in/out of the clipped outer */
     #care-map-3847 .cs-accordion-inner {
         width: 100%;
         display: flex;
@@ -762,7 +573,6 @@
         align-items: center;
     }
 
-    /* Inline accordion image (visible below 1400px) */
     #care-map-3847 .cs-accordion-img-wrap {
         width: 14rem;
         height: 14rem;
@@ -780,59 +590,94 @@
     }
 }
 
-/* Desktop - 1200px */
-@media only screen and (min-width: 75rem) {
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) and (max-width: 74.9375rem) {
+    #care-map-3847 {
+        height: auto;
+        min-height: 90vh;
+    }
+
     #care-map-3847 .cs-wrapper {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
     }
 
     #care-map-3847 .cs-left {
-        padding: clamp(2.5rem, 7.82vw, 3.75rem) clamp(1.5rem, 5vw, 4rem);
+        padding: 3rem 2.5rem;
+        padding-top: 3rem;
     }
 
     #care-map-3847 .cs-right {
-        padding: clamp(2.5rem, 7.82vw, 3.75rem) clamp(1.5rem, 5vw, 4rem);
+        grid-column: 1;
+        grid-row: 2;
+        padding: 3rem 2.5rem;
+    }
+
+    #care-map-3847 .cs-image-wrapper {
+        display: none;
+    }
+
+    #care-map-3847 .cs-content {
+        max-width: 100%;
+    }
+
+    #care-map-3847 .cs-accordion-group {
+        max-width: 100%;
+    }
+
+    #care-map-3847 .cs-accordion-img-wrap {
+        width: 16rem;
+        height: 16rem;
+        display: block;
     }
 }
 
-/* Large Desktop - 1400px */
-@media only screen and (min-width: 87.5rem) {
-    #care-map-3847 {
-        min-height: auto;
-    }
+/* Desktop - 1200px + */
+@media only screen and (min-width: 75rem) {
 
-    #care-map-3847 .cs-container {
-        min-height: auto;
+    /* Split background on the section so it always bleeds full width */
+    #care-map-3847 {
+        background: linear-gradient(to right, var(--primary) 50%, #ffffff 50%);
+        height: 90vh;
+        position: relative;
+        overflow: hidden;
     }
 
     #care-map-3847 .cs-wrapper {
+        position: static;
+        max-width: 87.5rem;
+        margin: 0 auto;
         grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
         align-items: stretch;
         gap: 0;
-        min-height: auto;
     }
 
-    /* Restore original left/right positions at 1400px+ */
+    /* Panels are transparent — section handles the background now */
     #care-map-3847 .cs-left {
+        background: transparent;
         grid-column: 1;
         grid-row: 1;
-        min-height: 100%;
+        padding: clamp(2.5rem, 7.82vw, 3.75rem) clamp(1.5rem, 5vw, 4rem);
+        padding-top: 15vh;
     }
 
     #care-map-3847 .cs-right {
+        background: transparent;
         grid-column: 2;
         grid-row: 1;
-        min-height: 100%;
         align-items: flex-end;
+        padding: clamp(2.5rem, 7.82vw, 3.75rem) clamp(1.5rem, 5vw, 4rem);
+        padding-top: 15vh;
+        overflow: hidden;
     }
 
     #care-map-3847 .cs-content {
         max-width: 28rem;
     }
 
-    /* Restore standalone center image at 1400px+ */
     #care-map-3847 .cs-image-wrapper {
-        max-width: 25rem;
+        max-width: 22rem;
         display: flex;
         position: absolute;
         left: 50%;
@@ -846,12 +691,10 @@
         z-index: 10;
     }
 
-    /* Hide inline accordion images at 1400px+ */
     #care-map-3847 .cs-accordion-img-wrap {
         display: none;
     }
 
-    /* Restore original accordion content layout at 1400px+ */
     #care-map-3847 .cs-accordion-content {
         padding-left: 3.5rem;
         display: block;
@@ -870,12 +713,5 @@
 
     #care-map-3847 .cs-accordion-group {
         margin-left: auto;
-    }
-}
-
-/* Extra Large Desktop - 1600px */
-@media only screen and (min-width: 100rem) {
-    #care-map-3847 .cs-image-wrapper {
-        max-width: 30rem;
     }
 }
