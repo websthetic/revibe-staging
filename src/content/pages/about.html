@@ -1,5 +1,5 @@
 ---
-title: "About | Code Stitch Web Designs"
+title: "About | Websthetic Design"
 description: "Meta description for the page"
 permalink: "/about/"
 ---
@@ -14,95 +14,540 @@ permalink: "/about/"
 
 {% block body %}
 
-    <!-- ============================================ -->
-    <!--                   Banner                     -->
-    <!-- ============================================ -->
 
-    <div id="banner-310">
-        <div class="cs-container">
-            <span class="cs-int-title">About Us</span>
-            <div class="cs-breadcrumbs">
-                <a href="/" class="cs-link">Home</a>
-                <a href="/about/" class="cs-link cs-active">About Us</a>
-            </div>
-        </div>
-        <!--Background Image-->
-        <picture class="cs-background">
-            <!--Mobile Image-->
-            <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 640, height: 600 }) | avif %}" type="image/avif">
-            <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 640, height: 600 }) | webp %}" type="image/webp">
-            <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 640, height: 600 }) | jpeg %}" type="image/jpeg">
-            <!--Tablet Image-->
-            <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2048, height: 942 }) | avif %}" type="image/avif">
-            <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2048, height: 942 }) | webp %}" type="image/webp">
-            <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2048, height: 942 }) | jpeg %}" type="image/jpeg">
-            <!--Desktop Image-->
-            <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2500, height: 628 }) | avif %}" type="image/avif">
-            <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2500, height: 628 }) | webp %}" type="image/webp">
-            <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2500, height: 628 }) | jpeg %}" type="image/jpeg">
-            <img src="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 2500, height: 628 }) | jpeg %}" alt="library" width="1920" height="482" loading="eager" decoding="async">
-        </picture>
+
+<!-- ══════════════════════════════════ -->
+<!--            ABOUT HERO            -->
+<!-- ══════════════════════════════════ -->
+<section id="services-hero">
+
+  <div class="hero-top">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Our Story</div>
+      <h1 class="hero-heading">
+        Moments<br>
+        that <span class="accent">shaped</span><br>
+        Revibe.
+      </h1>
     </div>
+    <div class="hero-right">
+      <p>Revibe started with a simple moment — a rolled ankle that led Justice into Josh's small Etobicoke clinic. What followed has been a journey of growth, hard lessons, and an unshakeable belief in one mission: empowering communities through wellness.</p>
+    </div>
+  </div>
 
-    <!-- ============================================ -->
-    <!--                 Side By Side                 -->
-    <!-- ============================================ -->
+  <div class="hero-bottom">
+    <p class="hero-subtext-mobile">
+      Revibe started with a simple moment — a rolled ankle that led Justice into Josh's small Etobicoke clinic. What followed has been a journey of growth, hard lessons, and an unshakeable belief in one mission: empowering communities through wellness.
+    </p>
+    <div class="scroll-indicator" aria-hidden="true">
+      <span class="scroll-label">Explore</span>
+      <div class="scroll-line">
+        <div class="scroll-dot"></div>
+      </div>
+    </div>
+  </div>
 
-    <section id="RPsbs-313">
-        <div class="cs-container">
-            <!-- Left Image Section -->
-            <div class="cs-image-group">
-                <picture class="cs-picture cs-picture1">
-                    <!--Mobile Image-->
-                    <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 482, height: 536 }) | avif %}" type="image/avif">
-                    <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 482, height: 536 }) | webp %}" type="image/webp">
-                    <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 482, height: 536 }) | jpeg %}" type="image/jpeg">
-                    <!--Tablet Image-->
-                    <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 802, height: 892 }) | avif %}" type="image/avif">
-                    <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 802, height: 892 }) | webp %}" type="image/webp">
-                    <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 802, height: 892 }) | jpeg %}" type="image/jpeg">
-                    <!--Desktop Image-->
-                    <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 1044, height: 1162 }) | avif %}" type="image/avif">
-                    <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 1044, height: 1162 }) | webp %}" type="image/webp">
-                    <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 1044, height: 1162 }) | jpeg %}" type="image/jpeg">
-                    <img src="{% getUrl "/assets/images/cabinets.jpg" | resize({ width: 1044, height: 1162 }) | jpeg %}" alt="lawyers" width="522" height="581" decoding="async">
-                </picture>
-                <picture class="cs-picture cs-picture2">
-                    <!--Mobile Image-->
-                    <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 366, height: 354 }) | avif %}" type="image/avif">
-                    <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 366, height: 354 }) | webp %}" type="image/webp">
-                    <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 366, height: 354 }) | jpeg %}" type="image/jpeg">
-                    <!--Tablet Image-->
-                    <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 600, height: 578 }) | avif %}" type="image/avif">
-                    <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 600, height: 578 }) | webp %}" type="image/webp">
-                    <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 600, height: 578 }) | jpeg %}" type="image/jpeg">
-                    <!--Desktop Image-->
-                    <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 780, height: 752 }) | avif %}" type="image/avif">
-                    <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 780, height: 752 }) | webp %}" type="image/webp">
-                    <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/construction.jpg" | resize({ width: 780, height: 752 }) | jpeg %}" type="image/jpeg">
-                    <img src="{% getUrl "/assets/images/construction.jpg" | resize({ width: 780, height: 752 }) | jpeg %}" alt="gavel" width="390" height="376" loading="lazy" decoding="async">
-                </picture>
-            </div>
-            <!-- Right Content Section-->
-            <div class="cs-content">
-                <span class="cs-topper">About Us</span>
-                <h2 class="cs-title">About CodeStitch</h2>
-                <p class="cs-text">
-                    In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per.
-                </p>
-                <div class="cs-quote">
-                    <span class="cs-quote-text">
-                        In consequat tincidunt turpis sit amet imperdiet. Praesent Classei consequat tincidunt turpis sit amet imperdiet for mind.
-                    </span>
-                    <span class="cs-name">Justin Time</span>
-                    <span class="cs-job">CEO-Founder</span>
-                    <img class="cs-quote-icon" loading="lazy" decoding="async" src="/assets/svgs/quote.svg" alt="gavel" width="136" height="77">
-                </div>
-                <a href="/contact/" class="cs-button-solid">Get in Touch</a>
-            </div>
+</section>
+
+<!-- ══════════════════════════════════ -->
+<!--            TIMELINE              -->
+<!-- ══════════════════════════════════ -->
+<section>
+
+  <div id="viewport">
+    <div id="canvas">
+
+      <svg id="timeline-svg"></svg>
+
+      <!-- Section 1 -->
+      <div class="content-block" id="block-0">
+        <div class="date">June 2019</div>
+        <h2>Revibe Opens Its Doors</h2>
+        <p>Revibe officially opened its first location with a simple idea: create a place where people could move better, recover properly, and feel supported. What started as a vision between two young entrepreneurs quickly became a space where community and care naturally came together. From day one, the goal was bigger than just treatment. It was about helping people feel capable again.</p>
+        <div class="block-photo">
+          <div class="img-stack">
+            <img class="stack-img" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-coming-soon-sign-storefront-june-2019.webp" alt=""/>
+            <img class="stack-img" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-toronto-event-photo-backdrop.webp" alt=""/>
+            <img class="stack-img" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-interior-space-work-area.webp" alt=""/>
+          </div>
+          <div class="img-progress">
+            <div class="img-progress-seg"></div>
+            <div class="img-progress-seg"></div>
+            <div class="img-progress-seg"></div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    {% include 'sections/cta.html' %}
+      <!-- Section 2 -->
+      <div class="content-block" id="block-1">
+        <div class="date">January 2020</div>
+        <h2>The World Changes</h2>
+        <p>Only a few months after opening, COVID hit and the world slowed down. Like many small businesses, we had to adapt quickly and navigate uncertainty. It was a challenging time, but it strengthened our belief in the importance of health, movement, and community. The experience made us more resilient and more focused on our mission.</p>
+        <div class="block-photo">
+          <div class="img-stack">
+            <img class="stack-img" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-time-to-revive-neon-sign-unboxing.webp" alt=""/>
+            <img class="stack-img" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-brand-storytelling-presentation-event.webp" alt=""/>
+            <img class="stack-img" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-team-working-laptop-in-clinic.webp" alt=""/>
+            <img class="stack-img" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-team-meeting-recovery-lounge.webp" alt=""/>
+            <img class="stack-img" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-normatec-recovery-area-clinic-interior.webp" alt=""/>
+          </div>
+          <div class="img-progress">
+            <div class="img-progress-seg"></div>
+            <div class="img-progress-seg"></div>
+            <div class="img-progress-seg"></div>
+            <div class="img-progress-seg"></div>
+            <div class="img-progress-seg"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="content-block" id="block-2">
+        <div class="date">2022 – 2023</div>
+        <h2>A Hard Lesson Downtown</h2>
+        <p>We opened a downtown location with big hopes for expanding the Revibe community. Ultimately, it didn't work out the way we planned. It was a tough chapter, but an important one. The lessons we learned there shaped how we think about growth today.</p>
+        <div class="block-photo">
+          <div class="img-stack">
+            <img class="stack-img" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-studio-floor-plan-layout-diagram.webp" alt=""/>
+            <img class="stack-img" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/recess-logo-lit-wall-sign.webp" alt=""/>
+            <img class="stack-img" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-training-area-gym-equipment-strength.webp" alt=""/>
+            <img class="stack-img" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-treatment-room-physio-tables-interior.webp" alt=""/>
+            <img class="stack-img" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-treatment-bays-curtain-privacy-physio.webp" alt=""/>
+          </div>
+          <div class="img-progress">
+            <div class="img-progress-seg"></div>
+            <div class="img-progress-seg"></div>
+            <div class="img-progress-seg"></div>
+            <div class="img-progress-seg"></div>
+            <div class="img-progress-seg"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4 -->
+      <div class="content-block" id="block-3">
+        <div class="date">October 2023</div>
+        <h2>A New Believer Joins the Mission</h2>
+        <p>Former NBA player Andrew Nicholson joined Revibe as an investor. Having someone who understands performance and recovery at the highest level believe in the vision meant a lot to our team. His support helped reinforce what we were building. It gave us confidence to keep pushing forward.</p>
+        <div class="block-photo">
+          <div class="img-stack">
+            <img class="stack-img" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/andrew-nicholson-canada-basketball-player-headshot-jersey-44.webp" alt=""/>
+            <img class="stack-img" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-realign-therapy-station-sign-hallway.webp" alt=""/>
+            <img class="stack-img" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-relax-membership-team-photo-graphic.webp" alt=""/>
+          </div>
+          <div class="img-progress">
+            <div class="img-progress-seg"></div>
+            <div class="img-progress-seg"></div>
+            <div class="img-progress-seg"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 5 -->
+      <div class="content-block" id="block-4">
+        <div class="date">2024 – Present</div>
+        <h2>Growing the Vision</h2>
+        <p>Revibe expanded with the opening of our Markham location. Since then, the business has continued to reach new financial and community milestones. Each step forward has helped strengthen the foundation we started building in 2019. And we remain focused on delivering athlete-grade care, reimagined for everyBody.</p>
+        <div class="block-photo">
+          <div class="img-stack">
+            <img class="stack-img" src="https://picsum.photos/seed/rev5a/500/200" alt=""/>
+            <img class="stack-img" src="https://picsum.photos/seed/rev5b/500/200" alt=""/>
+            <img class="stack-img" src="https://picsum.photos/seed/rev5c/500/200" alt=""/>
+          </div>
+          <div class="img-progress">
+            <div class="img-progress-seg"></div>
+            <div class="img-progress-seg"></div>
+            <div class="img-progress-seg"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-counter"><span id="current-num">01</span> / 05</div>
+  <div class="scroll-hint" id="scroll-hint">scroll</div>
+  <div id="scroll-spacer" style="height: 600vh;"></div>
+
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+const vw = window.innerWidth;
+const vh = window.innerHeight;
+
+const stepX = vw * 1.0;
+const stepY = vh * 0.65;
+
+const NAV_OFFSET = 60;
+const blockOffset = [0, 0, 0, 0, 0]; // no longer needed but kept for reference
+
+const blockPos = [
+  { x: vw / 2,             y: vh / 2 + NAV_OFFSET },
+  { x: vw / 2 + stepX,     y: vh / 2 + stepY + NAV_OFFSET },
+  { x: vw / 2 + 2 * stepX, y: vh / 2 + NAV_OFFSET },
+  { x: vw / 2 + 3 * stepX, y: vh / 2 + stepY + NAV_OFFSET },
+  { x: vw / 2 + 4 * stepX, y: vh / 2 + NAV_OFFSET },
+];
+
+// FIXED: screenShift is now responsive — mobile gets larger downward nudges
+// to prevent the date label from being clipped behind the navbar.
+const isMobile = vw < 768;
+const screenShift = isMobile
+  ? [60, 100, 60, 100, 60]  // mobile: all blocks pushed down, low blocks extra
+  : [0, 60, 0, 0, 0];        // desktop: original values
+
+const canvasW = vw / 2 + 4 * stepX + vw / 2;
+const canvasH = vh / 2 + stepY + vh / 2;
+const canvas  = document.getElementById('canvas');
+canvas.style.width  = canvasW + 'px';
+canvas.style.height = canvasH + 'px';
+
+blockPos.forEach((pos, i) => {
+  const block = document.getElementById('block-' + i);
+  block.style.left = pos.x + 'px';
+  block.style.top  = pos.y + 'px';
+});
+
+// Force paint so getBoundingClientRect is accurate
+document.body.offsetHeight;
+
+// Measure image anchor points
+const rects = Array.from(
+  document.querySelectorAll('.block-photo .img-stack')
+).map(el => el.getBoundingClientRect());
+
+const rightMid = rects.map(r => ({ x: r.right, y: (r.top + r.bottom) / 2 }));
+const leftMid  = rects.map(r => ({ x: r.left,  y: (r.top + r.bottom) / 2 }));
+
+// ── SVG setup ──
+const svg = document.getElementById('timeline-svg');
+svg.setAttribute('width',  canvasW);
+svg.setAttribute('height', canvasH);
+
+const primary = getComputedStyle(document.documentElement)
+  .getPropertyValue('--primary').trim() || '#e63946';
+
+function makePath(d, stroke, width) {
+  const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  p.setAttribute('d', d);
+  p.setAttribute('fill', 'none');
+  p.setAttribute('stroke', stroke);
+  p.setAttribute('stroke-width', width || '1.5');
+  p.setAttribute('stroke-linecap', 'round');
+  p.setAttribute('stroke-linejoin', 'round');
+  return p;
+}
+
+function makeCircle(cx, cy, r, fill, opacity) {
+  const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  c.setAttribute('cx', cx);
+  c.setAttribute('cy', cy);
+  c.setAttribute('r',  r);
+  c.setAttribute('fill', fill);
+  if (opacity !== undefined) c.setAttribute('opacity', opacity);
+  return c;
+}
+
+function connD(i) {
+  const x1 = rightMid[i].x, y1 = rightMid[i].y;
+  const x2 = leftMid[i+1].x, y2 = leftMid[i+1].y;
+  const mx  = (x1 + x2) / 2;
+  return `M ${x1} ${y1} C ${mx} ${y1} ${mx} ${y2} ${x2} ${y2}`;
+}
+
+// Ghost layer
+for (let i = 0; i < 4; i++) {
+  svg.appendChild(makePath(connD(i), 'rgba(0,0,0,0.08)', '1.5'));
+}
+rightMid.slice(0, 4).forEach(p => svg.appendChild(makeCircle(p.x, p.y, 4, 'rgba(0,0,0,0.12)', 1)));
+leftMid.slice(1).forEach(p => svg.appendChild(makeCircle(p.x, p.y, 4, 'rgba(0,0,0,0.12)', 1)));
+
+// Animated primary layer
+const connPaths = [];
+const rightDots = [];
+const leftDots  = [];
+
+for (let i = 0; i < 5; i++) {
+  // No departure dot on the last block — nothing connects from it
+  if (i < 4) {
+    const rd = makeCircle(rightMid[i].x, rightMid[i].y, 5, primary, i === 0 ? 1 : 0);
+    svg.appendChild(rd);
+    rightDots.push(rd);
+  } else {
+    rightDots.push(null); // placeholder to keep index alignment
+  }
+
+  if (i < 4) {
+    const cp = makePath(connD(i), primary, '2');
+    svg.appendChild(cp);
+    connPaths.push(cp);
+
+    const ld = makeCircle(leftMid[i+1].x, leftMid[i+1].y, 5, primary, 0);
+    svg.appendChild(ld);
+    leftDots.push(ld);
+  }
+}
+
+connPaths.forEach(cp => {
+  const len = cp.getTotalLength();
+  gsap.set(cp, { strokeDasharray: len, strokeDashoffset: len });
+});
+
+// ─────────────────────────────────────────────────────
+// PHASE CONFIG
+//
+// DWELL  = 3.5  — canvas still, words + body + 3 images
+// TRAVEL = 1.0  — canvas pans, line draws
+// TOTAL  = 5 * 3.5 + 4 * 1.0 = 21.5
+//
+// Dwell breakdown per block (relative to dwellAt[i]):
+//   0%  – 15%  → date words highlight
+//   14% – 32%  → h2 words highlight
+//   33% – 42%  → body fades in
+//   42% – 44%  → photo container fades in
+//   44% – 62%  → image 1 (~18% of dwell)
+//   62% – 80%  → image 2 (~18% of dwell)
+//   80% – 98%  → image 3 (~18% of dwell)
+//   98% – 100% → buffer before travel
+//
+// Scroll spacer = 1800vh
+// ─────────────────────────────────────────────────────
+const DWELL     = 5.0;
+const TRAVEL    = 1.0;
+const TOTAL_DUR = 5 * DWELL + 4 * TRAVEL; // 29.0
+const THRESHOLD = 8;
+
+document.getElementById('scroll-spacer').style.height = '2400vh';
+
+const canvasTargets = blockPos.map((pos, i) => ({
+  x: -(pos.x - vw / 2),
+  y: -(pos.y - vh / 2) + screenShift[i],
+}));
+
+const dwellAt  = Array.from({ length: 5 }, (_, i) => i * (DWELL + TRAVEL));
+const travelAt = Array.from({ length: 4 }, (_, i) => dwellAt[i] + DWELL);
+
+// ── Word splitter ──
+function splitWords(el) {
+  const text = el.textContent.trim();
+  el.innerHTML = text.split(/\s+/).map(w =>
+    `<span class="word" style="display:inline-block;opacity:0.15">${w}</span>`
+  ).join(' ');
+  return Array.from(el.querySelectorAll('.word'));
+}
+
+// ── Collect block elements ──
+const blockEls = Array.from({ length: 5 }, (_, i) => {
+  const block = document.getElementById('block-' + i);
+  const stack = block.querySelector('.img-stack');
+
+  // Inject blurred background div
+  const bg = document.createElement('div');
+  bg.className = 'stack-bg';
+  stack.insertBefore(bg, stack.firstChild);
+
+  return {
+    dateWords: splitWords(block.querySelector('.date')),
+    h2Words:   splitWords(block.querySelector('h2')),
+    p:         block.querySelector('p'),
+    photo:     block.querySelector('.block-photo'),
+    imgs:      Array.from(block.querySelectorAll('.stack-img')),
+    segs:      Array.from(block.querySelectorAll('.img-progress-seg')),
+    bg,
+  };
+});
+
+// Hide body elements; images handled via CSS (.stack-img starts opacity:0)
+blockEls.forEach(({ p, photo, imgs }) => {
+  gsap.set([p, photo], { opacity: 0, y: 16 });
+  // First image of each block starts at opacity 0 (shown when photo fades in)
+  imgs.forEach(img => gsap.set(img, { opacity: 0 }));
+});
+
+// ─────────────────────────────────────────────────────
+// MAIN TIMELINE
+// ─────────────────────────────────────────────────────
+const mainTl = gsap.timeline({ paused: true });
+
+// Travel phases
+for (let i = 0; i < 4; i++) {
+  const ts = travelAt[i];
+  const ds = dwellAt[i + 1];
+
+  mainTl.to(canvas, {
+    x: canvasTargets[i + 1].x,
+    y: canvasTargets[i + 1].y,
+    ease: 'none',
+    duration: TRAVEL,
+  }, ts);
+
+  mainTl.to(connPaths[i], { strokeDashoffset: 0, ease: 'none', duration: TRAVEL }, ts);
+  mainTl.to(leftDots[i],    { opacity: 1, duration: 0.001 }, ds);
+  if (rightDots[i+1]) mainTl.to(rightDots[i+1], { opacity: 1, duration: 0.001 }, ds);
+}
+
+// ── Helper: schedule word highlight sweep ──
+function scheduleWords(words, startTime, totalDuration) {
+  if (!words.length) return;
+  const step = totalDuration / words.length;
+  words.forEach((word, j) => {
+    mainTl.to(word, { opacity: 1, ease: 'none', duration: step * 0.85 }, startTime + j * step);
+  });
+}
+
+// ── Helper: update progress segments imperatively ──
+// Called from ticker based on seekCurrent position within a dwell phase.
+function updateProgress(segs, imgIdx) {
+  segs.forEach((seg, i) => {
+    seg.classList.toggle('done',   i < imgIdx);
+    seg.classList.toggle('active', i === imgIdx);
+    if (i > imgIdx) { seg.classList.remove('done', 'active'); }
+  });
+}
+
+// Dwell phases — fully dynamic, works for any number of images
+// Text occupies 0%–44%, images share 44%–98% equally
+const IMG_START = 0.44; // dwell % where images begin
+const IMG_END   = 0.98; // dwell % where images end
+
+for (let i = 0; i < 5; i++) {
+  const ds = dwellAt[i];
+  const { dateWords, h2Words, p, photo, imgs } = blockEls[i];
+  const numImgs = imgs.length;
+
+  // Date words  — 0% → 15%
+  scheduleWords(dateWords, ds,               DWELL * 0.15);
+  // H2 words   — 14% → 32%
+  scheduleWords(h2Words,  ds + DWELL * 0.14, DWELL * 0.18);
+  // Body        — 33% → 42%
+  mainTl.to(p,     { opacity: 1, y: 0, ease: 'none', duration: DWELL * 0.08 }, ds + DWELL * 0.33);
+  // Photo container — 42% → 44%
+  mainTl.to(photo, { opacity: 1, y: 0, ease: 'none', duration: DWELL * 0.02 }, ds + DWELL * 0.42);
+
+  // Images — spread evenly across IMG_START → IMG_END
+  const imgSlice = (IMG_END - IMG_START) / numImgs;
+
+  imgs.forEach((img, j) => {
+    const imgAt = IMG_START + j * imgSlice;
+    const imgOut = IMG_START + (j + 1) * imgSlice;
+
+    // Fade in
+    mainTl.to(img, { opacity: 1, ease: 'none', duration: DWELL * 0.03 }, ds + DWELL * imgAt);
+    // Fade out (skip for last image — stays visible until travel)
+    if (j < numImgs - 1) {
+      mainTl.to(img, { opacity: 0, ease: 'none', duration: DWELL * 0.02 }, ds + DWELL * imgOut);
+    }
+  });
+}
+
+// ─────────────────────────────────────────────────────
+// CENTERING GATE + SMOOTH SEEK
+// ─────────────────────────────────────────────────────
+const centeredBlocks = new Set([0]);
+let rawScrollProgress = 0;
+let seekTarget        = 0;
+let seekCurrent       = 0;
+let lastBlockIdx      = -1;
+
+gsap.ticker.add(() => {
+  const rawSeek = rawScrollProgress * TOTAL_DUR;
+  let gated     = false;
+
+  for (let i = 1; i < 5; i++) {
+    if (rawSeek >= dwellAt[i] && rawSeek < dwellAt[i] + DWELL) {
+      if (!centeredBlocks.has(i)) {
+        const cx   = gsap.getProperty(canvas, 'x');
+        const cy   = gsap.getProperty(canvas, 'y');
+        const dist = Math.sqrt(
+          (cx - canvasTargets[i].x) ** 2 +
+          (cy - canvasTargets[i].y) ** 2
+        );
+        if (dist <= THRESHOLD) {
+          centeredBlocks.add(i);
+        } else {
+          seekTarget = dwellAt[i];
+          gated = true;
+        }
+      }
+      break;
+    }
+  }
+
+  if (!gated) seekTarget = rawSeek;
+
+  seekCurrent += (seekTarget - seekCurrent) * 0.1;
+  mainTl.seek(seekCurrent);
+
+  // Active block
+  let blockIdx = 0;
+  for (let i = 4; i >= 0; i--) {
+    if (seekCurrent >= dwellAt[i]) { blockIdx = i; break; }
+  }
+
+  if (blockIdx !== lastBlockIdx) lastBlockIdx = blockIdx;
+
+  // Update progress segments dynamically based on imgs.length
+  const dwellStart  = dwellAt[blockIdx];
+  const dwellOffset = seekCurrent - dwellStart;
+  const { segs, imgs: blockImgs, bg } = blockEls[blockIdx];
+  const numImgs  = blockImgs.length;
+  const imgSlice = (IMG_END - IMG_START) / numImgs;
+
+  let imgIdx = 0;
+  for (let j = numImgs - 1; j >= 0; j--) {
+    if (dwellOffset >= DWELL * (IMG_START + j * imgSlice)) { imgIdx = j; break; }
+  }
+
+  // Sync blur background to active image
+  if (blockImgs[imgIdx] && bg) {
+    const activeSrc = blockImgs[imgIdx].src;
+    const currentBg = bg.style.backgroundImage;
+    if (currentBg !== `url("${activeSrc}")`) {
+      bg.style.backgroundImage = `url("${activeSrc}")`;
+    }
+  }
+
+  // Only show progress once photo container is visible
+  if (dwellOffset >= DWELL * 0.42) {
+    updateProgress(segs, imgIdx);
+  }
+
+  // Section counter
+  document.getElementById('current-num').textContent =
+    String(blockIdx + 1).padStart(2, '0');
+});
+
+// ─────────────────────────────────────────────────────
+// SCROLL TRIGGERS
+// ─────────────────────────────────────────────────────
+const hero = document.getElementById('services-hero');
+
+ScrollTrigger.create({
+  trigger: '#scroll-spacer',
+  start: 'top top',
+  end: '3% top',
+  onUpdate: (self) => {
+    hero.style.opacity       = self.progress > 0 ? '0' : '1';
+    hero.style.pointerEvents = self.progress > 0 ? 'none' : '';
+  }
+});
+
+ScrollTrigger.create({
+  trigger: '#scroll-spacer',
+  start: 'top top',
+  end: 'bottom bottom',
+  onUpdate: (self) => {
+    rawScrollProgress = self.progress;
+    document.getElementById('scroll-hint')
+      .classList.toggle('hidden', self.progress > 0.01);
+  }
+});
+</script>
+
 
 {% endblock %}
