@@ -339,20 +339,12 @@
 
 .img-stack {
   width: 100%;
-  height: clamp(180px, 45vw, 280px); /* FIXED: was fixed 280px, now shrinks on mobile */
+  height: 280px;
   border-radius: 12px;
   overflow: hidden;
   position: relative;
   background: rgba(0, 0, 0, 0.04);
   border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-/* Mobile only — square 1:1 image stack */
-@media only screen and (max-width: 47.9375rem) {
-  .img-stack {
-    height: auto;
-    aspect-ratio: 1 / 1;
-  }
 }
 
 .stack-img {
@@ -455,7 +447,7 @@
   letter-spacing: 0.28em;
   text-transform: uppercase;
   z-index: 100;
-  font-family: 'Georgia', serif;
+  font-family: var(--headerFont);
   animation: bounce 2s ease-in-out infinite;
   transition: opacity 0.5s;
 }
