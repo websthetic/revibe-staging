@@ -15,7 +15,6 @@ permalink: "/about/"
 {% block body %}
 
 
-
 <!-- ══════════════════════════════════ -->
 <!--            ABOUT HERO            -->
 <!-- ══════════════════════════════════ -->
@@ -167,25 +166,63 @@ permalink: "/about/"
 
   <div class="section-counter"><span id="current-num">01</span> / 05</div>
   <div class="scroll-hint" id="scroll-hint">scroll</div>
-  <div id="scroll-spacer" style="height: 600vh;"></div>
+  <div id="scroll-spacer"></div>
 
 </section>
+
+<!-- ══════════════════════════════════ -->
+<!--         OUTRO SECTION            -->
+<!-- ══════════════════════════════════ -->
+<section id="outro-section">
+
+  <div class="outro-inner">
+
+    <div class="outro-left">
+
+      <h2 class="outro-heading">
+        The Story Is<br>Still Being <span class="outro-accent">Written</span>
+      </h2>
+
+      <div class="outro-body">
+        <p>What started with two treatment tables has grown into something bigger — a community built around one idea:</p>
+        <p class="callout">Athlete-grade care, reimagined for everyBody.</p>
+        <p>Every day, new guests, clinicians, and partners become part of what Revibe is building. If our story resonates with you, we'd love to have you along for the journey.</p>
+      </div>
+
+      <hr class="outro-divider">
+
+      <div class="outro-buttons">
+        <a href="#" class="outro-btn-primary">Join Our Community</a>
+        <div class="outro-btn-row">
+          <a href="#" class="outro-btn-ghost">Join Our Team</a>
+          <a href="#" class="outro-btn-ghost">Explore Partnerships</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="outro-image">
+      <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-team-meeting-recovery-lounge.webp" alt="Revibe community"/>
+    </div>
+
+  </div>
+</section>
+
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-<script>
-gsap.registerPlugin(ScrollTrigger);
+<script>gsap.registerPlugin(ScrollTrigger);
 
 const vw = window.innerWidth;
 const vh = window.innerHeight;
 
 const stepX = vw * 1.0;
 const stepY = vh * 0.65;
-
 const NAV_OFFSET = 60;
-const blockOffset = [0, 0, 0, 0, 0]; // no longer needed but kept for reference
 
+// ── 5 timeline block positions ──
 const blockPos = [
   { x: vw / 2,             y: vh / 2 + NAV_OFFSET },
   { x: vw / 2 + stepX,     y: vh / 2 + stepY + NAV_OFFSET },
@@ -194,12 +231,10 @@ const blockPos = [
   { x: vw / 2 + 4 * stepX, y: vh / 2 + NAV_OFFSET },
 ];
 
-// FIXED: screenShift is now responsive — mobile gets larger downward nudges
-// to prevent the date label from being clipped behind the navbar.
 const isMobile = vw < 768;
 const screenShift = isMobile
-  ? [60, 100, 60, 100, 60]  // mobile: all blocks pushed down, low blocks extra
-  : [0, 60, 0, 0, 0];        // desktop: original values
+  ? [60, 100, 60, 100, 60]
+  : [0, 60, 0, 0, 0];
 
 const canvasW = vw / 2 + 4 * stepX + vw / 2;
 const canvasH = vh / 2 + stepY + vh / 2;
@@ -213,24 +248,18 @@ blockPos.forEach((pos, i) => {
   block.style.top  = pos.y + 'px';
 });
 
-// Force paint so getBoundingClientRect is accurate
 document.body.offsetHeight;
 
-// Measure image anchor points
-const rects = Array.from(
-  document.querySelectorAll('.block-photo .img-stack')
-).map(el => el.getBoundingClientRect());
-
+const rects   = Array.from(document.querySelectorAll('.block-photo .img-stack')).map(el => el.getBoundingClientRect());
 const rightMid = rects.map(r => ({ x: r.right, y: (r.top + r.bottom) / 2 }));
 const leftMid  = rects.map(r => ({ x: r.left,  y: (r.top + r.bottom) / 2 }));
 
-// ── SVG setup ──
+// ── SVG ──
 const svg = document.getElementById('timeline-svg');
 svg.setAttribute('width',  canvasW);
 svg.setAttribute('height', canvasH);
 
-const primary = getComputedStyle(document.documentElement)
-  .getPropertyValue('--primary').trim() || '#e63946';
+const primary = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim() || '#e63946';
 
 function makePath(d, stroke, width) {
   const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -245,10 +274,8 @@ function makePath(d, stroke, width) {
 
 function makeCircle(cx, cy, r, fill, opacity) {
   const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-  c.setAttribute('cx', cx);
-  c.setAttribute('cy', cy);
-  c.setAttribute('r',  r);
-  c.setAttribute('fill', fill);
+  c.setAttribute('cx', cx); c.setAttribute('cy', cy);
+  c.setAttribute('r', r);   c.setAttribute('fill', fill);
   if (opacity !== undefined) c.setAttribute('opacity', opacity);
   return c;
 }
@@ -260,33 +287,26 @@ function connD(i) {
   return `M ${x1} ${y1} C ${mx} ${y1} ${mx} ${y2} ${x2} ${y2}`;
 }
 
-// Ghost layer
-for (let i = 0; i < 4; i++) {
-  svg.appendChild(makePath(connD(i), 'rgba(0,0,0,0.08)', '1.5'));
-}
+for (let i = 0; i < 4; i++) svg.appendChild(makePath(connD(i), 'rgba(0,0,0,0.08)', '1.5'));
 rightMid.slice(0, 4).forEach(p => svg.appendChild(makeCircle(p.x, p.y, 4, 'rgba(0,0,0,0.12)', 1)));
-leftMid.slice(1).forEach(p => svg.appendChild(makeCircle(p.x, p.y, 4, 'rgba(0,0,0,0.12)', 1)));
+leftMid.slice(1).forEach(p  => svg.appendChild(makeCircle(p.x, p.y, 4, 'rgba(0,0,0,0.12)', 1)));
 
-// Animated primary layer
 const connPaths = [];
 const rightDots = [];
 const leftDots  = [];
 
 for (let i = 0; i < 5; i++) {
-  // No departure dot on the last block — nothing connects from it
   if (i < 4) {
     const rd = makeCircle(rightMid[i].x, rightMid[i].y, 5, primary, i === 0 ? 1 : 0);
     svg.appendChild(rd);
     rightDots.push(rd);
   } else {
-    rightDots.push(null); // placeholder to keep index alignment
+    rightDots.push(null);
   }
-
   if (i < 4) {
     const cp = makePath(connD(i), primary, '2');
     svg.appendChild(cp);
     connPaths.push(cp);
-
     const ld = makeCircle(leftMid[i+1].x, leftMid[i+1].y, 5, primary, 0);
     svg.appendChild(ld);
     leftDots.push(ld);
@@ -300,29 +320,15 @@ connPaths.forEach(cp => {
 
 // ─────────────────────────────────────────────────────
 // PHASE CONFIG
-//
-// DWELL  = 3.5  — canvas still, words + body + 3 images
-// TRAVEL = 1.0  — canvas pans, line draws
-// TOTAL  = 5 * 3.5 + 4 * 1.0 = 21.5
-//
-// Dwell breakdown per block (relative to dwellAt[i]):
-//   0%  – 15%  → date words highlight
-//   14% – 32%  → h2 words highlight
-//   33% – 42%  → body fades in
-//   42% – 44%  → photo container fades in
-//   44% – 62%  → image 1 (~18% of dwell)
-//   62% – 80%  → image 2 (~18% of dwell)
-//   80% – 98%  → image 3 (~18% of dwell)
-//   98% – 100% → buffer before travel
-//
-// Scroll spacer = 1800vh
+// 5 dwells × 5.0 + 4 travels × 1.0 + 1.0 fade = 30.0
 // ─────────────────────────────────────────────────────
 const DWELL     = 5.0;
 const TRAVEL    = 1.0;
+const FADE_OUT  = 0;
 const TOTAL_DUR = 5 * DWELL + 4 * TRAVEL; // 29.0
 const THRESHOLD = 8;
 
-document.getElementById('scroll-spacer').style.height = '2400vh';
+document.getElementById('scroll-spacer').style.height = '2500vh';
 
 const canvasTargets = blockPos.map((pos, i) => ({
   x: -(pos.x - vw / 2),
@@ -331,6 +337,7 @@ const canvasTargets = blockPos.map((pos, i) => ({
 
 const dwellAt  = Array.from({ length: 5 }, (_, i) => i * (DWELL + TRAVEL));
 const travelAt = Array.from({ length: 4 }, (_, i) => dwellAt[i] + DWELL);
+const tFadeOut = dwellAt[4] + DWELL; // 29.0 — fade starts right after block 5 dwell
 
 // ── Word splitter ──
 function splitWords(el) {
@@ -345,12 +352,9 @@ function splitWords(el) {
 const blockEls = Array.from({ length: 5 }, (_, i) => {
   const block = document.getElementById('block-' + i);
   const stack = block.querySelector('.img-stack');
-
-  // Inject blurred background div
   const bg = document.createElement('div');
   bg.className = 'stack-bg';
   stack.insertBefore(bg, stack.firstChild);
-
   return {
     dateWords: splitWords(block.querySelector('.date')),
     h2Words:   splitWords(block.querySelector('h2')),
@@ -362,10 +366,8 @@ const blockEls = Array.from({ length: 5 }, (_, i) => {
   };
 });
 
-// Hide body elements; images handled via CSS (.stack-img starts opacity:0)
 blockEls.forEach(({ p, photo, imgs }) => {
   gsap.set([p, photo], { opacity: 0, y: 16 });
-  // First image of each block starts at opacity 0 (shown when photo fades in)
   imgs.forEach(img => gsap.set(img, { opacity: 0 }));
 });
 
@@ -378,67 +380,41 @@ const mainTl = gsap.timeline({ paused: true });
 for (let i = 0; i < 4; i++) {
   const ts = travelAt[i];
   const ds = dwellAt[i + 1];
-
-  mainTl.to(canvas, {
-    x: canvasTargets[i + 1].x,
-    y: canvasTargets[i + 1].y,
-    ease: 'none',
-    duration: TRAVEL,
-  }, ts);
-
+  mainTl.to(canvas, { x: canvasTargets[i+1].x, y: canvasTargets[i+1].y, ease: 'none', duration: TRAVEL }, ts);
   mainTl.to(connPaths[i], { strokeDashoffset: 0, ease: 'none', duration: TRAVEL }, ts);
-  mainTl.to(leftDots[i],    { opacity: 1, duration: 0.001 }, ds);
+  mainTl.to(leftDots[i],  { opacity: 1, duration: 0.001 }, ds);
   if (rightDots[i+1]) mainTl.to(rightDots[i+1], { opacity: 1, duration: 0.001 }, ds);
 }
 
-// ── Helper: schedule word highlight sweep ──
-function scheduleWords(words, startTime, totalDuration) {
-  if (!words.length) return;
-  const step = totalDuration / words.length;
-  words.forEach((word, j) => {
-    mainTl.to(word, { opacity: 1, ease: 'none', duration: step * 0.85 }, startTime + j * step);
-  });
-}
+// Fade out viewport after block 5 dwell → reveals outro + CTA below
+mainTl.to('#viewport', {
+  opacity: 0,
+  duration: 0,
+  ease: 'power2.inOut',
+  onStart: () => document.getElementById('viewport').classList.add('fading-out'),
+}, tFadeOut);
 
-// ── Helper: update progress segments imperatively ──
-// Called from ticker based on seekCurrent position within a dwell phase.
-function updateProgress(segs, imgIdx) {
-  segs.forEach((seg, i) => {
-    seg.classList.toggle('done',   i < imgIdx);
-    seg.classList.toggle('active', i === imgIdx);
-    if (i > imgIdx) { seg.classList.remove('done', 'active'); }
-  });
-}
-
-// Dwell phases — fully dynamic, works for any number of images
-// Text occupies 0%–44%, images share 44%–98% equally
-const IMG_START = 0.44; // dwell % where images begin
-const IMG_END   = 0.98; // dwell % where images end
+// Block content animations
+const IMG_START = 0.44;
+const IMG_END   = 0.98;
 
 for (let i = 0; i < 5; i++) {
   const ds = dwellAt[i];
   const { dateWords, h2Words, p, photo, imgs } = blockEls[i];
-  const numImgs = imgs.length;
-
-  // Date words  — 0% → 15%
-  scheduleWords(dateWords, ds,               DWELL * 0.15);
-  // H2 words   — 14% → 32%
-  scheduleWords(h2Words,  ds + DWELL * 0.14, DWELL * 0.18);
-  // Body        — 33% → 42%
-  mainTl.to(p,     { opacity: 1, y: 0, ease: 'none', duration: DWELL * 0.08 }, ds + DWELL * 0.33);
-  // Photo container — 42% → 44%
-  mainTl.to(photo, { opacity: 1, y: 0, ease: 'none', duration: DWELL * 0.02 }, ds + DWELL * 0.42);
-
-  // Images — spread evenly across IMG_START → IMG_END
+  const numImgs  = imgs.length;
   const imgSlice = (IMG_END - IMG_START) / numImgs;
 
-  imgs.forEach((img, j) => {
-    const imgAt = IMG_START + j * imgSlice;
-    const imgOut = IMG_START + (j + 1) * imgSlice;
+  // Date fades in as one unit, then heading fades in as one unit
+  mainTl.to(dateWords, { opacity: 1, ease: 'power2.out', duration: DWELL * 0.1  }, ds);
+  mainTl.to(h2Words,   { opacity: 1, ease: 'power2.out', duration: DWELL * 0.14 }, ds + DWELL * 0.12);
 
-    // Fade in
+  mainTl.to(p,     { opacity: 1, y: 0, ease: 'none', duration: DWELL * 0.08 }, ds + DWELL * 0.33);
+  mainTl.to(photo, { opacity: 1, y: 0, ease: 'none', duration: DWELL * 0.02 }, ds + DWELL * 0.42);
+
+  imgs.forEach((img, j) => {
+    const imgAt  = IMG_START + j * imgSlice;
+    const imgOut = IMG_START + (j + 1) * imgSlice;
     mainTl.to(img, { opacity: 1, ease: 'none', duration: DWELL * 0.03 }, ds + DWELL * imgAt);
-    // Fade out (skip for last image — stays visible until travel)
     if (j < numImgs - 1) {
       mainTl.to(img, { opacity: 0, ease: 'none', duration: DWELL * 0.02 }, ds + DWELL * imgOut);
     }
@@ -456,42 +432,38 @@ let lastBlockIdx      = -1;
 
 gsap.ticker.add(() => {
   const rawSeek = rawScrollProgress * TOTAL_DUR;
-  let gated     = false;
+  let gated = false;
 
   for (let i = 1; i < 5; i++) {
     if (rawSeek >= dwellAt[i] && rawSeek < dwellAt[i] + DWELL) {
       if (!centeredBlocks.has(i)) {
         const cx   = gsap.getProperty(canvas, 'x');
         const cy   = gsap.getProperty(canvas, 'y');
-        const dist = Math.sqrt(
-          (cx - canvasTargets[i].x) ** 2 +
-          (cy - canvasTargets[i].y) ** 2
-        );
-        if (dist <= THRESHOLD) {
-          centeredBlocks.add(i);
-        } else {
-          seekTarget = dwellAt[i];
-          gated = true;
-        }
+        const dist = Math.sqrt((cx - canvasTargets[i].x) ** 2 + (cy - canvasTargets[i].y) ** 2);
+        if (dist <= THRESHOLD) { centeredBlocks.add(i); }
+        else { seekTarget = dwellAt[i]; gated = true; }
       }
       break;
     }
   }
 
   if (!gated) seekTarget = rawSeek;
-
   seekCurrent += (seekTarget - seekCurrent) * 0.1;
   mainTl.seek(seekCurrent);
 
-  // Active block
   let blockIdx = 0;
   for (let i = 4; i >= 0; i--) {
     if (seekCurrent >= dwellAt[i]) { blockIdx = i; break; }
   }
-
   if (blockIdx !== lastBlockIdx) lastBlockIdx = blockIdx;
 
-  // Update progress segments dynamically based on imgs.length
+  // Counter fades out as viewport fades
+  const counter = document.querySelector('.section-counter');
+  counter.style.opacity = seekCurrent >= tFadeOut ? Math.max(0, 1 - (seekCurrent - tFadeOut) / FADE_OUT) : '1';
+  document.getElementById('current-num').textContent = String(blockIdx + 1).padStart(2, '0');
+
+  if (seekCurrent >= tFadeOut) return;
+
   const dwellStart  = dwellAt[blockIdx];
   const dwellOffset = seekCurrent - dwellStart;
   const { segs, imgs: blockImgs, bg } = blockEls[blockIdx];
@@ -503,23 +475,18 @@ gsap.ticker.add(() => {
     if (dwellOffset >= DWELL * (IMG_START + j * imgSlice)) { imgIdx = j; break; }
   }
 
-  // Sync blur background to active image
   if (blockImgs[imgIdx] && bg) {
     const activeSrc = blockImgs[imgIdx].src;
-    const currentBg = bg.style.backgroundImage;
-    if (currentBg !== `url("${activeSrc}")`) {
-      bg.style.backgroundImage = `url("${activeSrc}")`;
-    }
+    if (bg.style.backgroundImage !== `url("${activeSrc}")`) bg.style.backgroundImage = `url("${activeSrc}")`;
   }
 
-  // Only show progress once photo container is visible
   if (dwellOffset >= DWELL * 0.42) {
-    updateProgress(segs, imgIdx);
+    segs.forEach((seg, i) => {
+      seg.classList.toggle('done',   i < imgIdx);
+      seg.classList.toggle('active', i === imgIdx);
+      if (i > imgIdx) seg.classList.remove('done', 'active');
+    });
   }
-
-  // Section counter
-  document.getElementById('current-num').textContent =
-    String(blockIdx + 1).padStart(2, '0');
 });
 
 // ─────────────────────────────────────────────────────
@@ -543,11 +510,19 @@ ScrollTrigger.create({
   end: 'bottom bottom',
   onUpdate: (self) => {
     rawScrollProgress = self.progress;
-    document.getElementById('scroll-hint')
-      .classList.toggle('hidden', self.progress > 0.01);
+    document.getElementById('scroll-hint').classList.toggle('hidden', self.progress > 0.01);
   }
 });
-</script>
 
+// ─────────────────────────────────────────────────────
+// OUTRO SECTION — fade in on scroll
+// ─────────────────────────────────────────────────────
+const outroEls = document.querySelectorAll(
+  '.outro-heading, .outro-body, .outro-image, .outro-buttons'
+);
+const outroObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+}, { threshold: 0.12 });
+outroEls.forEach(el => outroObserver.observe(el));</script>
 
 {% endblock %}

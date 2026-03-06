@@ -1,0 +1,278 @@
+---
+title: "Clinics | Revibe"
+description: "Find a Revibe clinic near you"
+permalink: "/clinics/"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/clinics.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+{% endblock %}
+
+{% block body %}
+
+<!-- MAIN -->
+<div class="page">
+
+  <!-- LEFT -->
+  <div class="left">
+    <p class="section-label">Our Locations</p>
+    <h1>Revibe Clinics</h1>
+
+    <!-- Mobile toggle -->
+    <div class="mobile-toggle">
+      <button class="mobile-toggle-btn active" id="toggle-list" onclick="setMobileView('list')">List View</button>
+      <button class="mobile-toggle-btn" id="toggle-map" onclick="setMobileView('map')">Map View</button>
+    </div>
+
+    <div class="mobile-list">
+
+    <hr class="divider"/>
+
+    <!-- Mississauga -->
+    <div class="clinic-card" data-map="mississauga">
+      <div class="clinic-name">Mississauga</div>
+
+      <div class="clinic-contact">
+        <span class="clinic-contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          2290 Dixie Rd, Mississauga, ON L4Y 1Z4
+        </span>
+        <span class="clinic-contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (289) 806-5123
+        </span>
+        <a class="clinic-contact-item clinic-contact-link" href="mailto:hello@revibeto.com">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          hello@revibeto.com
+        </a>
+      </div>
+
+      <p class="clinic-services-title">Services</p>
+      <ul class="clinic-services">
+        <li><a href="/location/mississauga/physiotherapy/">Physiotherapy Care</a></li>
+        <li><a href="/location/mississauga/chiropractic/">Chiropractic Care</a></li>
+        <li><a href="/location/mississauga/massage/">Massage Therapy</a></li>
+        <li><a href="/location/mississauga/naturopathic-medicine/">Naturopathic Medicine</a></li>
+        <li><a href="/location/mississauga/osteopathy/">Osteopathy</a></li>
+      </ul>
+      <div class="clinic-buttons">
+        <a class="clinic-btn" href="#">Book Appointment</a>
+      </div>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- Markham -->
+    <div class="clinic-card" data-map="markham">
+      <div class="clinic-name">Markham</div>
+
+      <div class="clinic-contact">
+        <span class="clinic-contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          220 Torbay Rd, Markham, ON L3R 1G6
+        </span>
+        <span class="clinic-contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (905) 783-8423
+        </span>
+        <a class="clinic-contact-item clinic-contact-link" href="mailto:hello@revibeto.com">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          hello@revibeto.com
+        </a>
+      </div>
+
+      <p class="clinic-services-title">Services</p>
+      <ul class="clinic-services">
+        <li><a href="/location/markham/physiotherapy/">Physiotherapy Care</a></li>
+        <li><a href="/location/markham/chiropractic/">Chiropractic Care</a></li>
+        <li><a href="/location/markham/massage/">Massage Therapy</a></li>
+        <li><a href="/location/markham/naturopathic-medicine/">Naturopathic Medicine</a></li>
+        <li><a href="/location/markham/osteopathy/">Osteopathy</a></li>
+      </ul>
+      <div class="clinic-buttons">
+        <a class="clinic-btn" href="#">Book Appointment</a>
+      </div>
+    </div>
+
+    <hr class="divider"/>
+    </div><!-- end .mobile-list -->
+  </div>
+
+  <!-- RIGHT: Mapbox Map -->
+  <div class="right">
+    <div id="mapbox-map"></div>
+
+    <!-- Mobile toggle overlay on map -->
+    <div class="map-toggle-overlay">
+      <button class="mobile-toggle-btn active" id="toggle-list-map" onclick="setMobileView('list')">List View</button>
+      <button class="mobile-toggle-btn" id="toggle-map-map" onclick="setMobileView('map')">Map View</button>
+    </div>
+
+    <!-- Mobile location cards at bottom of map -->
+    <div class="mobile-map-cards">
+      <div class="mobile-map-card" data-map="mississauga">
+        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/hq-2048x1365.jpg.webp" alt="Mississauga"/>
+        <div class="mobile-map-card-body">
+          <div class="mobile-map-card-name">Mississauga</div>
+          <div class="mobile-map-card-address">2290 Dixie Rd, Mississauga, ON L4Y 1Z4</div>
+          <a class="mobile-map-card-link" href="#">
+            View Clinic
+            <svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="mobile-map-card" data-map="markham">
+        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/recess-club-photo-1.jpeg" alt="Markham"/>
+        <div class="mobile-map-card-body">
+          <div class="mobile-map-card-name">Markham</div>
+          <div class="mobile-map-card-address">220 Torbay Rd, Markham, ON L3R 1G6</div>
+          <a class="mobile-map-card-link" href="#">
+            View Clinic
+            <svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop hover card -->
+    <div class="map-card" id="map-card">
+      <img class="map-card-img" id="map-card-img" src="" alt="Clinic photo"/>
+      <div class="map-card-body">
+        <div class="map-card-name" id="map-card-name"></div>
+        <div class="map-card-address" id="map-card-address"></div>
+        <a class="map-card-link" id="map-card-link" href="#">
+          View Clinic
+          <svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function setMobileView(view) {
+    const listContent = document.querySelector('.mobile-list');
+    const mapEl = document.querySelector('.right');
+    const allListBtns = document.querySelectorAll('[id^="toggle-list"]');
+    const allMapBtns = document.querySelectorAll('[id^="toggle-map"]');
+
+    if (view === 'map') {
+      listContent.style.display = 'none';
+      mapEl.style.display = 'block';
+      allMapBtns.forEach(b => b.classList.add('active'));
+      allListBtns.forEach(b => b.classList.remove('active'));
+      setTimeout(() => map.resize(), 50);
+    } else {
+      listContent.style.display = 'block';
+      mapEl.style.display = 'none';
+      allListBtns.forEach(b => b.classList.add('active'));
+      allMapBtns.forEach(b => b.classList.remove('active'));
+    }
+  }
+
+  // Mobile map card taps — fly to that clinic
+  document.querySelectorAll('.mobile-map-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.dataset.map;
+      const data = clinicData[id];
+      map.flyTo({ center: data.coords, zoom: 14, speed: 1.6, curve: 1.2 });
+      document.querySelectorAll('.mobile-map-card').forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      document.querySelectorAll('.mapbox-marker').forEach(m => m.classList.remove('active'));
+      markers[id].getElement().classList.add('active');
+    });
+  });
+
+  mapboxgl.accessToken = 'pk.eyJ1Ijoid2Vic3RoZXRpYyIsImEiOiJjbW1mMjU3bmswM24wMnNwc2MwM21pMnI2In0.IxuU-Gz6ZpQS3u4FN8u31g';
+
+  const clinicData = {
+    mississauga: {
+      name: 'Mississauga',
+      address: '2290 Dixie Rd, Mississauga, ON L4Y 1Z4',
+      link: '#',
+      image: 'https://websthetic.tor1.cdn.digitaloceanspaces.com/hq-2048x1365.jpg.webp',
+      coords: [-79.5694, 43.6074]
+    },
+    markham: {
+      name: 'Markham',
+      address: '220 Torbay Rd, Markham, ON L3R 1G6',
+      link: '#',
+      image: 'https://websthetic.tor1.cdn.digitaloceanspaces.com/recess-club-photo-1.jpeg',
+      coords: [-79.3326, 43.8404]
+    }
+  };
+
+  // Init map centered between both clinics
+  const map = new mapboxgl.Map({
+    container: 'mapbox-map',
+    style: 'mapbox://styles/mapbox/dark-v11',
+    center: [-79.46, 43.77],
+    zoom: 10
+  });
+
+  // Custom marker element
+  function createMarker() {
+    const el = document.createElement('div');
+    el.className = 'mapbox-marker';
+    el.innerHTML = `
+      <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-monogram_green.png" alt="Revibe" class="mapbox-marker-logo"/>
+    `;
+    return el;
+  }
+
+  // Add markers for both clinics
+  const markers = {};
+  Object.entries(clinicData).forEach(([id, data]) => {
+    const el = createMarker();
+    markers[id] = new mapboxgl.Marker({ element: el, anchor: 'bottom' })
+      .setLngLat(data.coords)
+      .addTo(map);
+  });
+
+  // Card elements
+  const mapCard    = document.getElementById('map-card');
+  const mapCardImg = document.getElementById('map-card-img');
+  const mapCardName = document.getElementById('map-card-name');
+  const mapCardAddress = document.getElementById('map-card-address');
+  const mapCardLink = document.getElementById('map-card-link');
+
+  let activeClinic = null;
+
+  document.querySelectorAll('.clinic-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      const id = card.dataset.map;
+      if (id === activeClinic) return;
+      activeClinic = id;
+
+      const data = clinicData[id];
+
+      // flyTo: zoom out, pan, zoom in
+      map.flyTo({
+        center: data.coords,
+        zoom: 14,
+        speed: 1.6,
+        curve: 1.2,
+        easing: t => t < 0.5 ? 2*t*t : -1+(4-2*t)*t
+      });
+
+      // Update card
+      mapCardName.textContent = data.name;
+      mapCardAddress.textContent = data.address;
+      mapCardLink.href = data.link;
+      mapCardImg.src = data.image;
+      mapCardImg.alt = data.name + ' clinic';
+      mapCard.classList.add('visible');
+
+      // Highlight active marker
+      document.querySelectorAll('.mapbox-marker').forEach(m => m.classList.remove('active'));
+      markers[id].getElement().classList.add('active');
+    });
+  });
+</script>
+
+{% endblock %}

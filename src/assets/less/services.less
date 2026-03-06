@@ -541,103 +541,221 @@
 
 
 
-/* ─────────────────────────────────────────
-   CTA BANNER
-───────────────────────────────────────── */
-.cta-banner {
-      position: relative;
-      width: 100%;
-      height: 380px;
-      overflow: hidden;
-    }
+/*-- -------------------------- -->
+<---           Hero             -->
+<--- -------------------------- -*/
 
-    .cta-banner__bg {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(
-          to right,
-          rgba(0, 0, 0, 0.45) 0%,
-          rgba(0, 0, 0, 0.15) 55%,
-          rgba(0, 0, 0, 0) 100%
-        ),
-        linear-gradient(
-          105deg,
-          #4a3228 0%,
-          #7a5c4a 20%,
-          #c49070 45%,
-          #d4a882 60%,
-          #b08060 75%,
-          #6b4535 100%
-        );
-      background-size: cover;
-      background-position: center;
-    }
-
-    .cta-banner__img {
-      position: absolute;
-      inset: 0;
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #hero-229 {
+    /* changes on tablet */
+    padding: 0 (16/16rem);
+    position: relative;
+    z-index: 1;
+    /* prevents overflow from the lines extending past the screen width */
+    overflow: hidden;
+    height: 60vh;
+    display: flex;
+    .cs-picture {
+      /* Background Image */
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .cta-banner__overlay {
+      display: block;
       position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to right,
-        rgba(10, 8, 6, 0.52) 0%,
-        rgba(10, 8, 6, 0.25) 45%,
-        rgba(10, 8, 6, 0.0) 70%
-      );
+      top: 0;
+      left: 0;
+      z-index: -2;
+
+      &:before {
+        /* Black Color Overlay */
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: #000;
+        opacity: 0.6;
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        /* prevents the cursor from interacting with it */
+        pointer-events: none;
+      }
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        /* Makes image act like a background-image */
+        object-fit: cover;
+      }
     }
 
-    .cta-banner__content {
+    .cs-container {
+      width: 100%;
+      max-width: (1280/16rem);
+      /* we put the padding top and bottom on the container instead of #Hero so the pseudo element lines go to the top and bottom of the section */
+      /* 144px - 280px - leaving extra space for the navigation */
+      margin: auto;
       position: relative;
-      z-index: 2;
-      height: 100%;
+    }
+
+    .cs-flex-group {
+      /* 60px - 220px */
+      margin-bottom: clamp(3.75rem, 15.5vw, 13.75rem);
+      margin: auto auto auto 0;
+      width: 80vw;
+      /* 464px - 562px */
+      max-width: clamp(29rem, 60vw, 35.125rem);
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      column-gap: (20/16rem);
+      box-sizing: border-box;
+    }
+
+    .cs-topper {
+      /* 13px - 16px */
+      font-size: clamp(0.8125rem, 1.6vw, 1rem);
+      line-height: 1.2em;
+      text-transform: uppercase;
+      text-align: left;
+      letter-spacing: 0.1rem;
+      font-weight: 700;
+      color: var(--primaryLight);
+      margin-bottom: (16/16rem);
+      display: block;
+    }
+
+    .cs-title {
+      /* 39px - 61px */
+      font-size: clamp(2.4375rem, 6.4vw, 3.8125rem);
+      font-weight: 900;
+      line-height: 1.2em;
+      text-align: left;
+      width: 100%;
+      /* 32px - 40px */
+      margin: 0 0 1rem 0;
+      color: var(--bodyTextColorWhite);
+      position: relative;
+    }
+
+    .cs-text {
+      /* 16px - 20px */
+      font-size: clamp(1rem, 1.95vw, 1.25rem);
+      line-height: 1.5em;
+      text-align: left;
+      width: 100%;
+      /* 32px - 40px */
+      margin: 0 0 2rem 0;
+      /* 40px - 48px */
+      margin-bottom: 2rem;
+      color: var(--bodyTextColorWhite);
+    }
+
+    .cs-button-group {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: 0 5% 0 6%;
-      gap: 32px;
+      align-items: flex-start;
+      justify-content: flex-start;
+      /* 16px - 20px */
+      gap: clamp(1rem, 2.3vw, 1.25rem);
     }
 
-    .cta-banner__headline {
-      font-family: 'Figtree', sans-serif;
-      font-weight: 800;
-      font-size: clamp(2.6rem, 5vw, 4rem);
-      line-height: 1.08;
-      color: #ffffff;
-      letter-spacing: -0.02em;
-      max-width: 520px;
-      text-shadow: 0 2px 18px rgba(0,0,0,0.18);
+    .cs-button {
+      min-width: (197/16rem);
     }
 
-    .cta-banner__btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: fit-content;
-      padding: 14px 28px;
-      border: 2px solid rgba(255, 255, 255, 0.88);
-      border-radius: 999px;
-      background: transparent;
-      color: #ffffff;
-      font-family: 'Figtree', sans-serif;
-      font-weight: 700;
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease;
-    }
+        .cs-button-solid {
+            font-size: clamp(21px, 0.9vw, 24px);
+            font-weight: 700;
+            line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0 (32/16rem) 0 (32/16rem);
+            background: transparent;
+            border: 3px solid var(--primary);
+            pointer-events: auto;
+            color: #fff;
+            border-radius: 50px;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(8px);
+            overflow: visible;
+            transition: transform 0.3s, border-color 0.3s;
 
-    .cta-banner__btn:hover {
-      background: #ffffff;
-      color: #1a1210;
-      border-color: #ffffff;
+            &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 25%;
+                height: 100%;
+                background-color: var(--primary);
+                border-radius: 100px;
+                z-index: -1;
+                transition: width 0.3s ease;
+            }
+
+            &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(20, 184, 166, 0);
+                border-radius: 50px;
+                z-index: -2;
+                transition: background-color 0.3s;
+            }
+
+            &:hover {
+                transform: translateY(-2px);
+
+                &:before {
+                    width: 100%;
+                }
+            }
+        }
+  }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+  #hero-229 {
+    /* 32px - 40px */
+    padding: 0 clamp(2rem, 5vw, 2.5rem);
+
+    .cs-button-group {
+      flex-direction: row;
     }
+  }
+}
+
+/* Desktop Parallax Effect - 1300px */
+@media only screen and (min-width: 81.25rem) {
+  #hero-229 {
+    background: url("https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/be-you-again-cta.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* creates parallax effect on background image */
+    background-attachment: fixed;
+    /* remove img tag so we can make parallax work */
+    .cs-picture {
+      img {
+        display: none;
+      }
+    }
+  }
+}
