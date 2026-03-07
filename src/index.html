@@ -812,142 +812,218 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
 </section>
 
 <!-- ============================================ -->
-<!--                 Location                     -->
+<!--              Locations Section              -->
 <!-- ============================================ -->
 
-<section class="locations-section">
-        <div class="section-header">
-            <h1 class="cs-title">Find a Revibe Clinic Near You</h1>
-            <p class="section-subtitle">Find an Revibe clinis near you. </p>
+<section id="locations">
+    <div class="cs-container">
+
+        <!-- Header: title + nav -->
+        <div class="cs-locations-header">
+            <h2 class="cs-title">Find a <span class="cs-color">Revibe</span> Location Near You</h2>
+            <div class="cs-carousel-nav">
+                <button class="cs-nav-btn cs-prev" aria-label="Previous location">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <span class="cs-counter"><span class="cs-current">1</span> / <span class="cs-total">2</span></span>
+                <button class="cs-nav-btn cs-next" aria-label="Next location">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
         </div>
 
-        <div class="locations-container">
-            <!-- Left: Locations List -->
-            <div class="locations-list">
-                <div class="location-card">
-                    <div class="location-header">
-                        <div>
-                            <h3 class="location-name">Mississauga</h3>
-                        </div>
-                        <span class="location-status status-open">Open</span>
-                    </div>
-                    <div class="location-details">
-                        <div class="detail-item">
-                            <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
-                            <span class="detail-text">123 Main Street, Mississauga, ON L5B 3Y4</span>
-                        </div>
-                        <div class="detail-item">
-                            <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                            </svg>
-                            <span class="detail-text">(905) 555-0123</span>
-                        </div>
-                        <div class="detail-item">
-                            <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            <span class="detail-text">Mon-Fri: 9:00 AM - 7:00 PM<br>Sat: 10:00 AM - 4:00 PM</span>
-                        </div>
-                    </div>
-                    <div class="location-actions">
-                        <button class="action-btn primary">Book Appointment</button>
-                        <button class="action-btn">Get Directions</button>
-                    </div>
-                </div>
+        <!-- Carousel outer -->
+        <div class="cs-carousel-outer">
 
-                <div class="location-card">
-                    <div class="location-header">
-                        <div>
-                            <h3 class="location-name">Markham</h3>
-                        </div>
-                        <span class="location-status status-open">Open</span>
-                    </div>
-                    <div class="location-details">
-                        <div class="detail-item">
-                            <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
-                            <span class="detail-text">456 Highway 7, Markham, ON L3R 8X6</span>
-                        </div>
-                        <div class="detail-item">
-                            <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                            </svg>
-                            <span class="detail-text">(905) 555-0124</span>
-                        </div>
-                        <div class="detail-item">
-                            <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            <span class="detail-text">Mon-Fri: 8:00 AM - 8:00 PM<br>Sat-Sun: 10:00 AM - 5:00 PM</span>
-                        </div>
-                    </div>
-                    <div class="location-actions">
-                        <button class="action-btn primary">Book Appointment</button>
-                        <button class="action-btn">Get Directions</button>
-                    </div>
-                </div>
+            <!-- Image track -->
+            <div class="cs-carousel-wrapper">
+                <div class="cs-carousel-track">
 
-                <div class="location-card">
-                    <div class="location-header">
-                        <div>
-                            <h3 class="location-name">Burlington</h3>
+                    <!-- Slide 1 -->
+                    <div class="cs-slide active">
+                        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/hq-2048x1365.jpg.webp" alt="Revibe Mississauga" width="800" height="600" loading="eager" decoding="async"/>
+                        <!-- Mobile info (inside slide) -->
+                        <div class="cs-mobile-info">
+                            <h3 class="cs-location-name">Mississauga</h3>
+                            <ul class="cs-contact-list">
+                                <li>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                    2290 Dixie Rd, Mississauga, ON L4Y 1Z4
+                                </li>
+                                <li>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.92-1.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 15.1l.42 1.82z"/></svg>
+                                    (289) 806-5123
+                                </li>
+                                <li>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                    <span>Mon–Fri: 9:00 AM – 7:00 PM<br>Sat: 10:00 AM – 4:00 PM</span>
+                                </li>
+                            </ul>
+                            <div class="cs-services">
+                                <span class="cs-services-label">Services</span>
+                                <div class="cs-services-tags">
+                                    <a href="#" class="cs-tag">Physiotherapy</a>
+                                    <a href="#" class="cs-tag">Chiropractic</a>
+                                    <a href="#" class="cs-tag">Massage Therapy</a>
+                                    <a href="#" class="cs-tag">Naturopathic</a>
+                                    <a href="#" class="cs-tag">Osteopathy</a>
+                                </div>
+                            </div>
+                            <hr class="cs-card-divider" />
+                            <button class="cs-btn-book">Book Appointment</button>
                         </div>
-                        <span class="location-status status-coming">Coming Soon</span>
                     </div>
-                    <div class="location-details">
-                        <div class="detail-item">
-                            <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
-                            <span class="detail-text">789 Lakeshore Road, Burlington, ON L7R 3P9</span>
-                        </div>
-                        <div class="detail-item">
-                            <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                            </svg>
-                            <span class="detail-text">(905) 555-0125</span>
-                        </div>
-                        <div class="detail-item">
-                            <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            <span class="detail-text">Opening Spring 2026</span>
+
+                    <!-- Slide 2 -->
+                    <div class="cs-slide">
+                        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/recess-club-photo-1.jpeg" alt="Revibe Markham" width="800" height="600" loading="lazy" decoding="async"/>
+                        <!-- Mobile info (inside slide) -->
+                        <div class="cs-mobile-info">
+                            <h3 class="cs-location-name">Markham</h3>
+                            <ul class="cs-contact-list">
+                                <li>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                    220 Torbay Rd, Markham, ON L3R 1G6
+                                </li>
+                                <li>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.92-1.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 15.1l.42 1.82z"/></svg>
+                                    (905) 783-8423
+                                </li>
+                                <li>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                    <span>Mon–Fri: 9:00 AM – 7:00 PM<br>Sat: 10:00 AM – 4:00 PM</span>
+                                </li>
+                            </ul>
+                            <div class="cs-services">
+                                <span class="cs-services-label">Services</span>
+                                <div class="cs-services-tags">
+                                    <a href="#" class="cs-tag">Physiotherapy</a>
+                                    <a href="#" class="cs-tag">Chiropractic</a>
+                                    <a href="#" class="cs-tag">Massage Therapy</a>
+                                    <a href="#" class="cs-tag">Naturopathic</a>
+                                    <a href="#" class="cs-tag">Osteopathy</a>
+                                </div>
+                            </div>
+                            <hr class="cs-card-divider" />
+                            <button class="cs-btn-book">Book Appointment</button>
                         </div>
                     </div>
-                    <div class="location-actions">
-                        <button class="action-btn">Join Waitlist</button>
-                        <button class="action-btn">Get Directions</button>
-                    </div>
+
                 </div>
             </div>
 
-            <!-- Right: Map -->
-            <div class="map-container">
-                <div class="map-placeholder">
-                    <div class="map-overlay-text">Interactive Map</div>
-                    <div class="map-marker marker-1"></div>
-                    <div class="map-marker marker-2"></div>
-                    <div class="map-marker marker-3"></div>
-                    <div class="map-legend">
-                        <div class="legend-title">Locations</div>
-                        <div class="legend-item">
-                            <span class="legend-dot"></span>
-                            <span>Active Clinics</span>
+            <!-- Desktop card (fixed, outside track) -->
+            <div class="cs-location-card">
+                <div class="cs-card-content active" data-index="0">
+                    <h3 class="cs-location-name">Mississauga</h3>
+                    <ul class="cs-contact-list">
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            2290 Dixie Rd, Mississauga, ON L4Y 1Z4
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.92-1.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 15.1l.42 1.82z"/></svg>
+                            (289) 806-5123
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            <span>Mon–Fri: 9:00 AM – 7:00 PM<br>Sat: 10:00 AM – 4:00 PM</span>
+                        </li>
+                    </ul>
+                    <div class="cs-services">
+                        <span class="cs-services-label">Services</span>
+                        <div class="cs-services-tags">
+                            <a href="#" class="cs-tag">Physiotherapy</a>
+                            <a href="#" class="cs-tag">Chiropractic</a>
+                            <a href="#" class="cs-tag">Massage Therapy</a>
+                            <a href="#" class="cs-tag">Naturopathic</a>
+                            <a href="#" class="cs-tag">Osteopathy</a>
                         </div>
                     </div>
+                    <hr class="cs-card-divider" />
+                    <button class="cs-btn-book">Book Appointment</button>
+                </div>
+                <div class="cs-card-content" data-index="1">
+                    <h3 class="cs-location-name">Markham</h3>
+                    <ul class="cs-contact-list">
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            220 Torbay Rd, Markham, ON L3R 1G6
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.92-1.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 15.1l.42 1.82z"/></svg>
+                            (905) 783-8423
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            <span>Mon–Fri: 9:00 AM – 7:00 PM<br>Sat: 10:00 AM – 4:00 PM</span>
+                        </li>
+                    </ul>
+                    <div class="cs-services">
+                        <span class="cs-services-label">Services</span>
+                        <div class="cs-services-tags">
+                            <a href="#" class="cs-tag">Physiotherapy</a>
+                            <a href="#" class="cs-tag">Chiropractic</a>
+                            <a href="#" class="cs-tag">Massage Therapy</a>
+                            <a href="#" class="cs-tag">Naturopathic</a>
+                            <a href="#" class="cs-tag">Osteopathy</a>
+                        </div>
+                    </div>
+                    <hr class="cs-card-divider" />
+                    <button class="cs-btn-book">Book Appointment</button>
                 </div>
             </div>
-        </div>
-    </section>
+
+        </div><!-- end carousel-outer -->
+
+    </div>
+</section>
+
+<script>
+(function () {
+    const track = document.querySelector('#locations .cs-carousel-track');
+    const slides = document.querySelectorAll('#locations .cs-slide');
+    const contents = document.querySelectorAll('#locations .cs-card-content');
+    const currentEl = document.querySelector('#locations .cs-current');
+    const totalEl = document.querySelector('#locations .cs-total');
+    let idx = 0;
+
+    totalEl.textContent = slides.length;
+
+    function goTo(n) {
+        const next = (n + slides.length) % slides.length;
+        slides[idx].classList.remove('active');
+        slides[next].classList.add('active');
+        contents[idx].classList.remove('active');
+        contents[next].classList.add('active');
+        const slideWidth = slides[0].offsetWidth + 16;
+        track.style.transform = `translateX(-${next * slideWidth}px)`;
+        idx = next;
+        currentEl.textContent = idx + 1;
+    }
+
+    document.querySelector('#locations .cs-prev').addEventListener('click', () => goTo(idx - 1));
+    document.querySelector('#locations .cs-next').addEventListener('click', () => goTo(idx + 1));
+
+    // Touch drag support
+let startX = 0;
+let isDragging = false;
+
+track.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+}, { passive: true });
+
+track.addEventListener('touchend', (e) => {
+    if (!isDragging) return;
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+        diff > 0 ? goTo(idx + 1) : goTo(idx - 1);
+    }
+    isDragging = false;
+});
+})();
+</script>
 
 
 <!-- GSAP CDN -->
