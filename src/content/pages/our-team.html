@@ -1,0 +1,667 @@
+---
+title: "Our Team | Revibe"
+description: "Meta description for the page"
+permalink: "/our-team/"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/our-team.css">
+    <script defer src="/assets/js/our-team.js"></script>
+
+{% endblock %}
+
+{% block body %}
+
+
+
+<!-- ============================================ -->
+<!--                   Gallery                    -->
+<!-- ============================================ -->
+
+<section id="gallery-405">
+    <div class="cs-container">
+        <div class="cs-content">
+            <h1 class="cs-title">Our Team</h1>
+
+            <!-- ── Filter Bar ── -->
+            <div class="cs-filter-bar">
+                <button class="cs-reset-btn" id="cs-reset-btn">Reset filters</button>
+                <div class="cs-filter-dropdowns">
+
+                    <!-- City dropdown -->
+                    <div class="cs-filter-dropdown" data-filter-type="city">
+                        <div class="cs-filter-selected">
+                            <span class="cs-filter-label">Choose your Service in</span>
+                            <span class="cs-filter-arrow">&#8595;</span>
+                        </div>
+                        <ul class="cs-filter-options">
+                            <li class="cs-filter-option cs-active" data-value="mississauga">Mississauga</li>
+                            <li class="cs-filter-option" data-value="markham">Markham</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service dropdown -->
+                    <div class="cs-filter-dropdown" data-filter-type="service" data-city="mississauga">
+                        <div class="cs-filter-selected">
+                            <span class="cs-filter-label">All Services</span>
+                            <span class="cs-filter-arrow">&#8595;</span>
+                        </div>
+                        <ul class="cs-filter-options" data-city="mississauga">
+                            <li class="cs-filter-option cs-active" data-filter="all">All Services</li>
+                            <li class="cs-filter-option" data-filter="physiotherapy">Physiotherapy</li>
+                            <li class="cs-filter-option" data-filter="chiropractic">Chiropractic</li>
+                            <li class="cs-filter-option" data-filter="massage">Massage</li>
+                            <li class="cs-filter-option" data-filter="ostheopathy">Osteopathy</li>
+                            <li class="cs-filter-option" data-filter="naturopathic-doctor">Naturopathic Doctor</li>
+                            <li class="cs-filter-option" data-filter="performance">Performance</li>
+                        </ul>
+                        <ul class="cs-filter-options cs-hidden" data-city="markham">
+                            <li class="cs-filter-option cs-active" data-filter="all">All Services</li>
+                            <li class="cs-filter-option" data-filter="physiotherapy">Physiotherapy</li>
+                            <li class="cs-filter-option" data-filter="chiropractic">Chiropractic</li>
+                            <li class="cs-filter-option" data-filter="massage">Massage</li>
+                            <li class="cs-filter-option" data-filter="ostheopathy">Osteopathy</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ── MISSISSAUGA GALLERIES ── -->
+        <div class="cs-gallery-wrapper" data-city="mississauga">
+
+            <!--Gallery 1 - All-->
+            <ul class="cs-gallery" data-category="all">
+                <li class="cs-item">
+                    <a href="/anesto-charles" style="text-decoration: none;">
+                        <picture class="cs-picture">
+                            <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-17-of-20-scaled.jpg.webp">
+                            <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-17-of-20-scaled.jpg.webp">
+                            <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-17-of-20-scaled.jpg.webp" alt="Anesto Charles" width="305" height="338">
+                        </picture>
+                        <div class="cs-info">
+                            <span class="cs-name">ANESTO CHARLES</span>
+                            <span class="cs-job">OSTEOPATHIC MANUAL PRACTITIONER</span>
+                            <div class="cs-social-group">
+                                <a href="https://www.instagram.com/__anesto/" target="_blank" class="cs-link" aria-label="visit instagram">
+                                    <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12">
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cs-item">
+                    <a href="/joshua-alferez" style="text-decoration: none;">
+                        <picture class="cs-picture">
+                            <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-18-of-20-1365x2048.jpg.webp">
+                            <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-18-of-20-1365x2048.jpg.webp">
+                            <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-18-of-20-1365x2048.jpg.webp" alt="Joshua Alferez" width="305" height="338">
+                        </picture>
+                        <div class="cs-info">
+                            <span class="cs-name">JOSHUA ALFEREZ</span>
+                            <span class="cs-job">MASSAGE THERAPIST</span>
+                            <div class="cs-social-group">
+                                <a href="https://www.instagram.com/joshprehab" target="_blank" class="cs-link" aria-label="visit instagram">
+                                    <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12">
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cs-item">
+                    <a href="/erica-runnalls" style="text-decoration: none;">
+                        <picture class="cs-picture">
+                            <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-5-of-20-1365x2048.jpg.webp">
+                            <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-5-of-20-1365x2048.jpg.webp">
+                            <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-5-of-20-1365x2048.jpg.webp" alt="Erica Runnalls" width="305" height="338">
+                        </picture>
+                        <div class="cs-info">
+                            <span class="cs-name">ERICA RUNNALLS</span>
+                            <span class="cs-job">OSTEOPATHIC MANUAL PRACTITIONER</span>
+                            <div class="cs-social-group">
+                                <a href="https://www.instagram.com/e__osteopathy/" target="_blank" class="cs-link" aria-label="visit instagram">
+                                    <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12">
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cs-item">
+                    <a href="/winson-cheong" style="text-decoration: none;">
+                        <picture class="cs-picture">
+                            <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-3-of-20-1365x2048.jpg">
+                            <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-3-of-20-1365x2048.jpg">
+                            <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-3-of-20-1365x2048.jpg" alt="Winson Cheong" width="305" height="338">
+                        </picture>
+                        <div class="cs-info">
+                            <span class="cs-name">WINSON CHEONG</span>
+                            <span class="cs-job">MASSAGE THERAPIST</span>
+                            <div class="cs-social-group">
+                                <a href="https://www.instagram.com/winson_thermt/" target="_blank" class="cs-link" aria-label="visit instagram">
+                                    <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12">
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cs-item">
+                    <a href="/dr-trevor-dsouza" style="text-decoration: none;">
+                        <picture class="cs-picture">
+                            <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-1-of-20-scaled.jpg">
+                            <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-1-of-20-scaled.jpg">
+                            <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-1-of-20-scaled.jpg" alt="Dr. Trevor D'Souza" width="305" height="338">
+                        </picture>
+                        <div class="cs-info">
+                            <span class="cs-name">DR. TREVOR D'SOUZA</span>
+                            <span class="cs-job">CHIROPRACTOR</span>
+                            <div class="cs-social-group">
+                                <a href="https://www.instagram.com/dr.trevordsouza/" target="_blank" class="cs-link" aria-label="visit instagram">
+                                    <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12">
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cs-item">
+                    <a href="/morgan-millard" style="text-decoration: none;">
+                        <picture class="cs-picture">
+                            <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Headshots_Morgan-1-of-1-1365x2048.jpg">
+                            <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Headshots_Morgan-1-of-1-1365x2048.jpg">
+                            <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Headshots_Morgan-1-of-1-1365x2048.jpg" alt="Dr. Morgan Millard" width="305" height="338">
+                        </picture>
+                        <div class="cs-info">
+                            <span class="cs-name">DR. MORGAN MILLARD</span>
+                            <span class="cs-job">CHIROPRACTOR</span>
+                            <div class="cs-social-group">
+                                <a href="https://www.instagram.com/dr.morganmillard/" target="_blank" class="cs-link" aria-label="visit instagram">
+                                    <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12">
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cs-item">
+                    <a href="/scott-french" style="text-decoration: none;">
+                        <picture class="cs-picture">
+                            <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-6-of-20-1365x2048.jpg.webp">
+                            <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-6-of-20-1365x2048.jpg.webp">
+                            <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-6-of-20-1365x2048.jpg.webp" alt="Scott French" width="305" height="338">
+                        </picture>
+                        <div class="cs-info">
+                            <span class="cs-name">SCOTT FRENCH</span>
+                            <span class="cs-job">PHYSIOTHERAPIST</span>
+                            <div class="cs-social-group">
+                                <a href="https://www.instagram.com/scottrehab/" target="_blank" class="cs-link" aria-label="visit instagram">
+                                    <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12">
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cs-item">
+                    <a href="/mitalee-dalvi" style="text-decoration: none;">
+                        <picture class="cs-picture">
+                            <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/mitalee-dalvi.jpeg">
+                            <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/mitalee-dalvi.jpeg">
+                            <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/mitalee-dalvi.jpeg" alt="Mitalee Dalvi" width="305" height="338">
+                        </picture>
+                        <div class="cs-info">
+                            <span class="cs-name">MITALEE DALVI</span>
+                            <span class="cs-job">PHYSIOTHERAPIST</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="cs-item">
+                    <a href="/dr-jennifer-tang" style="text-decoration: none;">
+                        <picture class="cs-picture">
+                            <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Headshots_DEC19-1-of-3-1365x2048.jpg">
+                            <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Headshots_DEC19-1-of-3-1365x2048.jpg">
+                            <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Headshots_DEC19-1-of-3-1365x2048.jpg" alt="Dr. Jennifer Tang" width="305" height="338">
+                        </picture>
+                        <div class="cs-info">
+                            <span class="cs-name">DR. JENNIFER TANG</span>
+                            <span class="cs-job">NATUROPATHIC DOCTOR</span>
+                            <div class="cs-social-group">
+                                <a href="https://www.instagram.com/dr.jennifertang/" target="_blank" class="cs-link" aria-label="visit instagram">
+                                    <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12">
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cs-item">
+                    <a href="/lisbeth-bitar-patino" style="text-decoration: none;">
+                        <picture class="cs-picture">
+                            <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/lisbeth-headshot-1.jpeg">
+                            <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/lisbeth-headshot-1.jpeg">
+                            <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/lisbeth-headshot-1.jpeg" alt="Lisbeth Bitar Patino" width="305" height="338">
+                        </picture>
+                        <div class="cs-info">
+                            <span class="cs-name">LISBETH BITAR PATINO</span>
+                            <span class="cs-job">NATUROPATHIC DOCTOR</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="cs-item">
+                    <a href="/vincent-nguyen" style="text-decoration: none;">
+                        <picture class="cs-picture">
+                            <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/vincent-headshot.jpg">
+                            <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/vincent-headshot.jpg">
+                            <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/vincent-headshot.jpg" alt="Vincent Nguyen" width="305" height="338">
+                        </picture>
+                        <div class="cs-info">
+                            <span class="cs-name">VINCENT NGUYEN</span>
+                            <span class="cs-job">MASSAGE THERAPIST</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="cs-item">
+                    <a href="/zeeruk-rehman" style="text-decoration: none;">
+                        <picture class="cs-picture">
+                            <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-7-of-20-1365x2048.jpg">
+                            <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-7-of-20-1365x2048.jpg">
+                            <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-7-of-20-1365x2048.jpg" alt="Zeeruk Rehman" width="305" height="338">
+                        </picture>
+                        <div class="cs-info">
+                            <span class="cs-name">ZEERUK REHMAN</span>
+                            <span class="cs-job">PHYSIOTHERAPIST</span>
+                            <div class="cs-social-group">
+                                <a href="https://www.instagram.com/zrkperformance/" target="_blank" class="cs-link" aria-label="visit instagram">
+                                    <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12">
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cs-item">
+                    <a href="/kyle-sunga" style="text-decoration: none;">
+                        <picture class="cs-picture">
+                            <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-10-of-20-scaled.jpg">
+                            <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-10-of-20-scaled.jpg">
+                            <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-10-of-20-scaled.jpg" alt="Kyle Sunga" width="305" height="338">
+                        </picture>
+                        <div class="cs-info">
+                            <span class="cs-name">KYLE SUNGA</span>
+                            <span class="cs-job">MASSAGE THERAPIST</span>
+                            <div class="cs-social-group">
+                                <a href="https://www.instagram.com/zsupersunga/" target="_blank" class="cs-link" aria-label="visit instagram">
+                                    <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12">
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cs-item">
+                    <a href="/rachel-murray" style="text-decoration: none;">
+                        <picture class="cs-picture">
+                            <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-16-of-20-scaled.jpg">
+                            <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-16-of-20-scaled.jpg">
+                            <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-16-of-20-scaled.jpg" alt="Rachel Murray" width="305" height="338">
+                        </picture>
+                        <div class="cs-info">
+                            <span class="cs-name">RACHEL MURRAY</span>
+                            <span class="cs-job">MASSAGE THERAPIST</span>
+                            <div class="cs-social-group">
+                                <a href="https://www.instagram.com/rehabwithrachel/" target="_blank" class="cs-link" aria-label="visit instagram">
+                                    <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12">
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cs-item">
+                    <a href="/emily-wilson" style="text-decoration: none;">
+                        <picture class="cs-picture">
+                            <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Headshots_DEC19-2-of-3-1365x2048.jpg">
+                            <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Headshots_DEC19-2-of-3-1365x2048.jpg">
+                            <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Headshots_DEC19-2-of-3-1365x2048.jpg" alt="Emily Wilson" width="305" height="338">
+                        </picture>
+                        <div class="cs-info">
+                            <span class="cs-name">EMILY WILSON</span>
+                            <span class="cs-job">OSTEOPATHIC MANUAL PRACTITIONER</span>
+                            <div class="cs-social-group">
+                                <a href="https://www.instagram.com/thriveosteopathy/" target="_blank" class="cs-link" aria-label="visit instagram">
+                                    <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12">
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cs-item">
+                    <a href="/christine-barnuevo" style="text-decoration: none;">
+                        <picture class="cs-picture">
+                            <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots%20(9%20of%2020).jpg">
+                            <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots%20(9%20of%2020).jpg">
+                            <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots%20(9%20of%2020).jpg" alt="Christine Barnuevo" width="305" height="338">
+                        </picture>
+                        <div class="cs-info">
+                            <span class="cs-name">CHRISTINE BARNUEVO</span>
+                            <span class="cs-job">PELVIC FLOOR PHYSIOTHERAPIST</span>
+                            <div class="cs-social-group">
+                                <a href="https://www.instagram.com/chreator/?hl=en" target="_blank" class="cs-link" aria-label="visit instagram">
+                                    <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12">
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cs-item">
+                    <a href="/gauri-khandke" style="text-decoration: none;">
+                        <picture class="cs-picture">
+                            <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-20-of-20-scaled.jpg">
+                            <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-20-of-20-scaled.jpg">
+                            <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-20-of-20-scaled.jpg" alt="Gauri Khandke" width="305" height="338">
+                        </picture>
+                        <div class="cs-info">
+                            <span class="cs-name">GAURI KHANDKE</span>
+                            <span class="cs-job">MASSAGE THERAPIST</span>
+                            <div class="cs-social-group">
+                                <a href="https://www.instagram.com/gauri_rmt" target="_blank" class="cs-link" aria-label="visit instagram">
+                                    <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12">
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="cs-item">
+                    <picture class="cs-picture">
+                        <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/michael-ross.jpeg">
+                        <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/michael-ross.jpeg">
+                        <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/michael-ross.jpeg" alt="Michael Ross" width="305" height="338">
+                    </picture>
+                    <div class="cs-info">
+                        <span class="cs-name">MICHAEL ROSS</span>
+                        <span class="cs-job">PHYSIOTHERAPIST</span>
+                        <div class="cs-social-group">
+                            <a href="https://www.instagram.com/motionwmike" target="_blank" class="cs-link" aria-label="visit instagram">
+                                <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12">
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="cs-item">
+                    <a href="/michael-leung" style="text-decoration: none;">
+                        <picture class="cs-picture">
+                            <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/WhatsApp%20Image%202025-03-14%20at%202.03.24%20PM.jpeg">
+                            <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/WhatsApp%20Image%202025-03-14%20at%202.03.24%20PM.jpeg">
+                            <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/WhatsApp%20Image%202025-03-14%20at%202.03.24%20PM.jpeg" alt="Michael Leung" width="305" height="338">
+                        </picture>
+                        <div class="cs-info">
+                            <span class="cs-name">MICHAEL LEUNG</span>
+                            <span class="cs-job">PHYSIOTHERAPIST</span>
+                            <div class="cs-social-group">
+                                <a href="https://www.instagram.com/physio.mic/" target="_blank" class="cs-link" aria-label="visit instagram">
+                                    <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12">
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+
+            <!--Gallery 2 - Physiotherapy-->
+            <ul class="cs-gallery cs-hidden" data-category="physiotherapy">
+                <li class="cs-item"><a href="/scott-french" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-6-of-20-1365x2048.jpg.webp"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-6-of-20-1365x2048.jpg.webp"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-6-of-20-1365x2048.jpg.webp" alt="Scott French" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">SCOTT FRENCH</span><span class="cs-job">PHYSIOTHERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/scottrehab/" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/michael-leung" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/WhatsApp%20Image%202025-03-14%20at%202.03.24%20PM.jpeg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/WhatsApp%20Image%202025-03-14%20at%202.03.24%20PM.jpeg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/WhatsApp%20Image%202025-03-14%20at%202.03.24%20PM.jpeg" alt="Michael Leung" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">MICHAEL LEUNG</span><span class="cs-job">PHYSIOTHERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/physio.mic/" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/mitalee-dalvi" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/mitalee-dalvi.jpeg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/mitalee-dalvi.jpeg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/mitalee-dalvi.jpeg" alt="Mitalee Dalvi" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">MITALEE DALVI</span><span class="cs-job">PHYSIOTHERAPIST</span></div></a></li>
+                <li class="cs-item"><a href="/zeeruk-rehman" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-7-of-20-1365x2048.jpg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-7-of-20-1365x2048.jpg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-7-of-20-1365x2048.jpg" alt="Zeeruk Rehman" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">ZEERUK REHMAN</span><span class="cs-job">PHYSIOTHERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/zrkperformance/" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/christine-barnuevo" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots%20(9%20of%2020).jpg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots%20(9%20of%2020).jpg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots%20(9%20of%2020).jpg" alt="Christine Barnuevo" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">CHRISTINE BARNUEVO</span><span class="cs-job">PELVIC FLOOR PHYSIOTHERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/chreator/?hl=en" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/michael-ross.jpeg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/michael-ross.jpeg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/michael-ross.jpeg" alt="Michael Ross" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">MICHAEL ROSS</span><span class="cs-job">PHYSIOTHERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/motionwmike" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></li>
+            </ul>
+
+            <!--Gallery 3 - Chiropractic-->
+            <ul class="cs-gallery cs-hidden" data-category="chiropractic">
+                <li class="cs-item"><a href="/dr-trevor-dsouza" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-1-of-20-scaled.jpg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-1-of-20-scaled.jpg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-1-of-20-scaled.jpg" alt="Dr. Trevor D'Souza" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">DR. TREVOR D'SOUZA</span><span class="cs-job">CHIROPRACTOR</span><div class="cs-social-group"><a href="https://www.instagram.com/dr.trevordsouza/" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/morgan-millard" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Headshots_Morgan-1-of-1-1365x2048.jpg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Headshots_Morgan-1-of-1-1365x2048.jpg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Headshots_Morgan-1-of-1-1365x2048.jpg" alt="Dr. Morgan Millard" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">DR. MORGAN MILLARD</span><span class="cs-job">CHIROPRACTOR</span><div class="cs-social-group"><a href="https://www.instagram.com/dr.morganmillard/" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+            </ul>
+
+            <!--Gallery 4 - Massage-->
+            <ul class="cs-gallery cs-hidden" data-category="massage">
+                <li class="cs-item"><a href="/joshua-alferez" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-18-of-20-1365x2048.jpg.webp"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-18-of-20-1365x2048.jpg.webp"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-18-of-20-1365x2048.jpg.webp" alt="Joshua Alferez" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">JOSHUA ALFEREZ</span><span class="cs-job">MASSAGE THERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/joshprehab" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/winson-cheong" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-3-of-20-1365x2048.jpg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-3-of-20-1365x2048.jpg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-3-of-20-1365x2048.jpg" alt="Winson Cheong" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">WINSON CHEONG</span><span class="cs-job">MASSAGE THERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/winson_thermt/" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/kyle-sunga" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-10-of-20-scaled.jpg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-10-of-20-scaled.jpg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-10-of-20-scaled.jpg" alt="Kyle Sunga" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">KYLE SUNGA</span><span class="cs-job">MASSAGE THERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/zsupersunga/" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/rachel-murray" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-16-of-20-scaled.jpg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-16-of-20-scaled.jpg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-16-of-20-scaled.jpg" alt="Rachel Murray" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">RACHEL MURRAY</span><span class="cs-job">MASSAGE THERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/rehabwithrachel/" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/vincent-nguyen" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/vincent-headshot.jpg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/vincent-headshot.jpg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/vincent-headshot.jpg" alt="Vincent Nguyen" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">VINCENT NGUYEN</span><span class="cs-job">MASSAGE THERAPIST</span></div></a></li>
+                <li class="cs-item"><a href="/gauri-khandke" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-20-of-20-scaled.jpg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-20-of-20-scaled.jpg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-20-of-20-scaled.jpg" alt="Gauri Khandke" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">GAURI KHANDKE</span><span class="cs-job">MASSAGE THERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/gauri_rmt" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+            </ul>
+
+            <!--Gallery 5 - Osteopathy-->
+            <ul class="cs-gallery cs-hidden" data-category="ostheopathy">
+                <li class="cs-item"><a href="/anesto-charles" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-17-of-20-scaled.jpg.webp"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-17-of-20-scaled.jpg.webp"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-17-of-20-scaled.jpg.webp" alt="Anesto Charles" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">ANESTO CHARLES</span><span class="cs-job">OSTEOPATHIC MANUAL PRACTITIONER</span><div class="cs-social-group"><a href="https://www.instagram.com/__anesto/" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/erica-runnalls" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-5-of-20-1365x2048.jpg.webp"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-5-of-20-1365x2048.jpg.webp"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-5-of-20-1365x2048.jpg.webp" alt="Erica Runnalls" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">ERICA RUNNALLS</span><span class="cs-job">OSTEOPATHIC MANUAL PRACTITIONER</span><div class="cs-social-group"><a href="https://www.instagram.com/e__osteopathy/" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/emily-wilson" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Headshots_DEC19-2-of-3-1365x2048.jpg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Headshots_DEC19-2-of-3-1365x2048.jpg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Headshots_DEC19-2-of-3-1365x2048.jpg" alt="Emily Wilson" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">EMILY WILSON</span><span class="cs-job">OSTEOPATHIC MANUAL PRACTITIONER</span><div class="cs-social-group"><a href="https://www.instagram.com/thriveosteopathy/" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+            </ul>
+
+            <!--Gallery 6 - Naturopathic Doctor-->
+            <ul class="cs-gallery cs-hidden" data-category="naturopathic-doctor">
+                <li class="cs-item"><a href="/dr-jennifer-tang" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Headshots_DEC19-1-of-3-1365x2048.jpg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Headshots_DEC19-1-of-3-1365x2048.jpg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_Headshots_DEC19-1-of-3-1365x2048.jpg" alt="Dr. Jennifer Tang" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">DR. JENNIFER TANG</span><span class="cs-job">NATUROPATHIC DOCTOR</span><div class="cs-social-group"><a href="https://www.instagram.com/dr.jennifertang/" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/lisbeth-bitar-patino" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/lisbeth-headshot-1.jpeg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/lisbeth-headshot-1.jpeg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/lisbeth-headshot-1.jpeg" alt="Lisbeth Bitar Patino" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">LISBETH BITAR PATINO</span><span class="cs-job">NATUROPATHIC DOCTOR</span></div></a></li>
+            </ul>
+
+            <!--Gallery 7 - Performance-->
+            <ul class="cs-gallery cs-hidden" data-category="performance">
+                <li class="cs-item"><a href="/joshua-alferez" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-18-of-20-1365x2048.jpg.webp"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-18-of-20-1365x2048.jpg.webp"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-18-of-20-1365x2048.jpg.webp" alt="Joshua Alferez" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">JOSHUA ALFEREZ</span><span class="cs-job">MASSAGE THERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/joshprehab" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/kyle-sunga" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-10-of-20-scaled.jpg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-10-of-20-scaled.jpg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-10-of-20-scaled.jpg" alt="Kyle Sunga" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">KYLE SUNGA</span><span class="cs-job">MASSAGE THERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/zsupersunga/" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/zeeruk-rehman" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-7-of-20-1365x2048.jpg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-7-of-20-1365x2048.jpg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-7-of-20-1365x2048.jpg" alt="Zeeruk Rehman" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">ZEERUK REHMAN</span><span class="cs-job">PHYSIOTHERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/zrkperformance/" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+            </ul>
+        </div>
+
+        <!-- ── MARKHAM GALLERIES ── -->
+        <div class="cs-gallery-wrapper" data-city="markham">
+            <ul class="cs-gallery" data-category="all">
+                <li class="cs-item"><a href="/joshua-alferez" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-18-of-20-1365x2048.jpg.webp"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-18-of-20-1365x2048.jpg.webp"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-18-of-20-1365x2048.jpg.webp" alt="Joshua Alferez" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">JOSHUA ALFEREZ</span><span class="cs-job">MASSAGE THERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/joshprehab" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/michael-leung" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/WhatsApp%20Image%202025-03-14%20at%202.03.24%20PM.jpeg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/WhatsApp%20Image%202025-03-14%20at%202.03.24%20PM.jpeg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/WhatsApp%20Image%202025-03-14%20at%202.03.24%20PM.jpeg" alt="Michael Leung" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">MICHAEL LEUNG</span><span class="cs-job">PHYSIOTHERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/physio.mic/" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/joseph-deleon" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/josedeleon.jpeg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/josedeleon.jpeg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/josedeleon.jpeg" alt="Joseph De Leon" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">JOSEPH DE LEON</span><span class="cs-job">MASSAGE THERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/rcvrwithjoey/" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/angelii-mercurius" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/angeli.jpeg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/angeli.jpeg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/angeli.jpeg" alt="Angelii Mercurius" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">ANGELII MERCURIUS</span><span class="cs-job">MASSAGE THERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/angeliibless" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/jaxon-forbes" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="/assets/images/default-profile-pic.png"><source media="(min-width: 601px)" srcset="/assets/images/default-profile-pic.png"><img loading="lazy" decoding="async" src="/assets/images/default-profile-pic.png" alt="Jaxon Forbes" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">JAXON FORBES</span><span class="cs-job">MASSAGE THERAPIST</span></div></a></li>
+            </ul>
+            <ul class="cs-gallery cs-hidden" data-category="physiotherapy">
+                <li class="cs-item"><a href="/michael-leung" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/WhatsApp%20Image%202025-03-14%20at%202.03.24%20PM.jpeg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/WhatsApp%20Image%202025-03-14%20at%202.03.24%20PM.jpeg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/WhatsApp%20Image%202025-03-14%20at%202.03.24%20PM.jpeg" alt="Michael Leung" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">MICHAEL LEUNG</span><span class="cs-job">PHYSIOTHERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/physio.mic/" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+            </ul>
+            <ul class="cs-gallery cs-hidden" data-category="massage">
+                <li class="cs-item"><a href="/joshua-alferez" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-18-of-20-1365x2048.jpg.webp"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-18-of-20-1365x2048.jpg.webp"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-18-of-20-1365x2048.jpg.webp" alt="Joshua Alferez" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">JOSHUA ALFEREZ</span><span class="cs-job">MASSAGE THERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/joshprehab" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/joseph-deleon" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/josedeleon.jpeg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/josedeleon.jpeg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/josedeleon.jpeg" alt="Joseph De Leon" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">JOSEPH DE LEON</span><span class="cs-job">MASSAGE THERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/rcvrwithjoey/" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/angelii-mercurius" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/angeli.jpeg"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/angeli.jpeg"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/angeli.jpeg" alt="Angelii Mercurius" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">ANGELII MERCURIUS</span><span class="cs-job">MASSAGE THERAPIST</span><div class="cs-social-group"><a href="https://www.instagram.com/angeliibless" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+                <li class="cs-item"><a href="/jaxon-forbes" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="/assets/images/default-profile-pic.png"><source media="(min-width: 601px)" srcset="/assets/images/default-profile-pic.png"><img loading="lazy" decoding="async" src="/assets/images/default-profile-pic.png" alt="Jaxon Forbes" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">JAXON FORBES</span><span class="cs-job">MASSAGE THERAPIST</span></div></a></li>
+            </ul>
+            <ul class="cs-gallery cs-hidden" data-category="ostheopathy">
+                <li class="cs-item"><a href="/anesto-charles" style="text-decoration: none;"><picture class="cs-picture"><source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-17-of-20-scaled.jpg.webp"><source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-17-of-20-scaled.jpg.webp"><img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_website_Janeapp_Headshots-17-of-20-scaled.jpg.webp" alt="Anesto Charles" width="305" height="338"></picture><div class="cs-info"><span class="cs-name">ANESTO CHARLES</span><span class="cs-job">OSTEOPATHIC MANUAL PRACTITIONER</span><div class="cs-social-group"><a href="https://www.instagram.com/__anesto/" target="_blank" class="cs-link" aria-label="visit instagram"><img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/instagram-tax2.svg" alt="instagram" width="12" height="12"></a></div></div></a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+                                             
+
+                                
+<script>(function () {
+    'use strict';
+
+    /* ── State ── */
+    let activeCity    = 'mississauga';
+    let activeService = 'all';
+
+    /* ── Elements ── */
+    const cityDropdown    = document.querySelector('.cs-filter-dropdown[data-filter-type="city"]');
+    const serviceDropdown = document.querySelector('.cs-filter-dropdown[data-filter-type="service"]');
+    const resetBtn        = document.getElementById('cs-reset-btn');
+
+    if (!cityDropdown || !serviceDropdown) return;
+
+    const cityLabel    = cityDropdown.querySelector('.cs-filter-label');
+    const serviceLabel = serviceDropdown.querySelector('.cs-filter-label');
+
+    /* ============================================================
+       HELPERS
+    ============================================================ */
+
+    function closeAll() {
+        document.querySelectorAll('.cs-filter-dropdown.cs-open').forEach(function (d) {
+            d.classList.remove('cs-open');
+        });
+    }
+
+    function toggleDropdown(dropdown) {
+        var isOpen = dropdown.classList.contains('cs-open');
+        closeAll();
+        if (!isOpen) dropdown.classList.add('cs-open');
+    }
+
+    /* ============================================================
+       GALLERY SWITCHING
+    ============================================================ */
+
+    function applyFilters() {
+        /* Hide all wrappers first */
+        document.querySelectorAll('.cs-gallery-wrapper').forEach(function (w) {
+            w.classList.add('cs-hidden');
+        });
+
+        /* Show the active city wrapper */
+        var wrapper = document.querySelector('.cs-gallery-wrapper[data-city="' + activeCity + '"]');
+        if (!wrapper) return;
+        wrapper.classList.remove('cs-hidden');
+
+        /* Hide all galleries in that wrapper */
+        wrapper.querySelectorAll('.cs-gallery').forEach(function (g) {
+            g.classList.add('cs-hidden');
+        });
+
+        /* Show the matching category */
+        var target = wrapper.querySelector('.cs-gallery[data-category="' + activeService + '"]');
+        if (target) target.classList.remove('cs-hidden');
+    }
+
+    /* ============================================================
+       CITY DROPDOWN
+    ============================================================ */
+
+    cityDropdown.querySelector('.cs-filter-selected').addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleDropdown(cityDropdown);
+    });
+
+    cityDropdown.querySelectorAll('.cs-filter-option').forEach(function (opt) {
+        opt.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var val = opt.dataset.value;
+            if (!val) return;
+
+            /* Update city state */
+            activeCity = val;
+            cityLabel.textContent = opt.textContent.trim();
+
+            /* Mark active */
+            cityDropdown.querySelectorAll('.cs-filter-option').forEach(function (o) {
+                o.classList.remove('cs-active');
+            });
+            opt.classList.add('cs-active');
+
+            /* Swap service options list */
+            serviceDropdown.querySelectorAll('.cs-filter-options').forEach(function (ul) {
+                ul.classList.add('cs-hidden');
+            });
+            var newOpts = serviceDropdown.querySelector('.cs-filter-options[data-city="' + activeCity + '"]');
+            if (newOpts) newOpts.classList.remove('cs-hidden');
+
+            /* Reset service to "all" when city changes */
+            activeService = 'all';
+            serviceLabel.textContent = 'All Services';
+            if (newOpts) {
+                newOpts.querySelectorAll('.cs-filter-option').forEach(function (o) {
+                    o.classList.remove('cs-active');
+                });
+                var allOpt = newOpts.querySelector('.cs-filter-option[data-filter="all"]');
+                if (allOpt) allOpt.classList.add('cs-active');
+            }
+
+            closeAll();
+            applyFilters();
+        });
+    });
+
+    /* ============================================================
+       SERVICE DROPDOWN
+    ============================================================ */
+
+    serviceDropdown.querySelector('.cs-filter-selected').addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleDropdown(serviceDropdown);
+    });
+
+    serviceDropdown.querySelectorAll('.cs-filter-option').forEach(function (opt) {
+        opt.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var val = opt.dataset.filter;
+            if (!val) return;
+
+            activeService = val;
+            serviceLabel.textContent = opt.textContent.trim();
+
+            /* Mark active within the current city's options list only */
+            var currentList = serviceDropdown.querySelector('.cs-filter-options[data-city="' + activeCity + '"]');
+            if (currentList) {
+                currentList.querySelectorAll('.cs-filter-option').forEach(function (o) {
+                    o.classList.remove('cs-active');
+                });
+            }
+            opt.classList.add('cs-active');
+
+            closeAll();
+            applyFilters();
+        });
+    });
+
+    /* ============================================================
+       RESET BUTTON
+    ============================================================ */
+
+    resetBtn.addEventListener('click', function () {
+        activeCity    = 'mississauga';
+        activeService = 'all';
+
+        /* Reset city label + active */
+        cityLabel.textContent = 'Choose your Service in';
+        cityDropdown.querySelectorAll('.cs-filter-option').forEach(function (o) {
+            o.classList.toggle('cs-active', o.dataset.value === 'mississauga');
+        });
+
+        /* Swap service list back to mississauga */
+        serviceDropdown.querySelectorAll('.cs-filter-options').forEach(function (ul) {
+            ul.classList.add('cs-hidden');
+        });
+        var missList = serviceDropdown.querySelector('.cs-filter-options[data-city="mississauga"]');
+        if (missList) {
+            missList.classList.remove('cs-hidden');
+            missList.querySelectorAll('.cs-filter-option').forEach(function (o) {
+                o.classList.toggle('cs-active', o.dataset.filter === 'all');
+            });
+        }
+
+        /* Reset service label */
+        serviceLabel.textContent = 'All Services';
+
+        closeAll();
+        applyFilters();
+    });
+
+    /* ============================================================
+       OUTSIDE CLICK — close all
+    ============================================================ */
+
+    document.addEventListener('click', function () {
+        closeAll();
+    });
+
+    /* ============================================================
+       INIT
+    ============================================================ */
+
+    applyFilters();
+
+}());</script>                 
+                            
+{% endblock %}

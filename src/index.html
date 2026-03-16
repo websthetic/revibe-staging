@@ -1,30 +1,27 @@
 ---
-title: "Revibe Staging | Websthetic | Toronto, ON"
-description: "Meta description for the page"
-permalink: "/"
-tags: "sitemap" # content/content.json will make sure that all pages in content/ are marked with a "sitemap" tag, for automatic sitemap generation. As index.html is not in content/, we need to add it here to ensure the root page is included in the sitemap generation
+title: 'Revibe Mississauga | Physiotherapy, Massage & Chiropractic'
+description: 'Revibe, a social wellness center in Mississauga. We specialize in Physiotherapy, Massage Therapy, Chiropractic & more. Therapy for every body. Book Now!'
+preloadImg: '/assets/images/landing.webp'
+permalink: '/'
+tags: 'sitemap' # Sitemap will use all pages in content/, due to content.json. As index.html is not included in content/ we need to manually add the sitemap tag to this page (only).
+eleventyNavigation:
+  key: Home
+  order: 100
 ---
 
 {% extends "layouts/base.html" %}
 
 {% block head %}
-    <!-- Critical styles are loaded first -->
     <link rel="stylesheet" href="/assets/css/critical.css"/>
-
-    <!-- If we're in production, defer the rest of the home page styles. In development, always load it. Otherwise the site will break when hot-reload is used. -->
     {% if client.isProduction %}
         <link rel="preload" href="/assets/css/local.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript>
             <link rel="stylesheet" href="/assets/css/local.css">
         </noscript>
-
     {% else %}
         <link rel="stylesheet" href="/assets/css/local.css"/>
     {% endif %}
 
-    <!-- To ensure proper validation, prevent errors, and encourage developers to check, schema's are an opt-in feature. They're very bespoke and requires some customising  -->
-    <!-- Uncomment the code below to enable Structured Data, and test it when you deploy to Netlify - https://developers.google.com/search/docs/appearance/structured-data -->
-    <!-- {% include "components/home-schema.html" %} -->
 {% endblock %}
 
 {% block body %}
@@ -39,7 +36,7 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
           
             <h1 class="cs-title fade-up">Athlete Grade Care, Built For How You Live.</h1>
             <p class="cs-text fade-up">
-                Integrated performance care guided by a personalized Care Map - helping you move better, recover stronger, and perform in real life.
+                Integrated performance care guided by a personalized Care Map; helping you move better, recover stronger, and perform in real life.
             </p>
             <h2 class="cs-subtitle fade-up">Real life is the sport.</h2>
             
@@ -73,14 +70,14 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
     <div class="cs-container">
         <div class="cs-content">
             <h2 class="cs-title">
-                <span class="cs-title-line">OUR PHILOSOPHY -</span> <br>
+                <span class="cs-title-line">OUR PHILOSOPHY:</span> <br>
                 <span class="cs-title-accent">LIFE IS THE REAL SPORT.</span>
             </h2>
             <p class="cs-text">
                 It's aging well, moving confidently, and feeling capable in your body.
             </p>
             <p class="cs-text">
-                At Revibe, we believe performance belongs to EveryBody — not just elite athletes. That's why we deliver athlete-grade care designed for real bodies, real schedules, and real lives.
+                At Revibe, we believe performance belongs to EveryBody; not just elite athletes. That's why we deliver athlete-grade care designed for real bodies, real schedules, and real lives.
             </p>
         </div>
         
@@ -104,7 +101,7 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
                     <picture class="cs-picture">
                         <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-exercising.jpg">
                         <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-exercising.jpg">
-                        <img decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-exercising.jpg" alt="Slide 2 description" width="960" height="796">
+                        <img decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-exercising.jpg" alt="Woman doing strength training" width="960" height="796">
                     </picture>
                     <div class="cs-slide-text">
                         It’s training without pain.
@@ -116,7 +113,7 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
                     <picture class="cs-picture">
                         <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/father-seeing-his%20kid-after-work.jpg">
                         <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/father-seeing-his%20kid-after-work.jpg">
-                        <img decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/father-seeing-his%20kid-after-work.jpg" alt="Slide 2 description" width="960" height="796">
+                        <img decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/father-seeing-his%20kid-after-work.jpg" alt="Father greeting his child after work" width="960" height="796">
                     </picture>
                     <div class="cs-slide-text">
                         It’s keeping up with your kids.
@@ -128,7 +125,7 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
     <picture class="cs-picture">
         <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-running.jpg">
         <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-running.jpg">
-        <img decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-running.jpg" alt="Slide 3 description" width="960" height="796">
+        <img decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/websthetic-website/woman-running.jpg" alt="Woman running outdoors" width="960" height="796">
     </picture>
     <div class="cs-slide-text">
         It's aging well, moving confidently, <br> and feeling capable in your body.
@@ -139,9 +136,9 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
     </div>
 </section>
 
-<!-- ============================================ -->
-<!--             Side By Side Reverse             -->
-<!-- ============================================ -->
+<!-- ============================================
+     Side By Side Reverse
+============================================ -->
 
 <section id="sbsr-1592">
     <div class="cs-container">
@@ -156,31 +153,14 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 960 540">
   <defs>
     <style>
-      .st0 {
-        fill: #00ae80;
-      }
-
-      .st1 {
-        fill: #fff;
-      }
-
-      .st2 {
-        stroke-width: 4.5px;
-      }
-
-      .st2, .st3 {
-        fill: none;
-        stroke: #00ae80;
-        stroke-miterlimit: 10;
-      }
-
-      .st3 {
-        stroke-width: 4.5px;
-      }
+      .st0 { fill: #00ae80; }
+      .st1 { fill: #fff; }
+      .st2 { stroke-width: 4.5px; }
+      .st2, .st3 { fill: none; stroke: #00ae80; stroke-miterlimit: 10; }
+      .st3 { stroke-width: 4.5px; }
     </style>
   </defs>
   <g id="Layer_1">
-    <!-- Circles -->
     <circle class="st0 circle-performance" cx="453.3" cy="284.9" r="33" data-label="performance"/>
     <circle class="st0 circle-activity" cx="539.3" cy="284.9" r="33" data-label="activity"/>
     <circle class="st0 circle-mindset" cx="367.4" cy="284.9" r="33" data-label="mindset"/>
@@ -188,25 +168,18 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
     <circle class="st0 circle-recovery" cx="495.9" cy="211.3" r="33" data-label="recovery"/>
     <circle class="st0 circle-capacity" cx="410" cy="358.2" r="33" data-label="capacity"/>
     <circle class="st0 circle-health" cx="495.9" cy="358.2" r="33" data-label="health"/>
-    
-    <!-- HEXAGON OUTER RING (6 lines) - class="hexagon-edge" -->
     <line class="st3 hexagon-edge" x1="410" y1="211.3" x2="495.9" y2="211.3" data-connection="readiness-recovery"/>
     <line class="st3 hexagon-edge" x1="495.9" y1="211.3" x2="539.3" y2="284.9" data-connection="recovery-activity"/>
     <line class="st3 hexagon-edge" x1="539.3" y1="284.9" x2="495.9" y2="358.2" data-connection="activity-health"/>
     <line class="st3 hexagon-edge" x1="495.9" y1="358.2" x2="410" y2="358.2" data-connection="health-capacity"/>
     <line class="st3 hexagon-edge" x1="410" y1="358.2" x2="367.4" y2="284.9" data-connection="capacity-mindset"/>
     <line class="st3 hexagon-edge" x1="367.4" y1="284.9" x2="410" y2="211.3" data-connection="mindset-readiness"/>
-    
-    <!-- INTERNAL CONNECTIONS (15 lines) - class="internal-connection" -->
-    <!-- From Performance to all others -->
     <line class="st2 internal-connection" x1="453.3" y1="284.9" x2="410" y2="211.3" data-connection="performance-readiness"/>
     <line class="st2 internal-connection" x1="453.3" y1="284.9" x2="495.9" y2="211.3" data-connection="performance-recovery"/>
     <line class="st2 internal-connection" x1="453.3" y1="284.9" x2="539.3" y2="284.9" data-connection="performance-activity"/>
     <line class="st2 internal-connection" x1="453.3" y1="284.9" x2="495.9" y2="358.2" data-connection="performance-health"/>
     <line class="st2 internal-connection" x1="453.3" y1="284.9" x2="410" y2="358.2" data-connection="performance-capacity"/>
     <line class="st2 internal-connection" x1="453.3" y1="284.9" x2="367.4" y2="284.9" data-connection="performance-mindset"/>
-    
-    <!-- Cross connections between hexagon circles -->
     <line class="st2 internal-connection" x1="410" y1="211.3" x2="539.3" y2="284.9" data-connection="readiness-activity"/>
     <line class="st2 internal-connection" x1="410" y1="211.3" x2="495.9" y2="358.2" data-connection="readiness-health"/>
     <line class="st2 internal-connection" x1="410" y1="211.3" x2="410" y2="358.2" data-connection="readiness-capacity"/>
@@ -217,8 +190,6 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
     <line class="st2 internal-connection" x1="539.3" y1="284.9" x2="367.4" y2="284.9" data-connection="activity-mindset"/>
     <line class="st2 internal-connection" x1="367.4" y1="284.9" x2="495.9" y2="358.2" data-connection="mindset-health"/>
   </g>
-  
-  <!-- TEXT GROUPS - same as before -->
   <g id="Layer_2">
     <g id="text-readiness">
       <path class="st1" d="M390.3,209.4h2.1c1.3,0,1.9.6,1.9,1.8s-.3,1.2-.8,1.6l.8,2.1h-1.2l-.6-1.8h-1.1v1.8h-1.1v-5.4ZM392.4,212c.3,0,.4,0,.6-.2s.2-.4.2-.6,0-.5-.2-.6-.3-.2-.6-.2h-1v1.7h1Z"/>
@@ -231,7 +202,6 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
       <path class="st1" d="M421.9,214.7h-.3c0,0,.1-.9.1-.9.7,0,1.3.1,1.6.1.6,0,.8-.2.8-.7s0-.3-.2-.4c-.1,0-.4-.2-.8-.3-.4-.1-.8-.2-1-.4s-.4-.3-.5-.5-.2-.4-.2-.7c0-.5.2-.9.5-1.2.3-.3.8-.4,1.4-.4s.5,0,.7,0c.2,0,.6,0,1.1.2v.9c-.8,0-1.3-.1-1.7-.1-.6,0-.9.2-.9.6s0,.2.1.3c0,0,.2.2.4.2s.4.1.7.2c.4.1.7.2.9.4s.3.3.4.5c0,.2.1.4.1.7,0,.6-.2,1-.5,1.3-.3.3-.8.4-1.4.4s-.9,0-1.5-.2Z"/>
       <path class="st1" d="M426.2,214.7h-.3c0,0,.1-.9.1-.9.7,0,1.3.1,1.6.1.6,0,.8-.2.8-.7s0-.3-.2-.4c-.1,0-.4-.2-.8-.3-.4-.1-.8-.2-1-.4s-.4-.3-.5-.5-.2-.4-.2-.7c0-.5.2-.9.5-1.2.3-.3.8-.4,1.4-.4s.5,0,.7,0c.2,0,.6,0,1.1.2v.9c-.8,0-1.3-.1-1.7-.1-.6,0-.9.2-.9.6s0,.2.1.3c0,0,.2.2.4.2s.4.1.7.2c.4.1.7.2.9.4s.3.3.4.5c0,.2.1.4.1.7,0,.6-.2,1-.5,1.3-.3.3-.8.4-1.4.4s-.9,0-1.5-.2Z"/>
     </g>
-    
     <g id="text-mindset">
       <path class="st1" d="M357.7,282.6v5.4h-1.1v-4.2h-.1l-1.1,4h-1.1l-1.1-4h-.1v4.2h-1.1v-5.4h1.9l1,4,1-4h1.9Z"/>
       <path class="st1" d="M358.8,282.6h1.1v5.4h-1.1v-5.4Z"/>
@@ -241,7 +211,6 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
       <path class="st1" d="M377.2,283.6v1.3h1.9v.9h-1.9v1.3h2.4v1h-3.5v-5.4h3.5v1h-2.4Z"/>
       <path class="st1" d="M381.5,283.6h-1.5v-1h4v1h-1.4v4.5h-1.1v-4.5Z"/>
     </g>
-    
     <g id="text-activity">
       <path class="st1" d="M526.9,287.1h-1.9l-.2,1h-1.1l1.2-5.4h2.1l1.2,5.4h-1.1l-.2-1ZM526.2,283.6h-.4l-.6,2.6h1.5l-.6-2.6Z"/>
       <path class="st1" d="M529.5,287.9c-.3-.2-.5-.5-.6-.9-.1-.4-.2-.9-.2-1.6s0-1.3.2-1.7c.1-.4.3-.7.6-.9.3-.2.7-.3,1.2-.3s1,0,1.6.2v.9c-.6,0-1-.1-1.3-.1s-.6,0-.8.2c-.2.1-.3.3-.4.5,0,.2,0,.6,0,1v.3c0,.5,0,.8,0,1s.2.4.3.5c.2.1.4.2.8.2s.8,0,1.3-.1v.9c-.6.1-1.1.2-1.5.2s-1-.1-1.3-.3Z"/>
@@ -252,7 +221,6 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
       <path class="st1" d="M547.8,283.6h-1.5v-1h4v1h-1.4v4.5h-1.1v-4.5Z"/>
       <path class="st1" d="M552.2,285.9l-1.7-3.2h1.2l1,2.2,1-2.2h1.2l-1.7,3.2v2.2h-1.1v-2.2Z"/>
     </g>
-    
     <g id="text-performance">
       <path class="st1" d="M428.8,278.7h2c1.3,0,1.9.6,1.9,1.9s-.2,1.1-.5,1.5c-.3.3-.8.5-1.4.5h-.9v1.6h-1.1v-5.4ZM430.8,281.6c.5,0,.8-.3.8-1s0-.6-.2-.7-.3-.2-.6-.2h-.9v2h.9Z"/>
       <path class="st1" d="M434.6,279.7v1.3h1.9v.9h-1.9v1.3h2.4v1h-3.5v-5.4h3.5v1h-2.4Z"/>
@@ -262,7 +230,7 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
       <path class="st1" d="M457.9,278.7v5.4h-1.1v-4.2h-.1l-1.1,4h-1.1l-1.1-4h-.1v4.2h-1.1v-5.4h1.9l1,4,1-4h1.9Z"/>
       <path class="st1" d="M461.9,283.2h-1.9l-.2,1h-1.1l1.2-5.4h2.1l1.2,5.4h-1.1l-.2-1ZM461.1,279.6h-.4l-.6,2.6h1.5l-.6-2.6Z"/>
       <path class="st1" d="M468.3,278.7v5.4h-1.8l-1.4-4.5h0v4.5h-1.1v-5.4h1.9l1.3,4.5h0v-4.5h1.1Z"/>
-      <path class="st1" d="M470.1,283.9c-.3-.2-.5-.5-.6-.9s-.2-.9-.2-1.6,0-1.3.2-1.7,.3-.7.6-.9.7-.3,1.2-.3,1,0,1.6.2v.9c-.6,0-1-.1-1.3-.1s-.6,0-.8.2c-.2.1-.3.3-.4.5,0,.2,0,.6,0,1v.3c0,.5,0,.8,0,1,0,.2.2.4.3.5.2.1.4.2.8.2s.8,0,1.3-.1v.9c-.6.1-1.1.2-1.5.2s-1-.1-1.3-.3Z"/>
+      <path class="st1" d="M470.1,283.9c-.3-.2-.5-.5-.6-.9s-.2-.9-.2-1.6,0-1.3.2-1.7,.3-.7.6-.9,.7-.3,1.2-.3,1,0,1.6.2v.9c-.6,0-1-.1-1.3-.1s-.6,0-.8.2c-.2.1-.3.3-.4.5,0,.2,0,.6,0,1v.3c0,.5,0,.8,0,1,0,.2.2.4.3.5.2.1.4.2.8.2s.8,0,1.3-.1v.9c-.6.1-1.1.2-1.5.2s-1-.1-1.3-.3Z"/>
       <path class="st1" d="M474.9,279.7v1.3h1.9v.9h-1.9v1.3h2.4v1h-3.5v-5.4h3.5v1h-2.4Z"/>
       <path class="st1" d="M429.3,286.5v1.6h1.9v1h-1.9v1.9h-1.1v-5.4h3.5v1h-2.4Z"/>
       <path class="st1" d="M433.1,290.7c-.3-.2-.6-.5-.7-.9-.1-.4-.2-.9-.2-1.6s0-1.2.2-1.6c.1-.4.4-.7.7-.9.3-.2.8-.3,1.3-.3s1,.1,1.3.3c.3.2.6.5.7.9.1.4.2.9.2,1.6s0,1.2-.2,1.6c-.1.4-.4.7-.7.9s-.8.3-1.3.3-1,0-1.3-.3ZM435.1,289.9c.2-.1.3-.3.3-.6,0-.3.1-.6.1-1.1s0-.8-.1-1.1c0-.3-.2-.5-.3-.6s-.4-.2-.7-.2-.5,0-.7.2-.3.3-.3.6c0,.3-.1.6-.1,1.1s0,.8,0,1c0,.3.2.5.3.6.2.1.4.2.7.2s.5,0,.7-.2Z"/>
@@ -276,7 +244,6 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
       <path class="st1" d="M471.2,286.5v1.6h1.9v1h-1.9v1.9h-1.1v-5.4h3.5v1h-2.4Z"/>
       <path class="st1" d="M475.5,286.5v1.3h1.9v.9h-1.9v1.3h2.4v1h-3.5v-5.4h3.5v1h-2.4Z"/>
     </g>
-    
     <g id="text-recovery">
       <path class="st1" d="M477.6,209.4h2.1c1.3,0,1.9.6,1.9,1.8s-.3,1.2-.8,1.6l.8,2.1h-1.2l-.6-1.8h-1.1v1.8h-1.1v-5.4ZM479.8,212c.3,0,.4,0,.6-.2.1-.2.2-.4.2-.6s0-.5-.2-.6-.3-.2-.6-.2h-1v1.7h1Z"/>
       <path class="st1" d="M483.7,210.3v1.3h1.9v.9h-1.9v1.3h2.4v1h-3.5v-5.4h3.5v1h-2.4Z"/>
@@ -287,7 +254,6 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
       <path class="st1" d="M505.7,209.4h2.1c1.3,0,1.9.6,1.9,1.8s-.3,1.2-.8,1.6l.8,2.1h-1.2l-.6-1.8h-1.1v1.8h-1.1v-5.4ZM507.8,212c.3,0,.4,0,.6-.2.1-.2.2-.4.2-.6s0-.5-.2-.6-.3-.2-.6-.2h-1v1.7h1Z"/>
       <path class="st1" d="M511.5,212.6l-1.7-3.2h1.2l1,2.2,1-2.2h1.2l-1.7,3.2v2.2h-1.1v-2.2Z"/>
     </g>
-    
     <g id="text-capacity">
       <path class="st1" d="M394.1,360.8c-.3-.2-.5-.5-.6-.9s-.2-.9-.2-1.6,0-1.3.2-1.7,.3-.7.6-.9,.7-.3,1.2-.3,1,0,1.6.2v.9c-.6,0-1-.1-1.3-.1s-.6,0-.8.2c-.2.1-.3.3-.4.5,0,.2,0,.6,0,1v.3c0,.5,0,.8,0,1,0,.2.2.4.3.5.2.1.4.2.8.2s.8,0,1.3-.1v.9c-.6.1-1.1.2-1.5.2s-1-.1-1.3-.3Z"/>
       <path class="st1" d="M400.6,360.1h-1.9l-.2,1h-1.1l1.2-5.4h2.1l1.2,5.4h-1.1l-.2-1ZM399.9,356.5h-.4l-.6,2.6h1.5l-.6-2.6Z"/>
@@ -298,7 +264,6 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
       <path class="st1" d="M419.6,356.6h-1.5v-1h4v1h-1.4v4.5h-1.1v-4.5Z"/>
       <path class="st1" d="M423.9,358.8l-1.7-3.2h1.2l1,2.2,1-2.2h1.2l-1.7,3.2v2.2h-1.1v-2.2Z"/>
     </g>
-    
     <g id="text-health">
       <path class="st1" d="M486.8,355.6v5.4h-1.1v-2.3h-2v2.3h-1.1v-5.4h1.1v2.2h2v-2.2h1.1Z"/>
       <path class="st1" d="M489.1,356.6v1.3h1.9v.9h-1.9v1.3h2.4v1h-3.5v-5.4h3.5v1h-2.4Z"/>
@@ -310,6 +275,82 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
   </g>
 </svg>
         </div>
+
+        <!-- ============================================
+             CARE MAP — PANEL CONTENT DATA
+        ============================================ -->
+        <div class="care-map-data" hidden>
+
+            <div data-label="performance">
+                <h2>Performance for Real Life</h2>
+                <p>The Care Map is how we understand your body clearly and completely. Instead of chasing symptoms, we look at what's limiting your performance right now and build a plan around it.</p>
+                <p>Whether you're training hard, rebuilding from injury, or simply trying to feel better in your body; your Care Map gives you direction, not guesswork.</p>
+                <p>Athlete-grade care. Built for real life. Built for everyBody.</p>
+            </div>
+
+            <div data-label="readiness">
+                <h2>Readiness</h2>
+                <p>What your body can handle today. Your current state, not your long-term potential. Some days you're ready to push. Other days you need support first.</p>
+                <p><strong>You may feel this if:</strong> Body feels tight, heavy, or off · Pain or stiffness shows up unpredictably · Energy feels low before activity</p>
+                <p><strong>Revibe tools that support this:</strong> Massage therapy + hands-on care · Osteopathy to reset the system · Sauna + cold plunge support</p>
+            </div>
+
+            <div data-label="recovery">
+                <h2>Recovery</h2>
+                <p>How well your body recharges. Effort only becomes progress if recovery happens.</p>
+                <p><strong>You may feel this if:</strong> Sore or stiff most days · Progress has stalled · Sleep or energy feels inconsistent</p>
+                <p><strong>Revibe tools that support this:</strong> Cold plunge · Sauna · Massage + recovery planning</p>
+            </div>
+
+            <div data-label="activity">
+                <h2>Activity</h2>
+                <p>How much stress your body is under. Stress includes workouts, work, sleep, and mental load. The goal isn't doing more, it's managing demand wisely.</p>
+                <p><strong>You may feel this if:</strong> Always pushing with little recovery · Fatigue builds faster than expected · Unsure how much is too much</p>
+                <p><strong>Revibe tools that support this:</strong> Personal training · Strength & conditioning · Lifestyle + load management</p>
+            </div>
+
+            <div data-label="health">
+                <h2>Health</h2>
+                <p>What's happening inside your body. Internal systems support healing, energy, and adaptation.</p>
+                <p><strong>You may feel this if:</strong> Energy fluctuates · Recovery feels slow · Progress feels harder than it should</p>
+                <p><strong>Revibe tools that support this:</strong> Naturopathic care · Nutrition guidance · Supplement strategy</p>
+            </div>
+
+            <div data-label="capacity">
+                <h2>Capacity</h2>
+                <p>What your body can sustain long-term. Your foundation. Can your body handle repeated effort without breaking down?</p>
+                <p><strong>You may feel this if:</strong> Weakness or instability · Recurring injuries · Easily fatigued under load</p>
+                <p><strong>Revibe tools that support this:</strong> Physiotherapy · Chiropractic care · Progressive strength programming</p>
+            </div>
+
+            <div data-label="mindset">
+                <h2>Mindset</h2>
+                <p>How you respond to pressure. Confidence and clarity shape consistency.</p>
+                <p><strong>You may feel this if:</strong> Stress affects motivation · Fear slows progress · Frustration with your body</p>
+                <p><strong>Revibe tools that support this:</strong> Coaching conversations · Care Map planning · Education during sessions</p>
+            </div>
+
+        </div>
+
+        <!-- ============================================
+             CARE MAP — STATIC PANEL
+        ============================================ -->
+        <div class="care-map-backdrop" id="careMapBackdrop"></div>
+
+        <div class="care-map-panel" id="careMapPanel" aria-hidden="true">
+            <div class="care-map-panel-handle"></div>
+            <button class="care-map-panel-close" id="careMapClose" aria-label="Close panel">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="14" height="14">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div class="care-map-panel-inner">
+                <h2 class="care-map-panel-title"></h2>
+                <div class="care-map-panel-description"></div>
+                <a class="care-map-panel-cta" href="#">START YOUR CARE MAP</a>
+            </div>
+        </div>
+
     </div>
 </section>
                                 
@@ -324,12 +365,12 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
             <div class="cs-left">
                 <div class="cs-content">
                     <h2 class="cs-title">Tools That Support Your Care Map</h2>
-                    <p class="cs-tagline">Everything Works Together — For A Reason.</p>
+                    <p class="cs-tagline">Everything Works Together For A Reason.</p>
                     <p class="cs-text">
                         Your Care Map may include a combination of performance-driven tools, all working toward one outcome: helping you live and move better.
                     </p>
                     <p class="cs-text">
-                        These aren't services in isolation — they're tools within a system built for how you live.
+                        These aren't services in isolation, they're tools within a system built for how you live.
                     </p>
                 </div>
             </div>
@@ -505,7 +546,7 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
                 What's Included: 
             </p>
             <p class="cs-text">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                Your first session starts with a conversation, not a treatment table. We learn how you move, what's holding you back, and what performance means for your life, then we build your personal Care Map from there.
             </p>
             <a href="" class="cs-button-solid">Book Your Session</a>
         </div>
@@ -546,19 +587,19 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
         <div class="cs-pill">ACL Recovery</div>
         <div class="cs-pill">Knee Injuries</div>
         <div class="cs-pill-image-only">
-            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/back-pain.webp" alt="">
+            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/back-pain.webp" alt="Back pain treatment">
         </div>
         <div class="cs-pill">Tight Hips</div>
         <div class="cs-pill">Neck & Shoulder Tension</div>
         <div class="cs-pill">Posture Alignment</div>
         <div class="cs-pill-image-only">
-            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/knee-injury.webp" alt="">
+            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/knee-injury.webp" alt="Knee injury rehabilitation">
         </div>
         <div class="cs-pill">Sports Rehab</div>
         <div class="cs-pill">Muscle Tightness</div>
         <div class="cs-pill">Stress Load</div>
         <div class="cs-pill-image-only">
-            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/sports-rehab.webp" alt="">
+            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/sports-rehab.webp" alt="Sports rehabilitation session">
         </div>
     </div>
     <!-- Duplicate for seamless loop -->
@@ -567,19 +608,19 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
         <div class="cs-pill">ACL Recovery</div>
         <div class="cs-pill">Knee Injuries</div>
         <div class="cs-pill-image-only">
-            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/back-pain.webp" alt="">
+            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/back-pain.webp" alt="Back pain treatment">
         </div>
         <div class="cs-pill">Tight Hips</div>
         <div class="cs-pill">Neck & Shoulder Tension</div>
         <div class="cs-pill">Posture Alignment</div>
         <div class="cs-pill-image-only">
-            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/knee-injury.webp" alt="">
+            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/knee-injury.webp" alt="Knee injury rehabilitation">
         </div>
         <div class="cs-pill">Sports Rehab</div>
         <div class="cs-pill">Muscle Tightness</div>
         <div class="cs-pill">Stress Load</div>
         <div class="cs-pill-image-only">
-            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/sports-rehab.webp" alt="">
+            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/sports-rehab.webp" alt="Sports rehabilitation session">
         </div>
     </div>
 </div>
@@ -591,19 +632,19 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
         <div class="cs-pill">Hormone Balance</div>
         <div class="cs-pill">Digestive Health</div>
         <div class="cs-pill-image-only">
-            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/sleep-support.webp" alt="">
+            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/sleep-support.webp" alt="Sleep support and recovery">
         </div>
         <div class="cs-pill">Sleep Support</div>
         <div class="cs-pill">Energy Levels</div>
         <div class="cs-pill">Long-Term Performance</div>
         <div class="cs-pill-image-only">
-            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/Energy%20Levels%20.webp" alt="">
+            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/Energy%20Levels%20.webp" alt="Improving energy levels">
         </div>
         <div class="cs-pill">Back Pain</div>
         <div class="cs-pill">ACL Recovery</div>
         <div class="cs-pill">Knee Injuries</div>
         <div class="cs-pill-image-only">
-            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/massage.webp" alt="">
+            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/massage.webp" alt="Massage therapy treatment">
         </div>
     </div>
     <!-- Duplicate for seamless loop -->
@@ -612,52 +653,50 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
         <div class="cs-pill">Hormone Balance</div>
         <div class="cs-pill">Digestive Health</div>
         <div class="cs-pill-image-only">
-            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/sleep-support.webp" alt="">
+            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/sleep-support.webp" alt="Sleep support and recovery">
         </div>
         <div class="cs-pill">Sleep Support</div>
         <div class="cs-pill">Energy Levels</div>
         <div class="cs-pill">Long-Term Performance</div>
         <div class="cs-pill-image-only">
-            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/Energy%20Levels%20.webp" alt="">
+            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/Energy%20Levels%20.webp" alt="Improving energy levels">
         </div>
         <div class="cs-pill">Back Pain</div>
         <div class="cs-pill">ACL Recovery</div>
         <div class="cs-pill">Knee Injuries</div>
         <div class="cs-pill-image-only">
-            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/massage.webp" alt="">
+            <img class="cs-pill-image" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/massage.webp" alt="Massage therapy treatment">
         </div>
     </div>
 </div>
     </div>
 </section>
 
-
 <!-- ============================================ -->
-<!--              Side By Side                    -->
+<!--            Side By Side Reverse              -->
 <!-- ============================================ -->
 
-<section id="RTsbsr-597">
+<section id="sbsr-597">
+    <picture class="cs-background">
+        <!--Mobile Image-->
+        <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/insurance.jpg">
+        <!--Tablet and above Image-->
+        <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/insurance.jpg">
+        <img loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/insurance.jpg" alt="what to expect" width="960" height="796">
+    </picture>
     <div class="cs-container">
         <div class="cs-content">
-            <h2 class="cs-title">
-                <span class="cs-title-line">Insurance Direct Billing</span> 
-            </h2>
+           
+            <h2 class="cs-title">Insurance Direct <br>Billing</h2>
+            
             <p class="cs-text">
                 Direct billing is available across our locations for many extended health plans. When eligible, we bill your insurance provider directly so you don't need to submit a claim yourself.
             </p>
-            <a href="" class="cs-button-solid">View Coverage Details</a>
-        </div>
-        
-        <!-- Image Wrapper -->
-        <div class="cs-image-wrapper">
-            <picture class="cs-picture">
-                <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/insurance.jpg">
-                <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/insurance.jpg">
-                <img decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/insurance.jpg" alt="Woman exercising" width="960" height="796">
-            </picture>
+            <a href="" class="cs-button-solid">Book Your Session</a>
         </div>
     </div>
 </section>
+
        
 <!-- ============================================ -->
 <!--                Testimonials                  -->
@@ -789,7 +828,7 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
     <div class="cs-container">
         <div class="cs-content">
           
-            <h1 class="cs-title">Be You Again But Better.</h1>
+            <h2 class="cs-title">Be You Again But Better.</h2>
             <p class="cs-text">
                 Life is the real sport, let us help you get ready for the game.
             </p>
@@ -1116,103 +1155,63 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- Care Map Animation + Slide Panel -->
-<script>
-// 🔥 Hide text paths immediately (WITHOUT !important)
+<!-- SVG Animations -->
+<script>// 🔥 Hide text paths immediately before DOM ready
 (function hideTextImmediately() {
     const svg = document.querySelector('#sbsr-1592 svg');
     if (svg) {
-        const textPaths = svg.querySelectorAll('path.st1');
-        textPaths.forEach(path => {
-            path.style.opacity = '0';
-            path.style.visibility = 'hidden';
+        svg.querySelectorAll('path.st1').forEach(p => {
+            p.style.opacity = '0';
+            p.style.visibility = 'hidden';
         });
-        console.log('🔥 IMMEDIATELY hid', textPaths.length, 'text paths');
     }
 })();
 
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(function() {
-        if (typeof gsap === 'undefined') {
-            console.error('❌ GSAP not loaded');
-            return;
-        }
-        
-        console.log('✅ GSAP loaded');
+
+document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(function () {
+
+        if (typeof gsap === 'undefined') { console.error('❌ GSAP not loaded'); return; }
         gsap.registerPlugin(ScrollTrigger);
-        
+
         const svgElement = document.querySelector('#sbsr-1592 svg');
-        
-        if (!svgElement) {
-            console.error('❌ SVG not found');
-            return;
-        }
-        
-        console.log('✅ SVG found!');
-        
-        // 🔧 Reorder SVG DOM: move circles after lines in Layer_1
+        if (!svgElement) { console.error('❌ SVG not found'); return; }
+
+        // ── Reorder SVG DOM so circles render above lines ──────────
         const layer1 = svgElement.querySelector('#Layer_1');
-        const svgCircles = layer1.querySelectorAll('circle');
-        svgCircles.forEach(c => layer1.appendChild(c));
-        console.log('🔧 SVG reordered: circles now render on top of lines');
-        
-        // Separate hexagon edges and internal connections
-        const hexagonEdges = svgElement.querySelectorAll('line.hexagon-edge');
+        layer1.querySelectorAll('circle').forEach(c => layer1.appendChild(c));
+
+        // ── Element refs ────────────────────────────────────────────
+        const hexagonEdges        = svgElement.querySelectorAll('line.hexagon-edge');
         const internalConnections = svgElement.querySelectorAll('line.internal-connection');
-        const allLines = svgElement.querySelectorAll('line');
-        const circles = svgElement.querySelectorAll('circle');
-        const texts = svgElement.querySelectorAll('path.st1');
-        
-        console.log('Found', hexagonEdges.length, 'hexagon edges');
-        console.log('Found', internalConnections.length, 'internal connections');
-        console.log('Found', circles.length, 'circles');
-        console.log('Found', texts.length, 'text paths');
-        
-        // Set initial state for ALL lines
+        const allLines            = svgElement.querySelectorAll('line');
+        const circles             = svgElement.querySelectorAll('circle');
+        const texts               = svgElement.querySelectorAll('path.st1');
+
+        // ── Set initial GSAP states ──────────────────────────────────
         gsap.set(allLines, {
-            strokeDasharray: function(index, target) {
-                const length = target.getTotalLength ? target.getTotalLength() : 800;
-                return length;
-            },
-            strokeDashoffset: function(index, target) {
-                const length = target.getTotalLength ? target.getTotalLength() : 800;
-                return length;
-            }
+            strokeDasharray:  i => allLines[i].getTotalLength?.() ?? 800,
+            strokeDashoffset: i => allLines[i].getTotalLength?.() ?? 800,
         });
-        
-        // Set initial state for circles
-        gsap.set(circles, {
-            scale: 0,
-            transformOrigin: 'center center',
-            opacity: 0
-        });
-        
-        // Set initial state for text PATHS
-        gsap.set(texts, {
-            opacity: 0,
-            visibility: 'hidden'
-        });
-        
-        // Track if animation has completed
-        let animationCompleted = false;
+        gsap.set(circles, { scale: 0, transformOrigin: 'center center', opacity: 0 });
+        gsap.set(texts,   { opacity: 0, visibility: 'hidden' });
+
+        // ── Scroll-driven draw animation ─────────────────────────────
+        let animationCompleted    = false;
         let scrollTriggerInstance = null;
-        
-        // Animate with scroll scrub and pin
+
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: '#sbsr-1592',
-        start: window.innerWidth < 768 ? 'top -15%' : 'top top',
-                end: window.innerWidth < 768 ? '+=2500vh' : '+=5000vh',
+                start: window.innerWidth < 768 ? 'top -15%' : 'top top',
+                end:   window.innerWidth < 768 ? '+=2500vh'  : '+=5000vh',
                 scrub: 3,
                 pin: true,
-                markers: false,
                 anticipatePin: 1,
-                onUpdate: (self) => {
+                onUpdate(self) {
                     scrollTriggerInstance = self;
-                    
                     if (self.progress >= 1 && !animationCompleted) {
                         animationCompleted = true;
-                        console.log('🔒 Animation complete — locking state');
                         tl.progress(1);
                         cleanupScrollTrigger(self);
                     }
@@ -1220,895 +1219,395 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // 🔥 CLEANUP FUNCTION
-        function cleanupScrollTrigger(scrollTriggerRef) {
+        function cleanupScrollTrigger(st) {
             const triggerEl = document.querySelector('#sbsr-1592');
-            
-            scrollTriggerRef.kill(false);
-            
-            triggerEl.style.position = '';
-            triggerEl.style.top = '';
-            triggerEl.style.left = '';
-            triggerEl.style.right = '';
-            triggerEl.style.bottom = '';
-            triggerEl.style.width = '';
-            triggerEl.style.height = '';
-            triggerEl.style.maxWidth = '';
-            triggerEl.style.maxHeight = '';
-            triggerEl.style.padding = '';
-            triggerEl.style.margin = '';
-            triggerEl.style.boxSizing = '';
-            triggerEl.style.transform = '';
-            triggerEl.style.overflow = '';
-            
+            st.kill(false);
+
+            ['position','top','left','right','bottom','width','height',
+             'maxWidth','maxHeight','padding','margin','boxSizing','transform','overflow']
+             .forEach(prop => triggerEl.style[prop] = '');
+
             const pinSpacer = triggerEl.parentElement;
             if (pinSpacer && (
-                pinSpacer.hasAttribute('data-pin-spacer') || 
+                pinSpacer.hasAttribute('data-pin-spacer') ||
                 pinSpacer.classList.contains('pin-spacer') ||
-                pinSpacer.style.height && parseInt(pinSpacer.style.height) > 1000
+                parseInt(pinSpacer.style.height) > 1000
             )) {
-                pinSpacer.style.height = '0';
-                pinSpacer.style.padding = '0';
-                pinSpacer.style.margin = '0';
-                pinSpacer.style.overflow = 'visible';
-                pinSpacer.style.display = 'block';
-                
+                pinSpacer.style.cssText = 'height:0;padding:0;margin:0;overflow:visible;display:block';
                 pinSpacer.parentNode.insertBefore(triggerEl, pinSpacer);
                 pinSpacer.remove();
-                console.log('🧹 Pin spacer removed');
-            } else {
-                const allSpacers = document.querySelectorAll('[data-pin-spacer], .pin-spacer');
-                allSpacers.forEach(spacer => {
-                    spacer.style.height = '0';
-                    spacer.style.padding = '0';
-                    spacer.style.margin = '0';
-                });
             }
-            
+
             requestAnimationFrame(() => {
-                const newRect = triggerEl.getBoundingClientRect();
-                const newTop = newRect.top + window.scrollY;
+                const newTop = triggerEl.getBoundingClientRect().top + window.scrollY;
                 window.scrollTo(0, newTop);
-                console.log('📍 Scroll position corrected');
             });
         }
 
-        // 🔥 PHASE 1: BUILD HEXAGON + PERFORMANCE SPOKES
-        console.log('🔥 PHASE 1: Building hexagon with Performance spokes');
-        
-        const performanceCircle = svgElement.querySelector(`circle[data-label="performance"]`);
-        const performanceTextGroup = svgElement.querySelector(`#text-performance`);
-        const performanceTexts = performanceTextGroup ? performanceTextGroup.querySelectorAll('path.st1') : [];
+        // ── Phase 1: Hexagon + performance spokes ────────────────────
+        const performanceCircle    = svgElement.querySelector('circle[data-label="performance"]');
+        const performanceTextGroup = svgElement.querySelector('#text-performance');
+        const performanceTexts     = performanceTextGroup?.querySelectorAll('path.st1') ?? [];
 
-        tl.to(performanceCircle, {
-            scale: 1,
-            opacity: 1,
-            ease: 'back.out(1)',
-            duration: 50,
-        });
-
-        if (performanceTexts.length > 0) {
-            tl.to(performanceTexts, {
-                opacity: 1,
-                visibility: 'visible',
-                ease: 'power2.out',
-                duration: 50,
-            }, "<");
+        tl.to(performanceCircle, { scale: 1, opacity: 1, ease: 'back.out(1)', duration: 50 });
+        if (performanceTexts.length) {
+            tl.to(performanceTexts, { opacity: 1, visibility: 'visible', ease: 'power2.out', duration: 50 }, '<');
         }
 
-        function findInternalConnection(connectionName) {
-            return Array.from(internalConnections).find(line => 
-                line.getAttribute('data-connection') === connectionName
-            );
+        function findInternalConnection(name) {
+            return Array.from(internalConnections).find(l => l.getAttribute('data-connection') === name);
         }
 
         const hexagonSequence = [
             { label: 'readiness', edgeIndex: null, performanceSpoke: 'performance-readiness' },
-            { label: 'recovery', edgeIndex: 0, performanceSpoke: 'performance-recovery' },
-            { label: 'activity', edgeIndex: 1, performanceSpoke: 'performance-activity' },
-            { label: 'health', edgeIndex: 2, performanceSpoke: 'performance-health' },
-            { label: 'capacity', edgeIndex: 3, performanceSpoke: 'performance-capacity' },
-            { label: 'mindset', edgeIndex: 4, performanceSpoke: 'performance-mindset' },
+            { label: 'recovery',  edgeIndex: 0,    performanceSpoke: 'performance-recovery'  },
+            { label: 'activity',  edgeIndex: 1,    performanceSpoke: 'performance-activity'  },
+            { label: 'health',    edgeIndex: 2,    performanceSpoke: 'performance-health'    },
+            { label: 'capacity',  edgeIndex: 3,    performanceSpoke: 'performance-capacity'  },
+            { label: 'mindset',   edgeIndex: 4,    performanceSpoke: 'performance-mindset'   },
         ];
 
-        hexagonSequence.forEach((step) => {
-            const circle = svgElement.querySelector(`circle[data-label="${step.label}"]`);
-            const textGroup = svgElement.querySelector(`#text-${step.label}`);
-            const circleTexts = textGroup ? textGroup.querySelectorAll('path.st1') : [];
-            const spokeLine = findInternalConnection(step.performanceSpoke);
-            
+        hexagonSequence.forEach(step => {
+            const circle      = svgElement.querySelector(`circle[data-label="${step.label}"]`);
+            const textGroup   = svgElement.querySelector(`#text-${step.label}`);
+            const circleTexts = textGroup?.querySelectorAll('path.st1') ?? [];
+            const spokeLine   = findInternalConnection(step.performanceSpoke);
+
             if (step.edgeIndex !== null) {
-                tl.to(hexagonEdges[step.edgeIndex], {
-                    strokeDashoffset: 0,
-                    ease: 'power2.out',
-                    duration: 50,
-                });
+                tl.to(hexagonEdges[step.edgeIndex], { strokeDashoffset: 0, ease: 'power2.out', duration: 50 });
             }
-            
             if (spokeLine) {
-                tl.to(spokeLine, {
-                    strokeDashoffset: 0,
-                    ease: 'power2.out',
-                    duration: 50,
-                }, "<");
+                tl.to(spokeLine, { strokeDashoffset: 0, ease: 'power2.out', duration: 50 }, '<');
             }
-            
-            tl.to(circle, {
-                scale: 1,
-                opacity: 1,
-                ease: 'back.out(1)',
-                duration: 50,
-            }, "<");
-            
-            if (circleTexts.length > 0) {
-                tl.to(circleTexts, {
-                    opacity: 1,
-                    visibility: 'visible',
-                    ease: 'power2.out',
-                    duration: 50,
-                }, "<");
+            tl.to(circle, { scale: 1, opacity: 1, ease: 'back.out(1)', duration: 50 }, '<');
+            if (circleTexts.length) {
+                tl.to(circleTexts, { opacity: 1, visibility: 'visible', ease: 'power2.out', duration: 50 }, '<');
             }
         });
 
-        console.log('✅ Closing hexagon: Mindset → Readiness');
-        tl.to(hexagonEdges[5], {
-            strokeDashoffset: 0,
-            ease: 'power2.out',
-            duration: 50,
+        tl.to(hexagonEdges[5], { strokeDashoffset: 0, ease: 'power2.out', duration: 50 });
+
+        // ── Phase 2: Cross-connections ───────────────────────────────
+        ['readiness-activity','readiness-health','readiness-capacity',
+         'recovery-health','recovery-capacity','recovery-mindset',
+         'activity-capacity','activity-mindset','mindset-health'
+        ].forEach(name => {
+            const line = findInternalConnection(name);
+            if (line) tl.to(line, { strokeDashoffset: 0, ease: 'power2.out', duration: 40 });
         });
 
-        // 🔥 PHASE 2: ADD CROSS-CONNECTIONS
-        console.log('🔥 PHASE 2: Adding cross-connections');
-        
-        const crossConnections = [
-            'readiness-activity',
-            'readiness-health',
-            'readiness-capacity',
-            'recovery-health',
-            'recovery-capacity',
-            'recovery-mindset',
-            'activity-capacity',
-            'activity-mindset',
-            'mindset-health'
-        ];
-        
-        crossConnections.forEach((connectionName) => {
-            const line = findInternalConnection(connectionName);
-            if (line) {
-                tl.to(line, {
-                    strokeDashoffset: 0,
-                    ease: 'power2.out',
-                    duration: 40,
-                });
-            }
-        });
-        
         tl.to({}, { duration: 60 }, '+=1');
-        
-        console.log('✅ Animation initialized!');
-        
-        // ============================================
-        // 🎯 SLIDE PANEL SETUP
-        // ============================================
-        
-        const panelContent = {
-            performance: {
-    title: 'Performance for Real Life',
-    description: 'The Care Map is how we understand your body clearly and completely. Instead of chasing symptoms, we look at what\'s limiting your performance right now and build a plan around it.',
-    bullets: [
-        'Whether you\'re training hard, rebuilding from injury, or simply trying to feel better in your body, your Care Map gives you direction, not guesswork.',
-        'Athlete-grade care. Built for real life. Built for everyBody.'
-    ]
-},
-            readiness: {
-    title: 'Readiness',
-    description: 'What your body can handle today. Your current state, not your long-term potential. Some days you\'re ready to push. Other days you need support first. You may feel this if:',
-    bullets: [
-        'Body feels tight, heavy, or off',
-        'Pain or stiffness shows up unpredictably',
-        'Energy feels low before activity',
-        'Revibe tools that support this:',
-        'Massage therapy + hands-on care',
-        'Osteopathy to reset the system',
-        'Sauna + cold plunge support'
-    ]
-},
-            recovery: {
-    title: 'Recovery',
-    description: 'How well your body recharges. Effort only becomes progress if recovery happens.',
-    bullets: [
-        'You may feel this if:',
-        'Sore or stiff most days',
-        'Progress has stalled',
-        'Sleep or energy feels inconsistent',
-        'Revibe tools that support this:',
-        'Cold plunge',
-        'Sauna',
-        'Massage + recovery planning'
-    ]
-},
-            activity: {
-    title: 'Activity',
-    description: 'How much stress your body is under. Stress includes workouts, work, sleep, and mental load. The goal isn\'t doing more — it\'s managing demand wisely.',
-    bullets: [
-        'You may feel this if:',
-        'Always pushing with little recovery',
-        'Fatigue builds faster than expected',
-        'Unsure how much is too much',
-        'Revibe tools that support this:',
-        'Personal training',
-        'Strength & conditioning',
-        'Lifestyle + load management'
-    ]
-},
-            health: {
-    title: 'Health',
-    description: 'What\'s happening inside your body. Internal systems support healing, energy, and adaptation.',
-    bullets: [
-        'You may feel this if:',
-        'Energy fluctuates',
-        'Recovery feels slow',
-        'Progress feels harder than it should',
-        'Revibe tools that support this:',
-        'Naturopathic care',
-        'Nutrition guidance',
-        'Supplement strategy'
-    ]
-},
-            capacity: {
-    title: 'Capacity',
-    description: 'What your body can sustain long-term. Your foundation. Can your body handle repeated effort without breaking down?',
-    bullets: [
-        'You may feel this if:',
-        'Weakness or instability',
-        'Recurring injuries',
-        'Easily fatigued under load',
-        'Revibe tools that support this:',
-        'Physiotherapy',
-        'Chiropractic care',
-        'Progressive strength programming'
-    ]
-},
-            mindset: {
-    title: 'Mindset',
-    description: 'How you respond to pressure. Confidence and clarity shape consistency.',
-    bullets: [
-        'You may feel this if:',
-        'Stress affects motivation',
-        'Fear slows progress',
-        'Frustration with your body',
-        'Revibe tools that support this:',
-        'Coaching conversations',
-        'Care Map planning',
-        'Education during sessions'
-    ]
-},
-        };
-        
-        // Create backdrop
-        const section = document.querySelector('#sbsr-1592');
-        const backdrop = document.createElement('div');
-        backdrop.className = 'care-map-backdrop';
-        document.body.appendChild(backdrop);
-        
-        // Create panel
-        const panel = document.createElement('div');
-        panel.className = 'care-map-panel';
-        panel.innerHTML = `
-            <div class="care-map-panel-handle"></div>
-           <button class="care-map-panel-close" aria-label="Close panel" style="width: 40px; height: 40px;">
-    <svg style="width: 18px !important; height: 18px !important;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-    </svg>
-            </button>
-            <div class="care-map-panel-inner">
-                <h2 class="care-map-panel-title"></h2>
-                <p class="care-map-panel-description"></p>
-                <ul class="care-map-panel-list"></ul>
-                <a href="" class="care-map-panel-cta">START YOUR CARE MAP</a>
-            </div>
-        `;
-        section.appendChild(panel);
-        
-        const panelHandle = panel.querySelector('.care-map-panel-handle');
-        const panelInner = panel.querySelector('.care-map-panel-inner');
-        const panelTitle = panel.querySelector('.care-map-panel-title');
-        const panelDesc = panel.querySelector('.care-map-panel-description');
-        const panelList = panel.querySelector('.care-map-panel-list');
-        const panelCta = panel.querySelector('.care-map-panel-cta');
-        const panelCloseBtn = panel.querySelector('.care-map-panel-close');
-        
-        const csContent = section.querySelector('.cs-content');
-        const csImageGroup = section.querySelector('.cs-image-group');
-        
-        // 🔥 NEW: CENTER THE SVG CONTAINER
-        if (csImageGroup) {
-            gsap.set(csImageGroup, {
-                position: 'relative', // Keep it in flow for flexbox centering
-                margin: 'auto'
-            });
-            console.log('✅ SVG container centered');
+
+        // ── Instant-complete helper ──────────────────────────────────
+        function completeAnimationInstantly() {
+            if (animationCompleted) return;
+            tl.progress(1, false);
+            gsap.ticker.tick();
+
+            svgElement.querySelectorAll('circle[data-label]').forEach(c => gsap.set(c, { scale: 1, opacity: 1 }));
+            svgElement.querySelectorAll('path.st1').forEach(t => gsap.set(t, { opacity: 1, visibility: 'visible' }));
+            svgElement.querySelectorAll('line').forEach(l => gsap.set(l, { strokeDashoffset: 0 }));
+
+            gsap.set(
+                [...svgElement.querySelectorAll('circle[data-label], path.st1, line')],
+                { clearProps: 'transform,scale,x,y,rotation,skewX,skewY' }
+            );
+
+            svgElement.style.transform = 'translateZ(0)';
+            requestAnimationFrame(() => svgElement.style.transform = '');
+
+            if (scrollTriggerInstance) {
+                cleanupScrollTrigger(scrollTriggerInstance);
+                scrollTriggerInstance = null;
+            }
+            animationCompleted = true;
         }
-        
-        let panelOpen = false;
+
+
+        // ============================================================
+        //  PANEL REFS
+        // ============================================================
+        const section      = document.querySelector('#sbsr-1592');
+        const panel        = document.getElementById('careMapPanel');
+        const backdrop     = document.getElementById('careMapBackdrop');
+        const closeBtn     = document.getElementById('careMapClose');
+        const panelTitle   = panel.querySelector('.care-map-panel-title');
+        const panelDesc    = panel.querySelector('.care-map-panel-description');
+        const panelCta     = panel.querySelector('.care-map-panel-cta');
+        const csImageGroup = section.querySelector('.cs-image-group');
+
+        let panelOpen    = false;
         let currentLabel = null;
-        
-        // 🔥 CLOSE BUTTON CLICK (Desktop only)
-        panelCloseBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            closePanel();
-        });
-        
-        // 🔥 BACKDROP CLICK (Mobile - tap outside to close)
-        backdrop.addEventListener('click', function(e) {
-            if (panelOpen) {
-                closePanel();
-            }
-        });
-        
-        // ============================================
-        // 📱 MOBILE SWIPE DOWN TO CLOSE
-        // ============================================
-        let touchStartY = 0;
-        let touchStartTime = 0;
-        let isDragging = false;
-        let currentTranslateY = 0;
-        
-        panel.addEventListener('touchstart', function(e) {
-            const isMobile = window.innerWidth < 768;
-            if (!isMobile || !panelOpen) return;
-            
-            // Only start drag if touching the handle or top area
-            const touchY = e.touches[0].clientY;
-            const panelRect = panel.getBoundingClientRect();
-            const touchInTopArea = touchY < panelRect.top + 80; // Top 80px
-            
-            if (touchInTopArea) {
-                touchStartY = e.touches[0].clientY;
-                touchStartTime = Date.now();
-                isDragging = true;
-                currentTranslateY = 0;
-            }
-        }, { passive: true });
-        
-        panel.addEventListener('touchmove', function(e) {
-            if (!isDragging) return;
-            
-            const touchY = e.touches[0].clientY;
-            const deltaY = touchY - touchStartY;
-            
-            // Only allow dragging down (positive deltaY)
-            if (deltaY > 0) {
-                currentTranslateY = deltaY;
-                panel.style.transform = `translateY(${deltaY}px)`;
-            }
-        }, { passive: true });
-        
-        panel.addEventListener('touchend', function(e) {
-            if (!isDragging) return;
-            
-            isDragging = false;
-            
-            const touchEndTime = Date.now();
-            const touchDuration = touchEndTime - touchStartTime;
-            const velocity = currentTranslateY / touchDuration; // px per ms
-            
-            const panelHeight = panel.offsetHeight;
-            const dragThreshold = panelHeight * 0.25; // 25% of panel height
-            const velocityThreshold = 0.5; // Fast swipe
-            
-            // Close if: fast swipe down OR dragged more than 25%
-            if (velocity > velocityThreshold || currentTranslateY > dragThreshold) {
-                closePanel();
-            } else {
-                // Snap back to open position with spring
-                gsap.to(panel, {
-                    y: 0,
-                    duration: 0.4,
-                    ease: 'back.out(1.2)'
-                });
-            }
-        });
-        
-        // ============================================
-        // 🔒 SCROLL LOCK HELPERS
-        // ============================================
+
+
+        // ============================================================
+        //  SCROLL LOCK
+        // ============================================================
         let savedScrollY = 0;
-        
+
         function lockScroll() {
             savedScrollY = window.scrollY;
-            document.body.style.overflow = 'hidden';
-            document.body.style.position = 'fixed';
-            document.body.style.top = `-${savedScrollY}px`;
-            document.body.style.width = '100%';
+            document.body.style.cssText +=
+                `overflow:hidden;position:fixed;top:-${savedScrollY}px;width:100%;`;
         }
-        
+
         function unlockScroll() {
-            document.body.style.overflow = '';
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.width = '';
+            document.body.style.overflow  = '';
+            document.body.style.position  = '';
+            document.body.style.top       = '';
+            document.body.style.width     = '';
             window.scrollTo(0, savedScrollY);
         }
-        
-        // ============================================
-        // 🖱️ WHITESPACE CLICK (Desktop only)
-        // ============================================
-        function handleWhitespaceClick(e) {
-            const isMobile = window.innerWidth < 768;
-            if (isMobile) return; // Mobile uses backdrop
-            
-            if (panel.contains(e.target) || e.target.closest('circle[data-label]')) return;
-            closePanel();
-        }
-        
-        // ============================================
-// 🚀 COMPLETE ANIMATION INSTANTLY
-// ============================================
-function completeAnimationInstantly() {
-    if (animationCompleted) return;
-    
-    console.log('⚡ Fast-forwarding animation...');
-    
-    tl.progress(1, false);
-    gsap.ticker.tick();
-    
-    // Manual fallbacks
-    const allCircles = svgElement.querySelectorAll('circle[data-label]');
-    allCircles.forEach(circle => {
-        gsap.set(circle, { scale: 1, opacity: 1 });
-    });
-    
-    const allTexts = svgElement.querySelectorAll('path.st1');
-    allTexts.forEach(text => {
-        gsap.set(text, { opacity: 1, visibility: 'visible' });
-    });
-    
-    const allLinesEl = svgElement.querySelectorAll('line');
-    allLinesEl.forEach(line => {
-        gsap.set(line, { strokeDashoffset: 0 });
-    });
-    
-    // 🔥 FIX: Clear ALL transforms to prevent blurriness
-    gsap.set([allCircles, allTexts, allLinesEl], {
-        clearProps: 'transform,scale,x,y,rotation,skewX,skewY'
-    });
-    
-    // Force a repaint
-    svgElement.style.transform = 'translateZ(0)';
-    requestAnimationFrame(() => {
-        svgElement.style.transform = '';
-    });
-    
-    if (scrollTriggerInstance) {
-        cleanupScrollTrigger(scrollTriggerInstance);
-        scrollTriggerInstance = null;
-    }
-    
-    animationCompleted = true;
-    console.log('✅ Animation completed');
-}
-        // ============================================
-        // 📍 SCROLL SECTION TO TOP (Desktop only)
-        // ============================================
-        function scrollSectionToTop(callback) {
-            const isMobile = window.innerWidth < 768;
-            
-            if (isMobile) {
-                callback();
-                return;
-            }
-            
-            const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-            const currentScroll = window.scrollY;
-            
-            if (Math.abs(currentScroll - sectionTop) < 10) {
-                console.log('✅ Section already at top');
-                callback();
-                return;
-            }
-            
-            console.log('📍 Scrolling section to top...');
-            
-            window.scrollTo({
-                top: sectionTop,
-                behavior: 'smooth'
+
+
+        // ============================================================
+        //  CIRCLE HELPERS
+        // ============================================================
+        const allCircles = svgElement.querySelectorAll('circle[data-label]');
+
+        function resetAllCircles() {
+            allCircles.forEach(c => {
+                c.classList.remove('is-highlighted');
+                gsap.killTweensOf(c);
+                gsap.set(c, { scale: 1, fill: '#00ae80', stroke: '#00ae80', strokeWidth: 0, filter: 'none' });
+                const tg = svgElement.querySelector(`#text-${c.getAttribute('data-label')}`);
+                tg?.querySelectorAll('path.st1').forEach(t => gsap.set(t, { fill: '#ffffff' }));
             });
-            
-            setTimeout(() => {
-                console.log('✅ Section scrolled');
-                callback();
-            }, 500);
         }
-        
-        // ============================================
-        // 📌 OPEN PANEL
-        // ============================================
+
+        function highlightCircle(label) {
+            const c = svgElement.querySelector(`circle[data-label="${label}"]`);
+            if (!c) return;
+            c.classList.add('is-highlighted');
+            gsap.set(c, { fill: '#ffffff', stroke: '#00ae80', strokeWidth: 4 });
+            svgElement.querySelector(`#text-${label}`)
+                      ?.querySelectorAll('path.st1')
+                      .forEach(t => gsap.set(t, { fill: '#00ae80' }));
+        }
+
+
+        // ============================================================
+        //  CONTENT UPDATE — reads from HTML data divs
+        // ============================================================
+        function updatePanelContent(label) {
+            const source = document.querySelector(`.care-map-data [data-label="${label}"]`);
+            if (!source) return;
+            panelTitle.innerHTML = source.querySelector('h2').innerHTML;
+            panelDesc.innerHTML  = Array.from(source.querySelectorAll('p'))
+                                         .map(p => p.outerHTML).join('');
+            panelCta.href        = `/care-map/${label}`;
+        }
+
+
+        // ============================================================
+        //  OPEN PANEL
+        // ============================================================
         function openPanel(label) {
-            const content = panelContent[label];
-            if (!content) return;
-            
             if (panelOpen && currentLabel !== label) {
                 swapPanelContent(label);
                 return;
             }
-            
             if (panelOpen) return;
-            
-            panelOpen = true;
+
+            panelOpen    = true;
             currentLabel = label;
-            
+
             resetAllCircles();
             highlightCircle(label);
+            updatePanelContent(label);
             lockScroll();
-            updatePanelContent(content, label);
-            
-            gsap.set([panelTitle, panelDesc, panelList, panelCta], {
-                opacity: 0,
-                y: 30
+
+            section.classList.add('panel-active');
+            panel.setAttribute('aria-hidden', 'false');
+
+            requestAnimationFrame(() => {
+                panel.classList.add('is-open');
+                backdrop.classList.add('is-visible');
             });
-            
-            gsap.set(panelCloseBtn, {
-                opacity: 0,
-                scale: 0.8
-            });
-            
-            const isMobile = window.innerWidth < 768;
-            const openTl = gsap.timeline();
-            
-            if (isMobile) {
-                // 📱 MOBILE: Show backdrop + bottom sheet
-                openTl.to(backdrop, {
-                    opacity: 1,
-                    pointerEvents: 'auto',
-                    duration: 0.3,
-                    ease: 'power2.out'
-                });
-                
-                openTl.to(csImageGroup, {
-                    opacity: 0,
-                    duration: 0.3,
-                    ease: 'power2.in'
-                }, '<');
-                
-                openTl.to(csContent, {
-                    opacity: 0,
-                    duration: 0.3,
-                    ease: 'power2.in'
-                }, '<');
-                
-                openTl.to(panel, {
-                    y: 0,
-                    opacity: 1,
-                    pointerEvents: 'auto',
-                    duration: 0.5,
-                    ease: 'back.out(1.2)' // Spring physics
-                }, '-=0.1');
-                
-            } else {
-                // 💻 DESKTOP: Side-by-side
-                openTl.to(csContent, {
-                    opacity: 0,
-                    x: -30,
-                    duration: 0.3,
-                    ease: 'power2.in'
-                });
-                
-                openTl.to(csImageGroup, {
-                    x: '-70%',
-                    y: 0,
-                    scale: 1,
-                    duration: 0.6,
-                    ease: 'power3.inOut'
-                }, '-=0.1');
-                
-                openTl.to(panel, {
-                    x: 0,
-                    opacity: 1,
-                    pointerEvents: 'auto',
-                    duration: 0.6,
-                    ease: 'power3.inOut'
-                }, '-=0.5');
-            }
-            
-            openTl.to([panelTitle, panelDesc, panelList, panelCta], {
-                opacity: 1,
-                y: 0,
-                duration: 0.4,
-                stagger: 0.08,
-                ease: 'power2.out'
-            }, '-=0.2');
-            
-            if (!isMobile) {
-                openTl.to(panelCloseBtn, {
-                    opacity: 1,
-                    scale: 1,
-                    duration: 0.3,
-                    ease: 'back.out(1.7)'
-                }, '-=0.3');
-            }
-            
-            setTimeout(() => {
-                document.addEventListener('click', handleWhitespaceClick);
-            }, 100);
-            
-            console.log(`📖 Panel opened: ${label}`);
+
+            document.addEventListener('click', handleOutsideClick);
         }
-        
-        // ============================================
-        // 🔄 SWAP PANEL CONTENT
-        // ============================================
+
+
+        // ============================================================
+        //  SWAP PANEL CONTENT
+        // ============================================================
         function swapPanelContent(label) {
-            const content = panelContent[label];
-            if (!content) return;
-            
             currentLabel = label;
             resetAllCircles();
             highlightCircle(label);
-            
-            const swapTl = gsap.timeline();
-            
-            swapTl.to([panelTitle, panelDesc, panelList, panelCta], {
-                opacity: 0,
-                y: -15,
-                duration: 0.25,
-                ease: 'power2.in'
-            });
-            
-            swapTl.call(() => {
-                updatePanelContent(content, label);
-                gsap.set([panelTitle, panelDesc, panelList, panelCta], { y: 30 });
-            });
-            
-            swapTl.to([panelTitle, panelDesc, panelList, panelCta], {
-                opacity: 1,
-                y: 0,
-                duration: 0.4,
-                stagger: 0.08,
-                ease: 'power2.out'
-            });
-            
-            console.log(`🔄 Swapped to: ${label}`);
+
+            panelTitle.style.transition =
+            panelDesc.style.transition  =
+            panelCta.style.transition   = 'opacity 0.2s ease';
+
+            [panelTitle, panelDesc, panelCta].forEach(el => el.style.opacity = '0');
+
+            setTimeout(() => {
+                updatePanelContent(label);
+                [panelTitle, panelDesc, panelCta].forEach(el => el.style.opacity = '1');
+                setTimeout(() => {
+                    [panelTitle, panelDesc, panelCta].forEach(el => el.style.transition = '');
+                }, 250);
+            }, 200);
         }
-        
-        // ============================================
-        // ❌ CLOSE PANEL
-        // ============================================
+
+
+        // ============================================================
+        //  CLOSE PANEL
+        // ============================================================
         function closePanel() {
             if (!panelOpen) return;
-            
-            document.removeEventListener('click', handleWhitespaceClick);
-            
-            const isMobile = window.innerWidth < 768;
-            
-            const closeTl = gsap.timeline({
-                onComplete: () => {
-                    panelOpen = false;
-                    currentLabel = null;
-                    unlockScroll();
-                    gsap.set(csContent, { clearProps: 'all' });
-                    gsap.set(csImageGroup, { clearProps: 'all' });
-                    
-                    // 🔥 RESTORE CENTER POSITIONING
-                    if (csImageGroup) {
-                        gsap.set(csImageGroup, {
-                            position: 'relative',
-                            margin: 'auto'
-                        });
-                    }
-                    
-                    resetAllCircles();
-                    
-                    if (isMobile) {
-                        gsap.set(panel, { y: '100%', opacity: 0, pointerEvents: 'none' });
-                        gsap.set(backdrop, { opacity: 0, pointerEvents: 'none' });
-                    } else {
-                        gsap.set(panel, { x: '100%', opacity: 0, pointerEvents: 'none' });
-                    }
-                }
-            });
-            
-            closeTl.to([panelCta, panelList, panelDesc, panelTitle], {
-                opacity: 0,
-                y: 15,
-                duration: 0.25,
-                stagger: 0.04,
-                ease: 'power2.in'
-            });
-            
-            if (isMobile) {
-                // 📱 MOBILE
-                closeTl.to(panel, {
-                    y: '100%',
-                    opacity: 0,
-                    duration: 0.5,
-                    ease: 'power3.inOut'
-                }, '-=0.1');
-                
-                closeTl.to(backdrop, {
-                    opacity: 0,
-                    duration: 0.3,
-                    ease: 'power2.out'
-                }, '<');
-                
-                closeTl.to(csImageGroup, {
-                    opacity: 1,
-                    duration: 0.4,
-                    ease: 'power2.out'
-                }, '-=0.3');
-                
-                closeTl.to(csContent, {
-                    opacity: 1,
-                    duration: 0.4,
-                    ease: 'power2.out'
-                }, '-=0.3');
-                
-            } else {
-                // 💻 DESKTOP
-                closeTl.to(panel, {
-                    x: '100%',
-                    opacity: 0,
-                    duration: 0.5,
-                    ease: 'power3.inOut'
-                }, '-=0.1');
-                
-                closeTl.to(csImageGroup, {
-                    x: 0,
-                    scale: 1,
-                    duration: 0.6,
-                    ease: 'power3.inOut'
-                }, '-=0.4');
-                
-                closeTl.to(csContent, {
-                    opacity: 1,
-                    x: 0,
-                    duration: 0.4,
-                    ease: 'power2.out'
-                }, '-=0.3');
-            }
-            
-            console.log('❌ Panel closed');
-        }
-        
-        // ============================================
-        // 📝 UPDATE PANEL CONTENT
-        // ============================================
-        function updatePanelContent(content, label) {
-            panelTitle.textContent = content.title;
-            panelDesc.textContent = content.description;
-            panelList.innerHTML = content.bullets.map(b => `<li>${b}</li>`).join('');
-            panelCta.href = `/care-map/${label}`;
-        }
-        
-        // ============================================
-        // 🎯 CIRCLE INTERACTIONS
-        // ============================================
-        const allCircles = svgElement.querySelectorAll('circle[data-label]');
-        
-        function resetAllCircles() {
-            allCircles.forEach((c) => {
-                c.classList.remove('hovered');
-                c.style.zIndex = '';
-                gsap.killTweensOf(c);
-                gsap.set(c, {
-                    scale: 1,
-                    fill: '#00ae80',
-                    stroke: '#00ae80',
-                    strokeWidth: 0,
-                    filter: 'none'
-                });
-                const tg = svgElement.querySelector(`#text-${c.getAttribute('data-label')}`);
-                const tPaths = tg ? tg.querySelectorAll('path.st1') : [];
-                tPaths.forEach(t => {
-                    t.classList.remove('hovered-text');
-                    t.style.zIndex = '';
-                    gsap.set(t, { fill: '#ffffff' });
-                });
-            });
-        }
-        
-        function highlightCircle(label) {
-            const c = svgElement.querySelector(`circle[data-label="${label}"]`);
-            if (!c) return;
-            gsap.set(c, {
-                fill: '#ffffff',
-                stroke: '#00ae80',
-                strokeWidth: 4
-            });
-            const tg = svgElement.querySelector(`#text-${label}`);
-            const tPaths = tg ? tg.querySelectorAll('path.st1') : [];
-            tPaths.forEach(t => {
-                gsap.set(t, { fill: '#00ae80' });
-            });
-        }
 
-        allCircles.forEach((circle) => {
-            const label = circle.getAttribute('data-label');
-            
-            circle.style.cursor = 'pointer';
-            
-            const textGroup = svgElement.querySelector(`#text-${label}`);
-            const circleTexts = textGroup ? textGroup.querySelectorAll('path.st1') : [];
-            
-            circle.addEventListener('mouseenter', function() {
-                this.classList.add('hovered');
-                this.style.zIndex = '999';
-                
-                circleTexts.forEach(text => {
-                    text.classList.add('hovered-text');
-                    text.style.zIndex = '1000';
-                    gsap.set(text, { fill: '#00ae80' });
-                });
-                
-                gsap.to(this, {
-                    scale: 1.08,
-                    fill: '#ffffff',
-                    stroke: '#00ae80',
-                    strokeWidth: 4,
-                    
-                    duration: 0.3,
-                    ease: 'power2.out',
-                    overwrite: 'auto'
-                });
-            });
-            
-            circle.addEventListener('mouseleave', function() {
-                this.classList.remove('hovered');
-                this.style.zIndex = '';
-                
-                if (panelOpen && currentLabel === label) {
-                    gsap.to(this, {
-                        scale: 1,
-                        filter: 'none',
-                        duration: 0.3,
-                        ease: 'power2.out',
-                        overwrite: 'auto'
-                    });
-                    return;
-                }
-                
-                circleTexts.forEach(text => {
-                    text.classList.remove('hovered-text');
-                    text.style.zIndex = '';
-                    gsap.set(text, { fill: '#ffffff' });
-                });
-                
-                gsap.to(this, {
-                    scale: 1,
-                    fill: '#00ae80',
-                    stroke: '#00ae80',
-                    strokeWidth: 0,
-                    filter: 'none',
-                    duration: 0.3,
-                    ease: 'power2.out',
-                    overwrite: 'auto'
-                });
-            });
-            
-            circle.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                console.log(`🖱️ Clicked: ${label}`);
-                
+            document.removeEventListener('click', handleOutsideClick);
+
+            panel.classList.remove('is-open');
+            backdrop.classList.remove('is-visible');
+            section.classList.remove('panel-active');
+            panel.setAttribute('aria-hidden', 'true');
+
+            panel.addEventListener('transitionend', function onTransitionEnd(e) {
+                if (e.propertyName !== 'transform') return;
+                panel.removeEventListener('transitionend', onTransitionEnd);
+
+                panelOpen    = false;
+                currentLabel = null;
+                unlockScroll();
                 resetAllCircles();
-                completeAnimationInstantly();
-                
-                setTimeout(() => {
-                    scrollSectionToTop(() => {
-                        openPanel(label);
-                    });
-                }, 300);
             });
+        }
+
+
+        // ============================================================
+        //  OUTSIDE CLICK
+        // ============================================================
+        function handleOutsideClick(e) {
+            if (window.innerWidth < 768) return;
+            if (panel.contains(e.target)) return;
+            if (e.target.closest('circle[data-label]')) return;
+            closePanel();
+        }
+
+
+        // ============================================================
+        //  MOBILE: SWIPE DOWN TO CLOSE
+        // ============================================================
+        let touchStartY    = 0;
+        let touchStartTime = 0;
+        let isDragging     = false;
+        let currentDragY   = 0;
+
+        panel.addEventListener('touchstart', e => {
+            if (window.innerWidth >= 768 || !panelOpen) return;
+            const panelTop = panel.getBoundingClientRect().top;
+            if (e.touches[0].clientY < panelTop + 80) {
+                touchStartY    = e.touches[0].clientY;
+                touchStartTime = Date.now();
+                isDragging     = true;
+                currentDragY   = 0;
+            }
+        }, { passive: true });
+
+        panel.addEventListener('touchmove', e => {
+            if (!isDragging) return;
+            const delta = e.touches[0].clientY - touchStartY;
+            if (delta > 0) {
+                currentDragY = delta;
+                panel.style.transform = `translateY(${delta}px)`;
+            }
+        }, { passive: true });
+
+        panel.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            isDragging = false;
+
+            const velocity  = currentDragY / (Date.now() - touchStartTime);
+            const threshold = panel.offsetHeight * 0.25;
+
+            if (velocity > 0.5 || currentDragY > threshold) {
+                panel.style.transform = '';
+                closePanel();
+            } else {
+                panel.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                panel.style.transform  = '';
+                setTimeout(() => panel.style.transition = '', 400);
+            }
         });
-        
-        console.log('✅ Everything initialized!');
-        
-    }, 500);
+
+
+        // ============================================================
+        //  BUTTON + BACKDROP LISTENERS
+        // ============================================================
+        closeBtn.addEventListener('click', e => { e.stopPropagation(); closePanel(); });
+        backdrop.addEventListener('click', ()  => { if (panelOpen) closePanel(); });
+
+
+        // ============================================================
+        //  CIRCLE INTERACTIONS
+        // ============================================================
+        allCircles.forEach(circle => {
+            const label      = circle.getAttribute('data-label');
+            const textGroup  = svgElement.querySelector(`#text-${label}`);
+            const labelTexts = textGroup?.querySelectorAll('path.st1') ?? [];
+
+            circle.style.cursor = 'pointer';
+
+            circle.addEventListener('mouseenter', function () {
+                gsap.to(this, {
+                    scale: 1.08, fill: '#ffffff', stroke: '#00ae80', strokeWidth: 4,
+                    duration: 0.3, ease: 'power2.out', overwrite: 'auto'
+                });
+                labelTexts.forEach(t => gsap.set(t, { fill: '#00ae80' }));
+            });
+
+            circle.addEventListener('mouseleave', function () {
+                if (panelOpen && currentLabel === label) return;
+                gsap.to(this, {
+                    scale: 1, fill: '#00ae80', stroke: '#00ae80', strokeWidth: 0, filter: 'none',
+                    duration: 0.3, ease: 'power2.out', overwrite: 'auto'
+                });
+                labelTexts.forEach(t => gsap.set(t, { fill: '#ffffff' }));
+            });
+
+            circle.addEventListener('click', function (e) {
+    e.preventDefault();
+    completeAnimationInstantly();
+
+    const sectionRect = section.getBoundingClientRect();
+    const viewportMid = window.innerHeight / 2;
+    const sectionMid  = sectionRect.top + sectionRect.height / 2;
+    const isCentered  = Math.abs(sectionMid - viewportMid) < 80;
+
+    if (isCentered) {
+        setTimeout(() => openPanel(label), 300);
+        return;
+    }
+
+    section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    let scrollEndTimer;
+    const onScroll = () => {
+        clearTimeout(scrollEndTimer);
+        scrollEndTimer = setTimeout(() => {
+            window.removeEventListener('scroll', onScroll);
+            openPanel(label);
+        }, 80);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Fallback if scroll distance is negligible and no scroll event fires
+    scrollEndTimer = setTimeout(() => {
+        window.removeEventListener('scroll', onScroll);
+        openPanel(label);
+    }, 700);
 });
+        });
 
+        console.log('✅ Care Map initialized');
 
-</script>
+    }, 500);
+}); </script>
 
 <!-- Care Map -->
 <script>document.addEventListener('DOMContentLoaded', function() {
