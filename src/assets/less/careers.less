@@ -436,7 +436,7 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
 @media only screen and (min-width: 0rem) {
     #why-choose-223 {
         padding: var(--sectionPadding);
-        background-color: #f8f8f8;
+        background-color: #f0f0f0;
     }
 
     #why-choose-223 .cs-container {
@@ -467,6 +467,30 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
         height: 100%;
         object-fit: cover;
         display: block;
+    }
+
+    /* Gradient overlay */
+    #why-choose-223 .rv-img-frame::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.2) 45%, rgba(0,0,0,0) 100%);
+        border-radius: 0.25rem;
+    }
+
+    /* Quote on image */
+    #why-choose-223 .rv-img-quote {
+        position: absolute;
+        bottom: 1.75rem;
+        left: 1.75rem;
+        right: 1.75rem;
+        z-index: 2;
+        font-family: var(--headerFont);
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 400;
+        line-height: 1.15;
+        color: #fff;
+        margin: 0;
     }
 
     #why-choose-223 .cs-content {
@@ -519,12 +543,12 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
     }
 
     #why-choose-223 .rv-cards-header {
-        font-size: 1.25rem;
+        font-family: var(--headerFont);
+        font-size: 1.5rem;
         font-weight: 400;
         color: #1a1a18;
         letter-spacing: -0.01em;
-        border-left: 3px solid var(--primary);
-        padding-left: 1.125rem;
+        
         margin: 0;
     }
 
@@ -573,7 +597,7 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
     }
 
     #why-choose-223 .cs-title {
-        font-size: clamp(2.438rem, 3.5vw, 3.25rem);
+        font-size: clamp(2.438rem, 5vw, 4rem);
     }
 
     #why-choose-223 .cs-text {
@@ -582,6 +606,10 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
 
     #why-choose-223 .cs-card-group {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    #why-choose-223 .rv-img-quote {
+        font-size: clamp(1.5rem, 2vw, 2rem);
     }
 }
 
@@ -743,21 +771,25 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
   will-change: transform;
 }
  
-/* ── Card ── */
+/* ── Card — split layout ── */
 .card {
   flex: 0 0 85%;
-  background: #fff;
-  border-radius: 4px;
-  overflow: hidden;
+  background: transparent;  /* card itself is no longer the white box */
+  border-radius: 0;
+  overflow: visible;
   display: flex;
   flex-direction: column;
+  gap: 16px;                /* space between standalone photo and text block */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
  
+/* ── Photo — standalone, no white box ── */
 .card-photo {
   width: 100%;
   height: 400px;
   overflow: hidden;
+  border-radius: 4px;       /* rounded corners on photo itself */
+  flex-shrink: 0;
 }
 
 .card-photo img {
@@ -785,8 +817,8 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
   fill: var(--primary);
 }
  
+/* ── Card body — now its own white box ── */
 .card-body {
-  padding: 24px 26px 28px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -877,8 +909,13 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
   }
  
   .revibe-header {
-    margin-bottom: 48px;
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;  /* aligns both to the top */
+  justify-content: space-between;
+  gap: 48px;
+  margin-bottom: 40px;
+}
  
   .inside-revibe .headline {
     font-size: clamp(2.438rem, 5vw, 4rem);
