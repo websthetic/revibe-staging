@@ -645,7 +645,6 @@
         overflow: visible;
     }
 
-    /* Header — stacked on mobile */
     .revibe-header {
         width: 100%;
         box-sizing: border-box;
@@ -759,6 +758,7 @@
         overflow: hidden;
         border-radius: 4px;
         flex-shrink: 0;
+        position: relative;
     }
 
     .card-photo img {
@@ -768,6 +768,22 @@
         object-position: center 20%;
         display: block;
         transition: transform 0.4s ease;
+    }
+
+    /* Mobile: quote flows below photo as normal text */
+    .card-photo .card-quote {
+        position: static;
+        display: block;
+        padding: 0;
+        margin-top: 12px;
+        background: none;
+        color: #000 !important;
+        opacity: 1;
+        transform: none;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.75;
     }
 
     .card-body {
@@ -793,16 +809,6 @@
         text-transform: uppercase;
         color: var(--primary);
         margin-bottom: 16px;
-    }
-
-    .card-quote {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 400;
-        font-size: 1rem;
-        line-height: 1.75;
-        color: #000 !important;
-        flex: 1;
-        position: relative;
     }
 }
 
@@ -836,13 +842,12 @@
 
     .revibe-container {
         padding: 48px 0 60px;
-        flex-direction: row;  /* header left, carousel right */
+        flex-direction: row;
         align-items: center;
         gap: 5rem;
         position: relative;
     }
 
-    /* Fixed-width left column — same technique as #what-makes-different */
     .revibe-header {
         width: 18rem;
         flex-shrink: 0;
@@ -855,7 +860,6 @@
         position: relative;
         z-index: 2;
         background: #ffffff;
-        /* Bleed white background to the left — masks scrolled cards */
         box-shadow: -100vw 0 0 100vw #ffffff;
     }
 
@@ -863,10 +867,9 @@
         font-size: clamp(2.438rem, 5vw, 4rem);
     }
 
-    /* Carousel takes remaining width */
     .carousel-outer {
         flex: none;
-         width: calc(100vw - 15rem - 5rem - 2rem);
+        width: calc(100vw - 15rem - 5rem - 2rem);
         overflow: visible;
         position: relative;
         z-index: 1;
@@ -880,7 +883,31 @@
     .card {
         flex: 0 0 calc((100% - 48px) / 3 * 0.88);
     }
+
+    /* Desktop: quote overlays the photo on hover */
+    .card-photo .card-quote {
+        position: absolute;
+        inset: 0;
+        margin: 0;
+        padding: 1.5rem;
+        background: rgba(0, 0, 0, 0.62);
+        color: #fff !important;
+        display: flex;
+        align-items: flex-end;
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        border-radius: 4px;
+        font-size: 0.95rem;
+    }
+
+    .card:hover .card-photo .card-quote {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
+
 /* ── Revibe: Education & Mentorship Section ── */
 
 /* ── Outer wrapper ── */
