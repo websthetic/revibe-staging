@@ -925,7 +925,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
-  align-items: center;
+  align-items: stretch; /* was: center — makes both columns equal height */
 }
 
 /* ════════════════════
@@ -975,7 +975,7 @@
 
 .revibe-edu-intro + .revibe-edu-intro {
   margin-top: 0;
-  margin-bottom: 2.2rem;
+  margin-bottom: 1rem;
 }
 
 /* ── Checklist items ── */
@@ -988,14 +988,10 @@
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  padding: 1.1rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 0.6rem 0; /* removed border-based spacing, using padding only */
   opacity: 0;
   transform: translateX(-10px);
-}
-
-.revibe-edu-item:first-child {
-  border-top: 1px solid #ede9e3;
+  /* border-top and border-bottom removed */
 }
 
 .revibe-edu-item:nth-child(1) { animation: revibeEduRight 0.45s 0.3s forwards; }
@@ -1042,14 +1038,16 @@
 .revibe-edu-photo-wrap {
   border-radius: 8px;
   overflow: hidden;
-  flex: 1;
+  flex: 1;         /* stretches to fill the full column height */
   min-height: 0;
-  max-height: 650px;
   position: relative;
   background: #e0d9cf;
+  /* max-height removed — image now matches left content height */
 }
 
 .revibe-edu-photo-wrap img {
+  position: absolute; /* fills the wrap regardless of its height */
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1092,7 +1090,7 @@
 
 .revibe-edu-photo-quote {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-size: clamp(1.5rem, 3vw, 2rem);
   line-height: 1.1;
   letter-spacing: 0.03em;
   color: #fff;
@@ -1115,10 +1113,12 @@
     grid-template-columns: 1fr;
     gap: 3rem;
   }
+
   .revibe-edu-image-col {
     order: -1;
     min-height: 280px;
   }
+
   .revibe-edu-intro {
     max-width: 100%;
   }
@@ -1682,7 +1682,7 @@
         display: grid;
         grid-template-columns: 1fr;
         gap: 3rem;
-        align-items: center;
+        align-items: stretch; /* was: center */
     }
 
     .revibe-content {
@@ -1732,15 +1732,12 @@
         display: flex;
         align-items: flex-start;
         gap: 1rem;
-        padding: 1.1rem 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        padding: 0.6rem 0; /* was: 1.1rem 0; border-top and border-bottom removed */
         opacity: 0;
         transform: translateX(-10px);
     }
 
-    .revibe-item:first-child {
-        border-top: 1px solid #ede9e3;
-    }
+    /* .revibe-item:first-child border-top removed */
 
     .revibe-item:nth-child(1) { animation: revibeRight 0.45s 0.3s forwards; }
     .revibe-item:nth-child(2) { animation: revibeRight 0.45s 0.4s forwards; }
@@ -1777,20 +1774,22 @@
     .revibe-photo-wrap {
         border-radius: 8px;
         overflow: hidden;
-        flex: 1;
+        flex: 1;         /* stretches to fill the full column height */
         min-height: 0;
-        max-height: 650px;
         position: relative;
         background: #e0d9cf;
+        /* max-height removed — image now matches left content height */
     }
 
     .revibe-photo-wrap img {
+        position: absolute; /* fills the wrap regardless of its height */
+        inset: 0;
         width: 100%;
         height: 100%;
-        max-height: 300px;
         object-fit: cover;
         display: block;
         filter: saturate(0.88);
+        /* max-height removed */
     }
 
     @keyframes revibeUp {
@@ -1820,15 +1819,15 @@
     }
 
     .revibe-photo-wrap img {
+        position: absolute;
+        inset: 0;
         width: 100%;
         height: 100%;
-        max-height: unset;
         object-fit: cover;
         display: block;
         filter: saturate(0.88);
     }
 }
-
 /* -- -------------------------- --
    ---       Jobs Section        ---
    -- -------------------------- -- */
