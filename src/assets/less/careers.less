@@ -632,38 +632,28 @@
     .inside-revibe {
         background-color: #fff;
         width: 100%;
-        padding: 2.25rem 0 0 1rem; /* was 3rem 0 0 1rem */
+        padding: 2.25rem 0 0 0;
+        overflow: hidden;
     }
 
     .revibe-container {
         max-width: 80rem;
         margin: 0 auto;
-        padding: 36px 0 0; /* was 48px 0 0 */
-    }
-
-    .revibe-header {
-        margin-bottom: 40px;
-    }
-
-    .eyebrow {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 11px;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: #B05A3B;
-        margin-bottom: 14px;
         display: flex;
-        align-items: center;
-        gap: 10px;
+        flex-direction: column;
+        gap: 2.5rem;
+        overflow: visible;
     }
 
-    .eyebrow::after {
-        content: '';
-        display: inline-block;
-        width: 40px;
-        height: 1px;
-        background: #B05A3B;
+    /* Header — stacked on mobile */
+    .revibe-header {
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
     }
 
     .inside-revibe .headline {
@@ -672,7 +662,7 @@
         font-weight: 400;
         color: #000 !important;
         line-height: 1.0;
-        margin-bottom: 18px;
+        margin: 0;
         letter-spacing: 0.02em;
     }
 
@@ -686,40 +676,12 @@
         color: #000 !important;
         line-height: 1.7;
         max-width: 460px;
-        padding-bottom: 12px;
-        border-bottom: 3px solid var(--primary);
-        margin-right: 1rem;
-    }
-
-    .divider {
-        width: 60px;
-        height: 2px;
-        background: #B05A3B;
-        margin: 24px 0;
-    }
-
-    .carousel-header {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        margin-bottom: 24px;
-    }
-
-    .carousel-label {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 11px;
-        font-weight: 500;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: #000;
+        margin: 0;
     }
 
     .arrows {
         display: flex;
         gap: 10px;
-        justify-content: flex-end;
-        margin-top: 60px;
-        margin-right: 1rem;
     }
 
     .arrow {
@@ -775,6 +737,7 @@
     .carousel-track {
         display: flex;
         gap: 24px;
+        padding-left: 1rem;
         transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
         will-change: transform;
     }
@@ -805,22 +768,6 @@
         object-position: center 20%;
         display: block;
         transition: transform 0.4s ease;
-    }
-
-    .placeholder-circle {
-        width: 68px;
-        height: 68px;
-        border-radius: 50%;
-        background: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .placeholder-circle svg {
-        width: 36px;
-        height: 36px;
-        fill: var(--primary);
     }
 
     .card-body {
@@ -863,19 +810,20 @@
 @media only screen and (min-width: 32.5rem) {
 
     .revibe-container {
-        padding: 42px 0 54px; /* was 56px 0 72px */
+        padding: 42px 0 54px;
     }
 
     .revibe-header {
-        margin-bottom: 44px;
+        padding-left: 2rem;
+        padding-right: 2rem;
     }
 
     .inside-revibe .headline {
         font-size: 64px;
     }
 
-    .inside-revibe .subheadline {
-        font-size: 1.125rem;
+    .carousel-track {
+        padding-left: 2rem;
     }
 
     .card {
@@ -887,27 +835,52 @@
 @media only screen and (min-width: 50rem) {
 
     .revibe-container {
-        padding: 48px 0 60px; /* was 64px 0 80px */
+        padding: 48px 0 60px;
+        flex-direction: row;  /* header left, carousel right */
+        align-items: center;
+        gap: 5rem;
+        position: relative;
     }
 
+    /* Fixed-width left column — same technique as #what-makes-different */
     .revibe-header {
+        width: 18rem;
+        flex-shrink: 0;
+        padding-left: 0;
+        padding-right: 2rem;
+        align-self: stretch;
         display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 48px;
-        margin-bottom: 40px;
+        flex-direction: column;
+        justify-content: flex-start;
+        position: relative;
+        z-index: 2;
+        background: #ffffff;
+        /* Bleed white background to the left — masks scrolled cards */
+        box-shadow: -100vw 0 0 100vw #ffffff;
     }
 
     .inside-revibe .headline {
         font-size: clamp(2.438rem, 5vw, 4rem);
     }
 
+    /* Carousel takes remaining width */
+    .carousel-outer {
+        flex: none;
+         width: calc(100vw - 15rem - 5rem - 2rem);
+        overflow: visible;
+        position: relative;
+        z-index: 1;
+        margin-right: 0;
+    }
+
+    .carousel-track {
+        padding-left: 0;
+    }
+
     .card {
         flex: 0 0 calc((100% - 48px) / 3 * 0.88);
     }
 }
-
 /* ── Revibe: Education & Mentorship Section ── */
 
 /* ── Outer wrapper ── */
