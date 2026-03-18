@@ -93,7 +93,7 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
   /* Sub-copy */
   #careers-hero .hero__sub {
     font-family: var(--bodyFont);
-    font-size: var(--bodyFontSize);
+    font-size: 1.125rem;
     line-height: 1.5em;
     color: var(--bodyTextColorWhite);
     opacity: 0.8;
@@ -347,7 +347,7 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
 
         .cs-belief {
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(1rem, 2vw, 1.125rem);
+            font-size: 1.125rem;
             font-weight: 500;
             line-height: 1.5;
             color: var(--primary);
@@ -363,7 +363,7 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
 
         .cs-text {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.125;
+            font-size: 1.125rem;
             line-height: 1.75;
             color: var(--bodyTextColor);
             margin: 0;
@@ -1397,41 +1397,31 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
 
     .career-pathways__container {
         width: 100%;
-        max-width: 80rem;
+        max-width: 60rem;
         margin: 0 auto;
     }
 
+    /* Header */
     .career-pathways__header {
+        text-align: center;
         display: flex;
         flex-direction: column;
-        gap: 1.25rem;
+        gap: 0.75rem;
         margin-bottom: 2.5rem;
-    }
-
-    .career-pathways__header-left {
-        flex: 1;
-    }
-
-    .career-pathways__header-right {
-        flex: 1;
-        display: flex;
-        align-items: center;
     }
 
     .career-pathways__eyebrow {
         display: block;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 0.6875rem;
-        font-weight: 700;
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 0.75rem;
         letter-spacing: 0.18em;
         text-transform: uppercase;
         color: #03ad84 !important;
-        margin-bottom: 0.5rem;
     }
 
     .career-pathways__headline {
         font-family: 'Bebas Neue', sans-serif;
-        font-size: clamp(3rem, 5.5vw, 4.4rem);
+        font-size: clamp(2.438rem, 5vw, 4rem);
         font-weight: 400;
         letter-spacing: 0.02em;
         line-height: 1.0;
@@ -1443,114 +1433,180 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
         font-family: 'Montserrat', sans-serif;
         font-size: 1.125rem;
         line-height: 1.75;
-        color: #000 !important;
+        color: #555 !important;
         margin: 0;
-        padding-bottom: 12px;
-        border-bottom: 3px solid #03ad84;
     }
 
-    .accordion {
-        width: 100%;
-    }
-
-    .accordion__item {
-        border-bottom: 0.5px solid #ddddd8;
-    }
-
-    .accordion__header {
-        width: 100%;
+    /* Tracks */
+    .cp-tracks {
         display: flex;
-        align-items: center;
-        padding: 2rem 0;
-        background: transparent;
-        border: none;
-        cursor: pointer;
+        justify-content: center;
+        border-bottom: 0.5px solid #ddddd8;
+        margin-bottom: 1.5rem;
     }
 
-    .accordion__title {
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: clamp(1.5rem, 3vw, 2.5rem);
-        font-weight: 400;
-        letter-spacing: 0.04em;
+    .cp-track-item {
+        padding: 0.75rem 1.5rem;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        margin-bottom: -1px;
+    }
+
+    .cp-track-item__name {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.6875rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
-        text-align: left;
         color: #ccc;
         transition: color 0.2s ease;
+        display: block;
     }
 
-    .accordion__header:hover .accordion__title,
-    .accordion__header.is-open .accordion__title {
-        color: #03ad84;
-    }
-
-    .accordion__body {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease;
-    }
-
-    .accordion__body.is-open {
-        max-height: 800px;
-    }
-
-    .accordion__inner {
-        padding: 0.25rem 0 3rem;
-    }
-
-    .progression {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        width: 100%;
-    }
-
-    .progression__node {
-        flex: 1;
-        min-width: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        text-align: left;
-        background: #ffffff;
-        border-radius: 6px;
-        padding: 1rem;
-        border: 1px solid rgba(0, 0, 0, 0.08);
-    }
-
-    .progression__step {
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: 2.75rem;
-        font-weight: 400;
-        letter-spacing: 0.02em;
-        color: #ddd;
-        margin-bottom: 0.5rem;
-        line-height: 1;
-    }
-
-    .progression__role {
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: 1.125rem;
-        font-weight: 400;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        line-height: 1.2;
+    .cp-track-item.is-active .cp-track-item__name {
         color: #1a1a1a;
     }
 
-    .progression__arrow {
+    .cp-track-item.is-active {
+        border-bottom: 2px solid #03ad84;
+    }
+
+    /* Panels */
+    .cp-panels-wrapper {
+        position: relative;
+    }
+
+    .cp-panel {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+    }
+
+    .cp-panel.is-active {
+        display: flex;
+    }
+
+    .cp-spacer {
+        display: flex;
+        flex-direction: column;
+        visibility: hidden;
+        pointer-events: none;
+        position: absolute;
+        width: 100%;
+    }
+
+    /* Cards */
+    .cp-card {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 1.25rem;
+        border-radius: 8px;
+        background: #f7f7f5;
+        border: 1.5px solid #e0e0e0;
+        transition: border-color 0.3s ease;
+    }
+
+    .cp-card__num {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 2rem;
+        line-height: 1;
+        min-width: 2.5rem;
         flex-shrink: 0;
-        width: auto;
-        height: 1.25rem;
+        color: #ddd;
+        transition: color 0.3s ease;
+    }
+
+    .cp-card__body {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .cp-card__pill {
+        display: inline-flex;
+        align-items: center;
+        padding: 2px 9px;
+        border-radius: 99px;
+        background: #e8e8e5;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.625rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #999;
+        width: fit-content;
+        transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .cp-card__role {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 1.125rem;
+        letter-spacing: 0.04em;
+        line-height: 1.2;
+        text-transform: uppercase;
+        color: #1a1a1a;
+    }
+
+    /* Last card */
+    .cp-card--last {
+        background: #03ad84;
+        border-color: #03ad84;
+    }
+
+    .cp-card--last .cp-card__num {
+        color: rgba(255, 255, 255, 0.3);
+    }
+
+    .cp-card--last .cp-card__pill {
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+    }
+
+    .cp-card--last .cp-card__role {
+        color: #fff;
+    }
+
+    /* Active card state (animation) */
+    .cp-card.is-lit {
+        border-color: #03ad84;
+    }
+
+    .cp-card.is-lit .cp-card__num {
+        color: #03ad84;
+    }
+
+    .cp-card.is-lit .cp-card__pill {
+        background: #e1f5ee;
+        color: #0F6E56;
+    }
+
+    /* Arrows */
+    .cp-arrow {
         display: flex;
         align-items: center;
         justify-content: center;
-        transform: rotate(90deg);
+        height: 1.25rem;
     }
 
-    .progression__arrow svg line,
-    .progression__arrow svg path {
-        stroke: #03ad84;
+    .cp-arrow-line {
+        stroke-dasharray: 12;
+        stroke-dashoffset: 12;
+        transition: stroke-dashoffset 0.25s ease;
+    }
+
+    .cp-arrow-head {
+        opacity: 0;
+        transition: opacity 0.15s ease;
+    }
+
+    .cp-arrow.is-lit .cp-arrow-line {
+        stroke-dashoffset: 0;
+    }
+
+    .cp-arrow.is-lit .cp-arrow-head {
+        opacity: 1;
     }
 }
 
@@ -1561,39 +1617,21 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
         padding: 4rem 2.5rem;
     }
 
-    .career-pathways__header {
-        flex-direction: row;
-        align-items: center;
-        gap: 4rem;
+    .cp-track-item {
+        padding: 0.75rem 2rem;
     }
 
-    .accordion__header {
-        padding: 2.5rem 0;
+    .cp-card {
+        padding: 1.125rem 1.5rem;
     }
 
-    .progression {
-        flex-direction: row;
-        align-items: stretch;
-        gap: 0;
+    .cp-card__num {
+        font-size: 2.25rem;
+        min-width: 3rem;
     }
 
-    .progression__node {
-        padding: 1.25rem 0.75rem;
-        border-radius: 8px;
-    }
-
-    .progression__role {
-        font-size: 1.5rem;
-    }
-
-    .progression__arrow {
-        width: 1.5rem;
-        height: auto;
-        transform: none;
-    }
-
-    .accordion__body.is-open {
-        max-height: 400px;
+    .cp-card__role {
+        font-size: 1.25rem;
     }
 }
 
@@ -1604,15 +1642,19 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
         padding: 5rem 4rem;
     }
 
-    .accordion__header {
-        padding: 3rem 0;
+    .cp-card__num {
+        font-size: 2.5rem;
+        min-width: 3.25rem;
     }
 
-    .progression__node {
-        padding: 1.75rem 0.75rem;
+    .cp-card__role {
+        font-size: 1.375rem;
     }
+
+    .cp-card--last.is-lit .cp-card__num {
+    color: var(--secondary);
 }
-
+}
 /* -- -------------------------- --
    ---   Revibe: Thrive Section  ---
    -- -------------------------- -- */
