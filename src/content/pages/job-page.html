@@ -84,10 +84,13 @@ permalink: "/jobs/"
       <div class="cs-section">
         <h2 class="cs-section-title">About Your Future</h2>
         <p class="cs-text">Joining Revibe means becoming part of a passionate, growing team dedicated to health, performance, and exceptional care. You'll have opportunities to learn, grow, and contribute to a company that values both people and progress.</p>
-        <a href="#" class="cs-button-solid">Apply Now</a>
+       
+          <button class="cs-button-solid" onclick="openPopup()">Apply Now</button>
       </div>
  
     </div>
   </section>
+
+  {% include 'components/popup-form.html' %}
                                           
 {% endblock %}

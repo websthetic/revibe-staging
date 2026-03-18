@@ -1,0 +1,213 @@
+<!-- ── Popup ─────────────────────────────────────── -->
+<div class="popup-overlay" id="contactPopupOverlay">
+  <div class="popup-card" role="dialog" aria-modal="true" aria-label="Contact Form">
+
+    <!-- Close button — child of card so it's always visible -->
+    <button class="close-btn" onclick="closePopup()" aria-label="Close">&#x2715;</button>
+
+    <!-- RIGHT: Image panel -->
+    <div class="popup-image-panel">
+      <img
+        src="https://websthetic.tor1.cdn.digitaloceanspaces.com/REVIBE_JAN_11-74-of-107-scaled.jpg"
+        alt="Revibe Wellness"
+        loading="lazy"
+      />
+      <div class="popup-image-tagline">
+        <span>Be You Again,<br>But Better</span>
+      </div>
+    </div>
+
+    <!-- LEFT: Form panel -->
+    <div class="popup-form-panel">
+
+      <h2 class="popup-heading">Join the <br> Revibe Team</h2>
+      <p class="popup-subtext">We're growing and looking for passionate people. Fill out the form below and we'll be in touch.</p>
+      <div class="popup-divider"></div>
+
+      <form data-netlify="true" class="cs-form" id="cs-form-1092" name="careers">
+        <input type="hidden" name="form-name" value="careers" />
+
+        <!-- 1. Basic Info -->
+        <p class="cs-form-section-label">1. Basic Info</p>
+
+        <div class="form-row">
+          <label class="cs-label">
+            Full Name
+            <input class="cs-input" required type="text" name="name" placeholder="Your full name">
+          </label>
+          <label class="cs-label">
+            Phone
+            <input class="cs-input" required type="tel" name="phone" placeholder="+1 (000) 000‑0000">
+          </label>
+        </div>
+
+        <label class="cs-label">
+          Email
+          <input class="cs-input" required type="email" name="email" placeholder="your@email.com">
+        </label>
+
+        <label class="cs-label">
+          Location
+          <div class="select-wrap">
+            <select class="cs-input cs-select" name="location" required onchange="this.classList.add('selected')">
+              <option value="">Select location</option>
+              <option value="Mississauga">Mississauga</option>
+              <option value="Markham">Markham</option>
+            </select>
+          </div>
+        </label>
+
+        <!-- 2. Role & Location -->
+        <p class="cs-form-section-label">2. Role &amp; Location</p>
+
+        <label class="cs-label">
+          What role are you interested in?
+          <div class="select-wrap">
+            <select class="cs-input cs-select" name="role" required onchange="this.classList.add('selected')">
+              <option value="">Select a role</option>
+              <option value="Physiotherapy">Physiotherapy</option>
+              <option value="Chiropractic">Chiropractic</option>
+              <option value="Registered Massage Therapist">Registered Massage Therapist</option>
+              <option value="Performance">Performance</option>
+              <option value="Guest Experience">Guest Experience</option>
+            </select>
+          </div>
+        </label>
+
+        <label class="cs-label">
+          Preferred location?
+          <div class="select-wrap">
+            <select class="cs-input cs-select" name="preferred_location" required onchange="this.classList.add('selected')">
+              <option value="">Select a location</option>
+              <option value="Mississauga">Mississauga</option>
+              <option value="Markham">Markham</option>
+            </select>
+          </div>
+        </label>
+
+        <!-- 3. Experience -->
+        <p class="cs-form-section-label">3. Experience</p>
+
+        <label class="cs-label">
+          Experience level
+          <div class="select-wrap">
+            <select class="cs-input cs-select" name="experience_level" required onchange="this.classList.add('selected')">
+              <option value="">Select experience level</option>
+              <option value="New Grad">New Grad</option>
+              <option value="1-3 yrs">1–3 years</option>
+              <option value="3-5 yrs">3–5 years</option>
+              <option value="5+ yrs">5+ years</option>
+            </select>
+          </div>
+        </label>
+
+        <label class="cs-label">
+          Where are you currently in your career?
+          <input class="cs-input" type="text" name="career_stage" placeholder="Brief description…">
+        </label>
+
+        <!-- 4. Education -->
+        <p class="cs-form-section-label">4. Education</p>
+
+        <label class="cs-label">
+          School / Program
+          <input class="cs-input" type="text" name="school" placeholder="School or program name">
+        </label>
+
+        <label class="cs-label">
+          Certifications / License
+          <input class="cs-input" type="text" name="certifications" placeholder="e.g. RMT License, CSCS…">
+        </label>
+
+        <!-- 5. Revibe Fit -->
+        <p class="cs-form-section-label">5. Revibe Fit</p>
+
+        <label class="cs-label">
+          Why Revibe?
+          <textarea class="cs-textarea" name="why_revibe" placeholder="Tell us why you want to join Revibe…"></textarea>
+        </label>
+
+        <label class="cs-label">
+          What are you working on improving right now?
+          <textarea class="cs-textarea" name="improving" placeholder="Share what you're currently focused on…"></textarea>
+        </label>
+
+        <!-- 6. Availability -->
+        <p class="cs-form-section-label">6. Availability</p>
+
+        <div class="form-row">
+          <label class="cs-label">
+            Availability
+            <div class="select-wrap">
+              <select class="cs-input cs-select" name="availability" required onchange="this.classList.add('selected')">
+                <option value="">Select availability</option>
+                <option value="Full-time">Full-time</option>
+                <option value="Part-time">Part-time</option>
+              </select>
+            </div>
+          </label>
+          <label class="cs-label">
+            Start Date
+            <input class="cs-input" type="date" name="start_date">
+          </label>
+        </div>
+
+        <!-- 7. Resume -->
+        <p class="cs-form-section-label">7. Resume</p>
+
+        <label class="cs-label">
+          Upload Resume
+          <div class="cs-file-wrap">
+            <input type="file" name="resume" accept=".pdf,.doc,.docx" required id="resume-upload" class="cs-file-hidden">
+            <label for="resume-upload" class="cs-file-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+              <span id="resume-label">Upload Resume</span>
+            </label>
+          </div>
+        </label>
+
+        <label class="cs-label">
+          LinkedIn <span class="cs-optional">(optional)</span>
+          <input class="cs-input" type="url" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+        </label>
+
+        <p class="consent-text">BY SUBMITTING YOUR INFO, YOU CONSENT TO RECEIVING ELECTRONIC AND TELEPHONE COMMUNICATIONS (EMAIL, SMS TEXT AND MOBILE) FROM REVIBE REGARDING CURRENT AND UPCOMING PROJECTS - INCLUDING PROMOTIONS, NEWS, EVENTS AND RELATED SUBJECTS. YOU CAN UNSUBSCRIBE AT ANY TIME.</p>
+
+        <button class="cs-submit" type="submit"><span>Submit Application</span></button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function openPopup() {
+    document.getElementById('contactPopupOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+  }
+
+  function closePopup() {
+    document.getElementById('contactPopupOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+  }
+
+  document.getElementById('contactPopupOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closePopup();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && document.getElementById('contactPopupOverlay').classList.contains('active')) {
+      closePopup();
+    }
+  });
+  document.getElementById('resume-upload').addEventListener('change', function() {
+    const label = document.getElementById('resume-label');
+    label.textContent = this.files[0] ? this.files[0].name : 'Upload Resume';
+  });
+</script>

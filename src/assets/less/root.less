@@ -1327,3 +1327,449 @@ html {
     opacity: 1;
     transform: translateY(0);
 }
+/*-- -------------------------- -->
+<---       Popup / Reserve      -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+
+  /* ── Overlay fades in, card slides from right ── */
+  .popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 99999;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s ease,
+                visibility 0s linear 0.35s;
+  }
+
+  .popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.35s ease,
+                visibility 0s linear 0s;
+  }
+
+  .popup-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    background: #ffffff;
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
+    transform: translateX(-110%);
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .popup-overlay.active .popup-card {
+    transform: translateX(0);
+  }
+
+  .popup-image-panel {
+    display: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .popup-image-panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 8s ease;
+  }
+
+  .popup-card:hover .popup-image-panel img {
+    transform: scale(1.04);
+  }
+
+  .popup-image-panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(15, 15, 15, 0.6) 0%,
+      rgba(3, 173, 132, 0.08) 100%
+    );
+  }
+
+  .popup-image-tagline {
+    position: absolute;
+    bottom: (35/16rem);
+    left: (32/16rem);
+    right: (32/16rem);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .popup-image-tagline span {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: (27/16rem);
+    font-weight: 300;
+    color: rgba(240, 236, 228, 0.85);
+    line-height: 1.35;
+  }
+
+  .popup-image-tagline em {
+    display: block;
+    font-style: normal;
+    font-family: 'Montserrat', sans-serif;
+    font-size: (10/16rem);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-top: (10/16rem);
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.75rem;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    font-size: 0.9rem;
+    color: #555;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+  }
+
+  .close-btn:hover {
+    background: #e0e0e0;
+    color: #111;
+    transform: rotate(90deg);
+  }
+
+  .popup-form-panel {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: (35/16rem) (24/16rem) (32/16rem);
+    overflow-y: auto;
+    position: relative;
+  }
+
+  .popup-form-panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: (3/16rem);
+    height: 100%;
+    background: linear-gradient(180deg, #03ad84 0%, transparent 100%);
+  }
+
+  .popup-eyebrow {
+    font-size: (10/16rem);
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: (10/16rem);
+  }
+
+  .popup-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: (42/16rem);
+    color: #1a1a1a !important;
+    line-height: 1.2;
+    margin-bottom: (16/16rem);
+  }
+
+  .popup-subtext {
+    font-size: 1rem;
+    color: #666666 !important;
+    line-height: 1.65;
+  }
+
+  .popup-divider {
+    width: (40/16rem);
+    height: 1px;
+    background: var(--primary);
+    opacity: 0.5;
+    margin-bottom: (29/16rem);
+  }
+
+  .cs-form {
+    display: flex;
+    flex-direction: column;
+    gap: (16/16rem);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: (16/16rem);
+  }
+
+  .cs-label {
+    display: flex;
+    flex-direction: column;
+    gap: (6/16rem);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: (14/16rem);
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-label);
+  }
+
+  .cs-input,
+  .cs-textarea,
+  .cs-select {
+    font-family: 'Montserrat', sans-serif;
+    font-size: (13/16rem);
+    color: #1a1a1a;
+    background: #f5f5f5;
+    border: 1px solid rgba(3, 173, 132, 0.15);
+    padding: (11/16rem) (14/16rem);
+    width: 100%;
+    outline: none;
+    border-radius: (8/16rem);
+    transition: border-color 0.25s, background 0.25s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .cs-input::placeholder,
+  .cs-textarea::placeholder {
+    color: rgba(136, 133, 128, 0.45);
+    font-size: (12/16rem);
+  }
+
+  .cs-input:focus,
+  .cs-textarea:focus,
+  .cs-select:focus {
+    border-color: var(--primary);
+    background: rgba(3, 173, 132, 0.04);
+  }
+
+  .cs-input:hover,
+  .cs-textarea:hover,
+  .cs-select:hover {
+    border-color: rgba(3, 173, 132, 0.35);
+  }
+
+  .cs-select {
+    cursor: pointer;
+    color: rgba(80, 80, 80, 0.6);
+  }
+
+  .cs-select option {
+    background: #f5f5f5;
+  }
+
+  .cs-select.selected {
+    color: var(--text-main);
+  }
+
+  .cs-textarea {
+    min-height: (120/16rem);
+    resize: vertical;
+    padding-top: (13/16rem);
+    line-height: 1.5;
+  }
+
+  .select-wrap {
+    position: relative;
+  }
+
+  .select-wrap::after {
+    content: "";
+    position: absolute;
+    right: (15/16rem);
+    top: 50%;
+    width: (7/16rem);
+    height: (7/16rem);
+    border-right: 1px solid var(--primary);
+    border-bottom: 1px solid var(--primary);
+    transform: translateY(-65%) rotate(45deg);
+    pointer-events: none;
+  }
+
+  /* ── Tightened consent + submit spacing ── */
+  .consent-text {
+    font-size: (9/16rem);
+    color: rgba(80, 80, 80, 0.7);
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .cs-submit {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: (16/16rem);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: var(--primary);
+    border: none;
+    padding: (16/16rem);
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border-radius: 999px;
+    transition: color 0.3s;
+    margin-top: 0.5rem;
+  }
+
+  .cs-submit:hover {
+    color: #000;
+  }
+
+  .cs-submit::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--secondary);
+    border-radius: 999px;
+    transform: translateX(-100%);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .cs-submit:hover::before {
+    transform: translateX(0);
+  }
+
+  .cs-submit span {
+    position: relative;
+    z-index: 1;
+  }
+
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+
+  .popup-card {
+    flex-direction: row;
+    min-height: min((620/16rem), 90vh);
+  }
+
+  .popup-image-panel {
+    display: block;
+    flex: 1;
+  }
+
+  .close-btn {
+    top: (18/16rem);
+    right: (18/16rem);
+  }
+
+  .popup-form-panel {
+    flex: 1;
+    padding: (42/16rem) (38/16rem) (35/16rem);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+    gap: (14/16rem);
+  }
+
+}
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+
+  .popup-overlay {
+    align-items: center;
+    padding: 1rem 0 1rem 1rem;
+  }
+
+  .popup-card {
+    width: 90%;
+    max-width: (900/16rem);
+    height: calc(100vh - 2rem);
+    max-height: calc(100vh - 2rem);
+    border-radius: (8/16rem);
+    border: 1px solid rgba(3, 173, 132, 0.2);
+  }
+
+  .popup-form-panel {
+    overflow-y: auto;
+  }
+
+}
+
+/* ── Section Labels ── */
+.cs-form-section-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary) !important;
+  margin: 1.25rem 0 0.25rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(3, 173, 132, 0.25);
+  display: block;
+}
+
+.cs-optional {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #888;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ── File Upload ── */
+.cs-file-hidden {
+  display: none;
+}
+
+.cs-file-wrap {
+  width: 100%;
+}
+
+.cs-file-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  background: #f5f5f5;
+  border: 1px dashed rgba(3, 173, 132, 0.4);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  color: #888;
+  transition: border-color 0.25s, background 0.25s, color 0.25s;
+}
+
+.cs-file-btn:hover {
+  border-color: var(--primary);
+  background: rgba(3, 173, 132, 0.04);
+  color: var(--primary);
+}
+
+.cs-file-btn svg {
+  flex-shrink: 0;
+  color: var(--primary);
+}
