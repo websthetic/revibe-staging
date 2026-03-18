@@ -77,7 +77,7 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
   /* Headline */
   #careers-hero .hero__headline {
     font-family: var(--headerFont);
-    font-size: clamp(2.5rem, 10vw, 3.5rem); /* smaller on mobile */
+    font-size: clamp(4rem, 10vw, 10rem); /* smaller on mobile */
     font-weight: 900;
     line-height: 1em;
     color: var(--bodyTextColorWhite);
@@ -428,6 +428,7 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
         }
     }
 }
+
 /* -- -------------------------- --
    ---        Why Choose         ---
    -- -------------------------- -- */
@@ -449,10 +450,11 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
     }
 
     #why-choose-223 .rv-image-col {
-        width: 100%;
-        aspect-ratio: 4 / 5;
-        position: relative;
-    }
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    position: relative;
+    order: 2;
+}
 
     #why-choose-223 .rv-img-frame {
         position: absolute;
@@ -497,6 +499,7 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
         display: flex;
         flex-direction: column;
         gap: clamp(2rem, 4vw, 3rem);
+        order: 1;
     }
 
     #why-choose-223 .cs-text-group {
@@ -515,14 +518,14 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
     }
 
     #why-choose-223 .cs-title {
-        font-family: var(--headerFont);
-        font-size: clamp(2rem, 3.5vw, 2.75rem);
-        font-weight: 400;
-        line-height: 1.15;
-        color: #1a1a18;
-        margin: 0 0 1.5rem;
-        letter-spacing: -0.02em;
-    }
+    font-family: var(--headerFont);
+    font-size: clamp(2.5rem, 10vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: #000;
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.02em;
+}
 
     #why-choose-223 .cs-text {
         font-family: var(--bodyFont);
@@ -548,7 +551,6 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
         font-weight: 400;
         color: #1a1a18;
         letter-spacing: -0.01em;
-        
         margin: 0;
     }
 
@@ -557,7 +559,7 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
         margin: 0;
         padding: 0;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: 0.75rem;
     }
 
@@ -592,9 +594,15 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
     }
 
     #why-choose-223 .rv-image-col {
-        aspect-ratio: unset;
-        position: relative;
-        height: 100%;
+    aspect-ratio: unset;
+    position: relative;
+    height: 100%;
+    max-height: unset;
+    order: unset;
+}
+
+    #why-choose-223 .cs-content {
+        order: unset;
     }
 
     #why-choose-223 .cs-title {
@@ -613,313 +621,291 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
         font-size: clamp(1.5rem, 2vw, 2rem);
     }
 }
-
 /* -- -------------------------- --
    ---        Revibe Team        ---
    -- -------------------------- -- */
- 
- 
-/* ===========================================
-   MOBILE — base styles (up to 519px)
-   =========================================== */
- 
-/* ── Section ── */
-.inside-revibe {
-  background-color: #fff;
-  width: 100%;
-  padding: 3rem 0 3rem 1rem; 
-}
- 
-.revibe-container {
-  max-width: 80rem; /* 1280px — matches cs-container in other sections */
-  margin: 0 auto;
-  padding: 48px 0 64px;
-}
- 
-/* ── Header ── */
-.revibe-header {
-  margin-bottom: 40px;
-}
- 
-.eyebrow {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #B05A3B;
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
- 
-.eyebrow::after {
-  content: '';
-  display: inline-block;
-  width: 40px;
-  height: 1px;
-  background: #B05A3B;
-}
- 
-.inside-revibe .headline {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 52px;
-  font-weight: 400;
-  color: #000 !important;
-  line-height: 1.0;
-  margin-bottom: 18px;
-  letter-spacing: 0.02em;
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+
+    .inside-revibe {
+    background-color: #fff;
+    width: 100%;
+    padding: 3rem 0 0 1rem;
 }
 
-.inside-revibe .highlight {
-  color: var(--primary);
-}
- 
-.inside-revibe .subheadline {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.125rem;
-  color: #000 !important;
-  line-height: 1.7;
-  max-width: 460px;
-  padding-bottom: 12px;
-  border-bottom: 3px solid var(--primary);
-  
+    .revibe-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 48px 0 0;
 }
 
-.divider {
-  width: 60px;
-  height: 2px;
-  background: #B05A3B;
-  margin: 24px 0;
-}
- 
-/* ── Carousel Header — label only ── */
-.carousel-header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 24px;
-}
- 
-.carousel-label {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #000;
-}
+    .revibe-header {
+        margin-bottom: 40px;
+    }
 
-/* ── Arrows — bottom right ── */
-.arrows {
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
-  margin-top: 100px;
-}
- 
-.arrow {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1.5px solid var(--primary);
-  background: #fff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s, border-color 0.2s, transform 0.15s;
-  box-shadow: 0 2px 8px rgba(30, 40, 20, 0.07);
-}
- 
-.arrow svg {
-  width: 16px;
-  height: 16px;
-  stroke: var(--primary);
-  fill: none;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transition: stroke 0.2s;
-}
- 
-.arrow:hover:not(:disabled) {
-  background: var(--primary);
-  border-color: var(--primary);
-  transform: scale(1.08);
-}
- 
-.arrow:hover:not(:disabled) svg {
-  stroke: #fff;
-}
- 
-.arrow:disabled {
-  opacity: 0.25;
-  cursor: default;
-}
- 
-/* ── Carousel ── */
-.carousel-outer {
-  position: relative;
-  overflow: hidden;
-  margin-right: calc((100% - 100vw) / 2);
-}
- 
-.carousel-track-wrap {
-  overflow: visible;
-     /* breathing room for the last partial card */
-}
- 
-.carousel-track {
-  display: flex;
-  gap: 24px;
-  transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
-  will-change: transform;
-}
- 
-/* ── Card — split layout ── */
-.card {
-  flex: 0 0 85%;
-  background: transparent;  /* card itself is no longer the white box */
-  border-radius: 0;
-  overflow: visible;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;                /* space between standalone photo and text block */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
- 
-/* ── Photo — standalone, no white box ── */
-.card-photo {
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
-  border-radius: 4px;       /* rounded corners on photo itself */
-  flex-shrink: 0;
-}
+    .eyebrow {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #B05A3B;
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
-.card-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-  display: block;
-  transition: transform 0.4s ease;
-}
- 
-.placeholder-circle {
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
- 
-.placeholder-circle svg {
-  width: 36px;
-  height: 36px;
-  fill: var(--primary);
-}
- 
-/* ── Card body — now its own white box ── */
-.card-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
- 
-.card-name {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.6rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  color: #000;
-  margin-bottom: 5px;
-}
- 
-.card-role {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--primary);
-  margin-bottom: 16px;
-}
- 
-.card-quote {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.75;
-  color: #000 !important;
-  flex: 1;
-  position: relative;
-}
- 
+    .eyebrow::after {
+        content: '';
+        display: inline-block;
+        width: 40px;
+        height: 1px;
+        background: #B05A3B;
+    }
 
- 
+    .inside-revibe .headline {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(2.5rem, 10vw, 3.5rem);
+        font-weight: 400;
+        color: #000 !important;
+        line-height: 1.0;
+        margin-bottom: 18px;
+        letter-spacing: 0.02em;
+    }
 
- 
-/* ===========================================
-   TABLET — 520px and up
-   =========================================== */
-@media (min-width: 520px) {
- 
-  .revibe-container {
-    padding: 56px 0 72px;
-  }
- 
-  .revibe-header {
-    margin-bottom: 44px;
-  }
- 
-  .inside-revibe .headline {
-    font-size: 64px;
-  }
- 
-  .inside-revibe .subheadline {
+    .inside-revibe .highlight {
+        color: var(--primary);
+    }
+
+    .inside-revibe .subheadline {
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.125rem;
-  }
- 
- 
-  .card {
-    flex: 0 0 calc((100% - 24px) / 2);
-  }
-}
- 
- 
-/* ===========================================
-   DESKTOP — 800px and up
-   =========================================== */
-@media (min-width: 800px) {
- 
-  .revibe-container {
-    padding: 64px 0 80px;
-  }
- 
-  .revibe-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;  /* aligns both to the top */
-  justify-content: space-between;
-  gap: 48px;
-  margin-bottom: 40px;
-}
- 
-  .inside-revibe .headline {
-    font-size: clamp(2.438rem, 5vw, 4rem);
-  }
- 
-  .card {
-    flex: 0 0 calc((100% - 48px) / 3 * 0.88); /* ~88% of full width lets 4th card peek */
-  }
-  
+    color: #000 !important;
+    line-height: 1.7;
+    max-width: 460px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--primary);
+    margin-right: 1rem;
 }
 
+    .divider {
+        width: 60px;
+        height: 2px;
+        background: #B05A3B;
+        margin: 24px 0;
+    }
+
+    .carousel-header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 24px;
+    }
+
+    .carousel-label {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #000;
+    }
+
+    .arrows {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 60px;
+    margin-right: 1rem;
+}
+
+    .arrow {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        border: 1.5px solid var(--primary);
+        background: #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s, border-color 0.2s, transform 0.15s;
+        box-shadow: 0 2px 8px rgba(30, 40, 20, 0.07);
+    }
+
+    .arrow svg {
+        width: 16px;
+        height: 16px;
+        stroke: var(--primary);
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transition: stroke 0.2s;
+    }
+
+    .arrow:hover:not(:disabled) {
+        background: var(--primary);
+        border-color: var(--primary);
+        transform: scale(1.08);
+    }
+
+    .arrow:hover:not(:disabled) svg {
+        stroke: #fff;
+    }
+
+    .arrow:disabled {
+        opacity: 0.25;
+        cursor: default;
+    }
+
+    .carousel-outer {
+        position: relative;
+        overflow: hidden;
+        margin-right: calc((100% - 100vw) / 2);
+    }
+
+    .carousel-track-wrap {
+        overflow: visible;
+    }
+
+    .carousel-track {
+        display: flex;
+        gap: 24px;
+        transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+        will-change: transform;
+    }
+
+    .card {
+        flex: 0 0 85%;
+        background: transparent;
+        border-radius: 0;
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-photo {
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+        border-radius: 4px;
+        flex-shrink: 0;
+    }
+
+    .card-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 20%;
+        display: block;
+        transition: transform 0.4s ease;
+    }
+
+    .placeholder-circle {
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .placeholder-circle svg {
+        width: 36px;
+        height: 36px;
+        fill: var(--primary);
+    }
+
+    .card-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-name {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 1.6rem;
+        font-weight: 400;
+        letter-spacing: 0.04em;
+        color: #000;
+        margin-bottom: 5px;
+    }
+
+    .card-role {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--primary);
+        margin-bottom: 16px;
+    }
+
+    .card-quote {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.75;
+        color: #000 !important;
+        flex: 1;
+        position: relative;
+    }
+}
+
+/* Tablet - 520px */
+@media only screen and (min-width: 32.5rem) {
+
+    .revibe-container {
+        padding: 56px 0 72px;
+    }
+
+    .revibe-header {
+        margin-bottom: 44px;
+    }
+
+    .inside-revibe .headline {
+        font-size: 64px;
+    }
+
+    .inside-revibe .subheadline {
+        font-size: 1.125rem;
+    }
+
+    .card {
+        flex: 0 0 calc((100% - 24px) / 2);
+    }
+}
+
+/* Small Desktop - 800px */
+@media only screen and (min-width: 50rem) {
+
+    .revibe-container {
+        padding: 64px 0 80px;
+    }
+
+    .revibe-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 48px;
+        margin-bottom: 40px;
+    }
+
+    .inside-revibe .headline {
+        font-size: clamp(2.438rem, 5vw, 4rem);
+    }
+
+    .card {
+        flex: 0 0 calc((100% - 48px) / 3 * 0.88);
+    }
+}
 /* ── Revibe: Education & Mentorship Section ── */
 
 /* ── Outer wrapper ── */
@@ -1190,7 +1176,7 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
 
   #what-makes-different .cs-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(3rem, 5.5vw, 4.4rem);
     font-weight: 400;
     line-height: 1.0;
     text-transform: uppercase;
@@ -1397,616 +1383,574 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
 
 }
 
-
-/* ─────────────────────────────────────────────
-   Career Pathways — Variables
-───────────────────────────────────────────── */
-
-:root {
-  --color-bg:           #f6f6f6;
-  --color-surface:      #ffffff;
-  --color-text-primary: #1a1a1a;
-  --color-text-muted:   #999;
-  --color-border:       #ddddd8;
-  --color-primary:      #03ad84;
-
-  --track-clinical:     #03ad84;
-  --track-performance:  #BA7517;
-  --track-operations:   #D85A30;
-
-  --font-display: 'Bebas Neue', sans-serif;
-  --font-body:    'Montserrat', sans-serif;
-
-  --section-padding-x: 1.25rem;
-  --section-padding-y: 3rem;
-}
-
-
-/* ─────────────────────────────────────────────
-   Section Shell
-───────────────────────────────────────────── */
-
-.career-pathways {
-  background: #fff;
-  padding: var(--section-padding-y) var(--section-padding-x);
-}
-
-.career-pathways__container {
-  width: 100%;
-  max-width: 80rem;
-  margin: 0 auto;
-}
-
-
-/* ─────────────────────────────────────────────
-   Section Header
-───────────────────────────────────────────── */
-
-.career-pathways__header {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  margin-bottom: 2.5rem;
-}
-
-.career-pathways__header-left {
-  flex: 1;
-}
-
-.career-pathways__header-right {
-  flex: 1;
-  display: flex;
-  align-items: center;
-}
-
-.career-pathways__eyebrow {
-  display: block;
-  font-family: var(--font-body);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-primary) !important;
-  margin-bottom: 0.5rem;
-}
-
-.career-pathways__headline {
-  font-family: var(--font-display);
-  font-size: clamp(2.25rem, 6vw, 4rem);
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 1.0;
-  color: var(--color-text-primary) !important;
-  margin: 0;
-  
-}
-
-.career-pathways__description {
-  font-family: var(--font-body);
-  font-size: 1.125rem;
-  line-height: 1.75;
-  color: var(--color-text-primary) !important;
-  margin: 0;
-  padding-bottom: 12px;
-  border-bottom: 3px solid var(--primary);
-}
-
-
-/* ─────────────────────────────────────────────
-   Accordion
-───────────────────────────────────────────── */
-
-.accordion {
-  width: 100%;
-}
-
-.accordion__item {
-  border-bottom: 0.5px solid var(--color-border);
-}
-
-.accordion__header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding: 2rem 0;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.accordion__title {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  text-align: left;
-  color: #ccc;
-  transition: color 0.2s ease;
-}
-
-.accordion__header:hover .accordion__title,
-.accordion__header.is-open  .accordion__title {
-  color: var(--color-primary);
-}
-
-/* Body — CSS-only height transition */
-.accordion__body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
-
-.accordion__body.is-open {
-  max-height: 400px; /* generous ceiling; actual content drives the height */
-}
-
-.accordion__inner {
-  padding: 0.25rem 0 3rem;
-}
-
-
-/* ─────────────────────────────────────────────
-   Progression Flow
-───────────────────────────────────────────── */
-
-.progression {
-  display: flex;
-  align-items: stretch;
-  width: 100%;
-  gap: 0;
-}
-
-.progression__node {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  text-align: left;
-  background: var(--color-surface);
-  border-radius: 8px;
-  padding: 1.25rem 1rem 1.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.progression__step {
-  font-family: var(--font-display);
-  font-size: 2.75rem;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  color: #ddd;
-  margin-bottom: 0.5rem;
-  line-height: 1;
-}
-
-.progression__role {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  line-height: 1.2;
-  color: var(--color-text-primary);
-}
-
-.progression__arrow {
-  flex-shrink: 0;
-  width: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* All arrows use primary color */
-.progression__arrow svg line,
-.progression__arrow svg path {
-  stroke: var(--color-primary);
-}
-
-
-/* ─────────────────────────────────────────────
-   Media Queries
-───────────────────────────────────────────── */
-
-/* ── Tablet ── */
-@media (min-width: 48rem) {
-  :root {
-    --section-padding-x: 2.5rem;
-    --section-padding-y: 4rem;
-  }
-
-  .career-pathways__header {
-    flex-direction: row;
-    align-items: center;
-    gap: 4rem;
-  }
-
-  .accordion__header {
-    padding: 2.5rem 0;
-  }
-
-  .progression__node {
-    padding: 1.25rem 0.75rem;
-  }
-}
-
-/* ── Desktop ── */
-@media (min-width: 64rem) {
-  :root {
-    --section-padding-x: 4rem;
-    --section-padding-y: 5rem;
-  }
-
-  .accordion__header {
-    padding: 3rem 0;
-  }
-
-  .progression__node {
-    padding: 1.75rem 0.75rem;
-  }
-}
-
-/* ── Mobile — stack progression vertically ── */
-@media (max-width: 37.5rem) {
-  .progression {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .progression__arrow {
-    width: auto;
-    height: 1.25rem;
-    transform: rotate(90deg);
-  }
-
-  .progression__node {
-    padding: 1rem;
-    border-radius: 6px;
-  }
-
-  .progression__role {
-    font-size: 1.125rem;
-  }
-
-  .accordion__body.is-open {
-    max-height: 800px; /* taller ceiling for stacked mobile layout */
-  }
-}
-
-/* ── Revibe: Thrive Section ── */
-/* Fonts: add to your <head>
-   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"/>
-*/
-
-:root {
-  --revibe-bg: #faf8f4;
-  --revibe-text: #1c1a18;
-  --revibe-muted: #7a7570;
-  --revibe-accent: #03ad84;
-  --revibe-border: #ede9e3;
-}
-
-/* ── Outer wrapper ── */
-.revibe-section {
-  padding: var(--sectionPadding);
-  font-family: 'Montserrat', sans-serif;
-  color: #fff;
-}
-
-.revibe-section .revibe-container {
-  width: 100%;
-  max-width: 80rem;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
-}
-
-/* ════════════════════
-   LEFT — content
-════════════════════ */
-.revibe-content {
-  opacity: 0;
-  animation: revibeUp 0.6s 0.1s ease forwards;
-}
-
-.revibe-tag {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--revibe-accent);
-  margin-bottom: 1rem;
+/* -- -------------------------- --
+   ---     Career Pathways       ---
+   -- -------------------------- -- */
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+
+    .career-pathways {
+        background: #fff;
+        padding: 3rem 1.25rem;
+    }
+
+    .career-pathways__container {
+        width: 100%;
+        max-width: 80rem;
+        margin: 0 auto;
+    }
+
+    .career-pathways__header {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .career-pathways__header-left {
+        flex: 1;
+    }
+
+    .career-pathways__header-right {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    .career-pathways__eyebrow {
+        display: block;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.6875rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #03ad84 !important;
+        margin-bottom: 0.5rem;
+    }
+
+    .career-pathways__headline {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(3rem, 5.5vw, 4.4rem);
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        line-height: 1.0;
+        color: #000 !important;
+        margin: 0;
+    }
+
+    .career-pathways__description {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.125rem;
+        line-height: 1.75;
+        color: #000 !important;
+        margin: 0;
+        padding-bottom: 12px;
+        border-bottom: 3px solid #03ad84;
+    }
+
+    .accordion {
+        width: 100%;
+    }
+
+    .accordion__item {
+        border-bottom: 0.5px solid #ddddd8;
+    }
+
+    .accordion__header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 2rem 0;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .accordion__title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(1.5rem, 3vw, 2.5rem);
+        font-weight: 400;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        text-align: left;
+        color: #ccc;
+        transition: color 0.2s ease;
+    }
+
+    .accordion__header:hover .accordion__title,
+    .accordion__header.is-open .accordion__title {
+        color: #03ad84;
+    }
+
+    .accordion__body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+    }
+
+    .accordion__body.is-open {
+        max-height: 800px;
+    }
+
+    .accordion__inner {
+        padding: 0.25rem 0 3rem;
+    }
+
+    .progression {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .progression__node {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
+        background: #ffffff;
+        border-radius: 6px;
+        padding: 1rem;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .progression__step {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 2.75rem;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        color: #ddd;
+        margin-bottom: 0.5rem;
+        line-height: 1;
+    }
+
+    .progression__role {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 1.125rem;
+        font-weight: 400;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        line-height: 1.2;
+        color: #1a1a1a;
+    }
+
+    .progression__arrow {
+        flex-shrink: 0;
+        width: auto;
+        height: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: rotate(90deg);
+    }
+
+    .progression__arrow svg line,
+    .progression__arrow svg path {
+        stroke: #03ad84;
+    }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+
+    .career-pathways {
+        padding: 4rem 2.5rem;
+    }
+
+    .career-pathways__header {
+        flex-direction: row;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    .accordion__header {
+        padding: 2.5rem 0;
+    }
+
+    .progression {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .progression__node {
+        padding: 1.25rem 0.75rem;
+        border-radius: 8px;
+    }
+
+    .progression__role {
+        font-size: 1.5rem;
+    }
+
+    .progression__arrow {
+        width: 1.5rem;
+        height: auto;
+        transform: none;
+    }
+
+    .accordion__body.is-open {
+        max-height: 400px;
+    }
+}
+
+/* Small Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+
+    .career-pathways {
+        padding: 5rem 4rem;
+    }
+
+    .accordion__header {
+        padding: 3rem 0;
+    }
+
+    .progression__node {
+        padding: 1.75rem 0.75rem;
+    }
+}
+
+/* -- -------------------------- --
+   ---   Revibe: Thrive Section  ---
+   -- -------------------------- -- */
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+
+    .revibe-section {
+        padding: var(--sectionPadding);
+        font-family: 'Montserrat', sans-serif;
+        color: #fff;
+    }
+
+    .revibe-section .revibe-container {
+        width: 100%;
+        max-width: 80rem;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        align-items: center;
+    }
+
+    .revibe-content {
+        opacity: 0;
+        animation: revibeUp 0.6s 0.1s ease forwards;
+    }
+
+    .revibe-tag {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #03ad84;
+        margin-bottom: 1rem;
+    }
+
+    .revibe-heading {
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: 400;
+        font-size: clamp(3rem, 5.5vw, 4.4rem);
+        line-height: 1.0;
+        letter-spacing: 0.02em;
+        margin-bottom: 1rem;
+        color: #1c1a18 !important;
+    }
+
+    .revibe-heading em {
+        font-style: normal;
+        color: #03ad84;
+    }
+
+    .revibe-intro {
+        font-size: 1.125rem;
+        line-height: 1.65;
+        color: #000 !important;
+        margin-bottom: 2.2rem;
+        max-width: 100%;
+    }
+
+    .revibe-items {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .revibe-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.1rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    .revibe-item:first-child {
+        border-top: 1px solid #ede9e3;
+    }
+
+    .revibe-item:nth-child(1) { animation: revibeRight 0.45s 0.3s forwards; }
+    .revibe-item:nth-child(2) { animation: revibeRight 0.45s 0.4s forwards; }
+    .revibe-item:nth-child(3) { animation: revibeRight 0.45s 0.5s forwards; }
+    .revibe-item:nth-child(4) { animation: revibeRight 0.45s 0.6s forwards; }
+    .revibe-item:nth-child(5) { animation: revibeRight 0.45s 0.7s forwards; }
+
+    .revibe-item-icon {
+        flex-shrink: 0;
+        margin-top: 0.35rem;
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .revibe-item-body {
+        font-size: 1.125rem;
+        line-height: 1.55;
+        color: #1c1a18;
+    }
+
+    .revibe-image-col {
+        order: -1;
+        position: relative;
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        
+        opacity: 0;
+        animation: revibeUp 0.6s 0.2s ease forwards;
+    }
+
+    .revibe-photo-wrap {
+        border-radius: 8px;
+        overflow: hidden;
+        flex: 1;
+        min-height: 0;
+        max-height: 650px;
+        position: relative;
+        background: #e0d9cf;
+    }
+
+    .revibe-photo-wrap img {
+        width: 100%;
+        height: 100%;
+        max-height: 300px;
+        object-fit: cover;
+        display: block;
+        filter: saturate(0.88);
+    }
+
+    @keyframes revibeUp {
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes revibeRight {
+        to { opacity: 1; transform: translateX(0); }
+    }
+}
+
+/* Small Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+
+    .revibe-section .revibe-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+    }
+
+    .revibe-image-col {
+        order: unset;
+        min-height: unset;
+    }
+
+    .revibe-intro {
+        max-width: 550px;
+    }
+
+    .revibe-photo-wrap img {
+        width: 100%;
+        height: 100%;
+        max-height: unset; /* ← lifts the 300px mobile cap */
+        object-fit: cover;
+        display: block;
+        filter: saturate(0.88);
+    }
+}
+
+/* -- -------------------------- --
+   ---       Jobs Section        ---
+   -- -------------------------- -- */
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+
+    .jobs-section {
+        background: #ffffff;
+        padding: var(--sectionPadding);
+    }
+
+    .jobs-wrap {
+        font-family: 'Montserrat', sans-serif;
+        width: 100%;
+        max-width: 80rem;
+        margin: 0 auto;
+    }
+
+    .jobs-eyebrow {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #03ad84 !important;
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .jobs-headline {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(3rem, 5.5vw, 4.4rem);
+        font-weight: 400;
+        color: #000 !important;
+        line-height: 1.05;
+        letter-spacing: 0.02em;
+        margin: 0 0 12px;
+    }
+
+    .jobs-accent {
+        color: #03ad84;
+    }
+
+    .jobs-sub {
+        font-size: 1.125rem;
+        color: #000 !important;
+        line-height: 1.7;
+        margin: 0 0 48px;
+    }
+
+    .jobs-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 48px;
+    }
+
+    .job-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 20px;
+        border: 0.5px solid #e0e0e0;
+        border-radius: 12px;
+        background: #ffffff;
+        text-decoration: none;
+        transition: border-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .job-card:hover {
+        border-color: #03ad84;
+        transform: translateX(4px);
+    }
+
+    .job-card:hover .job-card-arrow {
+        color: #03ad84;
+    }
+
+    .job-card-left {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .job-card-title {
+        font-family: 'Bebas Neue';
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #000;
+    }
+
+    .job-card-dept {
+        font-size: 11px;
+        color: #bbbbbb;
+        font-weight: 300;
+    }
+
+    .job-card-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .job-card-tag {
+        display: none;
+    }
+
+    .job-card-arrow {
+        font-size: 16px;
+        color: #cccccc;
+        transition: color 0.2s ease;
+    }
+
+    .jobs-cta {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .jobs-cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #03ad84;
+        color: #ffffff;
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        padding: 13px 26px;
+        border-radius: 100px;
+        text-decoration: none;
+        transition: background 0.2s ease;
+    }
+
+    .jobs-cta-btn:hover {
+        background: #029e78;
+    }
+
+    .jobs-cta-note {
+        font-size: 13px;
+        color: #bbbbbb;
+        font-weight: 300;
+    }
+}
+
+/* Tablet - 600px */
+@media only screen and (min-width: 37.5rem) {
+
+    .jobs-headline {
+        font-size: clamp(3rem, 5.5vw, 4.4rem);
+    }
+
+    .job-card {
+        padding: 22px 28px;
+    }
+
+    .job-card-tag {
+        display: block;
+        font-size: 11px;
+        background: #f0faf7;
+        color: #03ad84;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-weight: 500;
+    }
 }
-
-.revibe-heading {
-  font-family: 'Bebas Neue', sans-serif;
-  font-weight: 400;
-  font-size: clamp(3rem, 5.5vw, 4.4rem);
-  line-height: 1.0;
-  letter-spacing: 0.02em;
-  margin-bottom: 1rem;
-  color: var(--revibe-text) !important;
-}
-
-.revibe-heading em {
-  font-style: normal;
-  color: var(--revibe-accent);
-}
-
-.revibe-intro {
-  font-size: 1.125rem;
-  line-height: 1.65;
-  color: #000 !important;
-  margin-bottom: 2.2rem;
-  max-width: 550px;
-}
-
-/* ── Bullet items ── */
-.revibe-items {
-  display: flex;
-  flex-direction: column;
-}
-
-.revibe-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 1.1rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  opacity: 0;
-  transform: translateX(-10px);
-}
-
-.revibe-item:first-child {
-  border-top: 1px solid var(--revibe-border);
-}
-
-.revibe-item:nth-child(1) { animation: revibeRight 0.45s 0.3s forwards; }
-.revibe-item:nth-child(2) { animation: revibeRight 0.45s 0.4s forwards; }
-.revibe-item:nth-child(3) { animation: revibeRight 0.45s 0.5s forwards; }
-.revibe-item:nth-child(4) { animation: revibeRight 0.45s 0.6s forwards; }
-.revibe-item:nth-child(5) { animation: revibeRight 0.45s 0.7s forwards; }
-
-.revibe-item-icon {
-  flex-shrink: 0;
-  margin-top: 0.35rem;
-  width: 16px;
-  height: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.revibe-item-body {
-  font-size: 1.125rem;
-  line-height: 1.55;
-  color: var(--revibe-text);
-}
-
-/* ════════════════════
-   RIGHT — image
-════════════════════ */
-.revibe-image-col {
-  position: relative;
-  align-self: stretch;
-  display: flex;            
-  flex-direction: column; 
-  opacity: 0;
-  animation: revibeUp 0.6s 0.2s ease forwards;
-}
-
-.revibe-photo-wrap {
-  border-radius: 8px;
-  overflow: hidden;
-  flex: 1;
-  min-height: 0;
-  max-height: 650px;   /* ADD — adjust to taste */
-  position: relative;
-  background: #e0d9cf;
-}
-
-.revibe-photo-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: saturate(0.88);
-}
-
-/* ── Animations ── */
-@keyframes revibeUp {
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes revibeRight {
-  to { opacity: 1; transform: translateX(0); }
-}
-
-/* ── Responsive ── */
-@media (max-width: 64rem) {
-  .revibe-section .revibe-container {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  .revibe-image-col {
-    order: -1;
-    min-height: 280px;
-  }
-  .revibe-intro {
-    max-width: 100%;
-  }
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500&display=swap');
-
-/* ── Jobs Section ── */
-.jobs-section {
-  background: #ffffff;
-  padding: var(--sectionPadding);
-}
-
-.jobs-wrap {
-  font-family: 'Montserrat', sans-serif;
-  width: 100%;
-  max-width: 80rem;
-  margin: 0 auto;
-}
-
-.jobs-eyebrow {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--color-primary) !important;
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.jobs-headline {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(3rem, 5.5vw, 4.4rem);
-  font-weight: 400;
-  color: #000 !important;
-  line-height: 1.05;
-  letter-spacing: 0.02em;
-  margin: 0 0 12px;
-}
-
-.jobs-accent {
-  color: #03ad84;
-}
-
-.jobs-sub {
-  font-size: 1.125rem;
-  color: #000 !important;
-  line-height: 1.7;
-  margin: 0 0 48px;
-}
-
-/* ── Cards ── */
-.jobs-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 48px;
-}
-
-.job-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 22px 28px;
-  border: 0.5px solid #e0e0e0;
-  border-radius: 12px;
-  background: #ffffff;
-  text-decoration: none;
-  transition: border-color 0.2s ease, transform 0.15s ease;
-}
-
-.job-card:hover {
-  border-color: #03ad84;
-  transform: translateX(4px);
-}
-
-.job-card:hover .job-card-arrow {
-  color: #03ad84;
-}
-
-.job-card-left {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.job-card-title {
-  font-family: 'Bebas Neue';
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #000;
-}
-
-.job-card-dept {
-  font-size: 11px;
-  color: #bbbbbb;
-  font-weight: 300;
-}
-
-.job-card-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.job-card-tag {
-  font-size: 11px;
-  background: #f0faf7;
-  color: #03ad84;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-weight: 500;
-}
-
-.job-card-arrow {
-  font-size: 16px;
-  color: #cccccc;
-  transition: color 0.2s ease;
-}
-
-/* ── CTA ── */
-.jobs-cta {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.jobs-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--color-primary);
-  color: #ffffff;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  padding: 13px 26px;
-  border-radius: 100px;
-  text-decoration: none;
-  transition: background 0.2s ease;
-}
-
-.jobs-cta-btn:hover {
-  background: #029e78;
-}
-
-.jobs-cta-note {
-  font-size: 13px;
-  color: #bbbbbb;
-  font-weight: 300;
-}
-
-/* ── Responsive ── */
-@media (max-width: 600px) {
-  .jobs-headline {
-    font-size: 40px;
-  }
-
-  .job-card {
-    padding: 18px 20px;
-  }
-
-  .job-card-tag {
-    display: none;
-  }
-}
-
 /* =========================================
    Revibe — CTA Section
    Font dependencies:
@@ -2014,134 +1958,125 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
    via Google Fonts — include in your <head>
    ========================================= */
 
-.cta-section {
-  position: relative;
-  overflow: hidden;
-  min-height: 420px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: 'DM Sans', sans-serif;
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+
+    .cta-section {
+        position: relative;
+        overflow: hidden;
+        min-height: 420px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: 'DM Sans', sans-serif;
+    }
+
+    /* Background image — swap url() for your own asset */
+    .cta-bg-image {
+        position: absolute;
+        inset: 0;
+        background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/team-meeting-outside.webp');
+        background-size: cover;
+        background-position: center 30%;
+    }
+
+    /* Dark overlay */
+    .cta-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.80);
+    }
+
+    /* Content wrapper */
+    .cta-content {
+        position: relative;
+        z-index: 2;
+        padding: 48px 28px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* "We're Hiring" badge */
+    .cta-badge {
+        display: inline-block;
+        background: rgba(90, 196, 160, 0.15);
+        border: 1px solid rgba(90, 196, 160, 0.3);
+        border-radius: 100px;
+        padding: 6px 16px;
+        margin-bottom: 28px;
+        font-size: 12px;
+        font-weight: 500;
+        color: #6DCFB0;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    /* Headline */
+    .cta-headline {
+        font-family: 'Bebas Neue', sans-serif;
+       font-size: clamp(3rem, 5.5vw, 4.4rem);
+        font-weight: 300;
+        color: #F5F2EC;
+        line-height: 1.1;
+        margin: 0 0 24px;
+        max-width: 960px;
+    }
+
+    .cta-headline--accent {
+        color: var(--color-primary);
+    }
+
+    /* Body copy */
+    .cta-body {
+        font-size: 16px;
+        color: rgba(245, 242, 236, 0.68);
+        line-height: 1.75;
+        max-width: 660px;
+        margin: 0 0 10px;
+    }
+
+    .cta-body:last-of-type {
+        margin-bottom: 44px;
+    }
+
+    /* CTA button */
+    .cta-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--primary) !important;
+        color: #fff;
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 14px 32px;
+        border-radius: 100px;
+        text-decoration: none;
+        letter-spacing: 0.01em;
+        transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .cta-button:hover {
+        background: #6DCFB0;
+        transform: translateY(-1px);
+    }
+
+    .cta-button:active {
+        transform: translateY(0);
+    }
 }
 
-/* Background image — swap url() for your own asset */
-.cta-bg-image {
-  position: absolute;
-  inset: 0;
-  background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/team-meeting-outside.webp');
-  background-size: cover;
-  background-position: center 30%;
-}
+/* Small Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
 
-/* Dark overlay */
-.cta-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.80);
-}
+    .cta-content {
+        padding: 72px 60px;
+    }
 
-/* Content wrapper */
-.cta-content {
-  position: relative;
-  z-index: 2;
-  padding: 72px 60px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-/* "We're Hiring" badge */
-.cta-badge {
-  display: inline-block;
-  background: rgba(90, 196, 160, 0.15);
-  border: 1px solid rgba(90, 196, 160, 0.3);
-  border-radius: 100px;
-  padding: 6px 16px;
-  margin-bottom: 28px;
-  font-size: 12px;
-  font-weight: 500;
-  color: #6DCFB0;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-/* Headline */
-.cta-headline {
-  font-family: 'Bebas Neue', serif;
-  font-size: 54px;
-  font-weight: 300;
-  color: #F5F2EC;
-  line-height: 1.1;
-  margin: 0 0 24px;
-  max-width: 960px;
-}
-
-.cta-headline--accent {
-  color: var(--color-primary);
-  
-}
-
-/* Body copy */
-.cta-body {
-  font-size: 16px;
-  color: rgba(245, 242, 236, 0.68);
-  line-height: 1.75;
-  max-width: 660px;
-  margin: 0 0 10px;
-}
-
-.cta-body:last-of-type {
-  margin-bottom: 44px;
-}
-
-/* CTA button */
-.cta-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--color-primary);
-  color: #fff;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  padding: 14px 32px;
-  border-radius: 100px;
-  text-decoration: none;
-  letter-spacing: 0.01em;
-  transition: background 0.2s ease, transform 0.15s ease;
-}
-
-.cta-button:hover {
-  background: #6DCFB0;
-  transform: translateY(-1px);
-}
-
-.cta-button:active {
-  transform: translateY(0);
-}
-
-/* =========================================
-   Responsive
-   ========================================= */
-@media (max-width: 640px) {
-  .cta-content {
-    padding: 48px 28px;
-  }
-
-  .cta-headline {
-    font-size: 36px;
-    font-family: 'Bebas Neue';
-  }
-
-  .cta-circle--lg {
-    width: 200px;
-    height: 200px;
-  }
-
-  .cta-circle--sm {
-    width: 130px;
-    height: 130px;
-  }
+    .cta-headline {
+        font-size: 54px;
+    }
 }
