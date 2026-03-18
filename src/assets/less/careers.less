@@ -282,6 +282,7 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
   }
 
 }
+
 /*-- -------------------------- -->
 <---            Hero            -->
 <--- -------------------------- -*/
@@ -362,8 +363,7 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
 
         .cs-text {
             font-family: 'Montserrat', sans-serif;
-            font-size: (15/16rem);
-            font-weight: 300;
+            font-size: 1.125;
             line-height: 1.75;
             color: var(--bodyTextColor);
             margin: 0;
@@ -436,7 +436,7 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
 @media only screen and (min-width: 0rem) {
     #why-choose-223 {
         padding: var(--sectionPadding);
-        background-color: #f0f0f0;
+        background-color: #ffffff;
     }
 
     #why-choose-223 .cs-container {
@@ -526,7 +526,7 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
 
     #why-choose-223 .cs-text {
         font-family: var(--bodyFont);
-        font-size: 1rem;
+        font-size: 1.125rem;
         line-height: 1.75;
         color: #4a4a46;
         margin: 0 0 0.625rem;
@@ -563,16 +563,17 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
 
     #why-choose-223 .cs-item {
         list-style: none;
-        background: #fff;
+        background: rgba(5, 173, 132, 0.02);
         border-radius: 0.25rem;
         padding: 1.25rem;
         display: flex;
         align-items: flex-start;
+        border-left: 3px solid var(--primary);
     }
 
     #why-choose-223 .cs-h3 {
         font-family: var(--bodyFont);
-        font-size: 0.875rem;
+        font-size: 1rem;
         font-weight: 400;
         color: #000;
         margin: 0;
@@ -624,9 +625,9 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
  
 /* ── Section ── */
 .inside-revibe {
-  background-color: #f6f6f6;
+  background-color: #fff;
   width: 100%;
-  padding: 3rem 1rem; /* top/bottom 3rem, left/right 1rem */
+  padding: 3rem 0 3rem 1rem; 
 }
  
 .revibe-container {
@@ -670,16 +671,22 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
   margin-bottom: 18px;
   letter-spacing: 0.02em;
 }
+
+.inside-revibe .highlight {
+  color: var(--primary);
+}
  
 .inside-revibe .subheadline {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
-  font-size: 14px;
+  font-size: 1.125rem;
   color: #000 !important;
   line-height: 1.7;
   max-width: 460px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid var(--primary);
+  
 }
- 
+
 .divider {
   width: 60px;
   height: 2px;
@@ -709,7 +716,7 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
   display: flex;
   gap: 10px;
   justify-content: flex-end;
-  margin-top: 24px;
+  margin-top: 100px;
 }
  
 .arrow {
@@ -755,13 +762,13 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
 /* ── Carousel ── */
 .carousel-outer {
   position: relative;
-  overflow: hidden;       /* clips the right bleed at the container edge */
-  margin-right: -1rem;    /* bleeds into the section padding on the right */
+  overflow: hidden;
+  margin-right: calc((100% - 100vw) / 2);
 }
  
 .carousel-track-wrap {
   overflow: visible;
-  padding-right: 1rem;    /* breathing room for the last partial card */
+     /* breathing room for the last partial card */
 }
  
 .carousel-track {
@@ -826,7 +833,7 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
  
 .card-name {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 22px;
+  font-size: 1.6rem;
   font-weight: 400;
   letter-spacing: 0.04em;
   color: #000;
@@ -835,7 +842,7 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
  
 .card-role {
   font-family: 'Montserrat', sans-serif;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -846,24 +853,14 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
 .card-quote {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  font-size: 13.5px;
+  font-size: 1rem;
   line-height: 1.75;
   color: #000 !important;
   flex: 1;
-  padding-left: 16px;
   position: relative;
 }
  
-.card-quote::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 4px;
-  bottom: 4px;
-  width: 2px;
-  background: var(--secondary);
-  border-radius: 2px;
-}
+
  
 
  
@@ -888,10 +885,6 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
     font-size: 1.125rem;
   }
  
-  .carousel-track-wrap {
-    margin-right: 0;
-    padding-right: 0;
-  }
  
   .card {
     flex: 0 0 calc((100% - 24px) / 2);
@@ -911,7 +904,7 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
   .revibe-header {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;  /* aligns both to the top */
+  align-items: center;  /* aligns both to the top */
   justify-content: space-between;
   gap: 48px;
   margin-bottom: 40px;
@@ -925,4 +918,1230 @@ background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe
     flex: 0 0 calc((100% - 48px) / 3 * 0.88); /* ~88% of full width lets 4th card peek */
   }
   
+}
+
+/* ── Revibe: Education & Mentorship Section ── */
+
+/* ── Outer wrapper ── */
+.revibe-edu-section {
+  padding: var(--sectionPadding);
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+}
+
+.revibe-edu-section .revibe-edu-container {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+/* ════════════════════
+   LEFT — content
+════════════════════ */
+.revibe-edu-content {
+  opacity: 0;
+  animation: revibeEduUp 0.6s 0.1s ease forwards;
+}
+
+.revibe-edu-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #03ad84;
+  margin-bottom: 1rem;
+}
+
+.revibe-edu-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: clamp(3rem, 5.5vw, 4.4rem);
+  line-height: 1.0;
+  letter-spacing: 0.02em;
+  margin-bottom: 1rem;
+  color: #1c1a18 !important;
+}
+
+.revibe-edu-heading em {
+  font-style: normal;
+  color: #03ad84;
+}
+
+.revibe-edu-intro {
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: #000 !important;
+  margin-bottom: 0.75rem;
+  max-width: 550px;
+}
+
+.revibe-edu-intro strong {
+  font-weight: 600;
+}
+
+.revibe-edu-intro + .revibe-edu-intro {
+  margin-top: 0;
+  margin-bottom: 2.2rem;
+}
+
+/* ── Checklist items ── */
+.revibe-edu-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.revibe-edu-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.revibe-edu-item:first-child {
+  border-top: 1px solid #ede9e3;
+}
+
+.revibe-edu-item:nth-child(1) { animation: revibeEduRight 0.45s 0.3s forwards; }
+.revibe-edu-item:nth-child(2) { animation: revibeEduRight 0.45s 0.4s forwards; }
+.revibe-edu-item:nth-child(3) { animation: revibeEduRight 0.45s 0.5s forwards; }
+.revibe-edu-item:nth-child(4) { animation: revibeEduRight 0.45s 0.6s forwards; }
+.revibe-edu-item:nth-child(5) { animation: revibeEduRight 0.45s 0.7s forwards; }
+
+.revibe-edu-item-icon {
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(3, 173, 132, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.revibe-edu-item-icon svg {
+  width: 11px;
+  height: 11px;
+}
+
+.revibe-edu-item-body {
+  font-size: 1.125rem;
+  line-height: 1.55;
+  color: #1c1a18;
+}
+
+/* ════════════════════
+   RIGHT — image
+════════════════════ */
+.revibe-edu-image-col {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  animation: revibeEduUp 0.6s 0.2s ease forwards;
+}
+
+.revibe-edu-photo-wrap {
+  border-radius: 8px;
+  overflow: hidden;
+  flex: 1;
+  min-height: 0;
+  max-height: 650px;
+  position: relative;
+  background: #e0d9cf;
+}
+
+.revibe-edu-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.88);
+}
+
+/* ── Photo text overlay ── */
+.revibe-edu-photo-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.35) 45%,
+    transparent 70%
+  );
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.revibe-edu-photo-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  z-index: 2;
+}
+
+.revibe-edu-photo-label {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+  letter-spacing: 0.14em;
+  color: var(--secondary);
+  margin-bottom: 0.35rem;
+}
+
+.revibe-edu-photo-quote {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  line-height: 1.1;
+  letter-spacing: 0.03em;
+  color: #fff;
+  margin: 0;
+}
+
+/* ── Animations ── */
+@keyframes revibeEduUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes revibeEduRight {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 64rem) {
+  .revibe-edu-section .revibe-edu-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .revibe-edu-image-col {
+    order: -1;
+    min-height: 280px;
+  }
+  .revibe-edu-intro {
+    max-width: 100%;
+  }
+}
+
+/* ══════════════════════════════════════════════ */
+/*        #what-makes-different styles            */
+/* ══════════════════════════════════════════════ */
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+
+  #what-makes-different {
+    background: #ffffff;
+    padding-top: clamp(5rem, 10vw, 8rem);
+    padding-bottom: clamp(5rem, 10vw, 8rem);
+    padding-left: 0;
+    padding-right: 0;
+    overflow: hidden;
+  }
+
+  #what-makes-different .cs-viewport {
+    overflow: visible;
+    width: 100%;
+  }
+
+  #what-makes-different .cs-container {
+    width: 100%;
+    max-width: 80rem;
+    margin: auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    overflow: visible;
+  }
+
+  #what-makes-different .cs-header {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  #what-makes-different .cs-topper {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin: 0 0 0.6rem;
+    display: block;
+  }
+
+  #what-makes-different .cs-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.0;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #0a0a0a;
+    margin: 0;
+    display: block;
+  }
+
+  /* Arrows */
+  #what-makes-different .cs-arrows {
+    display: flex;
+    gap: 0.625rem;
+    align-items: center;
+  }
+
+  #what-makes-different .cs-arrow {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    border: 1.5px solid var(--primary);
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    flex-shrink: 0;
+  }
+
+  #what-makes-different .cs-arrow svg {
+    width: 1rem;
+    height: 1rem;
+    stroke: var(--primary);
+    fill: none;
+    transition: stroke 0.2s;
+  }
+
+  #what-makes-different .cs-arrow:hover {
+    background: var(--primary);
+    transform: scale(1.08);
+  }
+
+  #what-makes-different .cs-arrow:hover svg {
+    stroke: #fff;
+  }
+
+  #what-makes-different .cs-arrow:disabled {
+    opacity: 0.25;
+    cursor: default;
+    transform: none;
+  }
+
+  /* Viewport */
+  #what-makes-different .cs-viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  #what-makes-different .cs-track {
+    display: flex;
+    gap: 0.75rem;
+    padding-left: 1rem;
+    padding-right: 0;
+    margin: 0;
+    list-style: none;
+    transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+    will-change: transform;
+  }
+
+  #what-makes-different .cs-item {
+    flex-shrink: 0;
+    width: 78vw;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 1.5rem 1.25rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  
+
+  #what-makes-different .cs-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.07);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.9rem;
+    display: block;
+  }
+
+  #what-makes-different .cs-h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #0a0a0a;
+    margin: 0 0 0.75rem;
+    line-height: 1.1;
+  }
+
+  #what-makes-different .cs-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.5);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+
+  #what-makes-different .cs-header {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  #what-makes-different .cs-track {
+    padding-left: 2rem;
+  }
+
+  #what-makes-different .cs-item {
+    width: 44vw;
+  }
+
+}
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+
+  #what-makes-different .cs-container {
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+    position: relative;
+  }
+
+  #what-makes-different .cs-header {
+    width: 13rem;
+    flex-shrink: 0;
+    padding-left: 0;
+    padding-right: 0;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    background: #ffffff;
+    /* Bleed white background infinitely to the left — masks scrolled cards */
+    box-shadow: -100vw 0 0 100vw #ffffff;
+  }
+
+  #what-makes-different .cs-title {
+    font-size: clamp(2.438rem, 5vw, 4rem);
+    margin: 0;
+  }
+
+  #what-makes-different .cs-viewport {
+    flex: none;
+    width: calc(100vw - 13rem - 3rem - 2rem);
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+  }
+
+  #what-makes-different .cs-track {
+    padding-left: 0;
+  }
+
+  #what-makes-different .cs-item {
+    width: 28vw;
+    min-height: 18rem;
+  }
+
+  #what-makes-different .cs-number {
+    font-size: 2.75rem;
+  }
+
+  #what-makes-different .cs-h3 {
+    font-size: 1.5rem;
+  }
+
+  #what-makes-different .cs-text {
+    font-size: 1rem;
+  }
+
+}
+
+/* Large Desktop - 1280px */
+@media only screen and (min-width: 80rem) {
+
+  #what-makes-different .cs-item {
+    width: 22vw;
+  }
+
+}
+
+
+/* ─────────────────────────────────────────────
+   Career Pathways — Variables
+───────────────────────────────────────────── */
+
+:root {
+  --color-bg:           #f6f6f6;
+  --color-surface:      #ffffff;
+  --color-text-primary: #1a1a1a;
+  --color-text-muted:   #999;
+  --color-border:       #ddddd8;
+  --color-primary:      #03ad84;
+
+  --track-clinical:     #03ad84;
+  --track-performance:  #BA7517;
+  --track-operations:   #D85A30;
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'Montserrat', sans-serif;
+
+  --section-padding-x: 1.25rem;
+  --section-padding-y: 3rem;
+}
+
+
+/* ─────────────────────────────────────────────
+   Section Shell
+───────────────────────────────────────────── */
+
+.career-pathways {
+  background: #fff;
+  padding: var(--section-padding-y) var(--section-padding-x);
+}
+
+.career-pathways__container {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+
+/* ─────────────────────────────────────────────
+   Section Header
+───────────────────────────────────────────── */
+
+.career-pathways__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.career-pathways__header-left {
+  flex: 1;
+}
+
+.career-pathways__header-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.career-pathways__eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-primary) !important;
+  margin-bottom: 0.5rem;
+}
+
+.career-pathways__headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.0;
+  color: var(--color-text-primary) !important;
+  margin: 0;
+  
+}
+
+.career-pathways__description {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--color-text-primary) !important;
+  margin: 0;
+  padding-bottom: 12px;
+  border-bottom: 3px solid var(--primary);
+}
+
+
+/* ─────────────────────────────────────────────
+   Accordion
+───────────────────────────────────────────── */
+
+.accordion {
+  width: 100%;
+}
+
+.accordion__item {
+  border-bottom: 0.5px solid var(--color-border);
+}
+
+.accordion__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.accordion__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: left;
+  color: #ccc;
+  transition: color 0.2s ease;
+}
+
+.accordion__header:hover .accordion__title,
+.accordion__header.is-open  .accordion__title {
+  color: var(--color-primary);
+}
+
+/* Body — CSS-only height transition */
+.accordion__body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.accordion__body.is-open {
+  max-height: 400px; /* generous ceiling; actual content drives the height */
+}
+
+.accordion__inner {
+  padding: 0.25rem 0 3rem;
+}
+
+
+/* ─────────────────────────────────────────────
+   Progression Flow
+───────────────────────────────────────────── */
+
+.progression {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  gap: 0;
+}
+
+.progression__node {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  background: var(--color-surface);
+  border-radius: 8px;
+  padding: 1.25rem 1rem 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.progression__step {
+  font-family: var(--font-display);
+  font-size: 2.75rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #ddd;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.progression__role {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+}
+
+.progression__arrow {
+  flex-shrink: 0;
+  width: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* All arrows use primary color */
+.progression__arrow svg line,
+.progression__arrow svg path {
+  stroke: var(--color-primary);
+}
+
+
+/* ─────────────────────────────────────────────
+   Media Queries
+───────────────────────────────────────────── */
+
+/* ── Tablet ── */
+@media (min-width: 48rem) {
+  :root {
+    --section-padding-x: 2.5rem;
+    --section-padding-y: 4rem;
+  }
+
+  .career-pathways__header {
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .accordion__header {
+    padding: 2.5rem 0;
+  }
+
+  .progression__node {
+    padding: 1.25rem 0.75rem;
+  }
+}
+
+/* ── Desktop ── */
+@media (min-width: 64rem) {
+  :root {
+    --section-padding-x: 4rem;
+    --section-padding-y: 5rem;
+  }
+
+  .accordion__header {
+    padding: 3rem 0;
+  }
+
+  .progression__node {
+    padding: 1.75rem 0.75rem;
+  }
+}
+
+/* ── Mobile — stack progression vertically ── */
+@media (max-width: 37.5rem) {
+  .progression {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .progression__arrow {
+    width: auto;
+    height: 1.25rem;
+    transform: rotate(90deg);
+  }
+
+  .progression__node {
+    padding: 1rem;
+    border-radius: 6px;
+  }
+
+  .progression__role {
+    font-size: 1.125rem;
+  }
+
+  .accordion__body.is-open {
+    max-height: 800px; /* taller ceiling for stacked mobile layout */
+  }
+}
+
+/* ── Revibe: Thrive Section ── */
+/* Fonts: add to your <head>
+   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"/>
+*/
+
+:root {
+  --revibe-bg: #faf8f4;
+  --revibe-text: #1c1a18;
+  --revibe-muted: #7a7570;
+  --revibe-accent: #03ad84;
+  --revibe-border: #ede9e3;
+}
+
+/* ── Outer wrapper ── */
+.revibe-section {
+  padding: var(--sectionPadding);
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+}
+
+.revibe-section .revibe-container {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+/* ════════════════════
+   LEFT — content
+════════════════════ */
+.revibe-content {
+  opacity: 0;
+  animation: revibeUp 0.6s 0.1s ease forwards;
+}
+
+.revibe-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--revibe-accent);
+  margin-bottom: 1rem;
+}
+
+.revibe-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: clamp(3rem, 5.5vw, 4.4rem);
+  line-height: 1.0;
+  letter-spacing: 0.02em;
+  margin-bottom: 1rem;
+  color: var(--revibe-text) !important;
+}
+
+.revibe-heading em {
+  font-style: normal;
+  color: var(--revibe-accent);
+}
+
+.revibe-intro {
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: #000 !important;
+  margin-bottom: 2.2rem;
+  max-width: 550px;
+}
+
+/* ── Bullet items ── */
+.revibe-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.revibe-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.revibe-item:first-child {
+  border-top: 1px solid var(--revibe-border);
+}
+
+.revibe-item:nth-child(1) { animation: revibeRight 0.45s 0.3s forwards; }
+.revibe-item:nth-child(2) { animation: revibeRight 0.45s 0.4s forwards; }
+.revibe-item:nth-child(3) { animation: revibeRight 0.45s 0.5s forwards; }
+.revibe-item:nth-child(4) { animation: revibeRight 0.45s 0.6s forwards; }
+.revibe-item:nth-child(5) { animation: revibeRight 0.45s 0.7s forwards; }
+
+.revibe-item-icon {
+  flex-shrink: 0;
+  margin-top: 0.35rem;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.revibe-item-body {
+  font-size: 1.125rem;
+  line-height: 1.55;
+  color: var(--revibe-text);
+}
+
+/* ════════════════════
+   RIGHT — image
+════════════════════ */
+.revibe-image-col {
+  position: relative;
+  align-self: stretch;
+  display: flex;            
+  flex-direction: column; 
+  opacity: 0;
+  animation: revibeUp 0.6s 0.2s ease forwards;
+}
+
+.revibe-photo-wrap {
+  border-radius: 8px;
+  overflow: hidden;
+  flex: 1;
+  min-height: 0;
+  max-height: 650px;   /* ADD — adjust to taste */
+  position: relative;
+  background: #e0d9cf;
+}
+
+.revibe-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.88);
+}
+
+/* ── Animations ── */
+@keyframes revibeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes revibeRight {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 64rem) {
+  .revibe-section .revibe-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .revibe-image-col {
+    order: -1;
+    min-height: 280px;
+  }
+  .revibe-intro {
+    max-width: 100%;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500&display=swap');
+
+/* ── Jobs Section ── */
+.jobs-section {
+  background: #ffffff;
+  padding: var(--sectionPadding);
+}
+
+.jobs-wrap {
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.jobs-eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-primary) !important;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.jobs-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 5.5vw, 4.4rem);
+  font-weight: 400;
+  color: #000 !important;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  margin: 0 0 12px;
+}
+
+.jobs-accent {
+  color: #03ad84;
+}
+
+.jobs-sub {
+  font-size: 1.125rem;
+  color: #000 !important;
+  line-height: 1.7;
+  margin: 0 0 48px;
+}
+
+/* ── Cards ── */
+.jobs-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 48px;
+}
+
+.job-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 28px;
+  border: 0.5px solid #e0e0e0;
+  border-radius: 12px;
+  background: #ffffff;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.15s ease;
+}
+
+.job-card:hover {
+  border-color: #03ad84;
+  transform: translateX(4px);
+}
+
+.job-card:hover .job-card-arrow {
+  color: #03ad84;
+}
+
+.job-card-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.job-card-title {
+  font-family: 'Bebas Neue';
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.job-card-dept {
+  font-size: 11px;
+  color: #bbbbbb;
+  font-weight: 300;
+}
+
+.job-card-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.job-card-tag {
+  font-size: 11px;
+  background: #f0faf7;
+  color: #03ad84;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.job-card-arrow {
+  font-size: 16px;
+  color: #cccccc;
+  transition: color 0.2s ease;
+}
+
+/* ── CTA ── */
+.jobs-cta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.jobs-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-primary);
+  color: #ffffff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 13px 26px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.jobs-cta-btn:hover {
+  background: #029e78;
+}
+
+.jobs-cta-note {
+  font-size: 13px;
+  color: #bbbbbb;
+  font-weight: 300;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .jobs-headline {
+    font-size: 40px;
+  }
+
+  .job-card {
+    padding: 18px 20px;
+  }
+
+  .job-card-tag {
+    display: none;
+  }
+}
+
+/* =========================================
+   Revibe — CTA Section
+   Font dependencies:
+   Fraunces (serif) + DM Sans (sans-serif)
+   via Google Fonts — include in your <head>
+   ========================================= */
+
+.cta-section {
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Background image — swap url() for your own asset */
+.cta-bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/team-meeting-outside.webp');
+  background-size: cover;
+  background-position: center 30%;
+}
+
+/* Dark overlay */
+.cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.80);
+}
+
+/* Content wrapper */
+.cta-content {
+  position: relative;
+  z-index: 2;
+  padding: 72px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* "We're Hiring" badge */
+.cta-badge {
+  display: inline-block;
+  background: rgba(90, 196, 160, 0.15);
+  border: 1px solid rgba(90, 196, 160, 0.3);
+  border-radius: 100px;
+  padding: 6px 16px;
+  margin-bottom: 28px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6DCFB0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Headline */
+.cta-headline {
+  font-family: 'Bebas Neue', serif;
+  font-size: 54px;
+  font-weight: 300;
+  color: #F5F2EC;
+  line-height: 1.1;
+  margin: 0 0 24px;
+  max-width: 960px;
+}
+
+.cta-headline--accent {
+  color: var(--color-primary);
+  
+}
+
+/* Body copy */
+.cta-body {
+  font-size: 16px;
+  color: rgba(245, 242, 236, 0.68);
+  line-height: 1.75;
+  max-width: 660px;
+  margin: 0 0 10px;
+}
+
+.cta-body:last-of-type {
+  margin-bottom: 44px;
+}
+
+/* CTA button */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-primary);
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 14px 32px;
+  border-radius: 100px;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.cta-button:hover {
+  background: #6DCFB0;
+  transform: translateY(-1px);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+/* =========================================
+   Responsive
+   ========================================= */
+@media (max-width: 640px) {
+  .cta-content {
+    padding: 48px 28px;
+  }
+
+  .cta-headline {
+    font-size: 36px;
+    font-family: 'Bebas Neue';
+  }
+
+  .cta-circle--lg {
+    width: 200px;
+    height: 200px;
+  }
+
+  .cta-circle--sm {
+    width: 130px;
+    height: 130px;
+  }
 }
