@@ -1312,3 +1312,18 @@ html {
             transform: translateY(40px);
             will-change: opacity, transform;
         }
+
+
+/* ── Add this to the bottom of your global.css ── */
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    will-change: opacity, transform;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-up.fade-up-visible {
+    opacity: 1;
+    transform: translateY(0);
+}

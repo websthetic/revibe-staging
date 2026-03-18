@@ -1,0 +1,182 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   JOBS PAGE STYLES
+   /assets/css/jobs.css
+   Inherits all variables, fonts, and base styles from global.css
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0px) {
+
+  #job-page {
+    padding: var(--sectionPadding);
+    padding-top: clamp(9rem, 18vw, 12rem);
+    background-color: #fff;
+  }
+
+  #job-page .cs-container {
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+
+  #job-page .cs-topper {
+    font-size: 0.75rem;
+  }
+  #job-page .cs-job-hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid #e5e2dc;
+  }
+
+  #job-page .cs-int-title {
+    font-family: var(--headerFont);
+    font-size: clamp(2.5rem, 6vw, 3.625rem);
+    line-height: 1em;
+    letter-spacing: 0.03em;
+    color: var(--headerColor);
+    margin: 0 0 1.25rem 0;
+  }
+
+  /* ── Meta Tags ── */
+  #job-page .cs-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    align-items: center;
+  }
+
+  #job-page .cs-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    background: #f0ede8;
+    border-radius: 6.25rem;
+    padding: 0.3125rem 0.875rem;
+    font-family: var(--bodyFont);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--bodyTextColor);
+  }
+
+  #job-page .cs-tag.cs-accent {
+    background: #d0f5ec;
+    color: var(--primary);
+  }
+
+  /* ── Sections ── */
+  #job-page .cs-section {
+    margin-bottom: 2.75rem;
+  }
+
+  #job-page .cs-section-title {
+    font-family: var(--headerFont);
+    font-size: clamp(1.5rem, 3vw, 1.75rem);
+    letter-spacing: 0.05em;
+    line-height: 1em;
+    color: var(--headerColor);
+    margin: 0 0 1rem 0;
+  }
+
+  #job-page .cs-text {
+    font-size: var(--bodyFontSize);
+    line-height: 1.5em;
+    color: var(--bodyTextColor);
+    max-width: 100%;
+    margin: 0 0 0.75rem 0;
+  }
+
+  /* ── Lists ── */
+  #job-page .cs-ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  #job-page .cs-ul .cs-li {
+    font-size: var(--bodyFontSize);
+    line-height: 1.5em;
+    color: var(--bodyTextColor);
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.625rem;
+  }
+
+  #job-page .cs-ul .cs-li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.625rem;
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 50%;
+    background: var(--primary);
+  }
+
+  /* ── Divider ── */
+  #job-page .cs-divider {
+    border: none;
+    border-top: 1px solid #e5e2dc;
+    margin: 0 0 2.75rem;
+  }
+
+  /* ── Button — inherits global .cs-button-solid behaviour ── */
+  #job-page .cs-section .cs-button-solid {
+    margin-top: 1.5rem;
+    border-radius: 50px;
+  }
+  #job-page .cs-button-solid {
+    font-family: var(--headerFont);
+    z-index: 1;
+    position: relative;
+    display: inline-block;
+    background-color: var(--primary);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: clamp(1.3125rem, 0.9vw, 1.5rem);
+    line-height: 1em;
+    font-weight: bold;
+    border-radius: 0.25rem;
+    overflow: hidden;
+    color: var(--bodyTextColorWhite);
+    transition: color 0.3s;
+    transition-delay: 0.1s;
+    text-align: center;
+  }
+
+  #job-page .cs-button-solid:hover {
+    color: #fff;
+  }
+
+  #job-page .cs-button-solid:hover::before {
+    width: 100%;
+  }
+
+  #job-page .cs-button-solid::before {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    display: block;
+    background-color: #000;
+    height: 100%;
+    width: 0;
+    transition: width 0.3s;
+  }
+
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+  #job-page .cs-meta-row {
+    gap: 0.75rem;
+  }
+}
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+  #job-page .cs-text {
+    max-width: 60rem;
+  }
+}
