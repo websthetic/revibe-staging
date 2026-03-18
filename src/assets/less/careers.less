@@ -1385,12 +1385,13 @@
     }
 
     .career-pathways__eyebrow {
-        display: block;
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: 0.75rem;
-        letter-spacing: 0.18em;
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
-        color: #03ad84 !important;
+        color: var(--primary) !important;
+        margin-bottom: 1rem;
     }
 
     .career-pathways__headline {
@@ -1401,6 +1402,14 @@
         line-height: 1.0;
         color: #000 !important;
         margin: 0;
+    }
+
+    /* Arrow separator between headline phrases */
+    .cp-arrow-sep {
+        font-size: 0.55em;
+        vertical-align: middle;
+        color: #ccc;
+        letter-spacing: 0;
     }
 
     .career-pathways__description {
@@ -2041,14 +2050,14 @@
         font-family: 'Bebas Neue', sans-serif;
         font-size: clamp(3rem, 5.5vw, 4.4rem);
         font-weight: 300;
-        color: #F5F2EC;
+        color: var(--primary) !important;
         line-height: 1.1;
         margin: 0 0 24px;
         max-width: 960px;
     }
 
     .cta-headline--accent {
-        color: var(--color-primary);
+        color: var(--color-primary) !important;
     }
 
     /* Body copy */
