@@ -1,0 +1,92 @@
+---
+title: "Chiropractor | Revibe"
+description: "Meta description for the page"
+permalink: "/careers/chiropractor/"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/jobs.css">
+    <script src="/assets/js/fade-up.js"></script>
+{% endblock %}
+
+{% block body %}
+
+  <!-- ============================================ -->
+  <!--                  Job Page                    -->
+  <!-- ============================================ -->
+  <section id="job-page">
+    <div class="cs-container">
+ 
+      <!-- Job Hero -->
+      <div class="cs-job-hero">
+        <span class="cs-topper">We're Hiring</span>
+        <h1 class="cs-int-title">Chiropractor</h1>
+        <div class="cs-meta-row">
+          <span class="cs-tag">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+            Mississauga &amp; Markham
+          </span>
+          <span class="cs-tag cs-accent">Full-time / Part-time</span>
+          <span class="cs-tag">Join Our Talent Community</span>
+        </div>
+      </div>
+
+      <hr class="cs-divider"/>
+ 
+      <!-- What You'll Do -->
+      <div class="cs-section">
+        <h2 class="cs-section-title">What You'll Do</h2>
+        <ul class="cs-ul">
+          <li class="cs-li">Deliver high-quality care to every client that walks through our door</li>
+          <li class="cs-li">Use your own clinical reasoning and judgment to deliver care and create action plans to help clients do what they love, longer</li>
+          <li class="cs-li">Engage with local referral sources to support the development of your own caseload</li>
+          <li class="cs-li">Participate in ongoing mentorship and clinical education provided from within the organization as well as external resources</li>
+          <li class="cs-li">Partner with your Lead Clinician on an ongoing basis to determine the level of support and training required to help you grow</li>
+        </ul>
+      </div>
+ 
+      <hr class="cs-divider"/>
+ 
+      <!-- About You -->
+      <div class="cs-section">
+        <h2 class="cs-section-title">About You</h2>
+        <ul class="cs-ul">
+          <li class="cs-li">Licensed and in good standing with your affiliated college</li>
+          <li class="cs-li">Have the appropriate liability insurance</li>
+          <li class="cs-li">Thrive on giving and receiving feedback, adjusting your client care and performance accordingly</li>
+          <li class="cs-li">A team player who cares deeply not only about your own growth, but ensuring the development of your entire team</li>
+          <li class="cs-li">Contribute to clinic culture as demonstrated through behaviours such as: excitement to mentor students, flexibility to cover shifts, participation at clinic events, workshops, and recharges</li>
+          <li class="cs-li">Collaborative in nature and see the importance and impact of partnering closely with your clinic's Guest Experience team</li>
+          <li class="cs-li">A strong communicator who understands the importance of a positive customer service experience</li>
+        </ul>
+      </div>
+ 
+      <hr class="cs-divider"/>
+ 
+      <!-- Why You Should Join Revibe -->
+      <div class="cs-section">
+        <h2 class="cs-section-title">Why You Should Join Revibe</h2>
+        <ul class="cs-ul">
+          <li class="cs-li">Become a part of a collaborative, wellness-driven team culture</li>
+          <li class="cs-li">Access to a community-driven, state-of-the-art clinic environment</li>
+          <li class="cs-li">Opportunities for professional growth through mentorship, education, and leadership pathways</li>
+          <li class="cs-li">Competitive compensation structure with clear progression opportunities</li>
+          <li class="cs-li">Eligibility for extended health benefits</li>
+          <li class="cs-li">Flexible scheduling (full-time or part-time)</li>
+          <li class="cs-li">Full access to Revibe's recovery services (cold plunge, sauna, Normatec boots) and in-house gym facilities</li>
+        </ul>
+
+        <button class="cs-button-solid" onclick="openPopup()">Apply Now</button>
+      </div>
+ 
+    </div>
+  </section>
+
+  {% include 'components/popup-form.html' %}
+                                          
+{% endblock %}

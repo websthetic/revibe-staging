@@ -1530,24 +1530,9 @@
 
     .cp-card__body {
         display: flex;
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .cp-card__pill {
-        display: inline-flex;
+        flex-direction: row;
         align-items: center;
-        padding: 2px 9px;
-        border-radius: 99px;
-        background: #e8e8e5;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 0.625rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: #999;
-        width: fit-content;
-        transition: background 0.3s ease, color 0.3s ease;
+        gap: 1rem;
     }
 
     .cp-card__role {
@@ -1569,11 +1554,6 @@
         color: rgba(255, 255, 255, 0.3);
     }
 
-    .cp-card--last .cp-card__pill {
-        background: rgba(255, 255, 255, 0.2);
-        color: #fff;
-    }
-
     .cp-card--last .cp-card__role {
         color: #fff;
     }
@@ -1585,11 +1565,6 @@
 
     .cp-card.is-lit .cp-card__num {
         color: #03ad84;
-    }
-
-    .cp-card.is-lit .cp-card__pill {
-        background: #e1f5ee;
-        color: #0F6E56;
     }
 
     /* Arrows */
