@@ -1,0 +1,101 @@
+---
+title: "About Us | Our Story | Revibe | Mississauga and Markham"
+description: "The Revibe story, from one Etobicoke clinic in 2019 to Mississauga and Markham: the moments, hard lessons and people behind athlete-grade care, reimagined for everyBody."
+permalink: "/about-us/"
+# content lives in _data/about.js
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/about.css">
+    <script defer src="/assets/js/about.js"></script>
+{% endblock %}
+
+{% block body %}
+    {% set ab = about %}
+    {% macro accent(text) %}{{ text | replace("{", '<span class="cs-accent">') | replace("}", "</span>") | safe }}{% endmacro %}
+
+    {# one gallery: a big photo (uncropped, over a blurred copy) and thumbnails that switch it #}
+    {% macro gallery(images, id) %}
+    <div class="cs-gallery">
+        <div class="cs-shot" id="{{ id }}-shot">
+            {% for image in images %}
+            <div class="cs-frame"{% if not loop.first %} hidden{% endif %}>
+                <img class="cs-frame-blur" src="{% getUrl image.src | resize({ width: 80 }) | webp %}" alt="" width="80" height="80" loading="lazy" decoding="async" aria-hidden="true">
+                <img class="cs-frame-img" src="{% getUrl image.src | resize({ width: 1000 }) | webp %}" alt="{{ image.alt }}" width="{{ image.width }}" height="{{ image.height }}" loading="lazy" decoding="async">
+            </div>
+            {% endfor %}
+        </div>
+        {% if images.length > 1 %}
+        <div class="cs-thumbs" role="group" aria-label="More photos">
+            {% for image in images %}
+            <button type="button" class="cs-thumb" aria-pressed="{{ 'true' if loop.first else 'false' }}" aria-label="Show photo {{ loop.index }}: {{ image.alt }}" aria-controls="{{ id }}-shot">
+                <img src="{% getUrl image.src | resize({ width: 160 }) | webp %}" alt="" width="80" height="80" loading="lazy" decoding="async">
+            </button>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    {% endmacro %}
+
+    <!-- ============================================ -->
+    <!--                    Hero                      -->
+    <!-- ============================================ -->
+
+    <section id="about-hero" aria-labelledby="about-hero-title">
+        <img class="cs-hero-bg" src="{% getUrl ab.hero.image.src | resize({ width: 1600 }) | webp %}" alt="" width="1600" height="1067" fetchpriority="high" decoding="async">
+        <div class="cs-container">
+            <div class="cs-content">
+                <h1 class="cs-title" id="about-hero-title">{{ accent(ab.hero.title) }}</h1>
+                <p class="cs-text">{{ ab.hero.text }}</p>
+            </div>
+            <a class="cs-explore" href="#story">
+                Explore
+                <span class="cs-explore-line" aria-hidden="true"><span></span></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                  Timeline                    -->
+    <!-- ============================================ -->
+
+    <section id="story" class="cs-section" aria-label="The Revibe timeline">
+        <div class="cs-container">
+            {# the green line fills as you scroll (about.js sets --progress) #}
+            <div class="cs-rail" aria-hidden="true"><span class="cs-rail-fill"></span></div>
+            <ol class="cs-moments">
+                {% for m in ab.milestones %}
+                <li class="cs-moment{% if loop.index is even %} cs-flip{% endif %}" id="moment-{{ loop.index }}">
+                    <span class="cs-dot" aria-hidden="true">0{{ loop.index }}</span>
+                    <article class="cs-card" aria-labelledby="moment-{{ loop.index }}-title">
+                        <div class="cs-card-text">
+                            <p class="cs-date">{{ m.date }}</p>
+                            <h2 class="cs-card-title" id="moment-{{ loop.index }}-title">{{ m.title }}</h2>
+                            <p class="cs-card-body">{{ m.text }}</p>
+                        </div>
+                        {{ gallery(m.images, "moment-" + loop.index) }}
+                    </article>
+                </li>
+                {% endfor %}
+                <li class="cs-moment cs-flip cs-outro" id="moment-{{ ab.milestones.length + 1 }}">
+                    <span class="cs-dot" aria-hidden="true">0{{ ab.milestones.length + 1 }}</span>
+                    <article class="cs-card" aria-labelledby="moment-outro-title">
+                        <div class="cs-card-text">
+                            <h2 class="cs-card-title" id="moment-outro-title">{{ accent(ab.outro.title) }}</h2>
+                            <p class="cs-card-body">{{ ab.outro.text }}</p>
+                            <p class="cs-callout">{{ ab.outro.callout }}</p>
+                            <p class="cs-card-body">{{ ab.outro.after }}</p>
+                            <div class="cs-actions">
+                                <a href="{{ ab.outro.primary.url }}" class="cs-button-solid cs-hover-dark"{% if ab.outro.primary.external %} target="_blank" rel="noopener"{% endif %}>{{ ab.outro.primary.label }}</a>
+                                {% for link in ab.outro.secondary %}<a href="{{ link.url }}" class="cs-button-outline">{{ link.label }}</a>{% endfor %}
+                            </div>
+                        </div>
+                        {{ gallery(ab.outro.images, "moment-outro") }}
+                    </article>
+                </li>
+            </ol>
+        </div>
+    </section>
+{% endblock %}

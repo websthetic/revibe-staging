@@ -1,0 +1,30 @@
+<!-- ============================================ -->
+<!--                  Instagram                   -->
+<!-- ============================================ -->
+
+{# set instagramData before including to use other posts (same shape as home.instagram) #}
+{% set ig = instagramData or home.instagram %}
+{% set igIcon %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>{% endset %}
+<section id="instagram" aria-labelledby="instagram-title">
+    <div class="cs-header">
+        <h2 class="cs-title" id="instagram-title">{{ ig.title }}</h2>
+        <a class="cs-follow" href="{{ ig.url }}" target="_blank" rel="noopener">{{ igIcon | safe }}<span>Follow {{ ig.handle }}</span></a>
+    </div>
+    <!-- Scrolling posts. Hover or focus pauses it. The second copy makes the loop seamless and is skipped by keyboard and screen readers. -->
+    <div class="cs-run">
+        <div class="cs-track">
+            {% for copy in [1, 2] %}
+            <ul class="cs-posts"{% if copy == 2 %} aria-hidden="true"{% endif %}>
+                {% for post in ig.posts %}
+                <li class="cs-post">
+                    <a class="cs-post-link" href="{{ post.url }}" target="_blank" rel="noopener"{% if copy == 2 %} tabindex="-1"{% else %} aria-label="{{ post.caption }}, on Instagram"{% endif %}>
+                        <img src="{% getUrl post.image | resize({ width: 560 }) | webp %}" alt="{% if copy == 1 %}{{ post.caption }}{% endif %}" width="506" height="900" loading="lazy" decoding="async">
+                        <span class="cs-overlay">{{ igIcon | safe }}</span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+</section>

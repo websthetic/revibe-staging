@@ -8,6 +8,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="{{ description }}">
+        {# noindex: true in a page's front matter keeps it out of search results (thank you pages) #}
+        {% if noindex %}<meta name="robots" content="noindex, follow">{% endif %}
         <link rel="canonical" href="{{ client.domain }}{{ page.url }}">
         <meta name="generator" content="{{ eleventy.generator }}">
 
@@ -29,15 +31,16 @@
         <link rel="manifest" href="/assets/favicons/site.webmanifest"/>
 
         <!-- Preloads -->
-        <link rel="preload" as="image" href="/assets/svgs/logo-black.svg">
-        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/roboto-v29-latin-regular.woff2" crossorigin>
-        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/roboto-v29-latin-700.woff2" crossorigin>
+        <link rel="preload" as="image" href="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-site-2026/revibe-logo-combo-trademark_black.png">
+        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/BebasNeue-Regular.woff2" crossorigin>
+        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Montserrat-Regular.woff2" crossorigin>
 
         <!-- Sitewide Stylesheets and Scripts -->
         <link rel="stylesheet" href="/assets/css/root.css">
-        <script defer src="/assets/js/dark.js"></script>
+        <link rel="stylesheet" href="/assets/css/global.css">
         <script defer src="/assets/js/nav.js"></script>
-        <script defer src="/assets/js/gsap.min.js"></script>
+        <script defer src="/assets/js/popup-forms.js"></script>
+        <script defer src="/assets/js/caremap-quiz.js"></script>
 
         {% block head %}{% endblock %}
 
@@ -45,13 +48,26 @@
     </head>
     <body>
         <!--Screen reader skip main nav-->
-        <a class="skip" aria-label="skip to main content" href="#main">Click To Skip To Main Content</a>
+        <a class="skip" href="#main">Skip to main content</a>
 
+        {# chrome: "minimal" swaps the nav and footer for a slim bar and footer (thank you pages) #}
+        {% if chrome == "minimal" %}
+        {% include "sections/minimal-header.html" %}
+        {% else %}
         {% include "sections/header.html" %}
+        {% endif %}
         <main id="main">
             {% block body %}{% endblock %}
         </main>
+        {% if chrome == "minimal" %}
+        {% include "sections/minimal-footer.html" %}
+        {% else %}
         {% include "sections/footer.html" %}
+
+        {% include "components/popup-forms/book-your-session.html" %}
+        {% include "components/popup-forms/request-to-book.html" %}
+        {% include "components/popup-forms/caremap-popup-quiz.html" %}
+        {% endif %}
 
     </body>
 </html>

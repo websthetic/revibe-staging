@@ -1,0 +1,116 @@
+---
+title: "Contact Us | Revibe | Mississauga (905) 783-8423 · Markham (289) 806-5123"
+description: "Contact Revibe in Mississauga or Markham. Call, email or send us a message about pain, recovery or booking, and the team will reply within one business day."
+permalink: "/contact-us/"
+# content lives in _data/contact.js; the old /contactus/ address redirects here (src/_redirects)
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/contact.css">
+    <script defer src="/assets/js/contact.js"></script>
+{% endblock %}
+
+{% block body %}
+    {% set ct = contact %}
+    {# {word} in a title becomes a green word #}
+    {% macro accent(text) %}{{ text | replace("{", '<span class="cs-accent">') | replace("}", "</span>") | safe }}{% endmacro %}
+
+    <!-- ============================================ -->
+    <!--                    Hero                      -->
+    <!-- ============================================ -->
+
+    <section id="contact-hero" aria-labelledby="contact-hero-title">
+        <div class="cs-container">
+            <div class="cs-content">
+                <h1 class="cs-title" id="contact-hero-title">{{ accent(ct.hero.title) }}</h1>
+                <p class="cs-text">{{ ct.hero.text }}</p>
+            </div>
+            <div class="cs-care-card">
+                <div class="cs-care-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="4" r="2"/><circle cx="12" cy="20" r="2"/><circle cx="4.5" cy="8" r="2"/><circle cx="19.5" cy="8" r="2"/><circle cx="4.5" cy="16" r="2"/><circle cx="19.5" cy="16" r="2"/></svg>
+                </div>
+                <div class="cs-care-text">
+                    <p class="cs-care-title">{{ ct.hero.careMap.title }}</p>
+                    <p class="cs-care-sub">{{ ct.hero.careMap.text }}</p>
+                </div>
+                <a href="/" class="cs-button-solid cs-button-dark" data-caremap aria-haspopup="dialog">{{ ct.hero.careMap.button }}</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                Contact form                  -->
+    <!-- ============================================ -->
+
+    <section id="contact-form" class="cs-section" aria-labelledby="contact-form-title">
+        <div class="cs-container">
+            <div class="cs-form-card">
+                <h2 class="cs-title cs-section-title" id="contact-form-title">{{ accent(ct.form.title) }}</h2>
+                {% for paragraph in ct.form.text %}<p class="cs-section-text">{{ paragraph }}</p>{% endfor %}
+
+                {# without JavaScript the browser posts straight to Netlify and lands on the thank you page #}
+                <form class="cs-form" name="{{ ct.form.formName }}" method="POST" action="{{ ct.form.thankYou }}" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+                    <input type="hidden" name="form-name" value="{{ ct.form.formName }}">
+                    <p class="cs-honeypot" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+                    <!-- filled in by contact.js from the page URL, for tracking where messages come from -->
+                    <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content"><input type="hidden" name="utm_term"><input type="hidden" name="gclid">
+
+                    <div class="cs-field">
+                        <label for="contact-name">Name</label>
+                        <input id="contact-name" name="name" type="text" autocomplete="name" required>
+                        <span class="cs-error" id="contact-name-error"></span>
+                    </div>
+                    <div class="cs-field">
+                        <label for="contact-email">Email</label>
+                        <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required>
+                        <span class="cs-error" id="contact-email-error"></span>
+                    </div>
+                    <div class="cs-field">
+                        <label for="contact-phone">Phone</label>
+                        <input id="contact-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(000) 000-0000" required>
+                        <span class="cs-error" id="contact-phone-error"></span>
+                    </div>
+                    <div class="cs-field">
+                        <label for="contact-source">How did you find us? <span class="cs-optional">Optional</span></label>
+                        <select id="contact-source" name="find_us">
+                            <option value="">Choose one</option>
+                            {% for source in popupForms.request.sources %}<option>{{ source }}</option>{% endfor %}
+                        </select>
+                    </div>
+                    <div class="cs-field cs-full">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" name="message" rows="5" placeholder="What is going on, and how can we help?" required></textarea>
+                        <span class="cs-error" id="contact-message-error"></span>
+                    </div>
+                    <div class="cs-submit cs-full">
+                        <button type="submit" class="cs-button-solid cs-button-dark">{{ ct.form.button }}</button>
+                        <p class="cs-note">{{ ct.form.note }}</p>
+                        <p class="cs-error" id="contact-submit-error" role="alert"></p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="cs-info">
+                <img src="{% getUrl ct.form.image.src | resize({ width: 900 }) | webp %}" alt="{{ ct.form.image.alt }}" width="900" height="1350" loading="lazy" decoding="async">
+                <div class="cs-info-card">
+                    <div class="cs-info-item">
+                        <h3 class="cs-info-label">Email</h3>
+                        <a href="mailto:{{ ct.form.email }}">{{ ct.form.email }}</a>
+                    </div>
+                    {% for clinic in clinics %}
+                    <div class="cs-info-item">
+                        <h3 class="cs-info-label">{{ clinic.name }}</h3>
+                        <a href="tel:{{ clinic.phoneForTel }}">{{ clinic.phone }}</a>
+                        <a href="{{ clinic.mapsUrl }}" class="cs-info-address" target="_blank" rel="noopener">{{ clinic.address }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% set instagramData = careers.instagram %}
+    {% include 'sections/home/instagram.html' %}
+{% endblock %}

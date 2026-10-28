@@ -1,0 +1,28 @@
+<!-- ============================================ -->
+<!--             Your First Session               -->
+<!-- ============================================ -->
+
+{% set fs = home.firstSession %}
+<section id="first-session" aria-labelledby="first-session-title">
+    <div class="cs-container">
+        <div class="cs-header">
+            <h2 class="cs-title" id="first-session-title">{{ fs.title }}</h2>
+            <p class="cs-text">{{ fs.text }}</p>
+        </div>
+        <ol class="cs-steps">
+            {% for step in fs.steps %}
+            {# --i staggers the reveal animation, printed by Nunjucks so the editor doesn't lint it as CSS #}
+            {% set stepStyle = 'style="--i: ' + loop.index0 + ';"' %}
+            <li class="cs-step" {{ stepStyle | safe }}>
+                <span class="cs-dot" aria-hidden="true">{{ loop.index }}</span>
+                <div class="cs-picture">
+                    <img src="{% getUrl step.image | resize({ width: 700 }) | webp %}" alt="{{ step.alt }}" width="{{ step.width }}" height="{{ step.height }}" loading="lazy" decoding="async">
+                </div>
+                <h3 class="cs-step-title">{{ step.title }}</h3>
+                <p class="cs-step-text">{{ step.text }}</p>
+            </li>
+            {% endfor %}
+        </ol>
+        <a href="{{ fs.button.url }}" class="cs-button-solid cs-button-dark" data-book aria-haspopup="dialog">{{ fs.button.label }}</a>
+    </div>
+</section>

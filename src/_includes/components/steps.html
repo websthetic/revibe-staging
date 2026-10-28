@@ -1,0 +1,50 @@
+{#
+    Four-step section on green ("What happens at my first appointment?", "How does contrast therapy work?").
+    Set before including:
+      steps: { title, text, steps: [{ title, text, image, alt, position }], buttons: [{ label, url, book, request }] }
+      requestService: optional, preselects the service in the Request to book pop-up
+      buttons is optional; without it there is a "Book in <clinic>" button per clinic.
+      book: true on a button opens the Book your session pop-up.
+      request: true on a button opens the Request to book pop-up.
+    Styles: #first-appointment in global.less.
+#}
+<!-- ============================================ -->
+<!--                  Four Steps                  -->
+<!-- ============================================ -->
+
+<section id="first-appointment" class="cs-section" aria-labelledby="first-appointment-title">
+    <div class="cs-container">
+        <div class="cs-section-header">
+            <h2 class="cs-title cs-section-title" id="first-appointment-title">{{ steps.title }}</h2>
+            <p class="cs-section-text">{{ steps.text }}</p>
+        </div>
+        <ol class="cs-steps{% if steps.steps.length == 3 %} cs-steps-three{% endif %}">
+            {% for step in steps.steps %}
+            {% set imgStyle = 'style="object-position: ' + step.position + ';"' %}
+            <li class="cs-step">
+                <div class="cs-picture">
+                    <img src="{% getUrl step.image | resize({ width: 700 }) | webp %}" alt="{{ step.alt }}" {{ imgStyle | safe }} width="800" height="1200" loading="lazy" decoding="async">
+                </div>
+                <h3 class="cs-step-title">{{ step.title }}</h3>
+                <p class="cs-step-text">{{ step.text }}</p>
+            </li>
+            {% endfor %}
+        </ol>
+        <div class="cs-actions">
+            {# steps.buttons replaces the "Book in <clinic>" pair #}
+            {% if steps.buttons %}
+            {% for button in steps.buttons %}
+            {% if button.request %}
+            <a href="/" class="cs-button-solid cs-button-dark" data-request{% if requestService %} data-service="{{ requestService }}"{% endif %} aria-haspopup="dialog">{{ button.label }}</a>
+            {% else %}
+            <a href="{{ button.url }}" class="cs-button-solid cs-button-dark"{% if button.book %} data-book aria-haspopup="dialog"{% endif %}>{{ button.label }}</a>
+            {% endif %}
+            {% endfor %}
+            {% else %}
+            {% for clinic in clinics %}
+            <a href="{{ clinic.bookUrl }}" class="cs-button-solid cs-button-dark">Book in {{ clinic.name }}</a>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>

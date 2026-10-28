@@ -1,0 +1,31 @@
+{#
+    Related services row ("... is one part of performance therapy"). Set before including:
+      related: { title, items: [{ label, url, image, alt, position }] }
+      position is the photo's CSS object-position. Five items lay out three over two on wide screens.
+    Styles: .cs-related-section in global.less.
+#}
+<!-- ============================================ -->
+<!--               Related Services               -->
+<!-- ============================================ -->
+
+<section id="related" class="cs-section cs-related-section" aria-labelledby="related-title">
+    <div class="cs-container">
+        <h2 class="cs-title cs-section-title" id="related-title">{{ related.title }}</h2>
+        <ul class="cs-services{% if related.items.length == 5 %} cs-services-five{% endif %}">
+            {% for item in related.items %}
+            {% set imgStyle = 'style="object-position: ' + (item.position or "center") + ';"' %}
+            <li>
+                <a href="{{ item.url }}" class="cs-service">
+                    <span class="cs-service-picture">
+                        <img src="{% getUrl item.image | resize({ width: 700 }) | webp %}" alt="" {{ imgStyle | safe }} width="1200" height="800" loading="lazy" decoding="async">
+                    </span>
+                    <span class="cs-service-row">
+                        <span class="cs-service-name">{{ item.label }}</span>
+                        <span class="cs-icon-arrow">{% include "components/icons/arrow.html" %}</span>
+                    </span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

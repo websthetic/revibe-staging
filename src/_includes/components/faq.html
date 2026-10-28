@@ -1,0 +1,34 @@
+{#
+    FAQ accordion. Set before including:
+      faq: { title, text, items: [{ q, a }] }
+      faqBookButton: false to hide the "Book now" button (shown by default)
+      an item's optional id lets other links jump to it; faq.js opens it when they do
+    Styles: .cs-faq-section in global.less. The first question starts open.
+#}
+<!-- ============================================ -->
+<!--                     FAQ                      -->
+<!-- ============================================ -->
+
+<section id="faq" class="cs-section cs-faq-section" aria-labelledby="faq-title">
+    <div class="cs-container">
+        <div class="cs-side">
+            <h2 class="cs-title cs-section-title" id="faq-title">{{ faq.title }}</h2>
+            {% if faq.text %}<p class="cs-section-text">{{ faq.text }}</p>{% endif %}
+            {% if faqBookButton !== false %}
+            <a href="/" class="cs-button-solid cs-hover-dark" data-book aria-haspopup="dialog">Book now</a>
+            {% endif %}
+        </div>
+        <div class="cs-faq">
+            {% for item in faq.items %}
+            <details class="cs-faq-item"{% if item.id %} id="{{ item.id }}"{% endif %}{% if loop.first %} open{% endif %}>
+                <summary class="cs-faq-question">
+                    <span>{{ item.q }}</span>
+                    <span class="cs-faq-icon" aria-hidden="true"></span>
+                </summary>
+                <p class="cs-faq-answer">{{ item.a }}</p>
+            </details>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<script defer src="/assets/js/faq.js"></script>

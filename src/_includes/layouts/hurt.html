@@ -1,0 +1,181 @@
+{#
+    "Where does it hurt" pages (low back, neck, shoulder, hip, ...).
+    A page sets in its front matter:
+      hurtPage: key of its content file in _data/hurtPages/ (e.g. "hip")
+    Its drawings are components/hurt-pages/<key>-anatomy.html and <key>-figure.html.
+    Styles: hurt.less. Interactions: hurt-page.js.
+#}
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/hurt.css">
+    <script defer src="/assets/js/hurt-page.js"></script>
+{% endblock %}
+
+{% block body %}
+    {% set h = hurtPages[hurtPage] %}
+    {% set figureUse %}<use href="#leg" width="300" height="520" style="overflow: visible"/>{% endset %}
+
+    <div class="cs-hurt-page" data-k="{{ h.problems[0].key }}">
+
+    <!-- ============================================ -->
+    <!--             Hero and Body Map                -->
+    <!-- ============================================ -->
+
+    <section id="hurt-hero" aria-labelledby="hurt-hero-title">
+        <div class="cs-container">
+            <div class="cs-content">
+                <h1 class="cs-title{% if h.longTitle %} cs-title-long{% endif %}" id="hurt-hero-title"><span class="cs-big">{{ h.title }}</span> <span class="cs-sub">{{ h.subtitle }}</span></h1>
+                <p class="cs-text">{{ h.text }}</p>
+                <div class="cs-actions">
+                    <a href="/" class="cs-button-solid" data-request data-service="{{ h.requestService }}" data-message="{{ h.requestMessage }}" aria-haspopup="dialog">Request to book</a>
+                    <a href="#plan" class="cs-button-outline cs-outline-light">See the plan</a>
+                </div>
+                <p class="cs-proof"><strong>5.0 on Google</strong> {{ h.proof }}</p>
+            </div>
+            <div class="cs-map">
+                {% include "components/hurt-pages/" + hurtPage + "-anatomy.html" %}
+                <div class="cs-pick">
+                    <p class="cs-ask">{{ h.ask }}</p>
+                    <div class="cs-problems" role="group" aria-label="{{ h.problemsLabel }}">
+                        {% for p in h.problems %}
+                        <button type="button" class="cs-problem{% if loop.first %} cs-active{% endif %}" data-k="{{ p.key }}" aria-pressed="{{ "true" if loop.first else "false" }}" aria-controls="problem-{{ p.key }}">{{ p.label }}</button>
+                        {% endfor %}
+                    </div>
+                    <div class="cs-infos" aria-live="polite">
+                        {% for p in h.problems %}
+                        <div class="cs-info{% if loop.first %} cs-active{% endif %}" id="problem-{{ p.key }}" data-k="{{ p.key }}">
+                            <h2 class="cs-info-title">{{ p.label }}</h2>
+                            <p>{{ p.text }}</p>
+                            <p class="cs-outlook">{{ p.outlook }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                Short Answers                 -->
+    <!-- ============================================ -->
+
+    <section id="hurt-answers" aria-labelledby="hurt-answers-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="hurt-answers-title">{{ h.answersTitle }}</h2>
+            <dl class="cs-answers">
+                {% for item in h.answers %}
+                <div class="cs-answer">
+                    <dt>{{ item.q }}</dt>
+                    <dd><span class="cs-answer-big">{{ item.a }}</span><span class="cs-answer-note">{{ item.note }}</span></dd>
+                </div>
+                {% endfor %}
+            </dl>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--              Week by Week Plan               -->
+    <!-- ============================================ -->
+
+    {% macro dots(n) %}<span class="cs-dots" aria-hidden="true"><i class="cs-dot-on"></i><i{% if n == 2 %} class="cs-dot-on"{% endif %}></i></span>{% endmacro %}
+    {% set first = h.weeks[0] %}
+    <section id="plan" aria-labelledby="plan-title">
+        {% include "components/hurt-pages/" + hurtPage + "-figure.html" %}
+        <div class="cs-container">
+            <div class="cs-plan-head">
+                <h2 class="cs-title" id="plan-title">{{ h.planTitle }}</h2>
+                <p class="cs-text">{{ h.planText }}</p>
+            </div>
+            <div class="cs-plan-grid">
+                {# desktop: a pinned panel that follows the week in view (hurt-page.js) #}
+                <div class="cs-stage" aria-hidden="true">
+                    {% set legStyle = 'style="--a: ' + first.angle + 'deg;"' %}
+                    <svg class="big-leg" viewBox="-110 -30 520 580" {{ legStyle | safe }}>{{ figureUse | safe }}</svg>
+                    <div class="cs-stage-read">
+                        <p class="cs-stage-week">Week <span class="cs-stage-number">{{ first.week }}</span></p>
+                        <p class="cs-stage-phase">{{ first.phase }}</p>
+                        <p class="cs-stage-freq"><span class="cs-stage-dots">{{ dots(first.perWeek) }}</span><span class="cs-stage-text">{{ "Twice a week" if first.perWeek == 2 else "Once a week" }}</span></p>
+                    </div>
+                </div>
+                <ol class="cs-weeks">
+                    {% for wk in h.weeks %}
+                    {% set imgStyle = 'style="object-position: ' + wk.position + ';"' %}
+                    {% set legStyle = 'style="--a: ' + wk.angle + 'deg;"' %}
+                    <li class="cs-week{% if loop.first %} cs-active{% endif %}" data-angle="{{ wk.angle }}" data-week="{{ wk.week }}" data-phase="{{ wk.phase }}" data-per-week="{{ wk.perWeek }}">
+                        <div class="cs-week-top"><p class="cs-week-number">Week {{ wk.week }}</p><p class="cs-phase cs-phase-{{ wk.phase | lower }}">{{ wk.phase }}</p></div>
+                        <svg class="mini" viewBox="-110 -30 520 580" {{ legStyle | safe }} aria-hidden="true">{{ figureUse | safe }}</svg>
+                        <h3 class="cs-week-title">{{ wk.title }}</h3>
+                        <p class="cs-week-text">{{ wk.text }}</p>
+                        <p class="cs-week-freq">{{ dots(wk.perWeek) }}<span>{{ "Twice a week" if wk.perWeek == 2 else "Once a week" }}</span></p>
+                        <div class="cs-week-picture"><img src="{% getUrl wk.image | resize({ width: 700 }) | webp %}" alt="{{ wk.alt }}" {{ imgStyle | safe }} width="1200" height="800" loading="lazy" decoding="async"></div>
+                    </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                  Start Now                   -->
+    <!-- ============================================ -->
+
+    <section id="start" aria-labelledby="start-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="start-title">{{ h.startTitle }}</h2>
+            <p class="cs-text">{{ h.startText }}</p>
+            <div class="cs-actions">
+                {% for clinic in clinics %}<a href="{{ clinic.janeUrl }}" class="cs-button-solid cs-button-dark" rel="noopener">Book in {{ clinic.name }}</a>{% endfor %}
+            </div>
+            <p class="cs-tel">Or call {% for clinic in clinics %}{{ clinic.name }} at <a href="tel:{{ clinic.phoneForTel }}">{{ clinic.phone }}</a>{% if not loop.last %} or {% endif %}{% endfor %}.</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--             Causes and Treatment             -->
+    <!-- ============================================ -->
+
+    <section id="causes" aria-labelledby="causes-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="causes-title">{{ h.causesTitle }}</h2>
+            <div class="cs-boxes">
+                {% for key in ["causes", "treatment", "warning"] %}
+                {% set box = h[key] %}
+                <div class="cs-box cs-box-{{ key }}">
+                    <h3 class="cs-box-title">{{ box.title }}</h3>
+                    {% for para in box.paragraphs %}<p>{{ para }}</p>{% endfor %}
+                    {% if box.items.length %}<ul class="cs-box-list">{% for item in box.items %}<li>{{ item }}</li>{% endfor %}</ul>{% endif %}
+                    {% if box.links %}<div class="cs-box-links">{% for link in box.links %}<a href="{{ link.url }}">{{ link.label }}</a>{% endfor %}</div>{% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {% set faq = h.faq %}
+    {% set faqBookButton = false %}
+    {% include "components/faq.html" %}
+
+    <!-- ============================================ -->
+    <!--             Where Else Does It Hurt          -->
+    <!-- ============================================ -->
+
+    <section id="body-areas" aria-labelledby="body-areas-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="body-areas-title">Where else does it hurt?</h2>
+            <nav aria-label="Body areas">
+                <ul class="cs-areas">
+                    {% for area in navigation.whereDoesItHurt %}
+                    <li><a href="{{ area.url }}" class="cs-area{% if page.url == area.url %} cs-active{% endif %}"{% if page.url == area.url %} aria-current="page"{% endif %}>{{ area.label }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    </div>
+
+    {% include "sections/cta.html" %}
+    {% set stickyLabel = "Book for " + (h.title | lower) %}
+    {% include "components/sticky-book.html" %}
+{% endblock %}

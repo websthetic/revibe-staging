@@ -1,0 +1,1018 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// PERFORMANCE TRAINING PAGE STYLES
+// /performance-training/. Section padding and headings come from the shared
+// .cs-section pieces in global.less; the FAQ, CTA and pop-ups are shared too.
+// ─────────────────────────────────────────────────────────────────────────────
+
+// green circle with a black tick
+.perf-check() {
+	.cs-check {
+		width: (26/16rem);
+		height: (26/16rem);
+		padding: 5px;
+		box-sizing: border-box;
+		border-radius: 50%;
+		background-color: var(--revibeGreen);
+		color: var(--nearBlack);
+		display: inline-flex;
+		flex: none;
+
+		svg {
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---            Hero            -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#perf-hero {
+		.perf-check();
+		/* 80px fixed nav + 32px */
+		padding: calc(5rem + 2rem) (20/16rem) (64/16rem);
+		background-color: var(--offWhite);
+		overflow: hidden;
+
+		.cs-container {
+			width: 100%;
+			max-width: (1280/16rem);
+			margin: auto;
+			display: grid;
+			align-items: center;
+			gap: (40/16rem);
+		}
+
+		.cs-title {
+			/* 64px - 168px */
+			font-size: clamp(4rem, 11vw, 10.5rem);
+			line-height: 0.82;
+			max-width: none;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-text {
+			font-size: (17/16rem);
+			line-height: 1.6;
+			max-width: (560/16rem);
+			margin: (22/16rem) 0 0;
+			color: var(--charcoal);
+		}
+
+		.cs-proof {
+			list-style: none;
+			margin: (22/16rem) 0 0;
+			padding: 0;
+			display: grid;
+			gap: (10/16rem);
+
+			li {
+				font-size: (15/16rem);
+				font-weight: 600;
+				color: var(--nearBlack);
+				display: flex;
+				align-items: center;
+				gap: (12/16rem);
+			}
+		}
+
+		.cs-actions {
+			margin-top: (28/16rem);
+			display: grid;
+			gap: (12/16rem);
+
+			a {
+				text-align: center;
+			}
+		}
+
+		/* two photos and a rating badge */
+		.cs-visual {
+			padding-bottom: (46/16rem);
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: (14/16rem);
+			position: relative;
+
+			> div {
+				height: (300/16rem);
+				border-radius: 999px;
+				overflow: hidden;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					display: block;
+				}
+			}
+
+			.cs-visual-2 {
+				height: (264/16rem);
+				margin-top: (36/16rem);
+			}
+		}
+
+		.cs-badge {
+			margin: 0;
+			padding: (12/16rem) (20/16rem);
+			border-radius: (28/16rem);
+			background-color: var(--white);
+			box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+			white-space: nowrap;
+			display: flex;
+			align-items: center;
+			gap: (10/16rem);
+			position: absolute;
+			left: 50%;
+			bottom: 0;
+			transform: translateX(-50%);
+
+			.cs-stars {
+				display: flex;
+				gap: 2px;
+
+				svg {
+					width: 16px;
+					height: 16px;
+					fill: #f5b301;
+				}
+			}
+		}
+
+		.cs-badge-number {
+			font-family: var(--headerFont);
+			font-size: (34/16rem);
+			line-height: 0.9;
+			color: var(--nearBlack);
+		}
+
+		.cs-badge-text {
+			font-size: (13/16rem);
+			color: var(--charcoal);
+		}
+	}
+}
+
+/* Tablet - 600px: buttons side by side */
+@media only screen and (min-width: 37.5rem) {
+	#perf-hero .cs-actions {
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
+
+/* Desktop - 1000px: the visual overlaps */
+@media only screen and (min-width: 62.5rem) {
+	#perf-hero {
+		padding: calc(5.25rem + 4rem) (40/16rem) (88/16rem);
+
+		.cs-container {
+			grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+			gap: (64/16rem);
+		}
+
+		.cs-visual {
+			height: (580/16rem);
+			padding: 0;
+			display: block;
+
+			> div {
+				position: absolute;
+			}
+
+			.cs-visual-1 {
+				width: 64%;
+				height: 100%;
+				top: 0;
+				left: 0;
+			}
+
+			.cs-visual-2 {
+				width: 42%;
+				height: auto;
+				aspect-ratio: 1;
+				margin: 0;
+				border: 8px solid var(--offWhite);
+				border-radius: 50%;
+				top: (40/16rem);
+				right: 0;
+			}
+		}
+
+		.cs-badge {
+			padding: (16/16rem) (20/16rem);
+			display: grid;
+			gap: (4/16rem);
+			left: auto;
+			right: 2%;
+			bottom: (36/16rem);
+			transform: none;
+		}
+
+		.cs-badge-number {
+			font-size: (44/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---         Goal Tabs          -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#goals {
+		.perf-check();
+		background-color: var(--white);
+
+		.cs-section-title {
+			/* 48px - 100px */
+			font-size: clamp(3rem, 6.4vw, 6.25rem);
+			line-height: 0.86;
+			max-width: (980/16rem);
+		}
+
+		.cs-tabs {
+			margin-top: (40/16rem);
+			display: grid;
+			gap: (20/16rem);
+		}
+
+		.cs-tablist {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: (8/16rem);
+		}
+
+		.cs-tab {
+			font: inherit;
+			font-size: (14/16rem);
+			font-weight: 700;
+			padding: (14/16rem) (20/16rem);
+			border: 0;
+			border-radius: 999px;
+			background-color: var(--offWhite);
+			color: var(--nearBlack);
+			cursor: pointer;
+			flex: none;
+			transition:
+				background-color 0.2s ease,
+				color 0.2s ease;
+
+			&[aria-selected="true"] {
+				background-color: var(--nearBlack);
+				color: var(--white);
+			}
+
+			&:focus-visible {
+				outline: 2px solid var(--deepGreen);
+				outline-offset: 2px;
+			}
+		}
+
+		.cs-panel {
+			padding: (16/16rem);
+			border-radius: (40/16rem);
+			background-color: var(--offWhite);
+			display: grid;
+			gap: (20/16rem);
+			animation: perfFadeIn 0.45s ease;
+
+			&[hidden] {
+				display: none;
+			}
+
+			&:focus-visible {
+				outline: 2px solid var(--deepGreen);
+				outline-offset: 3px;
+			}
+		}
+
+		.cs-panel-picture {
+			height: (260/16rem);
+			border-radius: (28/16rem);
+			overflow: hidden;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center 45%;
+				display: block;
+			}
+		}
+
+		.cs-panel-body {
+			padding: (8/16rem) (12/16rem) (16/16rem);
+			display: grid;
+			align-content: center;
+			gap: (14/16rem);
+		}
+
+		.cs-panel-title {
+			/* 36px - 56px */
+			font-size: clamp(2.25rem, 3.4vw, 3.5rem);
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-panel-text {
+			font-size: 1rem;
+			line-height: 1.6;
+			max-width: (520/16rem);
+			margin: 0;
+			color: var(--charcoal);
+		}
+
+		.cs-points {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			gap: (10/16rem);
+
+			li {
+				font-size: (15/16rem);
+				font-weight: 600;
+				color: var(--nearBlack);
+				display: flex;
+				align-items: center;
+				gap: (10/16rem);
+			}
+		}
+
+		.cs-actions {
+			margin-top: (6/16rem);
+			display: flex;
+			flex-wrap: wrap;
+			gap: (10/16rem);
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#goals {
+		.cs-tablist {
+			justify-content: flex-start;
+		}
+
+		.cs-panel {
+			padding: (20/16rem);
+			border-radius: (48/16rem);
+			grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+			gap: (40/16rem);
+		}
+
+		.cs-panel-picture {
+			height: (440/16rem);
+			border-radius: (36/16rem);
+		}
+
+		.cs-panel-body {
+			padding: (24/16rem) (32/16rem) (24/16rem) 0;
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---   Dark Sections (shared)   -->
+<--- -------------------------- -*/
+
+@media only screen and (min-width: 0rem) {
+	/* the two dark sections run together */
+	#how + #athletes {
+		padding-top: 0;
+	}
+
+	.cs-section.cs-section-dark {
+		background-color: var(--nearBlack);
+
+		.cs-section-title {
+			/* 48px - 100px */
+			font-size: clamp(3rem, 6.4vw, 6.25rem);
+			line-height: 0.86;
+			color: var(--white);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---        How It Works        -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#how {
+		.cs-how {
+			margin-top: (40/16rem);
+			display: grid;
+			gap: (40/16rem);
+		}
+
+		.cs-steps {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			gap: (12/16rem);
+		}
+
+		.cs-step {
+			padding: (24/16rem);
+			border-radius: (32/16rem);
+			background-color: var(--nearBlackSoft);
+			display: grid;
+			grid-template-columns: (64/16rem) minmax(0, 1fr);
+			align-items: start;
+			gap: (18/16rem);
+		}
+
+		.cs-step-number {
+			width: (64/16rem);
+			height: (64/16rem);
+			font-family: var(--headerFont);
+			font-size: (28/16rem);
+			padding-top: 3px;
+			box-sizing: border-box;
+			border-radius: 50%;
+			background-color: var(--revibeGreen);
+			color: var(--nearBlack);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.cs-step-title {
+			/* 30px - 40px */
+			font-size: clamp(1.875rem, 2.6vw, 2.5rem);
+			line-height: 0.95;
+			margin: 0;
+			color: var(--white);
+		}
+
+		.cs-step-text {
+			font-size: (15/16rem);
+			line-height: 1.55;
+			margin: (6/16rem) 0 0;
+			color: var(--borderGrey);
+		}
+
+		.cs-report {
+			padding: (30/16rem) (26/16rem);
+			border-radius: (36/16rem);
+			background-color: var(--white);
+			display: grid;
+			align-content: start;
+			gap: (22/16rem);
+		}
+
+		.cs-report-title {
+			font-size: (34/16rem);
+			line-height: 0.95;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-bar {
+			display: grid;
+			gap: (8/16rem);
+		}
+
+		.cs-bar-label {
+			font-size: (14/16rem);
+			font-weight: 700;
+			margin: 0;
+			color: var(--nearBlack);
+			display: flex;
+			justify-content: space-between;
+			gap: (10/16rem);
+
+			span {
+				font-weight: 500;
+				color: var(--charcoal);
+			}
+		}
+
+		.cs-bar-track {
+			height: (14/16rem);
+			border-radius: 999px;
+			background-color: var(--offWhite);
+			overflow: hidden;
+
+			i {
+				width: var(--w);
+				height: 100%;
+				border-radius: 999px;
+				background-color: var(--revibeGreen);
+				display: block;
+				transition: width 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+			}
+		}
+
+		/* performance-training.js adds .cs-animate, then .cs-in-view on scroll */
+		.cs-report.cs-animate .cs-bar-track i {
+			width: 0;
+		}
+
+		.cs-report.cs-animate.cs-in-view .cs-bar-track i {
+			width: var(--w);
+		}
+
+		.cs-report-note {
+			font-size: (13/16rem);
+			margin: 0;
+			color: var(--charcoal);
+		}
+	}
+}
+
+/* Desktop - 1000px */
+@media only screen and (min-width: 62.5rem) {
+	#how {
+		.cs-how {
+			grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+			align-items: start;
+			gap: (56/16rem);
+		}
+
+		.cs-report {
+			padding: (40/16rem) (36/16rem);
+			position: sticky;
+			top: (110/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---          Reviews           -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#athletes {
+		.cs-stars {
+			display: flex;
+			gap: 2px;
+
+			svg {
+				width: 16px;
+				height: 16px;
+				fill: #f5b301;
+			}
+		}
+
+		.cs-head {
+			display: grid;
+			align-items: end;
+			gap: (24/16rem);
+		}
+
+		.cs-score {
+			margin: 0;
+			display: inline-grid;
+			grid-template-columns: auto auto;
+			justify-content: start;
+			align-items: center;
+			gap: (4/16rem) (14/16rem);
+		}
+
+		.cs-score-number {
+			font-family: var(--headerFont);
+			font-size: (72/16rem);
+			line-height: 0.85;
+			color: var(--revibeGreen);
+			grid-row: span 2;
+		}
+
+		.cs-score-text {
+			font-size: (13/16rem);
+			color: var(--borderGrey);
+		}
+
+		.cs-reviews {
+			list-style: none;
+			margin: (40/16rem) 0 0;
+			padding: 0;
+			display: grid;
+			gap: (12/16rem);
+
+			li {
+				display: flex;
+			}
+		}
+
+		.cs-review {
+			width: 100%;
+			margin: 0;
+			padding: (28/16rem);
+			border-radius: (32/16rem);
+			background-color: var(--nearBlackSoft);
+			display: grid;
+			align-content: start;
+			gap: (14/16rem);
+		}
+
+		.cs-author {
+			display: flex;
+			align-items: center;
+			gap: (12/16rem);
+
+			strong {
+				font-size: (15/16rem);
+				display: block;
+				color: var(--white);
+			}
+
+			small {
+				font-size: (12/16rem);
+				color: var(--blueGrey);
+			}
+		}
+
+		.cs-avatar {
+			width: (40/16rem);
+			height: (40/16rem);
+			font-weight: 700;
+			border-radius: 50%;
+			background-color: var(--revibeGreen);
+			color: var(--nearBlack);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex: none;
+		}
+
+		.cs-quote {
+			font-size: (15/16rem);
+			line-height: 1.6;
+			margin: 0;
+			color: var(--borderGrey);
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#athletes {
+		.cs-head {
+			grid-template-columns: minmax(0, 1fr) auto;
+		}
+
+		.cs-reviews {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: (16/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---    How Long People Train   -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#blocks {
+		background-color: var(--offWhite);
+
+		.cs-section-title {
+			/* 48px - 100px */
+			font-size: clamp(3rem, 6.4vw, 6.25rem);
+			line-height: 0.86;
+		}
+
+		.cs-section-text {
+			font-size: 1rem;
+			max-width: (620/16rem);
+			margin-top: (18/16rem);
+		}
+
+		.cs-blocks {
+			list-style: none;
+			margin: (40/16rem) 0 0;
+			padding: 0;
+			display: grid;
+			gap: (12/16rem);
+		}
+
+		.cs-block {
+			padding: (30/16rem) (28/16rem);
+			border-radius: (40/16rem);
+			background-color: var(--white);
+			color: var(--nearBlack);
+			display: grid;
+			align-content: start;
+			gap: (8/16rem);
+			position: relative;
+		}
+
+		.cs-block-popular {
+			background-color: var(--nearBlack);
+			color: var(--white);
+
+			.cs-block-figure {
+				color: var(--revibeGreen);
+			}
+
+			.cs-block-text {
+				color: var(--borderGrey);
+			}
+		}
+
+		.cs-block-label,
+		.cs-block-unit {
+			font-family: var(--headerFont);
+			font-size: (24/16rem);
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+		}
+
+		.cs-block-unit {
+			font-size: (20/16rem);
+		}
+
+		.cs-block-figure {
+			font-family: var(--headerFont);
+			/* 64px - 96px */
+			font-size: clamp(4rem, 6vw, 6rem);
+			line-height: 0.85;
+		}
+
+		.cs-block-text {
+			font-size: (15/16rem);
+			line-height: 1.55;
+			margin: (6/16rem) 0 0;
+			color: var(--charcoal);
+		}
+
+		.cs-block-tag {
+			font-size: (12/16rem);
+			font-weight: 700;
+			padding: (6/16rem) (12/16rem);
+			border-radius: 999px;
+			background-color: var(--revibeGreen);
+			color: var(--nearBlack);
+			position: absolute;
+			top: (24/16rem);
+			right: (24/16rem);
+		}
+
+		.cs-actions {
+			margin-top: (28/16rem);
+			display: grid;
+
+			a {
+				text-align: center;
+			}
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#blocks {
+		.cs-blocks {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: (16/16rem);
+		}
+
+		.cs-block {
+			min-height: (300/16rem);
+			box-sizing: border-box;
+			padding: (40/16rem) (36/16rem);
+			border-radius: (48/16rem);
+		}
+
+		.cs-actions {
+			display: flex;
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---       Why Train Here       -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#why {
+		background-color: var(--white);
+
+		.cs-section-title {
+			/* 48px - 100px */
+			font-size: clamp(3rem, 6.4vw, 6.25rem);
+			line-height: 0.86;
+		}
+
+		.cs-why {
+			list-style: none;
+			margin: (40/16rem) 0 0;
+			padding: 0;
+			display: grid;
+			gap: (12/16rem);
+
+			li {
+				padding: (28/16rem);
+				border-radius: (32/16rem);
+				background-color: var(--offWhite);
+				display: grid;
+				gap: (8/16rem);
+			}
+		}
+
+		.cs-why-title {
+			/* 28px - 36px */
+			font-size: clamp(1.75rem, 2.4vw, 2.25rem);
+			line-height: 0.95;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-why-text {
+			font-size: (15/16rem);
+			line-height: 1.55;
+			margin: 0;
+			color: var(--charcoal);
+		}
+	}
+}
+
+@media only screen and (min-width: 43.75rem) {
+	#why .cs-why {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media only screen and (min-width: 68.75rem) {
+	#why .cs-why {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: (16/16rem);
+
+		li {
+			min-height: (220/16rem);
+			box-sizing: border-box;
+			align-content: end;
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---          Final CTA         -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#final {
+		background-color: var(--revibeGreen);
+
+		.cs-container {
+			display: grid;
+			align-items: end;
+			gap: (24/16rem);
+		}
+
+		.cs-section-title {
+			/* 56px - 128px */
+			font-size: clamp(3.5rem, 8vw, 8rem);
+			line-height: 0.84;
+		}
+
+		.cs-final-text {
+			font-size: (17/16rem);
+			line-height: 1.6;
+			max-width: (520/16rem);
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-actions {
+			margin-top: (22/16rem);
+			display: grid;
+			gap: (12/16rem);
+
+			a {
+				text-align: center;
+			}
+		}
+
+		/* the black button's green hover wouldn't show on green, so it fills white */
+		.cs-button-dark:before {
+			background-color: var(--white);
+		}
+	}
+}
+
+/* Desktop - 1000px */
+@media only screen and (min-width: 62.5rem) {
+	#final {
+		.cs-container {
+			grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+			gap: (56/16rem);
+		}
+
+		.cs-actions {
+			display: flex;
+			flex-wrap: wrap;
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---       Where to Train       -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#train-locations {
+		background-color: var(--white);
+
+		.cs-locs {
+			list-style: none;
+			margin: (40/16rem) 0 0;
+			padding: 0;
+			display: grid;
+			gap: (12/16rem);
+		}
+
+		.cs-loc {
+			padding: (10/16rem) (28/16rem) (10/16rem) (10/16rem);
+			border-radius: 999px;
+			background-color: var(--offWhite);
+			text-decoration: none;
+			color: var(--nearBlack);
+			display: grid;
+			grid-template-columns: (96/16rem) minmax(0, 1fr);
+			align-items: center;
+			gap: (18/16rem);
+			transition: background-color 0.2s ease;
+
+			&:hover {
+				background-color: var(--mintTint);
+			}
+
+			&:focus-visible {
+				outline: 3px solid var(--deepGreen);
+				outline-offset: 3px;
+			}
+
+			img {
+				width: (96/16rem);
+				height: (96/16rem);
+				border-radius: 50%;
+				object-fit: cover;
+			}
+
+			small {
+				font-size: (14/16rem);
+				margin-top: (4/16rem);
+				display: block;
+				color: var(--charcoal);
+			}
+		}
+
+		.cs-loc-name {
+			font-family: var(--headerFont);
+			font-size: (30/16rem);
+			line-height: 1;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			display: block;
+		}
+	}
+}
+
+@media only screen and (min-width: 56.25rem) {
+	#train-locations .cs-locs {
+		grid-template-columns: 1fr 1fr;
+		gap: (16/16rem);
+	}
+}
+
+@keyframes perfFadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#goals .cs-panel {
+		animation: none;
+	}
+
+	#how .cs-bar-track i,
+	#goals .cs-tab,
+	#train-locations .cs-loc {
+		transition: none;
+	}
+}

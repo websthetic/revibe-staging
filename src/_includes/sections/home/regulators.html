@@ -1,0 +1,24 @@
+<!-- ============================================ -->
+<!--                Licensed Care                 -->
+<!-- ============================================ -->
+
+<section id="regulators" aria-labelledby="regulators-title">
+    <div class="cs-container">
+        <div class="cs-header">
+            <h2 class="cs-title" id="regulators-title">{{ home.regulators.title }}</h2>
+            <p class="cs-text">{{ home.regulators.text }}</p>
+        </div>
+        <ul class="cs-list">
+            {% for item in home.regulators.items %}
+            <li class="cs-item">
+                <a class="cs-link" href="{{ item.url }}" target="_blank" rel="noopener">
+                    <span class="cs-logo">
+                        <img class="{% if item.short %}cs-short{% endif %}" src="{{ item.image }}" alt="{{ item.name }}" width="{{ item.width }}" height="{{ item.height }}" loading="lazy" decoding="async">
+                    </span>
+                    <span class="cs-profession">{{ item.profession }}</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

@@ -1,0 +1,701 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// RECOVERY PAGE STYLES
+// Shared by every page built on layouts/recovery.html (cold plunge, infrared
+// sauna, ...). The steps, FAQ, reviews, Instagram and locations sections are
+// shared and styled in global.less.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/*-- -------------------------- -->
+<---            Hero            -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#recovery-hero {
+		/* 80px fixed nav + 48px */
+		padding: calc(5rem + 3rem) (20/16rem) (64/16rem);
+		background-color: var(--nearBlack);
+		overflow: hidden;
+
+		/* a soft glow behind the photos: green for cold, red for heat */
+		&.cs-theme-cold {
+			background: radial-gradient(120% 90% at 85% 10%, #10403a 0%, var(--nearBlack) 60%);
+		}
+
+		&.cs-theme-heat {
+			background: radial-gradient(120% 90% at 85% 10%, #4a1410 0%, var(--nearBlack) 60%);
+		}
+
+		&.cs-theme-lounge {
+			background: radial-gradient(120% 90% at 85% 10%, #123f37 0%, var(--nearBlack) 62%);
+		}
+
+		.cs-container {
+			width: 100%;
+			max-width: (1280/16rem);
+			margin: auto;
+			display: grid;
+			align-items: center;
+			gap: (36/16rem);
+		}
+
+		.cs-title {
+			/* 76px - 220px */
+			font-size: clamp(4.75rem, 14vw, 13.75rem);
+			line-height: 0.8;
+			max-width: none;
+			margin: 0;
+			color: var(--white);
+		}
+
+		.cs-subtitle {
+			font-family: var(--bodyFont);
+			font-size: 1rem;
+			font-weight: 600;
+			line-height: 1.3;
+			letter-spacing: 0;
+			text-transform: none;
+			margin-top: (16/16rem);
+			display: block;
+			color: var(--revibeGreen);
+		}
+
+		.cs-text {
+			font-size: (17/16rem);
+			line-height: 1.6;
+			max-width: (520/16rem);
+			margin: (22/16rem) 0 0;
+			color: var(--borderGrey);
+		}
+
+		.cs-actions {
+			margin-top: (28/16rem);
+			display: flex;
+			flex-wrap: wrap;
+			gap: (12/16rem);
+		}
+
+		/* three floating pills */
+		.cs-stack {
+			height: (460/16rem);
+			position: relative;
+		}
+
+		.cs-pill {
+			border-radius: 999px;
+			background-color: var(--nearBlackSoft);
+			box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+			overflow: hidden;
+			position: absolute;
+
+			img,
+			video {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+
+		.cs-pill-1 {
+			width: 54%;
+			height: (400/16rem);
+			top: (30/16rem);
+			left: 0;
+			animation: recoveryFloat 7s ease-in-out infinite;
+		}
+
+		.cs-pill-2 {
+			width: 44%;
+			height: (250/16rem);
+			top: 0;
+			right: 0;
+			animation: recoveryFloat 8s ease-in-out -2s infinite;
+		}
+
+		.cs-pill-3 {
+			width: 40%;
+			height: (190/16rem);
+			right: 6%;
+			bottom: 0;
+			animation: recoveryFloat 9s ease-in-out -4s infinite;
+		}
+	}
+}
+
+/* Desktop - 1000px */
+@media only screen and (min-width: 62.5rem) {
+	#recovery-hero {
+		padding: calc(5.25rem + 4.5rem) (40/16rem) (96/16rem);
+
+		.cs-container {
+			grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+			gap: (56/16rem);
+		}
+
+		.cs-stack {
+			height: (600/16rem);
+		}
+
+		.cs-pill-1 {
+			height: (540/16rem);
+		}
+
+		.cs-pill-2 {
+			height: (320/16rem);
+		}
+
+		.cs-pill-3 {
+			height: (240/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---        At a Glance         -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#facts {
+		padding: (30/16rem) (20/16rem);
+		background-color: var(--revibeGreen);
+
+		.cs-facts {
+			list-style: none;
+			max-width: (1280/16rem);
+			margin: 0 auto;
+			padding: 0;
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: (20/16rem) (16/16rem);
+		}
+
+		.cs-fact {
+			font-family: var(--headerFont);
+			text-transform: uppercase;
+			letter-spacing: var(--headingLetterSpacing);
+			color: var(--nearBlack);
+		}
+
+		.cs-fact-figure {
+			/* 48px - 92px */
+			font-size: clamp(3rem, 6vw, 5.75rem);
+			line-height: 0.85;
+			letter-spacing: 0;
+			display: block;
+		}
+
+		.cs-fact-label {
+			font-size: (20/16rem);
+		}
+	}
+}
+
+/* Desktop - 900px: four across */
+@media only screen and (min-width: 56.25rem) {
+	#facts {
+		padding: (44/16rem) (40/16rem);
+
+		.cs-facts {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+
+		.cs-fact-label {
+			font-size: (24/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---          Benefits          -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#benefits {
+		background-color: var(--offWhite);
+
+		.cs-container {
+			display: grid;
+			gap: (40/16rem);
+		}
+
+		.cs-side {
+			display: grid;
+			gap: (20/16rem);
+		}
+
+		.cs-section-title {
+			/* 52px - 108px */
+			font-size: clamp(3.25rem, 7vw, 6.75rem);
+			line-height: 0.85;
+		}
+
+		.cs-section-text {
+			font-size: 1rem;
+			max-width: (460/16rem);
+		}
+
+		.cs-benefits {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			gap: (10/16rem);
+		}
+
+		.cs-benefit {
+			font-family: var(--headerFont);
+			/* 22px - 30px */
+			font-size: clamp(1.375rem, 2.1vw, 1.875rem);
+			line-height: 1;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			padding: (10/16rem) (26/16rem) (10/16rem) (10/16rem);
+			border-radius: 999px;
+			background-color: var(--white);
+			color: var(--nearBlack);
+			display: grid;
+			grid-template-columns: (56/16rem) minmax(0, 1fr);
+			align-items: center;
+			gap: (14/16rem);
+			transition:
+				opacity 0.5s ease,
+				transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1),
+				visibility 0s;
+			transition-delay: calc(var(--i) * 0.07s);
+		}
+
+		.cs-benefit-number {
+			width: (56/16rem);
+			height: (56/16rem);
+			font-size: (24/16rem);
+			padding-top: 3px;
+			box-sizing: border-box;
+			border-radius: 50%;
+			background-color: var(--nearBlack);
+			color: var(--revibeGreen);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		/* recovery.js adds these; visibility keeps contrast checkers off the hidden rows */
+		&.cs-animate .cs-benefit {
+			opacity: 0;
+			transform: translateY(18px);
+			visibility: hidden;
+		}
+
+		&.cs-animate.cs-in-view .cs-benefit {
+			opacity: 1;
+			transform: none;
+			visibility: visible;
+		}
+	}
+}
+
+/* Desktop - 1000px: heading stays beside the list */
+@media only screen and (min-width: 62.5rem) {
+	#benefits {
+		.cs-container {
+			grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+			align-items: start;
+			gap: (80/16rem);
+		}
+
+		.cs-side {
+			position: sticky;
+			top: (110/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---    Who It Is For / Boxes   -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#boxes {
+		background-color: var(--white);
+
+		.cs-container {
+			display: grid;
+			gap: (16/16rem);
+		}
+
+		.cs-box {
+			padding: (34/16rem) (28/16rem);
+			border-radius: (40/16rem);
+			background-color: var(--mintTint);
+			display: flex;
+			flex-direction: column;
+			gap: (16/16rem);
+			/* lets the title size itself to the box width */
+			container-type: inline-size;
+		}
+
+		.cs-box-title {
+			font-size: clamp(1.875rem, 11cqi, 4rem);
+			line-height: 0.88;
+			white-space: nowrap;
+			max-width: none;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-box-list {
+			list-style: none;
+			margin: (6/16rem) 0 (10/16rem);
+			padding: 0;
+			display: grid;
+			gap: (12/16rem);
+
+			li {
+				font-size: (15/16rem);
+				line-height: 1.5;
+				color: var(--charcoal);
+				display: grid;
+				grid-template-columns: (22/16rem) minmax(0, 1fr);
+				gap: (12/16rem);
+
+				&:before {
+					content: "";
+					width: 10px;
+					height: 10px;
+					margin-top: 7px;
+					border-radius: 50%;
+					background-color: var(--revibeGreen);
+				}
+			}
+		}
+
+		.cs-box-picture {
+			height: (220/16rem);
+			margin-top: auto;
+			border-radius: 999px;
+			overflow: hidden;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+
+		.cs-box-dark {
+			background-color: var(--nearBlack);
+
+			.cs-box-title {
+				color: var(--white);
+			}
+
+			.cs-box-list li {
+				color: var(--borderGrey);
+			}
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#boxes {
+		.cs-container {
+			grid-template-columns: 1fr 1fr;
+			gap: (20/16rem);
+		}
+
+		.cs-box {
+			padding: (48/16rem) (44/16rem);
+			border-radius: (56/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---       Recovery Flow        -->
+<--- -------------------------- -*/
+/* flow in the content file (recovery lounge) */
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#flow {
+		background-color: var(--nearBlack);
+
+		.cs-container {
+			display: grid;
+			gap: (40/16rem);
+		}
+
+		.cs-side {
+			display: grid;
+			gap: (20/16rem);
+		}
+
+		.cs-section-title {
+			/* 52px - 108px */
+			font-size: clamp(3.25rem, 7vw, 6.75rem);
+			line-height: 0.85;
+			color: var(--white);
+		}
+
+		.cs-section-text {
+			font-size: 1rem;
+			max-width: (440/16rem);
+			color: var(--borderGrey);
+		}
+
+		.cs-flow-picture {
+			height: (260/16rem);
+			margin-top: (8/16rem);
+			border-radius: 999px;
+			overflow: hidden;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+
+		.cs-flow {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			gap: (12/16rem);
+		}
+
+		.cs-flow-step {
+			min-height: (112/16rem);
+			box-sizing: border-box;
+			padding: (28/16rem) (28/16rem) (28/16rem) (104/16rem);
+			border-radius: (36/16rem);
+			background-color: var(--nearBlackSoft);
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			gap: (6/16rem);
+			position: relative;
+		}
+
+		.cs-flow-number {
+			width: (64/16rem);
+			height: (64/16rem);
+			font-family: var(--headerFont);
+			font-size: (28/16rem);
+			padding-top: 3px;
+			box-sizing: border-box;
+			border-radius: 50%;
+			background-color: var(--revibeGreen);
+			color: var(--nearBlack);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			top: 50%;
+			left: (22/16rem);
+			transform: translateY(-50%);
+		}
+
+		.cs-flow-title {
+			font-family: var(--headerFont);
+			/* 28px - 38px */
+			font-size: clamp(1.75rem, 2.6vw, 2.375rem);
+			line-height: 1;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			color: var(--white);
+		}
+
+		.cs-flow-text {
+			font-size: (15/16rem);
+			line-height: 1.5;
+			color: var(--borderGrey);
+		}
+	}
+}
+
+/* Desktop - 1000px */
+@media only screen and (min-width: 62.5rem) {
+	#flow {
+		.cs-container {
+			grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+			align-items: center;
+			gap: (80/16rem);
+		}
+
+		.cs-flow-picture {
+			height: (320/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---          Pricing           -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#pricing {
+		background-color: var(--offWhite);
+
+		.cs-section-title {
+			/* 52px - 108px */
+			font-size: clamp(3.25rem, 7vw, 6.75rem);
+			line-height: 0.85;
+			margin-bottom: (14/16rem);
+		}
+
+		.cs-section-text {
+			font-size: 1rem;
+			max-width: (520/16rem);
+			margin-bottom: (36/16rem);
+		}
+
+		.cs-plans {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			gap: (12/16rem);
+		}
+
+		.cs-plan-item {
+			display: flex;
+		}
+
+		.cs-plan {
+			width: 100%;
+			box-sizing: border-box;
+			padding: (30/16rem) (28/16rem);
+			border-radius: (40/16rem);
+			background-color: var(--white);
+			text-decoration: none;
+			color: var(--nearBlack);
+			display: flex;
+			flex-direction: column;
+			gap: (10/16rem);
+			transition: transform 0.3s ease;
+
+			&:hover {
+				transform: translateY(-4px);
+			}
+
+			&:focus-visible {
+				outline: 3px solid var(--deepGreen);
+				outline-offset: 3px;
+			}
+		}
+
+		.cs-plan-yellow {
+			background-color: var(--accentYellow);
+		}
+
+		.cs-plan-black {
+			background-color: var(--nearBlack);
+			color: var(--white);
+
+			.cs-plan-text {
+				color: var(--borderGrey);
+			}
+
+			&:focus-visible {
+				outline-color: var(--revibeGreen);
+			}
+		}
+
+		.cs-plan-label {
+			font-family: var(--headerFont);
+			font-size: (28/16rem);
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+		}
+
+		.cs-plan-price {
+			font-family: var(--headerFont);
+			font-size: (112/16rem);
+			line-height: 0.8;
+
+			small {
+				font-size: (26/16rem);
+				margin-left: (4/16rem);
+			}
+		}
+
+		.cs-plan-text {
+			font-size: (14/16rem);
+			line-height: 1.5;
+		}
+
+		.cs-plan-cta {
+			font-size: (13/16rem);
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			margin-top: auto;
+			padding-top: (14/16rem);
+			display: inline-flex;
+			align-items: center;
+			gap: (10/16rem);
+
+			svg {
+				width: 20px;
+				height: 20px;
+			}
+		}
+
+		.cs-fine {
+			font-size: (13/16rem);
+			margin: (18/16rem) 0 0;
+			color: var(--charcoal);
+		}
+	}
+
+	/* sections that follow one in the same colour drop their top padding */
+	#pricing + #reviews,
+	#instagram + #locations {
+		padding-top: 0;
+	}
+}
+
+/* Desktop - 900px: three across */
+@media only screen and (min-width: 56.25rem) {
+	#pricing {
+		.cs-plans {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: (16/16rem);
+		}
+
+		.cs-plan {
+			min-height: (340/16rem);
+			padding: (40/16rem) (36/16rem);
+			border-radius: (48/16rem);
+		}
+	}
+}
+
+@keyframes recoveryFloat {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#recovery-hero .cs-pill {
+		animation: none;
+	}
+
+	#benefits .cs-benefit,
+	#pricing .cs-plan {
+		transition: none;
+	}
+}

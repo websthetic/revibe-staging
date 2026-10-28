@@ -1,0 +1,181 @@
+{#
+    Shared layout for recovery pages (cold plunge, infrared sauna, ...).
+    A page sets in its front matter:
+      recoveryPage: key of its content file in _data/recovery/ (e.g. "cold-plunge")
+      pageStyles: optional page-only stylesheet name
+    Page sections are styled in recovery.less. The steps, FAQ, reviews, Instagram and
+    locations sections are shared (components/ and sections/home/) and styled in global.less.
+#}
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/recovery.css">
+    {% if pageStyles %}<link rel="stylesheet" href="/assets/css/{{ pageStyles }}.css">{% endif %}
+    <script defer src="/assets/js/recovery.js"></script>
+    <script defer src="/assets/js/home-sections.js"></script>
+{% endblock %}
+
+{% block body %}
+    {% set r = recovery[recoveryPage] %}
+
+    <!-- ============================================ -->
+    <!--                    Hero                      -->
+    <!-- ============================================ -->
+
+    <section id="recovery-hero" class="cs-theme-{{ r.theme or "cold" }}" aria-labelledby="recovery-hero-title">
+        <div class="cs-container">
+            <div class="cs-content">
+                <h1 class="cs-title" id="recovery-hero-title">{{ r.hero.title }} <span class="cs-subtitle">{{ r.hero.subtitle }}</span></h1>
+                <p class="cs-text">{{ r.hero.text }}</p>
+                <div class="cs-actions">
+                    <a href="/" class="cs-button-solid" data-request data-service="{{ r.requestService }}" aria-haspopup="dialog">Request to book</a>
+                    {% if r.hero.secondaryButton %}
+                    <a href="{{ r.hero.secondaryButton.url }}" class="cs-button-outline cs-outline-light">{{ r.hero.secondaryButton.label }}</a>
+                    {% endif %}
+                </div>
+            </div>
+            <!-- three floating pills; decorative, so hidden from screen readers -->
+            <div class="cs-stack" aria-hidden="true">
+                <div class="cs-pill cs-pill-1">
+                    {% if r.hero.video %}
+                    <video class="cs-video" autoplay muted loop playsinline preload="metadata" poster="{{ r.hero.video.poster }}">
+                        <source src="{{ r.hero.video.src }}" type="video/mp4">
+                    </video>
+                    {% endif %}
+                </div>
+                {% for image in r.hero.images %}
+                {% set imgStyle = 'style="object-position: ' + image.position + ';"' %}
+                <div class="cs-pill cs-pill-{{ loop.index + 1 }}">
+                    <img src="{% getUrl image.src | resize({ width: 900 }) | webp %}" alt="" {{ imgStyle | safe }} width="1066" height="1600" {% if loop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                  At a Glance                 -->
+    <!-- ============================================ -->
+
+    <section id="facts" aria-label="At a glance">
+        <ul class="cs-facts">
+            {% for fact in r.facts %}
+            <li class="cs-fact"><span class="cs-fact-figure">{{ fact.figure }}</span> <span class="cs-fact-label">{{ fact.label }}</span></li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                   Benefits                   -->
+    <!-- ============================================ -->
+
+    <section id="benefits" class="cs-section" aria-labelledby="benefits-title">
+        <div class="cs-container">
+            <div class="cs-side">
+                <h2 class="cs-title cs-section-title" id="benefits-title">{{ r.benefits.title }}</h2>
+                <p class="cs-section-text">{{ r.benefits.text }}</p>
+            </div>
+            <ol class="cs-benefits">
+                {% for item in r.benefits.items %}
+                {% set itemStyle = 'style="--i: ' + loop.index0 + ';"' %}
+                <li class="cs-benefit" {{ itemStyle | safe }}><span class="cs-benefit-number" aria-hidden="true">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>{{ item }}</li>
+                {% endfor %}
+            </ol>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--          Who it is for / Experience          -->
+    <!-- ============================================ -->
+
+    <section id="boxes" class="cs-section" aria-label="Who it is for and what to expect">
+        <div class="cs-container">
+            {% for box in r.boxes %}
+            {% set imgStyle = 'style="object-position: ' + box.position + ';"' %}
+            <div class="cs-box{% if box.dark %} cs-box-dark{% endif %}">
+                <h2 class="cs-box-title">{{ box.title }}</h2>
+                <ul class="cs-box-list">
+                    {% for item in box.items %}<li>{{ item }}</li>{% endfor %}
+                </ul>
+                <div class="cs-box-picture">
+                    <img src="{% getUrl box.image | resize({ width: 900 }) | webp %}" alt="{{ box.alt }}" {{ imgStyle | safe }} width="1600" height="1066" loading="lazy" decoding="async">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    {# flow (a dark numbered list) replaces the green steps section when a page has one #}
+    {% if r.flow %}
+
+    <!-- ============================================ -->
+    <!--                Recovery Flow                 -->
+    <!-- ============================================ -->
+
+    <section id="flow" class="cs-section" aria-labelledby="flow-title">
+        <div class="cs-container">
+            <div class="cs-side">
+                <h2 class="cs-title cs-section-title" id="flow-title">{{ r.flow.title }}</h2>
+                <p class="cs-section-text">{{ r.flow.text }}</p>
+                {% set imgStyle = 'style="object-position: ' + r.flow.position + ';"' %}
+                <div class="cs-flow-picture">
+                    <img src="{% getUrl r.flow.image | resize({ width: 900 }) | webp %}" alt="{{ r.flow.alt }}" {{ imgStyle | safe }} width="1467" height="2200" loading="lazy" decoding="async">
+                </div>
+            </div>
+            <ol class="cs-flow">
+                {% for step in r.flow.steps %}
+                <li class="cs-flow-step">
+                    <span class="cs-flow-number" aria-hidden="true">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
+                    <span class="cs-flow-title">{{ step.title }}</span>
+                    <span class="cs-flow-text">{{ step.text }}</span>
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+    </section>
+    {% else %}
+    {% set steps = r.steps %}
+    {% set requestService = r.requestService %}
+    {% include "components/steps.html" %}
+    {% endif %}
+
+    <!-- ============================================ -->
+    <!--                   Pricing                    -->
+    <!-- ============================================ -->
+
+    <section id="pricing" class="cs-section" aria-labelledby="pricing-title">
+        <div class="cs-container">
+            <h2 class="cs-title cs-section-title" id="pricing-title">{{ r.pricing.title }}</h2>
+            <p class="cs-section-text">{{ r.pricing.text }}</p>
+            <ul class="cs-plans">
+                {% for plan in r.pricing.plans %}
+                <li class="cs-plan-item">
+                    <a href="{{ plan.url }}" class="cs-plan cs-plan-{{ plan.colour or "white" }}"{% if plan.book %} data-book aria-haspopup="dialog"{% endif %}>
+                        <span class="cs-plan-label">{{ plan.label }}</span>
+                        <span class="cs-plan-price">{{ plan.price }}{% if plan.per %}<small>{{ plan.per }}</small>{% endif %}</span>
+                        <span class="cs-plan-text">{{ plan.text }}</span>
+                        <span class="cs-plan-cta">{{ plan.cta }} {% include "components/icons/arrow.html" %}</span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            <p class="cs-fine">{{ r.pricing.fine }}</p>
+        </div>
+    </section>
+
+    {% set reviewsData = r.reviews %}
+    {% include "sections/home/reviews.html" %}
+
+    {% set instagramData = r.instagram %}
+    {% include "sections/home/instagram.html" %}
+
+    {% set faq = r.faq %}
+    {% include "components/faq.html" %}
+
+    {% include "sections/home/locations.html" %}
+
+    {% include "sections/cta.html" %}
+
+    {% set stickyLabel = r.stickyLabel %}
+    {% include "components/sticky-book.html" %}
+{% endblock %}

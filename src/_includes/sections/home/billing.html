@@ -1,0 +1,34 @@
+<!-- ============================================ -->
+<!--               Direct Billing                 -->
+<!-- ============================================ -->
+
+{% set bill = home.billing %}
+<section id="billing" aria-labelledby="billing-title">
+    <div class="cs-container">
+        <div class="cs-content">
+            <h2 class="cs-title" id="billing-title">{{ bill.title }}</h2>
+            <p class="cs-text">{{ bill.text }}</p>
+            <a href="{{ bill.button.url }}" class="cs-button-solid cs-button-dark">{{ bill.button.label }}</a>
+        </div>
+        <ol class="cs-steps">
+            {% for step in bill.steps %}
+            <li class="cs-step">
+                <span class="cs-number" aria-hidden="true">{{ loop.index }}</span>
+                <div>
+                    <h3 class="cs-step-title">{{ step.title }}</h3>
+                    <p class="cs-step-text">{{ step.text }}</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+    <!-- Scrolling list of insurers. The second copy makes the loop seamless and is hidden from screen readers. -->
+    <div class="cs-ticker">
+        <ul class="cs-ticker-row" aria-label="Insurers we direct bill">
+            {% for insurer in bill.insurers %}<li class="cs-insurer">{{ insurer }}</li>{% endfor %}
+        </ul>
+        <ul class="cs-ticker-row" aria-hidden="true">
+            {% for insurer in bill.insurers %}<li class="cs-insurer">{{ insurer }}</li>{% endfor %}
+        </ul>
+    </div>
+</section>

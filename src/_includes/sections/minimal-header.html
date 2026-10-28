@@ -1,0 +1,13 @@
+<!-- ============================================ -->
+<!--               Minimal Header                 -->
+<!-- ============================================ -->
+{# Slim bar for pages without the main nav (chrome: "minimal" in front matter): logo, phone and a link home. #}
+<header id="cs-minimal-header">
+    <a href="/" class="cs-logo" aria-label="Revibe home page">
+        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-site-2026/revibe-logo-combo-trademark_black.png" alt="Revibe" width="72" height="72" decoding="async">
+    </a>
+    <div class="cs-links">
+        <a href="tel:{{ clinics[0].phoneForTel }}" class="cs-pill">{{ clinics[0].phone }}</a>
+        <a href="/" class="cs-pill cs-home">revibeto.com</a>
+    </div>
+</header>

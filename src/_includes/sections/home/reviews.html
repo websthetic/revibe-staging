@@ -1,0 +1,51 @@
+<!-- ============================================ -->
+<!--                Google Reviews                -->
+<!-- ============================================ -->
+
+{# set reviewsData before including to use other reviews (same shape as home.reviews) #}
+{% set rv = reviewsData or home.reviews %}
+<section id="reviews" aria-labelledby="reviews-title">
+    <div class="cs-container">
+        <div class="cs-header">
+            <h2 class="cs-title" id="reviews-title">{{ rv.title }}</h2>
+            <div class="cs-score">
+                <span class="cs-score-number">{{ rv.rating }}</span>
+                <span class="cs-score-meta">
+                    {% include "components/stars.html" %}
+                    <strong>{{ rv.count }}</strong>
+                    <span>{{ rv.note }}</span>
+                </span>
+            </div>
+            <div class="cs-arrows">
+                <button type="button" class="cs-arrow cs-prev" aria-label="Previous reviews" aria-controls="reviews-track">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <button type="button" class="cs-arrow cs-next" aria-label="Next reviews" aria-controls="reviews-track">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+            </div>
+        </div>
+        <ul class="cs-track" id="reviews-track" tabindex="0" aria-label="Google reviews, scroll sideways for more">
+            {% for review in rv.items %}
+            <li class="cs-card">
+                <figure class="cs-review">
+                    <div class="cs-author">
+                        <span class="cs-avatar" aria-hidden="true">{{ review.name | first | upper }}</span>
+                        <span>
+                            <strong class="cs-name">{{ review.name }}</strong>
+                            <span class="cs-service">{{ review.service }}</span>
+                        </span>
+                        <span class="cs-source">Google</span>
+                    </div>
+                    {% include "components/stars.html" %}
+                    <blockquote class="cs-quote">{{ review.quote }}</blockquote>
+                </figure>
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="cs-actions">
+            <a class="cs-button-solid cs-button-dark" href="{{ rv.allUrl }}" target="_blank" rel="noopener">Read all reviews on Google</a>
+            <a class="cs-text-link" href="{{ rv.writeUrl }}" target="_blank" rel="noopener">Leave a review</a>
+        </div>
+    </div>
+</section>

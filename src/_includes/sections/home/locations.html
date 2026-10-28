@@ -1,0 +1,50 @@
+<!-- ============================================ -->
+<!--                  Locations                   -->
+<!-- ============================================ -->
+
+<section id="locations" aria-labelledby="locations-title">
+    <div class="cs-container">
+        <div class="cs-header">
+            <h2 class="cs-title" id="locations-title">Find a <span class="cs-color">Revibe</span> location near you</h2>
+            <div class="cs-arrows">
+                <button type="button" class="cs-arrow cs-prev" aria-label="Previous location" aria-controls="locations-track">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <span class="cs-count" aria-live="polite"><span class="cs-current">1</span> / {{ clinics.length }}</span>
+                <button type="button" class="cs-arrow cs-next" aria-label="Next location" aria-controls="locations-track">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="cs-track" id="locations-track">
+            {% for clinic in clinics %}
+            <article class="cs-location" aria-labelledby="location-{{ loop.index }}">
+                <div class="cs-picture">
+                    <img src="{% getUrl clinic.image | resize({ width: 1200 }) | webp %}" alt="{{ clinic.alt }}" width="{{ clinic.width }}" height="{{ clinic.height }}" loading="lazy" decoding="async">
+                </div>
+                <div class="cs-details">
+                    <h3 class="cs-name" id="location-{{ loop.index }}">{{ clinic.name }}</h3>
+                    <ul class="cs-contact">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>{{ clinic.address }}</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg>
+                            <a href="tel:{{ clinic.phoneForTel }}">{{ clinic.phone }}</a>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            <span>{{ clinic.hours | join("<br>") | safe }}</span>
+                        </li>
+                    </ul>
+                    <ul class="cs-services" aria-label="Services in {{ clinic.name }}">
+                        {% for service in clinic.services %}<li><a class="cs-service" href="{{ service.url }}">{{ service.label }}</a></li>{% endfor %}
+                    </ul>
+                    <a href="{{ clinic.bookUrl }}" class="cs-button-solid cs-book">Book in {{ clinic.name }}</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>

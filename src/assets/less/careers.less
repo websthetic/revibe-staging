@@ -1,2115 +1,1524 @@
-/* ══════════════════════════════════ */
-/*        #careers-hero styles       */
-/* ══════════════════════════════════ */
-
-/* Mobile - 360px */
-@media only screen and (min-width: 0px) {
-
-  #careers-hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    padding-top: 6rem; /* was 8rem */
-  }
-
-  /* Background image */
-  #careers-hero .hero__bg {
-    position: absolute;
-    inset: 0;
-    background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/team-infront-of-revibe-clinic.webp');
-    background-size: cover;
-    background-position: center 40%;
-    transform: scale(1.06);
-    animation: ch-slowZoom 18s ease-out forwards;
-  }
-
-  @keyframes ch-slowZoom {
-    to { transform: scale(1); }
-  }
-
-  /* Dark overlay */
-  #careers-hero .hero__overlay {
-    position: absolute;
-    inset: 0;
-    background: #000;
-    opacity: 0.80;
-  }
-
-  /* Bottom rule */
-  #careers-hero .hero__rule {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--primary), transparent);
-  }
-
-  /* Content */
-  #careers-hero .hero__content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 1.5rem 1rem; /* was 2rem 1rem */
-    max-width: 37.5rem; /* 600px on mobile */
-    animation: ch-fadeUp 1.1s cubic-bezier(.22,.68,0,1.2) both;
-  }
-
-  @keyframes ch-fadeUp {
-    from { opacity: 0; transform: translateY(2rem); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* Eyebrow */
-  #careers-hero .hero__eyebrow {
-    font-family: var(--bodyFont);
-    font-size: var(--topperFontSize);
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--primary);
-    display: block;
-    margin-bottom: 0.5rem;
-    animation: ch-fadeUp 1s 0.15s both;
-  }
-
-  /* Headline */
-  #careers-hero .hero__headline {
-    font-family: var(--headerFont);
-    font-size: clamp(4rem, 10vw, 10rem); /* smaller on mobile */
-    font-weight: 900;
-    line-height: 1em;
-    color: var(--bodyTextColorWhite);
-    margin: 0 auto 1rem;
-    animation: ch-fadeUp 1s 0.28s both;
-  }
-
-  #careers-hero .hero__headline em {
-    font-style: normal;
-    color: var(--primary);
-  }
-
-  /* Sub-copy */
-  #careers-hero .hero__sub {
-    font-family: var(--bodyFont);
-    font-size: 1.125rem;
-    line-height: 1.5em;
-    color: var(--bodyTextColorWhite);
-    opacity: 0.8;
-    max-width: 40.625rem;
-    margin: 0 auto 2rem;
-    animation: ch-fadeUp 1s 0.42s both;
-  }
-
-  /* CTA Buttons */
-  #careers-hero .hero__ctas {
-    display: flex;
-    flex-direction: column; /* stacked on mobile */
-    align-items: center;
-    gap: 0.75rem;
-    animation: ch-fadeUp 1s 0.56s both;
-  }
-
-  #careers-hero .btn {
-    font-family: var(--headerFont);
-    font-size: 1.125rem;
-    font-weight: 700;
-    line-height: 1em;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    width: 100%;
-    max-width: 18rem;
-    padding: 1rem 2rem;
-    border-radius: 9999px;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    transition: color 0.3s;
-    cursor: pointer;
-  }
-
-  #careers-hero .btn::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: var(--secondary);
-    transition: width 0.3s;
-  }
-
-  #careers-hero .btn:hover::before {
-    width: 100%;
-  }
-
-  #careers-hero .btn--primary {
-    background: var(--primary);
-    color: var(--bodyTextColorWhite);
-    border: 2px solid var(--primary);
-  }
-
-  #careers-hero .btn--primary:hover {
-    color: #fff;
-    border-color: var(--secondary);
-  }
-
-  #careers-hero .btn--secondary {
-    background: transparent;
-    color: var(--bodyTextColorWhite);
-    border: 2px solid var(--bodyTextColorWhite);
-  }
-
-  #careers-hero .btn--secondary:hover {
-    color: #fff;
-    border-color: var(--secondary);
-  }
-
-  #careers-hero .btn svg {
-    width: 0.875rem;
-    height: 0.875rem;
-    flex-shrink: 0;
-    transition: transform 0.3s ease;
-  }
-
-  #careers-hero .btn:hover svg {
-    transform: translateX(3px);
-  }
-
-  /* Scroll indicator — hidden on mobile */
-  #careers-hero .hero__scroll {
-    display: none;
-  }
-
-}
-
-/* Tablet - 768px */
-@media only screen and (min-width: 48rem) {
-
-  #careers-hero .hero__content {
-    max-width: 46rem;
-    padding: 1.5rem 1.5rem; /* was 2rem 1.5rem */
-  }
-
-  #careers-hero .hero__headline {
-    font-size: clamp(3rem, 6vw, 4.5rem);
-  }
-
-  #careers-hero .hero__sub {
-    margin-bottom: 2.5rem;
-  }
-
-  /* Buttons side by side on tablet+ */
-  #careers-hero .hero__ctas {
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  #careers-hero .btn {
-    width: auto;
-    font-size: 1.25rem;
-  }
-
-  /* Show scroll indicator from tablet up */
-  #careers-hero .hero__scroll {
-    display: flex;
-    position: absolute;
-    width: max-content;
-    bottom: 2.4rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--bodyFont);
-    font-size: 0.625rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(250, 251, 252, 0.4);
-    animation: ch-fadeUp 1s 0.8s both;
-  }
-
-  #careers-hero .hero__scroll-line {
-    width: 1px;
-    height: 2.25rem;
-    background: linear-gradient(to bottom, rgba(250,251,252,0.4), transparent);
-    animation: ch-scrollPulse 2.2s ease-in-out infinite;
-  }
-
-  @keyframes ch-scrollPulse {
-    0%, 100% { opacity: 0.4; transform: scaleY(1);    }
-    50%       { opacity: 1;   transform: scaleY(1.15); }
-  }
-
-}
-
-#careers-hero .hero__sub + .hero__sub {
-  margin-top: -1.25rem; /* pulls the second p closer */
-}
-
-/* Desktop - 1024px */
-@media only screen and (min-width: 64rem) {
-
-  #careers-hero .hero__content {
-    max-width: 56.25rem; /* 900px */
-    padding: 1.5rem 1rem; /* was 2rem 1rem */
-  }
-
-  #careers-hero .hero__headline {
-    font-size: clamp(3.5rem, 6vw, 6rem); /* up to 96px */
-  }
-
-  #careers-hero .btn {
-    min-width: 14rem;
-  }
-
-  #careers-hero .hero__sub {
-    max-width: 38rem; /* adjust to taste */
-  }
-
-}
+// ─────────────────────────────────────────────────────────────────────────────
+// CAREERS PAGE STYLES
+// /join-our-team/ (content/pages/careers.html, careers.js) and the job pages
+// (layouts/job.html, /join-our-team/<role>/). Section padding and
+// headings come from the shared pieces in global.less (.cs-section, .cs-section-title);
+// the Instagram strip and the careers pop-up are styled there too.
+// ─────────────────────────────────────────────────────────────────────────────
 
 /*-- -------------------------- -->
-<---            Hero            -->
+<---       Shared on the page   -->
 <--- -------------------------- -*/
 
 /* Mobile - 360px */
-/* NOTE: Uses var(--sectionPadding) — reduce that variable to affect this section */
 @media only screen and (min-width: 0rem) {
-    #hero-1946 {
-        padding: var(--sectionPadding);
-        overflow: hidden;
-        position: relative;
-        z-index: 1;
-        background-color: #fff;
+	.cs-accent {
+		color: var(--revibeGreenOnLight);
+	}
 
-        .cs-highlight {
-            color: var(--primary);
-        }
+	/* green circles with a tick: growth and thrive lists */
+	.cs-checks {
+		list-style: none;
+		margin: (28/16rem) 0 (32/16rem);
+		padding: 0;
+		display: grid;
+		gap: (14/16rem);
 
-        .cs-container {
-            width: 100%;
-            max-width: (1280/16rem);
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            gap: clamp(2.5rem, 5vw, 4rem);
-            padding-right: 0;
-        }
+		li {
+			font-size: (16/16rem);
+			font-weight: 600;
+			line-height: 1.4;
+			display: grid;
+			grid-template-columns: (28/16rem) minmax(0, 1fr);
+			align-items: center;
+			gap: (14/16rem);
+		}
 
-        .cs-left {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .cs-top {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .cs-topper {
-            font-family: 'Montserrat', sans-serif;
-            font-size: (11/16rem);
-            font-weight: 700;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--primary);
-            margin: 0 0 0.5rem;
-            display: block;
-        }
-
-        .cs-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2.438rem, 5vw, 4rem);
-            font-weight: 400;
-            line-height: 1.0;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-            color: var(--headerColor);
-            margin: 0;
-        }
-
-        .cs-belief {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.125rem;
-            font-weight: 500;
-            line-height: 1.5;
-            color: var(--primary);
-            margin: 0;
-        }
-
-        .cs-bottom {
-            display: flex;
-            flex-direction: column;
-            gap: 0.875rem;
-            padding-top: 1.5rem;
-        }
-
-        .cs-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.125rem;
-            line-height: 1.75;
-            color: var(--bodyTextColor);
-            margin: 0;
-        }
-
-        .cs-picture {
-            width: 100%;
-            height: clamp(20rem, 55vw, 38rem);
-            display: block;
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            flex-shrink: 0;
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center 20%;
-                display: block;
-            }
-
-            .cs-img-caption {
-                font-family: 'Bebas Neue', sans-serif;
-                font-size: clamp(1.25rem, 2vw, 1.75rem);
-                font-weight: 400;
-                line-height: 1.05;
-                letter-spacing: 0.02em;
-                text-transform: uppercase;
-                color: #fff;
-                margin: 0;
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                padding: (48/16rem) (24/16rem) (20/16rem);
-                background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
-                text-align: right;
-            }
-        }
-    }
+		svg {
+			width: (28/16rem);
+			height: (28/16rem);
+			padding: 5px;
+			box-sizing: border-box;
+			border-radius: 50%;
+			background-color: var(--revibeGreen);
+			color: var(--nearBlack);
+		}
+	}
 }
 
-/* Small Desktop - 1024px */
-@media only screen and (min-width: 64rem) {
-    #hero-1946 {
-        .cs-container {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            align-items: stretch;
-            gap: clamp(3rem, 5vw, 5rem);
-        }
-
-        .cs-bottom {
-            opacity: 1;
-        }
-
-        .cs-picture {
-            height: 100%;
-            min-height: (480/16rem);
-            border-radius: 8px;
-        }
-    }
-}
-
-/* -- -------------------------- --
-   ---        Why Choose         ---
-   -- -------------------------- -- */
-
-/* Mobile - 360px */
-/* NOTE: Uses var(--sectionPadding) — reduce that variable to affect this section */
-@media only screen and (min-width: 0rem) {
-    #why-choose-223 {
-        padding: var(--sectionPadding);
-        background-color: #ffffff;
-    }
-
-    #why-choose-223 .cs-container {
-        width: 100%;
-        max-width: 80rem;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 2.5rem;
-    }
-
-    #why-choose-223 .rv-image-col {
-        width: 100%;
-        aspect-ratio: 4 / 3;
-        position: relative;
-        order: 2;
-    }
-
-    #why-choose-223 .rv-img-frame {
-        position: absolute;
-        inset: 0;
-        border-radius: 0.25rem;
-        overflow: hidden;
-        background: #e8e6e0;
-    }
-
-    #why-choose-223 .rv-img-frame img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-
-    /* Gradient overlay */
-    #why-choose-223 .rv-img-frame::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.2) 45%, rgba(0,0,0,0) 100%);
-        border-radius: 0.25rem;
-    }
-
-    /* Quote on image */
-    #why-choose-223 .rv-img-quote {
-        position: absolute;
-        bottom: 1.75rem;
-        left: 1.75rem;
-        right: 1.75rem;
-        z-index: 2;
-        font-family: var(--headerFont);
-        font-size: clamp(1.5rem, 3vw, 2rem);
-        font-weight: 400;
-        line-height: 1.15;
-        color: #fff;
-        margin: 0;
-    }
-
-    #why-choose-223 .cs-content {
-        display: flex;
-        flex-direction: column;
-        gap: clamp(2rem, 4vw, 3rem);
-        order: 1;
-    }
-
-    #why-choose-223 .cs-text-group {
-        display: flex;
-        flex-direction: column;
-    }
-
-    #why-choose-223 .cs-topper {
-        font-size: 0.6875rem;
-        font-weight: 600;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: var(--primary);
-        margin: 0 0 1rem;
-        display: block;
-    }
-
-    #why-choose-223 .cs-title {
-        font-family: var(--headerFont);
-        font-size: clamp(2.5rem, 10vw, 3.5rem);
-        font-weight: 400;
-        line-height: 1.15;
-        color: #000;
-        margin: 0 0 1.5rem;
-        letter-spacing: -0.02em;
-    }
-
-    #why-choose-223 .cs-text {
-        font-family: var(--bodyFont);
-        font-size: 1.125rem;
-        line-height: 1.75;
-        color: #4a4a46;
-        margin: 0 0 0.625rem;
-    }
-
-    #why-choose-223 .cs-text:last-of-type {
-        margin-bottom: 0;
-    }
-
-    #why-choose-223 .rv-cards-group {
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-    }
-
-    #why-choose-223 .rv-cards-header {
-        font-family: var(--headerFont);
-        font-size: 1.5rem;
-        font-weight: 400;
-        color: #1a1a18;
-        letter-spacing: -0.01em;
-        margin: 0;
-    }
-
-    #why-choose-223 .cs-card-group {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-    }
-
-    #why-choose-223 .cs-item {
-        list-style: none;
-        background: rgba(5, 173, 132, 0.02);
-        border-radius: 0.25rem;
-        padding: 1.25rem;
-        display: flex;
-        align-items: flex-start;
-        border-left: 3px solid var(--primary);
-    }
-
-    #why-choose-223 .cs-h3 {
-        font-family: var(--bodyFont);
-        font-size: 1rem;
-        font-weight: 400;
-        color: #000;
-        margin: 0;
-        line-height: 1.4;
-    }
-}
-
-/* Small Desktop - 1024px */
-@media only screen and (min-width: 64rem) {
-    #why-choose-223 .cs-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: stretch;
-        min-height: 36rem;
-    }
-
-    #why-choose-223 .rv-image-col {
-        aspect-ratio: unset;
-        position: relative;
-        height: 100%;
-        max-height: unset;
-        order: unset;
-    }
-
-    #why-choose-223 .cs-content {
-        order: unset;
-    }
-
-    #why-choose-223 .cs-title {
-        font-size: clamp(2.438rem, 5vw, 4rem);
-    }
-
-    #why-choose-223 .cs-text {
-        font-size: 1.125rem;
-    }
-
-    #why-choose-223 .cs-card-group {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    #why-choose-223 .rv-img-quote {
-        font-size: clamp(1.5rem, 2vw, 2rem);
-    }
-}
-
-/* -- -------------------------- --
-   ---        Revibe Team        ---
-   -- -------------------------- -- */
+/*-- -------------------------- -->
+<---           Hero             -->
+<--- -------------------------- -*/
 
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
+	#careers-hero {
+		/* 80px fixed nav + 40px */
+		padding: calc(5rem + 2.5rem) (20/16rem) (20/16rem);
+		background-color: var(--nearBlack);
+		color: var(--white);
 
-    .inside-revibe {
-        background-color: #fff;
-        width: 100%;
-        padding: 2.25rem 0 0 0;
-        overflow: hidden;
-    }
+		.cs-container {
+			width: 100%;
+			max-width: (1280/16rem);
+			margin: auto;
+		}
 
-    .revibe-container {
-        max-width: 80rem;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: 2.5rem;
-        overflow: visible;
-    }
+		.cs-content {
+			display: grid;
+			gap: (24/16rem);
+		}
 
-    .revibe-header {
-        width: 100%;
-        box-sizing: border-box;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
+		.cs-title {
+			/* 56px - 128px */
+			font-size: clamp(3.5rem, 9vw, 8rem);
+			line-height: 0.86;
+			max-width: (980/16rem);
+			margin: 0;
+			color: var(--white);
+		}
 
-    .inside-revibe .headline {
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: clamp(2.5rem, 10vw, 3.5rem);
-        font-weight: 400;
-        color: #000 !important;
-        line-height: 1.0;
-        margin: 0;
-        letter-spacing: 0.02em;
-    }
+		.cs-accent {
+			color: var(--revibeGreen);
+		}
 
-    .inside-revibe .highlight {
-        color: var(--primary);
-    }
+		.cs-text {
+			font-size: 1rem;
+			line-height: 1.6;
+			max-width: (480/16rem);
+			margin: 0 0 (14/16rem);
+			color: var(--lightText);
+		}
 
-    .inside-revibe .subheadline {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 1.125rem;
-        color: #000 !important;
-        line-height: 1.7;
-        max-width: 460px;
-        margin: 0;
-    }
+		.cs-actions {
+			margin-top: (10/16rem);
+			display: flex;
+			flex-wrap: wrap;
+			gap: (10/16rem);
+		}
 
-    .arrows {
-        display: flex;
-        gap: 10px;
-    }
+		.cs-picture {
+			height: (260/16rem);
+			margin-top: (40/16rem);
+			border-radius: (32/16rem);
+			overflow: hidden;
+			display: block;
 
-    .arrow {
-        width: 42px;
-        height: 42px;
-        border-radius: 50%;
-        border: 1.5px solid var(--primary);
-        background: #fff;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background 0.2s, border-color 0.2s, transform 0.15s;
-        box-shadow: 0 2px 8px rgba(30, 40, 20, 0.07);
-    }
-
-    .arrow svg {
-        width: 16px;
-        height: 16px;
-        stroke: var(--primary);
-        fill: none;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        transition: stroke 0.2s;
-    }
-
-    .arrow:hover:not(:disabled) {
-        background: var(--primary);
-        border-color: var(--primary);
-        transform: scale(1.08);
-    }
-
-    .arrow:hover:not(:disabled) svg {
-        stroke: #fff;
-    }
-
-    .arrow:disabled {
-        opacity: 0.25;
-        cursor: default;
-    }
-
-    .carousel-outer {
-        position: relative;
-        overflow: hidden;
-        margin-right: calc((100% - 100vw) / 2);
-    }
-
-    .carousel-track-wrap {
-        overflow: visible;
-    }
-
-    .carousel-track {
-        display: flex;
-        gap: 24px;
-        padding-left: 1rem;
-        transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
-        will-change: transform;
-    }
-
-    .card {
-        flex: 0 0 85%;
-        background: transparent;
-        border-radius: 0;
-        overflow: visible;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card-photo {
-        width: 100%;
-        height: 400px;
-        overflow: hidden;
-        border-radius: 4px;
-        flex-shrink: 0;
-        position: relative;
-    }
-
-    .card-photo img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center 20%;
-        display: block;
-        transition: transform 0.4s ease;
-    }
-
-    /* Mobile: quote flows below photo as normal text */
-    .card-photo .card-quote {
-        position: static;
-        display: block;
-        padding: 0;
-        margin-top: 12px;
-        background: none;
-        color: #000 !important;
-        opacity: 1;
-        transform: none;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 400;
-        font-size: 1rem;
-        line-height: 1.75;
-    }
-
-    .card-body {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .card-name {
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: 1.6rem;
-        font-weight: 400;
-        letter-spacing: 0.04em;
-        color: #000;
-        margin-bottom: 5px;
-    }
-
-    .card-role {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 14px;
-        font-weight: 500;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: var(--primary);
-        margin-bottom: 16px;
-    }
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: 50% 45%;
+				display: block;
+			}
+		}
+	}
 }
 
-/* Tablet - 520px */
-@media only screen and (min-width: 32.5rem) {
+/* Desktop - 900px: title on the left, text and buttons beside it */
+@media only screen and (min-width: 56.25rem) {
+	#careers-hero {
+		padding: calc(5rem + 4rem) (40/16rem) (40/16rem);
 
-    .revibe-container {
-        padding: 42px 0 54px;
-    }
+		.cs-content {
+			grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+			align-items: end;
+			gap: (56/16rem);
+		}
 
-    .revibe-header {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
-
-    .inside-revibe .headline {
-        font-size: 64px;
-    }
-
-    .carousel-track {
-        padding-left: 2rem;
-    }
-
-    .card {
-        flex: 0 0 calc((100% - 24px) / 2);
-    }
+		.cs-picture {
+			height: clamp(22rem, 38vw, 34rem);
+			margin-top: (56/16rem);
+			border-radius: (48/16rem);
+		}
+	}
 }
 
-/* Small Desktop - 800px */
-@media only screen and (min-width: 50rem) {
-
-    .revibe-container {
-        padding: 48px 0 60px;
-        flex-direction: row;
-        align-items: center;
-        gap: 5rem;
-        position: relative;
-    }
-
-    .revibe-header {
-        width: 18rem;
-        flex-shrink: 0;
-        padding-left: 0;
-        padding-right: 2rem;
-        align-self: stretch;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        position: relative;
-        z-index: 2;
-        background: #ffffff;
-        box-shadow: -100vw 0 0 100vw #ffffff;
-    }
-
-    .inside-revibe .headline {
-        font-size: clamp(2.438rem, 5vw, 4rem);
-    }
-
-    .carousel-outer {
-        flex: none;
-        width: calc(100vw - 15rem - 5rem - 2rem);
-        overflow: visible;
-        position: relative;
-        z-index: 1;
-        margin-right: 0;
-    }
-
-    .carousel-track {
-        padding-left: 0;
-    }
-
-    .card {
-        flex: 0 0 calc((100% - 48px) / 3 * 0.88);
-    }
-
-    /* Desktop: quote overlays the photo on hover */
-    .card-photo .card-quote {
-        position: absolute;
-        inset: 0;
-        margin: 0;
-        padding: 1.5rem;
-        background: rgba(0, 0, 0, 0.62);
-        color: #fff !important;
-        display: flex;
-        align-items: flex-end;
-        opacity: 0;
-        transform: translateY(6px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
-        border-radius: 4px;
-        font-size: 0.95rem;
-    }
-
-    .card:hover .card-photo .card-quote {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-/* ── Revibe: Education & Mentorship Section ── */
-
-/* ── Outer wrapper ── */
-/* NOTE: Uses var(--sectionPadding) — reduce that variable to affect this section */
-.revibe-edu-section {
-  padding: var(--sectionPadding);
-  font-family: 'Montserrat', sans-serif;
-  color: #fff;
-}
-
-.revibe-edu-section .revibe-edu-container {
-  width: 100%;
-  max-width: 80rem;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: stretch; /* was: center — makes both columns equal height */
-}
-
-/* ════════════════════
-   LEFT — content
-════════════════════ */
-.revibe-edu-content {
-  opacity: 0;
-  animation: revibeEduUp 0.6s 0.1s ease forwards;
-}
-
-.revibe-edu-tag {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #03ad84;
-  margin-bottom: 1rem;
-}
-
-.revibe-edu-heading {
-  font-family: 'Bebas Neue', sans-serif;
-  font-weight: 400;
-  font-size: clamp(3rem, 5.5vw, 4.4rem);
-  line-height: 1.0;
-  letter-spacing: 0.02em;
-  margin-bottom: 1rem;
-  color: #1c1a18 !important;
-}
-
-.revibe-edu-heading em {
-  font-style: normal;
-  color: #03ad84;
-}
-
-.revibe-edu-intro {
-  font-size: 1.125rem;
-  line-height: 1.65;
-  color: #000 !important;
-  margin-bottom: 0.75rem;
-  max-width: 550px;
-}
-
-.revibe-edu-intro strong {
-  font-weight: 600;
-}
-
-.revibe-edu-intro + .revibe-edu-intro {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-
-/* ── Checklist items ── */
-.revibe-edu-items {
-  display: flex;
-  flex-direction: column;
-}
-
-.revibe-edu-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 0.6rem 0; /* removed border-based spacing, using padding only */
-  opacity: 0;
-  transform: translateX(-10px);
-  /* border-top and border-bottom removed */
-}
-
-.revibe-edu-item:nth-child(1) { animation: revibeEduRight 0.45s 0.3s forwards; }
-.revibe-edu-item:nth-child(2) { animation: revibeEduRight 0.45s 0.4s forwards; }
-.revibe-edu-item:nth-child(3) { animation: revibeEduRight 0.45s 0.5s forwards; }
-.revibe-edu-item:nth-child(4) { animation: revibeEduRight 0.45s 0.6s forwards; }
-.revibe-edu-item:nth-child(5) { animation: revibeEduRight 0.45s 0.7s forwards; }
-
-.revibe-edu-item-icon {
-  flex-shrink: 0;
-  margin-top: 0.25rem;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: rgba(3, 173, 132, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.revibe-edu-item-icon svg {
-  width: 11px;
-  height: 11px;
-}
-
-.revibe-edu-item-body {
-  font-size: 1.125rem;
-  line-height: 1.55;
-  color: #1c1a18;
-}
-
-/* ════════════════════
-   RIGHT — image
-════════════════════ */
-.revibe-edu-image-col {
-  position: relative;
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  animation: revibeEduUp 0.6s 0.2s ease forwards;
-}
-
-.revibe-edu-photo-wrap {
-  border-radius: 8px;
-  overflow: hidden;
-  flex: 1;         /* stretches to fill the full column height */
-  min-height: 0;
-  position: relative;
-  background: #e0d9cf;
-  /* max-height removed — image now matches left content height */
-}
-
-.revibe-edu-photo-wrap img {
-  position: absolute; /* fills the wrap regardless of its height */
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: saturate(0.88);
-}
-
-/* ── Photo text overlay ── */
-.revibe-edu-photo-wrap::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.72) 0%,
-    rgba(0, 0, 0, 0.35) 45%,
-    transparent 70%
-  );
-  z-index: 1;
-  border-radius: 8px;
-}
-
-.revibe-edu-photo-text {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 2rem;
-  z-index: 2;
-}
-
-.revibe-edu-photo-label {
-  display: block;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(0.85rem, 1.4vw, 1.05rem);
-  letter-spacing: 0.14em;
-  color: var(--secondary);
-  margin-bottom: 0.35rem;
-}
-
-.revibe-edu-photo-quote {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  line-height: 1.1;
-  letter-spacing: 0.03em;
-  color: #fff;
-  margin: 0;
-}
-
-/* ── Animations ── */
-@keyframes revibeEduUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes revibeEduRight {
-  to { opacity: 1; transform: translateX(0); }
-}
-
-/* ── Responsive ── */
-@media (max-width: 64rem) {
-  .revibe-edu-section .revibe-edu-container {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .revibe-edu-image-col {
-    order: -1;
-    min-height: 280px;
-  }
-
-  .revibe-edu-intro {
-    max-width: 100%;
-  }
-}
-
-/* ══════════════════════════════════════════════ */
-/*        #what-makes-different styles            */
-/* ══════════════════════════════════════════════ */
+/*-- -------------------------- -->
+<---          Why join          -->
+<--- -------------------------- -*/
 
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
+	#why-join {
+		background-color: var(--white);
 
-  #what-makes-different {
-    background: #ffffff;
-    padding-top: clamp(3.75rem, 7.5vw, 6rem); /* was clamp(5rem, 10vw, 8rem) */
-    padding-bottom: clamp(3.75rem, 7.5vw, 6rem); /* was clamp(5rem, 10vw, 8rem) */
-    padding-left: 0;
-    padding-right: 0;
-    overflow: hidden;
-  }
+		.cs-container {
+			display: grid;
+			gap: (40/16rem);
+		}
 
-  #what-makes-different .cs-viewport {
-    overflow: visible;
-    width: 100%;
-  }
+		.cs-content {
+			display: grid;
+			gap: (16/16rem);
+		}
 
-  #what-makes-different .cs-container {
-    width: 100%;
-    max-width: 80rem;
-    margin: auto;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-    overflow: visible;
-  }
+		.cs-belief {
+			font-family: var(--headerFont);
+			/* 26px - 34px */
+			font-size: clamp(1.625rem, 3vw, 2.125rem);
+			line-height: 1.05;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			margin: (8/16rem) 0;
+			color: var(--nearBlack);
+		}
 
-  #what-makes-different .cs-header {
-    width: 100%;
-    box-sizing: border-box;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
+		.cs-figure {
+			margin: 0;
+			position: relative;
 
-  #what-makes-different .cs-topper {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--primary);
-    margin: 0 0 0.6rem;
-    display: block;
-  }
+			img {
+				width: 100%;
+				height: (360/16rem);
+				border-radius: (32/16rem);
+				object-fit: cover;
+				display: block;
+			}
+		}
 
-  #what-makes-different .cs-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3rem, 5.5vw, 4.4rem);
-    font-weight: 400;
-    line-height: 1.0;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    color: #0a0a0a;
-    margin: 0;
-    display: block;
-  }
-
-  /* Arrows */
-  #what-makes-different .cs-arrows {
-    display: flex;
-    gap: 0.625rem;
-    align-items: center;
-  }
-
-  #what-makes-different .cs-arrow {
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: 50%;
-    border: 1.5px solid var(--primary);
-    background: #fff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s, border-color 0.2s, transform 0.15s;
-    flex-shrink: 0;
-  }
-
-  #what-makes-different .cs-arrow svg {
-    width: 1rem;
-    height: 1rem;
-    stroke: var(--primary);
-    fill: none;
-    transition: stroke 0.2s;
-  }
-
-  #what-makes-different .cs-arrow:hover {
-    background: var(--primary);
-    transform: scale(1.08);
-  }
-
-  #what-makes-different .cs-arrow:hover svg {
-    stroke: #fff;
-  }
-
-  #what-makes-different .cs-arrow:disabled {
-    opacity: 0.25;
-    cursor: default;
-    transform: none;
-  }
-
-  /* Viewport */
-  #what-makes-different .cs-viewport::-webkit-scrollbar {
-    display: none;
-  }
-
-  #what-makes-different .cs-track {
-    display: flex;
-    gap: 0.75rem;
-    padding-left: 1rem;
-    padding-right: 0;
-    margin: 0;
-    list-style: none;
-    transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
-    will-change: transform;
-  }
-
-  #what-makes-different .cs-item {
-    flex-shrink: 0;
-    width: 78vw;
-    background: #fff;
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    padding: 1.5rem 1.25rem 1.75rem;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    box-sizing: border-box;
-  }
-
-  #what-makes-different .cs-number {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 3.5rem;
-    font-weight: 400;
-    line-height: 1;
-    color: rgba(0, 0, 0, 0.07);
-    letter-spacing: 0.02em;
-    margin-bottom: 0.9rem;
-    display: block;
-  }
-
-  #what-makes-different .cs-h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.125rem;
-    font-weight: 400;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    color: #0a0a0a;
-    margin: 0 0 0.75rem;
-    line-height: 1.1;
-  }
-
-  #what-makes-different .cs-text {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.125rem;
-    font-weight: 300;
-    color: rgba(0, 0, 0, 0.5);
-    line-height: 1.8;
-    margin: 0;
-  }
-
+		.cs-caption {
+			font-size: (15/16rem);
+			font-weight: 600;
+			line-height: 1.45;
+			max-width: (340/16rem);
+			padding: (18/16rem) (22/16rem);
+			border-radius: (24/16rem);
+			background-color: var(--revibeGreen);
+			color: var(--nearBlack);
+			position: absolute;
+			left: (16/16rem);
+			right: (16/16rem);
+			bottom: (16/16rem);
+		}
+	}
 }
 
-/* Tablet - 768px */
-@media only screen and (min-width: 48rem) {
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#why-join {
+		.cs-container {
+			grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+			align-items: center;
+			gap: (72/16rem);
+		}
 
-  #what-makes-different .cs-header {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
+		.cs-figure img {
+			height: (560/16rem);
+			border-radius: (48/16rem);
+		}
 
-  #what-makes-different .cs-track {
-    padding-left: 2rem;
-  }
+		.cs-caption {
+			right: auto;
+			left: (24/16rem);
+			bottom: (24/16rem);
+		}
+	}
+}
 
-  #what-makes-different .cs-item {
-    width: 44vw;
-  }
+/*-- -------------------------- -->
+<---          Culture           -->
+<--- -------------------------- -*/
 
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#culture {
+		background-color: var(--offWhite);
+
+		.cs-container {
+			display: grid;
+			gap: (40/16rem);
+		}
+
+		.cs-figure {
+			margin: 0;
+			position: relative;
+
+			img {
+				width: 100%;
+				height: (420/16rem);
+				border-radius: (32/16rem);
+				object-fit: cover;
+				display: block;
+			}
+		}
+
+		.cs-quote {
+			margin: 0;
+			padding: (22/16rem) (24/16rem);
+			border-radius: (28/16rem);
+			background-color: var(--nearBlack);
+			color: var(--white);
+			position: absolute;
+			left: (16/16rem);
+			right: (16/16rem);
+			bottom: (16/16rem);
+
+			p {
+				font-family: var(--headerFont);
+				font-size: (26/16rem);
+				line-height: 1.05;
+				letter-spacing: var(--headingLetterSpacing);
+				text-transform: uppercase;
+				margin: 0;
+				color: var(--white);
+
+				&:before {
+					content: "“";
+					color: var(--revibeGreen);
+				}
+
+				&:after {
+					content: "”";
+					color: var(--revibeGreen);
+				}
+			}
+		}
+
+		.cs-content {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: (14/16rem);
+		}
+
+		.cs-title {
+			margin-bottom: (6/16rem);
+		}
+
+		.cs-list-title {
+			font-family: var(--headerFont);
+			font-size: (28/16rem);
+			font-weight: 400;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			margin: (18/16rem) 0 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-cards {
+			width: 100%;
+			list-style: none;
+			margin: 0 0 (16/16rem);
+			padding: 0;
+			display: grid;
+			gap: (10/16rem);
+		}
+
+		.cs-card {
+			font-size: (15/16rem);
+			font-weight: 600;
+			line-height: 1.4;
+			padding: (16/16rem) (18/16rem);
+			border-radius: (24/16rem);
+			background-color: var(--white);
+			color: var(--nearBlack);
+			display: flex;
+			align-items: center;
+			gap: (14/16rem);
+		}
+
+		.cs-card-num {
+			font-family: var(--headerFont);
+			font-size: (18/16rem);
+			width: (36/16rem);
+			height: (36/16rem);
+			flex: none;
+			border-radius: 50%;
+			background-color: var(--nearBlack);
+			color: var(--revibeGreen);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+}
+
+/* Tablet - 640px: the list goes two across */
+@media only screen and (min-width: 40rem) {
+	#culture .cs-cards {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#culture {
+		.cs-container {
+			grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+			align-items: center;
+			gap: (72/16rem);
+		}
+
+		.cs-figure img {
+			height: (640/16rem);
+			border-radius: (48/16rem);
+		}
+
+		.cs-quote {
+			left: (20/16rem);
+			right: (20/16rem);
+			bottom: (20/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---       Inside Revibe        -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#inside {
+		background-color: var(--mintTint);
+
+		.cs-stage {
+			display: grid;
+			gap: (16/16rem);
+		}
+
+		/* phones: a sideways row of faces */
+		.cs-picker {
+			margin: 0 (-20/16rem);
+			padding: 0 (20/16rem) (4/16rem);
+			display: flex;
+			gap: (8/16rem);
+			overflow-x: auto;
+			scrollbar-width: none;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+		}
+
+		.cs-pick {
+			font: inherit;
+			text-align: left;
+			padding: (6/16rem) (18/16rem) (6/16rem) (6/16rem);
+			border: 0;
+			border-radius: 999px;
+			background-color: var(--white);
+			color: var(--nearBlack);
+			cursor: pointer;
+			display: flex;
+			flex: none;
+			align-items: center;
+			gap: (12/16rem);
+			transition:
+				background-color 0.25s ease,
+				color 0.25s ease;
+
+			img {
+				width: (48/16rem);
+				height: (48/16rem);
+				flex: none;
+				border-radius: 50%;
+				object-fit: cover;
+				background-color: var(--softBeige);
+			}
+
+			&:hover {
+				background-color: var(--offWhite);
+			}
+
+			&[aria-selected="true"] {
+				background-color: var(--nearBlack);
+				color: var(--white);
+
+				small {
+					color: var(--revibeGreen);
+				}
+			}
+
+			&:focus-visible {
+				outline: 3px solid var(--deepGreen);
+				outline-offset: 2px;
+			}
+		}
+
+		.cs-pick-name {
+			font-family: var(--headerFont);
+			font-size: (22/16rem);
+			line-height: 1;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			display: grid;
+			gap: (3/16rem);
+
+			small {
+				font-family: var(--bodyFont);
+				font-size: (11/16rem);
+				font-weight: 700;
+				letter-spacing: 0.06em;
+				white-space: nowrap;
+				color: var(--mutedText);
+				transition: color 0.25s ease;
+			}
+		}
+
+		.cs-story {
+			margin: 0;
+			padding: (14/16rem);
+			border-radius: (36/16rem);
+			background-color: var(--white);
+			display: grid;
+			gap: (20/16rem);
+			animation: insideIn 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+
+			&[hidden] {
+				display: none;
+			}
+		}
+
+		.cs-story-photo {
+			height: (340/16rem);
+			border-radius: (26/16rem);
+			background-color: var(--softBeige);
+			overflow: hidden;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: 50% 15%;
+				display: block;
+			}
+		}
+
+		.cs-story-body {
+			padding: 0 (10/16rem) (14/16rem);
+			display: flex;
+			flex-direction: column;
+			gap: (14/16rem);
+		}
+
+		.cs-story-mark {
+			font-family: var(--headerFont);
+			font-size: (96/16rem);
+			line-height: 0.6;
+			height: (40/16rem);
+			margin-bottom: (-14/16rem);
+			color: var(--revibeGreen);
+		}
+
+		.cs-story-quote {
+			margin: 0;
+
+			p {
+				/* 16px - 19px */
+				font-size: clamp(1rem, 1.5vw, 1.1875rem);
+				line-height: 1.65;
+				margin: 0;
+				color: var(--nearBlack);
+			}
+		}
+
+		.cs-story-name {
+			font-family: var(--headerFont);
+			font-size: (34/16rem);
+			line-height: 1;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			margin-top: auto;
+			padding-top: (18/16rem);
+			border-top: 1px solid var(--softBeige);
+			color: var(--nearBlack);
+			display: grid;
+			gap: (4/16rem);
+
+			small {
+				font-family: var(--bodyFont);
+				font-size: (12/16rem);
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				color: var(--deepGreen);
+			}
+		}
+	}
+}
+
+/* Desktop - 900px: faces in a column beside the card, photo beside the quote */
+@media only screen and (min-width: 56.25rem) {
+	#inside {
+		.cs-stage {
+			grid-template-columns: (300/16rem) minmax(0, 1fr);
+			align-items: start;
+			gap: (24/16rem);
+		}
+
+		.cs-picker {
+			margin: 0;
+			padding: 0;
+			flex-direction: column;
+			overflow: visible;
+		}
+
+		.cs-pick {
+			padding: (8/16rem) (20/16rem) (8/16rem) (8/16rem);
+
+			img {
+				width: (60/16rem);
+				height: (60/16rem);
+			}
+		}
+
+		.cs-pick-name {
+			font-size: (26/16rem);
+
+			/* long roles wrap inside the pill */
+			small {
+				white-space: normal;
+			}
+		}
+
+		.cs-story {
+			padding: (18/16rem);
+			border-radius: (44/16rem);
+			grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+			gap: (36/16rem);
+		}
+
+		.cs-story-photo {
+			height: 100%;
+			min-height: (460/16rem);
+			border-radius: (30/16rem);
+		}
+
+		.cs-story-body {
+			padding: (28/16rem) (24/16rem) (20/16rem) 0;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#inside .cs-story {
+		animation: none;
+	}
+
+	#inside .cs-pick,
+	#inside .cs-pick-name small {
+		transition: none;
+	}
+}
+
+@keyframes insideIn {
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+/*-- -------------------------- -->
+<---    Growth and mentorship   -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#growth {
+		background-color: var(--nearBlack);
+		color: var(--white);
+
+		.cs-container {
+			display: grid;
+			gap: (44/16rem);
+		}
+
+		.cs-content {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: (14/16rem);
+		}
+
+		.cs-title {
+			margin-bottom: (6/16rem);
+			color: var(--white);
+		}
+
+		.cs-accent {
+			color: var(--revibeGreen);
+		}
+
+		.cs-section-text {
+			color: var(--lightText);
+		}
+
+		.cs-checks {
+			margin-top: (16/16rem);
+
+			li {
+				color: var(--white);
+			}
+		}
+
+		.cs-figure {
+			margin: 0;
+			position: relative;
+
+			img {
+				width: 100%;
+				height: (420/16rem);
+				border-radius: (32/16rem);
+				object-fit: cover;
+				display: block;
+			}
+		}
+
+		.cs-goal {
+			font-size: (15/16rem);
+			font-weight: 600;
+			line-height: 1.5;
+			padding: (20/16rem) (22/16rem);
+			border-radius: (24/16rem);
+			background-color: var(--white);
+			color: var(--nearBlack);
+			display: grid;
+			gap: (6/16rem);
+			position: absolute;
+			left: (16/16rem);
+			right: (16/16rem);
+			bottom: (16/16rem);
+
+			span {
+				font-family: var(--headerFont);
+				font-size: (24/16rem);
+				font-weight: 400;
+				line-height: 1;
+				letter-spacing: var(--headingLetterSpacing);
+				text-transform: uppercase;
+				color: var(--deepGreen);
+			}
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#growth {
+		.cs-container {
+			grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+			align-items: center;
+			gap: (72/16rem);
+		}
+
+		.cs-figure img {
+			height: (620/16rem);
+			border-radius: (48/16rem);
+		}
+
+		.cs-goal {
+			left: (24/16rem);
+			right: (24/16rem);
+			bottom: (24/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---    What makes us different  -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#different {
+		background-color: var(--softBeige);
+
+		.cs-title {
+			margin-bottom: (36/16rem);
+		}
+
+		.cs-items {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			gap: (12/16rem);
+		}
+
+		.cs-item {
+			padding: (26/16rem) (24/16rem) (28/16rem);
+			border-radius: (32/16rem);
+			background-color: var(--white);
+			display: flex;
+			flex-direction: column;
+			gap: (12/16rem);
+			transition:
+				transform 0.25s ease,
+				background-color 0.25s ease;
+
+			&:hover {
+				transform: translateY(-4px);
+			}
+		}
+
+		.cs-item-num {
+			font-family: var(--headerFont);
+			font-size: (20/16rem);
+			width: (44/16rem);
+			height: (44/16rem);
+			margin-bottom: (12/16rem);
+			border-radius: 50%;
+			background-color: var(--revibeGreen);
+			color: var(--nearBlack);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.cs-item-title {
+			font-family: var(--headerFont);
+			font-size: (32/16rem);
+			font-weight: 400;
+			line-height: 1;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-item-text {
+			font-size: (14/16rem);
+			line-height: 1.6;
+			margin: 0;
+			color: var(--charcoal);
+		}
+	}
+}
+
+/* Tablet - 640px */
+@media only screen and (min-width: 40rem) {
+	#different .cs-items {
+		grid-template-columns: 1fr 1fr;
+	}
 }
 
 /* Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
-
-  #what-makes-different .cs-container {
-    flex-direction: row;
-    align-items: center;
-    gap: 3rem;
-    position: relative;
-  }
-
-  #what-makes-different .cs-header {
-    width: 13rem;
-    flex-shrink: 0;
-    padding-left: 0;
-    padding-right: 0;
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    z-index: 2;
-    background: #ffffff;
-    /* Bleed white background infinitely to the left — masks scrolled cards */
-    box-shadow: -100vw 0 0 100vw #ffffff;
-  }
-
-  #what-makes-different .cs-title {
-    font-size: clamp(2.438rem, 5vw, 4rem);
-    margin: 0;
-  }
-
-  #what-makes-different .cs-viewport {
-    flex: none;
-    width: calc(100vw - 13rem - 3rem - 2rem);
-    overflow: visible;
-    position: relative;
-    z-index: 1;
-  }
-
-  #what-makes-different .cs-track {
-    padding-left: 0;
-  }
-
-  #what-makes-different .cs-item {
-    width: 28vw;
-    min-height: 18rem;
-  }
-
-  #what-makes-different .cs-number {
-    font-size: 2.75rem;
-  }
-
-  #what-makes-different .cs-h3 {
-    font-size: 1.5rem;
-  }
-
-  #what-makes-different .cs-text {
-    font-size: 1rem;
-  }
-
+	#different .cs-items {
+		grid-template-columns: repeat(4, 1fr);
+		gap: (16/16rem);
+	}
 }
 
-/* Large Desktop - 1280px */
-@media only screen and (min-width: 80rem) {
+@media (prefers-reduced-motion: reduce) {
+	#different .cs-item {
+		transition: none;
 
-  #what-makes-different .cs-item {
-    width: 22vw;
-  }
-
+		&:hover {
+			transform: none;
+		}
+	}
 }
 
-/* -- -------------------------- --
-   ---     Career Pathways       ---
-   -- -------------------------- -- */
+/*-- -------------------------- -->
+<---      Career pathways       -->
+<--- -------------------------- -*/
 
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
+	#pathways {
+		background-color: var(--revibeGreen);
+		color: var(--nearBlack);
 
-    .career-pathways {
-        background: #fff;
-        padding: 2.25rem 1.25rem; /* was 3rem 1.25rem */
-    }
+		.cs-title {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			column-gap: (14/16rem);
+			row-gap: (4/16rem);
+		}
 
-    .career-pathways__container {
-        width: 100%;
-        max-width: 60rem;
-        margin: 0 auto;
-    }
+		.cs-step-word span {
+			color: var(--white);
+		}
 
-    /* Header */
-    .career-pathways__header {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        margin-bottom: 2.5rem;
-    }
+		.cs-step-arrow {
+			display: inline-flex;
 
-    .career-pathways__eyebrow {
-        display: inline-block;
-        font-size: 0.72rem;
-        font-weight: 600;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--primary) !important;
-        margin-bottom: 1rem;
-    }
+			svg {
+				width: 0.6em;
+				height: 0.6em;
+			}
+		}
 
-    .career-pathways__headline {
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: clamp(2.438rem, 5vw, 4rem);
-        font-weight: 400;
-        letter-spacing: 0.02em;
-        line-height: 1.0;
-        color: #000 !important;
-        margin: 0;
-    }
+		.cs-section-text {
+			margin-top: (16/16rem);
+			color: var(--nearBlack);
+		}
 
-    /* Arrow separator between headline phrases */
-    .cp-arrow-sep {
-        font-size: 0.55em;
-        vertical-align: middle;
-        color: #ccc;
-        letter-spacing: 0;
-    }
+		.cs-tabs {
+			margin: (36/16rem) 0 (20/16rem);
+			padding: (6/16rem);
+			border-radius: 999px;
+			background-color: rgba(13, 13, 13, 0.12);
+			/* full width on phones so the three tabs share one row */
+			display: flex;
+			gap: (4/16rem);
+		}
 
-    .career-pathways__description {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 1.125rem;
-        line-height: 1.75;
-        color: #555 !important;
-        margin: 0;
-    }
+		.cs-tab {
+			font: inherit;
+			font-size: (12/16rem);
+			font-weight: 700;
+			letter-spacing: 0.04em;
+			text-transform: uppercase;
+			padding: (12/16rem) (8/16rem);
+			flex: 1 1 0;
+			border: 0;
+			border-radius: 999px;
+			background: none;
+			color: var(--nearBlack);
+			cursor: pointer;
+			transition:
+				background-color 0.2s ease,
+				color 0.2s ease;
 
-    /* Tracks */
-    .cp-tracks {
-        display: flex;
-        justify-content: center;
-        border-bottom: 0.5px solid #ddddd8;
-        margin-bottom: 1.5rem;
-    }
+			&[aria-selected="true"] {
+				background-color: var(--nearBlack);
+				color: var(--white);
+			}
 
-    .cp-track-item {
-        padding: 0.75rem 1.5rem;
-        cursor: pointer;
-        border-bottom: 2px solid transparent;
-        margin-bottom: -1px;
-    }
+			&:focus-visible {
+				outline: 3px solid var(--nearBlack);
+				outline-offset: 2px;
+			}
+		}
 
-    .cp-track-item__name {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 0.6875rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: #ccc;
-        transition: color 0.2s ease;
-        display: block;
-    }
+		.cs-steps {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			gap: (26/16rem);
+			counter-reset: none;
+		}
 
-    .cp-track-item.is-active .cp-track-item__name {
-        color: #1a1a1a;
-    }
+		.cs-step {
+			min-height: (72/16rem);
+			padding: (14/16rem) (20/16rem) (14/16rem) (14/16rem);
+			border-radius: 999px;
+			background-color: rgba(255, 255, 255, 0.35);
+			display: flex;
+			align-items: center;
+			gap: (14/16rem);
+			position: relative;
+			transition:
+				background-color 0.35s ease,
+				color 0.35s ease;
 
-    .cp-track-item.is-active {
-        border-bottom: 2px solid #03ad84;
-    }
+			/* the arrow between steps; points down on phones */
+			&:not(:last-child):after {
+				content: "";
+				width: 2px;
+				height: (26/16rem);
+				background-color: var(--nearBlack);
+				opacity: 0.35;
+				position: absolute;
+				top: 100%;
+				left: (35/16rem);
+			}
 
-    /* Panels */
-    .cp-panels-wrapper {
-        position: relative;
-    }
+			/* careers.js lights the steps up in turn */
+			&.cs-lit {
+				background-color: var(--nearBlack);
+				color: var(--white);
 
-    .cp-panel {
-        display: none;
-        flex-direction: column;
-        gap: 0;
-        width: 100%;
-    }
+				.cs-step-num {
+					background-color: var(--revibeGreen);
+					color: var(--nearBlack);
+				}
+			}
+		}
 
-    .cp-panel.is-active {
-        display: flex;
-    }
+		.cs-step-num {
+			font-family: var(--headerFont);
+			font-size: (20/16rem);
+			width: (44/16rem);
+			height: (44/16rem);
+			flex: none;
+			border-radius: 50%;
+			background-color: var(--nearBlack);
+			color: var(--white);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition:
+				background-color 0.35s ease,
+				color 0.35s ease;
+		}
 
-    .cp-spacer {
-        display: flex;
-        flex-direction: column;
-        visibility: hidden;
-        pointer-events: none;
-        position: absolute;
-        width: 100%;
-    }
-
-    /* Cards */
-    .cp-card {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem 1.25rem;
-        border-radius: 8px;
-        background: #f7f7f5;
-        border: 1.5px solid #e0e0e0;
-        transition: border-color 0.3s ease;
-    }
-
-    .cp-card__num {
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: 2rem;
-        line-height: 1;
-        min-width: 2.5rem;
-        flex-shrink: 0;
-        color: #ddd;
-        transition: color 0.3s ease;
-    }
-
-    .cp-card__body {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .cp-card__role {
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: 1.125rem;
-        letter-spacing: 0.04em;
-        line-height: 1.2;
-        text-transform: uppercase;
-        color: #1a1a1a;
-    }
-
-    /* Last card */
-    .cp-card--last {
-        background: #03ad84;
-        border-color: #03ad84;
-    }
-
-    .cp-card--last .cp-card__num {
-        color: rgba(255, 255, 255, 0.3);
-    }
-
-    .cp-card--last .cp-card__role {
-        color: #fff;
-    }
-
-    /* Active card state (animation) */
-    .cp-card.is-lit {
-        border-color: #03ad84;
-    }
-
-    .cp-card.is-lit .cp-card__num {
-        color: #03ad84;
-    }
-
-    /* Arrows */
-    .cp-arrow {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 1.25rem;
-    }
-
-    .cp-arrow-line {
-        stroke-dasharray: 12;
-        stroke-dashoffset: 12;
-        transition: stroke-dashoffset 0.25s ease;
-    }
-
-    .cp-arrow-head {
-        opacity: 0;
-        transition: opacity 0.15s ease;
-    }
-
-    .cp-arrow.is-lit .cp-arrow-line {
-        stroke-dashoffset: 0;
-    }
-
-    .cp-arrow.is-lit .cp-arrow-head {
-        opacity: 1;
-    }
-
-    .cp-card--last.is-lit .cp-card__num {
-        color: var(--secondary);
-    }
+		.cs-step-role {
+			font-family: var(--headerFont);
+			font-size: (26/16rem);
+			line-height: 1;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+		}
+	}
 }
 
-/* Tablet - 768px */
-@media only screen and (min-width: 48rem) {
+/* Tablet - 640px: the tabs size to their labels */
+@media only screen and (min-width: 40rem) {
+	#pathways {
+		.cs-tabs {
+			display: inline-flex;
+		}
 
-    .career-pathways {
-        padding: 3rem 2.5rem; /* was 4rem 2.5rem */
-    }
-
-    .cp-track-item {
-        padding: 0.75rem 2rem;
-    }
-
-    .cp-card {
-        padding: 1.125rem 1.5rem;
-    }
-
-    .cp-card__num {
-        font-size: 2.25rem;
-        min-width: 3rem;
-    }
-
-    .cp-card__role {
-        font-size: 1.25rem;
-    }
+		.cs-tab {
+			font-size: (13/16rem);
+			letter-spacing: 0.06em;
+			padding: (12/16rem) (20/16rem);
+			flex: none;
+		}
+	}
 }
 
-/* Small Desktop - 1024px */
+/* Desktop - 1024px: the steps run left to right */
 @media only screen and (min-width: 64rem) {
+	#pathways {
+		.cs-steps {
+			grid-auto-flow: column;
+			grid-auto-columns: 1fr;
+			gap: (28/16rem);
+		}
 
-    .career-pathways {
-        padding: 3.75rem 4rem; /* was 5rem 4rem */
-    }
+		.cs-step {
+			min-height: (180/16rem);
+			padding: (22/16rem) (20/16rem) (24/16rem);
+			border-radius: (32/16rem);
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: space-between;
 
-    .cp-card__num {
-        font-size: 2.5rem;
-        min-width: 3.25rem;
-    }
-
-    .cp-card__role {
-        font-size: 1.375rem;
-    }
-
-    .cp-card--last.is-lit .cp-card__num {
-        color: var(--secondary);
-    }
+			&:not(:last-child):after {
+				width: (28/16rem);
+				height: 2px;
+				top: 50%;
+				left: 100%;
+			}
+		}
+	}
 }
 
-/* -- -------------------------- --
-   ---   Revibe: Thrive Section  ---
-   -- -------------------------- -- */
-
-/* Mobile - 360px */
-/* NOTE: Uses var(--sectionPadding) — reduce that variable to affect this section */
-@media only screen and (min-width: 0rem) {
-
-    .revibe-section {
-        padding: var(--sectionPadding);
-        font-family: 'Montserrat', sans-serif;
-        color: #fff;
-    }
-
-    .revibe-section .revibe-container {
-        width: 100%;
-        max-width: 80rem;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        align-items: stretch; /* was: center */
-    }
-
-    .revibe-content {
-        opacity: 0;
-        animation: revibeUp 0.6s 0.1s ease forwards;
-    }
-
-    .revibe-tag {
-        display: inline-block;
-        font-size: 0.72rem;
-        font-weight: 600;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: #03ad84;
-        margin-bottom: 1rem;
-    }
-
-    .revibe-heading {
-        font-family: 'Bebas Neue', sans-serif;
-        font-weight: 400;
-        font-size: clamp(3rem, 5.5vw, 4.4rem);
-        line-height: 1.0;
-        letter-spacing: 0.02em;
-        margin-bottom: 1rem;
-        color: #1c1a18 !important;
-    }
-
-    .revibe-heading em {
-        font-style: normal;
-        color: #03ad84;
-    }
-
-    .revibe-intro {
-        font-size: 1.125rem;
-        line-height: 1.65;
-        color: #000 !important;
-        margin-bottom: 2.2rem;
-        max-width: 100%;
-    }
-
-    .revibe-items {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .revibe-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 1rem;
-        padding: 0.6rem 0; /* was: 1.1rem 0; border-top and border-bottom removed */
-        opacity: 0;
-        transform: translateX(-10px);
-    }
-
-    /* .revibe-item:first-child border-top removed */
-
-    .revibe-item:nth-child(1) { animation: revibeRight 0.45s 0.3s forwards; }
-    .revibe-item:nth-child(2) { animation: revibeRight 0.45s 0.4s forwards; }
-    .revibe-item:nth-child(3) { animation: revibeRight 0.45s 0.5s forwards; }
-    .revibe-item:nth-child(4) { animation: revibeRight 0.45s 0.6s forwards; }
-    .revibe-item:nth-child(5) { animation: revibeRight 0.45s 0.7s forwards; }
-
-    .revibe-item-icon {
-        flex-shrink: 0;
-        margin-top: 0.35rem;
-        width: 16px;
-        height: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .revibe-item-body {
-        font-size: 1.125rem;
-        line-height: 1.55;
-        color: #1c1a18;
-    }
-
-    .revibe-image-col {
-        order: -1;
-        position: relative;
-        align-self: stretch;
-        display: flex;
-        flex-direction: column;
-        opacity: 0;
-        animation: revibeUp 0.6s 0.2s ease forwards;
-    }
-
-    .revibe-photo-wrap {
-        border-radius: 8px;
-        overflow: hidden;
-        flex: 1;         /* stretches to fill the full column height */
-        min-height: 0;
-        position: relative;
-        background: #e0d9cf;
-        /* max-height removed — image now matches left content height */
-    }
-
-    .revibe-photo-wrap img {
-        position: absolute; /* fills the wrap regardless of its height */
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        filter: saturate(0.88);
-        /* max-height removed */
-    }
-
-    @keyframes revibeUp {
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes revibeRight {
-        to { opacity: 1; transform: translateX(0); }
-    }
+@media (prefers-reduced-motion: reduce) {
+	#pathways {
+		.cs-step,
+		.cs-step-num {
+			transition: none;
+		}
+	}
 }
 
-/* Small Desktop - 1024px */
-@media only screen and (min-width: 64rem) {
-
-    .revibe-section .revibe-container {
-        grid-template-columns: 1fr 1fr;
-        gap: 5rem;
-    }
-
-    .revibe-image-col {
-        order: unset;
-        min-height: unset;
-    }
-
-    .revibe-intro {
-        max-width: 550px;
-    }
-
-    .revibe-photo-wrap img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        filter: saturate(0.88);
-    }
-}
-/* -- -------------------------- --
-   ---       Jobs Section        ---
-   -- -------------------------- -- */
-
-/* Mobile - 360px */
-/* NOTE: Uses var(--sectionPadding) — reduce that variable to affect this section */
-@media only screen and (min-width: 0rem) {
-
-    .jobs-section {
-        background: #ffffff;
-        padding: var(--sectionPadding);
-    }
-
-    .jobs-wrap {
-        font-family: 'Montserrat', sans-serif;
-        width: 100%;
-        max-width: 80rem;
-        margin: 0 auto;
-    }
-
-    .jobs-eyebrow {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        font-size: 11px;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: #03ad84 !important;
-        margin-bottom: 14px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .jobs-headline {
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: clamp(3rem, 5.5vw, 4.4rem);
-        font-weight: 400;
-        color: #000 !important;
-        line-height: 1.05;
-        letter-spacing: 0.02em;
-        margin: 0 0 12px;
-    }
-
-    .jobs-accent {
-        color: #03ad84;
-    }
-
-    .jobs-sub {
-        font-size: 1.125rem;
-        color: #000 !important;
-        line-height: 1.7;
-        margin: 0 0 48px;
-    }
-
-    .jobs-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 48px;
-    }
-
-    .job-card {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 18px 20px;
-        border: 0.5px solid #e0e0e0;
-        border-radius: 12px;
-        background: #ffffff;
-        text-decoration: none;
-        transition: border-color 0.2s ease, transform 0.15s ease;
-    }
-
-    .job-card:hover {
-        border-color: #03ad84;
-        transform: translateX(4px);
-    }
-
-    .job-card:hover .job-card-arrow {
-        color: #03ad84;
-    }
-
-    .job-card-left {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-    }
-
-    .job-card-title {
-        font-family: 'Bebas Neue';
-        font-size: 1.5rem;
-        font-weight: 500;
-        color: #000;
-    }
-
-    .job-card-dept {
-        font-size: 11px;
-        color: #bbbbbb;
-        font-weight: 300;
-    }
-
-    .job-card-right {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-
-    .job-card-tag {
-        display: none;
-    }
-
-    .job-card-arrow {
-        font-size: 16px;
-        color: #cccccc;
-        transition: color 0.2s ease;
-    }
-
-    .jobs-cta {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-    }
-
-    .jobs-cta-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        background: #03ad84;
-        color: #ffffff;
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: 1.125rem;
-        font-weight: 500;
-        letter-spacing: 0.02em;
-        padding: 13px 26px;
-        border-radius: 100px;
-        text-decoration: none;
-        transition: background 0.2s ease;
-    }
-
-    .jobs-cta-btn:hover {
-        background: #029e78;
-    }
-
-    .jobs-cta-note {
-        font-size: 13px;
-        color: #bbbbbb;
-        font-weight: 300;
-    }
-}
-
-/* Tablet - 600px */
-@media only screen and (min-width: 37.5rem) {
-
-    .jobs-headline {
-        font-size: clamp(3rem, 5.5vw, 4.4rem);
-    }
-
-    .job-card {
-        padding: 22px 28px;
-    }
-
-    .job-card-tag {
-        display: block;
-        font-size: 11px;
-        background: #f0faf7;
-        color: #03ad84;
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-weight: 500;
-    }
-}
-
-/* =========================================
-   Revibe — CTA Section
-   Font dependencies:
-   Fraunces (serif) + DM Sans (sans-serif)
-   via Google Fonts — include in your <head>
-   ========================================= */
+/*-- -------------------------- -->
+<---           Thrive           -->
+<--- -------------------------- -*/
 
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
+	#thrive {
+		background-color: var(--white);
 
-    .cta-section {
-        position: relative;
-        overflow: hidden;
-        min-height: 420px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        font-family: 'DM Sans', sans-serif;
-    }
+		.cs-container {
+			display: grid;
+			gap: (44/16rem);
+		}
 
-    /* Background image — swap url() for your own asset */
-    .cta-bg-image {
-        position: absolute;
-        inset: 0;
-        background-image: url('https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/team-meeting-outside.webp');
-        background-size: cover;
-        background-position: center 30%;
-    }
+		.cs-content {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: (14/16rem);
+		}
 
-    /* Dark overlay */
-    .cta-overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.80);
-    }
+		.cs-title {
+			margin-bottom: (6/16rem);
+		}
 
-    /* Content wrapper */
-    .cta-content {
-        position: relative;
-        z-index: 2;
-        padding: 36px 28px; /* was 48px 28px */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+		.cs-checks {
+			margin-top: (16/16rem);
 
-    /* "We're Hiring" badge */
-    .cta-badge {
-        display: inline-block;
-        background: rgba(90, 196, 160, 0.15);
-        border: 1px solid rgba(90, 196, 160, 0.3);
-        border-radius: 100px;
-        padding: 6px 16px;
-        margin-bottom: 28px;
-        font-size: 12px;
-        font-weight: 500;
-        color: #6DCFB0;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-    }
+			li {
+				color: var(--nearBlack);
+			}
+		}
 
-    /* Headline */
-    .cta-headline {
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: clamp(3rem, 5.5vw, 4.4rem);
-        font-weight: 300;
-        color: var(--primary) !important;
-        line-height: 1.1;
-        margin: 0 0 24px;
-        max-width: 960px;
-    }
+		.cs-picture {
+			height: (440/16rem);
+			border-radius: (32/16rem);
+			overflow: hidden;
+			display: block;
 
-    .cta-headline--accent {
-        color: var(--color-primary) !important;
-    }
-
-    /* Body copy */
-    .cta-body {
-        font-size: 16px;
-        color: rgba(245, 242, 236, 0.68);
-        line-height: 1.75;
-        max-width: 660px;
-        margin: 0 0 10px;
-    }
-
-    .cta-body:last-of-type {
-        margin-bottom: 44px;
-    }
-
-    /* CTA button */
-    .cta-button {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        background: var(--primary) !important;
-        color: #fff;
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: 1.125rem;
-        font-weight: 500;
-        padding: 14px 32px;
-        border-radius: 100px;
-        text-decoration: none;
-        letter-spacing: 0.01em;
-        transition: background 0.2s ease, transform 0.15s ease;
-    }
-
-    .cta-button:hover {
-        background: #6DCFB0;
-        transform: translateY(-1px);
-    }
-
-    .cta-button:active {
-        transform: translateY(0);
-    }
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+	}
 }
 
-/* Small Desktop - 1024px */
-@media only screen and (min-width: 64rem) {
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#thrive {
+		.cs-container {
+			grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+			align-items: center;
+			gap: (80/16rem);
+		}
 
-    .cta-content {
-        padding: 54px 60px; /* was 72px 60px */
-    }
+		.cs-picture {
+			height: (640/16rem);
+			border-radius: (48/16rem);
+		}
+	}
+}
 
-    .cta-headline {
-        font-size: 54px;
-    }
+/*-- -------------------------- -->
+<---         Open roles         -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#open-roles {
+		background-color: var(--offWhite);
+
+		.cs-roles {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			gap: (10/16rem);
+		}
+
+		.cs-role {
+			padding: (18/16rem) (18/16rem) (18/16rem) (24/16rem);
+			border-radius: (28/16rem);
+			background-color: var(--white);
+			text-decoration: none;
+			color: var(--nearBlack);
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) auto;
+			align-items: center;
+			gap: (10/16rem) (16/16rem);
+			transition:
+				transform 0.25s ease,
+				box-shadow 0.25s ease;
+
+			&:hover,
+			&:focus-visible {
+				transform: translateY(-3px);
+				box-shadow: 0 16px 36px rgba(13, 13, 13, 0.1);
+
+				.cs-icon-arrow {
+					transform: translateX(4px);
+				}
+			}
+
+			&:focus-visible {
+				outline: 3px solid var(--deepGreen);
+				outline-offset: 2px;
+			}
+		}
+
+		.cs-role-name {
+			font-family: var(--headerFont);
+			font-size: (30/16rem);
+			line-height: 1;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			display: grid;
+			gap: (6/16rem);
+
+			small {
+				font-family: var(--bodyFont);
+				font-size: (12/16rem);
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				color: var(--mutedText);
+			}
+		}
+
+		/* full-time pill; on phones it sits under the name */
+		.cs-role-type {
+			font-size: (12/16rem);
+			font-weight: 700;
+			padding: (6/16rem) (12/16rem);
+			border-radius: 999px;
+			background-color: var(--mintTint);
+			color: var(--deepGreen);
+			grid-row: 2;
+			justify-self: start;
+		}
+
+		.cs-icon-arrow {
+			grid-row: 1 / span 2;
+			grid-column: 2;
+		}
+	}
+}
+
+/* Tablet - 640px: name, pill and arrow on one line */
+@media only screen and (min-width: 40rem) {
+	#open-roles .cs-role {
+		padding: (20/16rem) (20/16rem) (20/16rem) (32/16rem);
+		grid-template-columns: minmax(0, 1fr) auto auto;
+
+		.cs-role-type {
+			grid-row: auto;
+		}
+
+		.cs-icon-arrow {
+			grid-row: auto;
+			grid-column: auto;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#open-roles .cs-role {
+		transition: none;
+
+		&:hover,
+		&:focus-visible {
+			transform: none;
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---            CTA             -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#careers-cta {
+		/* 80px - 144px */
+		padding: clamp(5rem, 11vw, 9rem) (20/16rem);
+		background-color: var(--nearBlack);
+		color: var(--white);
+
+		.cs-container {
+			width: 100%;
+			max-width: (1280/16rem);
+			margin: auto;
+			display: grid;
+			gap: (28/16rem);
+		}
+
+		.cs-title {
+			/* 56px - 120px */
+			font-size: clamp(3.5rem, 8.4vw, 7.5rem);
+			line-height: 0.86;
+			max-width: (820/16rem);
+			margin: 0;
+			color: var(--white);
+		}
+
+		.cs-accent {
+			color: var(--revibeGreen);
+		}
+
+		.cs-side {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: (14/16rem);
+		}
+
+		.cs-text {
+			font-size: 1rem;
+			line-height: 1.6;
+			max-width: (460/16rem);
+			margin: 0;
+			color: var(--lightText);
+		}
+
+		.cs-button-solid {
+			margin-top: (14/16rem);
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#careers-cta {
+		padding-left: (40/16rem);
+		padding-right: (40/16rem);
+
+		.cs-container {
+			grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+			align-items: end;
+			gap: (56/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---       Job page: hero       -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#job-hero {
+		/* 80px fixed nav + 32px */
+		padding: calc(5rem + 2rem) (20/16rem) (56/16rem);
+		background-color: var(--nearBlack);
+		color: var(--white);
+
+		.cs-container {
+			width: 100%;
+			max-width: (1280/16rem);
+			margin: auto;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.cs-back {
+			font-size: (14/16rem);
+			font-weight: 600;
+			text-decoration: none;
+			margin-bottom: (32/16rem);
+			color: var(--lightText);
+			display: inline-flex;
+			align-items: center;
+			gap: (8/16rem);
+			transition: color 0.2s ease;
+
+			svg {
+				width: 18px;
+				height: 18px;
+				transition: transform 0.2s ease;
+			}
+
+			&:hover {
+				color: var(--revibeGreen);
+
+				svg {
+					transform: translateX(-3px);
+				}
+			}
+		}
+
+		.cs-title {
+			/* 56px - 140px */
+			font-size: clamp(3.5rem, 10vw, 8.75rem);
+			line-height: 0.86;
+			max-width: none;
+			margin: 0;
+			color: var(--white);
+		}
+
+		.cs-tags {
+			list-style: none;
+			margin: (24/16rem) 0 (32/16rem);
+			padding: 0;
+			display: flex;
+			flex-wrap: wrap;
+			gap: (8/16rem);
+		}
+
+		.cs-tag {
+			font-size: (13/16rem);
+			font-weight: 600;
+			padding: (9/16rem) (16/16rem);
+			border: 1px solid var(--darkLine);
+			border-radius: 999px;
+			color: var(--lightText);
+			display: inline-flex;
+			align-items: center;
+			gap: (6/16rem);
+
+			svg {
+				width: 14px;
+				height: 14px;
+				color: var(--revibeGreen);
+			}
+		}
+
+		.cs-tag-green {
+			border-color: var(--revibeGreen);
+			background-color: var(--revibeGreen);
+			color: var(--nearBlack);
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#job-hero {
+		padding: calc(5rem + 3rem) (40/16rem) (80/16rem);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#job-hero .cs-back,
+	#job-hero .cs-back svg {
+		transition: none;
+	}
+}
+
+/*-- -------------------------- -->
+<---      Job page: details     -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#job-details {
+		background-color: var(--offWhite);
+
+		.cs-container {
+			display: grid;
+			gap: (16/16rem);
+		}
+
+		.cs-sections {
+			display: grid;
+			gap: (12/16rem);
+		}
+
+		.cs-block {
+			padding: (28/16rem) (22/16rem);
+			border-radius: (32/16rem);
+			background-color: var(--white);
+		}
+
+		.cs-block-title {
+			font-family: var(--headerFont);
+			/* 32px - 44px */
+			font-size: clamp(2rem, 4vw, 2.75rem);
+			font-weight: 400;
+			line-height: 1;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			margin: 0 0 (16/16rem);
+			color: var(--nearBlack);
+		}
+
+		.cs-block-text {
+			font-size: (16/16rem);
+			line-height: 1.65;
+			margin: 0 0 (12/16rem);
+			color: var(--charcoal);
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		.cs-checks {
+			margin: 0;
+
+			li {
+				font-size: (15/16rem);
+				font-weight: 500;
+				color: var(--nearBlack);
+				align-items: start;
+			}
+
+			svg {
+				width: (24/16rem);
+				height: (24/16rem);
+				padding: 4px;
+			}
+		}
+
+		/* summary card with the apply button; sticks beside the content on desktop */
+		.cs-apply-card {
+			padding: (28/16rem) (24/16rem);
+			border-radius: (32/16rem);
+			background-color: var(--nearBlack);
+			color: var(--white);
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: (20/16rem);
+		}
+
+		.cs-apply-title {
+			font-family: var(--headerFont);
+			font-size: (36/16rem);
+			font-weight: 400;
+			line-height: 1;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			margin: 0;
+			color: var(--white);
+		}
+
+		.cs-facts {
+			width: 100%;
+			margin: 0;
+			display: grid;
+			gap: (12/16rem);
+
+			div {
+				padding-bottom: (12/16rem);
+				border-bottom: 1px solid var(--darkLine);
+				display: flex;
+				justify-content: space-between;
+				gap: (16/16rem);
+			}
+
+			dt {
+				font-size: (12/16rem);
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				color: var(--quietText);
+			}
+
+			dd {
+				font-size: (14/16rem);
+				font-weight: 600;
+				text-align: right;
+				margin: 0;
+			}
+		}
+
+		.cs-apply-card .cs-button-solid {
+			width: 100%;
+		}
+
+		.cs-apply-note {
+			font-size: (13/16rem);
+			line-height: 1.5;
+			margin: 0;
+			color: var(--quietText);
+		}
+	}
+
+	/* the role list follows straight on */
+	#job-details + #open-roles {
+		background-color: var(--white);
+	}
+}
+
+/* Desktop - 900px: content on the left, apply card beside it */
+@media only screen and (min-width: 56.25rem) {
+	#job-details {
+		.cs-container {
+			grid-template-columns: minmax(0, 1fr) (360/16rem);
+			align-items: start;
+			gap: (24/16rem);
+		}
+
+		.cs-block {
+			padding: (40/16rem) (44/16rem);
+			border-radius: (40/16rem);
+		}
+
+		.cs-apply-card {
+			padding: (32/16rem) (28/16rem);
+			border-radius: (40/16rem);
+			position: sticky;
+			/* clears the fixed nav */
+			top: (104/16rem);
+		}
+	}
 }

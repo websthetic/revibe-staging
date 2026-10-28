@@ -1,0 +1,27 @@
+{# Foot and ankle pain anatomy drawing from the dev handover. Its data-k parts match the problem keys in _data/hurtPages/foot-ankle.js #}
+<svg class="anat" viewBox="0 0 400 520" role="img" aria-labelledby="anat-t">
+          <title id="anat-t">The lower leg, ankle and foot from the side, showing the Achilles tendon, plantar fascia, ankle ligaments and shin</title>
+          <defs>
+            <radialGradient id="glow"><stop offset="0" stop-color="#00AD85" stop-opacity=".5"/><stop offset="1" stop-color="#00AD85" stop-opacity="0"/></radialGradient>
+            <linearGradient id="boneG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFDF8"/><stop offset=".55" stop-color="#ECE6DA"/><stop offset="1" stop-color="#C7BEAC"/></linearGradient>
+            <linearGradient id="boneS" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset=".35" stop-color="#000" stop-opacity="0"/><stop offset=".7" stop-color="#fff" stop-opacity=".12"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></linearGradient>
+            <pattern id="fib" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(18)"><rect width="7" height="7" fill="#7FD6C2" fill-opacity=".16"/><path d="M0 3.5 H7" stroke="#7FD6C2" stroke-opacity=".55" stroke-width="1.6"/></pattern>
+            <pattern id="fibOn" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(18)"><rect width="7" height="7" fill="#00AD85" fill-opacity=".75"/><path d="M0 3.5 H7" stroke="#B9F2E4" stroke-opacity=".9" stroke-width="1.6"/></pattern>
+            <filter id="grain" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 .42  0 0 0 0 .38  0 0 0 0 .32  0 0 0 .55 0" result="c"/><feComposite in="c" in2="SourceGraphic" operator="in" result="t"/><feDropShadow in="SourceGraphic" dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity=".45" result="sh"/><feMerge><feMergeNode in="sh"/><feMergeNode in="t"/></feMerge></filter>
+          </defs>
+          <circle class="halo" cx="200" cy="270" r="200" fill="url(#glow)"/>
+          <g class="zw">
+          <path class="bone" d="M148 0 L212 0 C214 110 214 220 216 318 C218 346 204 362 182 362 C160 362 146 346 148 318 Z"/><path class="bshade" d="M148 0 L212 0 C214 110 214 220 216 318 C218 346 204 362 182 362 C160 362 146 346 148 318 Z"/>
+          <path class="bone" d="M220 0 L238 0 L238 338 C238 346 226 350 222 344 Z" opacity=".7"/><path class="bshade" d="M220 0 L238 0 L238 338 C238 346 226 350 222 344 Z"/>
+          <path class="detail" d="M180 20 C178 120 178 220 182 330"/>
+          <path class="part ln p-shin" data-k="shin" d="M144 60 C138 140 140 220 146 300"/>
+          <path class="bone" d="M118 372 C148 352 222 352 254 372 C302 392 350 418 382 446 C394 460 386 478 368 478 L150 478 C108 478 90 452 96 420 C100 396 106 382 118 372 Z"/><path class="bshade" d="M118 372 C148 352 222 352 254 372 C302 392 350 418 382 446 C394 460 386 478 368 478 L150 478 C108 478 90 452 96 420 C100 396 106 382 118 372 Z"/>
+          <path class="detail" d="M140 400 C180 392 230 396 270 412 M290 424 L360 462 M270 432 L340 470 M250 440 L316 474"/>
+          <path class="part ln p-achilles" data-k="achilles" d="M136 160 C128 240 118 320 110 410"/>
+          <path class="part ln p-plantar" data-k="plantar" d="M112 472 C190 488 290 488 356 472"/>
+          <path class="part ln p-sprain" data-k="sprain" d="M226 346 L262 384 M232 360 L272 360"/>
+          <path class="part scar p-surgery" data-k="surgery" d="M224 226 L224 420"/>
+          <g class="spot" data-k="sprain" transform="translate(252 372)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="achilles" transform="translate(122 300)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="plantar" transform="translate(230 486)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="shin" transform="translate(142 140)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="surgery" transform="translate(238 280)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
+          </g>
+          <g class="callout" aria-hidden="true"><path class="co-line"/><circle class="co-dot" r="5"/><rect class="co-bg" height="48" rx="24"/><text class="co-t"></text></g>
+        </svg>

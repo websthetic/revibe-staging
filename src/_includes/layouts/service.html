@@ -1,0 +1,422 @@
+{#
+    Shared layout for service pages (physiotherapy, chiropractic, ...).
+    A page sets in its front matter:
+      service:    key of its content file in _data/services/ (e.g. "chiropractic")
+      pageStyles: optional page-only stylesheet name (e.g. "chiropractic" loads /assets/css/chiropractic.css)
+    Shared section styles are in service.less; the FAQ, clinic cards and related services
+    are components (components/*.html) styled in global.less.
+#}
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/service.css">
+    {% if pageStyles %}<link rel="stylesheet" href="/assets/css/{{ pageStyles }}.css">{% endif %}
+    <script defer src="/assets/js/care-map.js"></script>
+    <script defer src="/assets/js/team-scroll.js"></script>
+{% endblock %}
+
+{% block body %}
+    {% set s = services[service] %}
+
+    <!-- ============================================ -->
+    <!--                    Hero                      -->
+    <!-- ============================================ -->
+
+    <section id="service-hero" aria-labelledby="service-hero-title">
+        <div class="cs-container">
+            {# --chars lets the CSS shrink long titles so they stay on one line on desktop #}
+            {% set titleStyle = 'style="--chars: ' + s.hero.title.length + ';"' %}
+            <h1 class="cs-title" id="service-hero-title" {{ titleStyle | safe }}>{{ s.hero.title }}</h1>
+            <div class="cs-grid">
+                <div class="cs-content">
+                    <p class="cs-text">{{ s.hero.text }}</p>
+                    <div class="cs-actions">
+                        {# hero.buttons replaces the default pair; outline: true for the second style,
+                           request: true opens the Request to book pop-up #}
+                        {% if s.hero.buttons %}
+                        {% for button in s.hero.buttons %}
+                        {% if button.request %}
+                        <a href="/" class="cs-button-solid cs-hover-dark" data-request data-service="{{ s.requestService }}" aria-haspopup="dialog">{{ button.label }}</a>
+                        {% else %}
+                        <a href="{{ button.url }}" class="{% if button.outline %}cs-button-outline{% else %}cs-button-solid cs-hover-dark{% endif %}">{{ button.label }}</a>
+                        {% endif %}
+                        {% endfor %}
+                        {% else %}
+                        <a href="/" class="cs-button-solid cs-hover-dark" data-request data-service="{{ s.requestService }}" aria-haspopup="dialog">Request to book</a>
+                        <a href="/" class="cs-button-outline" data-book aria-haspopup="dialog">Book online</a>
+                        {% endif %}
+                    </div>
+                    <p class="cs-proof"><strong>{{ s.hero.proofBold }}</strong> {{ s.hero.proof }}</p>
+                </div>
+                <!-- three stacked photos, echoing the three waves of the Revibe monogram -->
+                <div class="cs-waves">
+                    {% for image in s.hero.images %}
+                    {% set imgStyle = 'style="object-position: ' + image.position + ';"' %}
+                    <div class="cs-wave">
+                        <img src="{% getUrl image.src | resize({ width: 1000 }) | webp %}" alt="{{ image.alt }}" {{ imgStyle | safe }} width="1200" height="800" {% if loop.index == 2 %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--            Is this right for me?             -->
+    <!-- ============================================ -->
+
+    {# optional: pages without a fit key (the naturopathic sub-pages) skip this section #}
+    {% if s.fit %}
+    <section id="fit" class="cs-section" aria-labelledby="fit-title">
+        <div class="cs-container">
+            <div class="cs-section-header">
+                <h2 class="cs-title cs-section-title" id="fit-title">{{ s.fit.title }}</h2>
+                <p class="cs-section-text">{{ s.fit.text }}</p>
+            </div>
+            <ul class="cs-mosaic{% if not s.fit.photo %} cs-mosaic-no-photo{% endif %}{% if s.fit.layout %} cs-mosaic-{{ s.fit.layout }}{% endif %}">
+                {% for tile in s.fit.tiles %}
+                <li class="cs-tile-item cs-area-{{ tile.area }}{% if tile.wide %} cs-wide{% endif %}">
+                    {% if tile.url %}
+                    <a href="{{ tile.url }}" class="cs-tile cs-tile-{{ tile.colour }}">
+                        <span class="cs-quote">{{ tile.quote }}<span class="cs-visually-hidden"> {{ tile.topic }}</span></span>
+                        <span class="cs-tile-icon">{% include "components/icons/arrow.html" %}</span>
+                    </a>
+                    {% else %}
+                    <div class="cs-tile cs-tile-{{ tile.colour }}">
+                        <span class="cs-quote">{{ tile.quote }}</span>
+                    </div>
+                    {% endif %}
+                </li>
+                {% if loop.index == 1 and s.fit.photo %}
+                <li class="cs-tile-photo" aria-hidden="true">
+                    {% set imgStyle = 'style="object-position: ' + (s.fit.photo.position or "center 40%") + ';"' %}
+                    <img src="{% getUrl s.fit.photo.src | resize({ width: 900 }) | webp %}" alt="" {{ imgStyle | safe }} width="1200" height="800" loading="lazy" decoding="async">
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    {% endif %}
+
+    {% set steps = s.firstAppointment %}
+    {% set requestService = s.requestService %}
+    {% include "components/steps.html" %}
+
+    <!-- ============================================ -->
+    <!--         Types / what we treat            -->
+    <!-- ============================================ -->
+
+    <section id="types" class="cs-section" aria-labelledby="types-title">
+        <div class="cs-container">
+            <div class="cs-section-header">
+                <h2 class="cs-title cs-section-title" id="types-title">{{ s.types.title }}</h2>
+                <p class="cs-section-text">{{ s.types.text }}</p>
+            </div>
+            {# items with a text description show as cards; otherwise an arrow list of links.
+               A card can also have a photo (image, alt, position), a link ({ label, url }) and dark: true.
+               types.columns: 3 keeps the cards three across on wide screens (the default is four). #}
+            {% if s.types.items[0].text %}
+            <ul class="cs-kinds{% if s.types.items.length == 2 %} cs-kinds-two{% endif %}{% if s.types.columns == 3 %} cs-kinds-three{% endif %}">
+                {% for item in s.types.items %}
+                <li class="cs-kind{% if item.colour %} cs-kind-{{ item.colour }}{% endif %}{% if item.dark %} cs-kind-dark{% endif %}"{% if item.id %} id="{{ item.id }}"{% endif %}>
+                    {% if item.image %}
+                    {% set imgStyle = 'style="object-position: ' + item.position + ';"' %}
+                    <div class="cs-kind-picture"><img src="{% getUrl item.image | resize({ width: 700 }) | webp %}" alt="{{ item.alt }}" {{ imgStyle | safe }} width="1200" height="800" loading="lazy" decoding="async"></div>
+                    {% endif %}
+                    <h3 class="cs-kind-title">{{ item.label }}</h3>
+                    <p class="cs-kind-text">{{ item.text }}</p>
+                    {% if item.link %}<a href="{{ item.link.url }}" class="cs-kind-link">{{ item.link.label }}<span class="cs-visually-hidden"> {{ item.label | lower }}</span><span class="cs-kind-arrow">{% include "components/icons/arrow.html" %}</span></a>{% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <ul class="cs-index">
+                {% for item in s.types.items %}
+                <li{% if item.id %} id="{{ item.id }}"{% endif %}>
+                    <a href="{{ item.url }}" class="cs-index-link">
+                        <span class="cs-index-name">{{ item.label }}</span>
+                        <span class="cs-icon-arrow">{% include "components/icons/arrow.html" %}</span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </section>
+
+    {% if s.insurers %}
+    {% set ins = s.insurers %}
+    <!-- ============================================ -->
+    <!--            Which insurers do you bill?       -->
+    <!-- ============================================ -->
+
+    {# optional (direct billing): the insurer list with a search (insurer-search.js); phones show the first six until "Show all" #}
+    <section id="insurers" class="cs-section" aria-labelledby="insurers-title">
+        <div class="cs-container">
+            <div class="cs-insurers-head">
+                <h2 class="cs-title cs-section-title" id="insurers-title">{{ ins.title }}</h2>
+                <div>
+                    <label class="cs-insurer-search">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                        <span class="cs-visually-hidden">Search your insurer</span>
+                        <input id="insurer-search" type="search" placeholder="Search your insurer" autocomplete="off">
+                    </label>
+                    <p class="cs-insurer-message" aria-live="polite"></p>
+                </div>
+            </div>
+            <ul class="cs-insurers cs-collapsed" id="insurer-list">
+                {% for insurer in ins.items %}
+                <li class="cs-insurer" data-name="{{ insurer.name }}" data-also="{{ insurer.aliases }}">
+                    <span class="cs-insurer-mono" aria-hidden="true">{{ insurer.mono }}</span>
+                    <span class="cs-insurer-name">{{ insurer.name }}</span>
+                </li>
+                {% endfor %}
+                <li class="cs-insurers-more">
+                    <button type="button" class="cs-insurers-toggle" aria-expanded="false" aria-controls="insurer-list">
+                        <span>Show all {{ ins.items.length }} insurers</span>
+                        <svg viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </li>
+                <li class="cs-not-listed">
+                    <div>
+                        <h3 class="cs-not-listed-title">{{ ins.notListed.title }}</h3>
+                        <p>{{ ins.notListed.text }}</p>
+                    </div>
+                    <div class="cs-not-listed-phones">
+                        {% for clinic in clinics %}<a href="tel:{{ clinic.phoneForTel }}"><span>{{ clinic.name }}</span><strong>{{ clinic.phone }}</strong></a>{% endfor %}
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <script defer src="/assets/js/insurer-search.js"></script>
+    {% endif %}
+
+    {% if s.results %}
+    {% set res = s.results %}
+    <!-- ============================================ -->
+    <!--           What do results look like?         -->
+    <!-- ============================================ -->
+
+    {# optional (the DUTCH test page): a sample report that enlarges when tapped (report-zoom.js), what it covers, and the kit #}
+    <section id="results" class="cs-section cs-section-dark" aria-labelledby="results-title">
+        <div class="cs-container">
+            <div class="cs-section-header">
+                <h2 class="cs-title cs-section-title" id="results-title">{{ res.title }}</h2>
+                <p class="cs-section-text">{{ res.text }}</p>
+            </div>
+            <div class="cs-results">
+                <figure class="cs-report">
+                    <button type="button" class="cs-report-open" aria-haspopup="dialog" aria-controls="report-zoom">
+                        <img src="{% getUrl res.report.image | resize({ width: 1000 }) | webp %}" alt="{{ res.report.alt }}" width="1000" height="1300" loading="lazy" decoding="async">
+                        <span class="cs-visually-hidden">Enlarge the sample report</span>
+                    </button>
+                    <figcaption>{{ res.report.caption }}</figcaption>
+                </figure>
+                <ul class="cs-results-list">
+                    {% for item in res.items %}<li><h3 class="cs-results-title">{{ item.title }}</h3><p>{{ item.text }}</p></li>{% endfor %}
+                </ul>
+            </div>
+            <div class="cs-kit">
+                <div class="cs-kit-picture">
+                    <img src="{% getUrl res.kit.image | resize({ width: 900 }) | webp %}" alt="{{ res.kit.alt }}" width="1200" height="800" loading="lazy" decoding="async">
+                </div>
+                <div class="cs-kit-body">
+                    <h3 class="cs-kit-title">{{ res.kit.title }}</h3>
+                    <p>{{ res.kit.text }}</p>
+                    <a href="{{ res.kit.button.url }}" class="cs-button-solid">{{ res.kit.button.label }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="cs-report-zoom" id="report-zoom" role="dialog" aria-modal="true" aria-label="Sample report, enlarged" hidden>
+            <button type="button" class="cs-report-close" aria-label="Close">&times;</button>
+            <img src="{% getUrl res.report.image | webp %}" alt="{{ res.report.alt }}, enlarged" loading="lazy" decoding="async">
+        </div>
+    </section>
+    <script defer src="/assets/js/report-zoom.js"></script>
+    {% endif %}
+
+    <!-- ============================================ -->
+    <!--      What makes Revibe different?          -->
+    <!-- ============================================ -->
+
+    {# optional: pages without a different key (the naturopathic sub-pages) skip this section #}
+    {% if s.different %}
+    {% set diff = s.different %}
+    <section id="different" class="cs-section" aria-labelledby="different-title">
+        <div class="cs-container">
+            <div class="cs-section-header">
+                <h2 class="cs-title cs-section-title" id="different-title">{{ diff.title }}</h2>
+                <p class="cs-section-text">{{ diff.text }}</p>
+            </div>
+            <ul class="cs-proof-grid">
+                <li class="cs-card cs-card-licensed">
+                    <ul class="cs-faces" aria-label="Revibe {{ s.name | lower }} practitioners">
+                        {# up to six faces; anyone without a square crop is skipped #}
+                        {% for key in s.team.members %}{% if team[key].face and loop.index <= 6 %}
+                        <li><img src="{{ team[key].face }}" alt="{{ team[key].name }}" width="320" height="320" loading="lazy" decoding="async"></li>
+                        {% endif %}{% endfor %}
+                    </ul>
+                    <h3 class="cs-card-title">{{ diff.licensed.title }}</h3>
+                    <p class="cs-card-text">{{ diff.licensed.text }}{% if diff.licensed.linkLabel %} <a href="{{ diff.licensed.linkUrl }}">{{ diff.licensed.linkLabel }}</a>{{ diff.licensed.textAfter }}{% endif %}</p>
+                </li>
+                <li class="cs-card cs-card-hands">
+                    <div class="cs-card-picture">
+                        {% set imgStyle = 'style="object-position: ' + diff.hands.position + ';"' %}
+                        <img src="{% getUrl diff.hands.image | resize({ width: 900 }) | webp %}" alt="{{ diff.hands.alt }}" {{ imgStyle | safe }} width="1200" height="800" loading="lazy" decoding="async">
+                    </div>
+                    <div class="cs-card-body">
+                        <h3 class="cs-card-title">{{ diff.hands.title }}</h3>
+                        <p class="cs-card-text">{{ diff.hands.text }}</p>
+                    </div>
+                </li>
+                <li class="cs-card cs-card-cotreat">
+                    <h3 class="cs-card-title">{{ diff.coTreat.title }}</h3>
+                    <p class="cs-card-text">{{ diff.coTreat.text }}</p>
+                </li>
+                <li class="cs-card cs-card-caremap">
+                    <h3 class="cs-card-title">{{ diff.careMap.title }}</h3>
+                    <p class="cs-card-text">{{ diff.careMap.text }} <a href="#care-map" data-caremap aria-haspopup="dialog">{{ diff.careMap.linkLabel }}</a>.</p>
+                </li>
+                <li class="cs-card cs-card-billing">
+                    <h3 class="cs-card-title">{{ diff.billing.title }}</h3>
+                    <p class="cs-card-text">{{ diff.billing.text }}{% if diff.billing.linkLabel %} <a href="{{ diff.billing.linkUrl }}">{{ diff.billing.linkLabel }}</a>.{% endif %}</p>
+                    {% if diff.billing.calls %}
+                    <div class="cs-calls">
+                        {% for clinic in clinics %}
+                        <a href="tel:{{ clinic.phoneForTel }}" class="{% if loop.first %}cs-button-solid cs-button-dark{% else %}cs-button-outline{% endif %}">Call {{ clinic.name }}</a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- ============================================ -->
+    <!--              Who will treat me?              -->
+    <!-- ============================================ -->
+
+    {# three or fewer practitioners: large portraits beside the heading instead of a row.
+       team.columns: 4 sets four across on desktop (the default is six).
+       team.scroll: true makes one row on desktop that slides sideways while the section is pinned (team-scroll.js) #}
+    {% if s.team %}
+    <section id="team" class="cs-section{% if s.team.members.length <= 3 %} cs-team-small{% endif %}{% if s.team.members.length == 3 %} cs-team-three{% endif %}{% if s.team.columns == 4 %} cs-team-cols-4{% endif %}{% if s.team.scroll %} cs-team-scroll{% endif %}" aria-labelledby="team-title">
+        {% if s.team.scroll %}<div class="cs-team-pin">{% endif %}
+        <div class="cs-container">
+            <div class="cs-section-header">
+                <h2 class="cs-title cs-section-title" id="team-title">{{ s.team.title }}</h2>
+                <p class="cs-section-text">{{ s.team.text }}</p>
+            </div>
+            <ul class="cs-people">
+                {% for key in s.team.members %}
+                {% set person = team[key] %}
+                <li class="cs-person">
+                    <a href="{{ person.url }}" class="cs-person-link">
+                        <span class="cs-person-photo">
+                            <img src="{{ person.photo }}" alt="" width="343" height="548" loading="lazy" decoding="async">
+                        </span>
+                        <span class="cs-person-name">{{ person.name }}<span class="cs-visually-hidden">, {{ s.team.role or person.role }}</span></span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% if s.team.scroll %}</div>{% endif %}
+    </section>
+    {% endif %}
+
+    <!-- ============================================ -->
+    <!--               Client reviews                 -->
+    <!-- ============================================ -->
+
+    {# optional: pages without a reviews key skip this section #}
+    {% if s.reviews %}
+    {% set rv = s.reviews %}
+    <section id="service-reviews" class="cs-section" aria-labelledby="service-reviews-title">
+        <div class="cs-container">
+            <div class="cs-aside">
+                <h2 class="cs-title cs-section-title" id="service-reviews-title">{{ rv.title }}</h2>
+                <p class="cs-rating">
+                    <span class="cs-rating-number">{{ rv.rating }}</span>
+                    <span class="cs-rating-label"><span class="cs-rating-count">{{ rv.count }}</span> Google reviews</span>
+                </p>
+                <a class="cs-source" href="{{ home.reviews.allUrl }}" target="_blank" rel="noopener">{{ rv.allLabel }}</a>
+            </div>
+            <ul class="cs-quotes">
+                {% for review in rv.items %}
+                <li class="cs-quote-item{% if loop.first %} cs-lead{% endif %}">
+                    <figure class="cs-quote-card">
+                        <blockquote class="cs-quote-text">{{ review.quote }}</blockquote>
+                        <figcaption class="cs-quote-author">
+                            <span class="cs-avatar" aria-hidden="true">{{ review.initials }}</span>
+                            <span class="cs-author-name">{{ review.name }}</span>
+                        </figcaption>
+                    </figure>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- ============================================ -->
+    <!--                  Statement                   -->
+    <!-- ============================================ -->
+
+    <section id="service-statement" class="cs-section" aria-label="Revibe's promise">
+        <div class="cs-container">
+            <p class="cs-title">
+                Athlete-grade care,
+                {% set imgStyle = 'style="object-position: ' + s.statement.position + ';"' %}
+                <span class="cs-inline-photo"><img src="{% getUrl s.statement.image | resize({ width: 500 }) | webp %}" alt="{{ s.statement.alt }}" {{ imgStyle | safe }} width="1200" height="800" loading="lazy" decoding="async"></span>
+                reimagined for every <span class="cs-color">body</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--          Covered by insurance?              -->
+    <!-- ============================================ -->
+
+    {# optional: pages without an insurance key skip this section #}
+    {% if s.insurance %}
+    {% set ins = s.insurance %}
+    <section id="insurance" class="cs-section" aria-labelledby="insurance-title">
+        <div class="cs-container">
+            <div class="cs-content">
+                <h2 class="cs-title cs-section-title" id="insurance-title">{{ ins.title }}</h2>
+                <p class="cs-section-text">{{ ins.text }}</p>
+            </div>
+            <div class="cs-billing-card">
+                <p class="cs-billing-title">{{ ins.cardTitle }}</p>
+                <p class="cs-billing-text">{{ ins.cardText }} <a href="{{ ins.linkUrl }}">{{ ins.linkLabel }}</a>.</p>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if s.related %}
+    {% set related = s.related %}
+    {% include "components/related-services.html" %}
+    {% endif %}
+
+    {% set careMapTitle = s.careMap.title %}
+    {% set careMapText = s.careMap.text %}
+    {% set careMapButton = s.careMap.button %}
+    {% set careMapLight = true %}
+    {% include "sections/care-map.html" %}
+
+    {% set clinicCards = s.locations %}
+    {% include "components/clinic-cards.html" %}
+
+    {% set faq = s.faq %}
+    {% include "components/faq.html" %}
+
+    {% include 'sections/cta.html' %}
+
+    {% set stickyLabel = s.stickyLabel %}
+    {% include "components/sticky-book.html" %}
+{% endblock %}

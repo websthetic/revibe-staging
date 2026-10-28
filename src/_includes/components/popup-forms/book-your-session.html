@@ -1,0 +1,39 @@
+<!-- ============================================ -->
+<!--         Pop-up: Book your session            -->
+<!-- ============================================ -->
+{#
+    Opened by any link or button with data-book (see /assets/js/popup-forms.js).
+    The clinic someone picks is remembered and marked "Your clinic" next time.
+    Clinic details and Jane links come from _data/clinics.js.
+#}
+<div class="cs-popup cs-book-popup" id="book-popup" role="dialog" aria-modal="true" aria-labelledby="book-popup-title" hidden>
+    <div class="cs-popup-card">
+        <button type="button" class="cs-popup-close" aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </button>
+        <h2 class="cs-popup-title" id="book-popup-title">{{ popupForms.book.title }}</h2>
+        <p class="cs-popup-text">{{ popupForms.book.text }}</p>
+        <ul class="cs-clinics">
+            {% for clinic in clinics %}
+            <li>
+                <a class="cs-clinic-link" href="{{ clinic.janeUrl }}" data-clinic="{{ clinic.key }}" rel="noopener">
+                    <span class="cs-clinic-photo">
+                        <img src="{% getUrl clinic.image | resize({ width: 600 }) | webp %}" alt="" width="{{ clinic.width }}" height="{{ clinic.height }}" loading="lazy" decoding="async">
+                    </span>
+                    <span class="cs-clinic-details">
+                        <span class="cs-clinic-name">{{ clinic.name }}</span>
+                        <span>{{ clinic.street }}</span>
+                        <span>{{ clinic.phone }}</span>
+                        <span class="cs-clinic-yours">Your clinic</span>
+                    </span>
+                    <span class="cs-clinic-go" aria-hidden="true">Book in {{ clinic.name }}</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        <p class="cs-popup-note">
+            Not sure what to book? <a href="{{ careMap.url }}" data-caremap aria-haspopup="dialog">Take the Care Map</a> or call
+            {% for clinic in clinics %}<a href="tel:{{ clinic.phoneForTel }}">{{ clinic.name }}</a>{% if not loop.last %} or {% endif %}{% endfor %}.
+        </p>
+    </div>
+</div>

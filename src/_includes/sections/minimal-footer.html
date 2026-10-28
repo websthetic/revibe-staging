@@ -1,0 +1,16 @@
+<!-- ============================================ -->
+<!--               Minimal Footer                 -->
+<!-- ============================================ -->
+{# Short footer for pages without the main nav (chrome: "minimal" in front matter). #}
+<footer id="cs-minimal-footer">
+    <p class="cs-mission">Athlete-grade care, reimagined for every <span class="cs-color">body</span></p>
+    <div class="cs-row">
+        <span class="cs-mark" aria-hidden="true">
+            <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-site-2026/revibe-logo-combo-trademark_black.png" alt="" width="124" height="124" loading="lazy" decoding="async">
+        </span>
+        {% for clinic in clinics %}<span>{{ clinic.street }}, {{ clinic.name }}</span>{% endfor %}
+        <a href="/">revibeto.com</a>
+        <span>Copyright &copy; {% year %} Revibe To. Inc</span>
+        {% for link in navigation.footer.legal %}<a href="{{ link.url }}">{{ link.label }}</a>{% endfor %}
+    </div>
+</footer>

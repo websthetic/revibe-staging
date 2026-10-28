@@ -1,0 +1,13 @@
+{#
+    Booking bar pinned to the bottom of the screen on phones (hidden from 900px up).
+    Set stickyLabel before including, e.g. "Book physiotherapy". The button opens the Book your session pop-up,
+    or the free consult pop-up when stickyConsult is true.
+#}
+<div class="cs-sticky-book">
+    <span class="cs-sticky-label">{{ stickyLabel }}</span>
+    {% if stickyConsult %}
+    <a href="/" class="cs-button-solid" data-consult aria-haspopup="dialog">Free consult</a>
+    {% else %}
+    <a href="/" class="cs-button-solid" data-book aria-haspopup="dialog">Book online</a>
+    {% endif %}
+</div>

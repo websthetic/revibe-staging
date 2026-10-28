@@ -1,0 +1,96 @@
+{#
+    Job listing page (/join-our-team/<key>/). Pages in content/pages/job-listings/ set jobKey in their
+    front matter; the content is in _data/jobListings.js and the styles in careers.less.
+    "Apply now" opens the careers pop-up with this role picked.
+#}
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/careers.css">
+{% endblock %}
+
+{% block body %}
+    {% set job = jobListings[jobKey] %}
+    {% set checkIcon %}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>{% endset %}
+    {% set pinIcon %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>{% endset %}
+    {% set arrowIcon %}{% include "components/icons/arrow.html" %}{% endset %}
+
+    <!-- ============================================ -->
+    <!--                    Hero                      -->
+    <!-- ============================================ -->
+
+    <section id="job-hero" aria-labelledby="job-title">
+        <div class="cs-container">
+            <a class="cs-back" href="/join-our-team/#open-roles">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+                All open roles
+            </a>
+            <h1 class="cs-title" id="job-title">{{ job.title }}</h1>
+            <ul class="cs-tags" aria-label="About this role">
+                <li class="cs-tag">{{ pinIcon | safe }}{{ job.location }}</li>
+                <li class="cs-tag cs-tag-green">{{ job.type }}</li>
+                <li class="cs-tag">{{ job.note }}</li>
+            </ul>
+            <a href="/" class="cs-button-solid" data-apply data-role="{{ job.role }}" aria-haspopup="dialog">Apply now</a>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                  Details                     -->
+    <!-- ============================================ -->
+
+    <section id="job-details" class="cs-section" aria-label="Role details">
+        <div class="cs-container">
+            <div class="cs-sections">
+                {% for section in job.sections %}
+                <section class="cs-block" aria-labelledby="job-section-{{ loop.index }}">
+                    <h2 class="cs-block-title" id="job-section-{{ loop.index }}">{{ section.title }}</h2>
+                    {% for paragraph in section.text %}<p class="cs-block-text">{{ paragraph }}</p>{% endfor %}
+                    {% if section.list %}
+                    <ul class="cs-checks">
+                        {% for item in section.list %}<li>{{ checkIcon | safe }}<span>{{ item }}</span></li>{% endfor %}
+                    </ul>
+                    {% endif %}
+                </section>
+                {% endfor %}
+            </div>
+
+            <aside class="cs-apply-card" aria-labelledby="job-apply-title">
+                <h2 class="cs-apply-title" id="job-apply-title">Apply for this role</h2>
+                <dl class="cs-facts">
+                    <div><dt>Role</dt><dd>{{ job.title }}</dd></div>
+                    <div><dt>Where</dt><dd>{{ job.location }}</dd></div>
+                    <div><dt>Hours</dt><dd>{{ job.type }}</dd></div>
+                </dl>
+                <a href="/" class="cs-button-solid" data-apply data-role="{{ job.role }}" aria-haspopup="dialog">Apply now</a>
+                <p class="cs-apply-note">Takes about five minutes. Have your resume ready as a PDF or Word file.</p>
+            </aside>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--               Other open roles               -->
+    <!-- ============================================ -->
+
+    <section id="open-roles" class="cs-section" aria-labelledby="open-roles-title">
+        <div class="cs-container">
+            <div class="cs-section-header">
+                <h2 class="cs-title cs-section-title" id="open-roles-title">Other open <span class="cs-accent">roles</span></h2>
+                <p class="cs-section-text">{{ careers.roles.text }}</p>
+            </div>
+            <ul class="cs-roles">
+                {% for role in careers.roles.list %}{% if role.title != job.role %}
+                <li>
+                    <a href="{{ role.url }}" class="cs-role"{% if role.url == "/" %} data-apply data-role="{{ role.title }}" aria-haspopup="dialog"{% endif %}>
+                        <span class="cs-role-name">{{ role.title }}<small>{{ role.team }}</small></span>
+                        <span class="cs-role-type">{{ role.type }}</span>
+                        <span class="cs-icon-arrow">{{ arrowIcon | safe }}</span>
+                    </a>
+                </li>
+                {% endif %}{% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    {% include "components/popup-forms/careers-popup-form.html" %}
+{% endblock %}

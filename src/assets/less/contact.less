@@ -1,0 +1,372 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// CONTACT PAGE STYLES
+// /contact-us/ (content/pages/contact-us.html, contact.js). Section padding and headings
+// come from the shared pieces in global.less; the Instagram strip is styled there too.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/*-- -------------------------- -->
+<---           Hero             -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	.cs-accent {
+		color: var(--revibeGreenOnLight);
+	}
+
+	#contact-hero {
+		/* 80px fixed nav + 40px */
+		padding: calc(5rem + 2.5rem) (20/16rem) (56/16rem);
+		background-color: var(--nearBlack);
+		color: var(--white);
+
+		.cs-container {
+			width: 100%;
+			max-width: (1280/16rem);
+			margin: auto;
+			display: grid;
+			gap: (40/16rem);
+		}
+
+		.cs-title {
+			/* 56px - 128px */
+			font-size: clamp(3.5rem, 9vw, 8rem);
+			line-height: 0.86;
+			max-width: (1000/16rem);
+			margin: 0;
+			color: var(--white);
+		}
+
+		.cs-accent {
+			color: var(--revibeGreen);
+		}
+
+		.cs-text {
+			font-size: (17/16rem);
+			line-height: 1.6;
+			max-width: (560/16rem);
+			margin: (24/16rem) 0 0;
+			color: var(--lightText);
+		}
+
+		/* the Care Map prompt */
+		.cs-care-card {
+			padding: (24/16rem);
+			border-radius: (32/16rem);
+			background-color: var(--revibeGreen);
+			color: var(--nearBlack);
+			display: grid;
+			gap: (16/16rem);
+			justify-items: start;
+		}
+
+		.cs-care-icon {
+			width: (52/16rem);
+			height: (52/16rem);
+			border-radius: 50%;
+			background-color: var(--nearBlack);
+			color: var(--revibeGreen);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			svg {
+				width: 26px;
+				height: 26px;
+			}
+		}
+
+		.cs-care-title {
+			font-family: var(--headerFont);
+			font-size: (30/16rem);
+			line-height: 1;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-care-sub {
+			font-size: (15/16rem);
+			font-weight: 600;
+			margin: (6/16rem) 0 0;
+			color: var(--nearBlack);
+		}
+	}
+}
+
+/* Desktop - 900px: the Care Map card sits beside the heading */
+@media only screen and (min-width: 56.25rem) {
+	#contact-hero {
+		padding: calc(5rem + 4rem) (40/16rem) (80/16rem);
+
+		.cs-container {
+			grid-template-columns: minmax(0, 1fr) (380/16rem);
+			align-items: end;
+			gap: (56/16rem);
+		}
+
+		.cs-care-card {
+			padding: (32/16rem) (28/16rem);
+			border-radius: (40/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---        Contact form        -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#contact-form {
+		background-color: var(--offWhite);
+
+		> .cs-container {
+			display: grid;
+			gap: (16/16rem);
+		}
+
+		.cs-form-card {
+			padding: (32/16rem) (22/16rem);
+			border-radius: (32/16rem);
+			background-color: var(--white);
+		}
+
+		.cs-section-title {
+			margin-bottom: (16/16rem);
+		}
+
+		.cs-section-text {
+			margin-bottom: (12/16rem);
+		}
+
+		.cs-form {
+			margin-top: (28/16rem);
+			display: grid;
+			gap: (16/16rem);
+		}
+
+		.cs-honeypot {
+			display: none;
+		}
+
+		.cs-field {
+			min-width: 0;
+			display: grid;
+			gap: (7/16rem);
+
+			label {
+				font-size: (13/16rem);
+				font-weight: 700;
+				color: var(--nearBlack);
+			}
+
+			input,
+			select,
+			textarea {
+				width: 100%;
+				box-sizing: border-box;
+				font: inherit;
+				/* 16px stops iPhones zooming in on focus */
+				font-size: 1rem;
+				padding: (14/16rem) (16/16rem);
+				border: 1.5px solid transparent;
+				border-radius: (18/16rem);
+				background-color: var(--offWhite);
+				color: var(--nearBlack);
+				-webkit-appearance: none;
+				appearance: none;
+				transition:
+					border-color 0.2s ease,
+					background-color 0.2s ease;
+
+				&::placeholder {
+					color: var(--mutedText);
+				}
+
+				&:focus {
+					outline: none;
+					border-color: var(--deepGreen);
+					background-color: var(--white);
+				}
+
+				&[aria-invalid="true"] {
+					border-color: var(--errorRed);
+					background-color: #fff7f2;
+				}
+			}
+
+			select {
+				padding-right: (44/16rem);
+				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230D0D0D' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+				background-repeat: no-repeat;
+				background-position: right 14px center;
+				background-size: 18px;
+			}
+
+			textarea {
+				min-height: (140/16rem);
+				border-radius: (22/16rem);
+				resize: vertical;
+			}
+		}
+
+		.cs-optional {
+			font-weight: 500;
+			color: var(--mutedText);
+		}
+
+		.cs-error {
+			font-size: (12/16rem);
+			font-weight: 600;
+			margin: 0;
+			color: var(--errorRed);
+
+			&:empty {
+				display: none;
+			}
+		}
+
+		.cs-submit {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: (12/16rem) (20/16rem);
+
+			.cs-button-solid {
+				border: 0;
+				cursor: pointer;
+
+				&[disabled] {
+					opacity: 0.6;
+					cursor: progress;
+				}
+			}
+
+			.cs-error {
+				flex-basis: 100%;
+			}
+		}
+
+		.cs-note {
+			font-size: (13/16rem);
+			margin: 0;
+			color: var(--mutedText);
+		}
+
+		/* photo with the contact details over it */
+		.cs-info {
+			min-height: (520/16rem);
+			border-radius: (32/16rem);
+			overflow: hidden;
+			display: flex;
+			align-items: flex-end;
+			position: relative;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+				position: absolute;
+				inset: 0;
+			}
+		}
+
+		.cs-info-card {
+			width: 100%;
+			margin: (12/16rem);
+			padding: (24/16rem) (22/16rem);
+			border-radius: (26/16rem);
+			background-color: var(--nearBlack);
+			color: var(--white);
+			display: grid;
+			gap: (18/16rem);
+			position: relative;
+		}
+
+		.cs-info-item {
+			padding-bottom: (18/16rem);
+			border-bottom: 1px solid var(--darkLine);
+			display: grid;
+			gap: (4/16rem);
+
+			&:last-child {
+				padding-bottom: 0;
+				border-bottom: 0;
+			}
+
+			a {
+				font-size: (16/16rem);
+				font-weight: 600;
+				text-decoration: none;
+				color: var(--white);
+				justify-self: start;
+
+				&:hover {
+					text-decoration: underline;
+					color: var(--revibeGreen);
+				}
+			}
+
+			.cs-info-address {
+				font-size: (14/16rem);
+				font-weight: 500;
+				color: var(--lightText);
+			}
+		}
+
+		.cs-info-label {
+			font-family: var(--bodyFont);
+			font-size: (12/16rem);
+			font-weight: 700;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			margin: 0 0 (2/16rem);
+			color: var(--revibeGreen);
+		}
+	}
+}
+
+/* Tablet - 640px: name and email, phone and source side by side */
+@media only screen and (min-width: 40rem) {
+	#contact-form {
+		.cs-form {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.cs-full {
+			grid-column: 1 / -1;
+		}
+	}
+}
+
+/* Desktop - 900px: form on the left, photo on the right */
+@media only screen and (min-width: 56.25rem) {
+	#contact-form {
+		> .cs-container {
+			grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+			gap: (24/16rem);
+		}
+
+		.cs-form-card {
+			padding: (48/16rem) (48/16rem) (44/16rem);
+			border-radius: (40/16rem);
+		}
+
+		.cs-section-title {
+			/* a little smaller than the page default so it fits the card */
+			font-size: clamp(3.25rem, 4.6vw, 4.5rem);
+		}
+
+		.cs-info {
+			border-radius: (40/16rem);
+		}
+
+		.cs-info-card {
+			margin: (16/16rem);
+			padding: (28/16rem);
+		}
+	}
+}

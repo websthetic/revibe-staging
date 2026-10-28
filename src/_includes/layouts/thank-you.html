@@ -1,0 +1,50 @@
+{#
+    Thank you pages, shown after a booking or enquiry form. No main nav (chrome: "minimal"),
+    hidden from search (noindex) and left out of the sitemap.
+    A page sets in its front matter:
+      thankYou: key of its entry in _data/thankYouData.js
+      chrome: "minimal", noindex: true, eleventyExcludeFromCollections: true
+    Styles: thank-you.less.
+#}
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/thank-you.css">
+{% endblock %}
+
+{% block body %}
+    {% set ty = thankYouData[thankYou] %}
+
+    <section id="thank-you" aria-labelledby="thank-you-title">
+        <div class="cs-container">
+            <div class="cs-content">
+                <h1 class="cs-title" id="thank-you-title">Thank you. <span class="cs-subtitle">Here is what happens next</span></h1>
+                <p class="cs-intro">{{ ty.intro }}</p>
+                <ol class="cs-next">
+                    {% for step in ty.steps %}
+                    <li>
+                        <span class="cs-next-number" aria-hidden="true">{{ loop.index }}</span>
+                        <div><strong>{{ step.title }}</strong><p>{{ step.text }}</p></div>
+                    </li>
+                    {% endfor %}
+                </ol>
+                <div class="cs-book">
+                    {% for clinic in clinics %}
+                    <a href="{{ clinic.janeUrl }}" class="cs-button-solid {% if loop.first %}cs-hover-dark{% else %}cs-button-dark{% endif %}" rel="noopener">Book in {{ clinic.name }}</a>
+                    {% endfor %}
+                </div>
+                <p class="cs-more">{{ ty.morePrefix or "While you wait:" }} {% for link in ty.more %}<a href="{{ link.url }}">{{ link.label }}</a>{% if not loop.last %}, or {% endif %}{% endfor %}{{ ty.moreAfter or "." }}</p>
+            </div>
+            <aside class="cs-gram" aria-label="Revibe on Instagram">
+                <div class="cs-waves" aria-hidden="true">
+                    {% for image in ty.images %}
+                    {% set imgStyle = 'style="object-position: ' + image.position + ';"' %}
+                    <div class="cs-wave"><img src="{% getUrl image.src | resize({ width: 800 }) | webp %}" alt="" {{ imgStyle | safe }} width="1200" height="800" {% if loop.index == 2 %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async"></div>
+                    {% endfor %}
+                </div>
+                <p class="cs-gram-line">{{ ty.instagramLine }}</p>
+                <a class="cs-button-solid cs-button-dark" href="{{ home.instagram.url }}" target="_blank" rel="noopener">{{ home.instagram.handle }} on Instagram</a>
+            </aside>
+        </div>
+    </section>
+{% endblock %}

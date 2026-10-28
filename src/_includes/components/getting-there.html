@@ -1,0 +1,46 @@
+{#
+    "Getting to Revibe <clinic>": the clinic card (photo, address, parking, hours, directions)
+    and the nearby areas. Set before including:
+      here: the clinic from _data/clinics.js (clinicsByKey[key])
+      nearText: the line under "Serving <clinic> and nearby"
+    Styles: #location-getting-there in location.less.
+#}
+<!-- ============================================ -->
+<!--               Getting there                  -->
+<!-- ============================================ -->
+
+<section id="location-getting-there" class="cs-location-section" aria-labelledby="location-getting-there-title">
+    <div class="cs-container">
+        <h2 class="cs-title" id="location-getting-there-title">Getting to Revibe {{ here.name }}</h2>
+        <div class="cs-local">
+            <div class="cs-clinic">
+                <div class="cs-clinic-picture">
+                    <img src="{% getUrl here.image | resize({ width: 800 }) | webp %}" alt="{{ here.alt }}" width="{{ here.width }}" height="{{ here.height }}" loading="lazy" decoding="async">
+                </div>
+                <div class="cs-clinic-body">
+                    <h3 class="cs-clinic-title">{{ here.street }}</h3>
+                    <p>{{ here.intro }}</p>
+                    <ul class="cs-info">
+                        <li>{% include "components/icons/pin.html" %}<span>{{ here.address }}</span></li>
+                        <li>{% include "components/icons/car.html" %}<span>{{ here.travel }}</span></li>
+                        <li>{% include "components/icons/clock.html" %}<span>{{ hoursLine }}</span></li>
+                    </ul>
+                    <div class="cs-actions">
+                        <a href="{{ here.mapsUrl }}" class="cs-button-solid cs-button-dark" target="_blank" rel="noopener">Get directions</a>
+                        <a href="tel:{{ here.phoneForTel }}" class="cs-button-outline">{{ here.phone }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="cs-near">
+                <h3 class="cs-near-title">{{ here.nearby.title }}</h3>
+                <p>{{ nearText }}</p>
+                <ul>
+                    {% for area in here.nearby.areas %}
+                    <li><a href="{{ area.url }}"><span>{{ area.label }}</span>{% include "components/icons/arrow.html" %}</a></li>
+                    {% endfor %}
+                </ul>
+                <p class="cs-also">{{ here.nearby.also }}</p>
+            </div>
+        </div>
+    </div>
+</section>

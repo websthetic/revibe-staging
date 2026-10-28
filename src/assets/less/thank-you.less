@@ -1,0 +1,241 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// THANK YOU PAGE STYLES
+// layouts/thank-you.html. The slim header and footer are in global.less.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#thank-you {
+		padding: (8/16rem) (20/16rem) (56/16rem);
+		background-color: var(--offWhite);
+
+		.cs-container {
+			width: 100%;
+			max-width: (1280/16rem);
+			margin: auto;
+			display: grid;
+			gap: (30/16rem);
+		}
+
+		.cs-content {
+			min-width: 0;
+		}
+
+		.cs-title {
+			/* 64px - 76px */
+			font-size: clamp(4rem, 19vw, 4.75rem);
+			line-height: 0.84;
+			max-width: none;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-subtitle {
+			font-size: 0.62em;
+			line-height: 0.92;
+			margin-top: (10/16rem);
+			display: block;
+			color: var(--deepGreen);
+		}
+
+		.cs-intro {
+			font-size: 1rem;
+			line-height: 1.6;
+			max-width: (480/16rem);
+			margin: (18/16rem) 0 0;
+			color: var(--charcoal);
+		}
+
+		.cs-next {
+			list-style: none;
+			margin: (24/16rem) 0 0;
+			padding: 0;
+			display: flex;
+			flex-direction: column;
+			gap: (12/16rem);
+
+			li {
+				padding: (16/16rem) (18/16rem) (16/16rem) (14/16rem);
+				border-radius: (28/16rem);
+				background-color: var(--white);
+				display: grid;
+				grid-template-columns: (44/16rem) minmax(0, 1fr);
+				align-items: start;
+				gap: (14/16rem);
+			}
+
+			strong {
+				font-size: (15/16rem);
+				margin-bottom: 2px;
+				display: block;
+				color: var(--nearBlack);
+			}
+
+			p {
+				font-size: (13.5/16rem);
+				line-height: 1.55;
+				margin: 0;
+				color: var(--charcoal);
+			}
+		}
+
+		.cs-next-number {
+			width: (44/16rem);
+			height: (44/16rem);
+			font-family: var(--headerFont);
+			font-size: (24/16rem);
+			line-height: 1;
+			border-radius: 50%;
+			background-color: var(--revibeGreen);
+			color: var(--nearBlack);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.cs-book {
+			margin-top: (20/16rem);
+			display: flex;
+			flex-wrap: wrap;
+			gap: (10/16rem);
+
+			a {
+				flex: 1 1 (200/16rem);
+				text-align: center;
+			}
+		}
+
+		.cs-more {
+			font-size: (13/16rem);
+			line-height: 1.55;
+			margin: (16/16rem) 0 0;
+			color: var(--charcoal);
+
+			a {
+				font-weight: 700;
+				color: var(--deepGreen);
+			}
+		}
+
+		/* green Instagram card with three stacked pills */
+		.cs-gram {
+			padding: (18/16rem) (18/16rem) (28/16rem);
+			border-radius: (40/16rem);
+			background-color: var(--revibeGreen);
+			display: flex;
+			flex-direction: column;
+			gap: (20/16rem);
+
+			> .cs-button-solid {
+				align-self: flex-start;
+				margin: 0 (8/16rem);
+			}
+
+			/* the black button's green hover wouldn't show on green, so it fills white */
+			.cs-button-dark:before {
+				background-color: var(--white);
+			}
+		}
+
+		.cs-waves {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: (8/16rem);
+		}
+
+		.cs-wave {
+			width: 74%;
+			height: (92/16rem);
+			border-radius: 999px;
+			background-color: var(--revibeGreenOnLight);
+			overflow: hidden;
+
+			&:nth-child(2) {
+				width: 100%;
+				height: (132/16rem);
+			}
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+
+		.cs-gram-line {
+			font-family: var(--headerFont);
+			font-size: (36/16rem);
+			line-height: 0.9;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			margin: 0;
+			padding: 0 (8/16rem);
+			color: var(--nearBlack);
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#thank-you {
+		padding: (12/16rem) (40/16rem) (72/16rem);
+
+		.cs-container {
+			min-height: calc(100vh - 6rem);
+			grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+			align-items: center;
+			gap: (64/16rem);
+		}
+
+		.cs-title {
+			/* 96px - 140px */
+			font-size: clamp(6rem, 9vw, 8.75rem);
+		}
+
+		.cs-intro {
+			font-size: (17/16rem);
+		}
+
+		.cs-next {
+			margin-top: (28/16rem);
+
+			li {
+				padding: (18/16rem) (26/16rem) (18/16rem) (16/16rem);
+			}
+
+			p {
+				font-size: (14/16rem);
+			}
+		}
+
+		.cs-book a {
+			flex: none;
+		}
+
+		.cs-gram {
+			padding: (22/16rem) (22/16rem) (36/16rem);
+			border-radius: (56/16rem);
+			gap: (26/16rem);
+
+			> .cs-button-solid {
+				margin: 0 (14/16rem);
+			}
+		}
+
+		.cs-wave {
+			height: (130/16rem);
+
+			&:nth-child(2) {
+				height: (190/16rem);
+			}
+		}
+
+		.cs-gram-line {
+			/* 40px - 54px */
+			font-size: clamp(2.5rem, 3.6vw, 3.375rem);
+			padding: 0 (14/16rem);
+		}
+	}
+}

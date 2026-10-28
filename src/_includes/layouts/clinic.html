@@ -1,0 +1,139 @@
+{#
+    Clinic pages (/markham/, /locations/mississauga/).
+    A page sets in its front matter:
+      clinic: key of the clinic in _data/clinics.js, also its content file in _data/clinicPages/
+    Address, hours, nearby areas and the service list come from clinics.js; the FAQ from clinicFaq.js.
+    Shares its hero, getting there and section styles with the location pages (location.less);
+    the services grid and gallery are in there too. Care Map, billing, reviews and licensed care
+    are the shared sections, styled in global.less.
+#}
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/location.css">
+    <script defer src="/assets/js/care-map.js"></script>
+    <script defer src="/assets/js/home-sections.js"></script>
+{% endblock %}
+
+{% block body %}
+    {% set c = clinicPages[clinic] %}
+    {% set here = clinicsByKey[clinic] %}
+    {% set there = clinicsByKey[here.otherClinic] %}
+
+    <!-- ============================================ -->
+    <!--                    Hero                      -->
+    <!-- ============================================ -->
+
+    <section id="location-hero" class="cs-clinic-hero" aria-labelledby="location-hero-title">
+        <div class="cs-container">
+            <div class="cs-content">
+                <h1 class="cs-title" id="location-hero-title">Revibe <span class="cs-subtitle">{{ here.name }}</span></h1>
+                <p class="cs-text">{{ c.text }}</p>
+                <ul class="cs-info">
+                    <li>{% include "components/icons/pin.html" %}<a href="{{ here.mapsUrl }}" target="_blank" rel="noopener">{{ here.address }}</a></li>
+                    <li>{% include "components/icons/phone.html" %}<a href="tel:{{ here.phoneForTel }}">{{ here.phone }}</a></li>
+                    <li>{% include "components/icons/clock.html" %}<span>{{ here.hours | join(". ") }}.</span></li>
+                </ul>
+                <div class="cs-actions">
+                    <a href="/" class="cs-button-solid cs-hover-dark" data-request data-service="Not sure yet" data-clinic="{{ here.key }}" aria-haspopup="dialog">Request to book</a>
+                    <a href="{{ here.mapsUrl }}" class="cs-button-outline" target="_blank" rel="noopener">Get directions</a>
+                </div>
+            </div>
+            <div class="cs-visual">
+                {% for image in c.images %}
+                {% set imgStyle = 'style="object-position: ' + image.position + ';"' %}
+                <div class="cs-picture cs-picture-{{ loop.index }}">
+                    <img src="{% getUrl image.src | resize({ width: 900 }) | webp %}" alt="{{ image.alt }}" {{ imgStyle | safe }} width="900" height="1100" {% if loop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+                </div>
+                {% endfor %}
+                <div class="cs-badge">
+                    <span class="cs-badge-number">5.0</span>
+                    {% include "components/stars.html" %}
+                    <span class="cs-badge-text">600+ Google reviews</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                  Services                    -->
+    <!-- ============================================ -->
+
+    <section id="clinic-services" class="cs-location-section" aria-labelledby="clinic-services-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="clinic-services-title">{{ c.servicesTitle }}</h2>
+            <p class="cs-text">{{ c.servicesText }}</p>
+            <ul class="cs-services">
+                {% for p in here.locationPages %}
+                <li>
+                    <a href="{{ "/location/" + here.key + "/" + p.slug + "/" if locationPages[here.key][p.slug] else "/" }}" class="cs-service">
+                        <span>
+                            <span class="cs-service-name">{{ p.label }}</span>
+                            <span class="cs-service-text">{{ p.blurb }}</span>
+                        </span>
+                        <span class="cs-go">{% include "components/icons/arrow.html" %}</span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                  Gallery                     -->
+    <!-- ============================================ -->
+
+    <section id="clinic-gallery" class="cs-location-section" aria-labelledby="clinic-gallery-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="clinic-gallery-title">{{ c.galleryTitle }}</h2>
+            <p class="cs-text">{{ c.galleryText }}</p>
+            {# four photos sit in one row on desktop; more make a large first photo with a grid beside it #}
+            <ul class="cs-gallery{% if c.gallery.length == 4 %} cs-gallery-four{% endif %}">
+                {% for item in c.gallery %}
+                {% set imgStyle = 'style="object-position: ' + item.position + ';"' %}
+                <li>
+                    <figure class="cs-figure">
+                        <img src="{% getUrl item.src | resize({ width: 900 }) | webp %}" alt="{{ item.alt }}" {{ imgStyle | safe }} width="900" height="1100" loading="lazy" decoding="async">
+                        <figcaption>{{ item.caption }}</figcaption>
+                    </figure>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    {% set careMapTitle = c.careMapTitle %}
+    {% set careMapText = c.careMapText %}
+    {% set careMapButton = c.careMapButton %}
+    {% include "sections/care-map.html" %}
+
+    {% include "sections/home/billing.html" %}
+    {% include "sections/home/reviews.html" %}
+    {% include "sections/home/regulators.html" %}
+
+    {% set nearText = c.nearText %}
+    {% include "components/getting-there.html" %}
+
+    {% set faq = clinicFaq %}
+    {% include "components/faq.html" %}
+
+    <!-- ============================================ -->
+    <!--               Other clinic                   -->
+    <!-- ============================================ -->
+
+    <section id="location-more" class="cs-location-section" aria-labelledby="location-more-title">
+        <div class="cs-container cs-container-single">
+            <div>
+                <h2 class="cs-more-title" id="location-more-title">Closer to {{ there.name }}?</h2>
+                <ul class="cs-more-list">
+                    <li><a class="cs-alt" href="{{ there.pageUrl }}">Revibe {{ there.name }}</a></li>
+                    <li><a class="cs-alt" href="{{ navigation.services.allUrl }}">All services</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    {% include "sections/cta.html" %}
+    {% set stickyLabel = "Revibe " + here.name %}
+    {% include "components/sticky-book.html" %}
+{% endblock %}

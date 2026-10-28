@@ -1,0 +1,35 @@
+{#
+    "Where can I see a ...?" clinic cards, one per clinic in _data/clinics.js. Set before including:
+      clinicCards: { title, serviceLabel }
+      serviceLabel adds a "Physiotherapy in Mississauga" style link; leave it out to hide the link.
+      locationPage: that service's location page slug (e.g. "physiotherapy"); the link goes to
+      /location/<clinic>/<slug>/ once _data/locationPages/<clinic>/<slug>.js exists, "/" until then.
+    Styles: .cs-clinic-cards-section in global.less.
+#}
+<!-- ============================================ -->
+<!--                Clinic Cards                  -->
+<!-- ============================================ -->
+
+<section id="clinics" class="cs-section cs-clinic-cards-section" aria-labelledby="clinics-title">
+    <div class="cs-container">
+        <h2 class="cs-title cs-section-title" id="clinics-title">{{ clinicCards.title }}</h2>
+        <ul class="cs-clinic-cards">
+            {% for clinic in clinics %}
+            <li class="cs-clinic-card">
+                <div class="cs-clinic-picture">
+                    <img src="{% getUrl clinic.image | resize({ width: 900 }) | webp %}" alt="{{ clinic.alt }}" width="{{ clinic.width }}" height="{{ clinic.height }}" loading="lazy" decoding="async">
+                </div>
+                <div class="cs-clinic-body">
+                    <h3 class="cs-clinic-title">{{ clinic.name }}</h3>
+                    <address class="cs-clinic-address">{{ clinic.address }}<br><a href="tel:{{ clinic.phoneForTel }}">{{ clinic.phone }}</a></address>
+                    {% if clinicCards.serviceLabel %}
+                    {% set servicePage = locationPages[clinic.key][clinicCards.locationPage] if locationPages[clinic.key] else false %}
+                    <a class="cs-clinic-service" href="{{ "/location/" + clinic.key + "/" + clinicCards.locationPage + "/" if servicePage else "/" }}">{{ clinicCards.serviceLabel }} in {{ clinic.name }}</a>
+                    {% endif %}
+                    <a href="{{ clinic.bookUrl }}" class="cs-button-solid cs-hover-dark">Book in {{ clinic.name }}</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

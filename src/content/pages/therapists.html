@@ -1,0 +1,95 @@
+---
+title: "Our Therapists | Revibe | Mississauga and Markham"
+description: "Meet the Revibe team in Mississauga and Markham: physiotherapists, chiropractors, registered massage therapists, osteopaths and naturopathic doctors. Filter by clinic and service."
+permalink: "/therapists/"
+# content lives in _data/therapists.js (names, roles and photos in _data/team.js)
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/therapists.css">
+    <script defer src="/assets/js/therapists.js"></script>
+{% endblock %}
+
+{% block body %}
+    {% set th = therapists %}
+    {% macro accent(text) %}{{ text | replace("{", '<span class="cs-accent">') | replace("}", "</span>") | safe }}{% endmacro %}
+    {% set igIcon %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>{% endset %}
+
+    <!-- ============================================ -->
+    <!--                    Hero                      -->
+    <!-- ============================================ -->
+
+    <section id="team-hero" aria-labelledby="team-hero-title">
+        <div class="cs-container">
+            <h1 class="cs-title" id="team-hero-title">{{ th.hero.title }}</h1>
+            {# therapists.js shows the clinic and service filters; without it every therapist is listed #}
+            <div class="cs-clinic-pick" role="group" aria-label="Clinic" hidden>
+                <span class="cs-in" aria-hidden="true">In</span>
+                {% for clinic in clinics %}
+                <button type="button" class="cs-clinic-btn" data-clinic="{{ clinic.key }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ clinic.name }}</button>
+                {% endfor %}
+            </div>
+            <p class="cs-text">{{ th.hero.text }}</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                  Therapists                  -->
+    <!-- ============================================ -->
+
+    <section id="team-grid" class="cs-section" aria-label="Therapists">
+        <div class="cs-container">
+            <div class="cs-filters" hidden>
+                <div class="cs-chips" role="group" aria-label="Service">
+                    <button type="button" class="cs-chip" data-service="all" aria-pressed="true">All</button>
+                    {% for service in th.services %}
+                    <button type="button" class="cs-chip" data-service="{{ service.key }}" aria-pressed="false">{{ service.label }}</button>
+                    {% endfor %}
+                </div>
+                <p class="cs-count" aria-live="polite"></p>
+            </div>
+
+            <ul class="cs-people">
+                {% for person in th.people %}
+                {% set member = team[person.member] %}
+                <li class="cs-person" data-clinics="{{ person.clinics | join(' ') }}" data-services="{{ person.services | join(' ') }}">
+                    <div class="cs-person-photo">
+                        {% if member.photo %}
+                        <img src="{% getUrl member.photo | resize({ width: 500 }) | webp %}" alt="" width="500" height="800" loading="lazy" decoding="async">
+                        {% else %}
+                        {% set parts = member.name.split(" ") %}
+                        <span class="cs-initials" aria-hidden="true">{{ parts[0][0] }}{{ parts[parts.length - 1][0] }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="cs-person-info">
+                        <h2 class="cs-person-name">{{ member.name }}</h2>
+                        <p class="cs-person-role">{{ person.role or member.role }}</p>
+                        <p class="cs-person-clinics">{% for key in person.clinics %}{{ clinicsByKey[key].name if clinicsByKey[key] else key }}{% if not loop.last %} · {% endif %}{% endfor %}</p>
+                    </div>
+                    {% if person.instagram %}
+                    <a class="cs-person-ig" href="{{ person.instagram }}" target="_blank" rel="noopener" aria-label="{{ member.name }} on Instagram">{{ igIcon | safe }}</a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+            <p class="cs-empty" hidden>No one at this clinic offers that service yet. Try the other clinic, or see everyone.</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                     CTA                      -->
+    <!-- ============================================ -->
+
+    <section id="team-cta" aria-labelledby="team-cta-title">
+        <img class="cs-cta-bg" src="{% getUrl th.cta.image.src | resize({ width: 1600 }) | webp %}" alt="" width="1600" height="1067" loading="lazy" decoding="async">
+        <div class="cs-container">
+            <h2 class="cs-title" id="team-cta-title">{{ accent(th.cta.title) }}</h2>
+            <div class="cs-side">
+                <p class="cs-text">{{ th.cta.text }}</p>
+                <a href="/" class="cs-button-solid" data-request aria-haspopup="dialog">{{ th.cta.button }}</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

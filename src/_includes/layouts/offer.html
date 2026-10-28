@@ -1,0 +1,160 @@
+{#
+    Offer landing pages for ads (20% off therapy, Recovery 10 pack) and the free consultation pages.
+    A page sets in its front matter:
+      offer: key of its entry in _data/offers.js
+      chrome: "minimal" (slim header and footer, no main nav)
+    The claim form sends to Netlify Forms, then goes to the offer's thank you page (offer.js).
+    Styles: offer.less; the reviews reuse service.less.
+#}
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/service.css">
+    <link rel="stylesheet" href="/assets/css/offer.css">
+    <script defer src="/assets/js/offer.js"></script>
+{% endblock %}
+
+{% block body %}
+    {% set o = offers[offer] %}
+    {% set check %}<svg viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M1.5 6.2l3.6 3.6L12.5 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>{% endset %}
+
+    <!-- ============================================ -->
+    <!--             Offer and Claim Form             -->
+    <!-- ============================================ -->
+
+    <section id="offer-stage" aria-labelledby="offer-title">
+        <div class="cs-photo">
+            <img src="{% getUrl o.stage.image | resize({ width: 900 }) | webp %}" alt="{{ o.stage.alt }}" width="800" height="1200" fetchpriority="high" decoding="async">
+        </div>
+        <div class="cs-offer">
+            <h1 class="cs-title" id="offer-title">{{ o.stage.title }}</h1>
+            <p class="cs-text">{{ o.stage.text }}</p>
+            <div class="cs-price{% if o.stage.percent %} cs-price-percent{% endif %}">
+                <p class="cs-price-now">{{ o.stage.price }}</p>
+                <p class="cs-price-terms">
+                    {% if o.stage.wasPrice %}<s><span class="cs-visually-hidden">Regular price </span>{{ o.stage.wasPrice }}</s>{% endif %}
+                    {% if o.stage.priceLen %}<span class="cs-price-len">{{ o.stage.priceLen }}</span>{% endif %}
+                    {% if o.stage.percent %}<span class="cs-price-label">{{ o.stage.priceLabel }}</span>{% else %}{{ o.stage.priceLabel }}{% endif %}
+                </p>
+            </div>
+            <div class="cs-go">
+                <a href="#claim" class="cs-button-solid cs-button-dark cs-go-button">{{ o.stage.claimLabel }}</a>
+                <p class="cs-proof"><strong>{{ offers.rating }} on Google</strong> from {{ offers.reviewCount }} reviews. {{ o.stage.proof }}</p>
+            </div>
+        </div>
+        <form id="claim" class="cs-claim" name="{{ o.formName }}" method="POST" action="{{ o.thankYouUrl }}" data-netlify="true" netlify-honeypot="bot-field" data-thank-you="{{ o.thankYouUrl }}" aria-labelledby="claim-title">
+            <input type="hidden" name="form-name" value="{{ o.formName }}">
+            <p class="cs-honeypot" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+            <h2 class="cs-claim-title" id="claim-title">{{ o.form.title }}</h2>
+            <p class="cs-claim-intro">{{ o.form.intro }}</p>
+            <div class="cs-fields">
+                <div class="cs-field"><label for="claim-first">First name</label><input id="claim-first" name="first_name" type="text" autocomplete="given-name" required></div>
+                <div class="cs-field"><label for="claim-last">Last name</label><input id="claim-last" name="last_name" type="text" autocomplete="family-name" required></div>
+                <div class="cs-field"><label for="claim-phone">Phone</label><input id="claim-phone" name="phone" type="tel" autocomplete="tel" required></div>
+                <div class="cs-field"><label for="claim-email">Email</label><input id="claim-email" name="email" type="email" autocomplete="email" required></div>
+                <div class="cs-field"><label for="claim-location">Preferred location</label><select id="claim-location" name="location" required>{% for clinic in clinics %}<option>{{ clinic.name }}</option>{% endfor %}</select></div>
+                {% for select in o.form.selects %}
+                <div class="cs-field{% if select.full %} cs-full{% endif %}"><label for="claim-{{ select.name }}">{{ select.label }}</label><select id="claim-{{ select.name }}" name="{{ select.name }}" required>{% for option in select.options %}<option>{{ option }}</option>{% endfor %}</select></div>
+                {% endfor %}
+            </div>
+            <div class="cs-consent">
+                <input id="claim-consent" name="consent" type="checkbox" value="yes" required>
+                <label for="claim-consent">I agree to be contacted by Revibe by phone, text and email about this offer. Unsubscribe any time.</label>
+            </div>
+            <button type="submit" class="cs-button-solid cs-button-dark cs-claim-submit">{{ o.stage.claimLabel }}</button>
+            <p class="cs-claim-status" role="status"></p>
+            <p class="cs-reply">We reply within one business day. If you would rather call, {% for clinic in clinics %}{{ clinic.name }} is <a href="tel:{{ clinic.phoneForTel }}">{{ clinic.phone }}</a>{% if not loop.last %} and {% endif %}{% endfor %}.</p>
+        </form>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                 What You Get                 -->
+    <!-- ============================================ -->
+
+    <section id="offer-get" aria-labelledby="offer-get-title">
+        <div class="cs-figure">
+            <h2 class="cs-title" id="offer-get-title">{{ o.get.title }}</h2>
+            <p class="cs-badge">
+                <span class="cs-badge-big">{{ o.get.badge }}</span>
+                <span class="cs-badge-label">{{ o.get.badgeLabel }}{% if o.get.badgeWas %}<br>instead of <s>{{ o.get.badgeWas }}</s>{% endif %}</span>
+            </p>
+            <p class="cs-fine">{{ o.get.fine }}</p>
+        </div>
+        <ul class="cs-gets">
+            {% for item in o.get.items %}<li><span class="cs-check">{{ check | safe }}</span><span>{{ item }}</span></li>{% endfor %}
+        </ul>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                 The Session                  -->
+    <!-- ============================================ -->
+
+    <section id="offer-session" aria-labelledby="offer-session-title">
+        <div class="cs-head">
+            <h2 class="cs-title" id="offer-session-title">{{ o.session.title }}</h2>
+            <p class="cs-text">{{ o.session.text }}</p>
+        </div>
+        {% if o.session.services %}
+        <ul class="cs-wave" aria-label="Services included">
+            {% for service in o.session.services %}
+            {% set imgStyle = 'style="object-position: ' + service.position + ';"' %}
+            <li class="cs-wave-item">
+                <div class="cs-pill"><img src="{% getUrl service.image | resize({ width: 500 }) | webp %}" alt="{{ service.alt }}" {{ imgStyle | safe }} width="800" height="1200" loading="lazy" decoding="async"></div>
+                <h3 class="cs-wave-title">{{ service.label }}</h3>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="cs-halves{% if o.session.split %} cs-halves-split{% endif %}">
+            {% for half in o.session.halves %}
+            {% set imgStyle = 'style="object-position: ' + half.position + ';"' %}
+            <div class="cs-half cs-half-{{ half.colour }}">
+                <img src="{% getUrl half.image | resize({ width: 1000 }) | webp %}" alt="{{ half.alt }}" {{ imgStyle | safe }} width="1200" height="800" loading="lazy" decoding="async">
+                <div class="cs-half-text">
+                    <p class="cs-half-big" aria-hidden="true">{{ half.big }}</p>
+                    <h3 class="cs-half-title">{{ half.title }}</h3>
+                    <p>{{ half.text }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                   Reviews                    -->
+    <!-- ============================================ -->
+
+    {% set rv = o.reviews %}
+    <section id="service-reviews" class="cs-section" aria-labelledby="service-reviews-title">
+        <div class="cs-container">
+            <div class="cs-aside">
+                <h2 class="cs-title cs-section-title" id="service-reviews-title">{{ rv.title }}</h2>
+                <p class="cs-rating">
+                    <span class="cs-rating-number">{{ offers.rating }}</span>
+                    <span class="cs-rating-label"><span class="cs-rating-count">{{ offers.reviewCount }}</span> Google reviews</span>
+                </p>
+                <p class="cs-offer-reviews-text">{{ rv.text }}</p>
+                <a class="cs-source" href="{{ offers.reviewsUrl }}" target="_blank" rel="noopener">Read every review on Google</a>
+            </div>
+            <ul class="cs-quotes{% if rv.pair %} cs-quotes-pair{% endif %}">
+                {% for review in rv.items %}
+                <li class="cs-quote-item{% if loop.first %} cs-lead{% endif %}">
+                    <figure class="cs-quote-card">
+                        <blockquote class="cs-quote-text">{{ review.quote }}</blockquote>
+                        <figcaption class="cs-quote-author">
+                            <span class="cs-avatar" aria-hidden="true">{{ review.initials }}</span>
+                            <span class="cs-author-name">{{ review.name }}</span>
+                        </figcaption>
+                    </figure>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <!-- phones: the offer stays pinned to the bottom of the screen -->
+    <div class="cs-claimbar">
+        <span class="cs-claimbar-label"><strong>{{ o.bar.big }}</strong>{% if o.bar.was %}<s><span class="cs-visually-hidden">instead of </span>{{ o.bar.was }}</s>{% endif %}{% if o.bar.small %}<span>{{ o.bar.small }}</span>{% endif %}</span>
+        <a href="#claim" class="cs-button-solid">{{ o.stage.claimLabel }}</a>
+    </div>
+{% endblock %}

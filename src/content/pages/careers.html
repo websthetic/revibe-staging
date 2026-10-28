@@ -1,937 +1,258 @@
 ---
-title: "Careers | Revibe"
-description: "Meta description for the page"
-permalink: "/careers/"
+title: "Join Our Team | Careers at Revibe | Mississauga and Markham"
+description: "Join the Revibe team in Mississauga and Markham. Grow your career as a physiotherapist, massage therapist, chiropractor, osteopath or naturopathic doctor with mentorship and room to lead."
+permalink: "/join-our-team/"
+# content lives in _data/careers.js
 ---
 
 {% extends "layouts/base.html" %}
 
 {% block head %}
     <link rel="stylesheet" href="/assets/css/careers.css">
+    <script defer src="/assets/js/careers.js"></script>
 {% endblock %}
 
 {% block body %}
- 
-<!-- ══════════════════════════════════ -->
-<!--           Careers HERO           -->
-<!-- ══════════════════════════════════ -->
-<section id="careers-hero">
-  <div class="hero__bg"></div>
-  <div class="hero__overlay"></div>
- 
-  <div class="hero__content">
-    <h1 class="hero__headline">
-  Build the Future of <em>Performance</em> for Real Life
-</h1>
- 
-    <p class="hero__sub">
-     Revibe is a social wellness house delivering athlete-grade care, reimagined for everyone.
-    </p>
+    {% set c = careers %}
+    {# {word} in a title becomes a green word #}
+    {% macro accent(text) %}{{ text | replace("{", '<span class="cs-accent">') | replace("}", "</span>") | safe }}{% endmacro %}
+    {% set checkIcon %}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>{% endset %}
+    {% set arrowIcon %}{% include "components/icons/arrow.html" %}{% endset %}
 
-    <p class="hero__sub">
-     We help people train, recover, and perform better, while building a culture where clinicians
-grow, collaborate, and genuinely enjoy the work they do.
-    </p>
- 
-    <div class="hero__ctas">
-      <a href="#" class="btn btn--primary">
-        View Open Roles
-      </a>
-      <a href="#" class="btn btn--secondary">
-       Learn about Revibe
-      </a>
-    </div>
-  </div>
- 
- 
- 
-  <div class="hero__rule"></div>
-</section>
+    <!-- ============================================ -->
+    <!--                    Hero                      -->
+    <!-- ============================================ -->
 
-<!-- ============================================ -->
-<!--                     Hero                     -->
-<!-- ============================================ -->
-
-<section id="hero-1946">
-    <div class="cs-container">
-        <div class="cs-left">
-            <div class="cs-top">
-                <p class="cs-topper">Why Join Revibe</p>
-                <h2 class="cs-title">A Team You'll Be <br> <span class="cs-highlight">Proud</span> to Build With</h2>
-                <p class="cs-belief">Revibe was built around a simple belief: Great care comes from great teams.</p>
+    <section id="careers-hero" aria-labelledby="careers-hero-title">
+        <div class="cs-container">
+            <div class="cs-content">
+                <h1 class="cs-title" id="careers-hero-title">{{ accent(c.hero.title) }}</h1>
+                <div class="cs-side">
+                    {% for paragraph in c.hero.text %}<p class="cs-text">{{ paragraph }}</p>{% endfor %}
+                    <div class="cs-actions">
+                        <a href="{{ c.hero.primary.url }}" class="cs-button-solid">{{ c.hero.primary.label }}</a>
+                        <a href="{{ c.hero.secondary.url }}" class="cs-button-outline cs-outline-light">{{ c.hero.secondary.label }}</a>
+                    </div>
+                </div>
             </div>
-            <div class="cs-bottom">
-                <p class="cs-text">We've created an environment where clinicians support each other, learn from each other, and celebrate wins together.</p>
-                <p class="cs-text">You'll work alongside people who care deeply about their craft, push each other to improve, and genuinely enjoy showing up to work every day.</p>
-            </div>
+            <picture class="cs-picture">
+                <img src="{% getUrl c.hero.image.src | resize({ width: 1600 }) | webp %}" alt="{{ c.hero.image.alt }}" width="2560" height="1707" fetchpriority="high" decoding="async">
+            </picture>
         </div>
-        <picture class="cs-picture">
-            <source media="(min-width: 601px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/meet-the-team.webp">
-            <source media="(max-width: 600px)" srcset="https://websthetic.tor1.cdn.digitaloceanspaces.com/meet-the-team.webp">
-            <img decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/meet-the-team.webp" alt="Meet the Revibe team" width="1280" height="510">
-            <p class="cs-img-caption">Because when the team is strong, <br> the care becomes exceptional.</p>
-        </picture>
-    </div>
-</section>
+    </section>
 
+    <!-- ============================================ -->
+    <!--                  Why join                    -->
+    <!-- ============================================ -->
 
-<!-- ============================================ -->
-<!--                Why Choose Us                 -->
-<!-- ============================================ -->
-
-<section id="why-choose-223">
-    <div class="cs-container">
-
-        <!-- Left: Image with quote overlay -->
-        <div class="rv-image-col">
-            <div class="rv-img-frame">
-                <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/team-meeting-outside.webp" alt="Revibe team" width="600" height="800" loading="lazy" decoding="async" />
+    <section id="why-join" class="cs-section" aria-labelledby="why-join-title">
+        <div class="cs-container">
+            <div class="cs-content">
+                <h2 class="cs-title cs-section-title" id="why-join-title">{{ accent(c.whyJoin.title) }}</h2>
+                <p class="cs-belief">{{ c.whyJoin.belief }}</p>
+                {% for paragraph in c.whyJoin.text %}<p class="cs-section-text">{{ paragraph }}</p>{% endfor %}
             </div>
-            <p class="rv-img-quote">It's a professional environment, but it feels more like a team than a job.</p>
+            <figure class="cs-figure">
+                <img src="{% getUrl c.whyJoin.image.src | resize({ width: 1200 }) | webp %}" alt="{{ c.whyJoin.image.alt }}" width="1200" height="800" loading="lazy" decoding="async">
+                <figcaption class="cs-caption">{{ c.whyJoin.caption }}</figcaption>
+            </figure>
         </div>
+    </section>
 
-        <!-- Right: Text + Cards -->
-        <div class="cs-content">
+    {% set instagramData = c.instagram %}
+    {% include 'sections/home/instagram.html' %}
 
-            <div class="cs-text-group">
-                <span class="cs-topper">Why Choose Us</span>
-                <h2 class="cs-title">A Culture That Feels <br> Like a <span style="color: var(--primary);">Team</span></h2>
-                <p class="cs-text">One of the first things people notice about Revibe is the energy in the clinics.</p>
-                <p class="cs-text">People collaborate between rooms, share ideas, celebrate progress, and support each other when things get challenging.</p>
-                <p class="cs-text">We take our work seriously but we don't take ourselves too seriously.</p>
-            </div>
+    <!-- ============================================ -->
+    <!--                   Culture                    -->
+    <!-- ============================================ -->
 
-            <div class="rv-cards-group">
-                <h3 class="rv-cards-header">Expect to see:</h3>
-                <ul class="cs-card-group">
-                    <li class="cs-item">
-                        <h3 class="cs-h3">Clinicians helping each other solve cases</h3>
-                    </li>
-                    <li class="cs-item">
-                        <h3 class="cs-h3">Team workouts and recovery</h3>
-                    </li>
-                    <li class="cs-item">
-                        <h3 class="cs-h3">Lots of laughter between treatments</h3>
-                    </li>
-                    <li class="cs-item">
-                        <h3 class="cs-h3">Teammates who want each other to succeed</h3>
-                    </li>
+    <section id="culture" class="cs-section" aria-labelledby="culture-title">
+        <div class="cs-container">
+            <figure class="cs-figure">
+                <img src="{% getUrl c.culture.image.src | resize({ width: 800 }) | webp %}" alt="{{ c.culture.image.alt }}" width="720" height="1280" loading="lazy" decoding="async">
+                <blockquote class="cs-quote"><p>{{ c.culture.quote }}</p></blockquote>
+            </figure>
+            <div class="cs-content">
+                <h2 class="cs-title cs-section-title" id="culture-title">{{ accent(c.culture.title) }}</h2>
+                {% for paragraph in c.culture.text %}<p class="cs-section-text">{{ paragraph }}</p>{% endfor %}
+                <h3 class="cs-list-title">{{ c.culture.listTitle }}</h3>
+                <ul class="cs-cards">
+                    {% for item in c.culture.list %}<li class="cs-card"><span class="cs-card-num" aria-hidden="true">{{ loop.index }}</span>{{ item }}</li>{% endfor %}
                 </ul>
+                <a href="/" class="cs-button-solid cs-button-dark" data-apply aria-haspopup="dialog">{{ c.apply }}</a>
             </div>
-
         </div>
+    </section>
 
-    </div>
-</section>
+    <!-- ============================================ -->
+    <!--                Inside Revibe                 -->
+    <!-- ============================================ -->
 
-<!-- ============================================ -->
-<!--                 Revibe Team                 -->
-<!-- ============================================ -->
-<section class="inside-revibe">
-  <div class="revibe-container">
-
-    <!-- Header — fixed left column on desktop -->
-    <div class="revibe-header">
-      <h2 class="headline">Inside <span class="highlight">Revibe</span></h2>
-      <p class="subheadline">The best way to understand Revibe is to hear from the people building it every day.</p>
-      <div class="arrows">
-        <button class="arrow" id="prev" aria-label="Previous">
-          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="arrow" id="next" aria-label="Next">
-          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Carousel — fills remaining width -->
-    <div class="carousel-outer" id="carouselOuter">
-      <div class="carousel-track-wrap">
-        <div class="carousel-track" id="track">
-
-          <!-- Scott -->
-          <div class="card">
-            <div class="card-photo">
-              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/scott-french.webp" alt="Scott — Physiotherapist" loading="lazy">
-              <p class="card-quote">"At Revibe you're surrounded by people who genuinely want you to grow. Everyone shares knowledge and pushes each other to improve."</p>
+    <section id="inside" class="cs-section" aria-labelledby="inside-title">
+        <div class="cs-container">
+            <div class="cs-section-header">
+                <h2 class="cs-title cs-section-title" id="inside-title">{{ accent(c.inside.title) }}</h2>
+                <p class="cs-section-text">{{ c.inside.text }}</p>
             </div>
-            <div class="card-body">
-              <div class="card-name">Scott</div>
-              <div class="card-role">Physiotherapist</div>
+            {# pick a person on the left (a row on phones); their photo and full quote show in the card #}
+            <div class="cs-stage">
+                <div class="cs-picker" role="tablist" aria-label="Revibe team members">
+                    {% for person in c.inside.people %}
+                    {% set member = team[person.member] %}
+                    <button type="button" class="cs-pick" role="tab" id="inside-tab-{{ loop.index }}" aria-controls="inside-panel-{{ loop.index }}" aria-selected="{{ 'true' if loop.first else 'false' }}"{% if not loop.first %} tabindex="-1"{% endif %}>
+                        <img src="{% getUrl member.face | resize({ width: 160 }) | webp %}" alt="" width="160" height="160" loading="lazy" decoding="async">
+                        <span class="cs-pick-name">{{ person.name }}<small>{{ person.role }}</small></span>
+                    </button>
+                    {% endfor %}
+                </div>
+                {% for person in c.inside.people %}
+                {% set member = team[person.member] %}
+                <figure class="cs-story" role="tabpanel" id="inside-panel-{{ loop.index }}" aria-labelledby="inside-tab-{{ loop.index }}"{% if not loop.first %} hidden{% endif %}>
+                    <div class="cs-story-photo">
+                        <img src="{% getUrl member.photo | resize({ width: 700 }) | webp %}" alt="{{ member.name }}, {{ person.role }} at Revibe" width="700" height="933" loading="lazy" decoding="async">
+                    </div>
+                    <div class="cs-story-body">
+                        <span class="cs-story-mark" aria-hidden="true">“</span>
+                        <blockquote class="cs-story-quote"><p>{{ person.quote }}</p></blockquote>
+                        <figcaption class="cs-story-name">{{ person.name }}<small>{{ person.role }}</small></figcaption>
+                    </div>
+                </figure>
+                {% endfor %}
             </div>
-          </div>
+        </div>
+    </section>
 
-          <!-- Gauri -->
-          <div class="card">
-            <div class="card-photo">
-              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/winson-cheong.webp" alt="Gauri — Registered Massage Therapist" loading="lazy">
-              <p class="card-quote">"The environment here is different. The team actually supports each other and celebrates wins together."</p>
+    <!-- ============================================ -->
+    <!--              Growth and mentorship           -->
+    <!-- ============================================ -->
+
+    <section id="growth" class="cs-section" aria-labelledby="growth-title">
+        <div class="cs-container">
+            <div class="cs-content">
+                <h2 class="cs-title cs-section-title" id="growth-title">{{ accent(c.growth.title) }}</h2>
+                {% for paragraph in c.growth.text %}<p class="cs-section-text">{{ paragraph }}</p>{% endfor %}
+                <ul class="cs-checks">
+                    {% for item in c.growth.list %}<li>{{ checkIcon | safe }}<span>{{ item }}</span></li>{% endfor %}
+                </ul>
+                <a href="/" class="cs-button-solid" data-apply aria-haspopup="dialog">{{ c.apply }}</a>
             </div>
-            <div class="card-body">
-              <div class="card-name">Gauri</div>
-              <div class="card-role">Registered Massage Therapist</div>
+            <figure class="cs-figure">
+                <img src="{% getUrl c.growth.image.src | resize({ width: 1000 }) | webp %}" alt="{{ c.growth.image.alt }}" width="1000" height="667" loading="lazy" decoding="async">
+                <figcaption class="cs-goal">
+                    <span>{{ c.growth.goalLabel }}</span>
+                    {{ c.growth.goal }}
+                </figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--          What makes Revibe different         -->
+    <!-- ============================================ -->
+
+    <section id="different" class="cs-section" aria-labelledby="different-title">
+        <div class="cs-container">
+            <h2 class="cs-title cs-section-title" id="different-title">{{ accent(c.different.title) }}</h2>
+            <ol class="cs-items">
+                {% for item in c.different.items %}
+                <li class="cs-item">
+                    <span class="cs-item-num" aria-hidden="true">0{{ loop.index }}</span>
+                    <h3 class="cs-item-title">{{ item.title }}</h3>
+                    <p class="cs-item-text">{{ item.text }}</p>
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--               Career pathways                -->
+    <!-- ============================================ -->
+
+    <section id="pathways" class="cs-section" aria-labelledby="pathways-title">
+        <div class="cs-container">
+            <h2 class="cs-title cs-section-title" id="pathways-title">
+                {% for step in c.pathways.steps %}<span class="cs-step-word">{{ step }} <span>here</span></span>{% if not loop.last %}<span class="cs-step-arrow" aria-hidden="true">{{ arrowIcon | safe }}</span>{% endif %}{% endfor %}
+            </h2>
+            <p class="cs-section-text">{{ c.pathways.text }}</p>
+
+            <div class="cs-tabs" role="tablist" aria-label="Career tracks">
+                {% for track in c.pathways.tracks %}
+                <button type="button" class="cs-tab" role="tab" id="track-tab-{{ track.key }}" aria-controls="track-{{ track.key }}" aria-selected="{{ 'true' if loop.first else 'false' }}"{% if not loop.first %} tabindex="-1"{% endif %}>{{ track.label }}</button>
+                {% endfor %}
             </div>
-          </div>
-
-          <!-- Guest Experience -->
-          <div class="card guest">
-            <div class="card-photo">
-              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/emily-wilson.webp" alt="Guest Experience Team" loading="lazy">
-              <p class="card-quote">"You're not just checking people in. You're part of creating an experience that makes people feel welcome and cared for."</p>
+            {% for track in c.pathways.tracks %}
+            <div class="cs-track" role="tabpanel" id="track-{{ track.key }}" aria-labelledby="track-tab-{{ track.key }}"{% if not loop.first %} hidden{% endif %}>
+                <ol class="cs-steps">
+                    {% for role in track.roles %}
+                    <li class="cs-step"><span class="cs-step-num" aria-hidden="true">0{{ loop.index }}</span><span class="cs-step-role">{{ role }}</span></li>
+                    {% endfor %}
+                </ol>
             </div>
-            <div class="card-body">
-              <div class="card-name">Guest Experience</div>
-              <div class="card-role">Guest Experience Team</div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                   Thrive                     -->
+    <!-- ============================================ -->
+
+    <section id="thrive" class="cs-section" aria-labelledby="thrive-title">
+        <div class="cs-container">
+            <div class="cs-content">
+                <h2 class="cs-title cs-section-title" id="thrive-title">{{ accent(c.thrive.title) }}</h2>
+                <p class="cs-section-text">{{ c.thrive.text }}</p>
+                <ul class="cs-checks">
+                    {% for item in c.thrive.list %}<li>{{ checkIcon | safe }}<span>{{ item }}</span></li>{% endfor %}
+                </ul>
+                <a href="/" class="cs-button-solid cs-button-dark" data-apply aria-haspopup="dialog">{{ c.apply }}</a>
             </div>
-          </div>
+            <picture class="cs-picture">
+                <img src="{% getUrl c.thrive.image.src | resize({ width: 800 }) | webp %}" alt="{{ c.thrive.image.alt }}" width="800" height="1200" loading="lazy" decoding="async">
+            </picture>
+        </div>
+    </section>
 
-          <!-- Dr. Trevor -->
-          <div class="card chiro">
-            <div class="card-photo">
-              <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/mike-ross.webp" alt="Dr. Trevor — Chiropractor" loading="lazy">
-              <p class="card-quote">"Revibe gives clinicians the freedom to focus on delivering great care instead of chasing volume."</p>
+    <!-- ============================================ -->
+    <!--                 Open roles                   -->
+    <!-- ============================================ -->
+
+    <section id="open-roles" class="cs-section" aria-labelledby="open-roles-title">
+        <div class="cs-container">
+            <div class="cs-section-header">
+                <div>
+                    <h2 class="cs-title cs-section-title" id="open-roles-title">{{ accent(c.roles.title) }}</h2>
+                </div>
+                <p class="cs-section-text">{{ c.roles.text }}</p>
             </div>
-            <div class="card-body">
-              <div class="card-name">Dr. Trevor</div>
-              <div class="card-role">Chiropractor</div>
+            <ul class="cs-roles">
+                {% for role in c.roles.list %}
+                <li>
+                    {# roles without a page open the careers pop-up with the role picked #}
+                    <a href="{{ role.url }}" class="cs-role"{% if role.url == "/" %} data-apply data-role="{{ role.title }}" aria-haspopup="dialog"{% endif %}>
+                        <span class="cs-role-name">{{ role.title }}<small>{{ role.team }}</small></span>
+                        <span class="cs-role-type">{{ role.type }}</span>
+                        <span class="cs-icon-arrow">{{ arrowIcon | safe }}</span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                     CTA                      -->
+    <!-- ============================================ -->
+
+    <section id="careers-cta" aria-labelledby="careers-cta-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="careers-cta-title">{{ accent(c.cta.title) }}</h2>
+            <div class="cs-side">
+                {% for paragraph in c.cta.text %}<p class="cs-text">{{ paragraph }}</p>{% endfor %}
+                <a href="/" class="cs-button-solid" data-apply aria-haspopup="dialog">{{ c.apply }}</a>
             </div>
-          </div>
-
         </div>
-      </div>
-    </div>
+    </section>
 
-  </div>
-</section>
- 
-  <script>
-    const track   = document.getElementById('track');
-    const outer   = document.getElementById('carouselOuter');
-    const cards   = Array.from(track.querySelectorAll('.card'));
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const THRESHOLD = 40;
-    let current = 0;
-
-    function getPerView() {
-      const w = window.innerWidth;
-      if (w <= 520) return 1;
-      if (w <= 800) return 2;
-      return 3;
-    }
-
-    function getCardWidth() {
-      return cards[0].offsetWidth + 24;
-    }
-
-    function maxIndex() {
-      return Math.max(0, cards.length - getPerView());
-    }
-
-    // Snap to a slide index — always animated
-    function goTo(index) {
-      current = Math.max(0, Math.min(index, maxIndex()));
-      track.style.transition = 'transform 0.55s cubic-bezier(0.65, 0, 0.35, 1)';
-      track.style.transform  = `translateX(-${current * getCardWidth()}px)`;
-      prevBtn.disabled = current === 0;
-      nextBtn.disabled = current >= maxIndex();
-      outer.classList.toggle('at-end', current >= maxIndex());
-    }
-
-    // Live drag — follows pointer in real-time
-    function dragTo(offsetX) {
-      const base = current * getCardWidth();
-      track.style.transition = 'none';
-      track.style.transform  = `translateX(${-base + offsetX}px)`;
-    }
-
-    // On release, commit or snap back
-    function settle(dx) {
-      if      (dx < -THRESHOLD) goTo(current + 1);
-      else if (dx >  THRESHOLD) goTo(current - 1);
-      else                       goTo(current);
-    }
-
-    prevBtn.addEventListener('click', () => goTo(current - 1));
-    nextBtn.addEventListener('click', () => goTo(current + 1));
-
-    window.addEventListener('resize', () => { current = 0; goTo(0); });
-
-    goTo(0);
-
-    /* ── Touch ── */
-    let touchStartX = 0;
-    let touchStartY = 0;
-    let touchActive = false;
-
-    track.addEventListener('touchstart', (e) => {
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
-      touchActive = false;
-    }, { passive: true });
-
-    track.addEventListener('touchmove', (e) => {
-      const dx = e.touches[0].clientX - touchStartX;
-      const dy = e.touches[0].clientY - touchStartY;
-
-      // Let vertical scroll win if the gesture started more vertical
-      if (!touchActive && Math.abs(dy) > Math.abs(dx)) return;
-
-      touchActive = true;
-      e.preventDefault();
-      dragTo(dx);
-    }, { passive: false });
-
-    track.addEventListener('touchend', (e) => {
-      if (!touchActive) return;
-      const dx = e.changedTouches[0].clientX - touchStartX;
-      settle(dx);
-      touchActive = false;
-    }, { passive: true });
-
-    /* ── Mouse drag (desktop) ── */
-    let mouseStartX  = 0;
-    let mouseDown    = false;
-    let mouseDragged = false;
-
-    track.addEventListener('mousedown', (e) => {
-      mouseStartX  = e.clientX;
-      mouseDown    = true;
-      mouseDragged = false;
-      track.style.cursor = 'grabbing';
-      e.preventDefault();
-    });
-
-    window.addEventListener('mousemove', (e) => {
-      if (!mouseDown) return;
-      const dx = e.clientX - mouseStartX;
-      if (Math.abs(dx) > 5) mouseDragged = true;
-      dragTo(dx);
-    });
-
-    window.addEventListener('mouseup', (e) => {
-      if (!mouseDown) return;
-      mouseDown = false;
-      track.style.cursor = 'grab';
-      if (!mouseDragged) return;
-      const dx = e.clientX - mouseStartX;
-      settle(dx);
-      mouseDragged = false;
-    });
-
-    // Prevent clicks firing on cards after a drag
-    track.addEventListener('click', (e) => {
-      if (mouseDragged) e.stopPropagation();
-    });
-
-    track.style.cursor = 'grab';
-  </script>
-
-
-<!-- ============================================ -->
-<!--         Revibe: Education & Mentorship       -->
-<!-- ============================================ -->
-<section class="revibe-edu-section">
-  <div class="revibe-edu-container">
-
-    <!-- LEFT: Content -->
-    <div class="revibe-edu-content">
-      <span class="revibe-edu-tag">Growth &amp; Development</span>
-      <h2 class="revibe-edu-heading">Learn <em>Faster</em><br>Grow <em>Faster</em></h2>
-      <p class="revibe-edu-intro">One of the biggest advantages of joining Revibe, especially for <strong>new graduates</strong>, is access to structured education and mentorship.</p>
-      <p class="revibe-edu-intro">You won't be left to figure things out alone.</p>
-
-      <div class="revibe-edu-items">
-
-        <div class="revibe-edu-item">
-          <span class="revibe-edu-item-icon">
-            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 7l3.5 3.5L12 3.5" stroke="#03ad84" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          <div class="revibe-edu-item-body">Weekly education sessions</div>
-        </div>
-
-        <div class="revibe-edu-item">
-          <span class="revibe-edu-item-icon">
-            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 7l3.5 3.5L12 3.5" stroke="#03ad84" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          <div class="revibe-edu-item-body">Mentorship from experienced clinicians</div>
-        </div>
-
-        <div class="revibe-edu-item">
-          <span class="revibe-edu-item-icon">
-            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 7l3.5 3.5L12 3.5" stroke="#03ad84" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          <div class="revibe-edu-item-body">In-house courses and skill training</div>
-        </div>
-
-        <div class="revibe-edu-item">
-          <span class="revibe-edu-item-icon">
-            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 7l3.5 3.5L12 3.5" stroke="#03ad84" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          <div class="revibe-edu-item-body">Collaborative case discussions</div>
-        </div>
-
-        <div class="revibe-edu-item">
-          <span class="revibe-edu-item-icon">
-            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 7l3.5 3.5L12 3.5" stroke="#03ad84" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          <div class="revibe-edu-item-body">Teach and mentor others</div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- RIGHT: Image -->
-    <div class="revibe-edu-image-col">
-      <div class="revibe-edu-photo-wrap">
-        <img
-          src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/revibe-growth-development.webp"
-          alt="Revibe growth and development"
-        />
-        <!-- Photo text overlay -->
-        <div class="revibe-edu-photo-text">
-          <span class="revibe-edu-photo-label">The Goal Is Simple:</span>
-          <p class="revibe-edu-photo-quote">Help clinicians become the best in their craft while building long-term careers in healthcare.</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ============================================ -->
-<!--          What Makes Revibe Different         -->
-<!-- ============================================ -->
-
-<section id="what-makes-different">
-  <div class="cs-container">
-
-    <div class="cs-header">
-      <h2 class="cs-title">What makes Revibe <span style="color: var(--primary);">Different</span></h2>
-      
-      <div class="cs-arrows">
-        <button class="cs-arrow cs-prev" aria-label="Previous">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15 18L9 12L15 6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <button class="cs-arrow cs-next" aria-label="Next">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9 6L15 12L9 18" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <div class="cs-viewport">
-      <ul class="cs-track">
-
-        <li class="cs-item">
-          <span class="cs-number">01</span>
-          <h3 class="cs-h3">Integrated care</h3>
-          <p class="cs-text">Our clinics bring together physiotherapists, chiropractors, massage therapists, osteopaths, and performance specialists working collaboratively.</p>
-        </li>
-
-        <li class="cs-item">
-          <span class="cs-number">02</span>
-          <h3 class="cs-h3">Meaningful client outcomes</h3>
-          <p class="cs-text">Our treatment philosophy prioritizes quality over volume, allowing clinicians to build stronger relationships with guests.</p>
-        </li>
-
-        <li class="cs-item">
-          <span class="cs-number">03</span>
-          <h3 class="cs-h3">Leadership opportunities</h3>
-          <p class="cs-text">Team members can grow into mentorship, education, leadership, and operational roles.</p>
-        </li>
-
-        <li class="cs-item">
-          <span class="cs-number">04</span>
-          <h3 class="cs-h3">Long-term career paths</h3>
-          <p class="cs-text">Revibe is designed to support careers that evolve from clinical excellence into leadership and business growth.</p>
-        </li>
-
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-<script>/**
- * What Makes Revibe Different — Arrow Carousel
- * Smooth drag for both touch and mouse.
- */
-
-(function () {
-
-  const section = document.querySelector('#what-makes-different');
-  if (!section) return;
-
-  const viewport = section.querySelector('.cs-viewport');
-  const track    = section.querySelector('.cs-track');
-  const prev     = section.querySelector('.cs-prev');
-  const next     = section.querySelector('.cs-next');
-  const items    = section.querySelectorAll('.cs-item');
-  const TOTAL    = items.length;
-  const THRESHOLD = 50; // px needed to commit to a slide
-
-  let current = 0;
-
-  function getCardWidth() {
-    return items[0].offsetWidth + 12; // card + gap
-  }
-
-  function getVisibleCount() {
-    return Math.floor(viewport.offsetWidth / getCardWidth());
-  }
-
-  function getMax() {
-    return Math.max(0, TOTAL - getVisibleCount());
-  }
-
-  // Snap to a slide index — always animated
-  function go(index) {
-    const max = getMax();
-    current = Math.max(0, Math.min(index, max));
-    track.style.transition = 'transform 0.45s cubic-bezier(0.65, 0, 0.35, 1)';
-    track.style.transform  = `translateX(-${current * getCardWidth()}px)`;
-    prev.disabled = current === 0;
-    next.disabled = current >= max;
-  }
-
-  // Live drag — no transition, just follow the pointer
-  function dragTo(offsetX) {
-    const base = current * getCardWidth();
-    track.style.transition = 'none';
-    track.style.transform  = `translateX(${-base + offsetX}px)`;
-  }
-
-  // On release, decide whether to advance, go back, or snap back
-  function settle(dx) {
-    if      (dx < -THRESHOLD) go(current + 1);
-    else if (dx >  THRESHOLD) go(current - 1);
-    else                       go(current);     // snap back
-  }
-
-  prev.addEventListener('click', () => go(current - 1));
-  next.addEventListener('click', () => go(current + 1));
-
-  go(0);
-
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => go(current), 150);
-  });
-
-  /* ── Touch ── */
-  let touchStartX = 0;
-  let touchStartY = 0;
-  let touchActive = false;
-
-  track.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-    touchActive = false;
-  }, { passive: true });
-
-  track.addEventListener('touchmove', (e) => {
-    const dx = e.touches[0].clientX - touchStartX;
-    const dy = e.touches[0].clientY - touchStartY;
-
-    // Let vertical scroll win if it started more vertical
-    if (!touchActive && Math.abs(dy) > Math.abs(dx)) return;
-
-    touchActive = true;
-    e.preventDefault();
-    dragTo(dx);
-  }, { passive: false });
-
-  track.addEventListener('touchend', (e) => {
-    if (!touchActive) return;
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    settle(dx);
-    touchActive = false;
-  }, { passive: true });
-
-  /* ── Mouse ── */
-  let mouseStartX  = 0;
-  let mouseDown    = false;
-  let mouseDragged = false;
-
-  track.addEventListener('mousedown', (e) => {
-    mouseStartX  = e.clientX;
-    mouseDown    = true;
-    mouseDragged = false;
-    track.style.cursor = 'grabbing';
-    e.preventDefault();
-  });
-
-  window.addEventListener('mousemove', (e) => {
-    if (!mouseDown) return;
-    const dx = e.clientX - mouseStartX;
-    if (Math.abs(dx) > 5) mouseDragged = true;
-    dragTo(dx);
-  });
-
-  window.addEventListener('mouseup', (e) => {
-    if (!mouseDown) return;
-    mouseDown = false;
-    track.style.cursor = 'grab';
-
-    if (!mouseDragged) return;
-    const dx = e.clientX - mouseStartX;
-    settle(dx);
-    mouseDragged = false;
-  });
-
-  // Prevent clicks firing on cards after a drag
-  track.addEventListener('click', (e) => {
-    if (mouseDragged) e.stopPropagation();
-  });
-
-  track.style.cursor = 'grab';
-
-})();
-</script>
-
-<section class="career-pathways">
-  <div class="career-pathways__container">
-
-    <div class="career-pathways__header">
-      <p class="career-pathways__eyebrow">Career Growth</p>
-      <h2 class="career-pathways__headline">
-  <span style="color: var(--primary);">Start</span> Here <span class="cp-arrow-sep">→</span>
-  <span style="color: var(--primary);">Grow</span> Here <span class="cp-arrow-sep">→</span>
-  <span style="color: var(--primary);">Lead</span> Here
-</h2>
-      <p class="career-pathways__description">At Revibe, your first role is just the beginning. As the company grows, so do the opportunities for our team.</p>
-    </div>
-
-    <div class="cp-tracks">
-      <div class="cp-track-item is-active" data-track="clinical"><span class="cp-track-item__name">Clinical</span></div>
-      <div class="cp-track-item" data-track="performance"><span class="cp-track-item__name">Performance</span></div>
-      <div class="cp-track-item" data-track="operations"><span class="cp-track-item__name">Operations</span></div>
-    </div>
-
-<div class="cp-panels-wrapper">
-
-      <!-- Spacer -->
-      <div class="cp-spacer" aria-hidden="true">
-        <div class="cp-card"><div class="cp-card__body"><span class="cp-card__num">01</span><span class="cp-card__role">placeholder</span></div></div>
-        <div class="cp-arrow"><svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><line class="cp-arrow-line" x1="6" y1="0" x2="6" y2="12" stroke="#03ad84" stroke-width="1.5" stroke-opacity="0.6"/><path class="cp-arrow-head" d="M2 9 L6 14 L10 9" stroke="#03ad84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-        <div class="cp-card"><div class="cp-card__body"><span class="cp-card__num">02</span><span class="cp-card__role">placeholder</span></div></div>
-        <div class="cp-arrow"><svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><line class="cp-arrow-line" x1="6" y1="0" x2="6" y2="12" stroke="#03ad84" stroke-width="1.5" stroke-opacity="0.6"/><path class="cp-arrow-head" d="M2 9 L6 14 L10 9" stroke="#03ad84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-        <div class="cp-card"><div class="cp-card__body"><span class="cp-card__num">03</span><span class="cp-card__role">placeholder</span></div></div>
-        <div class="cp-arrow"><svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><line class="cp-arrow-line" x1="6" y1="0" x2="6" y2="12" stroke="#03ad84" stroke-width="1.5" stroke-opacity="0.6"/><path class="cp-arrow-head" d="M2 9 L6 14 L10 9" stroke="#03ad84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-        <div class="cp-card"><div class="cp-card__body"><span class="cp-card__num">04</span><span class="cp-card__role">placeholder</span></div></div>
-        <div class="cp-arrow"><svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><line class="cp-arrow-line" x1="6" y1="0" x2="6" y2="12" stroke="#03ad84" stroke-width="1.5" stroke-opacity="0.6"/><path class="cp-arrow-head" d="M2 9 L6 14 L10 9" stroke="#03ad84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-        <div class="cp-card cp-card--last"><div class="cp-card__body"><span class="cp-card__num">05</span><span class="cp-card__role">placeholder</span></div></div>
-      </div>
-
-      <!-- Clinical -->
-      <div class="cp-panel is-active" id="cp-clinical">
-        <div class="cp-card"><div class="cp-card__body"><span class="cp-card__num">01</span><span class="cp-card__role">Clinician</span></div></div>
-        <div class="cp-arrow"><svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><line class="cp-arrow-line" x1="6" y1="0" x2="6" y2="12" stroke="#03ad84" stroke-width="1.5" stroke-opacity="0.6"/><path class="cp-arrow-head" d="M2 9 L6 14 L10 9" stroke="#03ad84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-        <div class="cp-card"><div class="cp-card__body"><span class="cp-card__num">02</span><span class="cp-card__role">High Performing Clinician</span></div></div>
-        <div class="cp-arrow"><svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><line class="cp-arrow-line" x1="6" y1="0" x2="6" y2="12" stroke="#03ad84" stroke-width="1.5" stroke-opacity="0.6"/><path class="cp-arrow-head" d="M2 9 L6 14 L10 9" stroke="#03ad84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-        <div class="cp-card"><div class="cp-card__body"><span class="cp-card__num">03</span><span class="cp-card__role">Lead Clinician</span></div></div>
-        <div class="cp-arrow"><svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><line class="cp-arrow-line" x1="6" y1="0" x2="6" y2="12" stroke="#03ad84" stroke-width="1.5" stroke-opacity="0.6"/><path class="cp-arrow-head" d="M2 9 L6 14 L10 9" stroke="#03ad84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-        <div class="cp-card"><div class="cp-card__body"><span class="cp-card__num">04</span><span class="cp-card__role">Clinical Director</span></div></div>
-        <div class="cp-arrow"><svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><line class="cp-arrow-line" x1="6" y1="0" x2="6" y2="12" stroke="#03ad84" stroke-width="1.5" stroke-opacity="0.6"/><path class="cp-arrow-head" d="M2 9 L6 14 L10 9" stroke="#03ad84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-        <div class="cp-card cp-card--last"><div class="cp-card__body"><span class="cp-card__num">05</span><span class="cp-card__role">Partner / Practice Leader</span></div></div>
-      </div>
-
-      <!-- Performance -->
-      <div class="cp-panel" id="cp-performance">
-        <div class="cp-card"><div class="cp-card__body"><span class="cp-card__num">01</span><span class="cp-card__role">Performance Coach</span></div></div>
-        <div class="cp-arrow"><svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><line class="cp-arrow-line" x1="6" y1="0" x2="6" y2="12" stroke="#03ad84" stroke-width="1.5" stroke-opacity="0.6"/><path class="cp-arrow-head" d="M2 9 L6 14 L10 9" stroke="#03ad84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-        <div class="cp-card"><div class="cp-card__body"><span class="cp-card__num">02</span><span class="cp-card__role">High Performance Coach</span></div></div>
-        <div class="cp-arrow"><svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><line class="cp-arrow-line" x1="6" y1="0" x2="6" y2="12" stroke="#03ad84" stroke-width="1.5" stroke-opacity="0.6"/><path class="cp-arrow-head" d="M2 9 L6 14 L10 9" stroke="#03ad84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-        <div class="cp-card"><div class="cp-card__body"><span class="cp-card__num">03</span><span class="cp-card__role">Lead Coach</span></div></div>
-        <div class="cp-arrow"><svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><line class="cp-arrow-line" x1="6" y1="0" x2="6" y2="12" stroke="#03ad84" stroke-width="1.5" stroke-opacity="0.6"/><path class="cp-arrow-head" d="M2 9 L6 14 L10 9" stroke="#03ad84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-        <div class="cp-card cp-card--last"><div class="cp-card__body"><span class="cp-card__num">04</span><span class="cp-card__role">Director of Performance</span></div></div>
-      </div>
-
-      <!-- Operations -->
-      <div class="cp-panel" id="cp-operations">
-        <div class="cp-card"><div class="cp-card__body"><span class="cp-card__num">01</span><span class="cp-card__role">Guest Experience Associate</span></div></div>
-        <div class="cp-arrow"><svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><line class="cp-arrow-line" x1="6" y1="0" x2="6" y2="12" stroke="#03ad84" stroke-width="1.5" stroke-opacity="0.6"/><path class="cp-arrow-head" d="M2 9 L6 14 L10 9" stroke="#03ad84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-        <div class="cp-card"><div class="cp-card__body"><span class="cp-card__num">02</span><span class="cp-card__role">Coordinator</span></div></div>
-        <div class="cp-arrow"><svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><line class="cp-arrow-line" x1="6" y1="0" x2="6" y2="12" stroke="#03ad84" stroke-width="1.5" stroke-opacity="0.6"/><path class="cp-arrow-head" d="M2 9 L6 14 L10 9" stroke="#03ad84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-        <div class="cp-card"><div class="cp-card__body"><span class="cp-card__num">03</span><span class="cp-card__role">Guest Experience Lead</span></div></div>
-        <div class="cp-arrow"><svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><line class="cp-arrow-line" x1="6" y1="0" x2="6" y2="12" stroke="#03ad84" stroke-width="1.5" stroke-opacity="0.6"/><path class="cp-arrow-head" d="M2 9 L6 14 L10 9" stroke="#03ad84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-        <div class="cp-card"><div class="cp-card__body"><span class="cp-card__num">04</span><span class="cp-card__role">Operations Manager</span></div></div>
-        <div class="cp-arrow"><svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><line class="cp-arrow-line" x1="6" y1="0" x2="6" y2="12" stroke="#03ad84" stroke-width="1.5" stroke-opacity="0.6"/><path class="cp-arrow-head" d="M2 9 L6 14 L10 9" stroke="#03ad84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-        <div class="cp-card cp-card--last"><div class="cp-card__body"><span class="cp-card__num">05</span><span class="cp-card__role">Regional Operations Leader</span></div></div>
-      </div>
-
-    </div><!-- /.cp-panels-wrapper -->
-  </div><!-- /.career-pathways__container -->
-</section>
-
-<script>(function () {
-  const items  = document.querySelectorAll('.cp-track-item');
-  const panels = document.querySelectorAll('.cp-panel');
-  let animLoop = null;
-
-  function getActiveCards() {
-    return document.querySelectorAll('.cp-panel.is-active .cp-card');
-  }
-
-  function getActiveArrows() {
-    return document.querySelectorAll('.cp-panel.is-active .cp-arrow');
-  }
-
-  function resetAnim() {
-    document.querySelectorAll('.cp-card').forEach(function (c) {
-      c.classList.remove('is-lit');
-    });
-    document.querySelectorAll('.cp-arrow').forEach(function (a) {
-      a.classList.remove('is-lit');
-    });
-  }
-
-  function runAnim() {
-    if (animLoop) clearTimeout(animLoop);
-    resetAnim();
-
-    var cards  = Array.from(getActiveCards());
-    var arrows = Array.from(getActiveArrows());
-    var step   = 0;
-    var total  = cards.length;
-    var STEP   = 500;
-
-    function tick() {
-      resetAnim();
-
-      for (var i = 0; i <= step && i < total; i++) {
-        cards[i].classList.add('is-lit');
-      }
-      for (var j = 0; j < step && j < arrows.length; j++) {
-        arrows[j].classList.add('is-lit');
-      }
-
-      step++;
-
-      if (step <= total) {
-        animLoop = setTimeout(tick, STEP);
-      } else {
-        animLoop = setTimeout(function () {
-          resetAnim();
-          step = 0;
-          animLoop = setTimeout(tick, 300);
-        }, 1500);
-      }
-    }
-
-    tick();
-  }
-
-  items.forEach(function (item) {
-    item.addEventListener('click', function () {
-      items.forEach(function (i)  { i.classList.remove('is-active'); });
-      panels.forEach(function (p) { p.classList.remove('is-active'); });
-      item.classList.add('is-active');
-      document.getElementById('cp-' + item.dataset.track).classList.add('is-active');
-      runAnim();
-    });
-  });
-
-  runAnim();
-})();</script>
-
-
-<section class="revibe-section">
-  <div class="revibe-container">
- 
-  <!-- LEFT: Content -->
-  <div class="revibe-content">
-    <span class="revibe-tag">Culture &amp; Fit</span>
-    <h2 class="revibe-heading">You'll <em>Thrive</em> at<br>Revibe If You…</h2>
-    <p class="revibe-intro">We're building a team that genuinely loves what they do. If any of these sound like you, we'd love to connect.</p>
- 
-    <div class="revibe-items">
- 
-      <div class="revibe-item">
-        <span class="revibe-item-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="8" cy="8" r="7" stroke="#03ad84" stroke-width="1.5"/>
-            <circle cx="8" cy="8" r="3" fill="#03ad84"/>
-          </svg>
-        </span>
-        <div class="revibe-item-body">Care deeply about helping people move and feel better</div>
-      </div>
- 
-      <div class="revibe-item">
-        <span class="revibe-item-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="8" cy="8" r="7" stroke="#03ad84" stroke-width="1.5"/>
-            <circle cx="8" cy="8" r="3" fill="#03ad84"/>
-          </svg>
-        </span>
-        <div class="revibe-item-body">Enjoy learning from other clinicians</div>
-      </div>
- 
-      <div class="revibe-item">
-        <span class="revibe-item-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="8" cy="8" r="7" stroke="#03ad84" stroke-width="1.5"/>
-            <circle cx="8" cy="8" r="3" fill="#03ad84"/>
-          </svg>
-        </span>
-        <div class="revibe-item-body">Value collaboration and shared knowledge</div>
-      </div>
- 
-      <div class="revibe-item">
-        <span class="revibe-item-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="8" cy="8" r="7" stroke="#03ad84" stroke-width="1.5"/>
-            <circle cx="8" cy="8" r="3" fill="#03ad84"/>
-          </svg>
-        </span>
-        <div class="revibe-item-body">Take pride in delivering exceptional care</div>
-      </div>
- 
-      <div class="revibe-item">
-        <span class="revibe-item-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="8" cy="8" r="7" stroke="#03ad84" stroke-width="1.5"/>
-            <circle cx="8" cy="8" r="3" fill="#03ad84"/>
-          </svg>
-        </span>
-        <div class="revibe-item-body">Want to grow alongside a fast-evolving wellness company</div>
-      </div>
- 
-    </div>
-  </div>
- 
-  <!-- RIGHT: Image -->
-  <div class="revibe-image-col">
-    <div class="revibe-photo-wrap">
-      <img
-        src="https://websthetic.tor1.cdn.digitaloceanspaces.com/Revibe%20Site/revibe-two-women-smiling-outdoors-park-bench.jpg.webp"
-        alt="Revibe team member working with a patient"
-      />
-    </div>
-  </div>
- 
-  </div>
-</section>
-
-
-<section class="jobs-section">
-  <div class="jobs-wrap">
-    <p class="jobs-eyebrow">Careers</p>
-    <h2 class="jobs-headline">We're hiring <span class="jobs-accent">exceptional</span><br>practitioners.</h2>
-    <p class="jobs-sub">Bring your expertise to a team that puts client experience first.</p>
- 
-    <div class="jobs-grid">
- 
-      <a href="/careers/guest-experience-coordinator/" class="job-card">
-        <div class="job-card-left">
-          <span class="job-card-title">Guest Experience Coordinator</span>
-          <span class="job-card-dept">Operations</span>
-        </div>
-        <div class="job-card-right">
-          <span class="job-card-tag">Full-time</span>
-          <span class="job-card-arrow">→</span>
-        </div>
-      </a>
- 
-      <a href="/careers/massage-therapist/" class="job-card">
-        <div class="job-card-left">
-          <span class="job-card-title">Massage Therapist (Join Our Talent Community)</span>
-          <span class="job-card-dept">Clinical</span>
-        </div>
-        <div class="job-card-right">
-          <span class="job-card-tag">Full-time</span>
-          <span class="job-card-arrow">→</span>
-        </div>
-      </a>
- 
-      <a href="/careers/chiropractor/" class="job-card">
-        <div class="job-card-left">
-          <span class="job-card-title">Chiropractor</span>
-          <span class="job-card-dept">Clinical</span>
-        </div>
-        <div class="job-card-right">
-          <span class="job-card-tag">Full-time</span>
-          <span class="job-card-arrow">→</span>
-        </div>
-      </a>
- 
-      <a href="/careers/physiotherapist/" class="job-card">
-        <div class="job-card-left">
-          <span class="job-card-title">Physiotherapist</span>
-          <span class="job-card-dept">Clinical</span>
-        </div>
-        <div class="job-card-right">
-          <span class="job-card-tag">Full-time</span>
-          <span class="job-card-arrow">→</span>
-        </div>
-      </a>
- 
-      <a href="/careers/osteopathic-manual-practitioner/" class="job-card">
-        <div class="job-card-left">
-          <span class="job-card-title">Osteopathic Manual Practitioner</span>
-          <span class="job-card-dept">Clinical</span>
-        </div>
-        <div class="job-card-right">
-          <span class="job-card-tag">Full-time</span>
-          <span class="job-card-arrow">→</span>
-        </div>
-      </a>
-
-      <a href="/careers/naturopathic-doctor/" class="job-card">
-        <div class="job-card-left">
-          <span class="job-card-title">Naturopathic Doctor</span>
-          <span class="job-card-dept">Clinical</span>
-        </div>
-        <div class="job-card-right">
-          <span class="job-card-tag">Full-time</span>
-          <span class="job-card-arrow">→</span>
-        </div>
-      </a>
- 
-    </div>
-  </div>
-</section>
- 
-
-<section class="cta-section">
- 
-  <div class="cta-bg-image"></div>
-  <div class="cta-overlay"></div>
- 
-  <div class="cta-content">
-    <h2 class="cta-headline">
-      Come build something 
-      <span class="cta-headline--accent">with us.</span>
-    </h2>
- 
-    <p class="cta-body">
-      Revibe is growing, and we're always looking for people who want to make a meaningful impact in healthcare.
-    </p>
-    <p class="cta-body">
-      If you want to work in an environment where you can grow, collaborate, and help people perform better in life, we'd love to meet you.
-    </p>
- 
-    <a href="#" class="cta-button">
-      Apply to Join Revibe
-    </a>
- 
-  </div>
-</section>
-
+    {% include "components/popup-forms/careers-popup-form.html" %}
 {% endblock %}

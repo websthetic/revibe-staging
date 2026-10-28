@@ -1,0 +1,173 @@
+{#
+    Location service pages (/location/<clinic>/<service>/), e.g. physiotherapy in Markham.
+    A page sets in its front matter:
+      clinic: key of the clinic in _data/clinics.js ("markham" or "mississauga")
+      locationPage: key of its content file in _data/locationPages/<clinic>/ (e.g. "physiotherapy")
+    The clinic's address, hours, nearby areas and page list come from clinics.js.
+    Billing, reviews and licensed care are the shared home sections (sections/home/), styled in global.less.
+    Styles: location.less.
+#}
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/location.css">
+    <script defer src="/assets/js/home-sections.js"></script>
+{% endblock %}
+
+{% block body %}
+    {% set l = locationPages[clinic][locationPage] %}
+    {% set here = clinicsByKey[clinic] %}
+    {% set there = clinicsByKey[here.otherClinic] %}
+    {% set hoursLine = here.hours | join(". ") + "." %}
+
+    <!-- ============================================ -->
+    <!--                    Hero                      -->
+    <!-- ============================================ -->
+
+    <section id="location-hero" aria-labelledby="location-hero-title">
+        <div class="cs-container">
+            <div class="cs-content">
+                <h1 class="cs-title" id="location-hero-title">{{ l.title }} <span class="cs-subtitle">in {{ here.name }}</span></h1>
+                <p class="cs-text">{{ l.text }}</p>
+                <ul class="cs-info">
+                    <li>{% include "components/icons/pin.html" %}<a href="{{ here.mapsUrl }}" target="_blank" rel="noopener">{{ here.address }}</a></li>
+                    <li>{% include "components/icons/phone.html" %}<a href="tel:{{ here.phoneForTel }}">{{ here.phone }}</a></li>
+                    <li>{% include "components/icons/clock.html" %}<span>{{ hoursLine }}</span></li>
+                </ul>
+                <div class="cs-actions">
+                    <a href="/" class="cs-button-solid cs-hover-dark" data-request data-service="{{ l.requestService }}" data-clinic="{{ here.key }}" aria-haspopup="dialog">Request to book</a>
+                    <a href="tel:{{ here.phoneForTel }}" class="cs-button-outline">Call {{ here.phone }}</a>
+                </div>
+            </div>
+            <div class="cs-visual">
+                {% for image in l.images %}
+                {% set imgStyle = 'style="object-position: ' + image.position + ';"' %}
+                <div class="cs-picture cs-picture-{{ loop.index }}">
+                    <img src="{% getUrl image.src | resize({ width: 900 }) | webp %}" alt="{{ image.alt }}" {{ imgStyle | safe }} width="900" height="1100" {% if loop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+                </div>
+                {% endfor %}
+                <div class="cs-badge">
+                    <span class="cs-badge-number">5.0</span>
+                    {% include "components/stars.html" %}
+                    <span class="cs-badge-text">600+ Google reviews</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--               What we treat                  -->
+    <!-- ============================================ -->
+
+    <section id="location-treat" class="cs-location-section" aria-labelledby="location-treat-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="location-treat-title">{{ l.treat.title }}</h2>
+            <p class="cs-text">{{ l.treat.text }}</p>
+            <ul class="cs-cards">
+                {% for item in l.treat.items %}
+                <li>
+                    <a href="{{ item.url }}" class="cs-card">
+                        <span>
+                            <h3 class="cs-card-title">{{ item.title }}</h3>
+                            <p class="cs-card-text">{{ item.text }}</p>
+                        </span>
+                        <span class="cs-go">{% include "components/icons/arrow.html" %}</span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% if l.treat.conditions %}
+            <div class="cs-conditions">
+                <h3 class="cs-conditions-title">{{ l.treat.conditionsTitle }}</h3>
+                <ul>
+                    {% for c in l.treat.conditions %}<li><a href="{{ c.url }}">{{ c.label }}</a></li>{% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                First session                 -->
+    <!-- ============================================ -->
+
+    <section id="location-steps" class="cs-location-section" aria-labelledby="location-steps-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="location-steps-title">{{ l.steps.title }}</h2>
+            <ol class="cs-steps">
+                {% for step in l.steps.items %}
+                <li class="cs-step">
+                    <span class="cs-step-number" aria-hidden="true">0{{ loop.index }}</span>
+                    <h3 class="cs-step-title">{{ step.title }}</h3>
+                    <p class="cs-step-text">{{ step.text }}</p>
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+    </section>
+
+    {% if l.team %}
+    <!-- ============================================ -->
+    <!--                    Team                      -->
+    <!-- ============================================ -->
+
+    <section id="location-team" class="cs-location-section" aria-labelledby="location-team-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="location-team-title">{{ l.team.title }}</h2>
+            <p class="cs-text">{{ l.team.text }}</p>
+            <ul class="cs-team">
+                {% for key in l.team.members %}
+                {% set m = team[key] %}
+                <li>
+                    <a href="{{ m.url }}" class="cs-member">
+                        <span class="cs-member-picture"><img src="{% getUrl m.photo | resize({ width: 520 }) | webp %}" alt="" width="520" height="650" loading="lazy" decoding="async"></span>
+                        <span class="cs-member-name">{{ m.name }}</span>
+                        <span class="cs-member-role">{{ m.role }}</span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if l.billing %}{% include "sections/home/billing.html" %}{% endif %}
+    {% include "sections/home/reviews.html" %}
+    {% if l.regulators %}{% include "sections/home/regulators.html" %}{% endif %}
+
+    {% set nearText = l.nearText %}
+    {% include "components/getting-there.html" %}
+
+    {% set faq = l.faq %}
+    {% include "components/faq.html" %}
+
+    <!-- ============================================ -->
+    <!--                More nearby                   -->
+    <!-- ============================================ -->
+
+    {# the same service at the other clinic links once that page exists #}
+    {% set otherPage = locationPages[there.key][locationPage] if locationPages[there.key] else false %}
+    <section id="location-more" class="cs-location-section" aria-label="More at Revibe">
+        <div class="cs-container">
+            <div>
+                <h2 class="cs-more-title">More at Revibe {{ here.name }}</h2>
+                <ul class="cs-more-list">
+                    {% for p in here.locationPages %}{% if p.slug != locationPage %}
+                    <li><a href="{{ "/location/" + here.key + "/" + p.slug + "/" if locationPages[here.key][p.slug] else "/" }}">{{ p.label }} in {{ here.name }}</a></li>
+                    {% endif %}{% endfor %}
+                </ul>
+            </div>
+            <div>
+                <h2 class="cs-more-title">Closer to {{ there.name }}?</h2>
+                <ul class="cs-more-list">
+                    <li><a class="cs-alt" href="{{ "/location/" + there.key + "/" + locationPage + "/" if otherPage else "/" }}">{{ l.otherLabel }}</a></li>
+                    <li><a class="cs-alt" href="{{ l.allAbout.url }}">{{ l.allAbout.label }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    {% include "sections/cta.html" %}
+    {% set stickyLabel = l.title + " in " + here.name %}
+    {% include "components/sticky-book.html" %}
+{% endblock %}

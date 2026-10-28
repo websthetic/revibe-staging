@@ -1,0 +1,240 @@
+<!-- ============================================ -->
+<!--            Pop-up: Care Map quiz             -->
+<!-- ============================================ -->
+{#
+    Opened by any link or button with data-caremap (see /assets/js/caremap-quiz.js).
+    Screens: intro, quiz, results, lead, thanks. Only one is shown at a time.
+    Content is in _data/careMapQuiz.js; the circle panels reuse _data/careMap.js.
+    The lead form posts to the LeadConnector webhook in careMapQuiz.lead.webhook, not Netlify Forms.
+    Styles: "Care Map quiz" in global.less.
+#}
+{% set cq = careMapQuiz %}
+<div class="cs-popup cs-caremap-popup" id="caremap-popup" role="dialog" aria-modal="true" aria-label="Revibe Care Map" hidden>
+    <div class="cs-popup-card">
+        <button type="button" class="cs-popup-close" aria-label="Close the Care Map">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </button>
+
+        <div class="cs-cm-screens">
+            <!-- Intro -->
+            <section class="cs-cm-screen cs-cm-intro" data-screen="intro" aria-labelledby="caremap-intro-title">
+                <span class="cs-topper">{{ cq.intro.topper }}</span>
+                <h2 class="cs-title cs-popup-title" id="caremap-intro-title" tabindex="-1">{{ cq.intro.title }} <span class="cs-cm-accent">{{ cq.intro.titleAccent }}</span></h2>
+                <p class="cs-popup-text">{{ cq.intro.text }}</p>
+                <ul class="cs-perks">
+                    {% for pill in cq.intro.pills %}
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span>{{ pill }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <button type="button" class="cs-button-solid" data-cm-start>{{ cq.intro.button }}</button>
+            </section>
+
+            <!-- Quiz -->
+            <section class="cs-cm-screen cs-cm-quiz" data-screen="quiz" aria-labelledby="caremap-question" hidden>
+                <div class="cs-cm-progress">
+                    <span class="cs-cm-count" id="caremap-count">Question 1 of {{ cq.questions.length }}</span>
+                    <div class="cs-cm-track" role="progressbar" aria-label="Quiz progress" aria-valuemin="1" aria-valuemax="{{ cq.questions.length }}" aria-valuenow="1">
+                        <span class="cs-cm-fill"></span>
+                    </div>
+                </div>
+                <h2 class="cs-cm-question" id="caremap-question" tabindex="-1" aria-describedby="caremap-count"></h2>
+                <div class="cs-cm-options" role="group" aria-labelledby="caremap-question"></div>
+                <div class="cs-cm-foot">
+                    <button type="button" class="cs-cm-back" data-cm-prev>
+                        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Back
+                    </button>
+                    <button type="button" class="cs-button-solid cs-button-dark" data-cm-next>Next</button>
+                </div>
+            </section>
+
+            <!-- Results -->
+            <section class="cs-cm-screen cs-cm-results" data-screen="results" aria-labelledby="caremap-results-title" hidden>
+                <div class="cs-cm-hero">
+                    <span class="cs-topper">{{ cq.results.topper }}</span>
+                    <h2 class="cs-title cs-popup-title" id="caremap-results-title" tabindex="-1">{{ cq.results.title }}</h2>
+                    <ul class="cs-cm-badges" aria-label="Your focus areas"></ul>
+                    <p class="cs-popup-text cs-cm-summary"></p>
+                    <div class="cs-cm-map">
+                        {% include "components/care-map-svg.html" %}
+                        <p class="cs-cm-hint">{{ cq.results.hint }}</p>
+                        <div class="cs-cm-panel" id="caremap-panel" role="region" hidden></div>
+                    </div>
+                </div>
+                <div class="cs-cm-body">
+                    <h3 class="cs-cm-label">{{ cq.results.toolsTitle }}</h3>
+                    <ul class="cs-cm-tools"></ul>
+
+                    <div class="cs-cm-next">
+                        <h3 class="cs-cm-next-title">{{ cq.results.nextTitle }}</h3>
+                        <p>{{ cq.results.nextText }}</p>
+                        <ul class="cs-cm-checks">
+                            {% for bullet in cq.results.nextBullets %}
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <span>{{ bullet }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <button type="button" class="cs-button-solid cs-button-dark" data-cm-lead>{{ cq.results.button }}</button>
+                    </div>
+
+                    <p class="cs-cm-save">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg>
+                        <span>{{ cq.results.save }} <button type="button" data-cm-lead>{{ cq.results.saveLink }}</button> {{ cq.results.saveAfter }}</span>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Lead capture -->
+            <section class="cs-cm-screen cs-cm-lead" data-screen="lead" aria-labelledby="caremap-lead-title" hidden>
+                <button type="button" class="cs-cm-back" data-cm-results>
+                    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Back to results
+                </button>
+                <h2 class="cs-title cs-popup-title" id="caremap-lead-title" tabindex="-1">{{ cq.lead.title }}</h2>
+                <p class="cs-popup-text">{{ cq.lead.text }}</p>
+                <p class="cs-cm-lead-areas"></p>
+
+                <form class="cs-request-form" novalidate>
+                    <div class="cs-field">
+                        <label for="caremap-first">First name</label>
+                        <input id="caremap-first" name="firstName" type="text" autocomplete="given-name" required>
+                        <span class="cs-error" id="caremap-first-error"></span>
+                    </div>
+                    <div class="cs-field">
+                        <label for="caremap-last">Last name <span class="cs-optional">Optional</span></label>
+                        <input id="caremap-last" name="lastName" type="text" autocomplete="family-name">
+                    </div>
+                    <div class="cs-field">
+                        <label for="caremap-email">Email</label>
+                        <input id="caremap-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required>
+                        <span class="cs-error" id="caremap-email-error"></span>
+                    </div>
+                    <div class="cs-field">
+                        <label for="caremap-phone">Phone <span class="cs-optional">Optional</span></label>
+                        <input id="caremap-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(000) 000-0000">
+                    </div>
+                    <fieldset class="cs-field cs-full cs-clinic-choice">
+                        <legend>Preferred clinic <span class="cs-optional">Optional</span></legend>
+                        {% for clinic in clinics %}
+                        <label class="cs-choice">
+                            <input type="radio" name="location" value="{{ clinic.name }}" data-clinic="{{ clinic.key }}">
+                            <span><span class="cs-choice-name">{{ clinic.name }}</span><small>{{ clinic.street }}</small></span>
+                        </label>
+                        {% endfor %}
+                    </fieldset>
+                    <div class="cs-field cs-full">
+                        <label for="caremap-concern">What's your main concern or goal? <span class="cs-optional">Optional</span></label>
+                        <textarea id="caremap-concern" name="concern" rows="3" placeholder="Lower back pain, recurring tightness, slow recovery"></textarea>
+                    </div>
+                    <div class="cs-submit cs-full">
+                        <button type="submit" class="cs-button-solid cs-hover-dark">{{ cq.lead.button }}</button>
+                        <p>{{ cq.lead.note }}</p>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Thanks and printable report -->
+            <section class="cs-cm-screen cs-cm-thanks" data-screen="thanks" aria-labelledby="caremap-thanks-title" hidden>
+                <div class="cs-request-done cs-cm-done">
+                    <span class="cs-done-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    <h2 class="cs-title cs-done-title" id="caremap-thanks-title" tabindex="-1">{{ cq.thanks.title }}</h2>
+                    <p class="cs-done-text">{{ cq.thanks.text }}</p>
+                    <button type="button" class="cs-button-solid cs-button-dark" data-cm-print>{{ cq.thanks.button }}</button>
+                    <p class="cs-cm-scroll-hint">
+                        {{ cq.thanks.scrollHint }}
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                    </p>
+                </div>
+
+                <article class="cs-cm-report" aria-label="Your Care Map report">
+                    <header class="cs-cm-report-head">
+                        <img src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-site-2026/revibe-logo-combo-trademark_black.png" alt="Revibe" width="160" height="56" loading="lazy" decoding="async">
+                        <p><span>Care Map results</span><span class="cs-cm-report-date"></span></p>
+                    </header>
+                    <div class="cs-cm-report-name">
+                        <h3 class="cs-cm-report-greeting"></h3>
+                        <span class="cs-cm-report-clinic"></span>
+                    </div>
+                    <div class="cs-cm-report-block">
+                        <h4 class="cs-cm-label">Your 3 focus areas</h4>
+                        <ul class="cs-cm-badges cs-cm-report-badges"></ul>
+                        <p class="cs-cm-report-text"></p>
+                    </div>
+                    <ul class="cs-cm-report-areas"></ul>
+                    <div class="cs-cm-report-block">
+                        <h4 class="cs-cm-label">Recommended tools</h4>
+                        <ul class="cs-cm-report-tools"></ul>
+                    </div>
+                    <div class="cs-cm-report-block cs-cm-report-concern" hidden>
+                        <h4 class="cs-cm-label">Your main concern or goal</h4>
+                        <p></p>
+                    </div>
+                    <div class="cs-cm-report-contact">
+                        <div>
+                            <h4 class="cs-cm-label">Ready to get started?</h4>
+                            <ul>
+                                {% for clinic in clinics %}
+                                <li>{{ clinic.name }}: <a href="tel:{{ clinic.phoneForTel }}">{{ clinic.phone }}</a></li>
+                                {% endfor %}
+                                <li><a href="{{ cq.report.website.url }}" target="_blank" rel="noopener">{{ cq.report.website.label }}</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="cs-cm-label">Follow us</h4>
+                            <ul>
+                                {% for link in cq.report.social %}
+                                <li>{{ link.network }}: <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <footer class="cs-cm-report-foot">
+                        <p>{{ cq.report.footer }}</p>
+                        <p>{% for clinic in clinics %}{{ clinic.name }}: {{ clinic.street }}{% if not loop.last %} · {% endif %}{% endfor %} · {{ cq.report.website.label }}</p>
+                    </footer>
+                </article>
+            </section>
+        </div>
+
+        <!-- Quit confirmation, shown when closing part way through -->
+        <div class="cs-cm-quit" role="alertdialog" aria-modal="true" aria-labelledby="caremap-quit-title" aria-describedby="caremap-quit-text" hidden>
+            <div class="cs-cm-quit-card">
+                <h3 class="cs-cm-quit-title" id="caremap-quit-title">{{ cq.quit.title }}</h3>
+                <p id="caremap-quit-text">{{ cq.quit.text }}</p>
+                <div class="cs-cm-quit-buttons">
+                    <button type="button" class="cs-button-solid cs-button-dark" data-cm-quit>{{ cq.quit.yes }}</button>
+                    <button type="button" class="cs-button-outline" data-cm-stay>{{ cq.quit.no }}</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel content for each circle, copied into .cs-cm-panel by caremap-quiz.js -->
+        {% for key, node in careMap.nodes %}
+        <template data-node="{{ key }}">
+            <button class="cs-cm-panel-close" type="button" aria-label="Close {{ node.title }}">&times;</button>
+            <h3 class="cs-cm-panel-title" tabindex="-1">{{ node.title }}</h3>
+            <p class="cs-cm-panel-text">{{ node.text }}</p>
+            {% if node.feel.length %}
+            <p class="cs-cm-panel-heading">You may feel this if</p>
+            <ul class="cs-cm-panel-list">
+                {% for item in node.feel %}<li>{{ item }}</li>{% endfor %}
+            </ul>
+            {% endif %}
+            <p class="cs-cm-panel-heading">{% if node.feel.length %}Revibe tools that help{% else %}What it gives you{% endif %}</p>
+            <ul class="cs-cm-panel-list cs-cm-panel-tools">
+                {% for item in node.tools %}<li>{{ item }}</li>{% endfor %}
+            </ul>
+        </template>
+        {% endfor %}
+
+        <!-- Quiz content for caremap-quiz.js -->
+        <script type="application/json" id="caremap-data">{{ { questions: cq.questions, areas: cq.areas, tieOrder: cq.tieOrder, tools: cq.tools, results: cq.results, report: cq.report, webhook: cq.lead.webhook } | dump | safe }}</script>
+    </div>
+</div>

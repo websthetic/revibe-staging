@@ -1,6 +1,6 @@
 module.exports = {
     name: "Code Stitch Web Designs",
-    email: "help@codestitch.app",
+    email: "hello@revibeto.com",
     phoneForTel: "555-779-4407",
     phoneFormatted: "(555) 779-4407",
     address: {
@@ -17,7 +17,7 @@ module.exports = {
         instagram: "https://www.instagram.com/",
     },
     //! Make sure you include the file protocol (e.g. https://) and that NO TRAILING SLASH is included
-    domain: "https://www.example.com",
+    domain: "https://revibeto.com",
     // Passing the isProduction variable for use in HTML templates
     isProduction: process.env.ELEVENTY_ENV === "PROD",
 };

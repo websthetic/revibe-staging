@@ -13,7 +13,6 @@
 			dropdown: ".cs-dropdown",
 			dropdownMenu: ".cs-drop-ul",
 			navButton: ".cs-nav-button",
-			darkModeToggle: "#dark-mode-toggle",
 		},
 		CLASSES: {
 			active: "cs-active",
@@ -28,7 +27,6 @@
 		hamburger: document.querySelector(CONFIG.SELECTORS.hamburger),
 		menuWrapper: document.querySelector(CONFIG.SELECTORS.menuWrapper),
 		navButton: document.querySelector(CONFIG.SELECTORS.navButton),
-		darkModeToggle: document.querySelector(CONFIG.SELECTORS.darkModeToggle),
 	};
 
 	// Utilities
@@ -193,6 +191,45 @@
 		},
 	};
 
+	// Hide on scroll down, show on scroll up
+	const scrollManager = {
+		lastY: window.scrollY,
+		ticking: false,
+		// small scrolls (like trackpad jitter) don't toggle the bar
+		THRESHOLD: 8,
+
+		// keep the bar visible while someone is using it
+		inUse() {
+			const nav = elements.navigation;
+			return (
+				nav.classList.contains(CONFIG.CLASSES.active) ||
+				nav.querySelector(`${CONFIG.SELECTORS.dropdown}.${CONFIG.CLASSES.active}`) ||
+				nav.contains(document.activeElement) ||
+				nav.matches(":hover")
+			);
+		},
+
+		update() {
+			const nav = elements.navigation;
+			const y = Math.max(window.scrollY, 0);
+			const delta = y - this.lastY;
+			this.ticking = false;
+
+			if (Math.abs(delta) < this.THRESHOLD) return;
+
+			const pastNav = y > nav.offsetHeight;
+			const hide = delta > 0 && pastNav && !this.inUse();
+			nav.classList.toggle("cs-hidden", hide);
+			this.lastY = y;
+		},
+
+		onScroll() {
+			if (this.ticking) return;
+			this.ticking = true;
+			window.requestAnimationFrame(() => this.update());
+		},
+	};
+
 	// Initialization & Setup
 	const init = {
 		inertState() {
@@ -230,6 +267,11 @@
 			// Desktop hover listeners for inert management
 			elements.navigation.addEventListener("mouseenter", eventManager.handleDropdownHover, true);
 			elements.navigation.addEventListener("mouseleave", eventManager.handleDropdownHover, true);
+
+			// Hide/show on scroll
+			window.addEventListener("scroll", () => scrollManager.onScroll(), { passive: true });
+			// tabbing into a hidden bar brings it back
+			elements.navigation.addEventListener("focusin", () => elements.navigation.classList.remove("cs-hidden"));
 
 			// Global events
 			document.addEventListener("keydown", (e) => e.key === "Escape" && keyboardManager.handleEscape());

@@ -1,0 +1,205 @@
+---
+title: "Cold Plunge and Sauna Memberships | Revibe"
+description: "Cold plunge and infrared sauna memberships at Revibe Mississauga and Markham from $79 a month, or $30 for a single session. Social Butterfly and Recovery Club."
+permalink: "/memberships/"
+# content lives in _data/recovery/memberships.js
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    {# the hero, term cards and reviews reuse the service page styles #}
+    <link rel="stylesheet" href="/assets/css/service.css">
+    <link rel="stylesheet" href="/assets/css/memberships.css">
+    <script defer src="/assets/js/care-map.js"></script>
+    <script defer src="/assets/js/memberships.js"></script>
+{% endblock %}
+
+{% block body %}
+    {% set m = recovery.memberships %}
+    {% set checkIcon %}<svg viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M1 5.2l3.2 3.2L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>{% endset %}
+
+    <!-- ============================================ -->
+    <!--                    Hero                      -->
+    <!-- ============================================ -->
+
+    <section id="service-hero" aria-labelledby="service-hero-title">
+        <div class="cs-container">
+            {% set titleStyle = 'style="--chars: ' + m.hero.title.length + ';"' %}
+            <h1 class="cs-title" id="service-hero-title" {{ titleStyle | safe }}>{{ m.hero.title }}</h1>
+            <div class="cs-grid">
+                <div class="cs-content">
+                    <p class="cs-text">{{ m.hero.text }}</p>
+                    <div class="cs-actions">
+                        <a href="#plans" class="cs-button-solid cs-hover-dark">See the plans</a>
+                        <a href="/" class="cs-button-outline" data-book aria-haspopup="dialog">Book a single session</a>
+                    </div>
+                    <p class="cs-proof"><strong>{{ m.hero.proofBold }}</strong> {{ m.hero.proof }}</p>
+                </div>
+                <div class="cs-waves">
+                    {% for image in m.hero.images %}
+                    {% set imgStyle = 'style="object-position: ' + image.position + ';"' %}
+                    <div class="cs-wave">
+                        <img src="{% getUrl image.src | resize({ width: 1000 }) | webp %}" alt="{{ image.alt }}" {{ imgStyle | safe }} width="1200" height="800" {% if loop.index == 2 %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                    Plans                     -->
+    <!-- ============================================ -->
+
+    <section id="plans" class="cs-section" aria-labelledby="plans-title">
+        <div class="cs-container">
+            <div class="cs-section-header">
+                <h2 class="cs-title cs-section-title" id="plans-title">{{ m.plans.title }}</h2>
+                <p class="cs-section-text">{{ m.plans.text }}</p>
+            </div>
+            <div class="cs-plans">
+                {% for plan in m.plans.items %}
+                {% set imgStyle = 'style="object-position: ' + plan.position + ';"' %}
+                <article class="cs-plan{% if plan.featured %} cs-plan-featured{% endif %}" aria-labelledby="plan-{{ loop.index }}">
+                    <div class="cs-plan-picture">
+                        <img src="{% getUrl plan.image | resize({ width: 900 }) | webp %}" alt="{{ plan.alt }}" {{ imgStyle | safe }} width="1600" height="1066" loading="lazy" decoding="async">
+                    </div>
+                    <h3 class="cs-plan-name" id="plan-{{ loop.index }}">{{ plan.name }}</h3>
+                    <p class="cs-plan-tagline">{{ plan.tagline }}</p>
+                    <table class="cs-prices">
+                        <caption class="cs-visually-hidden">{{ plan.name }} monthly prices, plus HST</caption>
+                        <thead>
+                            <tr><td></td><th scope="col">6-month</th><th scope="col">Month to month</th></tr>
+                        </thead>
+                        <tbody>
+                            {% for row in plan.rows %}
+                            <tr>
+                                <th scope="row">{{ row.label }}<span>{{ row.note }}</span></th>
+                                <td class="cs-price cs-price-best">{{ row.prices[0] }}</td>
+                                <td class="cs-price">{{ row.prices[1] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <p class="cs-plan-fine">{{ plan.fine }}</p>
+                    <ul class="cs-perks">
+                        {% for perk in plan.perks %}<li><span class="cs-check">{{ checkIcon | safe }}</span><span>{{ perk }}</span></li>{% endfor %}
+                    </ul>
+                    <a href="#join" class="cs-button-solid {% if not plan.featured %}cs-button-dark{% endif %}" data-plan="{{ plan.name }}">Join {{ plan.name }}</a>
+                </article>
+                {% endfor %}
+            </div>
+            <div class="cs-dropin">
+                <span class="cs-dropin-price">{{ m.plans.dropIn.price }}</span>
+                <div>
+                    <h3 class="cs-dropin-title">{{ m.plans.dropIn.title }}</h3>
+                    <p class="cs-dropin-text">{{ m.plans.dropIn.text }}</p>
+                </div>
+                <a href="/" class="cs-button-solid cs-button-dark" data-book aria-haspopup="dialog">Book a single session</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                 Commitment                   -->
+    <!-- ============================================ -->
+
+    <section id="types" class="cs-section cs-terms" aria-labelledby="terms-title">
+        <div class="cs-container">
+            <div class="cs-section-header">
+                <h2 class="cs-title cs-section-title" id="terms-title">{{ m.terms.title }}</h2>
+            </div>
+            <ul class="cs-kinds">
+                {% for item in m.terms.items %}
+                <li class="cs-kind">
+                    <span class="cs-kind-big">{{ item.big }}</span>
+                    <h3 class="cs-kind-title">{{ item.label }}</h3>
+                    <p class="cs-kind-text">{{ item.text }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    {% set steps = m.steps %}
+    {% include "components/steps.html" %}
+
+    <!-- ============================================ -->
+    <!--                   Reviews                    -->
+    <!-- ============================================ -->
+
+    {% set rv = m.reviews %}
+    <section id="service-reviews" class="cs-section" aria-labelledby="service-reviews-title">
+        <div class="cs-container">
+            <div class="cs-aside">
+                <h2 class="cs-title cs-section-title" id="service-reviews-title">{{ rv.title }}</h2>
+                <p class="cs-rating">
+                    <span class="cs-rating-number">{{ rv.rating }}</span>
+                    <span class="cs-rating-label"><span class="cs-rating-count">{{ rv.count }}</span> Google reviews</span>
+                </p>
+                <a class="cs-source" href="{{ home.reviews.allUrl }}" target="_blank" rel="noopener">{{ rv.allLabel }}</a>
+            </div>
+            <ul class="cs-quotes">
+                {% for review in rv.items %}
+                <li class="cs-quote-item{% if loop.first %} cs-lead{% endif %}">
+                    <figure class="cs-quote-card">
+                        <blockquote class="cs-quote-text">{{ review.quote }}</blockquote>
+                        <figcaption class="cs-quote-author">
+                            <span class="cs-avatar" aria-hidden="true">{{ review.initials }}</span>
+                            <span class="cs-author-name">{{ review.name }}</span>
+                        </figcaption>
+                    </figure>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                  Join Form                   -->
+    <!-- ============================================ -->
+
+    <section id="join" class="cs-section" aria-labelledby="join-title">
+        <div class="cs-container">
+            <div class="cs-content">
+                <h2 class="cs-title cs-section-title" id="join-title">{{ m.join.title }}</h2>
+                <p class="cs-section-text">{{ m.join.text }}</p>
+            </div>
+            <div class="cs-join-card">
+                {# submissions go to Netlify Forms, so they only arrive on the deployed site #}
+                <form class="cs-join-form" name="{{ m.join.formName }}" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="{{ m.join.formName }}">
+                    <p class="cs-honeypot" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+                    <div class="cs-field cs-full"><label for="join-name">Name</label><input id="join-name" name="name" type="text" autocomplete="name" required></div>
+                    <div class="cs-field"><label for="join-phone">Phone</label><input id="join-phone" name="phone" type="tel" autocomplete="tel" required></div>
+                    <div class="cs-field"><label for="join-email">Email</label><input id="join-email" name="email" type="email" autocomplete="email" required></div>
+                    <div class="cs-field"><label for="join-plan">Membership</label><select id="join-plan" name="membership">{% for plan in m.plans.items %}<option>{{ plan.name }}</option>{% endfor %}</select></div>
+                    <div class="cs-field"><label for="join-sessions">Sessions</label><select id="join-sessions" name="sessions"><option>8 sessions a month</option><option>Unlimited</option></select></div>
+                    <div class="cs-field"><label for="join-term">Term</label><select id="join-term" name="term"><option>6-month commitment</option><option>1-month recurring</option></select></div>
+                    <div class="cs-field"><label for="join-location">Location</label><select id="join-location" name="location">{% for clinic in clinics %}<option>{{ clinic.name }}</option>{% endfor %}</select></div>
+                    <p class="cs-consent cs-full">{{ m.join.consent }}</p>
+                    <button type="submit" class="cs-button-solid cs-button-dark cs-full">Join now</button>
+                    <p class="cs-join-status cs-full" role="status"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    {% set careMapTitle = m.careMap.title %}
+    {% set careMapText = m.careMap.text %}
+    {% set careMapButton = m.careMap.button %}
+    {% set careMapLight = true %}
+    {% include "sections/care-map.html" %}
+
+    {% set clinicCards = m.locations %}
+    {% include "components/clinic-cards.html" %}
+
+    {% set faq = m.faq %}
+    {% include "components/faq.html" %}
+
+    {% include "sections/cta.html" %}
+
+    {% set stickyLabel = m.stickyLabel %}
+    {% include "components/sticky-book.html" %}
+{% endblock %}

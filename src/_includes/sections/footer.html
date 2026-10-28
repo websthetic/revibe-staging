@@ -2,109 +2,35 @@
 <!--                   Footer                     -->
 <!-- ============================================ -->
 
-<footer id="cs-footer-1293">
-    <div class="cs-container">      
-        <!-- Logo Group -->
-        <div class="cs-logo-group">
-            <a aria-label="go back to home" class="cs-logo" href="/">
-                <img class="cs-logo-img" aria-hidden="true" loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe_fff.png.webp" alt="Logo of Revibe To Inc." width="240" height="32">
-            </a>
-            <p class="cs-text">
-                Your home for social well-being.
-            </p>
-            <a href="mailto:hello@revibeto.com" class="cs-link">
-                <img class="cs-link-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/thick-mail.svg" alt="icon" width="24" height="24">
-                hello@revibeto.com
-            </a>
+<footer id="cs-footer">
+    <div class="cs-container">
+        <div class="cs-top">
+            <div class="cs-brand">
+                <a class="cs-logo" href="/" aria-label="Revibe home page">
+                    <!-- crops the mark out of the full logo; swap for a mark-only file when available -->
+                    <img class="cs-logo-img" src="https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-site-2026/revibe-logo-combo-trademark_black.png" alt="" width="124" height="124" loading="lazy" decoding="async" aria-hidden="true">
+                </a>
+                <p class="cs-tagline">{{ navigation.footer.tagline }}</p>
+                <a class="cs-email" href="mailto:{{ client.email }}">{{ client.email }}</a>
+            </div>
+            <nav class="cs-columns" aria-label="Footer">
+                {% for column in navigation.footer.columns %}
+                <div class="cs-column">
+                    <h2 class="cs-heading">{{ column.heading }}</h2>
+                    <ul class="cs-list">
+                        {% for link in column.links %}
+                        <li><a class="cs-link" href="{{ link.url }}">{{ link.label }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endfor %}
+            </nav>
         </div>
-        <!-- Links -->
-        <ul class="cs-nav">
-            <li class="cs-nav-li">
-                <span class="cs-header">Services</span>
-            </li>
-            <li class="cs-nav-li">
-                <a class="cs-nav-link" href="/osteopathy">Osteopathy</a>
-            </li>
-            <li class="cs-nav-li">
-                <a class="cs-nav-link" href="/massage">Massage</a>
-            </li>
-            <li class="cs-nav-li">
-                <a class="cs-nav-link" href="/chiropractic">Chiroprathic</a>
-            </li>
-            <li class="cs-nav-li">
-                <a class="cs-nav-link" href="/physiotherapy">Physiotherapy</a>
-            </li>
-            <li class="cs-nav-li">
-                <a class="cs-nav-link" href="/pelvic-physiotherapy">Pelvic Physiotherapy</a>
-            </li>
-            <li class="cs-nav-li">
-                <a class="cs-nav-link" href="/naturopathic-medicine">Naturopathic Medicine</a>
-            </li>
-
-            <li class="cs-nav-li">
-                <span class="cs-nav-link" href="/naturopathic-medicine">Performance Training / Strength & Conditioning</span>
-            </li>
-
-            
-        </ul>
-        <ul class="cs-nav">
-            <li class="cs-nav-li">
-                <span class="cs-header">About</span>
-            </li>
-            <li class="cs-nav-li">
-                <a class="cs-nav-link" href="/about-us">Our Story</a>
-            </li>
-            <li class="cs-nav-li">
-                <a class="cs-nav-link" href="/join-our-team">Careers</a>
-            </li>
-            <li class="cs-nav-li">
-                <a class="cs-nav-link" href="/therapists">Team</a>
-            </li>
-            <li class="cs-nav-li">
-                <a class="cs-nav-link" target="_blank" href="https://g.page/r/CYMnpBL0frVcEAE">Google Business</a>
-            </li>
-        </ul>
-        <ul class="cs-nav">
-            <li class="cs-nav-li">
-                <span class="cs-header">Contact</span>
-            </li>
-            <li class="cs-nav-li">
-                <a class="cs-nav-link" href="/contactus">Contact us</a>
-            </li>
-            <li class="cs-nav-li">
-                <a class="cs-nav-link" href="/locations">Locations</a>
-            </li>
-            <li class="cs-nav-li">
-                <a class="cs-nav-link" target="_blank" href="https://www.instagram.com/timetorevibe/">Instagram</a>
-            </li>
-            <li class="cs-nav-li">
-                <a class="cs-nav-link" href="https://ca.linkedin.com/company/revibeinc">LinkedIn</a>
-            </li>
-        </ul>
-        <ul class="cs-nav">
-            <li class="cs-nav-li">
-                <span class="cs-header">Learn</span>
-            </li>
-            <li class="cs-nav-li">
-                <a class="cs-nav-link" href="/faq">FAQ</a>
-            </li>
-            <li class="cs-nav-li">
-                <a class="cs-nav-link" href="/blogs">Blogs</a>
-            </li>
-        </ul>
+        <div class="cs-bottom">
+            <span class="cs-copyright">Copyright &copy; {% year %} Revibe To. Inc All Rights Reserved.</span>
+            {% for link in navigation.footer.legal %}
+            <a class="cs-legal" href="{{ link.url }}">{{ link.label }}</a>
+            {% endfor %}
+        </div>
     </div>
-    <div class="cs-bottom">
-        <span class="cs-copyright">
-            Copyright © 2024 Revibe To. Inc All Rights Reserved.
-        </span>
-        <a href="/terms-of-use-privacy-policy" class="cs-copyright-link">Terms of Use & Privacy</a>
-    </div>
-    <!--Floating Cirlces-->
-    <div class="cs-floater" aria-hidden="true"></div>
 </footer>
-
-
-
-
-
-                                

@@ -1,0 +1,43 @@
+<!-- ============================================ -->
+<!--                  Care Map                    -->
+<!-- ============================================ -->
+
+{#
+    Shared Care Map section. Set these before including it:
+    careMapTitle, careMapText, careMapButton (label)
+    careMapLight: true for the white version used on service pages
+    Needs /assets/js/care-map.js in the page head.
+#}
+<section id="care-map" class="cs-care-map{% if careMapLight %} cs-care-map-light{% endif %}" aria-labelledby="care-map-title">
+    <div class="cs-container">
+        <div class="cs-content">
+            <h2 class="cs-title" id="care-map-title">{{ careMapTitle }}</h2>
+            <p class="cs-text">{{ careMapText }}</p>
+            <a href="{{ careMap.url }}" class="cs-button-solid{% if careMapLight %} cs-button-dark{% endif %}" data-caremap aria-haspopup="dialog">{{ careMapButton }}</a>
+        </div>
+        <div class="cs-map">
+            {% include "components/care-map-svg.html" %}
+            <div class="cs-pop" id="care-map-pop" role="dialog" hidden></div>
+            <p class="cs-hint">Tap a circle to see what it means.</p>
+            <!-- Popup content, copied into .cs-pop by care-map.js -->
+            {% for key, node in careMap.nodes %}
+            <template data-node="{{ key }}">
+                <button class="cs-pop-close" type="button" aria-label="Close">&times;</button>
+                <h3 class="cs-pop-title">{{ node.title }}</h3>
+                <p class="cs-pop-text">{{ node.text }}</p>
+                {% if node.feel.length %}
+                <p class="cs-pop-heading">You may feel this if</p>
+                <ul class="cs-pop-list">
+                    {% for item in node.feel %}<li>{{ item }}</li>{% endfor %}
+                </ul>
+                {% endif %}
+                <p class="cs-pop-heading">{% if node.feel.length %}Revibe tools that help{% else %}What it gives you{% endif %}</p>
+                <ul class="cs-pop-list cs-pop-tools">
+                    {% for item in node.tools %}<li>{{ item }}</li>{% endfor %}
+                </ul>
+                <a class="cs-pop-link" href="{{ careMap.url }}" data-caremap aria-haspopup="dialog">Start my Care Map</a>
+            </template>
+            {% endfor %}
+        </div>
+    </div>
+</section>

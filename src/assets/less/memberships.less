@@ -1,0 +1,442 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// MEMBERSHIPS PAGE STYLES
+// /memberships/. The hero, commitment cards and reviews reuse service.less;
+// the steps, FAQ, clinic cards and Care Map are shared in global.less.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/*-- -------------------------- -->
+<---           Plans            -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	/* the plans continue straight on from the hero */
+	#service-hero + #plans {
+		padding-top: 0;
+	}
+
+	#plans {
+		background-color: var(--offWhite);
+
+		.cs-section-header {
+			margin-bottom: (30/16rem);
+		}
+
+		.cs-plans {
+			display: grid;
+			gap: (12/16rem);
+		}
+
+		.cs-plan {
+			padding: (30/16rem) (24/16rem) (28/16rem);
+			border-radius: (36/16rem);
+			background-color: var(--white);
+			color: var(--nearBlack);
+			display: flex;
+			flex-direction: column;
+			gap: (22/16rem);
+
+			> .cs-button-solid {
+				align-self: flex-start;
+			}
+		}
+
+		.cs-plan-picture {
+			height: (150/16rem);
+			border-radius: 999px;
+			overflow: hidden;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+
+		.cs-plan-name {
+			font-size: (64/16rem);
+			line-height: 0.86;
+			letter-spacing: 1px;
+			max-width: none;
+			margin: 0;
+			color: inherit;
+		}
+
+		.cs-plan-tagline {
+			font-size: (15/16rem);
+			line-height: 1.55;
+			margin: 0;
+		}
+
+		/* price table: rows for 8 sessions / unlimited, columns for the two terms */
+		.cs-prices {
+			width: 100%;
+			border-collapse: separate;
+			border-spacing: (10/16rem);
+			margin: (-10/16rem);
+			width: calc(100% + 1.25rem);
+
+			thead th {
+				font-size: (12/16rem);
+				font-weight: 700;
+				text-align: center;
+			}
+
+			tbody th {
+				font-family: var(--headerFont);
+				font-size: (26/16rem);
+				font-weight: 400;
+				line-height: 0.95;
+				letter-spacing: 1px;
+				text-transform: uppercase;
+				text-align: left;
+
+				span {
+					font-family: var(--bodyFont);
+					font-size: (13/16rem);
+					letter-spacing: 0;
+					text-transform: none;
+					margin-top: (4/16rem);
+					display: block;
+					color: var(--charcoal);
+				}
+			}
+		}
+
+		.cs-price {
+			min-width: (84/16rem);
+			font-family: var(--headerFont);
+			font-size: (42/16rem);
+			line-height: 1;
+			letter-spacing: 1px;
+			text-align: center;
+			padding: (10/16rem) (12/16rem) (4/16rem);
+			border-radius: (22/16rem);
+			box-shadow: inset 0 0 0 1.5px currentColor;
+		}
+
+		/* the 6-month price, the best monthly rate */
+		.cs-price-best {
+			background-color: var(--accentYellow);
+			box-shadow: none;
+			color: var(--nearBlack);
+		}
+
+		.cs-plan-fine {
+			font-size: (13/16rem);
+			line-height: 1.5;
+			margin: 0;
+			color: var(--charcoal);
+		}
+
+		.cs-perks {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			gap: (12/16rem);
+
+			li {
+				font-size: (15/16rem);
+				line-height: 1.45;
+				/* the site's default list colour is charcoal; follow the card instead */
+				color: inherit;
+				display: flex;
+				align-items: flex-start;
+				gap: (12/16rem);
+			}
+		}
+
+		.cs-check {
+			width: (24/16rem);
+			height: (24/16rem);
+			margin-top: -1px;
+			border-radius: 50%;
+			background-color: var(--revibeGreen);
+			color: var(--nearBlack);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex: none;
+
+			svg {
+				width: 12px;
+				height: 10px;
+			}
+		}
+
+		/* Recovery Club */
+		.cs-plan-featured {
+			background-color: var(--nearBlack);
+			color: var(--white);
+
+			.cs-plan-tagline {
+				color: var(--borderGrey);
+			}
+
+			.cs-prices tbody th span,
+			.cs-plan-fine {
+				color: var(--blueGrey);
+			}
+		}
+
+		.cs-dropin {
+			margin-top: (12/16rem);
+			padding: (24/16rem);
+			border-radius: (36/16rem);
+			background-color: var(--white);
+			display: grid;
+			align-items: center;
+			gap: (18/16rem);
+
+			> .cs-button-solid {
+				justify-self: start;
+			}
+		}
+
+		.cs-dropin-price {
+			font-family: var(--headerFont);
+			font-size: (96/16rem);
+			line-height: 0.8;
+			padding: (18/16rem) (22/16rem) (6/16rem);
+			border-radius: (28/16rem);
+			background-color: var(--accentYellow);
+			color: var(--nearBlack);
+			justify-self: start;
+		}
+
+		.cs-dropin-title {
+			font-size: (40/16rem);
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-dropin-text {
+			font-size: (15/16rem);
+			line-height: 1.55;
+			max-width: (520/16rem);
+			margin: (8/16rem) 0 0;
+			color: var(--charcoal);
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#plans {
+		.cs-section-header {
+			margin-bottom: (48/16rem);
+		}
+
+		.cs-plans {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: (16/16rem);
+		}
+
+		.cs-plan {
+			padding: (44/16rem) (40/16rem) (40/16rem);
+			border-radius: (48/16rem);
+			gap: (26/16rem);
+		}
+
+		.cs-plan-picture {
+			height: (200/16rem);
+		}
+
+		.cs-plan-name {
+			/* 72px - 96px */
+			font-size: clamp(4.5rem, 6vw, 6rem);
+		}
+
+		.cs-prices tbody th {
+			font-size: (30/16rem);
+		}
+
+		.cs-price {
+			min-width: (120/16rem);
+			font-size: (56/16rem);
+		}
+
+		.cs-dropin {
+			margin-top: (16/16rem);
+			padding: (32/16rem) (40/16rem);
+			border-radius: (48/16rem);
+			grid-template-columns: auto minmax(0, 1fr) auto;
+			gap: (36/16rem);
+		}
+
+		.cs-dropin-price {
+			font-size: (128/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---         Commitment         -->
+<--- -------------------------- -*/
+
+/* the terms reuse the service "types" cards, three across */
+@media only screen and (min-width: 0rem) {
+	#types.cs-terms {
+		.cs-kinds {
+			grid-template-columns: none;
+		}
+
+		.cs-kind-big {
+			font-family: var(--headerFont);
+			font-size: (72/16rem);
+			line-height: 0.8;
+			color: var(--revibeGreenOnLight);
+		}
+	}
+}
+
+@media only screen and (min-width: 56.25rem) {
+	#types.cs-terms .cs-kinds {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+@media only screen and (min-width: 80rem) {
+	#types.cs-terms .cs-kinds {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+/*-- -------------------------- -->
+<---          Join Form         -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#join {
+		background-color: var(--revibeGreen);
+
+		.cs-container {
+			display: grid;
+			gap: (28/16rem);
+		}
+
+		.cs-content {
+			display: flex;
+			flex-direction: column;
+			gap: (16/16rem);
+		}
+
+		.cs-section-text {
+			color: var(--nearBlack);
+		}
+
+		.cs-join-card {
+			padding: (26/16rem) (22/16rem);
+			border-radius: (36/16rem);
+			background-color: var(--white);
+		}
+
+		.cs-join-form {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: (10/16rem);
+		}
+
+		.cs-full {
+			grid-column: 1 / -1;
+		}
+
+		.cs-honeypot {
+			/* spam trap for bots; Netlify only needs it in the form, not on screen */
+			display: none;
+		}
+
+		.cs-field {
+			min-width: 0;
+			display: flex;
+			flex-direction: column;
+			gap: (6/16rem);
+
+			label {
+				font-size: (12/16rem);
+				font-weight: 700;
+				color: var(--nearBlack);
+			}
+
+			input,
+			select {
+				width: 100%;
+				box-sizing: border-box;
+				font: 500 1rem/1.2 var(--bodyFont);
+				padding: (14/16rem) (18/16rem);
+				border: 1.5px solid transparent;
+				border-radius: 999px;
+				background-color: var(--offWhite);
+				color: var(--nearBlack);
+				-webkit-appearance: none;
+				appearance: none;
+
+				&:focus {
+					outline: none;
+					border-color: var(--deepGreen);
+					background-color: var(--white);
+				}
+			}
+
+			select {
+				padding-right: (40/16rem);
+				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230D0D0D' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+				background-repeat: no-repeat;
+				background-position: right 14px center;
+				background-size: 16px;
+			}
+		}
+
+		.cs-consent {
+			font-size: (11/16rem);
+			line-height: 1.5;
+			margin: (6/16rem) 0;
+			color: var(--charcoal);
+		}
+
+		.cs-button-solid {
+			width: 100%;
+			border: 0;
+			cursor: pointer;
+
+			&[disabled] {
+				opacity: 0.6;
+				cursor: progress;
+			}
+		}
+
+		.cs-join-status {
+			font-size: (14/16rem);
+			font-weight: 600;
+			margin: 0;
+			color: var(--deepGreen);
+
+			&:empty {
+				display: none;
+			}
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#join {
+		.cs-container {
+			grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+			align-items: center;
+			gap: (80/16rem);
+		}
+
+		.cs-join-card {
+			padding: (40/16rem);
+			border-radius: (48/16rem);
+		}
+
+		.cs-join-form {
+			gap: (14/16rem);
+		}
+	}
+}

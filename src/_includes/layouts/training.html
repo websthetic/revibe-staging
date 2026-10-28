@@ -1,0 +1,247 @@
+{#
+    Performance training pages (performance training, team training, team combine).
+    A page sets in its front matter:
+      trainingPage: key of its content file in _data/training/ (e.g. "team-training")
+    consult: { label, variant } in that file sets every "Request ..." button and the version of the
+    free consult pop-up it opens ("individual", "team" or "combine"); without it, "Request a free consult".
+    Styles: performance-training.less. Tabs and report bars: performance-training.js.
+#}
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/performance-training.css">
+    <script defer src="/assets/js/performance-training.js"></script>
+{% endblock %}
+
+{% block body %}
+    {% set pt = training[trainingPage] %}
+    {# every "Request ..." button opens the free consult pop-up in this page's version #}
+    {% set consultLabel = pt.consult.label if pt.consult else "Request a free consult" %}
+    {% set consultVariant = pt.consult.variant if pt.consult else "individual" %}
+    {% set check %}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>{% endset %}
+
+    <!-- ============================================ -->
+    <!--                    Hero                      -->
+    <!-- ============================================ -->
+
+    <section id="perf-hero" aria-labelledby="perf-hero-title">
+        <div class="cs-container">
+            <div class="cs-content">
+                <h1 class="cs-title" id="perf-hero-title">{{ pt.hero.title }}</h1>
+                <p class="cs-text">{{ pt.hero.text }}</p>
+                <ul class="cs-proof">
+                    {% for item in pt.hero.proof %}<li><span class="cs-check">{{ check | safe }}</span><span>{{ item }}</span></li>{% endfor %}
+                </ul>
+                <div class="cs-actions">
+                    <a href="/" class="cs-button-solid cs-hover-dark" data-consult data-variant="{{ consultVariant }}" aria-haspopup="dialog">{{ consultLabel }}</a>
+                    <a href="#how" class="cs-button-outline">See how it works</a>
+                </div>
+            </div>
+            <div class="cs-visual">
+                {% for image in pt.hero.images %}
+                {% set imgStyle = 'style="object-position: ' + image.position + ';"' %}
+                <div class="cs-visual-{{ loop.index }}">
+                    <img src="{% getUrl image.src | resize({ width: 900 }) | webp %}" alt="{{ image.alt }}" {{ imgStyle | safe }} width="1200" height="800" {% if loop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+                </div>
+                {% endfor %}
+                <p class="cs-badge">
+                    <span class="cs-badge-number">{{ home.reviews.rating }}</span>
+                    {% include "components/stars.html" %}
+                    <span class="cs-badge-text">{{ home.reviews.count }}</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                    Goals                     -->
+    <!-- ============================================ -->
+
+    <section id="goals" class="cs-section" aria-labelledby="goals-title">
+        <div class="cs-container">
+            <h2 class="cs-title cs-section-title" id="goals-title">{{ pt.goals.title }}</h2>
+            <div class="cs-tabs">
+                <div class="cs-tablist" role="tablist" aria-label="{{ pt.goals.title }}">
+                    {% for goal in pt.goals.items %}
+                    <button type="button" role="tab" class="cs-tab" id="goal-tab-{{ goal.id }}" aria-controls="goal-panel-{{ goal.id }}" aria-selected="{{ "true" if loop.first else "false" }}" tabindex="{{ "0" if loop.first else "-1" }}">{{ goal.title }}</button>
+                    {% endfor %}
+                </div>
+                {% for goal in pt.goals.items %}
+                <div class="cs-panel" role="tabpanel" id="goal-panel-{{ goal.id }}" aria-labelledby="goal-tab-{{ goal.id }}" tabindex="0"{% if not loop.first %} hidden{% endif %}>
+                    <div class="cs-panel-picture">
+                        <img src="{% getUrl goal.image | resize({ width: 900 }) | webp %}" alt="{{ goal.alt }}" width="1200" height="800" loading="lazy" decoding="async">
+                    </div>
+                    <div class="cs-panel-body">
+                        <h3 class="cs-panel-title">{{ goal.title }}</h3>
+                        <p class="cs-panel-text">{{ goal.text }}</p>
+                        <ul class="cs-points">
+                            {% for point in goal.points %}<li><span class="cs-check">{{ check | safe }}</span><span>{{ point }}</span></li>{% endfor %}
+                        </ul>
+                        <div class="cs-actions">
+                            {% if goal.buttons %}
+                            {% for button in goal.buttons %}<a href="{{ button.url }}" class="{% if button.outline %}cs-button-outline{% else %}cs-button-solid cs-hover-dark{% endif %}">{{ button.label }}</a>{% endfor %}
+                            {% else %}
+                            <a href="/" class="cs-button-solid cs-hover-dark" data-consult data-variant="{{ consultVariant }}"{% if consultVariant == "individual" %} data-goal="{{ goal.title }}"{% endif %} aria-haspopup="dialog">{{ consultLabel }}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                How It Works                  -->
+    <!-- ============================================ -->
+
+    <section id="how" class="cs-section cs-section-dark" aria-labelledby="how-title">
+        <div class="cs-container">
+            <h2 class="cs-title cs-section-title" id="how-title">{{ pt.how.title }}</h2>
+            <div class="cs-how">
+                <ol class="cs-steps">
+                    {% for step in pt.how.steps %}
+                    <li class="cs-step">
+                        <span class="cs-step-number" aria-hidden="true">0{{ loop.index }}</span>
+                        <div>
+                            <h3 class="cs-step-title">{{ step.title }}</h3>
+                            <p class="cs-step-text">{{ step.text }}</p>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ol>
+                <div class="cs-report">
+                    <h3 class="cs-report-title">{{ pt.how.report.title }}</h3>
+                    {% for bar in pt.how.report.bars %}
+                    {% set barStyle = 'style="--w: ' + bar.value + '%;"' %}
+                    <div class="cs-bar">
+                        <p class="cs-bar-label">{{ bar.label }}<span>{{ bar.note }}</span></p>
+                        <div class="cs-bar-track" role="img" aria-label="{{ bar.label }}: {{ bar.value }} percent, example"><i {{ barStyle | safe }}></i></div>
+                    </div>
+                    {% endfor %}
+                    <p class="cs-report-note">{{ pt.how.report.note }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                   Reviews                    -->
+    <!-- ============================================ -->
+
+    <section id="athletes" class="cs-section cs-section-dark" aria-labelledby="athletes-title">
+        <div class="cs-container">
+            <div class="cs-head">
+                <h2 class="cs-title cs-section-title" id="athletes-title">{{ pt.reviews.title }}</h2>
+                <p class="cs-score">
+                    <span class="cs-score-number">{{ pt.reviews.rating }}</span>
+                    {% include "components/stars.html" %}
+                    <span class="cs-score-text">{{ pt.reviews.note }}</span>
+                </p>
+            </div>
+            <ul class="cs-reviews">
+                {% for review in pt.reviews.items %}
+                <li>
+                    <figure class="cs-review">
+                        <figcaption class="cs-author">
+                            <span class="cs-avatar" aria-hidden="true">{{ review.name | first | upper }}</span>
+                            <span><strong>{{ review.name }}</strong><small>Google review</small></span>
+                        </figcaption>
+                        {% include "components/stars.html" %}
+                        <blockquote class="cs-quote">{{ review.quote }}</blockquote>
+                    </figure>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--              How Long People Train           -->
+    <!-- ============================================ -->
+
+    <section id="blocks" class="cs-section" aria-labelledby="blocks-title">
+        <div class="cs-container">
+            <h2 class="cs-title cs-section-title" id="blocks-title">{{ pt.blocks.title }}</h2>
+            <p class="cs-section-text">{{ pt.blocks.text }}</p>
+            <ul class="cs-blocks">
+                {% for block in pt.blocks.items %}
+                <li class="cs-block{% if block.popular %} cs-block-popular{% endif %}">
+                    {% if block.tag %}<span class="cs-block-tag">{{ block.tag }}</span>{% endif %}
+                    <span class="cs-block-label">{{ block.label }}</span>
+                    <span class="cs-block-figure">{{ block.figure }}</span>
+                    {% if block.unit %}<span class="cs-block-unit">{{ block.unit }}</span>{% endif %}
+                    <p class="cs-block-text">{{ block.text }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="cs-actions">
+                <a href="/" class="cs-button-solid cs-hover-dark" data-consult data-variant="{{ consultVariant }}" aria-haspopup="dialog">{{ consultLabel }}</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--               Why Train Here                 -->
+    <!-- ============================================ -->
+
+    <section id="why" class="cs-section" aria-labelledby="why-title">
+        <div class="cs-container">
+            <h2 class="cs-title cs-section-title" id="why-title">{{ pt.why.title }}</h2>
+            <ul class="cs-why">
+                {% for item in pt.why.items %}
+                <li><h3 class="cs-why-title">{{ item.title }}</h3><p class="cs-why-text">{{ item.text }}</p></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                 Final CTA                    -->
+    <!-- ============================================ -->
+
+    <section id="final" class="cs-section" aria-labelledby="final-title">
+        <div class="cs-container">
+            <h2 class="cs-title cs-section-title" id="final-title">{{ pt.final.title }}</h2>
+            <div>
+                <p class="cs-final-text">{{ pt.final.text }}</p>
+                <div class="cs-actions">
+                    <a href="/" class="cs-button-solid cs-button-dark cs-final-main" data-consult data-variant="{{ consultVariant }}" aria-haspopup="dialog">{{ consultLabel }}</a>
+                    {% for clinic in clinics %}<a href="tel:{{ clinic.phoneForTel }}" class="cs-button-outline">Call {{ clinic.name }}</a>{% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% set faq = pt.faq %}
+    {% set faqBookButton = false %}
+    {% include "components/faq.html" %}
+
+    <!-- ============================================ -->
+    <!--                  Where to Train              -->
+    <!-- ============================================ -->
+
+    <section id="train-locations" class="cs-section" aria-labelledby="train-locations-title">
+        <div class="cs-container">
+            <h2 class="cs-title cs-section-title" id="train-locations-title">{{ pt.locations.title }}</h2>
+            <ul class="cs-locs">
+                {% for clinic in clinics %}
+                <li>
+                    <a class="cs-loc" href="{{ "/location/" + clinic.key + "/performance-training/" if locationPages[clinic.key]["performance-training"] else "/" }}">
+                        <img src="{% getUrl clinic.image | resize({ width: 300 }) | webp %}" alt="" width="{{ clinic.width }}" height="{{ clinic.height }}" loading="lazy" decoding="async">
+                        <span><span class="cs-loc-name">{{ clinic.name }}</span><small>{{ clinic.street }}, {{ clinic.name }}</small></span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    {% include "sections/cta.html" %}
+
+    {% include "components/popup-forms/free-consult.html" %}
+
+    {% set stickyLabel = pt.stickyLabel %}
+    {% set stickyConsult = true %}
+    {% include "components/sticky-book.html" %}
+{% endblock %}

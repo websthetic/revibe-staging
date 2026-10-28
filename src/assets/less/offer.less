@@ -1,0 +1,918 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// OFFER LANDING PAGE STYLES
+// layouts/offer.html (20% off therapy, Recovery 10 pack). The reviews section
+// reuses service.less; the slim header and footer are in global.less.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/*-- -------------------------- -->
+<---    Offer and Claim Form    -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#offer-stage {
+		padding: (4/16rem) (20/16rem) (40/16rem);
+		background-color: var(--offWhite);
+		display: grid;
+		gap: (22/16rem);
+
+		.cs-photo {
+			height: (190/16rem);
+			border-radius: 999px;
+			background-color: var(--softBeige);
+			overflow: hidden;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: 50% 25%;
+				display: block;
+			}
+		}
+
+		.cs-offer {
+			display: flex;
+			flex-direction: column;
+			gap: (22/16rem);
+		}
+
+		.cs-title {
+			font-size: (60/16rem);
+			line-height: 0.86;
+			max-width: none;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-text {
+			font-size: (15/16rem);
+			line-height: 1.6;
+			max-width: (520/16rem);
+			margin: 0;
+			color: var(--charcoal);
+		}
+
+		.cs-price {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: (18/16rem);
+		}
+
+		.cs-price-now {
+			font-family: var(--headerFont);
+			font-size: (128/16rem);
+			line-height: 0.78;
+			letter-spacing: 1px;
+			white-space: nowrap;
+			margin: 0;
+			padding: (18/16rem) (22/16rem) (6/16rem);
+			border-radius: (28/16rem);
+			background-color: var(--accentYellow);
+			color: var(--nearBlack);
+		}
+
+		.cs-price-terms {
+			font-size: (15/16rem);
+			line-height: 1.5;
+			max-width: (220/16rem);
+			margin: 0;
+			color: var(--nearBlack);
+
+			s {
+				font-family: var(--headerFont);
+				font-size: (52/16rem);
+				line-height: 0.9;
+				letter-spacing: 1px;
+				text-decoration-thickness: 4px;
+				margin-bottom: (4/16rem);
+				display: block;
+				color: var(--charcoal);
+			}
+		}
+
+		.cs-price-label {
+			font-family: var(--headerFont);
+			font-size: (46/16rem);
+			line-height: 0.9;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			display: block;
+		}
+
+		/* "15 minutes" style line beside the price, with the price label under it */
+		.cs-price-len {
+			font-family: var(--headerFont);
+			/* 38px - 60px */
+			font-size: clamp(2.375rem, 6vw, 3.75rem);
+			line-height: 0.9;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			margin-bottom: (4/16rem);
+			display: block;
+		}
+
+		/* percent offers: the figure is smaller and the label sits beside it */
+		.cs-price-percent {
+			.cs-price-now {
+				font-size: (92/16rem);
+			}
+
+			.cs-price-terms {
+				max-width: (240/16rem);
+				flex: 1 1 (170/16rem);
+			}
+		}
+
+		.cs-go {
+			display: flex;
+			flex-direction: column;
+			gap: (12/16rem);
+		}
+
+		/* phones get the pinned claim bar instead */
+		.cs-go-button {
+			display: none;
+		}
+
+		.cs-proof {
+			font-size: (14/16rem);
+			line-height: 1.55;
+			max-width: (420/16rem);
+			margin: 0;
+			color: var(--charcoal);
+
+			strong {
+				color: var(--nearBlack);
+			}
+		}
+
+		/* the green claim form */
+		.cs-claim {
+			padding: (28/16rem) (22/16rem) (24/16rem);
+			border-radius: (36/16rem);
+			background-color: var(--revibeGreen);
+			scroll-margin-top: (16/16rem);
+
+			/* the black button's green hover wouldn't show on green, so it fills white */
+			.cs-button-dark:before {
+				background-color: var(--white);
+			}
+		}
+
+		.cs-honeypot {
+			/* spam trap for bots; Netlify only needs it in the form, not on screen */
+			display: none;
+		}
+
+		.cs-claim-title {
+			font-size: (40/16rem);
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-claim-intro {
+			font-size: (14/16rem);
+			line-height: 1.55;
+			margin: (10/16rem) 0 (20/16rem);
+			color: var(--nearBlack);
+		}
+
+		.cs-fields {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: (10/16rem);
+		}
+
+		.cs-full {
+			grid-column: 1 / -1;
+		}
+
+		.cs-field {
+			min-width: 0;
+			display: flex;
+			flex-direction: column;
+			gap: (6/16rem);
+
+			label {
+				font-size: (12/16rem);
+				font-weight: 700;
+				color: var(--nearBlack);
+			}
+
+			input,
+			select {
+				width: 100%;
+				box-sizing: border-box;
+				font: 500 1rem/1.2 var(--bodyFont);
+				padding: (14/16rem) (18/16rem);
+				border: 1.5px solid transparent;
+				border-radius: 999px;
+				background-color: var(--white);
+				color: var(--nearBlack);
+				-webkit-appearance: none;
+				appearance: none;
+
+				&:focus {
+					outline: none;
+					border-color: var(--nearBlack);
+				}
+			}
+
+			select {
+				padding-right: (40/16rem);
+				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%230D0D0D' stroke-width='2'/%3E%3C/svg%3E");
+				background-repeat: no-repeat;
+				background-position: right 18px center;
+			}
+		}
+
+		.cs-consent {
+			font-size: (12/16rem);
+			line-height: 1.5;
+			margin: (16/16rem) 0 (18/16rem);
+			color: var(--nearBlack);
+			display: flex;
+			align-items: flex-start;
+			gap: (10/16rem);
+
+			input {
+				width: 20px;
+				height: 20px;
+				margin: 0;
+				accent-color: var(--nearBlack);
+				flex-shrink: 0;
+			}
+		}
+
+		.cs-claim-submit {
+			width: 100%;
+			border: 0;
+			cursor: pointer;
+
+			&[disabled] {
+				opacity: 0.6;
+				cursor: progress;
+			}
+		}
+
+		.cs-claim-status {
+			font-size: (14/16rem);
+			font-weight: 700;
+			margin: (12/16rem) 0 0;
+			color: var(--nearBlack);
+
+			&:empty {
+				display: none;
+			}
+		}
+
+		.cs-reply {
+			font-size: (12/16rem);
+			line-height: 1.55;
+			margin: (14/16rem) 0 0;
+			color: var(--nearBlack);
+
+			a {
+				font-weight: 700;
+				text-decoration: none;
+				color: var(--nearBlack);
+			}
+		}
+	}
+}
+
+/* Tablet - 600px */
+@media only screen and (min-width: 37.5rem) {
+	#offer-stage .cs-photo {
+		height: (300/16rem);
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#offer-stage {
+		padding: (8/16rem) (48/16rem) (64/16rem);
+		grid-template-columns: minmax(0, 4fr) minmax(0, 5fr);
+		align-items: start;
+		gap: (40/16rem) (48/16rem);
+
+		.cs-photo {
+			grid-column: 1 / -1;
+		}
+
+		.cs-title {
+			/* 64px - 92px */
+			font-size: clamp(4rem, 6.4vw, 5.75rem);
+		}
+
+		.cs-text {
+			font-size: 1rem;
+		}
+
+		/* the label sits beside the price when there is room, and drops under it in the narrow middle column */
+		.cs-price-terms {
+			flex: 1 1 (200/16rem);
+		}
+
+		.cs-price-now {
+			font-size: (168/16rem);
+			padding: (22/16rem) (28/16rem) (6/16rem);
+			border-radius: (34/16rem);
+		}
+
+		.cs-price-terms s {
+			font-size: (60/16rem);
+		}
+
+		.cs-price-label {
+			font-size: (56/16rem);
+		}
+
+		.cs-price-percent {
+			flex-wrap: wrap;
+
+			.cs-price-now {
+				font-size: (100/16rem);
+			}
+		}
+
+		.cs-go {
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: (14/16rem) (22/16rem);
+
+			.cs-proof {
+				flex: 1 1 (200/16rem);
+			}
+		}
+
+		.cs-go-button {
+			display: inline-block;
+			align-self: flex-start;
+			flex: none;
+		}
+
+		.cs-claim {
+			padding: (34/16rem) (32/16rem) (28/16rem);
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		.cs-claim-title {
+			font-size: (48/16rem);
+		}
+	}
+}
+
+/* Large desktop - 1240px: photo, offer and form side by side */
+@media only screen and (min-width: 77.5rem) {
+	#offer-stage {
+		min-height: calc(100vh - 6rem);
+		max-height: (900/16rem);
+		grid-template-columns: (280/16rem) minmax(0, 1fr) (420/16rem);
+		align-items: stretch;
+		gap: 0 (48/16rem);
+
+		.cs-photo {
+			height: auto;
+			min-height: (560/16rem);
+			grid-column: auto;
+
+			img {
+				object-position: 44% 50%;
+			}
+		}
+
+		.cs-offer {
+			justify-content: center;
+			gap: (26/16rem);
+			padding: (12/16rem) 0;
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---         What You Get       -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#offer-get {
+		padding: (56/16rem) (20/16rem);
+		background-color: var(--revibeGreen);
+		display: grid;
+		gap: (36/16rem);
+
+		.cs-figure {
+			display: flex;
+			flex-direction: column;
+			gap: (24/16rem);
+		}
+
+		.cs-title {
+			font-size: (40/16rem);
+			max-width: none;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-badge {
+			margin: 0;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: (18/16rem);
+		}
+
+		.cs-badge-big {
+			font-family: var(--headerFont);
+			font-size: (84/16rem);
+			line-height: 0.8;
+			letter-spacing: 1px;
+			white-space: nowrap;
+			padding: (24/16rem) (32/16rem) (14/16rem);
+			border-radius: 999px;
+			background-color: var(--nearBlack);
+			color: var(--accentYellow);
+		}
+
+		.cs-badge-label {
+			font-family: var(--headerFont);
+			font-size: (28/16rem);
+			line-height: 0.95;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			max-width: (240/16rem);
+			color: var(--nearBlack);
+
+			s {
+				text-decoration-thickness: 3px;
+			}
+		}
+
+		.cs-fine {
+			font-size: (14/16rem);
+			line-height: 1.6;
+			max-width: (420/16rem);
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-gets {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			gap: (22/16rem);
+
+			li {
+				font-family: var(--headerFont);
+				font-size: (28/16rem);
+				line-height: 0.95;
+				letter-spacing: var(--headingLetterSpacing);
+				text-transform: uppercase;
+				color: var(--nearBlack);
+				display: flex;
+				align-items: flex-start;
+				gap: (16/16rem);
+
+				span:last-child {
+					min-width: 0;
+				}
+			}
+		}
+
+		.cs-check {
+			width: (34/16rem);
+			height: (34/16rem);
+			margin-top: -4px;
+			border-radius: 50%;
+			background-color: var(--nearBlack);
+			color: var(--white);
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+
+			svg {
+				width: 14px;
+				height: 12px;
+			}
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#offer-get {
+		padding: (112/16rem) (48/16rem);
+		grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+		align-items: center;
+		gap: (80/16rem);
+
+		.cs-title {
+			font-size: (56/16rem);
+		}
+
+		.cs-badge {
+			gap: (24/16rem);
+		}
+
+		.cs-badge-big {
+			font-size: (116/16rem);
+			padding: (30/16rem) (44/16rem) (18/16rem);
+		}
+
+		.cs-badge-label {
+			font-size: (36/16rem);
+			max-width: (280/16rem);
+		}
+
+		.cs-gets {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			column-gap: (48/16rem);
+			row-gap: (40/16rem);
+
+			li {
+				/* 30px - 38px */
+				font-size: clamp(1.875rem, 2.5vw, 2.375rem);
+			}
+		}
+
+		.cs-check {
+			width: (42/16rem);
+			height: (42/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---         The Session        -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#offer-session {
+		padding: (56/16rem) (20/16rem);
+		background-color: var(--offWhite);
+
+		.cs-head {
+			margin-bottom: (30/16rem);
+			display: grid;
+			gap: (14/16rem);
+		}
+
+		.cs-title {
+			font-size: (40/16rem);
+			max-width: none;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-text {
+			font-size: (15/16rem);
+			line-height: 1.6;
+			max-width: (560/16rem);
+			margin: 0;
+			color: var(--charcoal);
+		}
+
+		/* a row of tall pills, one per service; swipeable on phones */
+		.cs-wave {
+			list-style: none;
+			margin: 0 (-20/16rem) (36/16rem);
+			padding: (8/16rem) (20/16rem) (40/16rem);
+			display: flex;
+			gap: (14/16rem);
+			overflow-x: auto;
+			scroll-snap-type: x mandatory;
+			scroll-padding: 0 (20/16rem);
+			scrollbar-width: none;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+		}
+
+		.cs-wave-item {
+			flex: 0 0 42%;
+			scroll-snap-align: start;
+			display: flex;
+			flex-direction: column;
+			gap: (14/16rem);
+
+			&:nth-child(even) {
+				transform: translateY(32px);
+			}
+
+			/* every other pill gets a green outline */
+			&:nth-child(odd) .cs-pill {
+				box-shadow:
+					0 0 0 6px var(--offWhite),
+					0 0 0 8px var(--revibeGreen);
+			}
+		}
+
+		.cs-pill {
+			aspect-ratio: 1 / 2;
+			border-radius: 999px;
+			background-color: var(--nearBlack);
+			overflow: hidden;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+				transition: transform 0.6s ease;
+			}
+		}
+
+		.cs-wave-title {
+			font-size: (26/16rem);
+			line-height: 0.95;
+			text-align: center;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-halves {
+			display: grid;
+			gap: (12/16rem);
+		}
+
+		/* photo behind the text, darkened at the bottom */
+		.cs-half {
+			min-height: (460/16rem);
+			border-radius: (36/16rem);
+			background-color: var(--nearBlack);
+			overflow: hidden;
+			display: flex;
+			align-items: flex-end;
+			position: relative;
+
+			> img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				position: absolute;
+				inset: 0;
+			}
+
+			&:after {
+				content: "";
+				height: 70%;
+				background: linear-gradient(to top, rgba(6, 8, 10, 0.92), rgba(6, 8, 10, 0.6) 50%, rgba(6, 8, 10, 0));
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+			}
+		}
+
+		.cs-half-text {
+			max-width: (520/16rem);
+			padding: (28/16rem) (26/16rem);
+			display: flex;
+			flex-direction: column;
+			gap: (12/16rem);
+			position: relative;
+			z-index: 1;
+
+			p {
+				font-size: (14/16rem);
+				line-height: 1.6;
+				margin: 0;
+				color: var(--borderGrey);
+			}
+		}
+
+		.cs-half-big.cs-half-big {
+			font-family: var(--headerFont);
+			font-size: (96/16rem);
+			line-height: 0.8;
+			letter-spacing: 1px;
+		}
+
+		.cs-half-yellow .cs-half-big {
+			color: var(--accentYellow);
+		}
+
+		.cs-half-green .cs-half-big {
+			color: var(--revibeGreen);
+		}
+
+		.cs-half-title {
+			font-size: (30/16rem);
+			margin: 0;
+			color: var(--white);
+		}
+
+		/* split: the photo sits above the text */
+		.cs-halves-split .cs-half {
+			min-height: 0;
+			flex-direction: column;
+			align-items: stretch;
+
+			> img {
+				height: (300/16rem);
+				flex: none;
+				position: relative;
+				inset: auto;
+			}
+
+			&:after {
+				display: none;
+			}
+
+			.cs-half-text {
+				padding-top: (26/16rem);
+			}
+		}
+	}
+}
+
+/* Tablet - 600px */
+@media only screen and (min-width: 37.5rem) {
+	#offer-session .cs-wave-item {
+		flex-basis: 28%;
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#offer-session {
+		padding: (104/16rem) (48/16rem);
+
+		.cs-head {
+			margin-bottom: (48/16rem);
+			grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+			align-items: end;
+			gap: (64/16rem);
+		}
+
+		.cs-title {
+			font-size: (56/16rem);
+		}
+
+		.cs-text {
+			font-size: 1rem;
+		}
+
+		.cs-wave {
+			margin: 0 0 (72/16rem);
+			padding: (8/16rem) 0 (56/16rem);
+			display: grid;
+			grid-template-columns: repeat(5, minmax(0, 1fr));
+			gap: (24/16rem);
+			overflow: visible;
+		}
+
+		.cs-wave-item:nth-child(even) {
+			transform: translateY(56px);
+		}
+
+		.cs-wave-item:hover .cs-pill img {
+			transform: scale(1.06);
+		}
+
+		.cs-wave-title {
+			/* 28px - 38px */
+			font-size: clamp(1.75rem, 2.4vw, 2.375rem);
+		}
+
+		.cs-halves {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: (16/16rem);
+		}
+
+		.cs-half {
+			min-height: (640/16rem);
+			border-radius: (48/16rem);
+		}
+
+		.cs-half-text {
+			padding: (44/16rem) (44/16rem) (46/16rem);
+
+			p {
+				font-size: (15/16rem);
+			}
+		}
+
+		.cs-half-big.cs-half-big {
+			font-size: (160/16rem);
+		}
+
+		.cs-half-title {
+			font-size: (38/16rem);
+		}
+
+		.cs-halves-split .cs-half {
+			min-height: 0;
+
+			> img {
+				height: (440/16rem);
+			}
+
+			.cs-half-text {
+				padding-top: (36/16rem);
+			}
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---          Reviews           -->
+<--- -------------------------- -*/
+
+@media only screen and (min-width: 0rem) {
+	/* the reviews section comes from service.less; these are the offer page extras */
+	#service-reviews .cs-offer-reviews-text {
+		font-size: (14/16rem);
+		line-height: 1.6;
+		margin: 0;
+		color: var(--charcoal);
+	}
+	/* two reviews: each takes the full width */
+	#service-reviews .cs-quotes-pair .cs-quote-item {
+		grid-column: 1 / -1;
+	}
+}
+
+/*-- -------------------------- -->
+<---          Claim Bar         -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	.cs-claimbar {
+		padding: (8/16rem) (8/16rem) (8/16rem) (22/16rem);
+		border-radius: 999px;
+		background-color: var(--nearBlack);
+		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+		color: var(--white);
+		display: flex;
+		align-items: center;
+		gap: (12/16rem);
+		position: fixed;
+		z-index: 9000;
+		left: (10/16rem);
+		right: (10/16rem);
+		bottom: calc((10/16rem) + env(safe-area-inset-bottom));
+
+		.cs-button-solid {
+			padding: (15/16rem) (20/16rem);
+			flex: none;
+		}
+	}
+
+	.cs-claimbar-label {
+		line-height: 1.15;
+		white-space: nowrap;
+		flex-grow: 1;
+
+		strong {
+			font-family: var(--headerFont);
+			font-size: (26/16rem);
+			font-weight: 400;
+			letter-spacing: 1px;
+		}
+
+		s,
+		span {
+			font-size: (12/16rem);
+			margin-left: (8/16rem);
+			color: var(--blueGrey);
+		}
+
+		.cs-visually-hidden {
+			margin: -1px;
+		}
+	}
+
+	/* room under the footer so the bar does not cover it */
+	body:has(.cs-claimbar) #cs-minimal-footer {
+		padding-bottom: (110/16rem);
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	.cs-claimbar {
+		display: none;
+	}
+
+	body:has(.cs-claimbar) #cs-minimal-footer {
+		padding-bottom: (40/16rem);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#offer-session .cs-pill img {
+		transition: none;
+	}
+}

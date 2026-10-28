@@ -1,0 +1,102 @@
+<!-- ============================================ -->
+<!--           Pop-up: Request to book            -->
+<!-- ============================================ -->
+{#
+    Opened by any link or button with data-request (see /assets/js/popup-forms.js).
+    Optional attributes on the trigger: data-service="Physiotherapy" preselects the service,
+    data-clinic="markham" preselects the clinic.
+    Submissions go to Netlify Forms (form name in _data/popupForms.js), so they only arrive on the deployed site.
+#}
+{% set rq = popupForms.request %}
+<div class="cs-popup cs-request-popup" id="request-popup" role="dialog" aria-modal="true" aria-labelledby="request-popup-title" hidden>
+    <div class="cs-popup-card">
+        <button type="button" class="cs-popup-close" aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </button>
+
+        <div class="cs-request-side">
+            <img class="cs-request-bg" src="{% getUrl rq.image | resize({ width: 800 }) | webp %}" alt="" width="800" height="1200" loading="lazy" decoding="async">
+            <div class="cs-request-intro">
+                <h2 class="cs-popup-title" id="request-popup-title">{{ rq.title }}</h2>
+                <p class="cs-popup-text">{{ rq.text }}</p>
+                <ul class="cs-perks">
+                    {% for perk in rq.perks %}
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span>{{ perk }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <p class="cs-request-self">Prefer to book yourself? <button type="button" data-book>Book online</button></p>
+            </div>
+        </div>
+
+        <div class="cs-request-main">
+            <form class="cs-request-form" name="{{ rq.formName }}" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-thank-you='{{ rq.thankYouPages | dump }}' novalidate>
+                <input type="hidden" name="form-name" value="{{ rq.formName }}">
+                <p class="cs-honeypot" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+                <!-- filled in by popup-forms.js from the page URL, for tracking where requests come from -->
+                <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content"><input type="hidden" name="utm_term"><input type="hidden" name="gclid"><input type="hidden" name="page">
+
+                <div class="cs-field cs-full">
+                    <label for="request-name">Full name</label>
+                    <input id="request-name" name="name" type="text" autocomplete="name" required>
+                    <span class="cs-error" id="request-name-error"></span>
+                </div>
+                <div class="cs-field">
+                    <label for="request-phone">Phone</label>
+                    <input id="request-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(000) 000-0000" required>
+                    <span class="cs-error" id="request-phone-error"></span>
+                </div>
+                <div class="cs-field">
+                    <label for="request-email">Email</label>
+                    <input id="request-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required>
+                    <span class="cs-error" id="request-email-error"></span>
+                </div>
+                <fieldset class="cs-field cs-full cs-clinic-choice">
+                    <legend>Clinic</legend>
+                    {% for clinic in clinics %}
+                    <label class="cs-choice">
+                        <input type="radio" name="location" value="{{ clinic.name }}" data-clinic="{{ clinic.key }}" data-phone="{{ clinic.phone }}" required>
+                        <span><span class="cs-choice-name">{{ clinic.name }}</span><small>{{ clinic.street }}</small></span>
+                    </label>
+                    {% endfor %}
+                    <span class="cs-error" id="request-location-error"></span>
+                </fieldset>
+                <div class="cs-field">
+                    <label for="request-service">What would you like to book?</label>
+                    <select id="request-service" name="service" required>
+                        <option value="">Choose a service</option>
+                        {% for service in rq.services %}<option>{{ service }}</option>{% endfor %}
+                    </select>
+                    <span class="cs-error" id="request-service-error"></span>
+                </div>
+                <div class="cs-field">
+                    <label for="request-source">How did you hear about us?</label>
+                    <select id="request-source" name="source">
+                        <option value="">Choose one</option>
+                        {% for source in rq.sources %}<option>{{ source }}</option>{% endfor %}
+                    </select>
+                </div>
+                <div class="cs-field cs-full">
+                    <label for="request-message">Anything we should know? <span class="cs-optional">Optional</span></label>
+                    <textarea id="request-message" name="message" rows="3" placeholder="What is going on, and when suits you best"></textarea>
+                </div>
+                <div class="cs-submit cs-full">
+                    <button type="submit" class="cs-button-solid cs-hover-dark">Send request</button>
+                    <p class="cs-error" id="request-submit-error" role="alert"></p>
+                    <p>We only use your details to book your session.</p>
+                </div>
+            </form>
+
+            <div class="cs-request-done" tabindex="-1" hidden>
+                <span class="cs-done-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <h3 class="cs-done-title">Request sent</h3>
+                <p class="cs-done-text"></p>
+                <button type="button" class="cs-button-solid cs-button-dark cs-done-close">Done</button>
+            </div>
+        </div>
+    </div>
+</div>

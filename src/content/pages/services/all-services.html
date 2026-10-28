@@ -1,0 +1,77 @@
+---
+title: "All Services | Mississauga and Markham | Revibe"
+description: "Every Revibe service in Mississauga and Markham: physiotherapy, chiropractic, massage, osteopathy, naturopathic care, training, cold plunge and sauna."
+# the live site's address for the services page
+permalink: "/services-amenities/"
+# content lives in _data/servicesHub.js
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/all-services.css">
+    <script defer src="/assets/js/care-map.js"></script>
+    <script defer src="/assets/js/home-sections.js"></script>
+{% endblock %}
+
+{% block body %}
+    {% set hub = servicesHub %}
+
+    <!-- ============================================ -->
+    <!--                    Hero                      -->
+    <!-- ============================================ -->
+
+    <section id="services-hero" aria-labelledby="services-hero-title">
+        <div class="cs-container">
+            <h1 class="cs-title" id="services-hero-title">{{ hub.hero.title }}</h1>
+            <p class="cs-text">{{ hub.hero.text }}</p>
+            <ul class="cs-jump" aria-label="Jump to">
+                {% for pillar in hub.pillars %}<li><a href="#{{ pillar.id }}">{{ pillar.title }}</a></li>{% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                   Pillars                    -->
+    <!-- ============================================ -->
+
+    {% for pillar in hub.pillars %}
+    {% set imgStyle = 'style="object-position: ' + pillar.position + ';"' %}
+    <section id="{{ pillar.id }}" class="cs-section cs-pillar{% if loop.index % 2 == 0 %} cs-pillar-alt{% endif %}" aria-labelledby="pillar-{{ pillar.id }}">
+        <div class="cs-container">
+            <div class="cs-side">
+                <p class="cs-number" aria-hidden="true">0{{ loop.index }}</p>
+                <h2 class="cs-title" id="pillar-{{ pillar.id }}">{{ pillar.title }}</h2>
+                <p class="cs-text">{{ pillar.text }}</p>
+                <p class="cs-book-for"><strong>People book for</strong> {{ pillar.bookFor }}</p>
+                <div class="cs-picture">
+                    <img src="{% getUrl pillar.image | resize({ width: 900 }) | webp %}" alt="{{ pillar.alt }}" {{ imgStyle | safe }} width="1200" height="800" loading="lazy" decoding="async">
+                </div>
+            </div>
+            <div class="cs-list-wrap">
+                <ul class="cs-list">
+                    {% for service in pillar.services %}
+                    <li>
+                        <a href="{{ service.url }}" class="cs-link">
+                            <span class="cs-name">{{ service.label }}</span>
+                            <span class="cs-desc">{{ service.text }}</span>
+                            <span class="cs-arrow">{% include "components/icons/arrow.html" %}</span>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <a href="/" class="cs-button-solid cs-button-dark" data-book aria-haspopup="dialog">Book a session</a>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+
+    {% set careMapTitle = hub.careMap.title %}
+    {% set careMapText = hub.careMap.text %}
+    {% set careMapButton = hub.careMap.button %}
+    {% include "sections/care-map.html" %}
+
+    {% include "sections/home/billing.html" %}
+    {% include "sections/home/locations.html" %}
+    {% include "sections/cta.html" %}
+{% endblock %}

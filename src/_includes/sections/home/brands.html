@@ -1,0 +1,28 @@
+<!-- ============================================ -->
+<!--                 Worked With                  -->
+<!-- ============================================ -->
+
+<section id="brands" aria-labelledby="brands-title">
+    <div class="cs-wrapper">
+        <h2 class="cs-title" id="brands-title">{{ home.brands.title }}</h2>
+        <!-- Scrolling logo strip. The second copy makes the loop seamless and is hidden from screen readers. -->
+        <div class="cs-mask">
+            <div class="cs-row">
+                <ul class="cs-logos">
+                    {% for logo in home.brands.logos %}
+                    <li class="cs-logo{% if logo.shape %} cs-logo-{{ logo.shape }}{% endif %}">
+                        <img src="{{ logo.image }}" alt="{{ logo.name }}" width="{{ logo.width }}" height="{{ logo.height }}" loading="lazy" decoding="async">
+                    </li>
+                    {% endfor %}
+                </ul>
+                <ul class="cs-logos" aria-hidden="true">
+                    {% for logo in home.brands.logos %}
+                    <li class="cs-logo{% if logo.shape %} cs-logo-{{ logo.shape }}{% endif %}">
+                        <img src="{{ logo.image }}" alt="" width="{{ logo.width }}" height="{{ logo.height }}" loading="lazy" decoding="async">
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

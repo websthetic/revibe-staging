@@ -1,0 +1,2123 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// SERVICE PAGE STYLES
+// Shared by every page built on layouts/service.html (physiotherapy,
+// chiropractic, ...). Page-only tweaks go in that page's own file
+// (physiotherapy.less, chiropractic.less). The Care Map, pop-ups and sticky
+// book bar live in global.less.
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Section padding, headings and the green arrow circle are shared classes in
+// global.less (.cs-section, .cs-section-header, .cs-section-title,
+// .cs-section-text, .cs-icon-arrow).
+
+/*-- -------------------------- -->
+<---            Hero            -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#service-hero {
+		/* 80px fixed nav + 24px */
+		padding: calc(5rem + 1.5rem) (20/16rem) (72/16rem);
+
+		.cs-container {
+			width: 100%;
+			max-width: (1280/16rem);
+			margin: auto;
+		}
+
+		.cs-title {
+			/* 64px - 236px */
+			font-size: clamp(4rem, 16.4vw, 14.75rem);
+			line-height: 0.82;
+			letter-spacing: 1.5px;
+			max-width: none;
+			margin: 0 0 0 -0.03em;
+			color: var(--nearBlack);
+		}
+
+		.cs-grid {
+			margin-top: (24/16rem);
+			display: grid;
+			gap: (28/16rem);
+		}
+
+		.cs-content {
+			display: flex;
+			flex-direction: column;
+			gap: (22/16rem);
+		}
+
+		.cs-text {
+			font-size: 1rem;
+			line-height: 1.6;
+			max-width: (520/16rem);
+			margin: 0;
+			color: var(--charcoal);
+		}
+
+		.cs-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: (10/16rem);
+
+			a {
+				flex: 1 1 0;
+				padding-left: (12/16rem);
+				padding-right: (12/16rem);
+				white-space: nowrap;
+			}
+		}
+
+		.cs-proof {
+			font-size: (14/16rem);
+			line-height: 1.55;
+			max-width: (460/16rem);
+			margin: 0;
+			color: var(--charcoal);
+
+			strong {
+				color: var(--nearBlack);
+			}
+		}
+
+		/* three stacked pills, like the waves of the Revibe monogram */
+		.cs-waves {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: (10/16rem);
+		}
+
+		.cs-wave {
+			width: 72%;
+			height: (110/16rem);
+			border-radius: 999px;
+			background-color: var(--softBeige);
+			overflow: hidden;
+
+			&:nth-child(2) {
+				width: 100%;
+				height: (150/16rem);
+			}
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#service-hero {
+		/* desktop nav is about 84px */
+		padding: calc(5.25rem + 1.75rem) (40/16rem) (112/16rem);
+
+		/* one line on desktop: the usual size, or smaller when the title is long.
+		   Bebas Neue capitals average about 0.38em wide, so 0.4em per character leaves a little room.
+		   The available width is the 1280px container or the screen minus its 40px side padding. */
+		.cs-title {
+			font-size: min(14.75rem, 16.4vw, calc(min(100vw - 5rem, 80rem) / (var(--chars, 12) * 0.4)));
+			white-space: nowrap;
+		}
+
+		.cs-grid {
+			margin-top: (40/16rem);
+			grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+			align-items: center;
+			gap: (64/16rem);
+		}
+
+		.cs-content {
+			padding-bottom: (8/16rem);
+			gap: (28/16rem);
+		}
+
+		.cs-text {
+			font-size: (18/16rem);
+		}
+
+		.cs-actions a {
+			flex: none;
+			padding-left: (30/16rem);
+			padding-right: (30/16rem);
+		}
+
+		/* the outline button has a 1.5px border */
+		.cs-actions .cs-button-outline {
+			padding-left: (28.5/16rem);
+			padding-right: (28.5/16rem);
+		}
+
+		.cs-waves {
+			gap: (14/16rem);
+		}
+
+		.cs-wave {
+			height: (170/16rem);
+
+			&:nth-child(2) {
+				height: (230/16rem);
+			}
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---     Is this right for me?  -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px: two columns of quote tiles */
+@media only screen and (min-width: 0rem) {
+	#fit {
+		background-color: var(--softBeige);
+
+		.cs-section-header {
+		}
+
+		.cs-title {
+		}
+
+		.cs-section-text {
+		}
+
+		.cs-mosaic {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: (10/16rem);
+		}
+
+		.cs-tile-item {
+			display: flex;
+
+			&.cs-wide {
+				grid-column: span 2;
+
+				.cs-tile {
+					min-height: (150/16rem);
+				}
+
+				.cs-quote {
+					font-size: (32/16rem);
+				}
+			}
+		}
+
+		/* the last wide tile sits at the end on phones */
+		.cs-area-g {
+			order: 1;
+		}
+
+		.cs-tile {
+			width: 100%;
+			min-height: (170/16rem);
+			box-sizing: border-box;
+			padding: (20/16rem) (18/16rem);
+			border-radius: (28/16rem);
+			background-color: var(--white);
+			text-decoration: none;
+			color: var(--nearBlack);
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			gap: (18/16rem);
+			transition: transform 0.2s ease;
+
+			&:hover {
+				transform: translateY(-4px);
+			}
+
+			&:focus-visible {
+				outline: 3px solid var(--deepGreen);
+				outline-offset: 3px;
+			}
+		}
+
+		.cs-quote {
+			font-family: var(--headerFont);
+			font-size: (25/16rem);
+			line-height: 0.92;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+		}
+
+		.cs-tile-icon {
+			width: (40/16rem);
+			height: (40/16rem);
+			border-radius: 50%;
+			background-color: var(--nearBlack);
+			color: var(--white);
+			align-self: flex-end;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+
+			svg {
+				width: 16px;
+				height: 16px;
+			}
+		}
+
+		.cs-tile-green {
+			background-color: var(--revibeGreen);
+		}
+
+		.cs-tile-mint {
+			background-color: var(--mintTint);
+		}
+
+		.cs-tile-black {
+			background-color: var(--nearBlack);
+			color: var(--white);
+
+			.cs-tile-icon {
+				background-color: var(--revibeGreen);
+				color: var(--nearBlack);
+			}
+
+			&:focus-visible {
+				outline-color: var(--revibeGreen);
+			}
+		}
+
+		.cs-tile-photo {
+			height: (200/16rem);
+			border-radius: (28/16rem);
+			overflow: hidden;
+			grid-column: span 2;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center 40%;
+				display: block;
+			}
+		}
+	}
+}
+
+/* Desktop - 900px: a mosaic with the photo as a tall pill */
+@media only screen and (min-width: 56.25rem) {
+	#fit {
+
+		.cs-section-header {
+		}
+
+		.cs-title {
+		}
+
+		.cs-section-text {
+			font-size: (17/16rem);
+		}
+
+		.cs-mosaic {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			grid-auto-rows: (230/16rem);
+			grid-template-areas:
+				"a a p b"
+				"c d p e"
+				"f g g h";
+			gap: (14/16rem);
+		}
+
+		.cs-tile-item.cs-wide {
+			.cs-tile {
+				min-height: 0;
+			}
+
+			.cs-quote {
+				/* 40px - 54px */
+				font-size: clamp(2.5rem, 3.6vw, 3.375rem);
+			}
+		}
+
+		/* .cs-tile-item keeps these stronger than the phones' "span 2" on wide tiles */
+		.cs-tile-item {
+			&.cs-area-a {
+				grid-area: a;
+			}
+			&.cs-area-b {
+				grid-area: b;
+			}
+			&.cs-area-c {
+				grid-area: c;
+			}
+			&.cs-area-d {
+				grid-area: d;
+			}
+			&.cs-area-e {
+				grid-area: e;
+			}
+			&.cs-area-f {
+				grid-area: f;
+			}
+			&.cs-area-g {
+				grid-area: g;
+				order: 0;
+			}
+			&.cs-area-h {
+				grid-area: h;
+			}
+		}
+
+		.cs-tile {
+			min-height: 0;
+			padding: (28/16rem) (26/16rem) (24/16rem);
+			border-radius: (36/16rem);
+		}
+
+		.cs-quote {
+			/* 30px - 38px */
+			font-size: clamp(1.875rem, 2.6vw, 2.375rem);
+		}
+
+		.cs-tile-photo {
+			height: auto;
+			border-radius: 999px;
+			grid-column: auto;
+			grid-area: p;
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---    Types of Physiotherapy  -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#types {
+
+		.cs-section-header {
+			margin-bottom: (40/16rem);
+		}
+
+		.cs-title {
+		}
+
+		.cs-section-text {
+		}
+
+		.cs-index {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			border-top: 1.5px solid var(--nearBlack);
+			display: grid;
+		}
+
+		.cs-index-link {
+			padding: (22/16rem) (4/16rem);
+			border-bottom: 1.5px solid var(--nearBlack);
+			text-decoration: none;
+			color: var(--nearBlack);
+			display: flex;
+			align-items: center;
+			gap: (18/16rem);
+			transition:
+				background-color 0.15s ease,
+				padding 0.2s ease;
+
+			&:hover,
+			&:focus-visible {
+				padding-left: (16/16rem);
+				padding-right: (16/16rem);
+				background-color: var(--mintTint);
+
+				.cs-icon-arrow {
+					transform: translateX(4px);
+				}
+			}
+
+			&:focus-visible {
+				outline: 2px solid var(--deepGreen);
+				outline-offset: 2px;
+			}
+		}
+
+		.cs-index-name {
+			font-family: var(--headerFont);
+			font-size: (34/16rem);
+			line-height: 0.9;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			flex-grow: 1;
+		}
+	}
+}
+
+/* Desktop - 900px: two columns */
+@media only screen and (min-width: 56.25rem) {
+	#types {
+
+		.cs-section-header {
+			margin-bottom: (64/16rem);
+		}
+
+		.cs-title {
+		}
+
+		.cs-section-text {
+			font-size: (17/16rem);
+		}
+
+		.cs-index {
+			border-top: 0;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			column-gap: (56/16rem);
+
+			li:nth-child(-n + 2) .cs-index-link {
+				border-top: 1.5px solid var(--nearBlack);
+			}
+		}
+
+		.cs-index-link {
+			padding: (28/16rem) (6/16rem);
+		}
+
+		.cs-index-name {
+			/* 36px - 46px */
+			font-size: clamp(2.25rem, 3.2vw, 2.875rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---  What Makes Revibe Different -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#different {
+		background-color: var(--nearBlack);
+
+		.cs-section-header {
+			margin-bottom: (40/16rem);
+		}
+
+		.cs-title {
+			color: var(--white);
+		}
+
+		.cs-section-text {
+			color: var(--borderGrey);
+		}
+
+		.cs-proof-grid {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			gap: (12/16rem);
+		}
+
+		.cs-card {
+			padding: (26/16rem) (24/16rem);
+			border-radius: (32/16rem);
+			background-color: var(--nearBlackSoft);
+			display: flex;
+			flex-direction: column;
+			gap: (12/16rem);
+		}
+
+		.cs-card-title {
+			font-size: (36/16rem);
+			line-height: 0.9;
+			margin: 0;
+			color: var(--white);
+		}
+
+		.cs-card-text {
+			font-size: (14/16rem);
+			line-height: 1.6;
+			margin: 0;
+			color: var(--borderGrey);
+
+			a {
+				font-weight: 700;
+				color: var(--revibeGreen);
+			}
+		}
+
+		/* six practitioner faces */
+		.cs-faces {
+			list-style: none;
+			margin: 0 0 (10/16rem);
+			padding: 0;
+			display: flex;
+			gap: (10/16rem);
+
+			li {
+				max-width: (76/16rem);
+				aspect-ratio: 1;
+				border-radius: 50%;
+				background-color: var(--softBeige);
+				overflow: hidden;
+				flex: 1 1 0;
+			}
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+
+		.cs-card-hands {
+			padding: 0;
+			overflow: hidden;
+		}
+
+		.cs-card-picture {
+			height: (260/16rem);
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+
+		.cs-card-body {
+			padding: (24/16rem) (24/16rem) (28/16rem);
+			display: flex;
+			flex-direction: column;
+			gap: (12/16rem);
+		}
+
+		.cs-card-caremap {
+			background-color: var(--revibeGreen);
+
+			.cs-card-title,
+			.cs-card-text,
+			.cs-card-text a {
+				color: var(--nearBlack);
+			}
+		}
+
+		.cs-card-billing {
+			background-color: var(--white);
+
+			.cs-card-title {
+				color: var(--nearBlack);
+			}
+
+			.cs-card-text {
+				color: var(--charcoal);
+
+				a {
+					color: var(--deepGreen);
+				}
+			}
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#different {
+
+		.cs-section-header {
+			margin-bottom: (64/16rem);
+		}
+
+		.cs-title {
+		}
+
+		.cs-section-text {
+			font-size: (17/16rem);
+		}
+
+		.cs-proof-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			grid-template-areas:
+				"licensed hands cotreat"
+				"caremap hands billing";
+			gap: (16/16rem);
+		}
+
+		.cs-card {
+			padding: (34/16rem) (32/16rem);
+			border-radius: (40/16rem);
+			gap: (14/16rem);
+		}
+
+		.cs-card-title {
+			/* 36px - 46px */
+			font-size: clamp(2.25rem, 3.2vw, 2.875rem);
+		}
+
+		.cs-card-text {
+			font-size: (15/16rem);
+		}
+
+		.cs-card-licensed {
+			grid-area: licensed;
+		}
+		.cs-card-hands {
+			grid-area: hands;
+			padding: 0;
+		}
+		.cs-card-cotreat {
+			grid-area: cotreat;
+		}
+		.cs-card-caremap {
+			grid-area: caremap;
+		}
+		.cs-card-billing {
+			grid-area: billing;
+		}
+
+		.cs-card-picture {
+			height: auto;
+			min-height: (380/16rem);
+			flex-grow: 1;
+			position: relative;
+
+			img {
+				position: absolute;
+				inset: 0;
+			}
+		}
+
+		.cs-card-body {
+			padding: (30/16rem) (32/16rem) (34/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---      Who Will Treat Me     -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#team {
+		background-color: var(--mintTint);
+
+		.cs-section-header {
+			margin-bottom: (40/16rem);
+		}
+
+		.cs-title {
+		}
+
+		.cs-section-text {
+		}
+
+		.cs-people {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			column-gap: (14/16rem);
+			row-gap: (26/16rem);
+		}
+
+		/* staggered, as in the design */
+		.cs-person:nth-child(even) {
+			margin-top: (40/16rem);
+		}
+
+		.cs-person-link {
+			text-decoration: none;
+			color: var(--nearBlack);
+			display: flex;
+			flex-direction: column;
+			gap: (12/16rem);
+
+			&:hover .cs-person-photo img {
+				transform: scale(1.05);
+			}
+
+			&:focus-visible {
+				outline: 3px solid var(--deepGreen);
+				outline-offset: 4px;
+				border-radius: (24/16rem);
+			}
+		}
+
+		.cs-person-photo {
+			height: (240/16rem);
+			border-radius: 999px;
+			background-color: var(--white);
+			overflow: hidden;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center top;
+				display: block;
+				transition: transform 0.4s ease;
+			}
+		}
+
+		.cs-person-name {
+			font-family: var(--headerFont);
+			font-size: (24/16rem);
+			line-height: 0.9;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			padding-left: (8/16rem);
+		}
+	}
+}
+
+/* Desktop - 900px: six across */
+@media only screen and (min-width: 56.25rem) {
+	#team {
+
+		.cs-section-header {
+			margin-bottom: (64/16rem);
+		}
+
+		.cs-title {
+		}
+
+		.cs-section-text {
+			font-size: (17/16rem);
+		}
+
+		.cs-people {
+			grid-template-columns: repeat(6, minmax(0, 1fr));
+			column-gap: (18/16rem);
+		}
+
+		.cs-person:nth-child(even) {
+			margin-top: (64/16rem);
+		}
+
+		.cs-person-photo {
+			height: (320/16rem);
+		}
+
+		.cs-person-name {
+			font-size: (26/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---          Reviews           -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#service-reviews {
+		background-color: var(--white);
+
+		.cs-container {
+			display: grid;
+			gap: (28/16rem);
+		}
+
+		.cs-aside {
+			display: flex;
+			flex-direction: column;
+			gap: (14/16rem);
+		}
+
+		.cs-title {
+		}
+
+		/* green pill with the 5.0 badge */
+		.cs-rating {
+			margin: (6/16rem) 0 0;
+			padding: (10/16rem) (28/16rem) (10/16rem) (10/16rem);
+			border-radius: 999px;
+			background-color: var(--revibeGreen);
+			align-self: flex-start;
+			display: inline-flex;
+			align-items: center;
+			gap: (16/16rem);
+		}
+
+		.cs-rating-number {
+			width: (92/16rem);
+			height: (92/16rem);
+			font-family: var(--headerFont);
+			font-size: (46/16rem);
+			line-height: 1;
+			letter-spacing: 1px;
+			padding-top: 4px;
+			box-sizing: border-box;
+			border-radius: 50%;
+			background-color: var(--nearBlack);
+			color: var(--accentYellow);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex: none;
+		}
+
+		.cs-rating-label {
+			font-family: var(--headerFont);
+			font-size: (26/16rem);
+			line-height: 0.9;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			color: var(--nearBlack);
+		}
+
+		.cs-rating-count {
+			font-size: (48/16rem);
+			line-height: 0.85;
+			display: block;
+		}
+
+		.cs-source {
+			font-size: (13/16rem);
+			font-weight: 700;
+			color: var(--deepGreen);
+		}
+
+		.cs-quotes {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			gap: (12/16rem);
+		}
+
+		.cs-quote-card {
+			margin: 0;
+			padding: (26/16rem) (24/16rem) (22/16rem);
+			border-radius: (32/16rem);
+			background-color: var(--offWhite);
+			display: flex;
+			flex-direction: column;
+			gap: (18/16rem);
+		}
+
+		.cs-quote-text {
+			font-size: (15/16rem);
+			line-height: 1.6;
+			margin: 0;
+			color: var(--nearBlack);
+
+			&:before {
+				content: "\201C";
+			}
+
+			&:after {
+				content: "\201D";
+			}
+		}
+
+		.cs-quote-author {
+			font-size: (14/16rem);
+			font-weight: 700;
+			color: var(--nearBlack);
+			display: flex;
+			align-items: center;
+			gap: (12/16rem);
+		}
+
+		.cs-avatar {
+			width: (38/16rem);
+			height: (38/16rem);
+			font-family: var(--headerFont);
+			font-size: (18/16rem);
+			font-weight: 400;
+			letter-spacing: 1px;
+			border-radius: 50%;
+			background-color: var(--nearBlack);
+			color: var(--white);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+		}
+
+		/* the first review, large on green */
+		.cs-lead {
+			.cs-quote-card {
+				background-color: var(--revibeGreen);
+			}
+
+			.cs-quote-text {
+				font-family: var(--headerFont);
+				font-size: (30/16rem);
+				line-height: 1;
+				letter-spacing: var(--headingLetterSpacing);
+				text-transform: uppercase;
+			}
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#service-reviews {
+
+		.cs-container {
+			grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+			align-items: start;
+			gap: (72/16rem);
+		}
+
+		/* the heading stays in view while the reviews scroll past */
+		.cs-aside {
+			gap: (18/16rem);
+			position: sticky;
+			top: (120/16rem);
+		}
+
+		.cs-title {
+			/* 44px - 60px */
+			font-size: clamp(2.75rem, 3.9vw, 3.75rem);
+		}
+
+		.cs-rating {
+			padding-right: (36/16rem);
+		}
+
+		.cs-rating-number {
+			width: (116/16rem);
+			height: (116/16rem);
+			font-size: (58/16rem);
+		}
+
+		.cs-rating-label {
+			font-size: (30/16rem);
+		}
+
+		.cs-rating-count {
+			font-size: (60/16rem);
+		}
+
+		.cs-quotes {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			align-items: start;
+			gap: (16/16rem);
+		}
+
+		.cs-quote-card {
+			padding: (34/16rem) (32/16rem) (28/16rem);
+			border-radius: (40/16rem);
+		}
+
+		.cs-quote-text {
+			font-size: (15.5/16rem);
+		}
+
+		.cs-lead {
+			grid-column: 1 / -1;
+
+			.cs-quote-text {
+				/* 28px - 36px */
+				font-size: clamp(1.75rem, 2.3vw, 2.25rem);
+			}
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---         Statement          -->
+<--- -------------------------- -*/
+
+@media only screen and (min-width: 0rem) {
+	#service-statement {
+		background-color: var(--offWhite);
+
+		.cs-title {
+			font-family: var(--headerFont);
+			/* 54px - 148px */
+			font-size: clamp(3.375rem, 9.2vw, 9.25rem);
+			line-height: 0.9;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			max-width: none;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		/* Bebas Neue has no italic, so "body" is slanted; the darker green passes contrast on off-white */
+		.cs-color {
+			padding-right: 0.06em;
+			color: var(--revibeGreenOnLight);
+			display: inline-block;
+			transform: skewX(-12deg);
+		}
+
+		/* small pill photo set into the line of text */
+		.cs-inline-photo {
+			width: 1.9em;
+			height: 0.74em;
+			margin: 0 0.06em;
+			border-radius: 999px;
+			overflow: hidden;
+			display: inline-block;
+			vertical-align: -0.08em;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 56.25rem) {
+	#service-statement {
+	}
+}
+
+/*-- -------------------------- -->
+<---         Insurance          -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#insurance {
+		background-color: var(--white);
+
+		.cs-container {
+			display: grid;
+			align-items: center;
+			gap: (28/16rem);
+		}
+
+		.cs-content {
+			display: flex;
+			flex-direction: column;
+			gap: (18/16rem);
+		}
+
+		.cs-title {
+		}
+
+		.cs-section-text {
+		}
+
+		.cs-billing-card {
+			padding: (32/16rem) (28/16rem);
+			border-radius: (40/16rem);
+			background-color: var(--accentYellow);
+			display: flex;
+			flex-direction: column;
+			gap: (14/16rem);
+		}
+
+		.cs-billing-title {
+			font-family: var(--headerFont);
+			font-size: (44/16rem);
+			line-height: 0.88;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-billing-text {
+			font-size: (15/16rem);
+			line-height: 1.55;
+			max-width: (420/16rem);
+			margin: 0;
+			color: var(--nearBlack);
+
+			a {
+				font-weight: 700;
+				color: var(--nearBlack);
+			}
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#insurance {
+
+		.cs-container {
+			grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+			gap: (80/16rem);
+		}
+
+		.cs-title {
+		}
+
+		.cs-section-text {
+			font-size: (17/16rem);
+		}
+
+		.cs-billing-card {
+			padding: (48/16rem) (48/16rem) (44/16rem);
+			border-radius: (56/16rem);
+		}
+
+		.cs-billing-title {
+			/* 54px - 72px */
+			font-size: clamp(3.375rem, 4.8vw, 4.5rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---   Mosaic Without a Photo   -->
+<--- -------------------------- -*/
+/* when a page has no fit.photo, the eight tiles fill the grid on their own */
+
+@media only screen and (min-width: 56.25rem) {
+	#fit .cs-mosaic.cs-mosaic-no-photo {
+		grid-auto-rows: minmax((230/16rem), auto);
+		grid-template-areas:
+			"a a b c"
+			"d e e c"
+			"f g g h";
+
+		/* the two tiles that grow get bigger type */
+		.cs-area-e .cs-quote {
+			/* 40px - 54px */
+			font-size: clamp(2.5rem, 3.6vw, 3.375rem);
+		}
+
+		.cs-area-c .cs-quote {
+			/* 44px - 60px */
+			font-size: clamp(2.75rem, 4vw, 3.75rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---        Small Team          -->
+<--- -------------------------- -*/
+/* three or fewer practitioners: large portraits beside the heading */
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#team.cs-team-small {
+		.cs-container {
+			display: grid;
+			align-items: center;
+			gap: (32/16rem);
+		}
+
+		.cs-section-header {
+			margin: 0;
+			gap: (18/16rem);
+		}
+
+		.cs-people {
+			column-gap: (14/16rem);
+		}
+
+		.cs-person:nth-child(even) {
+			margin-top: (48/16rem);
+		}
+
+		.cs-person-photo {
+			height: (300/16rem);
+		}
+
+		.cs-person-name {
+			font-size: (26/16rem);
+		}
+	}
+}
+
+/* Desktop - 900px: portraits left, heading right */
+@media only screen and (min-width: 56.25rem) {
+	#team.cs-team-small {
+		.cs-container {
+			grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+			gap: (80/16rem);
+		}
+
+		.cs-section-header {
+			margin: 0;
+			grid-template-columns: 1fr;
+			align-items: start;
+			gap: (18/16rem);
+			order: 1;
+		}
+
+		.cs-people {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.cs-person:nth-child(even) {
+			margin-top: (48/16rem);
+		}
+
+		.cs-person-photo {
+			height: (440/16rem);
+		}
+
+		.cs-person-name {
+			font-size: (32/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---      Team, Four Across     -->
+<--- -------------------------- -*/
+/* team.columns: 4 in the content file, for teams that don't fill a row of six */
+
+@media only screen and (min-width: 56.25rem) {
+	#team.cs-team-cols-4 .cs-people {
+		max-width: (920/16rem);
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+
+/*-- -------------------------- -->
+<---    Team, Pinned Row Scroll -->
+<--- -------------------------- -*/
+/* team.scroll: true (massage). Phones keep the normal two-column grid. */
+
+/* Mobile - 360px: the pin wrapper stands in for the section's container */
+@media only screen and (min-width: 0rem) {
+	#team.cs-team-scroll .cs-team-pin > .cs-container {
+		width: 100%;
+		max-width: (1280/16rem);
+		margin: auto;
+	}
+}
+
+/* Desktop - 900px: one row. Without team-scroll.js (or with reduced motion) it scrolls sideways by hand */
+@media only screen and (min-width: 56.25rem) {
+	#team.cs-team-scroll {
+		.cs-people {
+			max-width: none;
+			padding-bottom: (16/16rem);
+			display: flex;
+			gap: (18/16rem);
+			overflow-x: auto;
+		}
+
+		.cs-person {
+			flex: 0 0 (240/16rem);
+		}
+
+		.cs-person-photo {
+			/* shorter on short screens so the pinned panel still fits */
+			height: min((320/16rem), 38vh);
+		}
+	}
+
+	/* team-scroll.js adds this: the panel pins while the row slides */
+	#team.cs-team-scroll.cs-team-scroll-active {
+		/* the side padding moves onto the pinned panel so the row slides out to the screen edges */
+		padding: 0;
+
+		.cs-team-pin {
+			height: 100vh;
+			height: 100svh;
+			box-sizing: border-box;
+			/* top clears the nav when it comes back on scroll up */
+			padding: (96/16rem) (40/16rem) (40/16rem);
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			overflow: hidden;
+			position: sticky;
+			top: 0;
+		}
+
+		.cs-people {
+			padding-bottom: 0;
+			overflow: visible;
+			position: relative;
+			will-change: transform;
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---       Types as Cards       -->
+<--- -------------------------- -*/
+/* types items with a text description (osteopathy); tiles above link to them */
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#types {
+		.cs-kinds {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			gap: (10/16rem);
+		}
+
+		.cs-kind {
+			padding: (26/16rem) (24/16rem) (28/16rem);
+			border-radius: (32/16rem);
+			background-color: var(--white);
+			display: flex;
+			flex-direction: column;
+			gap: (12/16rem);
+			scroll-margin-top: (96/16rem);
+			transition: box-shadow 0.2s ease;
+
+			/* highlighted when a tile above jumps to it */
+			&:target {
+				box-shadow: inset 0 0 0 3px var(--revibeGreen);
+			}
+		}
+
+		.cs-kind-title {
+			font-size: (36/16rem);
+			line-height: 0.9;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-kind-text {
+			font-size: (15/16rem);
+			line-height: 1.6;
+			margin: 0;
+			color: var(--charcoal);
+		}
+	}
+}
+
+/* Tablet - 700px */
+@media only screen and (min-width: 43.75rem) {
+	#types .cs-kinds {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: (14/16rem);
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#types {
+		.cs-kind {
+			padding: (32/16rem) (30/16rem) (34/16rem);
+			border-radius: (40/16rem);
+		}
+
+		.cs-kind-title {
+			/* 38px - 46px */
+			font-size: clamp(2.375rem, 3vw, 2.875rem);
+		}
+	}
+}
+
+/* Large desktop - 1280px: four across */
+@media only screen and (min-width: 80rem) {
+	#types .cs-kinds {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+
+/*-- -------------------------- -->
+<---      Small Team of Three   -->
+<--- -------------------------- -*/
+
+@media only screen and (min-width: 0rem) {
+	#team.cs-team-three .cs-people {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		column-gap: (10/16rem);
+	}
+
+	/* middle portrait drops, as in the design */
+	#team.cs-team-three .cs-person:nth-child(even) {
+		margin-top: (48/16rem);
+	}
+
+	#team.cs-team-three .cs-person-photo {
+		height: (200/16rem);
+	}
+
+	#team.cs-team-three .cs-person-name {
+		font-size: (20/16rem);
+	}
+}
+
+@media only screen and (min-width: 56.25rem) {
+	#team.cs-team-three .cs-people {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		column-gap: (14/16rem);
+	}
+
+	#team.cs-team-three .cs-person-photo {
+		height: (400/16rem);
+	}
+
+	#team.cs-team-three .cs-person-name {
+		font-size: (28/16rem);
+	}
+}
+
+/*-- -------------------------- -->
+<---    Mosaic: Stretch Layout  -->
+<--- -------------------------- -*/
+/* fit.layout: "stretch" (stretch therapy) */
+
+@media only screen and (min-width: 56.25rem) {
+	#fit .cs-mosaic.cs-mosaic-stretch {
+		grid-template-areas:
+			"a a b c"
+			"d e f c"
+			"g g h h";
+
+		.cs-area-c .cs-quote,
+		.cs-area-h .cs-quote {
+			/* 40px - 54px */
+			font-size: clamp(2.5rem, 3.6vw, 3.375rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---       Two Large Cards      -->
+<--- -------------------------- -*/
+/* types with exactly two items (stretch therapy's two approaches) */
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#types {
+		.cs-kinds-two {
+			gap: (12/16rem);
+
+			.cs-kind {
+				padding: (30/16rem) (26/16rem);
+				border-radius: (36/16rem);
+				gap: (14/16rem);
+			}
+
+			.cs-kind-title {
+				font-size: (46/16rem);
+				line-height: 0.88;
+			}
+
+			.cs-kind-text {
+				max-width: (520/16rem);
+			}
+		}
+
+		.cs-kind-mint {
+			background-color: var(--mintTint);
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#types .cs-kinds-two {
+		gap: (16/16rem);
+
+		.cs-kind {
+			padding: (48/16rem) (44/16rem) (44/16rem);
+			border-radius: (48/16rem);
+			gap: (18/16rem);
+		}
+
+		.cs-kind-title {
+			/* 52px - 72px */
+			font-size: clamp(3.25rem, 4.6vw, 4.5rem);
+		}
+
+		.cs-kind-text {
+			font-size: (17/16rem);
+		}
+	}
+}
+
+/* stays two across on wide screens (the default card grid goes to four) */
+@media only screen and (min-width: 80rem) {
+	#types .cs-kinds.cs-kinds-two {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+/*-- -------------------------- -->
+<---    Coverage Call Buttons   -->
+<--- -------------------------- -*/
+/* different.billing.calls: true */
+
+@media only screen and (min-width: 0rem) {
+	#different .cs-calls {
+		margin-top: (6/16rem);
+		display: flex;
+		flex-wrap: wrap;
+		gap: (8/16rem);
+
+		a {
+			padding: (14/16rem) (20/16rem);
+			flex: 1 1 auto;
+			text-align: center;
+		}
+
+		/* the outline button has a 1.5px border */
+		.cs-button-outline {
+			padding: (12.5/16rem) (18.5/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---       Reduced Motion       -->
+<--- -------------------------- -*/
+
+@media (prefers-reduced-motion: reduce) {
+	#fit .cs-tile,
+	#types .cs-index-link,
+	#types .cs-icon-arrow,
+	#team .cs-person-photo img {
+		transition: none !important;
+	}
+}
+
+/*-- -------------------------- -->
+<---   Results (DUTCH test page)  -->
+<--- -------------------------- -*/
+
+/* s.results: a sample report that enlarges on tap (report-zoom.js), what it covers, and the kit */
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#results {
+		background-color: var(--nearBlack);
+
+		.cs-section-title {
+			color: var(--white);
+		}
+
+		.cs-section-text {
+			max-width: (720/16rem);
+			color: var(--lightText);
+		}
+
+		.cs-results {
+			margin-top: (40/16rem);
+			display: grid;
+			gap: (28/16rem);
+			align-items: start;
+		}
+
+		.cs-report {
+			margin: 0;
+			padding: (14/16rem);
+			border-radius: (28/16rem);
+			background-color: var(--white);
+
+			figcaption {
+				font-size: (13/16rem);
+				padding: (12/16rem) (6/16rem) (2/16rem);
+				color: var(--mutedText);
+			}
+		}
+
+		.cs-report-open {
+			width: 100%;
+			padding: 0;
+			border: none;
+			border-radius: (16/16rem);
+			background: none;
+			display: block;
+			cursor: zoom-in;
+
+			img {
+				width: 100%;
+				height: auto;
+				border-radius: (16/16rem);
+				display: block;
+			}
+
+			&:focus-visible {
+				outline: 3px solid var(--revibeGreen);
+				outline-offset: 4px;
+			}
+		}
+
+		.cs-results-list {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			gap: (26/16rem);
+
+			p {
+				font-size: 1rem;
+				line-height: 1.6;
+				margin: (8/16rem) 0 0;
+				color: var(--lightText);
+			}
+		}
+
+		.cs-results-title {
+			/* 30px - 40px */
+			font-size: clamp(1.875rem, 2.6vw, 2.5rem);
+			line-height: 0.95;
+			margin: 0;
+			color: var(--white);
+		}
+
+		.cs-kit {
+			margin-top: (56/16rem);
+			display: grid;
+			gap: (24/16rem);
+			align-items: center;
+		}
+
+		.cs-kit-picture {
+			border-radius: (28/16rem);
+			background-color: #000;
+			overflow: hidden;
+
+			img {
+				width: 100%;
+				height: auto;
+				display: block;
+			}
+		}
+
+		.cs-kit-title {
+			/* 34px - 48px */
+			font-size: clamp(2.125rem, 3vw, 3rem);
+			line-height: 0.95;
+			margin: 0;
+			color: var(--white);
+		}
+
+		.cs-kit-body p {
+			font-size: 1rem;
+			line-height: 1.6;
+			max-width: (520/16rem);
+			margin: (12/16rem) 0 (24/16rem);
+			color: var(--lightText);
+		}
+
+		/* the enlarged report, full screen and scrollable */
+		.cs-report-zoom {
+			position: fixed;
+			inset: 0;
+			z-index: 9999;
+			padding: (64/16rem) (16/16rem) (24/16rem);
+			background-color: rgba(13, 13, 13, 0.94);
+			overflow: auto;
+
+			&[hidden] {
+				display: none;
+			}
+
+			img {
+				width: (1400/16rem);
+				max-width: none;
+				margin: 0 auto;
+				border-radius: (12/16rem);
+				display: block;
+			}
+		}
+
+		.cs-report-close {
+			position: fixed;
+			top: (14/16rem);
+			right: (14/16rem);
+			width: (44/16rem);
+			height: (44/16rem);
+			font-size: (26/16rem);
+			line-height: 1;
+			border: none;
+			border-radius: 50%;
+			background-color: var(--white);
+			color: var(--nearBlack);
+			cursor: pointer;
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#results {
+		.cs-results {
+			grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+			gap: (56/16rem);
+		}
+
+		.cs-results-list {
+			gap: (34/16rem);
+			padding-top: (12/16rem);
+		}
+
+		.cs-kit {
+			grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+			gap: (56/16rem);
+			margin-top: (80/16rem);
+		}
+	}
+}
+
+/* Large desktop - 1500px: the enlarged report fits the screen */
+@media only screen and (min-width: 93.75rem) {
+	#results .cs-report-zoom img {
+		width: 100%;
+		max-width: (1400/16rem);
+	}
+}
+
+/*-- -------------------------- -->
+<---  Types: photo cards, links  -->
+<--- -------------------------- -*/
+
+/* types items with image, link or dark: true (direct billing) */
+@media only screen and (min-width: 0rem) {
+	#types {
+		.cs-kind-picture {
+			height: (130/16rem);
+			margin-bottom: (4/16rem);
+			border-radius: (999/16rem);
+			overflow: hidden;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+
+		.cs-kind-link {
+			font-weight: 700;
+			text-decoration: none;
+			margin-top: auto;
+			display: inline-flex;
+			align-items: center;
+			gap: (8/16rem);
+			color: var(--nearBlack);
+
+			&:hover .cs-kind-arrow {
+				transform: translateX(3px);
+			}
+		}
+
+		.cs-kind-arrow {
+			width: (26/16rem);
+			height: (26/16rem);
+			border-radius: 50%;
+			background-color: var(--revibeGreen);
+			color: var(--nearBlack);
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			transition: transform 0.2s;
+
+			svg {
+				width: (14/16rem);
+				height: (14/16rem);
+			}
+		}
+
+		.cs-kind-dark {
+			background-color: var(--nearBlack);
+
+			.cs-kind-title,
+			.cs-kind-link {
+				color: var(--white);
+			}
+
+			.cs-kind-text {
+				color: var(--lightText);
+			}
+		}
+	}
+}
+
+/* types.columns: 3 */
+@media only screen and (min-width: 80rem) {
+	#types .cs-kinds.cs-kinds-three {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+/*-- -------------------------- -->
+<---    Insurers (direct billing) -->
+<--- -------------------------- -*/
+
+/* s.insurers: search box, insurer cards and "Not on the list?" (insurer-search.js) */
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#insurers {
+		background-color: var(--revibeGreen);
+
+		.cs-section-title {
+			color: var(--nearBlack);
+		}
+
+		.cs-insurers-head {
+			margin-bottom: (32/16rem);
+			display: grid;
+			gap: (22/16rem);
+			align-items: end;
+		}
+
+		.cs-insurer-search {
+			position: relative;
+			display: block;
+
+			svg {
+				position: absolute;
+				left: (22/16rem);
+				top: 50%;
+				transform: translateY(-50%);
+				width: (20/16rem);
+				height: (20/16rem);
+				color: var(--nearBlack);
+				pointer-events: none;
+			}
+
+			input {
+				width: 100%;
+				font-family: var(--bodyFont);
+				font-size: 1rem;
+				font-weight: 600;
+				line-height: 1;
+				padding: (20/16rem) (24/16rem) (20/16rem) (56/16rem);
+				border: none;
+				border-radius: (999/16rem);
+				background-color: var(--white);
+				color: var(--nearBlack);
+				outline: none;
+				transition: box-shadow 0.2s;
+
+				&::placeholder {
+					color: var(--mutedText);
+				}
+
+				&:focus {
+					box-shadow: 0 0 0 3px var(--nearBlack);
+				}
+			}
+		}
+
+		.cs-insurer-message {
+			font-size: (15/16rem);
+			font-weight: 600;
+			min-height: (22/16rem);
+			margin: (12/16rem) 0 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-insurers {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: (10/16rem);
+		}
+
+		.cs-insurer {
+			min-height: (136/16rem);
+			padding: (16/16rem);
+			border-radius: (22/16rem);
+			background-color: var(--white);
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: flex-start;
+			gap: (18/16rem);
+			transition:
+				opacity 0.25s,
+				box-shadow 0.25s;
+
+			&.cs-hit {
+				box-shadow: 0 0 0 3px var(--nearBlack);
+
+				.cs-insurer-mono {
+					background-color: var(--revibeGreen);
+					color: var(--nearBlack);
+				}
+			}
+		}
+
+		.cs-insurer-mono {
+			font-family: var(--headerFont);
+			font-size: (19/16rem);
+			line-height: 1;
+			letter-spacing: 0.5px;
+			width: (44/16rem);
+			height: (44/16rem);
+			padding-top: 2px;
+			flex: none;
+			border-radius: 50%;
+			background-color: var(--nearBlack);
+			color: var(--revibeGreen);
+			display: grid;
+			place-items: center;
+		}
+
+		.cs-insurer-name {
+			font-size: (14/16rem);
+			font-weight: 700;
+			line-height: 1.3;
+			color: var(--nearBlack);
+		}
+
+		/* while searching, the others fade (and hide on phones) */
+		.cs-filtering .cs-insurer:not(.cs-hit) {
+			opacity: 0.28;
+		}
+
+		.cs-insurers-more {
+			grid-column: 1 / -1;
+		}
+
+		.cs-insurers-toggle {
+			font-family: var(--bodyFont);
+			font-size: (14/16rem);
+			font-weight: 700;
+			line-height: 1;
+			width: 100%;
+			padding: (16/16rem) (20/16rem);
+			border: none;
+			border-radius: (999/16rem);
+			background-color: var(--white);
+			color: var(--nearBlack);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: (10/16rem);
+			cursor: pointer;
+
+			svg {
+				width: (12/16rem);
+				height: (8/16rem);
+				transition: transform 0.25s;
+			}
+
+			&[aria-expanded="true"] svg {
+				transform: rotate(180deg);
+			}
+		}
+
+		.cs-not-listed {
+			grid-column: 1 / -1;
+			padding: (18/16rem) (20/16rem);
+			border-radius: (22/16rem);
+			background-color: var(--nearBlack);
+			display: grid;
+			gap: (14/16rem);
+			align-items: center;
+
+			p {
+				font-size: (13/16rem);
+				line-height: 1.5;
+				margin: (6/16rem) 0 0;
+				color: var(--lightText);
+			}
+		}
+
+		.cs-not-listed-title {
+			font-size: (30/16rem);
+			line-height: 0.9;
+			margin: 0;
+			color: var(--accentYellow);
+		}
+
+		.cs-not-listed-phones {
+			display: grid;
+			gap: (8/16rem);
+
+			a {
+				line-height: 1;
+				text-decoration: none;
+				padding: (10/16rem) (14/16rem);
+				border-radius: (18/16rem);
+				background-color: rgba(255, 255, 255, 0.07);
+				color: var(--white);
+				display: flex;
+				justify-content: space-between;
+				align-items: baseline;
+				gap: (16/16rem);
+			}
+
+			span {
+				font-size: (11/16rem);
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				color: var(--revibeGreen);
+			}
+
+			strong {
+				font-family: var(--headerFont);
+				font-size: (24/16rem);
+				font-weight: 400;
+				line-height: 1;
+			}
+		}
+	}
+}
+
+/* Phones: six insurers until "Show all"; a search shows only the matches */
+@media only screen and (max-width: 43.6875rem) {
+	#insurers {
+		.cs-collapsed:not(.cs-filtering) .cs-insurer:nth-child(n + 7),
+		.cs-filtering .cs-insurer:not(.cs-hit),
+		.cs-filtering .cs-insurers-more {
+			display: none;
+		}
+	}
+}
+
+/* Tablet - 700px: everything shows, no toggle */
+@media only screen and (min-width: 43.75rem) {
+	#insurers {
+		.cs-insurers {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			grid-auto-rows: 1fr;
+			gap: (12/16rem);
+		}
+
+		.cs-insurer {
+			min-height: (132/16rem);
+			padding: (18/16rem) (20/16rem);
+		}
+
+		.cs-insurer-name {
+			font-size: (15/16rem);
+		}
+
+		.cs-insurers-more {
+			display: none;
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#insurers {
+		.cs-insurers-head {
+			grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+			gap: (48/16rem);
+			margin-bottom: (40/16rem);
+		}
+
+		.cs-not-listed {
+			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+			gap: (18/16rem);
+		}
+	}
+}
+
+/* Desktop - 1100px */
+@media only screen and (min-width: 68.75rem) {
+	#insurers .cs-insurers {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#insurers .cs-insurer,
+	#types .cs-kind-arrow {
+		transition: none;
+	}
+}
