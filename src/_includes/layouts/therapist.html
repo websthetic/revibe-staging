@@ -1,0 +1,141 @@
+{#
+    Therapist bio pages (/therapists/<slug>/), in content/pages/therapists/.
+    A page sets in its front matter:
+      therapist: the member key in _data/team.js, also its content file in _data/therapistBios/
+    Name, role and photo come from team.js; clinics, services and Instagram from therapists.js.
+    Styles in therapist.less; reviews and the CTA are the shared sections in global.less.
+#}
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/therapist.css">
+    <script defer src="/assets/js/home-sections.js"></script>
+{% endblock %}
+
+{% block body %}
+    {% set bio = therapistBios[therapist] %}
+    {% set member = team[therapist] %}
+    {% set person = therapists.byMember[therapist] %}
+    {# "Book with Anesto"; drops the "Dr." so doctors read "Book with Jennifer" #}
+    {% set firstName = (member.name | replace("Dr. ", "")).split(" ")[0] %}
+    {# their Jane profile, or their first clinic's Jane booking page when they have none #}
+    {% set bookUrl = bio.bookUrl or clinicsByKey[person.clinics[0]].janeUrl %}
+    {% set igIcon %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>{% endset %}
+    {% set pinIcon %}{% include "components/icons/pin.html" %}{% endset %}
+    {% set arrowIcon %}{% include "components/icons/arrow.html" %}{% endset %}
+
+    <!-- ============================================ -->
+    <!--                    Hero                      -->
+    <!-- ============================================ -->
+
+    <section id="bio-hero" aria-labelledby="bio-title">
+        <div class="cs-container">
+            <div class="cs-content">
+                <a class="cs-back" href="/therapists/">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+                    All therapists
+                </a>
+                <span class="cs-topper">{{ person.role or member.role }}</span>
+                <h1 class="cs-title" id="bio-title">{{ member.name }}</h1>
+                <ul class="cs-tags" aria-label="Clinics">
+                    {% for key in person.clinics %}
+                    <li><a class="cs-tag" href="{{ clinicsByKey[key].pageUrl }}">{{ pinIcon | safe }}{{ clinicsByKey[key].name }}</a></li>
+                    {% endfor %}
+                </ul>
+                <p class="cs-text">{{ bio.intro }}</p>
+                <div class="cs-actions">
+                    <a href="{{ bookUrl }}" class="cs-button-solid" target="_blank" rel="noopener">Book with {{ firstName }}</a>
+                </div>
+            </div>
+            <div class="cs-photo">
+                {% if member.photo %}
+                {# photoPosition in the bio data moves the crop for a photo framed differently (default 50% 60%) #}
+                {% set imgStyle = 'style="object-position: ' + (bio.photoPosition or "50% 60%") + ';"' %}
+                <img src="{% getUrl member.photo | resize({ width: 800 }) | webp %}" alt="{{ member.name }}" {{ imgStyle | safe }} width="800" height="1000" fetchpriority="high" decoding="async">
+                {% else %}
+                {% set parts = member.name.split(" ") %}
+                <span class="cs-initials" aria-hidden="true">{{ parts[0][0] }}{{ parts[parts.length - 1][0] }}</span>
+                {% endif %}
+                {% if person.instagram %}
+                <a class="cs-ig" href="{{ person.instagram }}" target="_blank" rel="noopener" aria-label="{{ member.name }} on Instagram">{{ igIcon | safe }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                    About                     -->
+    <!-- ============================================ -->
+
+    <section id="bio-about" class="cs-section" aria-labelledby="bio-about-title">
+        <div class="cs-container">
+            <div class="cs-story">
+                <h2 class="cs-title cs-section-title" id="bio-about-title">Meet <span class="cs-color">{{ firstName }}</span></h2>
+                {% if bio.stats %}
+                <ul class="cs-stats">
+                    {% for stat in bio.stats %}
+                    <li class="cs-stat"><span class="cs-stat-number">{{ stat.number }}</span><span class="cs-stat-label">{{ stat.label }}</span></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% for paragraph in bio.bio %}<p class="cs-story-text">{{ paragraph }}</p>{% endfor %}
+            </div>
+
+            <aside class="cs-card" aria-labelledby="bio-card-title">
+                <h2 class="cs-card-title" id="bio-card-title">Experience</h2>
+                <ul class="cs-credentials">
+                    {% for item in bio.credentials %}
+                    <li><strong>{{ item.title }}</strong>{% if item.detail %}<span>{{ item.detail }}</span>{% endif %}</li>
+                    {% endfor %}
+                </ul>
+                {% if bio.specialties %}
+                <h3 class="cs-card-subtitle">Specialties</h3>
+                <ul class="cs-chips">
+                    {% for item in bio.specialties %}<li>{{ item }}</li>{% endfor %}
+                </ul>
+                {% endif %}
+                <a href="{{ bookUrl }}" class="cs-button-solid" target="_blank" rel="noopener">Book with {{ firstName }}</a>
+            </aside>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--               More of the team               -->
+    <!-- ============================================ -->
+
+    {% set colleagues = therapists.colleagues[therapist] %}
+    {% if colleagues.length %}
+    <section id="bio-team" class="cs-section" aria-labelledby="bio-team-title">
+        <div class="cs-container">
+            <div class="cs-section-header">
+                <h2 class="cs-title cs-section-title" id="bio-team-title">More of the <span class="cs-color">team</span></h2>
+                <p class="cs-section-text">Every Revibe therapist works as one team, so your care stays connected whoever you see.</p>
+            </div>
+            <ul class="cs-people">
+                {% for other in colleagues %}
+                {% set m = team[other.member] %}
+                <li>
+                    <a href="{{ m.url if m.url != '/' else '/therapists/' }}" class="cs-person">
+                        <span class="cs-person-photo">
+                            {% if m.photo %}
+                            <img src="{% getUrl m.photo | resize({ width: 500 }) | webp %}" alt="" width="500" height="800" loading="lazy" decoding="async">
+                            {% else %}
+                            {% set parts = m.name.split(" ") %}
+                            <span class="cs-initials" aria-hidden="true">{{ parts[0][0] }}{{ parts[parts.length - 1][0] }}</span>
+                            {% endif %}
+                        </span>
+                        <span class="cs-person-name">{{ m.name }}</span>
+                        <span class="cs-person-role">{{ other.role or m.role }}</span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            <a href="/therapists/" class="cs-all">See all therapists <span class="cs-icon-arrow">{{ arrowIcon | safe }}</span></a>
+        </div>
+    </section>
+    {% endif %}
+
+    {% include "sections/home/reviews.html" %}
+
+    {% include "sections/cta.html" %}
+{% endblock %}

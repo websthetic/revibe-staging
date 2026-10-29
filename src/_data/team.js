@@ -1,12 +1,17 @@
 // Revibe practitioners. photo is the tall portrait, face is the square head-and-shoulders crop.
 // Keys are used by service pages (e.g. physiotherapy.js) to list who treats that service.
 // pass hasFace: false when there is no square crop yet; the "licensed" card then skips that person
+// url is their bio page once _data/therapistBios/<slug>.js exists, otherwise "/"
+const fs = require("fs");
+const path = require("path");
+const hasBio = (slug) => fs.existsSync(path.join(__dirname, "therapistBios", `${slug}.js`));
+
 const member = (slug, name, role, hasFace = true) => ({
     name,
     role,
     photo: `/assets/images/team/${slug}.jpg`,
     face: hasFace ? `/assets/images/team/${slug}-face.jpg` : null,
-    url: "/",
+    url: hasBio(slug) ? `/therapists/${slug}/` : "/",
 });
 
 module.exports = {

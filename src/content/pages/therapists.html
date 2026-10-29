@@ -55,6 +55,8 @@ permalink: "/therapists/"
                 {% for person in th.people %}
                 {% set member = team[person.member] %}
                 <li class="cs-person" data-clinics="{{ person.clinics | join(' ') }}" data-services="{{ person.services | join(' ') }}">
+                    {# links to their bio page once _data/therapistBios/<slug>.js exists #}
+                    {% if member.url != "/" %}<a href="{{ member.url }}" class="cs-person-link">{% endif %}
                     <div class="cs-person-photo">
                         {% if member.photo %}
                         <img src="{% getUrl member.photo | resize({ width: 500 }) | webp %}" alt="" width="500" height="800" loading="lazy" decoding="async">
@@ -68,6 +70,7 @@ permalink: "/therapists/"
                         <p class="cs-person-role">{{ person.role or member.role }}</p>
                         <p class="cs-person-clinics">{% for key in person.clinics %}{{ clinicsByKey[key].name if clinicsByKey[key] else key }}{% if not loop.last %} · {% endif %}{% endfor %}</p>
                     </div>
+                    {% if member.url != "/" %}</a>{% endif %}
                     {% if person.instagram %}
                     <a class="cs-person-ig" href="{{ person.instagram }}" target="_blank" rel="noopener" aria-label="{{ member.name }} on Instagram">{{ igIcon | safe }}</a>
                     {% endif %}

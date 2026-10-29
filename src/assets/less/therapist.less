@@ -1,0 +1,497 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// THERAPIST BIO PAGE STYLES
+// /therapists/<slug>/ (layouts/therapist.html, content in _data/therapistBios/).
+// Section padding and headings come from the shared pieces in global.less
+// (.cs-section, .cs-section-title); reviews and the CTA are styled there too.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/*-- -------------------------- -->
+<---           Hero             -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#bio-hero {
+		/* 80px fixed nav + 32px */
+		padding: calc(5rem + 2rem) (20/16rem) (56/16rem);
+		background-color: var(--nearBlack);
+		color: var(--white);
+
+		.cs-container {
+			width: 100%;
+			max-width: (1280/16rem);
+			margin: auto;
+			display: grid;
+			gap: (40/16rem);
+		}
+
+		.cs-content {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.cs-back {
+			font-size: (14/16rem);
+			font-weight: 600;
+			text-decoration: none;
+			margin-bottom: (32/16rem);
+			color: var(--lightText);
+			display: inline-flex;
+			align-items: center;
+			gap: (8/16rem);
+			transition: color 0.2s ease;
+
+			svg {
+				width: 18px;
+				height: 18px;
+				transition: transform 0.2s ease;
+			}
+
+			&:hover {
+				color: var(--revibeGreen);
+
+				svg {
+					transform: translateX(-3px);
+				}
+			}
+		}
+
+		.cs-topper {
+			font-size: (13/16rem);
+			font-weight: 700;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			margin-bottom: (12/16rem);
+			color: var(--revibeGreen);
+		}
+
+		.cs-title {
+			/* 56px - 128px */
+			font-size: clamp(3.5rem, 9vw, 8rem);
+			line-height: 0.86;
+			max-width: none;
+			margin: 0;
+			color: var(--white);
+		}
+
+		.cs-tags {
+			list-style: none;
+			margin: (24/16rem) 0 0;
+			padding: 0;
+			display: flex;
+			flex-wrap: wrap;
+			gap: (8/16rem);
+		}
+
+		.cs-tag {
+			font-size: (13/16rem);
+			font-weight: 600;
+			text-decoration: none;
+			padding: (9/16rem) (16/16rem);
+			border: 1px solid var(--darkLine);
+			border-radius: 999px;
+			color: var(--lightText);
+			display: inline-flex;
+			align-items: center;
+			gap: (6/16rem);
+			transition: border-color 0.2s ease;
+
+			svg {
+				width: 14px;
+				height: 14px;
+				color: var(--revibeGreen);
+			}
+
+			&:hover {
+				border-color: var(--revibeGreen);
+			}
+		}
+
+		.cs-text {
+			font-size: (17/16rem);
+			line-height: 1.6;
+			max-width: (520/16rem);
+			margin: (28/16rem) 0 (32/16rem);
+			color: var(--lightText);
+		}
+
+		.cs-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: (12/16rem);
+		}
+
+		/* tall portrait on the mint tint the team cards use */
+		.cs-photo {
+			width: 100%;
+			max-width: (480/16rem);
+			aspect-ratio: 4 / 5;
+			border-radius: (32/16rem);
+			background-color: var(--mintTint);
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+
+		.cs-initials {
+			font-family: var(--headerFont);
+			font-size: (120/16rem);
+			letter-spacing: var(--headingLetterSpacing);
+			color: var(--deepGreen);
+		}
+
+		.cs-ig {
+			width: (48/16rem);
+			height: (48/16rem);
+			border-radius: 50%;
+			background-color: var(--white);
+			color: var(--nearBlack);
+			box-shadow: 0 6px 16px rgba(13, 13, 13, 0.12);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			top: (16/16rem);
+			right: (16/16rem);
+			transition:
+				background-color 0.2s ease,
+				color 0.2s ease;
+
+			svg {
+				width: 20px;
+				height: 20px;
+			}
+
+			&:hover {
+				background-color: var(--revibeGreen);
+			}
+
+			&:focus-visible {
+				outline: 3px solid var(--white);
+				outline-offset: 2px;
+			}
+		}
+	}
+}
+
+/* Desktop - 900px: text left, portrait right */
+@media only screen and (min-width: 56.25rem) {
+	#bio-hero {
+		padding: calc(5rem + 3rem) (40/16rem) (80/16rem);
+
+		.cs-container {
+			grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+			align-items: end;
+			gap: (64/16rem);
+		}
+
+		.cs-photo {
+			max-width: none;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#bio-hero .cs-back,
+	#bio-hero .cs-back svg {
+		transition: none;
+	}
+}
+
+/*-- -------------------------- -->
+<---           About            -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#bio-about {
+		background-color: var(--offWhite);
+
+		.cs-container {
+			display: grid;
+			gap: (40/16rem);
+		}
+
+		.cs-section-title {
+			margin-bottom: (28/16rem);
+
+			.cs-color {
+				color: var(--revibeGreenOnLight);
+			}
+		}
+
+		.cs-stats {
+			list-style: none;
+			margin: 0 0 (32/16rem);
+			padding: 0;
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: (12/16rem);
+		}
+
+		.cs-stat {
+			padding: (20/16rem);
+			border-radius: (24/16rem);
+			background-color: var(--mintTint);
+			display: grid;
+			gap: (6/16rem);
+		}
+
+		.cs-stat-number {
+			font-family: var(--headerFont);
+			/* 44px - 64px */
+			font-size: clamp(2.75rem, 5vw, 4rem);
+			line-height: 0.9;
+			letter-spacing: var(--headingLetterSpacing);
+			color: var(--deepGreen);
+		}
+
+		.cs-stat-label {
+			font-size: (13/16rem);
+			font-weight: 600;
+			line-height: 1.35;
+			color: var(--charcoal);
+		}
+
+		.cs-story-text {
+			font-size: (16/16rem);
+			line-height: 1.7;
+			max-width: (680/16rem);
+			margin: 0 0 (18/16rem);
+			color: var(--charcoal);
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		/* credentials card; sticks beside the story on desktop */
+		.cs-card {
+			padding: (28/16rem) (24/16rem);
+			border-radius: (32/16rem);
+			background-color: var(--nearBlack);
+			color: var(--white);
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			align-self: start;
+		}
+
+		.cs-card-title {
+			font-family: var(--headerFont);
+			font-size: (40/16rem);
+			font-weight: 400;
+			line-height: 1;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			margin: 0 0 (8/16rem);
+			color: var(--white);
+		}
+
+		.cs-credentials {
+			width: 100%;
+			list-style: none;
+			margin: 0 0 (28/16rem);
+			padding: 0;
+
+			li {
+				padding: (16/16rem) 0;
+				border-bottom: 1px solid var(--darkLine);
+				display: grid;
+				gap: (4/16rem);
+			}
+
+			/* set here: the global strong colour is dark and disappears on the near black card */
+			strong {
+				font-size: (15/16rem);
+				font-weight: 700;
+				line-height: 1.4;
+				color: var(--white);
+			}
+
+			span {
+				font-size: (13/16rem);
+				line-height: 1.4;
+				color: var(--lightText);
+			}
+		}
+
+		.cs-card-subtitle {
+			font-size: (12/16rem);
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			margin: 0 0 (12/16rem);
+			color: var(--quietText);
+		}
+
+		.cs-chips {
+			list-style: none;
+			margin: 0 0 (28/16rem);
+			padding: 0;
+			display: flex;
+			flex-wrap: wrap;
+			gap: (8/16rem);
+
+			li {
+				font-size: (13/16rem);
+				font-weight: 600;
+				padding: (8/16rem) (14/16rem);
+				border: 1px solid var(--revibeGreen);
+				border-radius: 999px;
+				color: var(--lightText);
+			}
+		}
+
+		.cs-card .cs-button-solid {
+			width: 100%;
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#bio-about {
+		.cs-container {
+			grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+			align-items: start;
+			gap: (64/16rem);
+		}
+
+		.cs-card {
+			padding: (36/16rem) (32/16rem);
+			position: sticky;
+			top: (112/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---      More of the team      -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#bio-team {
+		background-color: var(--softBeige);
+
+		.cs-section-title .cs-color {
+			color: var(--revibeGreenOnLight);
+		}
+
+		.cs-people {
+			list-style: none;
+			margin: 0 0 (36/16rem);
+			padding: 0;
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: (20/16rem) (12/16rem);
+		}
+
+		.cs-person {
+			text-decoration: none;
+			display: grid;
+			gap: (4/16rem);
+
+			&:hover .cs-person-photo img {
+				transform: scale(1.04);
+			}
+
+			&:focus-visible {
+				outline: 3px solid var(--deepGreen);
+				outline-offset: 4px;
+				border-radius: (24/16rem);
+			}
+		}
+
+		.cs-person-photo {
+			aspect-ratio: 4 / 5;
+			margin-bottom: (8/16rem);
+			border-radius: (24/16rem);
+			background-color: var(--mintTint);
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: 50% 10%;
+				display: block;
+				transition: transform 0.4s ease;
+			}
+		}
+
+		.cs-initials {
+			font-family: var(--headerFont);
+			font-size: (64/16rem);
+			letter-spacing: var(--headingLetterSpacing);
+			color: var(--deepGreen);
+		}
+
+		.cs-person-name {
+			font-family: var(--headerFont);
+			/* 22px - 28px */
+			font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+			line-height: 1;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			color: var(--nearBlack);
+		}
+
+		.cs-person-role {
+			font-size: (13/16rem);
+			font-weight: 600;
+			line-height: 1.35;
+			color: var(--charcoal);
+		}
+
+		.cs-all {
+			font-size: (14/16rem);
+			font-weight: 700;
+			text-decoration: none;
+			text-transform: uppercase;
+			color: var(--nearBlack);
+			display: inline-flex;
+			align-items: center;
+			gap: (12/16rem);
+
+			&:hover .cs-icon-arrow {
+				transform: translateX(4px);
+			}
+		}
+	}
+}
+
+/* Tablet - 640px: four across */
+@media only screen and (min-width: 40rem) {
+	#bio-team .cs-people {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: (28/16rem) (16/16rem);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#bio-team {
+		.cs-person-photo img,
+		.cs-icon-arrow {
+			transition: none;
+		}
+
+		.cs-person:hover .cs-person-photo img {
+			transform: none;
+		}
+	}
+}

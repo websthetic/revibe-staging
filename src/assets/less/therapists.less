@@ -229,6 +229,19 @@
 			transform: scale(1.04);
 		}
 
+		/* photo and name link to the bio page when there is one */
+		.cs-person-link {
+			text-decoration: none;
+			color: inherit;
+			display: block;
+
+			&:focus-visible {
+				outline: 3px solid var(--deepGreen);
+				outline-offset: 4px;
+				border-radius: (24/16rem);
+			}
+		}
+
 		.cs-initials {
 			font-family: var(--headerFont);
 			font-size: (64/16rem);
