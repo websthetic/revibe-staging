@@ -57,7 +57,7 @@
                             <img class="cs-drop-icon" src="/assets/svgs/nav-chevron.svg" alt="" width="12" height="12" decoding="async" aria-hidden="true">
                         </button>
                         <ul class="cs-drop-ul cs-drop-grid" aria-labelledby="hurt-dropdown-toggle">
-                            {% for link in navigation.whereDoesItHurt %}
+                            {% for link in navigation.whereDoesItHurt.concat([navigation.whereDoesItHurtAll]) %}
                             <li class="cs-drop-li">
                                 <a href="{{ link.url }}" class="cs-li-link cs-drop-link cs-drop-link-display" {% if link.url != "/" and page.url == link.url %} aria-current="page" {% endif %}>{{ link.label }}</a>
                             </li>
@@ -109,7 +109,7 @@
                             <summary class="cs-acc-row">Where Does it Hurt?<span class="cs-acc-icon" aria-hidden="true"></span></summary>
                             <div class="cs-acc-panel">
                                 <ul class="cs-acc-list">
-                                    {% for link in navigation.whereDoesItHurt %}
+                                    {% for link in [navigation.whereDoesItHurtAll].concat(navigation.whereDoesItHurt) %}
                                     <li><a href="{{ link.url }}" class="cs-acc-link" {% if link.url != "/" and page.url == link.url %} aria-current="page" {% endif %}>{{ link.label }}</a></li>
                                     {% endfor %}
                                 </ul>

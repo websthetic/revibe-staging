@@ -14,6 +14,7 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
     <script defer src="/assets/js/care-map.js"></script>
     <script defer src="/assets/js/care-panels.js"></script>
     <script defer src="/assets/js/hurt.js"></script>
+    <link rel="stylesheet" href="/assets/css/hurt-body.css">
     <script defer src="/assets/js/home-sections.js"></script>
 
     <!-- If we're in production, defer the rest of the home page styles. In development, always load it. Otherwise the site will break when hot-reload is used. -->
@@ -48,7 +49,7 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
 
         <div class="cs-container">
             <h1 class="cs-title" id="hero-title">
-                Athlete-grade<br> care, <span class="cs-color">built for how you live</span>
+                Athlete-grade care, <span class="cs-color">built for how you live</span>
             </h1>
             <p class="cs-text">
                 Physiotherapy, chiropractic, massage, osteopathy, naturopathic medicine, performance training and recovery, under one roof at every Revibe clinic.
@@ -58,7 +59,9 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
                 <a href="{{ navigation.services.promo.url }}" class="cs-text-link" data-caremap aria-haspopup="dialog">Not sure where to start? Take the Care Map</a>
             </div>
             <p class="cs-proof">
-                <span class="cs-rating" aria-hidden="true">5.0</span>
+                {% set starsLabel = "Rated 5 out of 5 on Google" %}
+                {% include "components/stars.html" %}
+                {% set starsLabel = false %}
                 <span><strong>600+ Google reviews</strong> and 15,000+ clients. No referral needed, and we direct bill.</span>
             </p>
         </div>
@@ -127,7 +130,7 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
                 <ol class="cs-list">
                     {% for area in hurtAreas %}
                     <li class="cs-item">
-                        <a class="cs-link{% if loop.first %} cs-active{% endif %}" href="{{ area.url }}" data-key="{{ area.key }}">
+                        <a class="cs-link{% if loop.first %} cs-active{% endif %}" href="{{ area.url }}" data-k="{{ area.key }}">
                             <span class="cs-number" aria-hidden="true">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
                             <span class="cs-name">{{ area.label }}</span>
                             <span class="cs-more" aria-hidden="true">See the plan</span>
@@ -135,6 +138,7 @@ tags: "sitemap" # content/content.json will make sure that all pages in content/
                     </li>
                     {% endfor %}
                 </ol>
+                <a href="{{ navigation.whereDoesItHurtAll.url }}" class="cs-all">See every area</a>
             </div>
             <div class="cs-figure-wrap">
                 {% include "components/hurt-figure.html" %}

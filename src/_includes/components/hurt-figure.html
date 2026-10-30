@@ -1,27 +1,19 @@
-<!-- Body figure for the "Where does it hurt?" section, from the dev handover.
-     Hotspots are generated from src/_data/hurtAreas.js. Styles live under #hurt in local.less. -->
-<svg class="cs-figure" viewBox="0 0 300 610" aria-hidden="true" focusable="false"><defs>
-  <linearGradient id="hurt-skinG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#15191B"/><stop offset=".3" stop-color="#2C3336"/><stop offset=".5" stop-color="#363E42"/><stop offset=".7" stop-color="#2C3336"/><stop offset="1" stop-color="#15191B"/></linearGradient>
-  <linearGradient id="hurt-vG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".06"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></linearGradient>
-  <linearGradient id="hurt-scanG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00AD85" stop-opacity="0"/><stop offset=".85" stop-color="#00AD85" stop-opacity=".35"/><stop offset="1" stop-color="#7FFFE0" stop-opacity=".9"/></linearGradient>
-  <clipPath id="hurt-bodyClip"><ellipse cx="150" cy="50" rx="27" ry="33"/><path d="M150 84 L160 84 C162 94 164 100 168 104 C184 110 204 112 216 120 C230 128 236 144 236 162 C238 186 240 206 244 226 C248 246 252 262 254 280 C258 304 262 326 264 344 C266 356 268 368 264 378 C260 388 252 386 250 376 C248 364 248 352 246 340 C240 318 234 296 228 276 C222 256 220 236 218 214 C216 200 214 190 212 184 C210 214 206 240 204 262 C204 280 210 298 214 318 C218 340 216 364 212 388 C208 414 206 432 206 448 C208 474 210 500 206 528 C204 548 200 562 202 574 C204 584 214 590 210 596 L172 596 C168 590 170 580 172 570 C172 548 170 520 168 494 C166 470 166 452 168 440 C168 412 164 382 160 352 C158 340 154 332 150 328 Z"/><path d="M150 84 L160 84 C162 94 164 100 168 104 C184 110 204 112 216 120 C230 128 236 144 236 162 C238 186 240 206 244 226 C248 246 252 262 254 280 C258 304 262 326 264 344 C266 356 268 368 264 378 C260 388 252 386 250 376 C248 364 248 352 246 340 C240 318 234 296 228 276 C222 256 220 236 218 214 C216 200 214 190 212 184 C210 214 206 240 204 262 C204 280 210 298 214 318 C218 340 216 364 212 388 C208 414 206 432 206 448 C208 474 210 500 206 528 C204 548 200 562 202 574 C204 584 214 590 210 596 L172 596 C168 590 170 580 172 570 C172 548 170 520 168 494 C166 470 166 452 168 440 C168 412 164 382 160 352 C158 340 154 332 150 328 Z" transform="translate(300 0) scale(-1 1)"/></clipPath>
-  <filter id="hurt-soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="14"/></filter>
-</defs><ellipse cx="150" cy="596" rx="80" ry="8" fill="#000" opacity=".5" filter="url(#hurt-soft)"/>
-<g class="cs-breathe">
-<g class="cs-skin"><ellipse cx="150" cy="50" rx="27" ry="33" fill="url(#hurt-skinG)"/><path d="M150 84 L160 84 C162 94 164 100 168 104 C184 110 204 112 216 120 C230 128 236 144 236 162 C238 186 240 206 244 226 C248 246 252 262 254 280 C258 304 262 326 264 344 C266 356 268 368 264 378 C260 388 252 386 250 376 C248 364 248 352 246 340 C240 318 234 296 228 276 C222 256 220 236 218 214 C216 200 214 190 212 184 C210 214 206 240 204 262 C204 280 210 298 214 318 C218 340 216 364 212 388 C208 414 206 432 206 448 C208 474 210 500 206 528 C204 548 200 562 202 574 C204 584 214 590 210 596 L172 596 C168 590 170 580 172 570 C172 548 170 520 168 494 C166 470 166 452 168 440 C168 412 164 382 160 352 C158 340 154 332 150 328 Z" fill="url(#hurt-skinG)" stroke="url(#hurt-skinG)" stroke-width=".8"/><path d="M150 84 L160 84 C162 94 164 100 168 104 C184 110 204 112 216 120 C230 128 236 144 236 162 C238 186 240 206 244 226 C248 246 252 262 254 280 C258 304 262 326 264 344 C266 356 268 368 264 378 C260 388 252 386 250 376 C248 364 248 352 246 340 C240 318 234 296 228 276 C222 256 220 236 218 214 C216 200 214 190 212 184 C210 214 206 240 204 262 C204 280 210 298 214 318 C218 340 216 364 212 388 C208 414 206 432 206 448 C208 474 210 500 206 528 C204 548 200 562 202 574 C204 584 214 590 210 596 L172 596 C168 590 170 580 172 570 C172 548 170 520 168 494 C166 470 166 452 168 440 C168 412 164 382 160 352 C158 340 154 332 150 328 Z" transform="translate(300 0) scale(-1 1)" fill="url(#hurt-skinG)" stroke="url(#hurt-skinG)" stroke-width=".8"/></g>
-<g clip-path="url(#hurt-bodyClip)"><rect x="0" y="0" width="300" height="600" fill="url(#hurt-vG)"/>
-<path class="cs-mus" d="M160 138 C176 132 198 138 208 154 C200 170 176 174 160 166 M152 182 L168 182 M152 204 L170 204 M152 226 L170 226 M168 182 C172 210 172 240 166 262 M212 126 C222 132 230 148 230 164 M216 188 C222 210 226 232 232 248 M236 296 C240 312 244 326 250 340 M176 300 C186 316 196 330 204 346 M168 360 C178 384 184 410 186 434 M200 360 C204 384 204 410 198 436 M178 446 C186 452 196 452 202 446 M178 470 C188 492 196 516 198 538 M150 84 L150 100"/><path class="cs-mus" d="M160 138 C176 132 198 138 208 154 C200 170 176 174 160 166 M152 182 L168 182 M152 204 L170 204 M152 226 L170 226 M168 182 C172 210 172 240 166 262 M212 126 C222 132 230 148 230 164 M216 188 C222 210 226 232 232 248 M236 296 C240 312 244 326 250 340 M176 300 C186 316 196 330 204 346 M168 360 C178 384 184 410 186 434 M200 360 C204 384 204 410 198 436 M178 446 C186 452 196 452 202 446 M178 470 C188 492 196 516 198 538 M150 84 L150 100" transform="translate(300 0) scale(-1 1)"/>
-<rect class="cs-scan" x="0" y="-120" width="300" height="120" fill="url(#hurt-scanG)"/></g>
-<path class="cs-rim" d="M150 84 L160 84 C162 94 164 100 168 104 C184 110 204 112 216 120 C230 128 236 144 236 162 C238 186 240 206 244 226 C248 246 252 262 254 280 C258 304 262 326 264 344 C266 356 268 368 264 378 C260 388 252 386 250 376 C248 364 248 352 246 340 C240 318 234 296 228 276 C222 256 220 236 218 214 C216 200 214 190 212 184 C210 214 206 240 204 262 C204 280 210 298 214 318 C218 340 216 364 212 388 C208 414 206 432 206 448 C208 474 210 500 206 528 C204 548 200 562 202 574 C204 584 214 590 210 596 L172 596 C168 590 170 580 172 570 C172 548 170 520 168 494 C166 470 166 452 168 440 C168 412 164 382 160 352 C158 340 154 332 150 328"/><path class="cs-rim" d="M150 84 L160 84 C162 94 164 100 168 104 C184 110 204 112 216 120 C230 128 236 144 236 162 C238 186 240 206 244 226 C248 246 252 262 254 280 C258 304 262 326 264 344 C266 356 268 368 264 378 C260 388 252 386 250 376 C248 364 248 352 246 340 C240 318 234 296 228 276 C222 256 220 236 218 214 C216 200 214 190 212 184 C210 214 206 240 204 262 C204 280 210 298 214 318 C218 340 216 364 212 388 C208 414 206 432 206 448 C208 474 210 500 206 528 C204 548 200 562 202 574 C204 584 214 590 210 596 L172 596 C168 590 170 580 172 570 C172 548 170 520 168 494 C166 470 166 452 168 440 C168 412 164 382 160 352 C158 340 154 332 150 328" transform="translate(300 0) scale(-1 1)"/>
-</g>
-{% for area in hurtAreas %}
-<a class="cs-spot-link" href="{{ area.url }}" tabindex="-1">
-<g class="cs-spot{% if loop.first %} cs-active{% endif %}" data-key="{{ area.key }}">
-<circle class="cs-glow" cx="{{ area.x }}" cy="{{ area.y }}" r="40"/>
-<circle class="cs-ring" cx="{{ area.x }}" cy="{{ area.y }}" r="10"/>
-<circle class="cs-dot" cx="{{ area.x }}" cy="{{ area.y }}" r="9"/>
-<text class="cs-tag" x="{% if area.labelSide == "left" %}{{ area.x - 22 }}{% else %}{{ area.x + 22 }}{% endif %}" y="{{ area.y + 7 }}" text-anchor="{% if area.labelSide == "left" %}end{% else %}start{% endif %}">{{ area.label | upper }}</text>
-</g>
-</a>
-{% endfor %}
+{#
+    The x-ray body with a hotspot per area, linking to its page. On the home page and the hub (/where-does-it-hurt/).
+    Hotspots come from _data/hurtAreas.js. Pointing at an area sets data-on on the svg (hurt.js on home, hurt-page.js on the hub).
+    Styles: hurt-body.less, so the page loads hurt-body.css.
+#}
+<svg class="xr" viewBox="0 0 300 620" role="img" aria-label="A body split down the middle, bone and structure on one side, fascia and muscle on the other, with the seven areas marked" data-on="">
+    {% include "components/hurt-body.html" %}
+    {% for area in hurtAreas %}
+    {% set left = area.labelSide == "left" %}
+    <a class="hs-a" href="{{ area.url }}" aria-label="{{ area.label }} pain plan">
+        <g class="hs" data-k="{{ area.key }}">
+            <circle class="glow" cx="{{ area.x }}" cy="{{ area.y }}" r="30" fill="url(#xr-g)"/>
+            <circle class="ring" cx="{{ area.x }}" cy="{{ area.y }}" r="8"/>
+            <circle class="dot" cx="{{ area.x }}" cy="{{ area.y }}" r="6.5"/>
+            <text class="tag" x="{{ area.x - 18 if left else area.x + 18 }}" y="{{ area.y + 6 }}" text-anchor="{{ "end" if left else "start" }}">{{ area.label | upper }}</text>
+        </g>
+    </a>
+    {% endfor %}
 </svg>

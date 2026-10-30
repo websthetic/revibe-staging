@@ -162,14 +162,6 @@ module.exports = {
             {
                 label: "Performance training",
                 url: "/performance-training/"
-            },
-            {
-                label: "Physiotherapy in Mississauga",
-                url: "/location/mississauga/physiotherapy/"
-            },
-            {
-                label: "Physiotherapy in Markham",
-                url: "/location/markham/physiotherapy/"
             }
         ]
     },
@@ -234,6 +226,28 @@ module.exports = {
                 a: "Most extended health plans cover physiotherapy, chiropractic, massage and osteopathy, and we direct bill most insurers. An initial physiotherapy assessment is $125."
             }
         ]
+    },
+    // the area in running text: "Who will treat my foot and ankle?", "the week-by-week plan for your foot and ankle"
+    area: "foot and ankle",
+    // frames this area of the body in the week-by-week figure (foot-ankle-figure.html)
+    figureViewBox: "-20 60 340 340",
+    // "Who will treat my ...": Google reviews, then four clinicians (keys in _data/team.js)
+    team: {
+        title: "Who will treat my foot and ankle?",
+        text: "Real Google reviews from clients we have treated, and the people you could see for your foot and ankle.",
+        quotes: [
+            {
+                text: "Anesto is an excellent osteopath who's been a huge help in my ankle injury recovery. He's knowledgeable, attentive, and takes the time to explain everything clearly.",
+                name: "Neesha G.",
+                meta: "Google review, saw Anesto Charles"
+            },
+            {
+                text: "Winson Cheong (RMT) got me running pain free again in just a couple of weeks! He combined different types of treatments and even adapted and re-wrote my marathon plan to help me get back on the road in time for my race.",
+                name: "Shiyamala D.",
+                meta: "Google review, saw Winson Cheong"
+            }
+        ],
+        members: ["anesto-charles", "winson-cheong", "scott-french", "michael-leung"]
     },
     longTitle: true
 };

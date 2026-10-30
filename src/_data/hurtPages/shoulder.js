@@ -162,14 +162,6 @@ module.exports = {
             {
                 label: "Osteopathy",
                 url: "/services/osteopathy/"
-            },
-            {
-                label: "Physiotherapy in Mississauga",
-                url: "/location/mississauga/physiotherapy/"
-            },
-            {
-                label: "Physiotherapy in Markham",
-                url: "/location/markham/physiotherapy/"
             }
         ]
     },
@@ -234,6 +226,23 @@ module.exports = {
                 a: "Most extended health plans cover physiotherapy, chiropractic, massage and osteopathy, and we direct bill most insurers. An initial physiotherapy assessment is $125."
             }
         ]
+    },
+    // the area in running text: "Who will treat my shoulder?", "the week-by-week plan for your shoulder"
+    area: "shoulder",
+    // frames this area of the body in the week-by-week figure (shoulder-figure.html)
+    figureViewBox: "-30 20 360 400",
+    // "Who will treat my ...": Google reviews, then four clinicians (keys in _data/team.js)
+    team: {
+        title: "Who will treat my shoulder?",
+        text: "Real Google reviews from clients we have treated, and the people you could see for your shoulder.",
+        quotes: [
+            {
+                text: "Went to see Zeeruk for physiotherapy regarding some shoulder pain, he was amazing and I felt a big difference after seeing him a few times.",
+                name: "Maria I.",
+                meta: "Google review, saw Zeeruk Rehman"
+            }
+        ],
+        members: ["zeeruk-rehman", "michael-leung", "michael-ross", "anesto-charles"]
     },
     longTitle: true
 };

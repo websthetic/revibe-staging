@@ -162,14 +162,6 @@ module.exports = {
             {
                 label: "Osteopathy",
                 url: "/services/osteopathy/"
-            },
-            {
-                label: "Physiotherapy in Mississauga",
-                url: "/location/mississauga/physiotherapy/"
-            },
-            {
-                label: "Physiotherapy in Markham",
-                url: "/location/markham/physiotherapy/"
             }
         ]
     },
@@ -237,6 +229,17 @@ module.exports = {
                 a: "Most extended health plans cover physiotherapy, chiropractic, massage and osteopathy, and we direct bill most insurers. An initial physiotherapy assessment is $125."
             }
         ]
+    },
+    // the area in running text: "Who will treat my elbow and wrist?", "the week-by-week plan for your elbow and wrist"
+    area: "elbow and wrist",
+    // frames this area of the body in the week-by-week figure (elbow-wrist-figure.html)
+    figureViewBox: "-40 20 380 400",
+    // "Who will treat my ...": Google reviews, then four clinicians (keys in _data/team.js)
+    team: {
+        title: "Who will treat my elbow and wrist?",
+        text: "The people you could see for your elbow and wrist. Physiotherapy, osteopathy and massage, all under one roof.",
+        quotes: [],
+        members: ["michael-leung", "michael-ross", "emily-wilson", "winson-cheong"]
     },
     longTitle: true
 };

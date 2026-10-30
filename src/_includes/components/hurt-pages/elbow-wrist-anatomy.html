@@ -1,30 +1,19 @@
-{# Elbow and wrist pain anatomy drawing from the dev handover. Its data-k parts match the problem keys in _data/hurtPages/elbow-wrist.js #}
-<svg class="anat" viewBox="0 0 400 520" role="img" aria-labelledby="anat-t">
-          <title id="anat-t">The forearm, elbow and hand palm up, showing the tennis and golfer&#x27;s elbow spots, carpal tunnel and thumb tendons</title>
-          <defs>
-            <radialGradient id="glow"><stop offset="0" stop-color="#00AD85" stop-opacity=".5"/><stop offset="1" stop-color="#00AD85" stop-opacity="0"/></radialGradient>
-            <linearGradient id="boneG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFDF8"/><stop offset=".55" stop-color="#ECE6DA"/><stop offset="1" stop-color="#C7BEAC"/></linearGradient>
-            <linearGradient id="boneS" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset=".35" stop-color="#000" stop-opacity="0"/><stop offset=".7" stop-color="#fff" stop-opacity=".12"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></linearGradient>
-            <pattern id="fib" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(18)"><rect width="7" height="7" fill="#7FD6C2" fill-opacity=".16"/><path d="M0 3.5 H7" stroke="#7FD6C2" stroke-opacity=".55" stroke-width="1.6"/></pattern>
-            <pattern id="fibOn" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(18)"><rect width="7" height="7" fill="#00AD85" fill-opacity=".75"/><path d="M0 3.5 H7" stroke="#B9F2E4" stroke-opacity=".9" stroke-width="1.6"/></pattern>
-            <filter id="grain" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 .42  0 0 0 0 .38  0 0 0 0 .32  0 0 0 .55 0" result="c"/><feComposite in="c" in2="SourceGraphic" operator="in" result="t"/><feDropShadow in="SourceGraphic" dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity=".45" result="sh"/><feMerge><feMergeNode in="sh"/><feMergeNode in="t"/></feMerge></filter>
-          </defs>
-          <circle class="halo" cx="200" cy="270" r="200" fill="url(#glow)"/>
-          <g class="zw">
-          <path class="bone" d="M168 0 L232 0 L236 166 C264 176 272 204 262 222 L138 222 C128 204 136 176 164 166 Z"/><path class="bshade" d="M168 0 L232 0 L236 166 C264 176 272 204 262 222 L138 222 C128 204 136 176 164 166 Z"/>
-          <path class="detail" d="M180 20 C178 80 178 140 182 170 M150 206 C170 196 230 196 250 206"/>
-          <path class="bone" d="M146 226 L192 226 L188 382 L156 382 Z"/><path class="bshade" d="M146 226 L192 226 L188 382 L156 382 Z"/>
-          <path class="bone" d="M206 226 L254 226 L246 382 L212 382 Z"/><path class="bshade" d="M206 226 L254 226 L246 382 L212 382 Z"/>
-          <path class="bone" d="M138 390 C170 378 230 378 260 390 L264 446 L136 446 Z"/><path class="bshade" d="M138 390 C170 378 230 378 260 390 L264 446 L136 446 Z"/>
-          <path class="detail" d="M150 404 L250 404 M150 424 L250 424"/>
-          <path class="bone" d="M150 440 L168 440 L166 506 C166 516 152 516 152 506 Z"/><path class="bshade" d="M150 440 L168 440 L166 506 C166 516 152 516 152 506 Z"/><path class="bone" d="M178 440 L196 440 L194 506 C194 516 180 516 180 506 Z"/><path class="bshade" d="M178 440 L196 440 L194 506 C194 516 180 516 180 506 Z"/><path class="bone" d="M206 440 L224 440 L222 506 C222 516 208 516 208 506 Z"/><path class="bshade" d="M206 440 L224 440 L222 506 C222 516 208 516 208 506 Z"/><path class="bone" d="M234 440 L252 440 L250 506 C250 516 236 516 236 506 Z"/><path class="bshade" d="M234 440 L252 440 L250 506 C250 516 236 516 236 506 Z"/>
-          <path class="bone" d="M260 400 C292 404 312 432 314 464 L290 472 C286 446 276 430 258 426 Z"/><path class="bshade" d="M260 400 C292 404 312 432 314 464 L290 472 C286 446 276 430 258 426 Z"/>
-          <circle class="part hl p-tennis" data-k="tennis" cx="264" cy="204" r="14"/>
-          <circle class="part hl p-golfer" data-k="golfer" cx="136" cy="204" r="14"/>
-          <rect class="part hl p-carpal" data-k="carpal" x="160" y="392" width="78" height="22" rx="11"/>
-          <path class="part ln p-thumb" data-k="thumb" d="M244 352 C262 376 278 400 290 430"/>
-          <path class="part ln p-wrist" data-k="wrist" d="M142 384 C180 372 222 372 258 384"/>
-          <g class="spot" data-k="tennis" transform="translate(264 204)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="golfer" transform="translate(136 204)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="carpal" transform="translate(199 403)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="thumb" transform="translate(288 422)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="wrist" transform="translate(150 384)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
-          </g>
-          <g class="callout" aria-hidden="true"><path class="co-line"/><circle class="co-dot" r="5"/><rect class="co-bg" height="48" rx="24"/><text class="co-t"></text></g>
-        </svg>
+{# elbow-wrist hero drawing from the dev handover: the shared x-ray body (hurt-body.html), zoomed in on this area.
+   Its .spot and .xg data-k values match the problem keys in _data/hurtPages/elbow-wrist.js #}
+<svg class="anat" data-xr="elbow-wrist" viewBox="0 0 400 520" role="img" aria-labelledby="anat-t">
+<title id="anat-t">A body split down the middle, bone and structure on one side, fascia and muscle on the other, close in on the elbow and wrist, with the common problems marked</title>
+<defs><radialGradient id="glow"><stop offset="0" stop-color="#00AD85" stop-opacity=".5"/><stop offset="1" stop-color="#00AD85" stop-opacity="0"/></radialGradient></defs>
+<g class="zw">
+<svg class="xr xr-n" x="0" y="0" width="400" height="520" viewBox="20 200 260 338.0" preserveAspectRatio="xMidYMid slice" data-on="elbow-wrist" aria-hidden="true">{% include "components/hurt-body.html" %}</svg>
+
+<circle class="part xg" data-k="tennis" cx="335" cy="95" r="46"/>
+<circle class="part xg" data-k="golfer" cx="68" cy="105" r="46"/>
+<circle class="part xg" data-k="carpal" cx="338" cy="289" r="46"/>
+<circle class="part xg" data-k="thumb" cx="366" cy="295" r="46"/>
+<circle class="part xg" data-k="wrist" cx="58" cy="274" r="46"/>
+<g class="spot" data-k="tennis" transform="translate(335 95)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
+<g class="spot" data-k="golfer" transform="translate(68 105)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
+<g class="spot" data-k="carpal" transform="translate(338 289)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
+<g class="spot" data-k="thumb" transform="translate(366 295)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
+<g class="spot" data-k="wrist" transform="translate(58 274)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g></g>
+<g class="callout" aria-hidden="true"><path class="co-line"/><circle class="co-dot" r="5"/><rect class="co-bg" height="48" rx="24"/><text class="co-t"></text></g></svg>

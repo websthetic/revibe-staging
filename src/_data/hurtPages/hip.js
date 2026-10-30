@@ -162,14 +162,6 @@ module.exports = {
             {
                 label: "Osteopathy",
                 url: "/services/osteopathy/"
-            },
-            {
-                label: "Physiotherapy in Mississauga",
-                url: "/location/mississauga/physiotherapy/"
-            },
-            {
-                label: "Physiotherapy in Markham",
-                url: "/location/markham/physiotherapy/"
             }
         ]
     },
@@ -234,6 +226,23 @@ module.exports = {
                 a: "Most extended health plans cover physiotherapy, chiropractic, massage and osteopathy, and we direct bill most insurers. An initial physiotherapy assessment is $125."
             }
         ]
+    },
+    // the area in running text: "Who will treat my hip?", "the week-by-week plan for your hip"
+    area: "hip",
+    // frames this area of the body in the week-by-week figure (hip-figure.html)
+    figureViewBox: "-60 -20 420 470",
+    // "Who will treat my ...": Google reviews, then four clinicians (keys in _data/team.js)
+    team: {
+        title: "Who will treat my hip?",
+        text: "Real Google reviews from clients we have treated, and the people you could see for your hip.",
+        quotes: [
+            {
+                text: "I've been working with RMT Kyle for a while now to deal with a nagging groin injury. Kyle has been able help me heal my injury with his incredible massages and has given me exercises on how to loosen up my groin.",
+                name: "Noel",
+                meta: "Google review, saw Kyle Sunga"
+            }
+        ],
+        members: ["scott-french", "mitalee-dalvi", "anesto-charles", "kyle-sunga"]
     },
     longTitle: false
 };

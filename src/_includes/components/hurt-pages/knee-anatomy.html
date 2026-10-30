@@ -1,30 +1,19 @@
-{# Knee pain anatomy drawing from the dev handover. Its data-k parts match the problem keys in _data/hurtPages/knee.js #}
+{# knee hero drawing from the dev handover: the shared x-ray body (hurt-body.html), zoomed in on this area.
+   Its .spot and .xg data-k values match the problem keys in _data/hurtPages/knee.js #}
+<svg class="anat" data-xr="knee" viewBox="0 0 400 520" role="img" aria-labelledby="anat-t">
+<title id="anat-t">A body split down the middle, bone and structure on one side, fascia and muscle on the other, close in on the knee, with the common problems marked</title>
+<defs><radialGradient id="glow"><stop offset="0" stop-color="#00AD85" stop-opacity=".5"/><stop offset="1" stop-color="#00AD85" stop-opacity="0"/></radialGradient></defs>
+<g class="zw">
+<svg class="xr xr-n" x="0" y="0" width="400" height="520" viewBox="70 380 160 208.0" preserveAspectRatio="xMidYMid slice" data-on="knee" aria-hidden="true">{% include "components/hurt-body.html" %}</svg>
 
-<svg class="anat" viewBox="0 0 400 520" role="img" aria-labelledby="anat-t">
-          <title id="anat-t">Front view of the knee joint showing the kneecap, ACL, meniscus and joint surfaces</title>
-          <defs>
-            <radialGradient id="glow"><stop offset="0" stop-color="#00AD85" stop-opacity=".5"/><stop offset="1" stop-color="#00AD85" stop-opacity="0"/></radialGradient>
-            <linearGradient id="boneG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFDF8"/><stop offset=".55" stop-color="#ECE6DA"/><stop offset="1" stop-color="#C7BEAC"/></linearGradient>
-            <linearGradient id="boneS" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset=".35" stop-color="#000" stop-opacity="0"/><stop offset=".7" stop-color="#fff" stop-opacity=".12"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></linearGradient>
-            <pattern id="fib" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(18)"><rect width="7" height="7" fill="#7FD6C2" fill-opacity=".16"/><path d="M0 3.5 H7" stroke="#7FD6C2" stroke-opacity=".55" stroke-width="1.6"/></pattern>
-            <pattern id="fibOn" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(18)"><rect width="7" height="7" fill="#00AD85" fill-opacity=".75"/><path d="M0 3.5 H7" stroke="#B9F2E4" stroke-opacity=".9" stroke-width="1.6"/></pattern>
-            <filter id="grain" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 .42  0 0 0 0 .38  0 0 0 0 .32  0 0 0 .55 0" result="c"/><feComposite in="c" in2="SourceGraphic" operator="in" result="t"/><feDropShadow in="SourceGraphic" dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity=".45" result="sh"/><feMerge><feMergeNode in="sh"/><feMergeNode in="t"/></feMerge></filter>
-          </defs>
-          <circle class="halo" cx="200" cy="270" r="200" fill="url(#glow)"/>
-          <g class="zw">
-          <path class="bone" d="M168 0 L232 0 L236 214 C246 222 286 236 296 268 C304 296 292 322 270 330 C252 336 232 326 216 318 C206 314 194 314 184 318 C168 326 148 336 130 330 C108 322 96 296 104 268 C114 236 154 222 164 214 Z"/><path class="bshade" d="M168 0 L232 0 L236 214 C246 222 286 236 296 268 C304 296 292 322 270 330 C252 336 232 326 216 318 C206 314 194 314 184 318 C168 326 148 336 130 330 C108 322 96 296 104 268 C114 236 154 222 164 214 Z"/>
-          <path class="detail" d="M200 238 C196 270 198 300 200 316 M150 300 C162 288 178 286 186 300 M250 300 C238 288 222 286 214 300 M176 40 C172 100 172 160 176 210"/>
-          <path class="bone" d="M106 346 C134 334 266 334 294 346 L292 372 C266 384 252 400 248 432 L242 520 L168 520 L162 432 C158 400 136 386 108 372 Z"/><path class="bshade" d="M106 346 C134 334 266 334 294 346 L292 372 C266 384 252 400 248 432 L242 520 L168 520 L162 432 C158 400 136 386 108 372 Z"/>
-          <path class="bone" d="M298 380 C312 374 324 382 320 394 L314 520 L300 520 L302 394 Z" opacity=".9"/><path class="bshade" d="M298 380 C312 374 324 382 320 394 L314 520 L300 520 L302 394 Z"/>
-          <path class="detail" d="M198 360 C196 400 198 470 200 520 M120 352 C160 346 240 346 282 352"/>
-          <path class="part hl p-meniscus" data-k="meniscus" d="M112 341 C122 326 176 326 194 335 L190 342 C170 336 128 337 116 345 Z"/>
-          <path class="part hl p-meniscus" data-k="meniscus" d="M288 341 C278 326 224 326 206 335 L210 342 C230 336 272 337 284 345 Z"/>
-          <path class="part ln p-arthritis" data-k="arthritis" d="M110 326 C140 338 170 326 200 326 C230 326 260 338 290 326"/>
-          <path class="part ln p-acl" data-k="acl" d="M186 344 L222 300"/>
-          <path class="part ln dim" d="M214 344 L180 302"/>
-          <ellipse class="part hl p-kneecap" data-k="kneecap" cx="200" cy="266" rx="40" ry="48"/>
-          <path class="part scar p-surgery" data-k="surgery" d="M200 210 L200 424"/>
-          <g class="spot" data-k="kneecap" transform="translate(200 262)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="acl" transform="translate(214 318)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="meniscus" transform="translate(138 336)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="arthritis" transform="translate(268 334)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="surgery" transform="translate(200 400)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
-          </g>
-          <g class="callout" aria-hidden="true"><path class="co-line"/><circle class="co-dot" r="5"/><rect class="co-bg" height="48" rx="24"/><text class="co-t"></text></g>
-        </svg>
+<circle class="part xg" data-k="kneecap" cx="285" cy="245" r="46"/>
+<circle class="part xg" data-k="acl" cx="125" cy="265" r="46"/>
+<circle class="part xg" data-k="meniscus" cx="75" cy="270" r="46"/>
+<circle class="part xg" data-k="arthritis" cx="110" cy="215" r="46"/>
+<circle class="part xg" data-k="surgery" cx="315" cy="165" r="46"/>
+<g class="spot" data-k="kneecap" transform="translate(285 245)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
+<g class="spot" data-k="acl" transform="translate(125 265)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
+<g class="spot" data-k="meniscus" transform="translate(75 270)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
+<g class="spot" data-k="arthritis" transform="translate(110 215)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
+<g class="spot" data-k="surgery" transform="translate(315 165)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g></g>
+<g class="callout" aria-hidden="true"><path class="co-line"/><circle class="co-dot" r="5"/><rect class="co-bg" height="48" rx="24"/><text class="co-t"></text></g></svg>

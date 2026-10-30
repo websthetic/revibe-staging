@@ -2,6 +2,7 @@
 // 1. Picking a problem (button or the drawing) zooms the anatomy drawing onto it,
 //    labels it, and shows its explanation.
 // 2. In the week by week plan, the pinned panel (desktop) follows the week in view.
+// 3. On the hub, /where-does-it-hurt/, pointing at an area (list, card or body) lights it up on the body.
 (function () {
 	const page = document.querySelector(".cs-hurt-page");
 	if (!page) return;
@@ -14,7 +15,9 @@
 	const names = {};
 	buttons.forEach((b) => (names[b.dataset.k] = b.textContent.trim()));
 
-	// zoom onto the problem's spot and point the label at it (drawing units, viewBox 400 x 520)
+	// zoom onto the problem's spot and point the label at it (drawing units, viewBox 400 x 520).
+	// The x-ray drawing (data-xr) is already framed on the area, so it only moves the label.
+	const xray = svg && svg.hasAttribute("data-xr");
 	function focusDrawing(k) {
 		if (!svg || !zoom || !callout) return;
 		const spot = svg.querySelector('.spot[data-k="' + k + '"]');
@@ -23,9 +26,9 @@
 		if (!m) return;
 		const x = +m[1];
 		const y = +m[2];
-		const s = 1.38;
-		const tx = x + 0.6 * (200 - x);
-		const ty = y + 0.6 * (270 - y);
+		const s = xray ? 1 : 1.38;
+		const tx = xray ? x : x + 0.6 * (200 - x);
+		const ty = xray ? y : y + 0.6 * (270 - y);
 		zoom.style.transform = "translate(" + (tx - s * x) + "px," + (ty - s * y) + "px) scale(" + s + ")";
 
 		const label = (names[k] || "").toUpperCase();
@@ -90,4 +93,24 @@
 		);
 		weeks.forEach((w) => io.observe(w));
 	}
+})();
+
+// ---------- 3. Hub ----------
+(function () {
+	const body = document.querySelector("#hurt-hub .xr");
+	if (!body) return;
+	const list = [...document.querySelectorAll("#hurt-hub .cs-area-link")];
+	const cards = [...document.querySelectorAll("#hurt-pick .cs-card[data-k]")];
+	const spots = [...body.querySelectorAll(".hs")];
+
+	function highlight(k) {
+		body.setAttribute("data-on", k || "");
+		spots.forEach((s) => s.classList.toggle("on", s.dataset.k === k));
+		list.forEach((a) => a.classList.toggle("cs-active", a.dataset.k === k));
+	}
+
+	[...list, ...cards, ...spots].forEach((el) => {
+		el.addEventListener("mouseenter", () => highlight(el.dataset.k));
+		el.addEventListener("focusin", () => highlight(el.dataset.k));
+	});
 })();

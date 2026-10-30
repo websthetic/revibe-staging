@@ -130,42 +130,13 @@ module.exports = {
     causesTitle: "Knee pain: causes and treatment",
     causes: {
         title: "Common causes of knee pain",
-        paragraphs: [
-            "Your physiotherapist tests the joint, ligaments and how you move, then builds a week by week plan to settle the pain and rebuild strength. We guide ACL and post-surgery rehab from the first week to the return to sport, with performance training for the final stage.",
-            "Book an assessment if your knee swells, gives way, locks, or hurts on stairs, squats or runs for more than a couple of weeks. No referral is needed."
-        ],
+        paragraphs: [],
         items: [
             "Kneecap pain at the front of the knee, worse on stairs and squats",
             "ACL and other ligament injuries from twisting or landing",
             "Meniscus tears, with clicking, catching or swelling",
             "Knee arthritis, with stiffness and ache after activity",
             "Tendon pain below or above the kneecap from jumping and running"
-        ],
-        links: [
-            {
-                label: "Physiotherapy",
-                url: "/services/physiotherapy/"
-            },
-            {
-                label: "Massage therapy",
-                url: "/services/massage/"
-            },
-            {
-                label: "Osteopathy",
-                url: "/services/osteopathy/"
-            },
-            {
-                label: "Performance training",
-                url: "/performance-training/"
-            },
-            {
-                label: "Physiotherapy in Mississauga",
-                url: "/location/mississauga/physiotherapy/"
-            },
-            {
-                label: "Physiotherapy in Markham",
-                url: "/location/markham/physiotherapy/"
-            }
         ]
     },
     treatment: {
@@ -191,14 +162,6 @@ module.exports = {
             {
                 label: "Performance training",
                 url: "/performance-training/"
-            },
-            {
-                label: "Physiotherapy in Mississauga",
-                url: "/"
-            },
-            {
-                label: "Physiotherapy in Markham",
-                url: "/location/markham/physiotherapy/"
             }
         ]
     },
@@ -267,6 +230,23 @@ module.exports = {
                 a: "Most extended health plans cover physiotherapy, chiropractic, massage and osteopathy, and we direct bill most insurers. An initial physiotherapy assessment is $125."
             }
         ]
+    },
+    // the area in running text: "Who will treat my knee?", "the week-by-week plan for your knee"
+    area: "knee",
+    // frames this area of the body in the week-by-week figure (knee-figure.html)
+    figureViewBox: "-30 40 360 470",
+    // "Who will treat my ...": Google reviews, then four clinicians (keys in _data/team.js)
+    team: {
+        title: "Who will treat my knee?",
+        text: "Real Google reviews from clients we have treated, and the people you could see for your knee.",
+        quotes: [
+            {
+                text: "Revibe is the best physio place I've been to, my physiotherapist is Scott French and he is amazing. Gives great feedback and the progress I've been making after a knee surgery is tremendous.",
+                name: "Craig B.",
+                meta: "Google review, saw Scott French"
+            }
+        ],
+        members: ["scott-french", "zeeruk-rehman", "michael-ross", "anesto-charles"]
     },
     longTitle: false
 };

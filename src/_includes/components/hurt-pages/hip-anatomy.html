@@ -1,26 +1,19 @@
-{# Hip pain anatomy drawing from the dev handover. Its data-k parts match the problem keys in _data/hurtPages/hip.js #}
-<svg class="anat" viewBox="0 0 400 520" role="img" aria-labelledby="anat-t">
-          <title id="anat-t">The right hip from the front, showing the ball and socket, labrum, hip flexor and outer hip</title>
-          <defs>
-            <radialGradient id="glow"><stop offset="0" stop-color="#00AD85" stop-opacity=".5"/><stop offset="1" stop-color="#00AD85" stop-opacity="0"/></radialGradient>
-            <linearGradient id="boneG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFDF8"/><stop offset=".55" stop-color="#ECE6DA"/><stop offset="1" stop-color="#C7BEAC"/></linearGradient>
-            <linearGradient id="boneS" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset=".35" stop-color="#000" stop-opacity="0"/><stop offset=".7" stop-color="#fff" stop-opacity=".12"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></linearGradient>
-            <pattern id="fib" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(18)"><rect width="7" height="7" fill="#7FD6C2" fill-opacity=".16"/><path d="M0 3.5 H7" stroke="#7FD6C2" stroke-opacity=".55" stroke-width="1.6"/></pattern>
-            <pattern id="fibOn" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(18)"><rect width="7" height="7" fill="#00AD85" fill-opacity=".75"/><path d="M0 3.5 H7" stroke="#B9F2E4" stroke-opacity=".9" stroke-width="1.6"/></pattern>
-            <filter id="grain" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 .42  0 0 0 0 .38  0 0 0 0 .32  0 0 0 .55 0" result="c"/><feComposite in="c" in2="SourceGraphic" operator="in" result="t"/><feDropShadow in="SourceGraphic" dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity=".45" result="sh"/><feMerge><feMergeNode in="sh"/><feMergeNode in="t"/></feMerge></filter>
-          </defs>
-          <circle class="halo" cx="200" cy="270" r="200" fill="url(#glow)"/>
-          <g class="zw">
-          <path class="bone" d="M58 40 C140 18 240 38 272 108 C288 150 278 200 250 230 C220 262 160 272 118 252 C78 232 48 192 42 140 C38 100 42 60 58 40 Z"/><path class="bshade" d="M58 40 C140 18 240 38 272 108 C288 150 278 200 250 230 C220 262 160 272 118 252 C78 232 48 192 42 140 C38 100 42 60 58 40 Z"/>
-          <path class="detail" d="M80 70 C130 56 200 60 240 100 M70 150 C110 170 160 176 200 168"/>
-          <path class="part soft p-flexor" data-k="flexor" d="M148 88 C168 160 194 262 234 332 L262 318 C226 252 200 160 182 82 Z"/>
-          <path class="part ln p-labrum" data-k="labrum" d="M194 190 C208 156 262 150 282 178"/>
-          <path class="bone" d="M240 172 C264 172 282 190 282 214 C282 230 274 242 262 248 L312 270 C324 278 326 296 322 312 C316 352 300 422 292 520 L240 520 C246 422 262 342 266 304 L232 254 C212 248 198 232 198 214 C198 190 216 172 240 172 Z"/><path class="bshade" d="M240 172 C264 172 282 190 282 214 C282 230 274 242 262 248 L312 270 C324 278 326 296 322 312 C316 352 300 422 292 520 L240 520 C246 422 262 342 266 304 L232 254 C212 248 198 232 198 214 C198 190 216 172 240 172 Z"/>
-          <path class="detail" d="M262 300 C258 360 254 440 254 520 M232 250 C244 262 262 268 280 266"/>
-          <path class="part ln p-arthritis" data-k="arthritis" d="M204 200 C214 172 266 168 278 196"/>
-          <ellipse class="part hl p-outer" data-k="outer" cx="322" cy="290" rx="18" ry="30"/>
-          <path class="part scar p-surgery" data-k="surgery" d="M342 228 L342 384"/>
-          <g class="spot" data-k="arthritis" transform="translate(240 214)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="labrum" transform="translate(268 160)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="outer" transform="translate(330 292)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="flexor" transform="translate(196 190)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="surgery" transform="translate(358 330)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
-          </g>
-          <g class="callout" aria-hidden="true"><path class="co-line"/><circle class="co-dot" r="5"/><rect class="co-bg" height="48" rx="24"/><text class="co-t"></text></g>
-        </svg>
+{# hip hero drawing from the dev handover: the shared x-ray body (hurt-body.html), zoomed in on this area.
+   Its .spot and .xg data-k values match the problem keys in _data/hurtPages/hip.js #}
+<svg class="anat" data-xr="hip" viewBox="0 0 400 520" role="img" aria-labelledby="anat-t">
+<title id="anat-t">A body split down the middle, bone and structure on one side, fascia and muscle on the other, close in on the hip, with the common problems marked</title>
+<defs><radialGradient id="glow"><stop offset="0" stop-color="#00AD85" stop-opacity=".5"/><stop offset="1" stop-color="#00AD85" stop-opacity="0"/></radialGradient></defs>
+<g class="zw">
+<svg class="xr xr-n" x="0" y="0" width="400" height="520" viewBox="60 290 180 234.0" preserveAspectRatio="xMidYMid slice" data-on="hip" aria-hidden="true">{% include "components/hurt-body.html" %}</svg>
+
+<circle class="part xg" data-k="arthritis" cx="113" cy="160" r="46"/>
+<circle class="part xg" data-k="labrum" cx="84" cy="129" r="46"/>
+<circle class="part xg" data-k="outer" cx="320" cy="124" r="46"/>
+<circle class="part xg" data-k="flexor" cx="262" cy="107" r="46"/>
+<circle class="part xg" data-k="surgery" cx="129" cy="213" r="46"/>
+<g class="spot" data-k="arthritis" transform="translate(113 160)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
+<g class="spot" data-k="labrum" transform="translate(84 129)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
+<g class="spot" data-k="outer" transform="translate(320 124)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
+<g class="spot" data-k="flexor" transform="translate(262 107)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
+<g class="spot" data-k="surgery" transform="translate(129 213)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g></g>
+<g class="callout" aria-hidden="true"><path class="co-line"/><circle class="co-dot" r="5"/><rect class="co-bg" height="48" rx="24"/><text class="co-t"></text></g></svg>

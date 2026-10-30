@@ -1,0 +1,42 @@
+{#
+    Google reviews and the clinicians you could see, on the Where does it hurt pages and the hub.
+    Set before including:
+      hurtTeam: { title, text, quotes: [{ text, name, meta }], members: [keys in _data/team.js] }
+      members is optional (the hub shows reviews only).
+    One review spans the full width. Styles: #hurt-team in hurt.less.
+#}
+<!-- ============================================ -->
+<!--               Who Will Treat Me              -->
+<!-- ============================================ -->
+
+<section id="hurt-team" aria-labelledby="hurt-team-title">
+    <div class="cs-container">
+        <div class="cs-header">
+            <h2 class="cs-title" id="hurt-team-title">{{ hurtTeam.title }}</h2>
+            <p class="cs-text">{{ hurtTeam.text }}</p>
+        </div>
+        {% if hurtTeam.quotes.length %}
+        <div class="cs-quotes{% if hurtTeam.quotes.length == 1 %} cs-quotes-one{% endif %}">
+            {% for quote in hurtTeam.quotes %}
+            <figure class="cs-quote">
+                <blockquote>{{ quote.text }}</blockquote>
+                <figcaption><strong>{{ quote.name }}</strong><span>{{ quote.meta }}</span></figcaption>
+            </figure>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% if hurtTeam.members %}
+        <ul class="cs-members">
+            {% for key in hurtTeam.members %}
+            {% set m = team[key] %}
+            <li class="cs-member">
+                <img src="{% getUrl m.photo | resize({ width: 520 }) | webp %}" alt="{{ m.name }}, {{ m.role | lower }}" width="520" height="650" loading="lazy" decoding="async">
+                <strong>{{ m.name }}</strong>
+                <span>{{ m.role }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <p class="cs-google"><strong>5.0 on Google</strong> from 600+ reviews. <a href="/therapists/">Meet the whole team</a></p>
+    </div>
+</section>

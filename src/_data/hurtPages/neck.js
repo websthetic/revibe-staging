@@ -162,14 +162,6 @@ module.exports = {
             {
                 label: "Osteopathy",
                 url: "/services/osteopathy/"
-            },
-            {
-                label: "Physiotherapy in Mississauga",
-                url: "/location/mississauga/physiotherapy/"
-            },
-            {
-                label: "Physiotherapy in Markham",
-                url: "/location/markham/physiotherapy/"
             }
         ]
     },
@@ -234,6 +226,28 @@ module.exports = {
                 a: "Most extended health plans cover physiotherapy, chiropractic, massage and osteopathy, and we direct bill most insurers. An initial physiotherapy assessment is $125."
             }
         ]
+    },
+    // the area in running text: "Who will treat my neck?", "the week-by-week plan for your neck"
+    area: "neck",
+    // frames this area of the body in the week-by-week figure (neck-figure.html)
+    figureViewBox: "0 60 300 330",
+    // "Who will treat my ...": Google reviews, then four clinicians (keys in _data/team.js)
+    team: {
+        title: "Who will treat my neck?",
+        text: "Real Google reviews from clients we have treated, and the people you could see for your neck.",
+        quotes: [
+            {
+                text: "I've been seeing Dr. Trevor for the past few months for chiropractic care, and it's been a great experience. My back and neck pain have noticeably improved, and I always leave feeling better.",
+                name: "Dhaval S.",
+                meta: "Google review, saw Dr. Trevor D'Souza"
+            },
+            {
+                text: "Kyle did a phenomenal job not only helping with assisted fascia stretching but also helping to relieve my neck and shoulder pain. He also showed me some home stretches to help.",
+                name: "Kris",
+                meta: "Google review, saw Kyle Sunga"
+            }
+        ],
+        members: ["trevor-dsouza", "morgan-millard", "kyle-sunga", "michael-ross"]
     },
     longTitle: false
 };

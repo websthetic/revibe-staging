@@ -1,28 +1,19 @@
-{# Shoulder pain anatomy drawing from the dev handover. Its data-k parts match the problem keys in _data/hurtPages/shoulder.js #}
-<svg class="anat" viewBox="0 0 400 520" role="img" aria-labelledby="anat-t">
-          <title id="anat-t">The right shoulder from the front, showing the ball and socket, rotator cuff, bursa, labrum and AC joint</title>
-          <defs>
-            <radialGradient id="glow"><stop offset="0" stop-color="#00AD85" stop-opacity=".5"/><stop offset="1" stop-color="#00AD85" stop-opacity="0"/></radialGradient>
-            <linearGradient id="boneG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFDF8"/><stop offset=".55" stop-color="#ECE6DA"/><stop offset="1" stop-color="#C7BEAC"/></linearGradient>
-            <linearGradient id="boneS" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset=".35" stop-color="#000" stop-opacity="0"/><stop offset=".7" stop-color="#fff" stop-opacity=".12"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></linearGradient>
-            <pattern id="fib" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(18)"><rect width="7" height="7" fill="#7FD6C2" fill-opacity=".16"/><path d="M0 3.5 H7" stroke="#7FD6C2" stroke-opacity=".55" stroke-width="1.6"/></pattern>
-            <pattern id="fibOn" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(18)"><rect width="7" height="7" fill="#00AD85" fill-opacity=".75"/><path d="M0 3.5 H7" stroke="#B9F2E4" stroke-opacity=".9" stroke-width="1.6"/></pattern>
-            <filter id="grain" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 .42  0 0 0 0 .38  0 0 0 0 .32  0 0 0 .55 0" result="c"/><feComposite in="c" in2="SourceGraphic" operator="in" result="t"/><feDropShadow in="SourceGraphic" dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity=".45" result="sh"/><feMerge><feMergeNode in="sh"/><feMergeNode in="t"/></feMerge></filter>
-          </defs>
-          <circle class="halo" cx="200" cy="270" r="200" fill="url(#glow)"/>
-          <g class="zw">
-          <path class="bone" d="M352 140 C362 220 342 330 302 422 L262 402 C290 322 300 232 300 162 Z" opacity=".55"/><path class="bshade" d="M352 140 C362 220 342 330 302 422 L262 402 C290 322 300 232 300 162 Z"/>
-          <path class="bone" d="M36 118 C80 104 140 96 200 98 C232 98 256 102 268 110 L272 132 C246 124 206 122 160 124 C120 126 80 134 44 146 C32 142 28 124 36 118 Z"/><path class="bshade" d="M36 118 C80 104 140 96 200 98 C232 98 256 102 268 110 L272 132 C246 124 206 122 160 124 C120 126 80 134 44 146 C32 142 28 124 36 118 Z"/>
-          <path class="detail" d="M60 126 C110 116 170 112 240 114"/>
-          <path class="bone" d="M250 94 C292 88 334 104 354 138 C340 152 300 150 264 138 Z"/><path class="bshade" d="M250 94 C292 88 334 104 354 138 C340 152 300 150 264 138 Z"/>
-          <ellipse class="part soft p-frozen" data-k="frozen" cx="266" cy="198" rx="88" ry="82"/>
-          <path class="bone" d="M266 144 C296 144 318 168 318 198 C318 222 304 240 290 246 L296 500 L238 500 L242 246 C226 238 214 220 214 198 C214 168 236 144 266 144 Z"/><path class="bshade" d="M266 144 C296 144 318 168 318 198 C318 222 304 240 290 246 L296 500 L238 500 L242 246 C226 238 214 220 214 198 C214 168 236 144 266 144 Z"/>
-          <path class="detail" d="M240 252 C252 262 280 262 292 252 M262 270 C260 340 262 420 266 500"/>
-          <path class="part ln p-labrum" data-k="labrum" d="M306 154 C332 178 332 220 306 244"/>
-          <path class="part ln p-cuff" data-k="cuff" d="M218 168 C230 130 300 124 320 160 C332 186 324 214 308 232"/>
-          <ellipse class="part hl p-bursa" data-k="bursa" cx="262" cy="140" rx="34" ry="9"/>
-          <circle class="part hl p-ac" data-k="ac" cx="258" cy="110" r="11"/>
-          <g class="spot" data-k="cuff" transform="translate(222 160)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="bursa" transform="translate(262 140)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="frozen" transform="translate(206 256)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="labrum" transform="translate(318 198)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g><g class="spot" data-k="ac" transform="translate(258 110)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
-          </g>
-          <g class="callout" aria-hidden="true"><path class="co-line"/><circle class="co-dot" r="5"/><rect class="co-bg" height="48" rx="24"/><text class="co-t"></text></g>
-        </svg>
+{# shoulder hero drawing from the dev handover: the shared x-ray body (hurt-body.html), zoomed in on this area.
+   Its .spot and .xg data-k values match the problem keys in _data/hurtPages/shoulder.js #}
+<svg class="anat" data-xr="shoulder" viewBox="0 0 400 520" role="img" aria-labelledby="anat-t">
+<title id="anat-t">A body split down the middle, bone and structure on one side, fascia and muscle on the other, close in on the shoulder, with the common problems marked</title>
+<defs><radialGradient id="glow"><stop offset="0" stop-color="#00AD85" stop-opacity=".5"/><stop offset="1" stop-color="#00AD85" stop-opacity="0"/></radialGradient></defs>
+<g class="zw">
+<svg class="xr xr-n" x="0" y="0" width="400" height="520" viewBox="50 60 200 260.0" preserveAspectRatio="xMidYMid slice" data-on="shoulder" aria-hidden="true">{% include "components/hurt-body.html" %}</svg>
+
+<circle class="part xg" data-k="cuff" cx="348" cy="164" r="46"/>
+<circle class="part xg" data-k="bursa" cx="320" cy="128" r="46"/>
+<circle class="part xg" data-k="frozen" cx="92" cy="216" r="46"/>
+<circle class="part xg" data-k="labrum" cx="76" cy="172" r="46"/>
+<circle class="part xg" data-k="ac" cx="68" cy="128" r="46"/>
+<g class="spot" data-k="cuff" transform="translate(348 164)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
+<g class="spot" data-k="bursa" transform="translate(320 128)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
+<g class="spot" data-k="frozen" transform="translate(92 216)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
+<g class="spot" data-k="labrum" transform="translate(76 172)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g>
+<g class="spot" data-k="ac" transform="translate(68 128)"><circle class="ring" r="22"/><circle class="dot" r="9"/></g></g>
+<g class="callout" aria-hidden="true"><path class="co-line"/><circle class="co-dot" r="5"/><rect class="co-bg" height="48" rx="24"/><text class="co-t"></text></g></svg>

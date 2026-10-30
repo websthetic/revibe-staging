@@ -162,14 +162,6 @@ module.exports = {
             {
                 label: "Osteopathy",
                 url: "/services/osteopathy/"
-            },
-            {
-                label: "Physiotherapy in Mississauga",
-                url: "/location/mississauga/physiotherapy/"
-            },
-            {
-                label: "Physiotherapy in Markham",
-                url: "/location/markham/physiotherapy/"
             }
         ]
     },
@@ -238,6 +230,28 @@ module.exports = {
                 a: "Most extended health plans cover physiotherapy, chiropractic, massage and osteopathy, and we direct bill most insurers. An initial physiotherapy assessment is $125."
             }
         ]
+    },
+    // the area in running text: "Who will treat my low back?", "the week-by-week plan for your low back"
+    area: "low back",
+    // frames this area of the body in the week-by-week figure (low-back-figure.html)
+    figureViewBox: "-50 -10 460 460",
+    // "Who will treat my ...": Google reviews, then four clinicians (keys in _data/team.js)
+    team: {
+        title: "Who will treat my low back?",
+        text: "Real Google reviews from clients we have treated, and the people you could see for your low back.",
+        quotes: [
+            {
+                text: "I've been seeing Dr. Morgan for chiropractic sessions over the past three years, and he's been such a huge support in helping me manage my back pain and TMJ issues.",
+                name: "Thea M.",
+                meta: "Google review, saw Dr. Morgan Millard"
+            },
+            {
+                text: "Rachel was a great help, very professional and knowledgeable! She explained what was causing the lower back pain in my exercise routine and how to adequately adjust my shoulders to reduce straining.",
+                name: "tatiana j.",
+                meta: "Google review, saw Rachel Murray"
+            }
+        ],
+        members: ["morgan-millard", "trevor-dsouza", "erica-runnalls", "rachel-murray"]
     },
     longTitle: true
 };

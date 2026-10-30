@@ -598,6 +598,8 @@
 			font-size: clamp(2.875rem, 4vw, 3.5rem);
 			line-height: 0.86;
 			margin: 0;
+			/* room for two lines, so the panels line up */
+			min-height: calc(2 * 1lh);
 			color: var(--white);
 		}
 
@@ -771,6 +773,17 @@
 			padding: 0;
 		}
 
+		/* to the hub, /where-does-it-hurt/ */
+		.cs-all {
+			font-size: (15/16rem);
+			font-weight: 700;
+			text-decoration: underline;
+			text-underline-offset: 4px;
+			margin-top: (28/16rem);
+			display: inline-block;
+			color: var(--revibeGreen);
+		}
+
 		.cs-link {
 			font-family: var(--headerFont);
 			/* 34px - 54px */
@@ -826,100 +839,6 @@
 			margin: 0 auto;
 			/* figure sits above the list on mobile */
 			order: -1;
-		}
-
-		.cs-figure {
-			width: 100%;
-			height: auto;
-			display: block;
-			overflow: visible;
-		}
-
-		.cs-mus {
-			fill: none;
-			stroke: rgba(0, 0, 0, 0.45);
-			stroke-width: 1.6;
-			stroke-linecap: round;
-		}
-
-		.cs-rim {
-			fill: none;
-			stroke: rgba(127, 214, 194, 0.22);
-			stroke-width: 1.4;
-		}
-
-		.cs-breathe {
-			transform-box: view-box;
-			transform-origin: 150px 596px;
-			animation: hurtBreathe 5s ease-in-out infinite;
-		}
-
-		.cs-scan {
-			animation: hurtScan 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-		}
-
-		.cs-spot-link {
-			cursor: pointer;
-		}
-
-		.cs-glow {
-			fill: var(--revibeGreen);
-			opacity: 0;
-			transform-box: fill-box;
-			transform-origin: center;
-			transform: scale(0.4);
-			transition:
-				opacity 0.35s ease,
-				transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 1);
-		}
-
-		.cs-dot {
-			fill: var(--revibeGreen);
-			stroke: var(--nearBlack);
-			stroke-width: 3;
-			transition: fill 0.25s ease;
-		}
-
-		.cs-ring {
-			fill: none;
-			stroke: var(--revibeGreen);
-			stroke-width: 2;
-			transform-box: fill-box;
-			transform-origin: center;
-			animation: hurtPing 2.4s ease-out infinite;
-		}
-
-		.cs-tag {
-			font-family: var(--headerFont);
-			font-size: 20px;
-			letter-spacing: 1px;
-			fill: var(--white);
-			opacity: 0;
-			/* visibility too, so contrast checkers skip the hidden labels */
-			visibility: hidden;
-			pointer-events: none;
-			transition:
-				opacity 0.3s ease,
-				visibility 0s 0.3s;
-		}
-
-		.cs-spot.cs-active {
-			.cs-glow {
-				opacity: 0.35;
-				transform: scale(1);
-			}
-
-			.cs-dot {
-				fill: var(--white);
-			}
-
-			.cs-tag {
-				opacity: 1;
-				visibility: visible;
-				transition:
-					opacity 0.3s ease,
-					visibility 0s;
-			}
 		}
 	}
 }
@@ -979,7 +898,7 @@
 		}
 
 		.cs-figure-wrap {
-			max-width: (420/16rem);
+			max-width: (440/16rem);
 			order: 0;
 		}
 	}
@@ -987,49 +906,10 @@
 
 @media (prefers-reduced-motion: reduce) {
 	#hurt {
-		.cs-breathe,
-		.cs-ring {
-			animation: none;
-		}
-
-		.cs-scan {
-			display: none;
-		}
-
 		.cs-link,
 		.cs-more {
 			transition: none;
 		}
-	}
-}
-
-@keyframes hurtPing {
-	0% {
-		opacity: 0.9;
-		transform: scale(1);
-	}
-	100% {
-		opacity: 0;
-		transform: scale(2.2);
-	}
-}
-
-@keyframes hurtBreathe {
-	0%,
-	100% {
-		transform: scale(1, 1);
-	}
-	50% {
-		transform: scale(1.006, 1.012);
-	}
-}
-
-@keyframes hurtScan {
-	0% {
-		transform: translateY(0);
-	}
-	100% {
-		transform: translateY(740px);
 	}
 }
 

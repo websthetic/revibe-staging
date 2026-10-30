@@ -1,0 +1,125 @@
+---
+title: "Where Does It Hurt? Pain Treatment by Area | Revibe"
+description: "Point to where it hurts and see the plan. Neck, shoulder, elbow, low back, hip, knee and foot pain, treated by physio, chiro, osteo and massage at Revibe."
+permalink: "/where-does-it-hurt/"
+# content lives in _data/hurtHub.js; the areas come from _data/hurtAreas.js and _data/hurtPages/
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/hurt-body.css">
+    <link rel="stylesheet" href="/assets/css/hurt.css">
+    <script defer src="/assets/js/hurt-page.js"></script>
+{% endblock %}
+
+{% block body %}
+    {% set hub = hurtHub %}
+
+    <div class="cs-hurt-page">
+
+    <!-- ============================================ -->
+    <!--               Hero and Body                  -->
+    <!-- ============================================ -->
+
+    <section id="hurt-hub" aria-labelledby="hurt-hub-title">
+        <div class="cs-container">
+            <div class="cs-content">
+                <h1 class="cs-title" id="hurt-hub-title">{{ hub.title }}</h1>
+                <p class="cs-text">{{ hub.text }}</p>
+                <ol class="cs-area-list">
+                    {% for area in hurtAreas %}
+                    <li><a href="{{ area.url }}" class="cs-area-link" data-k="{{ area.key }}">{{ area.label }}</a></li>
+                    {% endfor %}
+                </ol>
+                <div class="cs-actions">
+                    <a href="/" class="cs-button-solid" data-request data-service="Physiotherapy" aria-haspopup="dialog">Request to book</a>
+                    <a href="{{ careMap.url }}" class="cs-button-outline cs-outline-light" data-caremap aria-haspopup="dialog">Take the Care Map</a>
+                </div>
+            </div>
+            <div class="cs-figure">
+                {% include "components/hurt-figure.html" %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                  Statement                   -->
+    <!-- ============================================ -->
+
+    <section id="hurt-statement" aria-label="{{ hub.statement.label }}">
+        <div class="cs-half cs-half-where"><p class="cs-small">{{ hub.statement.left.small }}</p><p class="cs-big">{{ hub.statement.left.big }}</p></div>
+        <div class="cs-half cs-half-why"><p class="cs-small">{{ hub.statement.right.small }}</p><p class="cs-big">{{ hub.statement.right.big }}</p></div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                How It Works                  -->
+    <!-- ============================================ -->
+
+    <section id="hurt-how" aria-labelledby="hurt-how-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="hurt-how-title">{{ hub.how.title }}</h2>
+            <ol class="cs-steps">
+                {% for step in hub.how.steps %}
+                <li class="cs-step"><h3 class="cs-step-title">{{ step.title }}</h3><p class="cs-step-text">{{ step.text }}</p></li>
+                {% endfor %}
+            </ol>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--               Pick Your Area                 -->
+    <!-- ============================================ -->
+
+    <section id="hurt-pick" aria-labelledby="hurt-pick-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="hurt-pick-title">{{ hub.pickTitle }}</h2>
+            <ul class="cs-cards">
+                {% for area in hurtAreas %}
+                <li class="cs-item">
+                    <a href="{{ area.url }}" class="cs-card" data-k="{{ area.key }}">
+                        <h3 class="cs-card-title">{{ area.label }}</h3>
+                        <p class="cs-card-text">{# the area page's first three problems #}{% for p in hurtPages[area.key].problems.slice(0, 3) %}{{ p.label }}{% if not loop.last %}, {% endif %}{% endfor %}</p>
+                        <span class="cs-card-go">See the plan</span>
+                    </a>
+                </li>
+                {% endfor %}
+                <li class="cs-item cs-item-caremap">
+                    <a href="{{ careMap.url }}" class="cs-card" data-caremap aria-haspopup="dialog">
+                        <h3 class="cs-card-title">{{ hub.careMapCard.title }}</h3>
+                        <p class="cs-card-text">{{ hub.careMapCard.text }}</p>
+                        <span class="cs-card-go">{{ hub.careMapCard.label }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    {% set hurtTeam = hub.team %}
+    {% include "components/hurt-team.html" %}
+
+    {% set faq = hub.faq %}
+    {% set faqBookButton = false %}
+    {% include "components/faq.html" %}
+
+    <!-- ============================================ -->
+    <!--                  Start Now                   -->
+    <!-- ============================================ -->
+
+    <section id="start" aria-labelledby="start-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="start-title">{{ hub.startTitle }}</h2>
+            <p class="cs-text">{{ hub.startText }}</p>
+            <div class="cs-actions">
+                {% for clinic in clinics %}<a href="{{ clinic.janeUrl }}" class="cs-button-solid cs-button-dark" rel="noopener">Book in {{ clinic.name }}</a>{% endfor %}
+            </div>
+            <p class="cs-tel">Or call {% for clinic in clinics %}{{ clinic.name }} at <a href="tel:{{ clinic.phoneForTel }}">{{ clinic.phone }}</a>{% if not loop.last %} or {% endif %}{% endfor %}.</p>
+        </div>
+    </section>
+
+    </div>
+
+    {% include "sections/cta.html" %}
+    {% set stickyLabel = "Book an assessment" %}
+    {% include "components/sticky-book.html" %}
+{% endblock %}

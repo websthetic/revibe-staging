@@ -52,6 +52,8 @@ module.exports = {
         { label: "Knee", url: "/where-does-it-hurt/knee/" },
         { label: "Foot and ankle", url: "/where-does-it-hurt/foot-ankle/" },
     ],
+    // the hub; the menus add it after the areas on desktop and before them on mobile
+    whereDoesItHurtAll: { label: "All areas", url: "/where-does-it-hurt/" },
     locations: [
         { label: "Mississauga", url: "/locations/mississauga/" },
         { label: "Markham", url: "/markham/" },
@@ -90,7 +92,7 @@ module.exports = {
                     { label: "Our Story", url: "/about-us/" },
                     { label: "Careers", url: "/join-our-team/" },
                     { label: "Team", url: "/therapists/" },
-                    { label: "Google Business", url: "/" },
+                    { label: "Google Business", url: "https://www.google.com/maps/place/Revibe/@43.6033296,-79.5760288,17z/data=!4m8!3m7!1s0x882b47f56521157b:0x5cb57ef412a42783!8m2!3d43.6033296!4d-79.5760288!9m1!1b1!16s%2Fg%2F11hz7f621d" },
                 ],
             },
             {
@@ -98,7 +100,7 @@ module.exports = {
                 links: [
                     { label: "Contact us", url: "/contact-us/" },
                     { label: "Locations", url: "/" },
-                    { label: "Instagram", url: "/" },
+                    { label: "Instagram", url: "https://www.instagram.com/timetorevibe/" },
                     { label: "LinkedIn", url: "/" },
                 ],
             },

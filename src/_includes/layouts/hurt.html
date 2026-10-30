@@ -2,12 +2,14 @@
     "Where does it hurt" pages (low back, neck, shoulder, hip, ...).
     A page sets in its front matter:
       hurtPage: key of its content file in _data/hurtPages/ (e.g. "hip")
-    Its drawings are components/hurt-pages/<key>-anatomy.html and <key>-figure.html.
+    Its drawings are components/hurt-pages/<key>-anatomy.html (the shared x-ray body, hurt-body.html, zoomed in)
+    and <key>-figure.html. The hub, /where-does-it-hurt/, is content/pages/where-does-it-hurt/index.html.
     Styles: hurt.less. Interactions: hurt-page.js.
 #}
 {% extends "layouts/base.html" %}
 
 {% block head %}
+    <link rel="stylesheet" href="/assets/css/hurt-body.css">
     <link rel="stylesheet" href="/assets/css/hurt.css">
     <script defer src="/assets/js/hurt-page.js"></script>
 {% endblock %}
@@ -57,81 +59,6 @@
     </section>
 
     <!-- ============================================ -->
-    <!--                Short Answers                 -->
-    <!-- ============================================ -->
-
-    <section id="hurt-answers" aria-labelledby="hurt-answers-title">
-        <div class="cs-container">
-            <h2 class="cs-title" id="hurt-answers-title">{{ h.answersTitle }}</h2>
-            <dl class="cs-answers">
-                {% for item in h.answers %}
-                <div class="cs-answer">
-                    <dt>{{ item.q }}</dt>
-                    <dd><span class="cs-answer-big">{{ item.a }}</span><span class="cs-answer-note">{{ item.note }}</span></dd>
-                </div>
-                {% endfor %}
-            </dl>
-        </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!--              Week by Week Plan               -->
-    <!-- ============================================ -->
-
-    {% macro dots(n) %}<span class="cs-dots" aria-hidden="true"><i class="cs-dot-on"></i><i{% if n == 2 %} class="cs-dot-on"{% endif %}></i></span>{% endmacro %}
-    {% set first = h.weeks[0] %}
-    <section id="plan" aria-labelledby="plan-title">
-        {% include "components/hurt-pages/" + hurtPage + "-figure.html" %}
-        <div class="cs-container">
-            <div class="cs-plan-head">
-                <h2 class="cs-title" id="plan-title">{{ h.planTitle }}</h2>
-                <p class="cs-text">{{ h.planText }}</p>
-            </div>
-            <div class="cs-plan-grid">
-                {# desktop: a pinned panel that follows the week in view (hurt-page.js) #}
-                <div class="cs-stage" aria-hidden="true">
-                    {% set legStyle = 'style="--a: ' + first.angle + 'deg;"' %}
-                    <svg class="big-leg" viewBox="-110 -30 520 580" {{ legStyle | safe }}>{{ figureUse | safe }}</svg>
-                    <div class="cs-stage-read">
-                        <p class="cs-stage-week">Week <span class="cs-stage-number">{{ first.week }}</span></p>
-                        <p class="cs-stage-phase">{{ first.phase }}</p>
-                        <p class="cs-stage-freq"><span class="cs-stage-dots">{{ dots(first.perWeek) }}</span><span class="cs-stage-text">{{ "Twice a week" if first.perWeek == 2 else "Once a week" }}</span></p>
-                    </div>
-                </div>
-                <ol class="cs-weeks">
-                    {% for wk in h.weeks %}
-                    {% set imgStyle = 'style="object-position: ' + wk.position + ';"' %}
-                    {% set legStyle = 'style="--a: ' + wk.angle + 'deg;"' %}
-                    <li class="cs-week{% if loop.first %} cs-active{% endif %}" data-angle="{{ wk.angle }}" data-week="{{ wk.week }}" data-phase="{{ wk.phase }}" data-per-week="{{ wk.perWeek }}">
-                        <div class="cs-week-top"><p class="cs-week-number">Week {{ wk.week }}</p><p class="cs-phase cs-phase-{{ wk.phase | lower }}">{{ wk.phase }}</p></div>
-                        <svg class="mini" viewBox="-110 -30 520 580" {{ legStyle | safe }} aria-hidden="true">{{ figureUse | safe }}</svg>
-                        <h3 class="cs-week-title">{{ wk.title }}</h3>
-                        <p class="cs-week-text">{{ wk.text }}</p>
-                        <p class="cs-week-freq">{{ dots(wk.perWeek) }}<span>{{ "Twice a week" if wk.perWeek == 2 else "Once a week" }}</span></p>
-                        <div class="cs-week-picture"><img src="{% getUrl wk.image | resize({ width: 700 }) | webp %}" alt="{{ wk.alt }}" {{ imgStyle | safe }} width="1200" height="800" loading="lazy" decoding="async"></div>
-                    </li>
-                    {% endfor %}
-                </ol>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!--                  Start Now                   -->
-    <!-- ============================================ -->
-
-    <section id="start" aria-labelledby="start-title">
-        <div class="cs-container">
-            <h2 class="cs-title" id="start-title">{{ h.startTitle }}</h2>
-            <p class="cs-text">{{ h.startText }}</p>
-            <div class="cs-actions">
-                {% for clinic in clinics %}<a href="{{ clinic.janeUrl }}" class="cs-button-solid cs-button-dark" rel="noopener">Book in {{ clinic.name }}</a>{% endfor %}
-            </div>
-            <p class="cs-tel">Or call {% for clinic in clinics %}{{ clinic.name }} at <a href="tel:{{ clinic.phoneForTel }}">{{ clinic.phone }}</a>{% if not loop.last %} or {% endif %}{% endfor %}.</p>
-        </div>
-    </section>
-
-    <!-- ============================================ -->
     <!--             Causes and Treatment             -->
     <!-- ============================================ -->
 
@@ -152,6 +79,106 @@
         </div>
     </section>
 
+    <!-- ============================================ -->
+    <!--              Week by Week Plan               -->
+    <!-- ============================================ -->
+
+    {% macro dots(n) %}<span class="cs-dots" aria-hidden="true"><i class="cs-dot-on"></i><i{% if n == 2 %} class="cs-dot-on"{% endif %}></i></span>{% endmacro %}
+    {% set first = h.weeks[0] %}
+    <section id="plan" aria-labelledby="plan-title">
+        {% include "components/hurt-pages/" + hurtPage + "-figure.html" %}
+        <div class="cs-container">
+            <div class="cs-plan-head">
+                <h2 class="cs-title" id="plan-title">{{ h.planTitle }}</h2>
+                <p class="cs-text">{{ h.planText }}</p>
+            </div>
+            <div class="cs-plan-grid">
+                {# desktop: a pinned panel that follows the week in view (hurt-page.js) #}
+                <div class="cs-stage" aria-hidden="true">
+                    {% set legStyle = 'style="--a: ' + first.angle + 'deg;"' %}
+                    <svg class="big-leg" viewBox="{{ h.figureViewBox }}" {{ legStyle | safe }}>{{ figureUse | safe }}</svg>
+                    <div class="cs-stage-read">
+                        <p class="cs-stage-week">Week <span class="cs-stage-number">{{ first.week }}</span></p>
+                        <p class="cs-stage-phase">{{ first.phase }}</p>
+                        <p class="cs-stage-freq"><span class="cs-stage-dots">{{ dots(first.perWeek) }}</span><span class="cs-stage-text">{{ "Twice a week" if first.perWeek == 2 else "Once a week" }}</span></p>
+                    </div>
+                </div>
+                <ol class="cs-weeks">
+                    {% for wk in h.weeks %}
+                    {% set imgStyle = 'style="object-position: ' + wk.position + ';"' %}
+                    {% set legStyle = 'style="--a: ' + wk.angle + 'deg;"' %}
+                    <li class="cs-week{% if loop.first %} cs-active{% endif %}" data-angle="{{ wk.angle }}" data-week="{{ wk.week }}" data-phase="{{ wk.phase }}" data-per-week="{{ wk.perWeek }}">
+                        <div class="cs-week-top"><p class="cs-week-number">Week {{ wk.week }}</p><p class="cs-phase cs-phase-{{ wk.phase | lower }}">{{ wk.phase }}</p></div>
+                        <svg class="mini" viewBox="{{ h.figureViewBox }}" {{ legStyle | safe }} aria-hidden="true">{{ figureUse | safe }}</svg>
+                        <h3 class="cs-week-title">{{ wk.title }}</h3>
+                        <p class="cs-week-text">{{ wk.text }}</p>
+                        <p class="cs-week-freq">{{ dots(wk.perWeek) }}<span>{{ "Twice a week" if wk.perWeek == 2 else "Once a week" }}</span></p>
+                        <div class="cs-week-picture"><img src="{% getUrl wk.image | resize({ width: 700 }) | webp %}" alt="{{ wk.alt }}" {{ imgStyle | safe }} width="1200" height="800" loading="lazy" decoding="async"></div>
+                    </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    {% set hurtTeam = h.team %}
+    {% include "components/hurt-team.html" %}
+
+    <!-- ============================================ -->
+    <!--             Your First Session               -->
+    <!-- ============================================ -->
+
+    <section id="hurt-first-session" aria-labelledby="hurt-first-session-title">
+        <div class="cs-container">
+            <div class="cs-header">
+                <h2 class="cs-title" id="hurt-first-session-title">{{ hurtFirstSession.title }}</h2>
+                <p class="cs-text">{{ hurtFirstSession.text }}</p>
+            </div>
+            <ol class="cs-steps">
+                {% for step in hurtFirstSession.steps %}
+                <li class="cs-step">
+                    <div class="cs-picture"><img src="{% getUrl step.image | resize({ width: 700 }) | webp %}" alt="{{ step.alt }}" width="{{ step.width }}" height="{{ step.height }}" loading="lazy" decoding="async"></div>
+                    <h3 class="cs-step-title">{{ step.title }}</h3>
+                    <p class="cs-step-text">{{ step.text | replace("{area}", h.area) }}</p>
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                Short Answers                 -->
+    <!-- ============================================ -->
+
+    <section id="hurt-answers" aria-labelledby="hurt-answers-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="hurt-answers-title">{{ h.answersTitle }}</h2>
+            <dl class="cs-answers">
+                {% for item in h.answers %}
+                <div class="cs-answer">
+                    <dt>{{ item.q }}</dt>
+                    <dd><span class="cs-answer-big">{{ item.a }}</span><span class="cs-answer-note">{{ item.note }}</span></dd>
+                </div>
+                {% endfor %}
+            </dl>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                  Start Now                   -->
+    <!-- ============================================ -->
+
+    <section id="start" aria-labelledby="start-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="start-title">{{ h.startTitle }}</h2>
+            <p class="cs-text">{{ h.startText }}</p>
+            <div class="cs-actions">
+                {% for clinic in clinics %}<a href="{{ clinic.janeUrl }}" class="cs-button-solid cs-button-dark" rel="noopener">Book in {{ clinic.name }}</a>{% endfor %}
+            </div>
+            <p class="cs-tel">Or call {% for clinic in clinics %}{{ clinic.name }} at <a href="tel:{{ clinic.phoneForTel }}">{{ clinic.phone }}</a>{% if not loop.last %} or {% endif %}{% endfor %}.</p>
+        </div>
+    </section>
+
     {% set faq = h.faq %}
     {% set faqBookButton = false %}
     {% include "components/faq.html" %}
@@ -168,6 +195,7 @@
                     {% for area in navigation.whereDoesItHurt %}
                     <li><a href="{{ area.url }}" class="cs-area{% if page.url == area.url %} cs-active{% endif %}"{% if page.url == area.url %} aria-current="page"{% endif %}>{{ area.label }}</a></li>
                     {% endfor %}
+                    <li><a href="{{ navigation.whereDoesItHurtAll.url }}" class="cs-area">{{ navigation.whereDoesItHurtAll.label }}</a></li>
                 </ul>
             </nav>
         </div>

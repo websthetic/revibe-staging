@@ -348,6 +348,19 @@
 		color: var(--headerColor);
 	}
 
+	/* even line lengths: balanced headings, no single word left on a paragraph's last line */
+	h1,
+	h2,
+	h3 {
+		text-wrap: balance;
+	}
+
+	p,
+	li,
+	blockquote {
+		text-wrap: pretty;
+	}
+
 	p,
 	li,
 	a {

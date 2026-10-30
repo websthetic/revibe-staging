@@ -56,8 +56,8 @@
         }
 
         .cs-title {
-            /* 56px - 152px */
-            font-size: clamp(3.5rem, 10.4vw, 9.5rem);
+            /* 56px - 120px */
+            font-size: clamp(3.5rem, 8vw, 7.5rem);
             max-width: 17ch;
             margin: 0 0 clamp(1.5rem, 4vw, 2.5rem);
             color: var(--white);
@@ -114,20 +114,18 @@
             }
         }
 
-        .cs-rating {
-            font-family: var(--headerFont);
-            font-size: (22/16rem);
-            line-height: 1;
-            letter-spacing: 0.02em;
-            width: (52/16rem);
-            height: (52/16rem);
-            border-radius: 50%;
-            background-color: var(--accentYellow);
-            color: var(--nearBlack);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        /* five gold stars (components/stars.html) */
+        .cs-stars {
+            display: inline-flex;
+            gap: (3/16rem);
             flex: none;
+
+            svg {
+                width: (18/16rem);
+                height: (18/16rem);
+                min-width: (18/16rem);
+                fill: var(--accentYellow);
+            }
         }
 
         .cs-video-toggle {
@@ -178,8 +176,12 @@
 /* Small Mobile - 600px: keep the pause button clear of the proof line */
 @media only screen and (max-width: 37.5rem) {
     #hero {
+        /* the stars sit above the line */
         .cs-proof {
             padding-right: (60/16rem);
+            flex-direction: column;
+            align-items: flex-start;
+            gap: (8/16rem);
         }
     }
 }
