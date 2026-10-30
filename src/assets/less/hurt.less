@@ -568,9 +568,10 @@
 
 	/* ---------- the side-on figure (symbol in <key>-figure.html) ---------- */
 
+	/* each page's figureViewBox frames one area of a whole body, so the rest is clipped to the box */
 	.mini,
 	.big-leg {
-		overflow: visible;
+		overflow: hidden;
 	}
 
 	.sbw {
