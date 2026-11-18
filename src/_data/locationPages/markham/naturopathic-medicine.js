@@ -10,7 +10,7 @@ module.exports = {
         {
             src: "/assets/images/services/naturopathic.jpg",
             alt: "Lisbeth Bitar Patino, naturopathic doctor, listening with a stethoscope",
-            position: "center 40%"
+            position: "60% 33%"
         },
         {
             src: "/assets/images/naturopathic/hero-acupuncture.jpg",

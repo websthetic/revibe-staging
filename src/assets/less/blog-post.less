@@ -1,0 +1,504 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// BLOG POST
+// layouts/post.html (every post in content/blog/). The post text is Markdown, so the
+// article styles its plain h2, h3, p, ul, ol, a, img, blockquote and table elements.
+// The FAQ is the shared component in global.less. Contents list: blog-post.js.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/*-- -------------------------- -->
+<---           Header           -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#post-hero {
+		/* 80px fixed nav + 40px */
+		padding: calc(5rem + 2.5rem) (20/16rem) (48/16rem);
+		background-color: var(--nearBlack);
+
+		.cs-container {
+			width: 100%;
+			max-width: (1280/16rem);
+			margin: auto;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: (18/16rem);
+		}
+
+		.cs-back {
+			font-size: (14/16rem);
+			font-weight: 700;
+			text-decoration: none;
+			color: var(--quietText);
+			transition: color 0.3s;
+
+			&:hover {
+				color: var(--white);
+			}
+		}
+
+		.cs-label {
+			font-family: var(--headerFont);
+			font-size: (18/16rem);
+			line-height: 1;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			padding: (8/16rem) (12/16rem) (6/16rem);
+			border-radius: (999/16rem);
+			background-color: var(--revibeGreen);
+			color: var(--nearBlack);
+		}
+
+		.cs-title {
+			/* 44px - 96px */
+			font-size: clamp(2.75rem, 7vw, 6rem);
+			line-height: 0.88;
+			max-width: (1000/16rem);
+			margin: 0;
+			color: var(--white);
+		}
+
+		.cs-meta {
+			font-size: (14/16rem);
+			font-weight: 600;
+			margin: 0;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: (10/16rem);
+			color: var(--quietText);
+		}
+
+		.cs-dot {
+			width: (4/16rem);
+			height: (4/16rem);
+			border-radius: 50%;
+			background-color: currentColor;
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#post-hero {
+		padding: calc(5rem + 4rem) (40/16rem) (72/16rem);
+	}
+}
+
+/*-- -------------------------- -->
+<---          Article           -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#post {
+		padding: (32/16rem) (20/16rem) clamp(4rem, 8vw, 7.5rem);
+		background-color: var(--offWhite);
+
+		.cs-container {
+			width: 100%;
+			max-width: (1280/16rem);
+			margin: auto;
+			display: grid;
+			gap: (32/16rem);
+		}
+
+		.cs-article {
+			min-width: 0;
+			padding: (20/16rem) (20/16rem) (36/16rem);
+			border-radius: (32/16rem);
+			background-color: var(--white);
+		}
+
+		.cs-picture {
+			aspect-ratio: 16 / 9;
+			margin-bottom: (28/16rem);
+			border-radius: (20/16rem);
+			background-color: var(--softBeige);
+			overflow: hidden;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+
+		/* ---------- contents, phones ---------- */
+
+		.cs-toc-mobile {
+			margin-bottom: (28/16rem);
+			border-radius: (20/16rem);
+			background-color: var(--offWhite);
+
+			&[hidden] {
+				display: none;
+			}
+
+			summary {
+				font-family: var(--headerFont);
+				font-size: (24/16rem);
+				line-height: 1;
+				letter-spacing: var(--headingLetterSpacing);
+				text-transform: uppercase;
+				list-style: none;
+				padding: (18/16rem) (20/16rem) (15/16rem);
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				color: var(--nearBlack);
+				cursor: pointer;
+
+				&::-webkit-details-marker {
+					display: none;
+				}
+
+				svg {
+					width: (18/16rem);
+					height: (18/16rem);
+					transition: transform 0.3s;
+				}
+			}
+
+			&[open] summary svg {
+				transform: rotate(180deg);
+			}
+
+			.cs-toc-list {
+				padding: 0 (20/16rem) (18/16rem) (40/16rem);
+			}
+		}
+
+		.cs-toc-list {
+			margin: 0;
+			display: grid;
+			gap: (10/16rem);
+
+			li {
+				font-size: (14/16rem);
+				line-height: 1.4;
+				color: var(--mutedText);
+			}
+		}
+
+		.cs-toc-link {
+			font-size: (14/16rem);
+			line-height: 1.4;
+			text-decoration: none;
+			color: var(--charcoal);
+			transition: color 0.2s;
+
+			&:hover,
+			&.cs-active {
+				color: var(--deepGreen);
+			}
+
+			&.cs-active {
+				font-weight: 700;
+			}
+		}
+
+		/* ---------- the post text (Markdown) ---------- */
+
+		.cs-prose {
+			font-size: (17/16rem);
+			line-height: 1.7;
+			color: var(--charcoal);
+
+			> :first-child {
+				margin-top: 0;
+			}
+
+			p,
+			li {
+				/* 16px - 17px */
+				font-size: clamp(1rem, 1.4vw, 1.0625rem);
+				line-height: 1.7;
+				color: var(--charcoal);
+			}
+
+			p {
+				margin: 0 0 (20/16rem);
+			}
+
+			h2 {
+				/* 32px - 48px */
+				font-size: clamp(2rem, 3.6vw, 3rem);
+				line-height: 0.95;
+				margin: (48/16rem) 0 (16/16rem);
+				color: var(--nearBlack);
+				/* clear the fixed header when jumped to from the contents */
+				scroll-margin-top: (110/16rem);
+			}
+
+			h3 {
+				/* 24px - 30px */
+				font-size: clamp(1.5rem, 2.4vw, 1.875rem);
+				line-height: 1;
+				margin: (32/16rem) 0 (12/16rem);
+				color: var(--nearBlack);
+				scroll-margin-top: (110/16rem);
+			}
+
+			h4 {
+				font-size: (22/16rem);
+				margin: (24/16rem) 0 (10/16rem);
+				color: var(--nearBlack);
+			}
+
+			/* Markdown wraps headings in bold; the heading font already carries the weight */
+			h2 strong,
+			h3 strong,
+			h4 strong {
+				font-weight: inherit;
+			}
+
+			strong {
+				font-weight: 700;
+				color: var(--nearBlack);
+			}
+
+			a {
+				font-weight: 600;
+				text-decoration: underline;
+				text-decoration-color: var(--revibeGreen);
+				text-decoration-thickness: 2px;
+				text-underline-offset: 3px;
+				color: var(--deepGreen);
+				transition: color 0.2s;
+
+				&:hover {
+					color: var(--nearBlack);
+				}
+			}
+
+			ul,
+			ol {
+				margin: 0 0 (24/16rem);
+				padding-left: (22/16rem);
+				display: grid;
+				gap: (8/16rem);
+			}
+
+			ul li::marker {
+				color: var(--revibeGreen);
+			}
+
+			ol li::marker {
+				font-weight: 700;
+				color: var(--deepGreen);
+			}
+
+			img {
+				width: 100%;
+				height: auto;
+				margin: (12/16rem) 0;
+				border-radius: (20/16rem);
+				display: block;
+			}
+
+			blockquote {
+				margin: (28/16rem) 0;
+				padding: (20/16rem) (24/16rem);
+				border-left: 4px solid var(--revibeGreen);
+				border-radius: 0 (20/16rem) (20/16rem) 0;
+				background-color: var(--mintTint);
+
+				p:last-child {
+					margin-bottom: 0;
+				}
+			}
+
+			hr {
+				margin: (40/16rem) 0;
+				border: none;
+				border-top: 1px solid var(--borderGrey);
+			}
+
+			/* wide tables scroll sideways instead of stretching the page */
+			table {
+				width: 100%;
+				margin: 0 0 (24/16rem);
+				border-collapse: collapse;
+				font-size: (15/16rem);
+				display: block;
+				overflow-x: auto;
+			}
+
+			th,
+			td {
+				padding: (10/16rem) (12/16rem);
+				border-bottom: 1px solid var(--borderGrey);
+				text-align: left;
+				vertical-align: top;
+			}
+
+			th {
+				font-weight: 700;
+				color: var(--nearBlack);
+				background-color: var(--offWhite);
+			}
+		}
+
+		/* ---------- sidebar ---------- */
+
+		.cs-sidebar {
+			min-width: 0;
+			display: grid;
+			gap: (16/16rem);
+			align-content: start;
+		}
+
+		/* the sidebar contents list is desktop only */
+		.cs-toc {
+			display: none;
+		}
+
+		.cs-side-title {
+			font-family: var(--headerFont);
+			font-size: (26/16rem);
+			line-height: 1;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			margin: 0 0 (16/16rem);
+			color: var(--nearBlack);
+		}
+
+		.cs-recent,
+		.cs-toc {
+			padding: (24/16rem) (24/16rem) (22/16rem);
+			border-radius: (28/16rem);
+			background-color: var(--white);
+		}
+
+		.cs-recent-list {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+		}
+
+		.cs-recent-link {
+			padding: (12/16rem) 0;
+			border-top: 1px solid var(--softBeige);
+			text-decoration: none;
+			display: flex;
+			flex-direction: column;
+			gap: (4/16rem);
+
+			&:hover .cs-recent-title {
+				color: var(--deepGreen);
+			}
+		}
+
+		li:first-child .cs-recent-link {
+			padding-top: 0;
+			border-top: none;
+		}
+
+		.cs-recent-title {
+			font-size: (15/16rem);
+			font-weight: 700;
+			line-height: 1.35;
+			color: var(--nearBlack);
+			transition: color 0.2s;
+		}
+
+		.cs-recent-date {
+			font-size: (13/16rem);
+			font-weight: 600;
+			color: var(--mutedText);
+		}
+
+		.cs-book {
+			padding: (28/16rem) (24/16rem);
+			border-radius: (28/16rem);
+			background-color: var(--revibeGreen);
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: (8/16rem);
+
+			p {
+				margin: 0;
+				color: var(--nearBlack);
+			}
+
+			.cs-button-solid {
+				margin-top: (12/16rem);
+			}
+		}
+
+		.cs-book-small {
+			font-size: (14/16rem);
+			font-weight: 700;
+		}
+
+		.cs-book-title {
+			font-family: var(--headerFont);
+			/* 32px - 40px */
+			font-size: clamp(2rem, 3vw, 2.5rem);
+			line-height: 0.92;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+		}
+	}
+}
+
+/* Desktop - 1000px: the sidebar sits beside the article and follows it */
+@media only screen and (min-width: 62.5rem) {
+	#post {
+		padding: (48/16rem) (40/16rem) (120/16rem);
+
+		.cs-container {
+			grid-template-columns: minmax(0, 1fr) (340/16rem);
+			gap: (40/16rem);
+			align-items: start;
+		}
+
+		.cs-article {
+			padding: (32/16rem) clamp(2rem, 5vw, 4rem) (56/16rem);
+			border-radius: (44/16rem);
+		}
+
+		.cs-picture {
+			margin-bottom: (40/16rem);
+			border-radius: (28/16rem);
+		}
+
+		.cs-toc-mobile {
+			display: none;
+		}
+
+		/* follows the article; scrolls on its own when it is taller than the screen */
+		.cs-sidebar {
+			max-height: calc(100vh - (130/16rem));
+			overflow-y: auto;
+			overscroll-behavior: contain;
+			scrollbar-width: thin;
+			position: sticky;
+			top: (110/16rem);
+		}
+
+		.cs-toc {
+			display: block;
+
+			&[hidden] {
+				display: none;
+			}
+
+			/* room for two-digit numbers */
+			.cs-toc-list {
+				padding-left: (28/16rem);
+			}
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#post .cs-toc-mobile summary svg {
+		transition: none;
+	}
+}

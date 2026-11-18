@@ -38,10 +38,14 @@
                             <span>{{ clinic.hours | join("<br>") | safe }}</span>
                         </li>
                     </ul>
-                    <ul class="cs-services" aria-label="Services in {{ clinic.name }}">
-                        {% for service in clinic.services %}<li><a class="cs-service" href="{{ service.url }}">{{ service.label }}</a></li>{% endfor %}
-                    </ul>
-                    <a href="{{ clinic.bookUrl }}" class="cs-button-solid cs-book">Book in {{ clinic.name }}</a>
+                    {# phones: the list folds into a dropdown; from 700px it is always open and the label is hidden; home-sections.js folds it on phones #}
+                    <details class="cs-services-d" open>
+                        <summary>Services at this clinic</summary>
+                        <ul class="cs-services" aria-label="Services in {{ clinic.name }}">
+                            {% for service in clinic.services %}<li><a class="cs-service" href="{{ service.url }}">{{ service.label }}</a></li>{% endfor %}
+                        </ul>
+                    </details>
+                    <a href="{{ clinic.janeUrl }}" class="cs-button-solid cs-book" rel="noopener">Book in {{ clinic.name }}</a>
                 </div>
             </article>
             {% endfor %}

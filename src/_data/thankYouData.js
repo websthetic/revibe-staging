@@ -14,9 +14,9 @@ module.exports = {
             { label: "check direct billing", url: "/direct-billing/" },
         ],
         images: [
-            { src: "/assets/images/services/chiropractic-side.jpg", position: "center 40%" },
+            { src: "/assets/images/services/chiropractic-side.jpg", position: "50% 22%" },
             { src: "/assets/images/chiropractic/step-assess.jpg", position: "center 40%" },
-            { src: "/assets/images/services/chiropractic.jpg", position: "center 40%" },
+            { src: "/assets/images/services/chiropractic.jpg", position: "50% 17%" },
         ],
         instagramLine: "See the clinic before you come.",
     },
@@ -227,7 +227,7 @@ module.exports = {
         ],
         more: [
             { label: "Take the two minute Care Map", url: "/#care-map" },
-            { label: "meet the team", url: "/" },
+            { label: "meet the team", url: "/therapists/" },
         ],
         images: [
             { src: "/assets/images/locations/mississauga.jpg", position: "center 50%" },
@@ -306,7 +306,7 @@ module.exports = {
         ],
         images: [
             { src: "/assets/images/naturopathic/hero-tincture.jpg", position: "center 45%" },
-            { src: "/assets/images/naturopathic/fit-tang.jpg", position: "center 40%" },
+            { src: "/assets/images/naturopathic/lisbeth-7022.jpg", position: "50% 22%" },
             { src: "/assets/images/naturopathic/step-test.jpg", position: "center 40%" },
         ],
         instagramLine: "See the clinic before you come.",

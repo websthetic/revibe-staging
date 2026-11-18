@@ -9,7 +9,7 @@ module.exports = {
         title: "Pelvic physiotherapy",
         text: "Registered pelvic floor physiotherapists for leaking, pelvic pain, pregnancy and postpartum recovery, prolapse and men's pelvic health. Private, unhurried care at every Revibe clinic.",
         proofBold: "5.0 on Google",
-        proof: "from 600+ reviews. Your session is in a closed room, and an internal assessment is always optional.",
+        proof: "from 700+ reviews. Your session is in a closed room, and an internal assessment is always optional.",
         images: [
             { src: "/assets/images/pelvic/hero-stretch.jpg", alt: "A woman stretching her arms overhead", position: "center 35%" },
             { src: "/assets/images/services/pelvic-health.jpg", alt: "Christine Barnuevo, pelvic floor physiotherapist, walking a client through a model of the pelvis", position: "92% 52%" },
@@ -142,7 +142,7 @@ module.exports = {
         title: "Pelvic health is one part of performance therapy",
         items: [
             { label: "Physiotherapy", url: "/services/physiotherapy/", image: "/assets/images/services/physiotherapy.jpg", alt: "Michael Leung, physiotherapist, working a client's hip on the table", position: "center 55%" },
-            { label: "Chiropractic", url: "/services/chiropractic/", image: "/assets/images/services/chiropractic-side.jpg", alt: "A Revibe chiropractor positioning a client on her side for an adjustment", position: "center 40%" },
+            { label: "Chiropractic", url: "/services/chiropractic/", image: "/assets/images/services/chiropractic-side.jpg", alt: "A Revibe chiropractor positioning a client on her side for an adjustment", position: "50% 22%" },
             { label: "Massage therapy", url: "/services/massage/", image: "/assets/images/services/massage-hands.jpg", alt: "A massage therapist's hands working into a client's shoulder", position: "center 45%" },
             { label: "Osteopathy", url: "/services/osteopathy/", image: "/assets/images/services/osteopathy-leg.jpg", alt: "A Revibe osteopathic practitioner lifting a client's leg on the table", position: "center 35%" },
             { label: "Stretch therapy", url: "/stretch-spa/", image: "/assets/images/services/stretch-therapy.jpg", alt: "A Revibe therapist stretching a client's leg up from the table", position: "center 32%" },

@@ -10,7 +10,7 @@ module.exports = {
         {
             src: "/assets/images/services/chiropractic.jpg",
             alt: "A Revibe chiropractor adjusting a client on the table",
-            position: "center 45%"
+            position: "50% 17%"
         },
         {
             src: "/assets/images/chiropractic/hero-trevor.jpg",

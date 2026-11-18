@@ -8,7 +8,7 @@ module.exports = {
     text: "Here is the plan, week by week. How often you come in, what changes, and when you can reach, lift and throw without thinking twice.",
     requestService: "Physiotherapy",
     requestMessage: "Shoulder pain",
-    proof: "from 600+ reviews. No referral needed. We bill most insurers directly.",
+    proof: "from 700+ reviews. No referral needed. We bill most insurers directly.",
     ask: "Where does it hurt? Tap a spot.",
     problemsLabel: "Common shoulder problems",
     problems: [

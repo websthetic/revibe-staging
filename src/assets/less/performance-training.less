@@ -1016,3 +1016,1660 @@
 		transition: none;
 	}
 }
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   13 Nov 2026 round: "Performance, Zee edition", leagues strip, report sheets,
+   pricing, call pop-up and the shorter phone layout. Shared by all three
+   performance pages; sections only show where their content file has them.
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+/*-- -------------------------- -->
+<---   Hero: one large photo    -->
+<--- -------------------------- -*/
+
+@media only screen and (min-width: 0rem) {
+	#perf-hero.cs-hero-photo {
+		padding: calc(5rem + 2.5rem) (20/16rem) (56/16rem);
+
+		.cs-container {
+			max-width: (1340/16rem);
+			gap: (36/16rem);
+		}
+
+		.cs-content {
+			display: grid;
+			gap: (20/16rem);
+		}
+
+		.cs-title {
+			/* 64px - 128px */
+			font-size: clamp(4rem, 8vw, 8rem);
+			line-height: 0.86;
+		}
+
+		.cs-text {
+			max-width: (500/16rem);
+			margin: 0;
+		}
+
+		.cs-actions {
+			margin: 0;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: (14/16rem) (28/16rem);
+		}
+
+		.cs-text-link {
+			font-size: (15/16rem);
+			font-weight: 700;
+			color: var(--nearBlack);
+			text-decoration: underline;
+			text-decoration-color: var(--revibeGreen);
+			text-decoration-thickness: 2px;
+			text-underline-offset: 5px;
+		}
+
+		.cs-note {
+			font-size: (14/16rem);
+			line-height: 1.6;
+			margin: 0;
+			color: var(--charcoal);
+		}
+
+		.cs-photo img {
+			width: 100%;
+			aspect-ratio: 4 / 5;
+			border-radius: (28/16rem);
+			object-fit: cover;
+			display: block;
+		}
+	}
+}
+
+@media only screen and (min-width: 62.5rem) {
+	#perf-hero.cs-hero-photo {
+		padding: calc(5rem + 3.5rem) (40/16rem) (88/16rem);
+
+		.cs-container {
+			grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+			gap: (64/16rem);
+		}
+
+		.cs-photo img {
+			aspect-ratio: 5 / 6;
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---   Leagues: players from    -->
+<--- -------------------------- -*/
+
+@media only screen and (min-width: 0rem) {
+	#leagues {
+		padding: (40/16rem) 0 (32/16rem);
+		background-color: var(--white);
+		overflow: hidden;
+
+		.cs-container {
+			max-width: (1340/16rem);
+			margin: auto;
+			padding: 0 (20/16rem);
+		}
+
+		.cs-title {
+			/* 32px - 48px */
+			font-size: clamp(2rem, 3.4vw, 3rem);
+			line-height: 0.95;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-track {
+			width: max-content;
+			margin-top: (32/16rem);
+			display: flex;
+			animation: leagues-scroll 40s linear infinite;
+
+			&:hover {
+				animation-play-state: paused;
+			}
+		}
+
+		.cs-row {
+			list-style: none;
+			margin: 0;
+			padding: 0 (40/16rem) 0 0;
+			display: flex;
+			align-items: center;
+			gap: (40/16rem);
+		}
+
+		.cs-league {
+			height: (80/16rem);
+			flex: none;
+			display: flex;
+			align-items: center;
+
+			img {
+				width: auto;
+				height: (36/16rem);
+				max-width: (120/16rem);
+				opacity: 0.8;
+				filter: grayscale(1);
+			}
+		}
+
+		.cs-league-nba img,
+		.cs-league-gleague img {
+			height: (50/16rem);
+		}
+
+		.cs-league-cbl img {
+			height: (58/16rem);
+		}
+
+		.cs-league-ncaa img {
+			height: (42/16rem);
+			opacity: 0.65;
+		}
+	}
+
+	@keyframes leagues-scroll {
+		to {
+			transform: translateX(-50%);
+		}
+	}
+}
+
+@media only screen and (min-width: 43.75rem) {
+	#leagues {
+		padding: (56/16rem) 0 (48/16rem);
+
+		.cs-container {
+			padding: 0 (40/16rem);
+		}
+
+		.cs-row {
+			padding-right: (64/16rem);
+			gap: (64/16rem);
+		}
+
+		.cs-league img {
+			height: (48/16rem);
+			max-width: (160/16rem);
+		}
+
+		.cs-league-nba img,
+		.cs-league-gleague img {
+			height: (60/16rem);
+		}
+
+		.cs-league-cbl img {
+			height: (76/16rem);
+		}
+
+		.cs-league-ncaa img {
+			height: (56/16rem);
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#leagues {
+		.cs-track {
+			width: auto;
+			animation: none;
+			overflow-x: auto;
+		}
+
+		.cs-row[aria-hidden] {
+			display: none;
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---      Goals: photo cards    -->
+<--- -------------------------- -*/
+
+@media only screen and (min-width: 0rem) {
+	#goals.cs-goal-cards {
+		background-color: var(--white);
+
+		/* phones: the cards scroll sideways */
+		.cs-cards {
+			list-style: none;
+			margin: (32/16rem) (-20/16rem) 0;
+			padding: 0 (20/16rem) (6/16rem);
+			display: flex;
+			gap: (12/16rem);
+			overflow-x: auto;
+			scroll-snap-type: x mandatory;
+			scrollbar-width: none;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+
+			li {
+				width: 72%;
+				flex: none;
+				scroll-snap-align: start;
+				scroll-margin-left: (20/16rem);
+			}
+		}
+
+		.cs-card {
+			all: unset;
+			box-sizing: border-box;
+			width: 100%;
+			cursor: pointer;
+			color: var(--nearBlack);
+			text-decoration: none;
+			display: grid;
+			gap: (8/16rem);
+
+			&:hover {
+				.cs-card-picture img {
+					transform: scale(1.04);
+				}
+
+				.cs-card-link svg {
+					transform: translateX(4px);
+				}
+			}
+
+			&:focus-visible {
+				outline: 2px solid var(--deepGreen);
+				outline-offset: 6px;
+				border-radius: (24/16rem);
+			}
+		}
+
+		.cs-card-picture {
+			margin-bottom: (6/16rem);
+			aspect-ratio: 4 / 5;
+			border-radius: (24/16rem);
+			background-color: var(--offWhite);
+			overflow: hidden;
+			display: block;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+				transition: transform 0.5s ease;
+			}
+		}
+
+		.cs-card-title {
+			font-family: var(--headerFont);
+			font-size: (32/16rem);
+			line-height: 0.95;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+		}
+
+		.cs-card-text {
+			font-size: (15/16rem);
+			line-height: 1.5;
+			color: var(--charcoal);
+		}
+
+		.cs-card-link {
+			font-size: (14/16rem);
+			font-weight: 700;
+			color: var(--deepGreen);
+			display: inline-flex;
+			align-items: center;
+			gap: (8/16rem);
+
+			svg {
+				width: (16/16rem);
+				height: (16/16rem);
+				transition: transform 0.2s ease;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 43.75rem) {
+	#goals.cs-goal-cards .cs-cards {
+		margin: (32/16rem) 0 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: (28/16rem) (20/16rem);
+		overflow: visible;
+
+		li {
+			width: auto;
+		}
+	}
+}
+
+@media only screen and (min-width: 62.5rem) {
+	#goals.cs-goal-cards .cs-cards {
+		margin-top: (48/16rem);
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#goals.cs-goal-cards {
+		.cs-card-picture img,
+		.cs-card-link svg {
+			transition: none;
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---  How it works: photo steps -->
+<--- -------------------------- -*/
+
+@media only screen and (min-width: 0rem) {
+	#how.cs-how-photos {
+		.cs-photo-steps {
+			list-style: none;
+			margin: (28/16rem) 0 0;
+			padding: 0;
+			display: grid;
+			gap: (36/16rem);
+		}
+
+		.cs-photo-step {
+			display: grid;
+			align-items: center;
+			gap: (16/16rem);
+			scroll-margin-top: (100/16rem);
+		}
+
+		.cs-step-picture {
+			aspect-ratio: 16 / 10;
+			border-radius: (24/16rem);
+			background-color: var(--white);
+			overflow: hidden;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+
+		.cs-step-body {
+			display: grid;
+			align-content: start;
+			gap: (12/16rem);
+		}
+
+		/* a plain green number, not the circle the team pages use */
+		.cs-step-number {
+			width: auto;
+			height: auto;
+			padding: 0;
+			border-radius: 0;
+			background: none;
+			font-family: var(--headerFont);
+			font-size: (22/16rem);
+			letter-spacing: 1px;
+			color: var(--revibeGreen);
+			display: block;
+		}
+
+		.cs-step-title {
+			/* 40px - 60px */
+			font-size: clamp(2.5rem, 4vw, 3.75rem);
+			line-height: 0.9;
+			margin: 0;
+			color: var(--white);
+		}
+
+		.cs-step-text {
+			font-size: (16/16rem);
+			line-height: 1.65;
+			max-width: (480/16rem);
+			margin: 0;
+			color: var(--borderGrey);
+		}
+
+		.cs-measures {
+			max-width: (480/16rem);
+			margin: (4/16rem) 0 0;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: (8/16rem) (20/16rem);
+
+			dt {
+				font-family: var(--headerFont);
+				font-size: (26/16rem);
+				line-height: 1;
+				letter-spacing: 1px;
+				text-transform: uppercase;
+				color: var(--revibeGreen);
+			}
+
+			dd {
+				font-size: (14/16rem);
+				line-height: 1.5;
+				margin: (4/16rem) 0 0;
+				color: var(--borderGrey);
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 43.75rem) {
+	#how.cs-how-photos {
+		.cs-photo-steps {
+			gap: (48/16rem);
+		}
+
+		.cs-photo-step {
+			gap: (20/16rem);
+		}
+
+		.cs-step-picture {
+			aspect-ratio: 3 / 2;
+			border-radius: (28/16rem);
+		}
+
+		.cs-measures {
+			gap: (16/16rem) (20/16rem);
+		}
+	}
+}
+
+/* Desktop - 1000px: photo and text side by side, alternating */
+@media only screen and (min-width: 62.5rem) {
+	#how.cs-how-photos {
+		.cs-photo-steps {
+			margin-top: (56/16rem);
+			gap: (88/16rem);
+		}
+
+		.cs-photo-step {
+			grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+			gap: (64/16rem);
+
+			&:nth-child(even) {
+				grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+
+				.cs-step-picture {
+					order: 2;
+				}
+			}
+		}
+
+		.cs-step-picture {
+			aspect-ratio: 4 / 3;
+			border-radius: (36/16rem);
+		}
+	}
+}
+
+/* team pages: the three steps in a row, the sheet full width under them */
+@media only screen and (min-width: 0rem) {
+	#how .cs-how-solo {
+		.cs-sheet {
+			margin-top: (8/16rem);
+		}
+
+		.cs-sheet-more button {
+			color: var(--white);
+		}
+	}
+}
+
+@media only screen and (min-width: 56.25rem) {
+	#how .cs-how.cs-how-solo {
+		grid-template-columns: minmax(0, 1fr);
+
+		.cs-steps {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: (16/16rem);
+		}
+
+		.cs-step {
+			grid-template-columns: minmax(0, 1fr);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---        Report sheet        -->
+<--- -------------------------- -*/
+
+@media only screen and (min-width: 0rem) {
+	.cs-sheet {
+		--sheetLine: #dce0e2;
+		--sheetGreen: #3e9c82;
+		width: 100%;
+		max-width: (1080/16rem);
+		margin: (40/16rem) auto 0;
+		padding: (22/16rem) (18/16rem) (26/16rem);
+		box-sizing: border-box;
+		border-radius: (10/16rem);
+		background-color: var(--white);
+		color: var(--nearBlack);
+		box-shadow:
+			0 1px 2px rgba(13, 13, 13, 0.06),
+			0 24px 60px rgba(13, 13, 13, 0.1);
+		font-size: (14/16rem);
+		display: grid;
+		gap: (14/16rem);
+
+		p {
+			margin: 0;
+		}
+
+		h3,
+		h4,
+		h5 {
+			margin: 0;
+		}
+
+		h4 {
+			font-family: var(--bodyFont);
+			font-size: (13/16rem);
+			font-weight: 700;
+			letter-spacing: 0;
+			text-transform: none;
+			line-height: 1.3;
+			color: var(--charcoal);
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	.cs-sheet-top {
+		padding-bottom: (6/16rem);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: (16/16rem);
+	}
+
+	.cs-sheet-logo {
+		width: auto;
+		height: (34/16rem);
+		filter: brightness(0);
+	}
+
+	.cs-sheet-doc {
+		font-size: (13/16rem);
+		font-weight: 700;
+		text-align: right;
+		display: grid;
+
+		span {
+			font-weight: 500;
+			color: var(--charcoal);
+		}
+	}
+
+	.cs-sheet-head {
+		display: grid;
+		gap: (14/16rem);
+	}
+
+	.cs-sheet-id {
+		display: grid;
+		align-content: start;
+		gap: (8/16rem);
+
+		> p:last-child {
+			font-size: (15/16rem);
+			line-height: 1.6;
+			max-width: (600/16rem);
+		}
+	}
+
+	.cs-sheet-name {
+		justify-self: start;
+		padding: (6/16rem) (12/16rem);
+		border-radius: (6/16rem);
+		background-color: var(--offWhite);
+		font-size: (13/16rem);
+		font-weight: 600;
+		color: var(--quietText);
+	}
+
+	.cs-sheet-pill {
+		justify-self: start;
+		padding: (5/16rem) (14/16rem);
+		border: 1.5px solid var(--quietText);
+		border-radius: 999px;
+		font-size: (13/16rem);
+		font-weight: 700;
+	}
+
+	.cs-sheet-title {
+		/* 30px - 44px */
+		font-size: clamp(1.875rem, 3.2vw, 2.75rem);
+		line-height: 0.92;
+		margin-top: (4/16rem) !important;
+		color: var(--sheetGreen);
+	}
+
+	.cs-sheet-box {
+		padding: (18/16rem) (20/16rem);
+		border: 1.5px solid var(--sheetLine);
+		border-radius: (14/16rem);
+	}
+
+	.cs-sheet-compare {
+		display: grid;
+		align-content: start;
+		gap: (6/16rem);
+
+		h4 {
+			color: var(--sheetGreen);
+		}
+
+		p {
+			line-height: 1.55;
+			color: var(--charcoal);
+		}
+	}
+
+	.cs-sheet-stats {
+		display: grid;
+		gap: (12/16rem);
+
+		.cs-sheet-box {
+			display: grid;
+			align-content: start;
+			gap: (10/16rem);
+		}
+	}
+
+	.cs-sheet-big {
+		font-family: var(--headerFont);
+		font-size: (52/16rem);
+		line-height: 0.85;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: (4/16rem) (12/16rem);
+
+		small {
+			margin-left: (-8/16rem);
+			padding-bottom: (4/16rem);
+			align-self: end;
+			font-family: var(--bodyFont);
+			font-size: (15/16rem);
+			font-weight: 600;
+			color: var(--charcoal);
+		}
+	}
+
+	.cs-sheet-change {
+		padding: (5/16rem) (12/16rem);
+		border: 1.5px solid var(--sheetGreen);
+		border-radius: 999px;
+		font-family: var(--bodyFont);
+		font-size: (13/16rem);
+		font-weight: 700;
+		line-height: 1;
+		color: var(--sheetGreen);
+	}
+
+	.cs-sheet-meta {
+		font-size: (13/16rem);
+		font-weight: 700;
+		color: var(--charcoal);
+	}
+
+	.cs-sheet-bar {
+		height: (8/16rem);
+		border-radius: 999px;
+		background-color: #eceeef;
+		overflow: hidden;
+		display: block;
+
+		i {
+			width: var(--w);
+			height: 100%;
+			border-radius: 999px;
+			background-color: var(--sheetGreen);
+			display: block;
+		}
+	}
+
+	.cs-sheet-facts {
+		margin: 0;
+		display: flex;
+		gap: (28/16rem);
+
+		dt {
+			font-size: (12/16rem);
+			font-weight: 700;
+			color: var(--charcoal);
+		}
+
+		dd {
+			margin: (2/16rem) 0 0;
+			font-weight: 700;
+		}
+	}
+
+	.cs-sheet-subtitle {
+		font-family: var(--headerFont) !important;
+		font-size: (26/16rem) !important;
+		font-weight: 400 !important;
+		line-height: 1 !important;
+		letter-spacing: 1px !important;
+		text-transform: uppercase !important;
+		color: var(--nearBlack) !important;
+
+		span {
+			margin-left: (6/16rem);
+			font-family: var(--bodyFont);
+			font-size: (13/16rem);
+			font-weight: 600;
+			letter-spacing: 0;
+			text-transform: none;
+			color: var(--charcoal);
+		}
+	}
+
+	.cs-sheet-categories {
+		display: grid;
+		align-items: center;
+		gap: (20/16rem);
+	}
+
+	.cs-sheet-table {
+		width: 100%;
+		margin-top: (18/16rem);
+		border-collapse: collapse;
+
+		thead th {
+			padding: 0 0 (10/16rem);
+			border-bottom: 1.5px solid var(--sheetLine);
+			font-size: (12/16rem);
+			font-weight: 700;
+			text-align: right;
+			color: var(--charcoal);
+
+			&:first-child {
+				text-align: left;
+			}
+		}
+
+		tbody th {
+			padding: (14/16rem) (12/16rem) (14/16rem) 0;
+			font-size: (14/16rem);
+			font-weight: 700;
+			text-align: left;
+			white-space: nowrap;
+		}
+
+		td {
+			padding: (14/16rem) 0;
+		}
+
+		/* phones: the bars drop out, the percent and grade stay */
+		.cs-sheet-bar-cell {
+			display: none;
+		}
+
+		.cs-sheet-percent {
+			width: (48/16rem);
+			padding-right: (12/16rem);
+			font-weight: 700;
+			text-align: right;
+		}
+
+		.cs-sheet-good {
+			.cs-sheet-bar i {
+				background-color: #c9ced1;
+			}
+
+			.cs-sheet-grade {
+				border-color: var(--quietText);
+				color: var(--charcoal);
+			}
+		}
+	}
+
+	.cs-sheet-grade {
+		padding: (5/16rem) (12/16rem);
+		border: 1.5px solid var(--sheetGreen);
+		border-radius: 999px;
+		font-size: (12/16rem);
+		font-weight: 700;
+		line-height: 1;
+		color: var(--sheetGreen);
+		display: inline-block;
+	}
+
+	.cs-sheet-chart {
+		display: grid;
+		justify-items: center;
+		gap: (6/16rem);
+	}
+
+	.cs-radar {
+		width: 100%;
+		max-width: (380/16rem);
+		height: auto;
+
+		.cs-radar-ring {
+			fill: none;
+			stroke: var(--sheetLine);
+			stroke-width: 1;
+		}
+
+		.cs-radar-axis {
+			stroke: var(--sheetLine);
+			stroke-width: 1;
+		}
+
+		.cs-radar-benchmark {
+			fill: #f4f5f5;
+			stroke: var(--mutedText);
+			stroke-width: 1.5;
+		}
+
+		.cs-radar-athlete {
+			fill: var(--sheetGreen);
+			fill-opacity: 0.2;
+			stroke: var(--sheetGreen);
+			stroke-width: 2;
+		}
+
+		.cs-radar-dot {
+			fill: var(--sheetGreen);
+		}
+
+		text {
+			font: 600 12px var(--bodyFont);
+			fill: var(--nearBlack);
+		}
+	}
+
+	.cs-sheet-key {
+		font-size: (13/16rem);
+		font-weight: 600;
+		color: var(--charcoal);
+		display: flex;
+		align-items: center;
+		gap: (6/16rem);
+
+		i {
+			width: (10/16rem);
+			height: (10/16rem);
+			border-radius: 2px;
+			display: inline-block;
+		}
+
+		.cs-key-benchmark {
+			background-color: var(--quietText);
+		}
+
+		.cs-key-athlete {
+			margin-left: (12/16rem);
+			background-color: var(--sheetGreen);
+		}
+	}
+
+	.cs-sheet-rank {
+		width: 100%;
+		margin-top: (14/16rem);
+		border-collapse: collapse;
+		font-variant-numeric: tabular-nums;
+
+		th,
+		td {
+			padding: (12/16rem) (10/16rem) (12/16rem) 0;
+			border-bottom: 1px solid var(--sheetLine);
+			font-size: (14/16rem);
+			text-align: left;
+		}
+
+		thead th {
+			padding-top: 0;
+			font-size: (12/16rem);
+			font-weight: 700;
+			color: var(--charcoal);
+		}
+
+		tbody th {
+			font-weight: 700;
+			white-space: nowrap;
+		}
+
+		td span {
+			margin-left: (6/16rem);
+			font-size: (12/16rem);
+			color: var(--charcoal);
+		}
+	}
+
+	.cs-sheet-takeaways {
+		margin-top: (16/16rem);
+		display: grid;
+		gap: (12/16rem);
+
+		> div {
+			padding: (16/16rem) (18/16rem);
+			border: 1.5px solid var(--sheetLine);
+			border-radius: (12/16rem);
+		}
+
+		h5 {
+			margin-bottom: (10/16rem) !important;
+			font-family: var(--bodyFont);
+			font-size: (13/16rem);
+			font-weight: 700;
+			line-height: 1.3;
+			letter-spacing: 0;
+			text-transform: none;
+			color: var(--sheetGreen);
+		}
+
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			gap: (10/16rem);
+		}
+
+		li {
+			font-size: (14/16rem);
+			display: flex;
+			flex-direction: column;
+			gap: (4/16rem) (12/16rem);
+
+			span {
+				font-weight: 700;
+			}
+
+			b {
+				color: var(--sheetGreen);
+			}
+		}
+
+		.cs-sheet-strengths {
+			border-color: var(--sheetGreen);
+		}
+
+		.cs-sheet-next {
+			h5,
+			b {
+				color: var(--charcoal);
+			}
+		}
+	}
+
+	/* phones: clipped with a fade until "Show the full ..." is pressed */
+	.cs-sheet.cs-sheet-clip {
+		max-height: (760/16rem);
+		position: relative;
+		overflow: hidden;
+
+		&::after {
+			content: "";
+			height: (140/16rem);
+			background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--white) 80%);
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+	}
+
+	.cs-sheet-more {
+		margin-top: (6/16rem);
+		position: relative;
+		z-index: 1;
+		display: flex;
+		justify-content: center;
+
+		button {
+			all: unset;
+			padding: (10/16rem) (4/16rem);
+			cursor: pointer;
+			font-size: (15/16rem);
+			font-weight: 700;
+			color: var(--nearBlack);
+			text-decoration: underline;
+			text-decoration-color: var(--revibeGreen);
+			text-decoration-thickness: 2px;
+			text-underline-offset: 5px;
+
+			&:focus-visible {
+				outline: 2px solid var(--revibeGreen);
+				outline-offset: 4px;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 37.5rem) {
+	.cs-sheet-table .cs-sheet-bar-cell {
+		width: 40%;
+		padding-right: (12/16rem);
+		display: table-cell;
+	}
+
+	.cs-sheet-table thead th {
+		text-align: left;
+	}
+
+	.cs-sheet-takeaways li {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+}
+
+/* 700px: the full sheet, no clip */
+@media only screen and (min-width: 43.75rem) {
+	.cs-sheet.cs-sheet-clip {
+		max-height: none;
+		overflow: visible;
+
+		&::after {
+			display: none;
+		}
+	}
+
+	.cs-sheet-more {
+		display: none;
+	}
+}
+
+@media only screen and (min-width: 56.25rem) {
+	.cs-sheet {
+		padding: (36/16rem) (40/16rem) (40/16rem);
+		gap: (18/16rem);
+	}
+
+	.cs-sheet-head.cs-sheet-head-split {
+		grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+		align-items: start;
+		gap: (32/16rem);
+	}
+
+	.cs-sheet-stats {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: (18/16rem);
+	}
+
+	.cs-sheet-box {
+		padding: (24/16rem) (26/16rem);
+	}
+
+	.cs-sheet-categories {
+		grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+		gap: (32/16rem);
+	}
+
+	.cs-sheet-takeaways {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: (18/16rem);
+
+		> div {
+			padding: (20/16rem) (22/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---  The report: margin notes  -->
+<--- -------------------------- -*/
+
+@media only screen and (min-width: 0rem) {
+	#report {
+		background-color: var(--offWhite);
+
+		.cs-head {
+			max-width: (720/16rem);
+			display: grid;
+			gap: (16/16rem);
+		}
+
+		.cs-section-text {
+			margin: 0;
+		}
+
+		.cs-report-layout {
+			margin-top: (40/16rem);
+			display: grid;
+			gap: (24/16rem);
+		}
+
+		.cs-sheet {
+			max-width: none;
+			margin: 0;
+			border: 1px solid #e3e6e8;
+			box-shadow: 0 24px 60px rgba(13, 13, 13, 0.08);
+		}
+
+		/* phones: no notes */
+		.cs-notes {
+			display: none;
+		}
+
+		.cs-actions-center {
+			margin-top: (40/16rem);
+			display: flex;
+			justify-content: center;
+		}
+	}
+}
+
+@media only screen and (min-width: 43.75rem) {
+	#report {
+		.cs-notes {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			gap: (18/16rem);
+
+			li {
+				font-size: (14/16rem);
+				line-height: 1.55;
+				color: var(--charcoal);
+				display: grid;
+				gap: (4/16rem);
+			}
+
+			b {
+				font-size: (14/16rem);
+				font-weight: 700;
+				color: var(--nearBlack);
+			}
+		}
+
+		.cs-notes-right {
+			order: 3;
+		}
+	}
+}
+
+/* 1280px: notes in the margins, with a short rule pointing at the sheet */
+@media only screen and (min-width: 80rem) {
+	#report {
+		.cs-report-layout {
+			margin-top: (56/16rem);
+			grid-template-columns: (160/16rem) minmax(0, 1fr) (160/16rem);
+			align-items: start;
+			gap: (28/16rem);
+		}
+
+		.cs-notes {
+			padding-top: (140/16rem);
+			position: sticky;
+			top: (120/16rem);
+			gap: (120/16rem);
+
+			li {
+				position: relative;
+
+				&::after {
+					content: "";
+					width: (24/16rem);
+					height: 1px;
+					background-color: var(--nearBlack);
+					position: absolute;
+					top: (9/16rem);
+				}
+			}
+		}
+
+		.cs-notes-right {
+			order: 0;
+		}
+
+		.cs-notes-left li::after {
+			right: (-30/16rem);
+		}
+
+		.cs-notes-right li::after {
+			left: (-30/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---          Pricing           -->
+<--- -------------------------- -*/
+
+@media only screen and (min-width: 0rem) {
+	#pricing {
+		background-color: var(--offWhite);
+
+		.cs-section-text {
+			max-width: (620/16rem);
+		}
+
+		.cs-price-cards {
+			margin-top: (40/16rem);
+			display: grid;
+			gap: (12/16rem);
+		}
+
+		.cs-price-card {
+			padding: (32/16rem) (28/16rem);
+			border-radius: (40/16rem);
+			background-color: var(--white);
+			display: grid;
+			align-content: start;
+			gap: (10/16rem);
+		}
+
+		.cs-price-title {
+			/* 36px - 52px */
+			font-size: clamp(2.25rem, 3.4vw, 3.25rem);
+			line-height: 0.9;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-price-text {
+			font-size: (15/16rem);
+			line-height: 1.55;
+			margin: 0;
+			color: var(--charcoal);
+		}
+
+		.cs-prices {
+			list-style: none;
+			margin: (14/16rem) 0 0;
+			padding: 0;
+			display: grid;
+			gap: (10/16rem);
+
+			li {
+				padding: (14/16rem) (18/16rem);
+				border-radius: (20/16rem);
+				background-color: var(--offWhite);
+				display: flex;
+				align-items: baseline;
+				justify-content: space-between;
+				gap: (16/16rem);
+			}
+
+			span {
+				font-size: (15/16rem);
+				font-weight: 700;
+			}
+
+			b {
+				font-family: var(--headerFont);
+				font-size: (36/16rem);
+				font-weight: 400;
+				line-height: 1;
+				letter-spacing: 0.5px;
+			}
+		}
+
+		.cs-price-note {
+			margin-top: (4/16rem);
+			font-size: (13/16rem);
+			color: var(--mutedText);
+		}
+
+		.cs-price-dark {
+			background-color: var(--nearBlack);
+			color: var(--white);
+
+			.cs-price-title {
+				color: var(--white);
+			}
+
+			.cs-price-text,
+			.cs-price-note {
+				color: #c9ced1;
+			}
+
+			.cs-prices li {
+				background-color: var(--nearBlackSoft);
+				color: var(--white);
+			}
+
+			.cs-prices b {
+				color: var(--revibeGreen);
+			}
+		}
+
+		.cs-price-blocks-title {
+			/* 32px - 44px */
+			font-size: clamp(2rem, 3vw, 2.75rem);
+			line-height: 0.9;
+			margin: (48/16rem) 0 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-price-blocks {
+			list-style: none;
+			margin: (20/16rem) 0 0;
+			padding: 0;
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: (10/16rem);
+		}
+
+		.cs-price-block {
+			padding: (18/16rem) (14/16rem);
+			border-radius: (28/16rem);
+			background-color: var(--white);
+			position: relative;
+			display: grid;
+			align-content: start;
+			gap: (4/16rem);
+
+			b {
+				font-size: (16/16rem);
+				line-height: 1.2;
+				margin-top: (10/16rem);
+			}
+
+			small {
+				font-size: (13/16rem);
+				color: var(--charcoal);
+			}
+		}
+
+		.cs-price-figure {
+			color: var(--nearBlack);
+			font-family: var(--headerFont);
+			/* 52px - 96px */
+			font-size: clamp(3.25rem, 6vw, 6rem);
+			line-height: 0.85;
+		}
+
+		.cs-price-unit {
+			font-family: var(--headerFont);
+			font-size: (18/16rem);
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+		}
+
+		.cs-price-popular {
+			background-color: var(--revibeGreen);
+
+			small {
+				color: var(--nearBlack);
+			}
+		}
+
+		/* phones: no room for the tag */
+		.cs-price-tag {
+			display: none;
+		}
+
+		.cs-actions {
+			margin-top: (32/16rem);
+		}
+	}
+}
+
+@media only screen and (min-width: 43.75rem) {
+	#pricing .cs-price-tag {
+		padding: (5/16rem) (10/16rem);
+		border-radius: 999px;
+		background-color: var(--nearBlack);
+		font-size: (11/16rem);
+		font-weight: 700;
+		color: var(--white);
+		position: absolute;
+		top: (14/16rem);
+		right: (14/16rem);
+		display: block;
+	}
+
+	#pricing .cs-price-block {
+		padding: (22/16rem) (16/16rem) (20/16rem);
+	}
+}
+
+@media only screen and (min-width: 56.25rem) {
+	#pricing {
+		.cs-price-cards {
+			margin-top: (56/16rem);
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: (16/16rem);
+		}
+
+		.cs-price-card {
+			padding: (44/16rem) (40/16rem);
+			border-radius: (48/16rem);
+		}
+
+		.cs-price-blocks {
+			gap: (16/16rem);
+		}
+
+		.cs-price-block {
+			padding: (36/16rem) (32/16rem);
+			border-radius: (40/16rem);
+
+			b {
+				font-size: (20/16rem);
+			}
+
+			small {
+				font-size: (14/16rem);
+			}
+		}
+
+		.cs-price-tag {
+			padding: (6/16rem) (12/16rem);
+			font-size: (12/16rem);
+			top: (24/16rem);
+			right: (24/16rem);
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---      Call us pop-up        -->
+<--- -------------------------- -*/
+
+.cs-call {
+	width: min((440/16rem), calc(100vw - 2rem));
+	padding: 0;
+	border: 0;
+	border-radius: (32/16rem);
+	background-color: var(--white);
+	color: var(--nearBlack);
+	box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+
+	&::backdrop {
+		background-color: rgba(14, 14, 14, 0.6);
+	}
+
+	.cs-call-inner {
+		padding: (32/16rem) (28/16rem) (28/16rem);
+		position: relative;
+	}
+
+	.cs-call-title {
+		font-size: (40/16rem);
+		line-height: 0.95;
+		margin: 0;
+		color: var(--nearBlack);
+	}
+
+	.cs-call-text {
+		font-size: (15/16rem);
+		margin: (8/16rem) 0 0;
+		color: #4a5257;
+	}
+
+	.cs-call-close {
+		width: (44/16rem);
+		height: (44/16rem);
+		border: 0;
+		border-radius: 50%;
+		background-color: var(--offWhite);
+		color: var(--nearBlack);
+		cursor: pointer;
+		position: absolute;
+		top: (14/16rem);
+		right: (14/16rem);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		svg {
+			width: (20/16rem);
+			height: (20/16rem);
+		}
+	}
+
+	.cs-call-list {
+		list-style: none;
+		margin: (22/16rem) 0 0;
+		padding: 0;
+		display: grid;
+		gap: (10/16rem);
+
+		a {
+			padding: (16/16rem) (16/16rem) (16/16rem) (20/16rem);
+			border-radius: (24/16rem);
+			background-color: var(--offWhite);
+			color: var(--nearBlack);
+			text-decoration: none;
+			display: flex;
+			align-items: center;
+			gap: (16/16rem);
+			transition:
+				background-color 0.2s ease,
+				color 0.2s ease;
+
+			&:hover,
+			&:focus-visible {
+				background-color: var(--nearBlack);
+				color: var(--white);
+				outline: none;
+
+				small {
+					color: #c9ced1;
+				}
+			}
+		}
+
+		span {
+			flex-grow: 1;
+			display: grid;
+			gap: (3/16rem);
+		}
+
+		b {
+			font-family: var(--headerFont);
+			font-size: (26/16rem);
+			font-weight: 400;
+			line-height: 1;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+		}
+
+		small {
+			font-size: (13/16rem);
+			color: var(--mutedText);
+		}
+
+		em {
+			font-size: (15/16rem);
+			font-style: normal;
+			font-weight: 700;
+			margin-top: (4/16rem);
+		}
+
+		i {
+			width: (44/16rem);
+			height: (44/16rem);
+			flex: none;
+			border-radius: 50%;
+			background-color: var(--revibeGreen);
+			color: var(--nearBlack);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			svg {
+				width: (20/16rem);
+				height: (20/16rem);
+			}
+		}
+	}
+}
+
+/*-- -------------------------- -->
+<---  Sticky bar: one button    -->
+<--- -------------------------- -*/
+
+@media only screen and (min-width: 0rem) {
+	.cs-sticky-book.cs-sticky-solo {
+		padding: (8/16rem);
+
+		.cs-button-solid {
+			flex: 1;
+			justify-content: center;
+			text-align: center;
+		}
+	}
+}
+
+/*-- ----------------------------------------- -->
+<---  Phones (under 700px): shorter, sideways  -->
+<--- ----------------------------------------- -*/
+
+@media only screen and (max-width: 43.6875rem) {
+	#goals,
+	#how,
+	#report,
+	#athletes,
+	#pricing,
+	#blocks,
+	#why,
+	#final,
+	#train-locations {
+		padding-top: (56/16rem);
+		padding-bottom: (56/16rem);
+	}
+
+	/* blocks, "why" cards and reviews scroll sideways */
+	#blocks .cs-blocks,
+	#why .cs-why,
+	#athletes .cs-reviews {
+		margin-left: (-20/16rem);
+		margin-right: (-20/16rem);
+		padding: (12/16rem) (20/16rem) (8/16rem);
+		display: flex;
+		gap: (12/16rem);
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		scrollbar-width: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		> li {
+			width: 80%;
+			flex: none;
+			scroll-snap-align: start;
+			scroll-margin-left: (20/16rem);
+		}
+	}
+
+	#why .cs-why li {
+		min-height: 0;
+	}
+}

@@ -8,7 +8,7 @@ module.exports = {
     text: "Here is the plan, week by week. How often you come in, what changes, and when walking, running and getting out of the car feel easy again.",
     requestService: "Physiotherapy",
     requestMessage: "Hip pain",
-    proof: "from 600+ reviews. No referral needed. We bill most insurers directly.",
+    proof: "from 700+ reviews. No referral needed. We bill most insurers directly.",
     ask: "Where does it hurt? Tap a spot.",
     problemsLabel: "Common hip problems",
     problems: [
@@ -237,12 +237,12 @@ module.exports = {
         text: "Real Google reviews from clients we have treated, and the people you could see for your hip.",
         quotes: [
             {
-                text: "I've been working with RMT Kyle for a while now to deal with a nagging groin injury. Kyle has been able help me heal my injury with his incredible massages and has given me exercises on how to loosen up my groin.",
-                name: "Noel",
-                meta: "Google review, saw Kyle Sunga"
+                text: "Winson Cheong (RMT) got me running pain free again in just a couple of weeks! He combined different types of treatments and even adapted and re-wrote my marathon plan to help me get back on the road in time for my race.",
+                name: "Shiyamala D.",
+                meta: "Google review, saw Winson Cheong"
             }
         ],
-        members: ["scott-french", "mitalee-dalvi", "anesto-charles", "kyle-sunga"]
+        members: ["scott-french", "mitalee-dalvi", "anesto-charles"]
     },
     longTitle: false
 };

@@ -10,7 +10,7 @@ module.exports = {
     },
     hero: {
         title: "Team combine",
-        text: "A testing day for your whole team. Force plate jumps, acceleration, agility and strength, a live leaderboard and a report for every athlete. At Revibe or at your facility.",
+        text: "A testing day for your whole team. Force plate jumps, acceleration, agility and strength, a post-event team recap and a report for every athlete. At Revibe or at your facility.",
         proof: [
             "10 to 20 athletes per session",
             "Force plates and timed drills",
@@ -18,14 +18,14 @@ module.exports = {
         ],
         images: [
             {
-                src: "/assets/images/hurt/sprint-start.jpg",
-                alt: "An athlete testing a jump on the force plates",
-                position: "center 40%"
+                src: "/assets/images/performance/tc-hero2.jpg",
+                alt: "A young player jumping on the force plates at the Raptors 905 clinic while a Revibe coach records",
+                position: "50% 12%"
             },
             {
-                src: "/assets/images/performance/goal-team.jpg",
-                alt: "An athlete on the force plates while a coach records the test",
-                position: "center 40%"
+                src: "/assets/images/performance/tc-small.jpg",
+                alt: "Zee taking an athlete through his results on a tablet",
+                position: "58% 40%"
             }
         ]
     },
@@ -38,11 +38,12 @@ module.exports = {
                 text: "A baseline before the season, and a retest to show who improved.",
                 points: [
                     "Every athlete measured the same way",
-                    "Leaderboard the team will talk about",
+                    "A recap the team will talk about",
                     "Reports for the coaching staff"
                 ],
-                image: "/assets/images/performance/goal-compete.jpg",
-                alt: "Athletes doing band resisted sprints on the track"
+                image: "/assets/images/performance/tm-aus.jpg",
+                alt: "The AUS Elite squad with Revibe staff at the clinic",
+                position: "center 45%"
             },
             {
                 id: "school",
@@ -53,8 +54,9 @@ module.exports = {
                     "Safe, coached testing",
                     "A fun, competitive day"
                 ],
-                image: "/assets/images/hurt/gym-coaching.jpg",
-                alt: "A young athlete working through a single leg drill"
+                image: "/assets/images/performance/tc-youth2.jpg",
+                alt: "Young players lined up for force plate testing while a Revibe coach records on a laptop",
+                position: "center 35%"
             },
             {
                 id: "senior",
@@ -65,8 +67,9 @@ module.exports = {
                     "Recovery lounge between stations",
                     "One combined team report"
                 ],
-                image: "/assets/images/hurt/barbell-cueing.jpg",
-                alt: "A Revibe coach cueing an athlete at the rack"
+                image: "/assets/images/performance/tm-senior.jpg",
+                alt: "A squad recovering in compression boots in the Revibe recovery lounge",
+                position: "center 45%"
             }
         ]
     },
@@ -79,54 +82,49 @@ module.exports = {
             },
             {
                 title: "Compete",
-                text: "Scores go on a live team leaderboard as they happen."
+                text: "Every athlete is scored at every station. The team rankings come in the recap after the event."
             },
             {
                 title: "Recover and debrief",
                 text: "Recovery between stations, then the results and what they mean."
             }
         ],
-        report: {
-            title: "Example leaderboard",
-            bars: [
-                {
-                    label: "Jump height",
-                    note: "Top of the roster",
-                    value: 88
-                },
-                {
-                    label: "10 metre sprint",
-                    note: "Top of the roster",
-                    value: 74
-                },
-                {
-                    label: "Agility",
-                    note: "Top of the roster",
-                    value: 66
-                }
+        // the team recap, as the same sheet as the baseline report (components/report-sheet.html)
+        sheet: {
+            id: "team-recap",
+            label: "Team recap",
+            doc: "Team recap",
+            docSub: "Combine testing",
+            name: "Team name removed",
+            pill: "18 athletes tested",
+            title: "Quick off the mark",
+            text: "A team that wins the first three steps. Sprint starts and agility are well above the benchmark, while lower body power has the most room to grow.",
+            stats: [
+                { title: "Team average vertical jump", value: "19.8", unit: "in", meta: "vs. D1 and pro benchmark: 71%" },
+                { title: "Team average 10 m sprint", value: "1.84", unit: "s", meta: "vs. D1 and pro benchmark: 82%" },
+                { title: "Athletes tested", value: "18", unit: "of 18", meta: "Every athlete gets their own report" }
             ],
-            note: "Coaches receive the leaderboard and a report for every athlete. Example only."
+            // players shown by jersey number
+            ranking: {
+                title: "Top of the roster",
+                sub: "by test",
+                rows: [
+                    { test: "Jump height", places: [["24.1 in", "#07"], ["23.0 in", "#11"], ["22.6 in", "#03"]] },
+                    { test: "10 m sprint", places: [["1.68 s", "#11"], ["1.71 s", "#05"], ["1.74 s", "#07"]] },
+                    { test: "Agility", places: [["4.62 s", "#05"], ["4.70 s", "#14"], ["4.75 s", "#11"]] }
+                ]
+            },
+            takeaways: {
+                strengthsTitle: "Team strengths",
+                strengths: [["10 m sprint", "Team average, 82%"], ["Agility", "Team average, 79%"]],
+                nextTitle: "What the team works on next",
+                next: [["Lower body power", "Team average, 64%"], ["Left and right balance", "6 athletes flagged"]]
+            },
+            note: "Coaches get this recap and a full report for every athlete after the event. Example data, shown for layout.",
+            more: "Show the full team recap"
         }
     },
-    reviews: {
-        title: "What athletes say",
-        rating: home.reviews.rating,
-        note: "600+ Google reviews across both clinics",
-        items: [
-            {
-                name: "5.0600+ Google reviews across both clinics\n      KK A.",
-                quote: "If you're on the hunt for a top-notch physiotherapist / performance coach, Zeeruk is your guy! He not only knows the ins and outs of keeping your body in tip-top shape but also adds a whole new level of fun to workouts. I found him on social media; he's posting some pretty helpful things that have genuinely elevated my fitness game. Zeeruk is the real deal!"
-            },
-            {
-                name: "Ricardo B.",
-                quote: "If you’re looking for a place to improve your self I would say this is it. From their highly skilled and knowledgeable staff to their various different facilities, private gym, sauna, cold plunge, recovery room etc. it’s a great place to be. Clean and tidy. Highly recommend"
-            },
-            {
-                name: "David G.",
-                quote: "I’ve been dealing with knee issues and Michael was incredibly helpful. He took the time to assess my situation and created a clear plan to mobilize and strengthen my knee. The difference has been night and day. He is very knowledgeable, professional and understands the struggles of athletes. Highly recommend!"
-            }
-        ]
-    },
+    // reviews removed: none were about team testing
     blocks: {
         title: "What coaches get afterwards",
         text: "A baseline for every athlete, so a second combine before next season shows who has really improved.",
@@ -138,10 +136,10 @@ module.exports = {
                 text: "Jump, speed, agility and strength, plus left and right balance."
             },
             {
-                label: "Team leaderboard",
-                figure: "Live",
-                unit: "on the day",
-                text: "Scores update as athletes test, station by station.",
+                label: "Team recap",
+                figure: "One",
+                unit: "report",
+                text: "Rankings, team averages and who to watch, sent after the event.",
                 popular: true
             },
             {
@@ -183,7 +181,7 @@ module.exports = {
         items: [
             {
                 q: "What is a team combine?",
-                a: "A testing day for a whole team. Every athlete is measured on force plates and in timed drills for jump, acceleration, agility and strength, the scores go on a team leaderboard as they happen, and each athlete gets an individual performance report afterwards. It is the same testing professional and varsity programs use, run for your team at a Revibe clinic or at your own facility."
+                a: "A testing day for a whole team. Every athlete is measured on force plates and in timed drills for jump, acceleration, agility and strength, and after the event coaches get a team recap and each athlete gets an individual performance report. It is the same testing professional and varsity programs use, run for your team at a Revibe clinic or at your own facility."
             },
             {
                 q: "How much does the team combine cost?",
@@ -195,7 +193,7 @@ module.exports = {
             },
             {
                 q: "How many athletes can take part?",
-                a: "Between 10 and 20 athletes, plus coaches. That is the size where every athlete gets properly tested and the leaderboard still means something. A larger roster can be split across two sessions."
+                a: "Between 10 and 20 athletes, plus coaches. That is the size where every athlete gets properly tested and the team recap still means something. A larger roster can be split across two sessions."
             },
             {
                 q: "Which sports and age groups is it for?",
@@ -211,7 +209,7 @@ module.exports = {
             },
             {
                 q: "What do coaches receive afterwards?",
-                a: "An individual performance report for every athlete and the team leaderboard, sent to the coaching staff. The reports give you a baseline for each athlete, so a second combine before next season shows who has actually improved."
+                a: "An individual performance report for every athlete and the team recap, sent to the coaching staff. The reports give you a baseline for each athlete, so a second combine before next season shows who has actually improved."
             },
             {
                 q: "What should athletes wear and bring?",
@@ -226,5 +224,6 @@ module.exports = {
     locations: {
         title: "Where can I train?"
     },
+    cta: { text: "Get your team tested and coached" },
     stickyLabel: "Team combine"
 };

@@ -18,7 +18,6 @@
         <div class="cs-map">
             {% include "components/care-map-svg.html" %}
             <div class="cs-pop" id="care-map-pop" role="dialog" hidden></div>
-            <p class="cs-hint">Tap a circle to see what it means.</p>
             <!-- Popup content, copied into .cs-pop by care-map.js -->
             {% for key, node in careMap.nodes %}
             <template data-node="{{ key }}">

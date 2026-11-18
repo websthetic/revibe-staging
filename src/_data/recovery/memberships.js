@@ -7,7 +7,7 @@ module.exports = {
         title: "Cold plunge and sauna memberships",
         text: "Two memberships, two terms, and both continue month to month with no cancellation fee after the initial commitment. Use them at every Revibe clinic.",
         proofBold: "From $79 a month",
-        proof: "on a 6-month term, or $30 for a single session. 600+ five star reviews.",
+        proof: "on a 6-month term, or $30 for a single session. 700+ five star reviews.",
         images: [
             { src: "/assets/images/services/recovery.jpg", alt: "A guest sitting calmly in the cold plunge at Revibe", position: "center 75%" },
             { src: "/assets/images/recovery/sauna-solo.jpg", alt: "A guest alone in the infrared sauna", position: "center 45%" },
@@ -84,7 +84,7 @@ module.exports = {
     reviews: {
         title: "What do members say about the cold plunge and sauna?",
         rating: "5.0",
-        count: "600+",
+        count: "700+",
         allLabel: "Read every review on Google",
         items: [
             { name: "Charla C.", initials: "CC", quote: "It’s my first time ever trying out an infrared sauna and I am loving every second of it. The privacy is another great part no one bothers you or interrupts you completely private and rejuvenating. The cold water plunge is no joke but after awhile your body really gets use it and the benefits are endless. Your body really feels amazing afterwards. Especially if you have muscle soreness, tightness and or inflammation." },

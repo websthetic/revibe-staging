@@ -1,0 +1,78 @@
+---
+title: "Locations | Revibe | Mississauga and Markham"
+description: "Revibe has two clinics: Mississauga at 2290 Dixie Rd and Markham at 220 Torbay Rd. Addresses, hours, phone numbers, services and booking for each."
+permalink: "/locations/"
+# same address as the old site. Everything comes from _data/clinics.js, so a clinic's details change here
+# when they change there. Styles: assets/less/info-page.less (hero) and assets/less/locations-hub.less.
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/info-page.css">
+    <link rel="stylesheet" href="/assets/css/locations-hub.css">
+{% endblock %}
+
+{% block body %}
+
+    <!-- ============================================ -->
+    <!--                    Hero                      -->
+    <!-- ============================================ -->
+
+    <section id="info-hero" aria-labelledby="info-hero-title">
+        <div class="cs-container">
+            <h1 class="cs-title" id="info-hero-title">Our <span class="cs-accent">locations</span></h1>
+            <p class="cs-text">Two clinics, one standard of care. Book at whichever is closer, and your plan works at both.</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                   Clinics                    -->
+    <!-- ============================================ -->
+
+    <section id="hub-clinics" aria-label="Revibe clinics">
+        <div class="cs-container">
+            {% for clinic in clinics %}
+            <article class="cs-clinic" id="{{ clinic.key }}" aria-labelledby="hub-{{ clinic.key }}">
+                <div class="cs-picture">
+                    <img src="{% getUrl clinic.image | resize({ width: 1200 }) | webp %}" alt="{{ clinic.alt }}" width="{{ clinic.width }}" height="{{ clinic.height }}" {% if loop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+                </div>
+                <div class="cs-details">
+                    <h2 class="cs-name" id="hub-{{ clinic.key }}">{{ clinic.name }}</h2>
+                    <p class="cs-intro">{{ clinic.intro }}</p>
+                    <ul class="cs-contact">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>{{ clinic.address }}</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg>
+                            <a href="tel:{{ clinic.phoneForTel }}">{{ clinic.phone }}</a>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            <span>{{ clinic.hours | join("<br>") | safe }}</span>
+                        </li>
+                    </ul>
+                    <p class="cs-travel">{{ clinic.travel }}</p>
+                    <div class="cs-buttons">
+                        <a href="{{ clinic.janeUrl }}" class="cs-button-solid" rel="noopener">Book in {{ clinic.name }}</a>
+                        <a href="{{ clinic.pageUrl }}" class="cs-button-outline">View the clinic</a>
+                        <a href="{{ clinic.mapsUrl }}" class="cs-button-outline" rel="noopener">Get directions</a>
+                    </div>
+                    <p class="cs-label">Services at this clinic</p>
+                    <ul class="cs-services" aria-label="Services in {{ clinic.name }}">
+                        {% for service in clinic.services %}<li><a class="cs-pill" href="{{ service.url }}">{{ service.label }}</a></li>{% endfor %}
+                    </ul>
+                    {% if clinic.nearby %}
+                    <p class="cs-label">{{ clinic.nearby.title }}</p>
+                    {# plain text until the neighbourhood pages exist; their links in clinics.js are still "/" #}
+                    <p class="cs-areas">{% for area in clinic.nearby.areas %}{{ area.label }}{% if not loop.last %}, {% endif %}{% endfor %}. {{ clinic.nearby.also }}</p>
+                    {% endif %}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}

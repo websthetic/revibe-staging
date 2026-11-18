@@ -1,0 +1,31 @@
+---
+title: "Frequently Asked Questions | Revibe | Mississauga and Markham"
+description: "Answers to common questions about Revibe: booking your first session, what to expect, insurance and direct billing, payment, cancellations and memberships."
+permalink: "/faq/"
+# same address as the old site. The questions come from _data/clinicFaq.js, the FAQ the two clinic pages use,
+# so an answer changed there changes here too. Styles: assets/less/info-page.less (hero) and global.less (.cs-faq-section).
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/info-page.css">
+{% endblock %}
+
+{% block body %}
+
+    <!-- ============================================ -->
+    <!--                    Hero                      -->
+    <!-- ============================================ -->
+
+    <section id="info-hero" aria-labelledby="info-hero-title">
+        <div class="cs-container">
+            <h1 class="cs-title" id="info-hero-title">Frequently asked <span class="cs-accent">questions</span></h1>
+            <p class="cs-text">Booking, your first session, insurance and payment, answered the way we would answer them at the front desk.</p>
+        </div>
+    </section>
+
+    {% set faq = { title: "Before you book", text: "Still not sure? Call Revibe Mississauga at (905) 783-8423, Revibe Markham at (289) 806-5123, or email hello@revibeto.com.", items: clinicFaq.items } %}
+    {% include "components/faq.html" %}
+
+{% endblock %}

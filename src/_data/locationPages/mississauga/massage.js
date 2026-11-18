@@ -95,12 +95,11 @@ module.exports = {
         text: "Every Revibe registered massage therapist is registered with their college. Pick a practitioner when you book, and you see the same person for your whole plan.",
         members: [
             "rachel-murray",
-            "kyle-sunga",
             "winson-cheong",
             "gauri-khandke",
             "vincent-nguyen",
-            "joseph-de-leon",
-            "angelii-mercurius"
+            "angelii-mercurius",
+            "jennifer-macpherson"
         ]
     },
     billing: true,

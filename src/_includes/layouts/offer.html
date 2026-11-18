@@ -124,6 +124,7 @@
     <!--                   Reviews                    -->
     <!-- ============================================ -->
 
+    {% if o.reviews %}
     {% set rv = o.reviews %}
     <section id="service-reviews" class="cs-section" aria-labelledby="service-reviews-title">
         <div class="cs-container">
@@ -151,6 +152,7 @@
             </ul>
         </div>
     </section>
+    {% endif %}
 
     <!-- phones: the offer stays pinned to the bottom of the screen -->
     <div class="cs-claimbar">

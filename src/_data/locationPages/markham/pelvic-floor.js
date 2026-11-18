@@ -142,6 +142,6 @@ module.exports = {
     otherLabel: "Pelvic floor physiotherapy in Mississauga",
     allAbout: {
         label: "All about pelvic floor physiotherapy",
-        url: "/"
+        url: "/services/pelvic-physiotherapy/"
     }
 };

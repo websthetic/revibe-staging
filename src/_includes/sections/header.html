@@ -75,7 +75,7 @@
                         </a>
                     </li>
                     <li class="cs-li cs-dropdown">
-                        <button class="cs-li-link cs-dropdown-toggle {% if page.url.startsWith("/about/") or page.url == "/about-us/" or page.url.startsWith("/join-our-team/") or page.url.startsWith("/therapists/") or page.url == "/contact-us/" %} cs-active {% endif %}" aria-haspopup="menu" aria-expanded="false" id="about-dropdown-toggle">
+                        <button class="cs-li-link cs-dropdown-toggle {% if page.url.startsWith("/about/") or page.url == "/about-us/" or page.url == "/community/" or page.url.startsWith("/join-our-team/") or page.url.startsWith("/therapists/") or page.url == "/contact-us/" %} cs-active {% endif %}" aria-haspopup="menu" aria-expanded="false" id="about-dropdown-toggle">
                             About
                             <img class="cs-drop-icon" src="/assets/svgs/nav-chevron.svg" alt="" width="12" height="12" decoding="async" aria-hidden="true">
                         </button>
@@ -119,7 +119,7 @@
                             <summary class="cs-acc-row">Locations<span class="cs-acc-icon" aria-hidden="true"></span></summary>
                             <div class="cs-acc-panel">
                                 <ul class="cs-acc-list">
-                                    {% for link in navigation.locations %}
+                                    {% for link in navigation.locations.concat([navigation.locationsAll]) %}
                                     <li><a href="{{ link.url }}" class="cs-acc-link" {% if link.url != "/" and page.url == link.url %} aria-current="page" {% endif %}>{{ link.label }}</a></li>
                                     {% endfor %}
                                 </ul>
@@ -156,7 +156,7 @@
                     </div>
                     <div class="cs-mobile-bar">
                         <a href="{{ navigation.services.promo.url }}" class="cs-bar-button" data-caremap aria-haspopup="dialog">Care Map</a>
-                        <a href="tel:{{ client.phoneForTel }}" class="cs-bar-button">Call</a>
+                        <a href="tel:{{ client.phoneForTel }}" class="cs-bar-button"{% if trainingPage %} data-call aria-haspopup="dialog"{% endif %}>Call</a>
                         <a href="{{ navigation.book.url }}" class="cs-bar-button cs-bar-book" data-book aria-haspopup="dialog">Book</a>
                     </div>
                 </div>
@@ -164,7 +164,8 @@
         </nav>
         <div class="cs-nav-actions">
             <a href="{{ navigation.services.promo.url }}" class="cs-nav-caremap" data-caremap aria-haspopup="dialog">Take the Care Map</a>
-            <a href="tel:{{ client.phoneForTel }}" class="cs-nav-phone" aria-label="Call us at {{ client.phoneFormatted }}">
+            {# on the performance pages the phone opens the "Call us" pop-up with both clinics (call-us.js) #}
+            <a href="tel:{{ client.phoneForTel }}" class="cs-nav-phone"{% if trainingPage %} data-call aria-haspopup="dialog" aria-label="Call us"{% else %} aria-label="Call us at {{ client.phoneFormatted }}"{% endif %}>
                 <img src="/assets/svgs/phone.svg" alt="" width="20" height="20" aria-hidden="true" decoding="async">
             </a>
             <a href="{{ navigation.book.url }}" class="cs-button-solid cs-nav-button" data-book aria-haspopup="dialog">{{ navigation.book.label }}</a>

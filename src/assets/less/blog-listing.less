@@ -1,0 +1,379 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// BLOG LISTING
+// /blogs/ (content/pages/blogs.html): the newest post as a wide card, then a grid of the rest.
+// Posts live in content/blog/.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/*-- -------------------------- -->
+<---           Hero             -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#blog-hero {
+		/* 80px fixed nav + 40px */
+		padding: calc(5rem + 2.5rem) (20/16rem) (56/16rem);
+		background-color: var(--nearBlack);
+
+		.cs-container {
+			width: 100%;
+			max-width: (1280/16rem);
+			margin: auto;
+		}
+
+		.cs-title {
+			/* 56px - 140px */
+			font-size: clamp(3.5rem, 10vw, 8.75rem);
+			line-height: 0.86;
+			max-width: none;
+			margin: 0;
+			color: var(--white);
+		}
+
+		.cs-accent {
+			color: var(--revibeGreen);
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#blog-hero {
+		padding: calc(5rem + 4rem) (40/16rem) (72/16rem);
+	}
+}
+
+/*-- -------------------------- -->
+<---          Listing           -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#blog-listing {
+		padding: (40/16rem) (20/16rem) clamp(4rem, 8vw, 7.5rem);
+		background-color: var(--offWhite);
+
+		.cs-container {
+			width: 100%;
+			max-width: (1280/16rem);
+			margin: auto;
+		}
+
+		.cs-empty {
+			font-size: (17/16rem);
+			margin: 0;
+			color: var(--charcoal);
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		.cs-picture {
+			background-color: var(--softBeige);
+			overflow: hidden;
+			position: relative;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+				transition: transform 0.6s cubic-bezier(0.3, 0.8, 0.2, 1);
+			}
+		}
+
+		/* ---------- the newest post ---------- */
+
+		.cs-featured {
+			border-radius: (36/16rem);
+			background-color: var(--white);
+			color: var(--nearBlack);
+			display: grid;
+			overflow: hidden;
+
+			.cs-picture {
+				aspect-ratio: 16 / 9;
+			}
+
+			&:hover .cs-picture img {
+				transform: scale(1.04);
+			}
+
+			&:hover .cs-read {
+				color: var(--revibeGreenOnLight);
+			}
+
+			&:focus-visible {
+				outline: 3px solid var(--nearBlack);
+				outline-offset: 3px;
+			}
+		}
+
+		.cs-content {
+			padding: (28/16rem) (24/16rem) (32/16rem);
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: (14/16rem);
+		}
+
+		.cs-label {
+			font-family: var(--headerFont);
+			font-size: (18/16rem);
+			line-height: 1;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			padding: (8/16rem) (12/16rem) (6/16rem);
+			border-radius: (999/16rem);
+			background-color: var(--revibeGreen);
+			color: var(--nearBlack);
+		}
+
+		.cs-content .cs-title {
+			/* 30px - 52px */
+			font-size: clamp(1.875rem, 3.6vw, 3.25rem);
+			line-height: 0.92;
+			max-width: none;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-text {
+			font-size: (15/16rem);
+			line-height: 1.6;
+			margin: 0;
+			color: var(--charcoal);
+			display: -webkit-box;
+			-webkit-line-clamp: 3;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+
+		.cs-meta {
+			font-size: (14/16rem);
+			font-weight: 600;
+			margin: 0;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: (10/16rem);
+			color: var(--mutedText);
+		}
+
+		.cs-dot {
+			width: (4/16rem);
+			height: (4/16rem);
+			border-radius: 50%;
+			background-color: currentColor;
+		}
+
+		.cs-read {
+			font-size: (15/16rem);
+			font-weight: 700;
+			margin-top: (6/16rem);
+			padding-bottom: (2/16rem);
+			border-bottom: 2px solid var(--revibeGreen);
+			display: inline-flex;
+			align-items: center;
+			gap: (8/16rem);
+			color: var(--nearBlack);
+			transition: color 0.3s;
+		}
+
+		/* ---------- every other post ---------- */
+
+		.cs-grid-head {
+			margin: clamp(3rem, 6vw, 4.5rem) 0 (24/16rem);
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			gap: (16/16rem);
+		}
+
+		.cs-grid-title {
+			/* 40px - 72px */
+			font-size: clamp(2.5rem, 5vw, 4.5rem);
+			line-height: 0.9;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-count {
+			font-size: (14/16rem);
+			font-weight: 700;
+			color: var(--mutedText);
+		}
+
+		.cs-cards {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			gap: (16/16rem);
+		}
+
+		.cs-item {
+			display: flex;
+		}
+
+		.cs-card {
+			width: 100%;
+			border-radius: (28/16rem);
+			background-color: var(--white);
+			color: var(--nearBlack);
+			display: flex;
+			flex-direction: column;
+			overflow: hidden;
+			transition: transform 0.3s;
+
+			.cs-picture {
+				aspect-ratio: 8 / 5;
+			}
+
+			&:hover {
+				transform: translateY(-4px);
+
+				.cs-picture img {
+					transform: scale(1.05);
+				}
+
+				.cs-arrow {
+					background-color: var(--revibeGreen);
+					color: var(--nearBlack);
+				}
+			}
+
+			&:focus-visible {
+				outline: 3px solid var(--nearBlack);
+				outline-offset: 3px;
+			}
+		}
+
+		.cs-category {
+			font-family: var(--headerFont);
+			font-size: (16/16rem);
+			line-height: 1;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			padding: (7/16rem) (11/16rem) (5/16rem);
+			border-radius: (999/16rem);
+			background-color: var(--nearBlack);
+			color: var(--revibeGreen);
+			position: absolute;
+			top: (14/16rem);
+			left: (14/16rem);
+		}
+
+		.cs-body {
+			padding: (22/16rem) (22/16rem) (20/16rem);
+			display: flex;
+			flex-direction: column;
+			gap: (10/16rem);
+			/* the footer sits at the bottom of every card */
+			flex: 1;
+		}
+
+		.cs-card-title {
+			/* 26px - 32px */
+			font-size: clamp(1.625rem, 2.2vw, 2rem);
+			line-height: 0.95;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-card-text {
+			font-size: (14/16rem);
+			line-height: 1.55;
+			margin: 0;
+			color: var(--charcoal);
+			display: -webkit-box;
+			-webkit-line-clamp: 3;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+
+		.cs-card-foot {
+			margin-top: auto;
+			padding-top: (10/16rem);
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.cs-date {
+			font-size: (13/16rem);
+			font-weight: 600;
+			color: var(--mutedText);
+		}
+
+		.cs-arrow {
+			width: (36/16rem);
+			height: (36/16rem);
+			border-radius: 50%;
+			background-color: var(--nearBlack);
+			color: var(--white);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex: none;
+			transition:
+				background-color 0.3s,
+				color 0.3s;
+		}
+	}
+}
+
+/* Tablet - 700px */
+@media only screen and (min-width: 43.75rem) {
+	#blog-listing .cs-cards {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#blog-listing {
+		padding: (56/16rem) (40/16rem) (120/16rem);
+
+		/* picture beside the text */
+		.cs-featured {
+			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+			border-radius: (36/16rem);
+
+			/* the photo fills its half; the text sets the card's height */
+			.cs-picture {
+				aspect-ratio: auto;
+				min-height: (440/16rem);
+
+				/* out of the flow, so a tall photo can't stretch the card */
+				img {
+					position: absolute;
+					inset: 0;
+				}
+			}
+		}
+
+		.cs-content {
+			padding: (48/16rem) (48/16rem);
+			justify-content: center;
+		}
+	}
+}
+
+/* Desktop - 1100px */
+@media only screen and (min-width: 68.75rem) {
+	#blog-listing .cs-cards {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: (20/16rem);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#blog-listing {
+		.cs-picture img,
+		.cs-card {
+			transition: none;
+		}
+	}
+}

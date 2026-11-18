@@ -7,7 +7,7 @@ module.exports = {
         title: "Sleep and energy",
         text: "A naturopathic program that looks for the reason you are tired, rather than handing you another supplement and hoping. At every Revibe clinic.",
         proofBold: "5.0 on Google",
-        proof: "from 600+ reviews. Most extended health plans cover naturopathic care, and we direct bill.",
+        proof: "from 700+ reviews. Most extended health plans cover naturopathic care, and we direct bill.",
         buttons: [
             {
                 label: "Book a free consultation",
@@ -31,8 +31,8 @@ module.exports = {
                 position: "60% 40%"
             },
             {
-                src: "/assets/images/naturopathic/fit-tang.jpg",
-                alt: "Dr. Jennifer Tang, naturopathic doctor, holding a tincture bottle",
+                src: "/assets/images/naturopathic/lisbeth-kitchen-6951.jpg",
+                alt: "Lisbeth Bitar Patino, naturopathic doctor, preparing food in a kitchen",
                 position: "center 30%"
             }
         ]
@@ -95,33 +95,10 @@ module.exports = {
         title: "Who will treat me?",
         text: "Two naturopathic doctors, in person at any Revibe clinic or virtually. You see the same naturopathic doctor from the consult through every follow-up.",
         members: [
-            "jennifer-tang",
             "lisbeth-bitar-patino"
         ]
     },
-    reviews: {
-        title: "What do clients say about naturopathic medicine at Revibe?",
-        rating: "5.0",
-        count: "600+",
-        allLabel: "Read every review on Google",
-        items: [
-            {
-                name: "laura B.",
-                initials: "LB",
-                quote: "Dr. Jennifer Tang is absolutely amazing, she has changed my way of living. I feel like a whole new person after taking all her recommendations. She made me understand the benefits of seeing a naturopathic doctor and it has paid off!"
-            },
-            {
-                name: "Rose A.",
-                initials: "RA",
-                quote: "I personally saw Dr. Jennifer tang for my gut health problems. She helped me control my condition so I can have more flexibility with my diet. The acupuncture and cupping was very safe, sanitary and effective."
-            },
-            {
-                name: "Umar Q.",
-                initials: "UQ",
-                quote: "I just started seeing Dr. Jennifer Tang who is a naturopath and she has been extremely helpful in coming up with a plan to address gut issues I have been experiencing. Not only is she very knowledgeable, she is clearly someone who cares about her patients and continuously checks up on them, which is greatly appreciated. Her acupuncture treatments have also started to make a difference in my life."
-            }
-        ]
-    },
+    // reviews return once Lisbeth has her own (every ND review named a clinician who has left)
     statement: {
         image: "/assets/images/osteopathy/statement-plunge.jpg",
         alt: "A hand trailing through the cold plunge water",

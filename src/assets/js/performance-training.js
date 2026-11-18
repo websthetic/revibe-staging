@@ -1,4 +1,4 @@
-// Performance training: the goal tabs and the example report bars.
+// Performance pages: goal tabs (team pages) and the "Show the full report" button on phones.
 (() => {
 	// Tabs, with arrow-key movement between them (the standard tab pattern)
 	document.querySelectorAll("#goals .cs-tabs").forEach((tabs) => {
@@ -23,18 +23,15 @@
 		});
 	});
 
-	// the bars fill in once the report is on screen
-	const report = document.querySelector("#how .cs-report");
-	if (!report) return;
-	if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-	report.classList.add("cs-animate");
-	const observer = new IntersectionObserver(
-		(entries) => {
-			if (!entries[0].isIntersecting) return;
-			report.classList.add("cs-in-view");
-			observer.disconnect();
-		},
-		{ threshold: 0.3 },
-	);
-	observer.observe(report);
+	// Report sheets are clipped on phones (CSS, under 700px); the button under each shows the rest
+	document.querySelectorAll(".cs-sheet-more button").forEach((button) => {
+		button.addEventListener("click", () => {
+			const sheet = document.getElementById(button.getAttribute("aria-controls"));
+			sheet.classList.remove("cs-sheet-clip");
+			button.setAttribute("aria-expanded", "true");
+			button.parentElement.hidden = true;
+			sheet.setAttribute("tabindex", "-1");
+			sheet.focus({ preventScroll: true });
+		});
+	});
 })();

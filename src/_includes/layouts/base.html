@@ -18,8 +18,11 @@
         <meta property="og:description" content="{{ description }}"/>
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="{{ client.domain }}{{ page.url }}"/>
-        <meta property="og:image" content="{{ image or "/assets/images/logo-small.png" }}"/>
-        <meta property="og:image:secure_url" content="{{ image or "/assets/images/logo-small.png" }}"/>
+        {# share image: a page's own hero when its front matter sets image, the logo otherwise; made absolute for social sites #}
+        {% set shareImage = image or "/assets/images/logo-small.png" %}
+        {% if shareImage.startsWith("/") %}{% set shareImage = client.domain + shareImage %}{% endif %}
+        <meta property="og:image" content="{{ shareImage }}"/>
+        <meta property="og:image:secure_url" content="{{ shareImage }}"/>
 
         <!--Favicons-->
         <!-- https://realfavicongenerator.net/ -->

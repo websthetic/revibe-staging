@@ -42,7 +42,7 @@
             {% endfor %}
             {% else %}
             {% for clinic in clinics %}
-            <a href="{{ clinic.bookUrl }}" class="cs-button-solid cs-button-dark">Book in {{ clinic.name }}</a>
+            <a href="{{ clinic.janeUrl }}" class="cs-button-solid cs-button-dark" rel="noopener">Book in {{ clinic.name }}</a>
             {% endfor %}
             {% endif %}
         </div>

@@ -2,6 +2,7 @@
     FAQ accordion. Set before including:
       faq: { title, text, items: [{ q, a }] }
       faqBookButton: false to hide the "Book now" button (shown by default)
+      faqButton: { label, attrs } swaps it for another button, e.g. the free consult on the performance pages
       an item's optional id lets other links jump to it; faq.js opens it when they do
     Styles: .cs-faq-section in global.less. The first question starts open.
 #}
@@ -14,7 +15,9 @@
         <div class="cs-side">
             <h2 class="cs-title cs-section-title" id="faq-title">{{ faq.title }}</h2>
             {% if faq.text %}<p class="cs-section-text">{{ faq.text }}</p>{% endif %}
-            {% if faqBookButton !== false %}
+            {% if faqButton %}
+            <a href="/" class="cs-button-solid cs-hover-dark" {{ faqButton.attrs | safe }} aria-haspopup="dialog">{{ faqButton.label }}</a>
+            {% elif faqBookButton !== false %}
             <a href="/" class="cs-button-solid cs-hover-dark" data-book aria-haspopup="dialog">Book now</a>
             {% endif %}
         </div>

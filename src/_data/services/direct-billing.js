@@ -38,7 +38,7 @@ module.exports = {
     },
     firstAppointment: {
         title: "How does direct billing work at Revibe?",
-        text: "You give your insurance card at check in, we confirm what your plan covers and submit the claim electronically after your appointment. The claim goes in the same day you are treated, so your remaining balance stays current and you are not guessing in December how much of your limit is left.",
+        text: "You give your insurance card at check in and we submit the claim electronically after your appointment. Your benefits booklet or your insurer can confirm what your plan covers. The claim goes in the same day you are treated, so your remaining balance stays current and you are not guessing in December how much of your limit is left.",
         buttons: [
             {
                 label: "Request to book",
@@ -58,10 +58,10 @@ module.exports = {
                 position: "center 40%"
             },
             {
-                title: "We check your plan",
-                text: "The front desk confirms what your plan covers and whether your insurer accepts direct submission.",
+                title: "Check your coverage",
+                text: "Your benefits booklet or your insurer tells you what your plan covers. We confirm your insurer accepts direct submission.",
                 image: "/assets/images/thank-you/clinic-lounge.jpg",
-                alt: "The front desk confirming a client's coverage",
+                alt: "The Revibe front desk",
                 position: "center 35%"
             },
             {
@@ -105,7 +105,7 @@ module.exports = {
                 text: "Back and neck pain, headaches, sciatica and joint stiffness, from a licensed chiropractor.",
                 image: "/assets/images/services/chiropractic.jpg",
                 alt: "Dr. Morgan, chiropractor, adjusting a client",
-                position: "center 40%",
+                position: "50% 17%",
                 link: {
                     label: "Book",
                     url: "/services/chiropractic/"
@@ -125,9 +125,9 @@ module.exports = {
             {
                 label: "Naturopathic medicine",
                 text: "Hormone and DUTCH testing, sleep and energy, IV therapy and meal plans. Its own category, so it does not draw down your physio or massage limits.",
-                image: "/assets/images/naturopathic/step-listen.jpg",
-                alt: "Dr. Jennifer Tang, naturopathic doctor, in a consult",
-                position: "center 35%",
+                image: "/assets/images/naturopathic/lisbeth-A7305332.jpg",
+                alt: "Lisbeth Bitar Patino, naturopathic doctor, listening with a stethoscope",
+                position: "50% 28%",
                 link: {
                     label: "Book",
                     url: "/services/naturopathic-medicine/"

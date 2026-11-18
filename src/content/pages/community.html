@@ -1,0 +1,230 @@
+---
+title: "Community and Partnerships | Revibe"
+description: "Events, races, teams and brands Revibe has shown up for, our free community workshops, and how to bring Revibe recovery to your event."
+# share image (og:image)
+image: "/assets/images/community/ev-s2s-group.jpg"
+permalink: "/community/"
+# content lives in _data/community.js; its own layout (not the service template). Styles: community.less, behaviour: community.js
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/community.css">
+    <script defer src="/assets/js/community.js"></script>
+{% endblock %}
+
+{% block body %}
+    {% set cm = community %}
+    {% set closeIcon %}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>{% endset %}
+
+    <!-- ============================================ -->
+    <!--        Hero: group photo and ticker          -->
+    <!-- ============================================ -->
+
+    <section id="community-hero" aria-labelledby="community-hero-title">
+        <div class="cs-container">
+            <h1 class="cs-title" id="community-hero-title">{{ cm.hero.titleStart }} <span class="cs-green">{{ cm.hero.titleGreen }}</span> <span class="cs-outline">{{ cm.hero.titleOutline }}</span></h1>
+            <div class="cs-sub">
+                <p class="cs-text">{{ cm.hero.text }}</p>
+                <div class="cs-actions">
+                    <a href="#partner" class="cs-button-solid" data-partner aria-haspopup="dialog">Partner with us</a>
+                    <a href="#highlights" class="cs-text-link">Watch the highlights</a>
+                </div>
+            </div>
+        </div>
+        <figure class="cs-photo">
+            <img src="{% getUrl cm.hero.image.src | resize({ width: 1800 }) | webp %}" alt="{{ cm.hero.image.alt }}" width="{{ cm.hero.image.width }}" height="{{ cm.hero.image.height }}" fetchpriority="high" decoding="async">
+        </figure>
+        {# drawn twice so it loops; stops for visitors who turn motion off #}
+        <div class="cs-ticker" aria-hidden="true">
+            <div class="cs-ticker-track">
+                {% for copy in [1, 2] %}{% for name in cm.hero.ticker %}<span>{{ name }}</span><i></i>{% endfor %}{% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--             The highlight reel               -->
+    <!-- ============================================ -->
+
+    <section id="highlights" aria-labelledby="highlights-title">
+        <div class="cs-container cs-head">
+            <h2 class="cs-title" id="highlights-title">{{ cm.highlights.title }}</h2>
+            <div class="cs-arrows">
+                <button type="button" class="cs-arrow cs-prev" aria-label="Previous highlights" aria-controls="highlights-track"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <button type="button" class="cs-arrow cs-next" aria-label="Next highlights" aria-controls="highlights-track"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+        </div>
+        {# swipeable 9:16 cards; a reel shows a play icon, a carousel post shows stacked cards #}
+        <ul class="cs-reels" id="highlights-track">
+            {% for item in cm.highlights.items %}
+            {% set isReel = item.kind == "reel" %}
+            <li class="cs-reel">
+                <a href="https://www.instagram.com/timetorevibe/{{ "reel" if isReel else "p" }}/{{ item.code }}/" target="_blank" rel="noopener" aria-label="Open the {{ item.title }} {{ "reel" if isReel else "post" }} on Instagram">
+                    <img src="{% getUrl item.image | resize({ width: 640 }) | webp %}" alt="{{ item.alt }}" style="object-position: {{ item.position }};" width="900" height="1600" loading="lazy" decoding="async">
+                    <span class="cs-date">{{ item.date }}</span>
+                    <span class="cs-kind">
+                        {% if isReel %}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+                        {% else %}<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="13" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 8v10.5A2.5 2.5 0 0 0 6.5 21H17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>{% endif %}
+                    </span>
+                    <span class="cs-reel-text">
+                        <b>{{ item.title }}</b>
+                        <span>{{ item.text }}</span>
+                        <em>{{ "Watch the reel" if isReel else "Swipe through the post" }}</em>
+                    </span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                  Pull quote                  -->
+    <!-- ============================================ -->
+
+    <section id="community-quote">
+        <div class="cs-container">
+            <blockquote class="cs-quote"><p>{{ cm.quote.text }}</p></blockquote>
+            <p class="cs-by">{{ cm.quote.sourceBefore }} <a href="{{ cm.quote.sourceUrl }}" target="_blank" rel="noopener">{{ cm.quote.sourceLabel }}</a> {{ cm.quote.sourceAfter }}</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--             Photos from the day              -->
+    <!-- ============================================ -->
+
+    {# to add an event: add it to gallery.events in _data/community.js; tab and panel ids are paired automatically #}
+    <section id="photos" aria-labelledby="photos-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="photos-title">{{ cm.gallery.title }}</h2>
+            <div class="cs-tabs" role="tablist" aria-label="Events">
+                {% for event in cm.gallery.events %}
+                <button type="button" role="tab" id="gt-{{ event.id }}" aria-controls="gp-{{ event.id }}" aria-selected="{{ "true" if loop.first else "false" }}"{% if not loop.first %} tabindex="-1"{% endif %}>{{ event.name }}</button>
+                {% endfor %}
+            </div>
+            {% for event in cm.gallery.events %}
+            <div class="cs-pane" id="gp-{{ event.id }}" role="tabpanel" aria-labelledby="gt-{{ event.id }}" data-name="{{ event.name }}"{% if not loop.first %} hidden{% endif %}>
+                <div class="cs-caption">
+                    <p class="cs-when">{{ event.when }}</p>
+                    <p>{{ event.text }}</p>
+                </div>
+                <ul class="cs-grid cs-grid-{{ event.photos.length }}">
+                    {% for photo in event.photos %}
+                    <li>
+                        <button type="button" class="cs-photo-button" data-index="{{ loop.index0 }}" aria-label="Open photo: {{ photo[1] }}">
+                            <img src="{% getUrl photo[0] | resize({ width: 900 }) | webp %}" alt="{{ photo[1] }}" width="900" height="600" loading="lazy" decoding="async">
+                        </button>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                 Brand logos                  -->
+    <!-- ============================================ -->
+
+    <section id="brands" aria-labelledby="brands-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="brands-title">{{ cm.brands.title }}</h2>
+            <ul class="cs-logos">
+                {% for brand in cm.brands.items %}
+                <li><img{% if brand.shape %} class="cs-{{ brand.shape }}"{% endif %} src="/assets/images/community/brands/{{ brand.file }}.png" alt="{{ brand.name }}" width="{{ brand.width }}" height="{{ brand.height or 140 }}" loading="lazy" decoding="async"></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--       Bring Revibe to your thing (picker)    -->
+    <!-- ============================================ -->
+
+    {# desktop: options on the left swap the panel on the right (hover or click). Phones: every panel as a card, sideways #}
+    <section id="picker" aria-labelledby="picker-title">
+        <div class="cs-container">
+            <div class="cs-picker-side">
+                <h2 class="cs-title" id="picker-title">{{ cm.picker.title }}</h2>
+                <p class="cs-text">{{ cm.picker.text }}</p>
+                <ol class="cs-options">
+                    {% for option in cm.picker.options %}
+                    <li><button type="button" class="cs-option{% if loop.first %} cs-on{% endif %}" data-option="{{ loop.index0 }}" aria-controls="pick-{{ loop.index0 }}" aria-pressed="{{ "true" if loop.first else "false" }}"><span class="cs-n">0{{ loop.index }}</span><b>{{ option.title }}</b></button></li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="cs-panels">
+                {% for option in cm.picker.options %}
+                <article class="cs-panel{% if loop.first %} cs-on{% endif %}" id="pick-{{ loop.index0 }}">
+                    <div class="cs-panel-picture"><img src="{% getUrl option.image | resize({ width: 1000 }) | webp %}" alt="{{ option.alt }}" width="1200" height="800" loading="lazy" decoding="async"></div>
+                    <div class="cs-panel-body">
+                        <h3><span class="cs-n">0{{ loop.index }}</span>{{ option.title }}</h3>
+                        <p>{{ option.text }}</p>
+                        <ul>{% for point in option.points %}<li>{{ point }}</li>{% endfor %}</ul>
+                        <a href="#partner" class="cs-button-solid" data-partner="{{ option.type }}" aria-haspopup="dialog">{{ option.button }}</a>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                  Instagram                   -->
+    <!-- ============================================ -->
+
+    <section id="community-instagram">
+        <a class="cs-gram" href="{{ cm.instagram.url }}" target="_blank" rel="noopener"><span>{{ cm.instagram.kicker }}</span><b>{{ cm.instagram.handle }}</b></a>
+    </section>
+
+    {% include "sections/cta.html" %}
+
+    <!-- ============================================ -->
+    <!--      Partner enquiry pop-up (Netlify form)   -->
+    <!-- ============================================ -->
+
+    {# opened by any [data-partner] (its value picks the option) and by /community/#partner on load; X, Esc or a click outside closes it #}
+    {% set f = cm.form %}
+    <dialog class="cs-partner" id="partner" aria-labelledby="partner-title">
+        <div class="cs-partner-card">
+            <aside class="cs-partner-side">
+                <img src="{% getUrl f.image | resize({ width: 800 }) | webp %}" alt="" width="1800" height="1200" loading="lazy" decoding="async">
+                <div class="cs-partner-steps">
+                    <p class="cs-kicker">{{ f.kicker }}</p>
+                    <ol>{% for step in f.steps %}<li><span>{{ loop.index }}</span>{{ step }}</li>{% endfor %}</ol>
+                </div>
+            </aside>
+            <div class="cs-partner-main">
+                <button type="button" class="cs-close" data-partner-close aria-label="Close">{{ closeIcon | safe }}</button>
+                <h2 class="cs-title" id="partner-title">{{ f.title }}</h2>
+                <form class="cs-partner-form" name="{{ f.name }}" method="POST" action="{{ f.thankYouUrl }}" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="{{ f.name }}">
+                    <p class="cs-honeypot" hidden><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+                    <fieldset class="cs-types">
+                        <legend>What are you planning?</legend>
+                        {% for option in f.options %}
+                        <label class="cs-type{% if option.wide %} cs-type-wide{% endif %}"><input type="radio" name="partnership_type" value="{{ option.value }}" required><span><b>{{ option.title }}</b><small>{{ option.text }}</small></span></label>
+                        {% endfor %}
+                    </fieldset>
+                    <label for="partner-name">Your name<input id="partner-name" name="name" autocomplete="name" required></label>
+                    <label for="partner-email">Email<input id="partner-email" type="email" name="email" autocomplete="email" required></label>
+                    <label for="partner-org" class="cs-wide">Team, club or company<input id="partner-org" name="organization" autocomplete="organization"></label>
+                    <label for="partner-message" class="cs-wide">Date, crowd size, anything we should know<textarea id="partner-message" name="message" rows="3"></textarea></label>
+                    <div class="cs-form-foot cs-wide">
+                        <button type="submit" class="cs-button-solid">Send it</button>
+                        <p>{{ f.note }}</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- lightbox for the event photos: arrows, arrow keys and Esc -->
+    <dialog class="cs-lightbox" aria-label="Event photo">
+        <button type="button" class="cs-close" data-lightbox-close aria-label="Close">{{ closeIcon | safe }}</button>
+        <figure><img src="data:," alt=""><figcaption></figcaption></figure>
+        <button type="button" class="cs-lb-arrow cs-lb-prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button type="button" class="cs-lb-arrow cs-lb-next" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </dialog>
+{% endblock %}

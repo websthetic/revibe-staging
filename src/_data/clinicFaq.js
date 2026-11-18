@@ -45,7 +45,7 @@ module.exports = {
         },
         {
             q: "What does \"athlete-grade care, reimagined for everyone\" mean?",
-            a: "It means we apply the same level of care used by athletes, including structured rehab, recovery tools, and performance planning, to everyday people who want to move and feel better."
+            a: "It means we apply the same level of care used by athletes, including structured rehab, recovery tools, and performance planning, to everyday people who want to move and feel better. It is also integrated care: your physiotherapist, chiropractor, massage therapist, osteopath and naturopathic doctor work from one shared plan."
         },
         {
             q: "Will I be working with one clinician or a team?",
@@ -89,11 +89,11 @@ module.exports = {
         },
         {
             q: "Do you offer direct billing?",
-            a: "Direct billing may be available depending on your insurance provider. Our team can help check your coverage."
+            a: "Yes, to most extended health insurers. Coverage is set by your plan, so your benefits booklet or your insurer is the place to confirm what you are covered for. We submit the claim for you."
         },
         {
             q: "What is your cancellation or rescheduling policy?",
-            a: "We require advance notice for cancellations or rescheduling. This helps us accommodate other guests and keep your Care Map consistent."
+            a: "Please give at least 24 hours' notice to cancel or reschedule. Cancellations and missed sessions inside 24 hours are subject to a late cancellation fee."
         },
         {
             q: "Are there packages or memberships available?",

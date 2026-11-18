@@ -259,7 +259,7 @@
                         {% endif %}{% endfor %}
                     </ul>
                     <h3 class="cs-card-title">{{ diff.licensed.title }}</h3>
-                    <p class="cs-card-text">{{ diff.licensed.text }}{% if diff.licensed.linkLabel %} <a href="{{ diff.licensed.linkUrl }}">{{ diff.licensed.linkLabel }}</a>{{ diff.licensed.textAfter }}{% endif %}</p>
+                    <p class="cs-card-text">{{ diff.licensed.text }}{% if diff.licensed.bodyLabel %} <a href="{{ diff.licensed.bodyUrl }}" rel="noopener">{{ diff.licensed.bodyLabel }}</a>{{ diff.licensed.bodyAfter }}{% endif %}{% if diff.licensed.linkLabel %} <a href="{{ diff.licensed.linkUrl }}">{{ diff.licensed.linkLabel }}</a>{{ diff.licensed.textAfter }}{% endif %}</p>
                 </li>
                 <li class="cs-card cs-card-hands">
                     <div class="cs-card-picture">

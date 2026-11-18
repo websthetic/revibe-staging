@@ -8,7 +8,7 @@ module.exports = {
     text: "Here is the plan, week by week, for neck pain, tension headaches and mid back pain. How often you come in, what changes, and when your neck stops running your day.",
     requestService: "Physiotherapy",
     requestMessage: "Neck and mid back pain",
-    proof: "from 600+ reviews. No referral needed. We bill most insurers directly.",
+    proof: "from 700+ reviews. No referral needed. We bill most insurers directly.",
     ask: "Where does it hurt? Tap a spot.",
     problemsLabel: "Common neck problems",
     problems: [
@@ -241,13 +241,8 @@ module.exports = {
                 name: "Dhaval S.",
                 meta: "Google review, saw Dr. Trevor D'Souza"
             },
-            {
-                text: "Kyle did a phenomenal job not only helping with assisted fascia stretching but also helping to relieve my neck and shoulder pain. He also showed me some home stretches to help.",
-                name: "Kris",
-                meta: "Google review, saw Kyle Sunga"
-            }
         ],
-        members: ["trevor-dsouza", "morgan-millard", "kyle-sunga", "michael-ross"]
+        members: ["trevor-dsouza", "morgan-millard", "michael-ross"]
     },
     longTitle: false
 };

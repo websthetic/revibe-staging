@@ -10,7 +10,7 @@ module.exports = {
         {
             src: "/assets/images/services/naturopathic.jpg",
             alt: "Lisbeth Bitar Patino, naturopathic doctor, listening with a stethoscope",
-            position: "center 40%"
+            position: "60% 33%"
         },
         {
             src: "/assets/images/naturopathic/hero-acupuncture.jpg",
@@ -75,7 +75,6 @@ module.exports = {
         title: "Your Mississauga naturopathic medicine team",
         text: "Every Revibe naturopathic doctor is registered with their college. Pick a practitioner when you book, and you see the same person for your whole plan.",
         members: [
-            "jennifer-tang",
             "lisbeth-bitar-patino"
         ]
     },

@@ -26,7 +26,7 @@
                     {% set servicePage = locationPages[clinic.key][clinicCards.locationPage] if locationPages[clinic.key] else false %}
                     <a class="cs-clinic-service" href="{{ "/location/" + clinic.key + "/" + clinicCards.locationPage + "/" if servicePage else "/" }}">{{ clinicCards.serviceLabel }} in {{ clinic.name }}</a>
                     {% endif %}
-                    <a href="{{ clinic.bookUrl }}" class="cs-button-solid cs-hover-dark">Book in {{ clinic.name }}</a>
+                    <a href="{{ clinic.janeUrl }}" class="cs-button-solid cs-hover-dark" rel="noopener">Book in {{ clinic.name }}</a>
                 </div>
             </li>
             {% endfor %}

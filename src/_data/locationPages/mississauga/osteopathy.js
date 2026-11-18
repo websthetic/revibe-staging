@@ -95,8 +95,7 @@ module.exports = {
         text: "Every Revibe osteopath is registered with their college. Pick a practitioner when you book, and you see the same person for your whole plan.",
         members: [
             "anesto-charles",
-            "emily-wilson",
-            "erica-runnalls"
+            "emily-wilson"
         ]
     },
     billing: true,

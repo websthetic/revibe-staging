@@ -57,8 +57,8 @@ module.exports = {
                 text: "Your insurance card and photo ID at your first session."
             },
             {
-                title: "We check your plan",
-                text: "The front desk confirms what you are covered for."
+                title: "Check your coverage",
+                text: "Your benefits booklet or your insurer tells you what is covered."
             },
             {
                 title: "We submit",
@@ -126,6 +126,6 @@ module.exports = {
     otherLabel: "Direct billing in Markham",
     allAbout: {
         label: "All about direct billing",
-        url: "/"
+        url: "/direct-billing/"
     }
 };

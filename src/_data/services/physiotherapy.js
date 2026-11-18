@@ -7,9 +7,9 @@ module.exports = {
 
     hero: {
         title: "Physiotherapy",
-        text: "Registered physiotherapists who find the reason you hurt, treat it with their hands and give you the exercise that keeps it fixed. Book an assessment at any Revibe clinic.",
+        text: "Registered physiotherapists who assess and treat pain, injuries and movement limitations, combining hands-on care, tailored exercise and progressive rehab to restore function, build strength and help you move better. Book an assessment at any Revibe clinic.",
         proofBold: "5.0 on Google",
-        proof: "from 600+ reviews. No referral needed, and we bill most insurers directly.",
+        proof: "from 700+ reviews. No referral needed, and we bill most insurers directly.",
         // three stacked photos, echoing the three waves of the Revibe monogram
         images: [
             { src: "/assets/images/physiotherapy/hero-squat.jpg", alt: "Michael Leung, physiotherapist, taking a client on crutches back through a loaded squat", position: "center 45%" },
@@ -24,14 +24,14 @@ module.exports = {
         photo: { src: "/assets/images/physiotherapy/fit-hip.jpg", alt: "Scott French treating a client's hip" },
         // area places the tile in the desktop mosaic; colour is white (default), green, black or mint
         tiles: [
-            { area: "a", colour: "white", wide: true, quote: "My lower back goes out every few months.", topic: "Back and neck pain", url: "/" },
-            { area: "b", colour: "green", quote: "I cannot reach the top shelf without wincing.", topic: "Shoulder and rotator cuff", url: "/" },
-            { area: "c", colour: "black", quote: "My knee has not been right since the game.", topic: "Knee, hip and ankle", url: "/" },
-            { area: "d", colour: "mint", quote: "I had surgery and I am scared to move.", topic: "Post-operative rehabilitation", url: "/" },
-            { area: "e", colour: "white", quote: "I am back to running and something keeps nagging.", topic: "Sports injuries", url: "/" },
+            { area: "a", colour: "white", wide: true, quote: "My lower back goes out every few months.", topic: "Back and neck pain", url: "/where-does-it-hurt/low-back/" },
+            { area: "b", colour: "green", quote: "I cannot reach the top shelf without wincing.", topic: "Shoulder and rotator cuff", url: "/where-does-it-hurt/shoulder/" },
+            { area: "c", colour: "black", quote: "My knee has not been right since the game.", topic: "Knee, hip and ankle", url: "/where-does-it-hurt/knee/" },
+            { area: "d", colour: "mint", quote: "I had surgery and I am scared to move.", topic: "Post-operative rehabilitation", url: "/services/physiotherapy/post-operative/" },
+            { area: "e", colour: "white", quote: "I am back to running and something keeps nagging.", topic: "Sports injuries", url: "/services/physiotherapy/sports-physiotherapy/" },
             { area: "f", colour: "white", quote: "I got hurt weeks ago and it is not healing on its own.", topic: "Injury rehabilitation", url: "/" },
-            { area: "g", colour: "green", wide: true, quote: "I have been told to rest it, and resting is not working.", topic: "Chronic pain and arthritis", url: "/" },
-            { area: "h", colour: "black", quote: "My ankle keeps rolling since that sprain.", topic: "Sports physiotherapy", url: "/" },
+            { area: "g", colour: "green", wide: true, quote: "I have been told to rest it, and resting is not working.", topic: "Chronic pain and arthritis", url: "/services/physiotherapy/chronic-pain/" },
+            { area: "h", colour: "black", quote: "My ankle keeps rolling since that sprain.", topic: "Sports physiotherapy", url: "/services/physiotherapy/sports-physiotherapy/" },
         ],
     },
 
@@ -74,14 +74,14 @@ module.exports = {
         title: "Which type of physiotherapy do I need?",
         text: "Most people start with a general assessment and the physiotherapist steers from there. If you already know what you are dealing with, these are the areas our physiotherapists focus on. Each one has its own page.",
         items: [
-            { label: "Sports physiotherapy", url: "/" },
-            { label: "Manual therapy", url: "/" },
-            { label: "Post-operative rehabilitation", url: "/" },
-            { label: "Chronic pain", url: "/" },
+            { label: "Sports physiotherapy", url: "/services/physiotherapy/sports-physiotherapy/" },
+            { label: "Manual therapy", url: "/services/physiotherapy/manual-therapy/" },
+            { label: "Post-operative rehabilitation", url: "/services/physiotherapy/post-operative/" },
+            { label: "Chronic pain", url: "/services/physiotherapy/chronic-pain/" },
             { label: "Pelvic physiotherapy", url: "/services/pelvic-physiotherapy/" },
-            { label: "Vestibular rehabilitation", url: "/" },
-            { label: "Neurological physiotherapy", url: "/" },
-            { label: "Pediatric physiotherapy", url: "/" },
+            { label: "Vestibular rehabilitation", url: "/services/physiotherapy/vestibular-rehabilitation/" },
+            { label: "Neurological physiotherapy", url: "/services/physiotherapy/neurological/" },
+            { label: "Pediatric physiotherapy", url: "/services/physiotherapy/pediatric/" },
         ],
     },
 
@@ -105,7 +105,7 @@ module.exports = {
         },
         coTreat: {
             title: "Clinicians who co-treat",
-            text: "Physiotherapists, chiropractors, massage therapists, osteopaths and naturopathic doctors under one roof at every Revibe clinic, working the same case together when that is what gets you better. One assessment, one plan, and nobody asks you to start your story over.",
+            text: "Physiotherapists, chiropractors, massage therapists, osteopaths and naturopathic doctors under one roof at every Revibe clinic, treating the same case together when that is what gets you better.",
         },
         careMap: {
             title: "The Care Map",
@@ -129,7 +129,7 @@ module.exports = {
     reviews: {
         title: "What do clients say about physiotherapy at Revibe?",
         rating: "5.0",
-        count: "600+",
+        count: "700+",
         allLabel: "Read every review on Google",
         // the first review is shown large, in green
         items: [
@@ -169,7 +169,7 @@ module.exports = {
     related: {
         title: "Physiotherapy is one part of performance therapy",
         items: [
-            { label: "Chiropractic", url: "/services/chiropractic/", image: "/assets/images/services/chiropractic-side.jpg", alt: "A Revibe chiropractor positioning a client on her side for an adjustment", position: "center 40%" },
+            { label: "Chiropractic", url: "/services/chiropractic/", image: "/assets/images/services/chiropractic-side.jpg", alt: "A Revibe chiropractor positioning a client on her side for an adjustment", position: "50% 22%" },
             { label: "Massage therapy", url: "/services/massage/", image: "/assets/images/services/massage-hands.jpg", alt: "A massage therapist's hands working into a client's shoulder", position: "center 45%" },
             { label: "Osteopathy", url: "/services/osteopathy/", image: "/assets/images/services/osteopathy-leg.jpg", alt: "A Revibe osteopathic practitioner lifting a client's leg on the table", position: "center 35%" },
             { label: "Stretch therapy", url: "/stretch-spa/", image: "/assets/images/services/stretch-therapy.jpg", alt: "A Revibe massage therapist treating a client's hamstring", position: "center 40%" },

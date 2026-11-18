@@ -125,7 +125,7 @@ module.exports = {
     // sections/home/instagram.html
     instagram: {
         ...home.instagram,
-        posts: igOrder.map((caption) => home.instagram.posts.find((post) => post.caption === caption)),
+        posts: igOrder.map((caption) => home.instagram.library.find((post) => post.caption === caption)),
     },
 
     // components/faq.html

@@ -121,6 +121,6 @@ module.exports = {
     otherLabel: "Infrared sauna in Markham",
     allAbout: {
         label: "All about infrared sauna",
-        url: "/"
+        url: "/infrared-sauna/"
     }
 };

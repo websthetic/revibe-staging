@@ -1,0 +1,139 @@
+{#
+    A blog post (content/blog/*.md). Its front matter gives:
+      title (browser tab), h1, description, date, author, image, imageAlt,
+      optional category, and optional faqs: [{ question, answer }].
+    The address comes from url (content/blog/blog.json), the same as on the old site.
+    Styles: blog-post.less. The contents list is built by blog-post.js from the post's h2s.
+#}
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/blog-post.css">
+    <script defer src="/assets/js/blog-post.js"></script>
+    {% if image %}<link rel="preload" as="image" href="{% if image.startsWith('/assets/') %}{% getUrl image | resize({ width: 1200 }) | webp %}{% else %}{{ image }}{% endif %}">{% endif %}
+
+    {% set imageUrl = (client.domain + image) if image and image.startsWith("/") else image %}
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": {{ (h1 or title) | dump | safe }},
+            {% if image %}"image": [{{ imageUrl | dump | safe }}],{% endif %}
+            "datePublished": "{{ page.date | isoDate }}",
+            "author": [{ "@type": "Organization", "name": {{ (author or client.name) | dump | safe }} }],
+            "publisher": { "@type": "Organization", "name": {{ client.name | dump | safe }} },
+            "description": {{ description | dump | safe }},
+            {% if category %}"articleSection": {{ category | dump | safe }},{% endif %}
+            "url": "{{ client.domain }}{{ page.url }}"
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ client.domain }}/" },
+                { "@type": "ListItem", "position": 2, "name": "Blogs", "item": "{{ client.domain }}/blogs/" },
+                { "@type": "ListItem", "position": 3, "name": {{ (h1 or title) | dump | safe }}, "item": "{{ client.domain }}{{ page.url }}" }
+            ]
+        }
+    </script>
+    {% if faqs and faqs.length %}
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {% for item in faqs %}
+                { "@type": "Question", "name": {{ item.question | dump | safe }}, "acceptedAnswer": { "@type": "Answer", "text": {{ item.answer | dump | safe }} } }{% if not loop.last %},{% endif %}
+                {% endfor %}
+            ]
+        }
+    </script>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% set chevron %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>{% endset %}
+
+    <!-- ============================================ -->
+    <!--                    Header                    -->
+    <!-- ============================================ -->
+
+    <section id="post-hero" aria-labelledby="post-title">
+        <div class="cs-container">
+            <a href="/blogs/" class="cs-back"><span aria-hidden="true">&larr;</span> All blogs</a>
+            {% if category %}<span class="cs-label">{{ category }}</span>{% endif %}
+            <h1 class="cs-title" id="post-title">{{ h1 or title }}</h1>
+            <p class="cs-meta">
+                {% if author %}<span>{{ author }}</span><span class="cs-dot" aria-hidden="true"></span>{% endif %}
+                <time datetime="{{ page.date | isoDate }}">{{ page.date | postDate }}</time>
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                   Article                    -->
+    <!-- ============================================ -->
+
+    <section id="post" aria-label="Article">
+        <div class="cs-container">
+            <article class="cs-article">
+                {% if image %}
+                <div class="cs-picture">
+                    {% if image.startsWith("/assets/") %}
+                    <img src="{% getUrl image | resize({ width: 1200 }) | webp %}" alt="{{ imageAlt }}" width="1200" height="675" decoding="async" fetchpriority="high">
+                    {% else %}
+                    <img src="{{ image }}" alt="{{ imageAlt }}" width="1200" height="675" decoding="async" fetchpriority="high">
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                {# phones: the contents list folds open above the text (blog-post.js fills it) #}
+                <details class="cs-toc-mobile" hidden>
+                    <summary>Contents {{ chevron | safe }}</summary>
+                    <ol class="cs-toc-list"></ol>
+                </details>
+
+                <div class="cs-prose" id="post-content">
+                    {{ content | safe }}
+                </div>
+            </article>
+
+            <aside class="cs-sidebar" aria-label="More from Revibe">
+                <nav class="cs-toc" aria-label="Contents" hidden>
+                    <p class="cs-side-title">Contents</p>
+                    <ol class="cs-toc-list"></ol>
+                </nav>
+
+                <div class="cs-recent">
+                    <p class="cs-side-title">New posts</p>
+                    <ul class="cs-recent-list">
+                        {# the newest posts (up to four), skipping this one #}
+                        {% for post in collections.post.slice(-5).reverse() %}{% if post.url != page.url and loop.index <= 4 %}
+                        <li>
+                            <a href="{{ post.url }}" class="cs-recent-link">
+                                <span class="cs-recent-title">{{ post.data.h1 or post.data.title }}</span>
+                                <time class="cs-recent-date" datetime="{{ post.date | isoDate }}">{{ post.date | postDate }}</time>
+                            </a>
+                        </li>
+                        {% endif %}{% endfor %}
+                    </ul>
+                </div>
+
+                <div class="cs-book">
+                    <p class="cs-book-small">Ready to start?</p>
+                    <p class="cs-book-title">Book a session at Revibe</p>
+                    <a href="/" class="cs-button-solid cs-button-dark" data-book aria-haspopup="dialog">Book your session</a>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    {# faq is built from the post's faqs in content/blog/blog.11tydata.js #}
+    {% if faq %}
+    {% include "components/faq.html" %}
+    {% endif %}
+
+    {% include "sections/cta.html" %}
+{% endblock %}

@@ -19,7 +19,7 @@ module.exports = [
         width: 800,
         height: 1200,
         alt: "Dr. Morgan, chiropractor, adjusting a client",
-        position: "center 40%",
+        position: "50% 17%",
         url: "/services/chiropractic/",
     },
     {
@@ -49,7 +49,7 @@ module.exports = [
         width: 800,
         height: 1200,
         alt: "Lisbeth Bitar Patino, naturopathic doctor, listening with a stethoscope",
-        position: "62% 40%",
+        position: "60% 33%",
         url: "/services/naturopathic-medicine/",
     },
     {

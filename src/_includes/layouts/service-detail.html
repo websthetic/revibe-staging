@@ -1,0 +1,179 @@
+{#
+    Treatment pages under a service (e.g. /services/chiropractic/sciatica-treatment/).
+    A page sets in its front matter:
+      serviceDetail: "<service>/<slug>", its entry in _data/serviceDetails/<service>.js
+    The service entry gives the parent page, booking service and photo; the page gives
+    h1, label, intro and sections (split, grid, steps, team, faq). Styles: service-detail.less.
+    Grid sections are a one-row carousel that pins while scrolling on desktop (service-detail.js).
+#}
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/service-detail.css">
+    <script defer src="/assets/js/service-detail.js"></script>
+{% endblock %}
+
+{% block body %}
+    {% set parts = serviceDetail.split("/") %}
+    {% set group = serviceDetails[parts[0]] %}
+    {% set svc = group.service %}
+    {% set d = group.pages[parts[1]] %}
+
+    {# an item's text, bullets and note, shared by the card and step layouts #}
+    {% macro itemBody(item) %}
+        {% for para in item.text %}<p class="cs-item-text">{{ para | safe }}</p>{% endfor %}
+        {% if item.bullets %}<ul class="cs-bullets">{% for b in item.bullets %}<li>{{ b | safe }}</li>{% endfor %}</ul>{% endif %}
+        {% if item.note %}<p class="cs-note"><strong>{{ item.note.label }}</strong> {{ item.note.text | safe }}</p>{% endif %}
+    {% endmacro %}
+
+    <!-- ============================================ -->
+    <!--                    Hero                      -->
+    <!-- ============================================ -->
+
+    <section id="detail-hero" aria-labelledby="detail-hero-title">
+        <div class="cs-container">
+            <div class="cs-content">
+                <nav class="cs-crumbs" aria-label="Breadcrumb">
+                    <a href="/services-amenities/">Services</a><span aria-hidden="true">/</span><a href="{{ svc.url }}">{{ svc.label }}</a>
+                </nav>
+                <h1 class="cs-title" id="detail-hero-title">{{ d.h1 }}</h1>
+                {% if d.intro.title %}<p class="cs-sub">{{ d.intro.title }}</p>{% endif %}
+                {% for para in d.intro.text %}<p class="cs-text">{{ para | safe }}</p>{% endfor %}
+                <div class="cs-actions">
+                    <a href="/" class="cs-button-solid" data-request data-service="{{ svc.request }}" aria-haspopup="dialog">Request to book</a>
+                    <a href="{{ svc.url }}" class="cs-button-outline cs-outline-light">About {{ svc.label | lower }}</a>
+                </div>
+            </div>
+            <div class="cs-picture">
+                <img src="{% getUrl svc.image | resize({ width: 900 }) | webp %}" alt="{{ svc.alt }}" width="900" height="1100" decoding="async" fetchpriority="high">
+            </div>
+        </div>
+    </section>
+
+    {% for s in d.sections %}
+    {% set sid = "section-" + loop.index %}
+
+    {% if s.kind == "faq" %}
+    {% set faq = { title: s.title, items: s.items } %}
+    {% set faqBookButton = false %}
+    {% include "components/faq.html" %}
+
+    {% elif s.kind == "team" %}
+    <!-- ============================================ -->
+    <!--                  The Team                    -->
+    <!-- ============================================ -->
+
+    <section class="cs-detail cs-detail-team" aria-labelledby="{{ sid }}">
+        <div class="cs-container">
+            <h2 class="cs-title" id="{{ sid }}">{{ s.title }}</h2>
+            <ul class="cs-members">
+                {% for key in s.members %}
+                {% set m = team[key] %}
+                <li class="cs-member">
+                    <a href="{{ m.url }}" class="cs-member-link">
+                        <img src="{% getUrl m.photo | resize({ width: 520 }) | webp %}" alt="{{ m.name }}, {{ m.role | lower }}" width="520" height="650" loading="lazy" decoding="async">
+                        <strong>{{ m.name }}</strong>
+                        <span>{{ m.role }}</span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    {% elif s.kind == "grid" %}
+    <!-- ============================================ -->
+    <!--               Card Carousel                  -->
+    <!-- ============================================ -->
+
+    {# one row of cards. Desktop: the section pins while scrolling moves the row sideways (service-detail.js);
+       phones and short screens: a swipe carousel #}
+    <section class="cs-detail cs-detail-grid" aria-labelledby="{{ sid }}" data-carousel>
+        <div class="cs-pin">
+            <div class="cs-container">
+                <div class="cs-head">
+                    {% if s.topper %}<span class="cs-topper">{{ s.topper }}</span>{% endif %}
+                    <h2 class="cs-title" id="{{ sid }}">{{ s.title }}</h2>
+                    {% for para in s.text %}<p class="cs-text">{{ para | safe }}</p>{% endfor %}
+                    <p class="cs-count" aria-hidden="true"><span class="cs-count-now">01</span> / {{ "0" if s.items.length < 10 }}{{ s.items.length }}</p>
+                </div>
+                <div class="cs-rail" tabindex="0" aria-label="{{ s.title }}, scroll sideways for more">
+                    <ul class="cs-track">
+                        {% for item in s.items %}
+                        <li class="cs-card">
+                            <h3 class="cs-item-title">{{ item.title }}</h3>
+                            {{ itemBody(item) }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="cs-progress" aria-hidden="true"><span class="cs-progress-bar"></span></div>
+            </div>
+        </div>
+    </section>
+
+    {% elif s.kind == "split" or s.kind == "steps" %}
+    <!-- ============================================ -->
+    <!--               Content Section                -->
+    <!-- ============================================ -->
+
+    {# split: text beside its cards; steps: a numbered list #}
+    <section class="cs-detail cs-detail-{{ s.kind }}{% if s.kind == 'split' and not s.items %} cs-detail-text{% endif %}" aria-labelledby="{{ sid }}">
+        <div class="cs-container">
+            <div class="cs-head">
+                {% if s.topper %}<span class="cs-topper">{{ s.topper }}</span>{% endif %}
+                <h2 class="cs-title" id="{{ sid }}">{{ s.title }}</h2>
+                {% for para in s.text %}<p class="cs-text">{{ para | safe }}</p>{% endfor %}
+            </div>
+            {% if s.items %}
+            {% if s.kind == "steps" %}
+            <ol class="cs-steps">
+                {% for item in s.items %}
+                <li class="cs-step">
+                    <span class="cs-step-number" aria-hidden="true">{{ "0" if loop.index < 10 }}{{ loop.index }}</span>
+                    <div>
+                        <h3 class="cs-item-title">{{ item.title }}</h3>
+                        {{ itemBody(item) }}
+                    </div>
+                </li>
+                {% endfor %}
+            </ol>
+            {% else %}
+            <ul class="cs-cards">
+                {% for item in s.items %}
+                <li class="cs-card">
+                    <h3 class="cs-item-title">{{ item.title }}</h3>
+                    {{ itemBody(item) }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endif %}
+        </div>
+    </section>
+    {% endif %}
+    {% endfor %}
+
+    <!-- ============================================ -->
+    <!--              More From the Service           -->
+    <!-- ============================================ -->
+
+    <section id="detail-more" aria-labelledby="detail-more-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="detail-more-title">{{ svc.more }}</h2>
+            <ul class="cs-pills">
+                {% for slug, other in group.pages %}{% if slug != parts[1] %}
+                <li><a href="{{ svc.url }}{{ slug }}/" class="cs-pill">{{ other.label }}</a></li>
+                {% endif %}{% endfor %}
+                <li><a href="{{ svc.url }}" class="cs-pill cs-pill-all">All {{ svc.label | lower }} <span aria-hidden="true">&rarr;</span></a></li>
+            </ul>
+        </div>
+    </section>
+
+    {% set clinicCards = { title: "Where can I book " + (svc.label | lower) + "?", serviceLabel: svc.label, locationPage: parts[0] } %}
+    {% include "components/clinic-cards.html" %}
+
+    {% include "sections/cta.html" %}
+    {% set stickyLabel = "Book " + (svc.label | lower) %}
+    {% include "components/sticky-book.html" %}
+{% endblock %}

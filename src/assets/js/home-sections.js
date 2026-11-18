@@ -66,3 +66,11 @@
 		locations.addEventListener("scroll", () => (current.textContent = index() + 1), { passive: true });
 	}
 })();
+
+// "Services at this clinic": rendered open, folded on phones, always open from 700px
+(() => {
+	const wide = window.matchMedia("(min-width: 700px)");
+	const sync = () => document.querySelectorAll("#locations .cs-services-d").forEach((d) => (d.open = wide.matches));
+	sync();
+	wide.addEventListener("change", sync);
+})();

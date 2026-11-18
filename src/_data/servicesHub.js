@@ -50,8 +50,8 @@ module.exports = {
             position: "center 40%",
             services: [
                 { label: "Performance training", text: "Force plate tested, coached by CSCS coaches, retested.", url: "/performance-training/" },
-                { label: "Return to sport and life", text: "Rebuild strength and confidence step by step after injury.", url: "/" },
-                { label: "Pre and post surgical rehab", text: "Get ready for surgery, then recover safely and fully.", url: "/" },
+                { label: "Return to sport and life", text: "Rebuild strength and confidence step by step after injury.", url: "/return-to-life-training/" },
+                { label: "Pre and post surgical rehab", text: "Get ready for surgery, then recover safely and fully.", url: "/pre-post-surgical-rehabilitation/" },
                 { label: "Team training and combine", text: "Testing and training for teams, clubs and groups.", url: "/performance-training/team-training/" },
             ],
         },
@@ -62,7 +62,7 @@ module.exports = {
             bookFor: "Low energy, hormones, digestion, inflammation, sleep.",
             image: "/assets/images/services/naturopathic.jpg",
             alt: "Lisbeth Bitar Patino, naturopathic doctor, listening with a stethoscope during an assessment",
-            position: "62% 42%",
+            position: "60% 33%",
             services: [
                 { label: "Naturopathic medicine", text: "Find the root cause, then treat it with a plan.", url: "/services/naturopathic-medicine/" },
                 { label: "DUTCH test", text: "A full day of hormone data, collected at home.", url: "/services/naturopathic-medicine/dutch-test/" },

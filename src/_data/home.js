@@ -20,10 +20,11 @@ module.exports = {
             {
                 title: "Assessment",
                 text: "How you move, where it hurts and what is holding you back.",
-                image: "/assets/images/first-session/assessment.jpg",
-                width: 800,
-                height: 1200,
-                alt: "Zeeruk Rehman, physiotherapist, assessing a client's knee",
+                image: "/assets/images/first-session/assessment-standing.jpg",
+                width: 1040,
+                height: 713,
+                position: "center 30%",
+                alt: "A clinician assessing how a client stands and moves",
             },
             {
                 title: "Treatment",
@@ -50,7 +51,7 @@ module.exports = {
         button: { label: "See if we bill your insurer", url: "/direct-billing/" },
         steps: [
             { title: "Bring your card", text: "Your insurance card and photo ID at your first session." },
-            { title: "We check your plan", text: "The front desk confirms what you are covered for." },
+            { title: "Check your coverage", text: "Your benefits booklet or your insurer tells you what is covered." },
             { title: "We submit the claim", text: "Same day. You pay the balance, if there is one." },
         ],
         insurers: [
@@ -80,7 +81,7 @@ module.exports = {
     reviews: {
         title: "What clients say",
         rating: "5.0",
-        count: "600+ Google reviews",
+        count: "700+ Google reviews",
         note: "Across every Revibe clinic",
         allUrl: googleReviewsUrl,
         writeUrl: googleReviewsUrl,
@@ -96,19 +97,9 @@ module.exports = {
                 quote: "Winson Cheong (RMT) got me running pain free again in just a couple of weeks! He combined different types of treatments and even adapted and re-wrote my marathon plan to help me get back on the road in time for my race.",
             },
             {
-                name: "Celest J.",
-                service: "Osteopathy and chiropractic",
-                quote: "Love the atmosphere and people here! You HAVE to do osteo with the lovely Erica Runnalls - she’s professional and friendly and overall got the magic touch. Also, chiro with Morgan Millard is a MUST!",
-            },
-            {
                 name: "Neesha G.",
                 service: "Osteopathy",
                 quote: "Anesto is an excellent osteopath who’s been a huge help in my ankle injury recovery. He’s knowledgeable, attentive, and takes the time to explain everything clearly.",
-            },
-            {
-                name: "laura B.",
-                service: "Naturopathic medicine",
-                quote: "Dr. Jennifer Tang is absolutely amazing, she has changed my way of living. I feel like a whole new person after taking all her recommendations.",
             },
             {
                 name: "Ismael Y.",
@@ -158,6 +149,8 @@ module.exports = {
             { profession: "Chiropractic", name: "College of Chiropractors of Ontario", url: "https://cco.on.ca/", image: "/assets/images/regulators/cco.png", width: 382, height: 58, short: true },
             { profession: "Massage therapy", name: "College of Massage Therapists of Ontario", url: "https://www.cmto.com/", image: "/assets/images/regulators/cmto.png", width: 241, height: 130 },
             { profession: "Naturopathic medicine", name: "College of Naturopaths of Ontario", url: "https://www.collegeofnaturopaths.on.ca/", image: "/assets/images/regulators/cono.png", width: 379, height: 160 },
+            // Mississauga only: Markham does not offer osteopathy, so its pages leave this one off
+            { profession: "Osteopathy", name: "OSTCAN, Osteopathy Canada", url: "https://ostcan.ca/", image: "/assets/images/regulators/ostcan.png", width: 240, height: 198, clinics: ["mississauga"] },
             { profession: "Performance training", name: "National Strength and Conditioning Association", url: "https://www.nsca.com/", image: "/assets/images/regulators/nsca.png", width: 571, height: 160 },
         ],
     },
@@ -166,7 +159,8 @@ module.exports = {
         title: "Moving better, together",
         handle: "@timetorevibe",
         url: "https://www.instagram.com/timetorevibe/",
-        posts: [
+        // every post the recovery pages pick from (cold plunge, sauna, recovery lounge); the home strip is "posts"
+        library: [
             { caption: "Box breathing in the cold plunge", url: "https://www.instagram.com/p/DC19pudRJTT/", image: "/assets/images/instagram/cold-plunge-box-breathing.jpg" },
             { caption: "The infrared sauna room at Revibe", url: "https://www.instagram.com/p/DA85Kp4R15k/", image: "/assets/images/instagram/infrared-sauna-room.jpg" },
             { caption: "Plunging with physio Benson", url: "https://www.instagram.com/p/C19_uv1u5Hx/", image: "/assets/images/instagram/cold-plunge-physio-benson.jpg" },
@@ -178,6 +172,18 @@ module.exports = {
             { caption: "A calm cold plunge", url: "https://www.instagram.com/p/DVn_ENRjrK6/", image: "/assets/images/instagram/cold-plunge-relaxation.jpg" },
             { caption: "Red light in the infrared sauna", url: "https://www.instagram.com/p/DR2YLH5ERLW/", image: "/assets/images/instagram/woman-infrared-sauna.jpg" },
             { caption: "The Coldture control panel", url: "https://www.instagram.com/p/DP9qq_qj8Yv/", image: "/assets/images/instagram/coldture-infrared-sauna-control-panel.jpg" },
+        ],
+        posts: [
+            { caption: "The MSBA Twins team combine", url: "https://www.instagram.com/reel/Dfaz3jgRv9Q/", image: "/assets/images/instagram/ig-Dfaz3jgRv9Q.jpg" },
+            { caption: "Box breathing in the cold plunge", url: "https://www.instagram.com/p/DC19pudRJTT/", image: "/assets/images/instagram/cold-plunge-box-breathing.jpg" },
+            { caption: "Massage therapy at Revibe", url: "https://www.instagram.com/reel/DcMqYuVBU7B/", image: "/assets/images/instagram/ig-DcMqYuVBU7B.jpg" },
+            { caption: "What to watch for on your first run", url: "https://www.instagram.com/reel/DeX4VFfxZmz/", image: "/assets/images/instagram/ig-DeX4VFfxZmz.jpg" },
+            { caption: "Revibe arrives at Jackalope", url: "https://www.instagram.com/reel/DapyeviRcxz/", image: "/assets/images/instagram/ig-DapyeviRcxz.jpg" },
+            { caption: "The infrared sauna room at Revibe", url: "https://www.instagram.com/p/DA85Kp4R15k/", image: "/assets/images/instagram/infrared-sauna-room.jpg" },
+            { caption: "Our clinicians collaborating on care", url: "https://www.instagram.com/reel/Dbouwp0x7b5/", image: "/assets/images/instagram/ig-Dbouwp0x7b5.jpg" },
+            { caption: "Strides to Sprints is back", url: "https://www.instagram.com/reel/DbwVjiQRdOz/", image: "/assets/images/instagram/ig-DbwVjiQRdOz.jpg" },
+            { caption: "Pilates for the boys with Sora Studio", url: "https://www.instagram.com/p/Dfj_nGCumal/", image: "/assets/images/instagram/ig-Dfj_nGCumal.jpg" },
+            { caption: "Zee and Naz get active", url: "https://www.instagram.com/reel/DbRbjz7xNZt/", image: "/assets/images/instagram/ig-DbRbjz7xNZt.jpg" },
         ],
     },
 };

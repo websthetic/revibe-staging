@@ -9,7 +9,7 @@ module.exports = {
         title: "Massage therapy",
         text: "Registered massage therapists who work the muscle, not just the surface. Deep tissue, sports, Swedish and prenatal massage at every Revibe clinic, planned around what hurts and what you do all day.",
         proofBold: "5.0 on Google",
-        proof: "from 600+ reviews. Every massage therapist here is a registered RMT, and we bill most insurers directly.",
+        proof: "from 700+ reviews. Every massage therapist here is a registered RMT, and we bill most insurers directly.",
         images: [
             { src: "/assets/images/services/massage.jpg", alt: "A massage therapist's hands working along a client's back", position: "center 55%" },
             { src: "/assets/images/first-session/treatment.jpg", alt: "A registered massage therapist working into a client's neck and shoulder", position: "center 45%" },
@@ -72,14 +72,14 @@ module.exports = {
         title: "Which type of massage do I need?",
         text: "You do not have to choose. Book a massage and tell your RMT what you want from it; they pick the technique. If you already know, these are the ones we offer.",
         items: [
-            { label: "Deep tissue massage", id: "deep-tissue", url: "/" },
-            { label: "Sports massage", id: "sports", url: "/" },
-            { label: "Swedish massage", id: "swedish", url: "/" },
-            { label: "Trigger point therapy", id: "trigger-point", url: "/" },
-            { label: "Prenatal and postnatal", id: "prenatal", url: "/" },
-            { label: "Myofascial release", id: "myofascial", url: "/" },
-            { label: "Lymphatic drainage", id: "lymphatic", url: "/" },
-            { label: "Cupping", id: "cupping", url: "/" },
+            { label: "Deep tissue massage", id: "deep-tissue", url: "/services/massage/deep-tissue-massage/" },
+            { label: "Sports massage", id: "sports", url: "/services/massage/sports-massage-therapy/" },
+            { label: "Swedish massage", id: "swedish", url: "/services/massage/swedish-massage-therapy/" },
+            { label: "Trigger point therapy", id: "trigger-point", url: "/services/massage/trigger-point-massage/" },
+            { label: "Prenatal and postnatal", id: "prenatal", url: "/services/massage/prenatal-massage/" },
+            { label: "Myofascial release", id: "myofascial", url: "/services/massage/myofascial-release-therapy/" },
+            { label: "Lymphatic drainage", id: "lymphatic", url: "/services/massage/lymphatic-drainage-massage/" },
+            { label: "Cupping", id: "cupping", url: "/services/massage/cupping-therapy/" },
         ],
     },
 
@@ -99,7 +99,7 @@ module.exports = {
         },
         coTreat: {
             title: "Clinicians who co-treat",
-            text: "Physiotherapists, chiropractors, osteopaths and naturopathic doctors under one roof at every Revibe clinic, treating the same case together when that is what gets you better.",
+            text: "Physiotherapists, chiropractors, massage therapists, osteopaths and naturopathic doctors under one roof at every Revibe clinic, treating the same case together when that is what gets you better.",
         },
         careMap: {
             title: "The Care Map",
@@ -116,23 +116,18 @@ module.exports = {
 
     team: {
         title: "Who will treat me?",
-        text: "Seven registered massage therapists across our clinics, registered with the College of Massage Therapists of Ontario.",
+        text: "Six registered massage therapists across our clinics, registered with the College of Massage Therapists of Ontario.",
         // desktop: one row that slides sideways while the section stays pinned (team-scroll.js)
         scroll: true,
-        members: ["rachel-murray", "kyle-sunga", "winson-cheong", "gauri-khandke", "vincent-nguyen", "joseph-de-leon", "angelii-mercurius"],
+        members: ["rachel-murray", "winson-cheong", "gauri-khandke", "vincent-nguyen", "angelii-mercurius", "jennifer-macpherson"],
     },
 
     reviews: {
         title: "What do clients say about massage therapy at Revibe?",
         rating: "5.0",
-        count: "600+",
+        count: "700+",
         allLabel: "Read every review on Google",
         items: [
-            {
-                name: "Noel",
-                initials: "N",
-                quote: "I’ve been working with RMT Kyle for a while now to deal with a nagging groin injury. Kyle has been able help me heal my injury with his incredible massages and has given me exercises on how to loosen up my groin. I’m glad to have found an RMT that is so skilled in his craft, his massage techniques are truly magical.",
-            },
             {
                 name: "Shiyamala D.",
                 initials: "SD",
@@ -165,7 +160,7 @@ module.exports = {
         title: "Massage is one part of performance therapy",
         items: [
             { label: "Physiotherapy", url: "/services/physiotherapy/", image: "/assets/images/services/physiotherapy.jpg", alt: "Michael Leung, physiotherapist, working a client's hip on the table", position: "center 55%" },
-            { label: "Chiropractic", url: "/services/chiropractic/", image: "/assets/images/services/chiropractic-side.jpg", alt: "A Revibe chiropractor positioning a client on her side for an adjustment", position: "center 40%" },
+            { label: "Chiropractic", url: "/services/chiropractic/", image: "/assets/images/services/chiropractic-side.jpg", alt: "A Revibe chiropractor positioning a client on her side for an adjustment", position: "50% 22%" },
             { label: "Osteopathy", url: "/services/osteopathy/", image: "/assets/images/services/osteopathy-leg.jpg", alt: "A Revibe osteopathic practitioner lifting a client's leg on the table", position: "center 35%" },
             { label: "Stretch therapy", url: "/stretch-spa/", image: "/assets/images/services/stretch-therapy-leg.jpg", alt: "Rachel Murray, massage therapist, stretching a client's leg on the table", position: "60% 30%" },
         ],

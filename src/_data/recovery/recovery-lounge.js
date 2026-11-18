@@ -97,7 +97,7 @@ module.exports = {
 
     instagram: {
         ...home.instagram,
-        posts: inOrder(home.instagram.posts, "caption", [
+        posts: inOrder(home.instagram.library, "caption", [
             "Plunging with physio Benson",
             "Box breathing in the cold plunge",
             "Getting into the cold plunge after a session",

@@ -2846,6 +2846,50 @@
 			}
 		}
 
+		/* phones: "Services at this clinic" dropdown; always open from 700px */
+		.cs-services-d {
+			margin-top: (20/16rem);
+			border-radius: (24/16rem);
+			box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.28);
+
+			summary {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				cursor: pointer;
+				list-style: none;
+				padding: (14/16rem) (18/16rem);
+				font-size: (13/16rem);
+				font-weight: 700;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				color: var(--white);
+
+				&::-webkit-details-marker {
+					display: none;
+				}
+
+				&::after {
+					content: "";
+					width: (9/16rem);
+					height: (9/16rem);
+					border-right: 2px solid currentColor;
+					border-bottom: 2px solid currentColor;
+					transform: rotate(45deg) translateY(-3px);
+					transition: transform 0.2s ease;
+				}
+			}
+
+			&[open] summary::after {
+				transform: rotate(225deg) translateY(-3px);
+			}
+
+			.cs-services {
+				margin: 0;
+				padding: 0 (14/16rem) (16/16rem);
+			}
+		}
+
 		.cs-services {
 			list-style: none;
 			margin: (22/16rem) 0 0;
@@ -2880,6 +2924,23 @@
 			width: 100%;
 			margin-top: (26/16rem);
 			box-sizing: border-box;
+		}
+	}
+}
+
+/* 700px: the clinic's services are always open, without the dropdown label */
+@media only screen and (min-width: 43.75rem) {
+	#locations .cs-services-d {
+		margin-top: 0;
+		box-shadow: none;
+
+		summary {
+			display: none;
+		}
+
+		.cs-services {
+			margin-top: (22/16rem);
+			padding: 0;
 		}
 	}
 }
@@ -5403,5 +5464,76 @@
 @media (prefers-reduced-motion: reduce) {
 	#regulators .cs-logo img {
 		transition: none;
+	}
+}
+
+/*-- ------------------------------------------------ -->
+<---  Calmer bands (13 Nov 2026): no grey or mint      -->
+<---  section bands; white or paper instead, and no    -->
+<---  two neighbouring bands share a colour. Ink and   -->
+<---  green bands are unchanged.                       -->
+<--- ------------------------------------------------ -*/
+
+@media only screen and (min-width: 0rem) {
+	body .cs-faq-section {
+		background-color: var(--offWhite);
+	}
+
+	/* after a paper band the FAQ goes white */
+	body :is(#clinics, #post, #location-getting-there, .cs-detail:nth-of-type(even)) + .cs-faq-section {
+		background-color: var(--white);
+	}
+
+	body #location-getting-there {
+		background-color: var(--offWhite);
+	}
+
+	body #related.cs-related-section {
+		background-color: var(--offWhite);
+	}
+
+	body #fit {
+		background-color: var(--white);
+	}
+
+	/* service pages: white, or paper when the white reviews band follows */
+	body #team {
+		background-color: var(--white);
+	}
+
+	body #team:has(+ #service-reviews) {
+		background-color: var(--offWhite);
+	}
+
+	body #inside {
+		background-color: var(--white);
+	}
+
+	/* careers: the band between growth (ink) and pathways (green) */
+	body:has(#pathways) #different {
+		background-color: var(--offWhite);
+	}
+
+	/* location pages without the licensed care band: reviews (paper), getting there (white), FAQ (paper) */
+	body #reviews + #location-getting-there {
+		background-color: var(--white);
+	}
+
+	body #reviews + #location-getting-there + .cs-faq-section {
+		background-color: var(--offWhite);
+	}
+
+	body #reviews + #location-getting-there + .cs-faq-section + #location-more {
+		background-color: var(--white);
+	}
+
+	/* recovery pages: pricing and reviews are both paper */
+	body #pricing + #reviews {
+		background-color: var(--white);
+	}
+
+	/* memberships: plans sits between two paper bands */
+	body #plans {
+		background-color: var(--white);
 	}
 }

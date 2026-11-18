@@ -15,17 +15,14 @@ const people = [
     { member: "morgan-millard", clinics: ["mississauga"], services: ["chiropractic"], instagram: ig("dr.morganmillard") },
     { member: "joshua-alferez", clinics: ["mississauga", "markham"], services: ["massage", "performance"], instagram: ig("joshprehab") },
     { member: "winson-cheong", clinics: ["mississauga"], services: ["massage"], instagram: ig("winson_thermt") },
-    { member: "kyle-sunga", clinics: ["mississauga"], services: ["massage", "performance"], instagram: ig("zsupersunga") },
     { member: "rachel-murray", clinics: ["mississauga"], services: ["massage"], instagram: ig("rehabwithrachel") },
     { member: "vincent-nguyen", clinics: ["mississauga"], services: ["massage"] },
+    { member: "jennifer-macpherson", clinics: ["mississauga"], services: ["massage"] },
     { member: "gauri-khandke", clinics: ["mississauga"], services: ["massage"], instagram: ig("gauri_rmt") },
-    { member: "joseph-de-leon", clinics: ["markham"], services: ["massage"], instagram: ig("rcvrwithjoey") },
     { member: "angelii-mercurius", clinics: ["markham"], services: ["massage"], instagram: ig("angeliibless") },
     { member: "jaxon-forbes", clinics: ["markham"], services: ["massage"] },
     { member: "anesto-charles", clinics: ["mississauga", "markham"], services: ["osteopathy"], instagram: ig("__anesto") },
-    { member: "erica-runnalls", clinics: ["mississauga"], services: ["osteopathy"], instagram: ig("e__osteopathy") },
     { member: "emily-wilson", clinics: ["mississauga"], services: ["osteopathy"], instagram: ig("thriveosteopathy") },
-    { member: "jennifer-tang", clinics: ["mississauga"], services: ["naturopathic"], instagram: ig("dr.jennifertang") },
     { member: "lisbeth-bitar-patino", clinics: ["mississauga"], services: ["naturopathic"] },
 ];
 

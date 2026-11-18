@@ -1,8 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 
-// Revibe clinic details, from the dev handover. Service and booking links are "/" until those pages exist.
-// janeUrl is the live Jane booking page, used by the "Book your session" pop-up.
+// Revibe clinic details, from the dev handover. Service links are "/" until those pages exist.
+// janeUrl is the live Jane booking page, used by the "Book your session" pop-up and every "Book in <clinic>" button.
 const services = [
     "Physiotherapy",
     "Massage therapy",
@@ -89,7 +89,6 @@ module.exports = [
         height: 800,
         alt: "Revibe Mississauga on Dixie Road",
         services: tagsFor("mississauga"),
-        bookUrl: "/",
         // "Getting to Revibe Mississauga" on the location pages
         mapsUrl: "https://www.google.com/maps/search/?api=1&query=Revibe+2290+Dixie+Rd+Mississauga",
         intro: "Our flagship clinic: treatment rooms, a performance gym, a recovery lounge, cold plunge and infrared sauna under one roof.",
@@ -118,7 +117,6 @@ module.exports = [
         height: 1097,
         alt: "Inside Revibe Markham",
         services: tagsFor("markham"),
-        bookUrl: "/",
         // "Getting to Revibe Markham" on the location pages
         mapsUrl: "https://www.google.com/maps/search/?api=1&query=Revibe+220+Torbay+Rd+Markham",
         intro: "A focused clinic inside Recess, with private treatment rooms and the same standard of care as our Mississauga flagship.",

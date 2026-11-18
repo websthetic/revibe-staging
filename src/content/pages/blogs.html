@@ -1,0 +1,99 @@
+---
+title: "Blogs | Revibe | 905-783-8423 - 289-806-5123"
+description: "Explore Revibe blogs for insights, tips, and updates on physiotherapy, massage therapy, osteopathy and more. Read latest stories now!"
+permalink: "/blogs/"
+# lists every post in content/blog/ (tagged "post" by content/blog/blog.json), newest first.
+# A post's front matter gives: h1, description, date, author, category, image, imageAlt.
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/blog-listing.css">
+{% endblock %}
+
+{% block body %}
+    {# newest first; slice() so the shared collection is not reversed in place #}
+    {% set posts = collections.post.slice().reverse() if collections.post else [] %}
+    {% set arrow %}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>{% endset %}
+
+    {# local images go through the image pipeline; anything else (a CDN link) is used as is #}
+    {% macro postImage(post, width, height, loading) %}
+        {% set src = post.data.image %}
+        {% if src and src.startsWith("/assets/") %}
+        <img src="{% getUrl src | resize({ width: width * 2 }) | webp %}" alt="{{ post.data.imageAlt }}" width="{{ width }}" height="{{ height }}" loading="{{ loading }}" decoding="async">
+        {% elif src %}
+        <img src="{{ src }}" alt="{{ post.data.imageAlt }}" width="{{ width }}" height="{{ height }}" loading="{{ loading }}" decoding="async">
+        {% endif %}
+    {% endmacro %}
+
+    <!-- ============================================ -->
+    <!--                    Hero                      -->
+    <!-- ============================================ -->
+
+    <section id="blog-hero" aria-labelledby="blog-hero-title">
+        <div class="cs-container">
+            <h1 class="cs-title" id="blog-hero-title">Revibe <span class="cs-accent">Blogs</span></h1>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                 Blog Listing                 -->
+    <!-- ============================================ -->
+
+    <section id="blog-listing" aria-label="Blog posts">
+        <div class="cs-container">
+            {% if not posts.length %}
+            <p class="cs-empty">No posts yet. Check back soon.</p>
+            {% else %}
+
+            {# the most recent post #}
+            {% set featured = posts[0] %}
+            <a href="{{ featured.url }}" class="cs-featured">
+                <div class="cs-picture">{{ postImage(featured, 600, 400, "eager") }}</div>
+                <div class="cs-content">
+                    {% if featured.data.category %}<span class="cs-label">{{ featured.data.category }}</span>{% endif %}
+                    <h2 class="cs-title">{{ featured.data.h1 }}</h2>
+                    <p class="cs-text">{{ featured.data.description }}</p>
+                    <p class="cs-meta">
+                        {% if featured.data.author %}<span>{{ featured.data.author }}</span><span class="cs-dot" aria-hidden="true"></span>{% endif %}
+                        <time datetime="{{ featured.date | isoDate }}">{{ featured.date | postDate }}</time>
+                    </p>
+                    <span class="cs-read">Read blog {{ arrow | safe }}</span>
+                </div>
+            </a>
+
+            {% if posts.length > 1 %}
+            <div class="cs-grid-head">
+                <h2 class="cs-grid-title">All blogs</h2>
+                <span class="cs-count">{{ posts.length }} posts</span>
+            </div>
+
+            <ul class="cs-cards">
+                {% for post in posts.slice(1) %}
+                <li class="cs-item">
+                    <a href="{{ post.url }}" class="cs-card">
+                        <div class="cs-picture">
+                            {{ postImage(post, 400, 250, "lazy") }}
+                            {% if post.data.category %}<span class="cs-category">{{ post.data.category }}</span>{% endif %}
+                        </div>
+                        <div class="cs-body">
+                            <h3 class="cs-card-title">{{ post.data.h1 }}</h3>
+                            <p class="cs-card-text">{{ post.data.description }}</p>
+                            <div class="cs-card-foot">
+                                <time class="cs-date" datetime="{{ post.date | isoDate }}">{{ post.date | postDate }}</time>
+                                <span class="cs-arrow">{{ arrow | safe }}</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            {% endif %}
+        </div>
+    </section>
+
+    {% include "sections/cta.html" %}
+{% endblock %}

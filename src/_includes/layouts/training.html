@@ -2,28 +2,59 @@
     Performance training pages (performance training, team training, team combine).
     A page sets in its front matter:
       trainingPage: key of its content file in _data/training/ (e.g. "team-training")
-    consult: { label, variant } in that file sets every "Request ..." button and the version of the
-    free consult pop-up it opens ("individual", "team" or "combine"); without it, "Request a free consult".
-    Styles: performance-training.less. Tabs and report bars: performance-training.js.
+    consult: { label, variant } in that file sets every consult button and the version of the
+    free consult pop-up it opens ("individual", "team" or "combine"); without it, "Book a free consult".
+    Sections switch on what the content file has:
+      hero.layout "photo"   one large photo (performance training); otherwise two photos in ovals
+      goals.cards           photo cards; goals.items makes tabs
+      how.layout "photos"   steps with a big photo each; otherwise numbered steps, with how.sheet under them
+      report                the baseline report sheet with margin notes
+      reviews, pricing, blocks, why, instagram: each section shows only when its key is there
+      leagues: false        hides the "players from" leagues strip
+    consult.goal picks that answer to "What is your goal?" when a goal tab's button opens the pop-up
+    (otherwise the tab title is used, which only matches on performance training).
+    Styles: performance-training.less. Tabs, leagues strip and report clip: performance-training.js.
+    The leagues strip is _data/leagues.js; the report sheet is components/report-sheet.html.
 #}
 {% extends "layouts/base.html" %}
 
 {% block head %}
     <link rel="stylesheet" href="/assets/css/performance-training.css">
     <script defer src="/assets/js/performance-training.js"></script>
+    <script defer src="/assets/js/call-us.js"></script>
 {% endblock %}
 
 {% block body %}
     {% set pt = training[trainingPage] %}
-    {# every "Request ..." button opens the free consult pop-up in this page's version #}
-    {% set consultLabel = pt.consult.label if pt.consult else "Request a free consult" %}
+    {# every consult button opens the free consult pop-up in this page's version #}
+    {% set consultLabel = pt.consult.label if pt.consult else "Book a free consult" %}
     {% set consultVariant = pt.consult.variant if pt.consult else "individual" %}
     {% set check %}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>{% endset %}
+    {% set arrow %}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>{% endset %}
 
     <!-- ============================================ -->
     <!--                    Hero                      -->
     <!-- ============================================ -->
 
+    {% if pt.hero.layout == "photo" %}
+    <section id="perf-hero" class="cs-hero-photo" aria-labelledby="perf-hero-title">
+        <div class="cs-container">
+            <div class="cs-content">
+                <h1 class="cs-title" id="perf-hero-title">{{ pt.hero.title }}</h1>
+                <p class="cs-text">{{ pt.hero.text }}</p>
+                <div class="cs-actions">
+                    <a href="/" class="cs-button-solid cs-hover-dark" data-consult data-variant="{{ consultVariant }}" aria-haspopup="dialog">{{ consultLabel }}</a>
+                    <a href="#how" class="cs-text-link">See how it works</a>
+                </div>
+                <p class="cs-note">{{ pt.hero.note }}</p>
+            </div>
+            {% set image = pt.hero.images[0] %}
+            <div class="cs-photo">
+                <img src="{% getUrl image.src | resize({ width: 1200 }) | webp %}" alt="{{ image.alt }}" style="object-position: {{ image.position }};" width="{{ image.width }}" height="{{ image.height }}" fetchpriority="high" decoding="async">
+            </div>
+        </div>
+    </section>
+    {% else %}
     <section id="perf-hero" aria-labelledby="perf-hero-title">
         <div class="cs-container">
             <div class="cs-content">
@@ -52,11 +83,58 @@
             </div>
         </div>
     </section>
+    {% endif %}
+
+    <!-- ============================================ -->
+    <!--        Leagues: "players from", not partners  -->
+    <!-- ============================================ -->
+
+    {% if pt.leagues !== false %}
+    <section id="leagues" aria-labelledby="leagues-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="leagues-title">{{ leagues.title }}</h2>
+        </div>
+        {# the row is drawn twice so it can loop; it pauses on hover and stops for visitors who turn motion off #}
+        <div class="cs-track">
+            {% for copy in [1, 2] %}
+            <ul class="cs-row"{% if copy == 2 %} aria-hidden="true"{% endif %}>
+                {% for league in leagues.items %}
+                <li class="cs-league cs-league-{{ league.key }}"><img src="/assets/images/leagues/{{ league.key }}.png" alt="{% if copy == 1 %}{{ league.name }}{% endif %}" width="{{ league.width }}" height="110" loading="lazy" decoding="async"></li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
 
     <!-- ============================================ -->
     <!--                    Goals                     -->
     <!-- ============================================ -->
 
+    {% if pt.goals.cards %}
+    <section id="goals" class="cs-section cs-goal-cards" aria-labelledby="goals-title">
+        <div class="cs-container">
+            <h2 class="cs-title cs-section-title" id="goals-title">{{ pt.goals.title }}</h2>
+            <ul class="cs-cards">
+                {% for card in pt.goals.cards %}
+                {% set inner %}
+                    <span class="cs-card-picture"><img src="{% getUrl card.image | resize({ width: 700 }) | webp %}" alt="{{ card.alt }}"{% if card.position %} style="object-position: {{ card.position }};"{% endif %} width="1200" height="800" loading="lazy" decoding="async"></span>
+                    <span class="cs-card-title">{{ card.title }}</span>
+                    <span class="cs-card-text">{{ card.text }}</span>
+                    <span class="cs-card-link">{{ card.linkLabel or "Start here" }}{{ arrow | safe }}</span>
+                {% endset %}
+                <li>
+                    {% if card.url %}
+                    <a class="cs-card" href="{{ card.url }}">{{ inner | safe }}</a>
+                    {% else %}
+                    <button type="button" class="cs-card" data-consult data-variant="{{ consultVariant }}" data-goal="{{ card.title }}" aria-haspopup="dialog">{{ inner | safe }}</button>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    {% else %}
     <section id="goals" class="cs-section" aria-labelledby="goals-title">
         <div class="cs-container">
             <h2 class="cs-title cs-section-title" id="goals-title">{{ pt.goals.title }}</h2>
@@ -69,7 +147,7 @@
                 {% for goal in pt.goals.items %}
                 <div class="cs-panel" role="tabpanel" id="goal-panel-{{ goal.id }}" aria-labelledby="goal-tab-{{ goal.id }}" tabindex="0"{% if not loop.first %} hidden{% endif %}>
                     <div class="cs-panel-picture">
-                        <img src="{% getUrl goal.image | resize({ width: 900 }) | webp %}" alt="{{ goal.alt }}" width="1200" height="800" loading="lazy" decoding="async">
+                        <img src="{% getUrl goal.image | resize({ width: 900 }) | webp %}" alt="{{ goal.alt }}"{% if goal.position %} style="object-position: {{ goal.position }};"{% endif %} width="1200" height="800" loading="lazy" decoding="async">
                     </div>
                     <div class="cs-panel-body">
                         <h3 class="cs-panel-title">{{ goal.title }}</h3>
@@ -81,7 +159,7 @@
                             {% if goal.buttons %}
                             {% for button in goal.buttons %}<a href="{{ button.url }}" class="{% if button.outline %}cs-button-outline{% else %}cs-button-solid cs-hover-dark{% endif %}">{{ button.label }}</a>{% endfor %}
                             {% else %}
-                            <a href="/" class="cs-button-solid cs-hover-dark" data-consult data-variant="{{ consultVariant }}"{% if consultVariant == "individual" %} data-goal="{{ goal.title }}"{% endif %} aria-haspopup="dialog">{{ consultLabel }}</a>
+                            <a href="/" class="cs-button-solid cs-hover-dark" data-consult data-variant="{{ consultVariant }}"{% if consultVariant == "individual" %} data-goal="{{ pt.consult.goal if pt.consult and pt.consult.goal else goal.title }}"{% endif %} aria-haspopup="dialog">{{ consultLabel }}</a>
                             {% endif %}
                         </div>
                     </div>
@@ -90,15 +168,37 @@
             </div>
         </div>
     </section>
+    {% endif %}
 
     <!-- ============================================ -->
     <!--                How It Works                  -->
     <!-- ============================================ -->
 
-    <section id="how" class="cs-section cs-section-dark" aria-labelledby="how-title">
+    <section id="how" class="cs-section cs-section-dark{% if pt.how.layout == "photos" %} cs-how-photos{% endif %}" aria-labelledby="how-title">
         <div class="cs-container">
             <h2 class="cs-title cs-section-title" id="how-title">{{ pt.how.title }}</h2>
-            <div class="cs-how">
+            {% if pt.how.layout == "photos" %}
+            <ol class="cs-photo-steps">
+                {% for step in pt.how.steps %}
+                <li class="cs-photo-step"{% if step.id %} id="{{ step.id }}"{% endif %}>
+                    <div class="cs-step-picture">
+                        <img src="{% getUrl step.image | resize({ width: 1000 }) | webp %}" alt="{{ step.alt }}" width="1400" height="933" loading="lazy" decoding="async">
+                    </div>
+                    <div class="cs-step-body">
+                        <span class="cs-step-number" aria-hidden="true">0{{ loop.index }}</span>
+                        <h3 class="cs-step-title">{{ step.title }}</h3>
+                        <p class="cs-step-text">{{ step.text }}</p>
+                        {% if step.measures %}
+                        <dl class="cs-measures">
+                            {% for measure in step.measures %}<div><dt>{{ measure.title }}</dt><dd>{{ measure.text }}</dd></div>{% endfor %}
+                        </dl>
+                        {% endif %}
+                    </div>
+                </li>
+                {% endfor %}
+            </ol>
+            {% else %}
+            <div class="cs-how cs-how-solo">
                 <ol class="cs-steps">
                     {% for step in pt.how.steps %}
                     <li class="cs-step">
@@ -110,25 +210,51 @@
                     </li>
                     {% endfor %}
                 </ol>
-                <div class="cs-report">
-                    <h3 class="cs-report-title">{{ pt.how.report.title }}</h3>
-                    {% for bar in pt.how.report.bars %}
-                    {% set barStyle = 'style="--w: ' + bar.value + '%;"' %}
-                    <div class="cs-bar">
-                        <p class="cs-bar-label">{{ bar.label }}<span>{{ bar.note }}</span></p>
-                        <div class="cs-bar-track" role="img" aria-label="{{ bar.label }}: {{ bar.value }} percent, example"><i {{ barStyle | safe }}></i></div>
-                    </div>
-                    {% endfor %}
-                    <p class="cs-report-note">{{ pt.how.report.note }}</p>
+                {% if pt.how.sheet %}
+                {% set sheet = pt.how.sheet %}
+                {% include "components/report-sheet.html" %}
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--          The Report (margin notes)           -->
+    <!-- ============================================ -->
+
+    {% if pt.report %}
+    <section id="report" class="cs-section" aria-labelledby="report-title">
+        <div class="cs-container">
+            <div class="cs-head">
+                <h2 class="cs-title cs-section-title" id="report-title">{{ pt.report.title }}</h2>
+                <p class="cs-section-text">{{ pt.report.text }}</p>
+            </div>
+            {# wide screens: notes in the margins either side of the sheet; phones: the sheet only #}
+            <div class="cs-report-layout">
+                <ul class="cs-notes cs-notes-left">
+                    {% for note in pt.report.notesLeft %}<li><b>{{ note.title }}</b>{{ note.text }}</li>{% endfor %}
+                </ul>
+                <div class="cs-report-sheet">
+                    {% set sheet = pt.report.sheet %}
+                    {% include "components/report-sheet.html" %}
                 </div>
+                <ul class="cs-notes cs-notes-right">
+                    {% for note in pt.report.notesRight %}<li><b>{{ note.title }}</b>{{ note.text }}</li>{% endfor %}
+                </ul>
+            </div>
+            <div class="cs-actions cs-actions-center">
+                <a href="/" class="cs-button-solid cs-hover-dark" data-consult data-variant="{{ consultVariant }}" aria-haspopup="dialog">{{ consultLabel }}</a>
             </div>
         </div>
     </section>
+    {% endif %}
 
     <!-- ============================================ -->
     <!--                   Reviews                    -->
     <!-- ============================================ -->
 
+    {% if pt.reviews %}
     <section id="athletes" class="cs-section cs-section-dark" aria-labelledby="athletes-title">
         <div class="cs-container">
             <div class="cs-head">
@@ -155,11 +281,53 @@
             </ul>
         </div>
     </section>
+    {% endif %}
 
     <!-- ============================================ -->
-    <!--              How Long People Train           -->
+    <!--                   Pricing                    -->
     <!-- ============================================ -->
 
+    {% if pt.pricing %}
+    <section id="pricing" class="cs-section" aria-labelledby="pricing-title">
+        <div class="cs-container">
+            <h2 class="cs-title cs-section-title" id="pricing-title">{{ pt.pricing.title }}</h2>
+            <p class="cs-section-text">{{ pt.pricing.text }}</p>
+            <div class="cs-price-cards">
+                {% for card in pt.pricing.cards %}
+                <div class="cs-price-card{% if card.dark %} cs-price-dark{% endif %}">
+                    <h3 class="cs-price-title">{{ card.title }}</h3>
+                    <p class="cs-price-text">{{ card.text }}</p>
+                    <ul class="cs-prices">
+                        {% for price in card.prices %}<li><span>{{ price[0] }}</span><b>${{ price[1] }}</b></li>{% endfor %}
+                    </ul>
+                    <small class="cs-price-note">{{ card.note }}</small>
+                </div>
+                {% endfor %}
+            </div>
+            <h3 class="cs-price-blocks-title">{{ pt.pricing.blocksTitle }}</h3>
+            <ul class="cs-price-blocks">
+                {% for block in pt.pricing.blocks %}
+                <li class="cs-price-block{% if block.popular %} cs-price-popular{% endif %}">
+                    {% if block.popular %}<span class="cs-price-tag">Most popular</span>{% endif %}
+                    <span class="cs-price-figure">{{ block.sessions }}</span>
+                    <span class="cs-price-unit">sessions</span>
+                    <b>{{ block.off }}</b>
+                    <small>every session</small>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="cs-actions">
+                <a href="/" class="cs-button-solid cs-hover-dark" data-consult data-variant="{{ consultVariant }}" aria-haspopup="dialog">{{ consultLabel }}</a>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- ============================================ -->
+    <!--              What People Get                 -->
+    <!-- ============================================ -->
+
+    {% if pt.blocks %}
     <section id="blocks" class="cs-section" aria-labelledby="blocks-title">
         <div class="cs-container">
             <h2 class="cs-title cs-section-title" id="blocks-title">{{ pt.blocks.title }}</h2>
@@ -180,11 +348,13 @@
             </div>
         </div>
     </section>
+    {% endif %}
 
     <!-- ============================================ -->
     <!--               Why Train Here                 -->
     <!-- ============================================ -->
 
+    {% if pt.why %}
     <section id="why" class="cs-section" aria-labelledby="why-title">
         <div class="cs-container">
             <h2 class="cs-title cs-section-title" id="why-title">{{ pt.why.title }}</h2>
@@ -195,6 +365,12 @@
             </ul>
         </div>
     </section>
+    {% endif %}
+
+    {% if pt.instagram %}
+    {% set instagramData = pt.instagram %}
+    {% include "sections/home/instagram.html" %}
+    {% endif %}
 
     <!-- ============================================ -->
     <!--                 Final CTA                    -->
@@ -207,14 +383,14 @@
                 <p class="cs-final-text">{{ pt.final.text }}</p>
                 <div class="cs-actions">
                     <a href="/" class="cs-button-solid cs-button-dark cs-final-main" data-consult data-variant="{{ consultVariant }}" aria-haspopup="dialog">{{ consultLabel }}</a>
-                    {% for clinic in clinics %}<a href="tel:{{ clinic.phoneForTel }}" class="cs-button-outline">Call {{ clinic.name }}</a>{% endfor %}
+                    <a href="tel:{{ clinics[0].phoneForTel }}" class="cs-button-outline" data-call aria-haspopup="dialog">Call us</a>
                 </div>
             </div>
         </div>
     </section>
 
     {% set faq = pt.faq %}
-    {% set faqBookButton = false %}
+    {% set faqButton = { label: consultLabel, attrs: 'data-consult data-variant="' + consultVariant + '"' } %}
     {% include "components/faq.html" %}
 
     <!-- ============================================ -->
@@ -237,11 +413,21 @@
         </div>
     </section>
 
+    {% if pt.cta %}{% set ctaBar = { text: pt.cta.text, label: consultLabel, attrs: 'data-consult data-variant="' + consultVariant + '"' } %}{% endif %}
     {% include "sections/cta.html" %}
 
     {% include "components/popup-forms/free-consult.html" %}
+    {% include "components/popup-forms/call-us.html" %}
 
+    {% if pt.sticky == "solo" %}
+    {# phones: one full-width button that opens the consult form #}
+    <div class="cs-sticky-book cs-sticky-solo">
+        <a href="/" class="cs-button-solid" data-consult data-variant="{{ consultVariant }}" aria-haspopup="dialog">{{ consultLabel }}</a>
+    </div>
+    {% else %}
     {% set stickyLabel = pt.stickyLabel %}
     {% set stickyConsult = true %}
+    {% set stickyVariant = consultVariant %}
     {% include "components/sticky-book.html" %}
+    {% endif %}
 {% endblock %}

@@ -11,20 +11,20 @@ module.exports = {
         title: "Naturopathic medicine",
         text: "Naturopathic doctors who look for the cause behind low energy, poor sleep, hormones, digestion and stress. Testing when it is warranted, then a plan with nutrition, acupuncture, cupping or IV therapy, at every Revibe clinic.",
         proofBold: "5.0 on Google",
-        proof: "from 600+ reviews. In person or virtual, and most extended health plans cover naturopathic care.",
+        proof: "from 700+ reviews. In person or virtual, and most extended health plans cover naturopathic care.",
         // replaces the default "Request to book" / "Book online" pair
         buttons: [freeConsultation, { label: "See what we treat", url: "#types", outline: true }],
         images: [
             { src: "/assets/images/naturopathic/hero-tincture.jpg", alt: "A naturopathic doctor measuring a tincture with a dropper", position: "center 40%" },
             { src: "/assets/images/naturopathic/hero-acupuncture.jpg", alt: "Acupuncture needles being placed along a client's back", position: "center 45%" },
-            { src: "/assets/images/services/naturopathic.jpg", alt: "Lisbeth Bitar Patino, naturopathic doctor, listening with a stethoscope during an assessment", position: "62% 43%" },
+            { src: "/assets/images/services/naturopathic.jpg", alt: "Lisbeth Bitar Patino, naturopathic doctor, listening with a stethoscope during an assessment", position: "60% 33%" },
         ],
     },
 
     fit: {
         title: "Is naturopathic medicine right for me?",
         text: "If one of these sounds like you, start with a free consultation. If what you need is a physiotherapist, chiropractor or massage therapist instead, your naturopathic doctor will say so and they are down the hall.",
-        photo: { src: "/assets/images/naturopathic/fit-tang.jpg", alt: "Dr. Jennifer Tang, naturopathic doctor, holding a tincture bottle", position: "center 30%" },
+        photo: { src: "/assets/images/naturopathic/lisbeth-7022.jpg", alt: "Lisbeth Bitar Patino, naturopathic doctor, holding her stethoscope", position: "50% 22%" },
         tiles: [
             { area: "a", colour: "white", wide: true, quote: "I sleep eight hours and still wake up exhausted.", topic: "Sleep and energy", url: "#sleep" },
             { area: "b", colour: "green", quote: "My cycle and my moods feel off.", topic: "Hormones and DUTCH testing", url: "#dutch" },
@@ -46,8 +46,8 @@ module.exports = {
             {
                 title: "We listen",
                 text: "Your health history, sleep, energy, digestion, stress and what you want to feel like again.",
-                image: "/assets/images/naturopathic/step-listen.jpg",
-                alt: "Dr. Jennifer Tang, naturopathic doctor, in a consult at her desk",
+                image: "/assets/images/naturopathic/lisbeth-6844.jpg",
+                alt: "Lisbeth Bitar Patino, naturopathic doctor, taking a client's blood pressure",
                 position: "center 35%",
             },
             {
@@ -67,8 +67,8 @@ module.exports = {
             {
                 title: "We plan",
                 text: "A written plan, follow-ups and retesting, so you can see what changed.",
-                image: "/assets/images/naturopathic/step-plan.jpg",
-                alt: "Dr. Jennifer Tang, naturopathic doctor, talking a client through her plan",
+                image: "/assets/images/naturopathic/lisbeth-6661.jpg",
+                alt: "Lisbeth Bitar Patino, naturopathic doctor, treating a client",
                 position: "center 35%",
             },
         ],
@@ -79,13 +79,13 @@ module.exports = {
         text: "Your naturopathic doctor chooses what fits after the assessment. These are the areas our naturopathic doctors focus on.",
         items: [
             { label: "Naturopathic consultation", id: "consult", text: "A full health assessment that looks at sleep, energy, digestion, hormones and stress together." },
-            { label: "Sleep and energy", id: "sleep", text: "Finding what is behind feeling flat: thyroid, cortisol, iron, B12 and how you sleep." },
-            { label: "Hormones and DUTCH testing", id: "dutch", text: "Cycle, mood and stress hormones, tested with the DUTCH test where it is warranted." },
+            { label: "Sleep and energy", id: "sleep", text: "Finding what is behind feeling flat: thyroid, cortisol, iron, B12 and how you sleep.", link: { label: "Learn more", url: "/services/naturopathic-medicine/sleep-and-energy/" } },
+            { label: "Hormones and DUTCH testing", id: "dutch", text: "Cycle, mood and stress hormones, tested with the DUTCH test where it is warranted.", link: { label: "Learn more", url: "/services/naturopathic-medicine/dutch-test/" } },
             { label: "Gut health", id: "gut", text: "Bloating, food sensitivities and digestion that has a mind of its own." },
-            { label: "IV therapy", id: "iv", text: "Vitamins and nutrients delivered directly, built around your plan." },
-            { label: "Acupuncture", id: "acupuncture", text: "For pain, stress and sleep, in the same clinic as your physiotherapist." },
+            { label: "IV therapy", id: "iv", text: "Vitamins and nutrients delivered directly, built around your plan.", link: { label: "Learn more", url: "/services/naturopathic-medicine/iv-therapy/" } },
+            { label: "Acupuncture", id: "acupuncture", text: "For pain, stress and sleep, in the same clinic as your physiotherapist.", link: { label: "Learn more", url: "/services/naturopathic-medicine/acupuncture-tcm/" } },
             { label: "Cupping", id: "cupping", text: "Releases tight tissue and pairs well with acupuncture and massage." },
-            { label: "Meal plans", id: "meal-plans", text: "Nutrition built around your goals, your testing and how you actually eat." },
+            { label: "Meal plans", id: "meal-plans", text: "Nutrition built around your goals, your testing and how you actually eat.", link: { label: "Learn more", url: "/services/naturopathic-medicine/meal-plans/" } },
         ],
     },
 
@@ -96,7 +96,7 @@ module.exports = {
             title: "Naturopathic doctors",
             text: "Licensed naturopathic doctors who take the time to hear the whole story, in person or virtual.",
             linkLabel: "Meet the team",
-            linkUrl: "/",
+            linkUrl: "/therapists/",
             textAfter: ".",
         },
         hands: {
@@ -108,7 +108,7 @@ module.exports = {
         },
         coTreat: {
             title: "Clinicians who co-treat",
-            text: "Physiotherapists, chiropractors, osteopaths and massage therapists under one roof, so pain and recovery are treated from both sides.",
+            text: "Physiotherapists, chiropractors, massage therapists, osteopaths and naturopathic doctors under one roof at every Revibe clinic, treating the same case together when that is what gets you better.",
         },
         careMap: {
             title: "The Care Map",
@@ -125,32 +125,10 @@ module.exports = {
     team: {
         title: "Who will treat me?",
         text: "Two naturopathic doctors, in person at any Revibe clinic or virtually. You see the same naturopathic doctor for the whole plan.",
-        members: ["jennifer-tang", "lisbeth-bitar-patino"],
+        members: ["lisbeth-bitar-patino"],
     },
 
-    reviews: {
-        title: "What do clients say about naturopathic medicine at Revibe?",
-        rating: "5.0",
-        count: "600+",
-        allLabel: "Read every review on Google",
-        items: [
-            {
-                name: "laura B.",
-                initials: "LB",
-                quote: "Dr. Jennifer Tang is absolutely amazing, she has changed my way of living. I feel like a whole new person after taking all her recommendations. She made me understand the benefits of seeing a naturopathic doctor and it has paid off!",
-            },
-            {
-                name: "Rose A.",
-                initials: "RA",
-                quote: "I personally saw Dr. Jennifer tang for my gut health problems. She helped me control my condition so I can have more flexibility with my diet. The acupuncture and cupping was very safe, sanitary and effective.",
-            },
-            {
-                name: "Umar Q.",
-                initials: "UQ",
-                quote: "I just started seeing Dr. Jennifer Tang who is a naturopath and she has been extremely helpful in coming up with a plan to address gut issues I have been experiencing. Not only is she very knowledgeable, she is clearly someone who cares about her patients and continuously checks up on them, which is greatly appreciated. Her acupuncture treatments have also started to make a difference in my life.",
-            },
-        ],
-    },
+    // reviews return once Lisbeth has her own (every ND review named a clinician who has left)
 
     statement: {
         image: "/assets/images/osteopathy/statement-plunge.jpg",
@@ -171,7 +149,7 @@ module.exports = {
         title: "Naturopathic medicine works with the rest of Revibe",
         items: [
             { label: "Physiotherapy", url: "/services/physiotherapy/", image: "/assets/images/services/physiotherapy.jpg", alt: "Michael Leung, physiotherapist, working a client's hip on the table", position: "center 55%" },
-            { label: "Chiropractic", url: "/services/chiropractic/", image: "/assets/images/services/chiropractic-side.jpg", alt: "A Revibe chiropractor positioning a client on her side for an adjustment", position: "center 40%" },
+            { label: "Chiropractic", url: "/services/chiropractic/", image: "/assets/images/services/chiropractic-side.jpg", alt: "A Revibe chiropractor positioning a client on her side for an adjustment", position: "50% 22%" },
             { label: "Massage therapy", url: "/services/massage/", image: "/assets/images/services/massage-hands.jpg", alt: "A massage therapist's hands working into a client's shoulder", position: "center 45%" },
             { label: "Osteopathy", url: "/services/osteopathy/", image: "/assets/images/services/osteopathy.jpg", alt: "A Revibe osteopathic practitioner working gently at a client's neck", position: "55% 40%" },
         ],
@@ -215,7 +193,7 @@ module.exports = {
             },
             {
                 q: "Who are the naturopathic doctors at Revibe?",
-                a: "Dr. Jennifer Tang and Lisbeth Bitar Patino. You can book in person at any Revibe clinic, or virtually.",
+                a: "Lisbeth Bitar Patino. You can book in person at any Revibe clinic, or virtually.",
             },
         ],
     },

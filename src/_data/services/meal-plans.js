@@ -7,7 +7,7 @@ module.exports = {
         title: "Personalized meal plans",
         text: "A nutrition plan built around the food you already eat, your training load and what your labs showed, written by a naturopathic doctor at every Revibe clinic.",
         proofBold: "5.0 on Google",
-        proof: "from 600+ reviews. Most extended health plans cover naturopathic care, and we direct bill.",
+        proof: "from 700+ reviews. Most extended health plans cover naturopathic care, and we direct bill.",
         buttons: [
             {
                 label: "Book a free consultation",
@@ -50,22 +50,22 @@ module.exports = {
             {
                 title: "Start from what you eat",
                 text: "A full food and schedule intake, including what you cook, what you buy ready-made and what you will never touch.",
-                image: "/assets/images/naturopathic/step-listen.jpg",
-                alt: "Dr. Jennifer Tang, naturopathic doctor, taking a food history at her desk",
-                position: "center 35%"
+                image: "/assets/images/naturopathic/lisbeth-A7305332.jpg",
+                alt: "Lisbeth Bitar Patino, naturopathic doctor, listening with a stethoscope",
+                position: "50% 28%"
             },
             {
                 title: "Set it to your labs",
                 text: "Iron, B12, blood sugar, hormones and training volume decide the protein, timing and carbohydrate targets.",
-                image: "/assets/images/naturopathic/fit-tang.jpg",
-                alt: "Dr. Jennifer Tang, naturopathic doctor, holding a tincture bottle",
+                image: "/assets/images/naturopathic/lisbeth-7036.jpg",
+                alt: "Lisbeth Bitar Patino, naturopathic doctor, in the Revibe lounge",
                 position: "center 30%"
             },
             {
                 title: "Review and adjust",
                 text: "Follow-ups that change what you did not keep, so the plan becomes something you can actually run.",
-                image: "/assets/images/naturopathic/step-plan.jpg",
-                alt: "Dr. Jennifer Tang, naturopathic doctor, adjusting a plan with a client",
+                image: "/assets/images/naturopathic/lisbeth-6598.jpg",
+                alt: "Lisbeth Bitar Patino, naturopathic doctor, treating a client on the table",
                 position: "center 35%"
             }
         ]
@@ -95,33 +95,10 @@ module.exports = {
         title: "Who will treat me?",
         text: "Two naturopathic doctors, in person at any Revibe clinic or virtually. You see the same naturopathic doctor from the consult through every follow-up.",
         members: [
-            "jennifer-tang",
             "lisbeth-bitar-patino"
         ]
     },
-    reviews: {
-        title: "What do clients say about naturopathic medicine at Revibe?",
-        rating: "5.0",
-        count: "600+",
-        allLabel: "Read every review on Google",
-        items: [
-            {
-                name: "laura B.",
-                initials: "LB",
-                quote: "Dr. Jennifer Tang is absolutely amazing, she has changed my way of living. I feel like a whole new person after taking all her recommendations. She made me understand the benefits of seeing a naturopathic doctor and it has paid off!"
-            },
-            {
-                name: "Rose A.",
-                initials: "RA",
-                quote: "I personally saw Dr. Jennifer tang for my gut health problems. She helped me control my condition so I can have more flexibility with my diet. The acupuncture and cupping was very safe, sanitary and effective."
-            },
-            {
-                name: "Umar Q.",
-                initials: "UQ",
-                quote: "I just started seeing Dr. Jennifer Tang who is a naturopath and she has been extremely helpful in coming up with a plan to address gut issues I have been experiencing. Not only is she very knowledgeable, she is clearly someone who cares about her patients and continuously checks up on them, which is greatly appreciated. Her acupuncture treatments have also started to make a difference in my life."
-            }
-        ]
-    },
+    // reviews return once Lisbeth has her own (every ND review named a clinician who has left)
     statement: {
         image: "/assets/images/osteopathy/statement-plunge.jpg",
         alt: "A hand trailing through the cold plunge water",

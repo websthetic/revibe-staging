@@ -386,21 +386,77 @@
 	#clinic-gallery {
 		background-color: var(--offWhite);
 
+		/* walkthrough video (Mississauga) */
+		.cs-video {
+			position: relative;
+			margin-top: (40/16rem);
+			border-radius: (24/16rem);
+			overflow: hidden;
+			aspect-ratio: 4 / 3;
+			background-color: var(--nearBlack);
+
+			video {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+
+		.cs-video-toggle {
+			position: absolute;
+			right: (16/16rem);
+			bottom: (16/16rem);
+			width: (48/16rem);
+			height: (48/16rem);
+			border-radius: 50%;
+			border: 0;
+			background-color: var(--white);
+			color: var(--nearBlack);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+
+			svg {
+				width: (20/16rem);
+				height: (20/16rem);
+			}
+
+			.cs-play {
+				display: none;
+			}
+		}
+
+		.cs-paused .cs-video-toggle {
+			.cs-pause {
+				display: none;
+			}
+
+			.cs-play {
+				display: block;
+			}
+		}
+
+		/* phones: one row of photos that scrolls sideways */
 		.cs-gallery {
 			list-style: none;
-			margin: (40/16rem) 0 0;
-			padding: 0;
-			display: grid;
-			grid-template-columns: 1fr 1fr;
+			margin: (40/16rem) (-20/16rem) 0;
+			padding: 0 (20/16rem) (4/16rem);
+			display: flex;
 			gap: (12/16rem);
+			overflow-x: auto;
+			scroll-snap-type: x mandatory;
+			scroll-padding: 0 (20/16rem);
+			scrollbar-width: none;
 
-			/* the first photo runs full width */
-			li:first-child {
-				grid-column: 1 / -1;
+			&::-webkit-scrollbar {
+				display: none;
+			}
 
-				.cs-figure {
-					aspect-ratio: 16 / 10;
-				}
+			li {
+				flex: 0 0 78%;
+				scroll-snap-align: start;
 			}
 		}
 
@@ -759,6 +815,34 @@
 @media only screen and (min-width: 43.75rem) {
 	#clinic-services .cs-services {
 		grid-template-columns: 1fr 1fr;
+	}
+
+	#clinic-gallery {
+		.cs-video {
+			border-radius: (32/16rem);
+			aspect-ratio: 16 / 9;
+		}
+
+		/* back to a grid, the first photo full width */
+		.cs-gallery {
+			margin: (40/16rem) 0 0;
+			padding: 0;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			overflow: visible;
+
+			li {
+				flex: none;
+			}
+
+			li:first-child {
+				grid-column: 1 / -1;
+
+				.cs-figure {
+					aspect-ratio: 16 / 10;
+				}
+			}
+		}
 	}
 }
 

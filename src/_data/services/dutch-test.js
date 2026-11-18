@@ -7,7 +7,7 @@ module.exports = {
         title: "DUTCH hormone testing",
         text: "A dried urine panel that shows what your hormones are doing across a full day. You collect it at home, and your naturopathic doctor reads it with you at any Revibe clinic.",
         proofBold: "5.0 on Google",
-        proof: "from 600+ reviews. Most extended health plans cover naturopathic care, and we direct bill.",
+        proof: "from 700+ reviews. Most extended health plans cover naturopathic care, and we direct bill.",
         buttons: [
             {
                 label: "Book a free consultation",
@@ -31,8 +31,8 @@ module.exports = {
                 position: "center 45%"
             },
             {
-                src: "/assets/images/naturopathic/fit-tang.jpg",
-                alt: "Dr. Jennifer Tang, naturopathic doctor, holding a tincture bottle",
+                src: "/assets/images/naturopathic/lisbeth-kitchen-6951.jpg",
+                alt: "Lisbeth Bitar Patino, naturopathic doctor, preparing food in a kitchen",
                 position: "center 30%"
             }
         ]
@@ -50,9 +50,9 @@ module.exports = {
             {
                 title: "Consult first",
                 text: "Your naturopathic doctor decides with you whether DUTCH is the right panel, or whether bloodwork answers the question for less.",
-                image: "/assets/images/naturopathic/step-listen.jpg",
-                alt: "Dr. Jennifer Tang, naturopathic doctor, in a consult at her desk",
-                position: "center 35%"
+                image: "/assets/images/naturopathic/lisbeth-A7305332.jpg",
+                alt: "Lisbeth Bitar Patino, naturopathic doctor, listening with a stethoscope",
+                position: "50% 28%"
             },
             {
                 title: "Collect at home",
@@ -64,8 +64,8 @@ module.exports = {
             {
                 title: "Read it together",
                 text: "A follow-up that walks through the report line by line, and a plan built from what it showed.",
-                image: "/assets/images/naturopathic/step-plan.jpg",
-                alt: "Dr. Jennifer Tang, naturopathic doctor, reviewing a report with a client",
+                image: "/assets/images/naturopathic/lisbeth-6598.jpg",
+                alt: "Lisbeth Bitar Patino, naturopathic doctor, treating a client on the table",
                 position: "center 35%"
             }
         ]
@@ -95,33 +95,10 @@ module.exports = {
         title: "Who will treat me?",
         text: "Two naturopathic doctors, in person at any Revibe clinic or virtually. You see the same naturopathic doctor from the consult through every follow-up.",
         members: [
-            "jennifer-tang",
             "lisbeth-bitar-patino"
         ]
     },
-    reviews: {
-        title: "What do clients say about naturopathic medicine at Revibe?",
-        rating: "5.0",
-        count: "600+",
-        allLabel: "Read every review on Google",
-        items: [
-            {
-                name: "laura B.",
-                initials: "LB",
-                quote: "Dr. Jennifer Tang is absolutely amazing, she has changed my way of living. I feel like a whole new person after taking all her recommendations. She made me understand the benefits of seeing a naturopathic doctor and it has paid off!"
-            },
-            {
-                name: "Rose A.",
-                initials: "RA",
-                quote: "I personally saw Dr. Jennifer tang for my gut health problems. She helped me control my condition so I can have more flexibility with my diet. The acupuncture and cupping was very safe, sanitary and effective."
-            },
-            {
-                name: "Umar Q.",
-                initials: "UQ",
-                quote: "I just started seeing Dr. Jennifer Tang who is a naturopath and she has been extremely helpful in coming up with a plan to address gut issues I have been experiencing. Not only is she very knowledgeable, she is clearly someone who cares about her patients and continuously checks up on them, which is greatly appreciated. Her acupuncture treatments have also started to make a difference in my life."
-            }
-        ]
-    },
+    // reviews return once Lisbeth has her own (every ND review named a clinician who has left)
     statement: {
         image: "/assets/images/osteopathy/statement-plunge.jpg",
         alt: "A hand trailing through the cold plunge water",

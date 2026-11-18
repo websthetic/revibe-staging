@@ -1,0 +1,177 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// LOCATIONS HUB
+// /locations/ (content/pages/locations.html): one block per clinic in _data/clinics.js.
+// The hero is #info-hero in info-page.less (the page loads both stylesheets).
+// ─────────────────────────────────────────────────────────────────────────────
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#hub-clinics {
+		padding: clamp(3rem, 7vw, 6rem) (20/16rem);
+		background-color: var(--offWhite);
+
+		.cs-container {
+			width: 100%;
+			max-width: (1280/16rem);
+			margin: auto;
+			display: grid;
+			/* 56px - 96px */
+			gap: clamp(3.5rem, 7vw, 6rem);
+		}
+
+		.cs-clinic {
+			display: grid;
+			gap: (28/16rem);
+		}
+
+		.cs-picture {
+			height: (300/16rem);
+			border-radius: (32/16rem);
+			overflow: hidden;
+			background-color: var(--nearBlack);
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+
+		.cs-details {
+			display: grid;
+			align-content: start;
+			gap: (20/16rem);
+		}
+
+		.cs-name {
+			/* 56px - 88px */
+			font-size: clamp(3.5rem, 7vw, 5.5rem);
+			line-height: 0.85;
+			margin: 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-intro {
+			font-size: (17/16rem);
+			line-height: 1.6;
+			margin: 0;
+			color: var(--charcoal);
+		}
+
+		.cs-contact {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			display: grid;
+			gap: (12/16rem);
+
+			li {
+				font-size: 1rem;
+				line-height: 1.5;
+				color: var(--charcoal);
+				display: grid;
+				grid-template-columns: (22/16rem) 1fr;
+				gap: (12/16rem);
+				align-items: start;
+			}
+
+			svg {
+				width: (22/16rem);
+				height: (22/16rem);
+				stroke: var(--revibeGreen);
+			}
+
+			a {
+				font-weight: 600;
+				text-decoration: none;
+				color: var(--nearBlack);
+
+				&:hover {
+					color: var(--deepGreen);
+				}
+			}
+		}
+
+		.cs-travel {
+			font-size: (15/16rem);
+			line-height: 1.6;
+			margin: 0;
+			color: var(--charcoal);
+		}
+
+		.cs-buttons {
+			display: flex;
+			flex-wrap: wrap;
+			gap: (12/16rem);
+		}
+
+		.cs-label {
+			font-size: (13/16rem);
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			margin: (8/16rem) 0 0;
+			color: var(--nearBlack);
+		}
+
+		.cs-services {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			display: flex;
+			flex-wrap: wrap;
+			gap: (8/16rem);
+		}
+
+		.cs-pill {
+			font-size: (13/16rem);
+			font-weight: 600;
+			text-decoration: none;
+			white-space: nowrap;
+			padding: (10/16rem) (15/16rem);
+			border-radius: 999px;
+			box-shadow: inset 0 0 0 1.5px var(--borderGrey);
+			color: var(--nearBlack);
+			display: inline-block;
+			transition: box-shadow 0.2s ease;
+
+			&:hover {
+				box-shadow: inset 0 0 0 1.5px var(--nearBlack);
+			}
+		}
+
+		.cs-areas {
+			font-size: (15/16rem);
+			line-height: 1.6;
+			margin: 0;
+			color: var(--charcoal);
+		}
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#hub-clinics {
+		padding-left: (40/16rem);
+		padding-right: (40/16rem);
+
+		.cs-clinic {
+			grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+			align-items: start;
+			gap: (56/16rem);
+		}
+
+		/* photo on the other side for every second clinic */
+		.cs-clinic:nth-child(even) .cs-picture {
+			order: 2;
+		}
+
+		.cs-picture {
+			height: (600/16rem);
+			border-radius: (56/16rem);
+			position: sticky;
+			top: (110/16rem);
+		}
+	}
+}

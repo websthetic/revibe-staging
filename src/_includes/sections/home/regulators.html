@@ -10,6 +10,8 @@
         </div>
         <ul class="cs-list">
             {% for item in home.regulators.items %}
+            {# items with clinics show on the home page and on those clinics' pages only #}
+            {% if not item.clinics or not clinic or clinic in item.clinics %}
             <li class="cs-item">
                 <a class="cs-link" href="{{ item.url }}" target="_blank" rel="noopener">
                     <span class="cs-logo">
@@ -18,6 +20,7 @@
                     <span class="cs-profession">{{ item.profession }}</span>
                 </a>
             </li>
+            {% endif %}
             {% endfor %}
         </ul>
     </div>

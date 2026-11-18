@@ -6,8 +6,14 @@
     <div class="cs-container">
         <h2 class="cs-title" id="cta-title">Athlete-grade care, reimagined for every <span class="cs-color">body</span></h2>
         <div class="cs-bar">
+            {# set ctaBar: { text, label, attrs } before including to change the bar (the performance pages open the consult form) #}
+            {% if ctaBar %}
+            <p class="cs-bar-text">{{ ctaBar.text }}</p>
+            <a href="/" class="cs-button-solid" {{ ctaBar.attrs | safe }} aria-haspopup="dialog">{{ ctaBar.label }}</a>
+            {% else %}
             <p class="cs-bar-text">Not sure what to book? We will call you</p>
             <a href="/" class="cs-button-solid" data-request aria-haspopup="dialog">Request to Book</a>
+            {% endif %}
         </div>
     </div>
 </section>

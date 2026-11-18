@@ -9,7 +9,7 @@ module.exports = {
         title: "Osteopathy",
         text: "Registered manual osteopaths who treat the body as one connected system. Gentle, hands-on, drug-free care at every Revibe clinic, for back and neck pain, headaches, digestion, pregnancy, infants and older adults.",
         proofBold: "5.0 on Google",
-        proof: "from 600+ reviews. Most extended health plans cover a registered manual osteopath, and we bill most insurers directly.",
+        proof: "from 700+ reviews. Most extended health plans cover a registered manual osteopath, and we bill most insurers directly.",
         images: [
             { src: "/assets/images/services/osteopathy.jpg", alt: "A Revibe osteopathic practitioner working gently at a client's neck", position: "55% 40%" },
             { src: "/assets/images/osteopathy/hero-ribs.jpg", alt: "Anesto, osteopathic practitioner, treating a client's ribs and shoulder", position: "center 38%" },
@@ -74,13 +74,13 @@ module.exports = {
         text: "Your osteopath chooses the approach after the assessment. These are the areas our osteopaths focus on.",
         // items with text show as cards (no links) instead of the arrow list
         items: [
-            { label: "Structural osteopathy", id: "structural", text: "Joints, muscles and connective tissue for back, neck, shoulder and hip pain." },
-            { label: "Cranial osteopathy", id: "cranial", text: "Light-touch work on the head, neck and spine for headaches, TMJ, stress and sleep." },
-            { label: "Visceral osteopathy", id: "visceral", text: "Gentle work on the organs and surrounding tissue for bloating, constipation and abdominal discomfort." },
-            { label: "Pediatric osteopathy", id: "pediatric", text: "Very gentle techniques for infants and children, with parents in the room." },
-            { label: "Sports osteopathy", id: "sports", text: "Soft tissue release, mobilization and movement assessment for athletes." },
-            { label: "Chronic pain", id: "chronic-pain", text: "Gentle manual care combined with exercise and movement education." },
-            { label: "Geriatric osteopathy", id: "geriatric", text: "Light pressure adapted to older adults, for stiffness, balance and walking comfort." },
+            { label: "Structural osteopathy", id: "structural", text: "Joints, muscles and connective tissue for back, neck, shoulder and hip pain.", link: { label: "Learn more", url: "/services/osteopathy/structural-osteopathy/" } },
+            { label: "Cranial osteopathy", id: "cranial", text: "Light-touch work on the head, neck and spine for headaches, TMJ, stress and sleep.", link: { label: "Learn more", url: "/services/osteopathy/cranial-osteopathy/" } },
+            { label: "Visceral osteopathy", id: "visceral", text: "Gentle work on the organs and surrounding tissue for bloating, constipation and abdominal discomfort.", link: { label: "Learn more", url: "/services/osteopathy/visceral-osteopathy/" } },
+            { label: "Pediatric osteopathy", id: "pediatric", text: "Very gentle techniques for infants and children, with parents in the room.", link: { label: "Learn more", url: "/services/osteopathy/pediatric-osteopathy/" } },
+            { label: "Sports osteopathy", id: "sports", text: "Soft tissue release, mobilization and movement assessment for athletes.", link: { label: "Learn more", url: "/services/osteopathy/sports-osteopathy/" } },
+            { label: "Chronic pain", id: "chronic-pain", text: "Gentle manual care combined with exercise and movement education.", link: { label: "Learn more", url: "/services/osteopathy/chronic-osteopathy/" } },
+            { label: "Geriatric osteopathy", id: "geriatric", text: "Light pressure adapted to older adults, for stiffness, balance and walking comfort.", link: { label: "Learn more", url: "/services/osteopathy/geriatric-osteopathy/" } },
             { label: "Pregnancy", id: "pregnancy", text: "Supported positioning for back, pelvis and hip discomfort through pregnancy." },
         ],
     },
@@ -89,10 +89,14 @@ module.exports = {
         title: "What makes osteopathy at Revibe different?",
         text: "Revibe is a performance therapy clinic. Osteopathy here is part of a team, with the physiotherapists, chiropractors and massage therapists next door and on the same plan.",
         licensed: {
-            title: "Registered, experienced",
-            text: "Our osteopaths are registered manual osteopaths with extensive training in anatomy, physiology and manual therapy. You see the same osteopath for the whole plan.",
+            title: "Trained, experienced",
+            text: "Our osteopathic manual practitioners are members of",
+            // optional link inside the sentence (the professional body); bodyAfter starts with "," or a space
+            bodyLabel: "OSTCAN",
+            bodyUrl: "https://ostcan.ca/",
+            bodyAfter: ", with extensive training in anatomy, physiology and manual therapy. You see the same osteopath for the whole plan.",
             linkLabel: "Meet the team",
-            linkUrl: "/",
+            linkUrl: "/therapists/",
             textAfter: ".",
         },
         hands: {
@@ -104,7 +108,7 @@ module.exports = {
         },
         coTreat: {
             title: "Clinicians who co-treat",
-            text: "Physiotherapists, chiropractors, massage therapists and naturopathic doctors under one roof at every Revibe clinic, treating the same case together when that is what gets you better.",
+            text: "Physiotherapists, chiropractors, massage therapists, osteopaths and naturopathic doctors under one roof at every Revibe clinic, treating the same case together when that is what gets you better.",
         },
         careMap: {
             title: "The Care Map",
@@ -121,14 +125,14 @@ module.exports = {
 
     team: {
         title: "Who will treat me?",
-        text: "Three osteopathic manual practitioners across our clinics. You see the same osteopath for the whole plan.",
-        members: ["anesto-charles", "emily-wilson", "erica-runnalls"],
+        text: "Two osteopathic manual practitioners across our clinics. You see the same osteopath for the whole plan.",
+        members: ["anesto-charles", "emily-wilson"],
     },
 
     reviews: {
         title: "What do clients say about osteopathy at Revibe?",
         rating: "5.0",
-        count: "600+",
+        count: "700+",
         allLabel: "Read every review on Google",
         items: [
             {
@@ -140,11 +144,6 @@ module.exports = {
                 name: "Cailey W.",
                 initials: "CW",
                 quote: "I just had my first osteopathy appointment with Emily Wilson and I highly recommend her services! She was thorough and extremely respectful during the assessment, explained her process clearly and made sure I was comfortable at every stage. I've already noticed an improvement in my back and I can't wait for the next appointment. It was surprisingly relaxing and informative. The business as a whole offers such an impressive array of services and the environment is inviting and friendly.",
-            },
-            {
-                name: "Jennifer H.",
-                initials: "JH",
-                quote: "Erica is an amazing Osteopathic Manual Therapist! She has supported my postpartum recovery and sports related injuries. She is knowledgeable, kind and overall an awesome person to work with. I highly recommend Erica if you are looking to work with an Osteopath!.",
             },
         ],
     },
@@ -168,7 +167,7 @@ module.exports = {
         title: "Osteopathy is one part of performance therapy",
         items: [
             { label: "Physiotherapy", url: "/services/physiotherapy/", image: "/assets/images/services/physiotherapy.jpg", alt: "Michael Leung, physiotherapist, working a client's hip on the table", position: "center 55%" },
-            { label: "Chiropractic", url: "/services/chiropractic/", image: "/assets/images/services/chiropractic-side.jpg", alt: "A Revibe chiropractor positioning a client on her side for an adjustment", position: "center 40%" },
+            { label: "Chiropractic", url: "/services/chiropractic/", image: "/assets/images/services/chiropractic-side.jpg", alt: "A Revibe chiropractor positioning a client on her side for an adjustment", position: "50% 22%" },
             { label: "Massage therapy", url: "/services/massage/", image: "/assets/images/services/massage-hands.jpg", alt: "A massage therapist's hands working into a client's shoulder", position: "center 45%" },
             { label: "Stretch therapy", url: "/stretch-spa/", image: "/assets/images/services/stretch-therapy.jpg", alt: "A Revibe therapist stretching a client's leg up from the table", position: "center 32%" },
         ],

@@ -150,6 +150,6 @@ module.exports = {
     otherLabel: "Pelvic floor physiotherapy in Markham",
     allAbout: {
         label: "All about pelvic floor physiotherapy",
-        url: "/"
+        url: "/services/pelvic-physiotherapy/"
     }
 };

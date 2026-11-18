@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/assets/css/location.css">
     <script defer src="/assets/js/care-map.js"></script>
     <script defer src="/assets/js/home-sections.js"></script>
+    {% if clinicPages[clinic].video %}<script defer src="/assets/js/clinic-video.js"></script>{% endif %}
 {% endblock %}
 
 {% block body %}
@@ -49,7 +50,7 @@
                 <div class="cs-badge">
                     <span class="cs-badge-number">5.0</span>
                     {% include "components/stars.html" %}
-                    <span class="cs-badge-text">600+ Google reviews</span>
+                    <span class="cs-badge-text">700+ Google reviews</span>
                 </div>
             </div>
         </div>
@@ -87,7 +88,20 @@
         <div class="cs-container">
             <h2 class="cs-title" id="clinic-gallery-title">{{ c.galleryTitle }}</h2>
             <p class="cs-text">{{ c.galleryText }}</p>
-            {# four photos sit in one row on desktop; more make a large first photo with a grid beside it #}
+            {% if c.video %}
+            {# a muted walkthrough on a loop with a pause button; it starts paused for visitors who turn motion off (clinic-video.js) #}
+            <div class="cs-video">
+                <video autoplay muted loop playsinline preload="metadata" poster="{{ c.video.poster }}" aria-label="{{ c.video.label }}">
+                    <source src="{{ c.video.src }}" type="video/mp4">
+                </video>
+                <button type="button" class="cs-video-toggle" aria-label="Pause the video">
+                    <svg class="cs-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+                    <svg class="cs-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5l11 7-11 7z"/></svg>
+                </button>
+            </div>
+            {% endif %}
+            {% if c.gallery %}
+            {# phones: one row that scrolls sideways. Desktop: four photos sit in one row; more make a large first photo with a grid beside it #}
             <ul class="cs-gallery{% if c.gallery.length == 4 %} cs-gallery-four{% endif %}">
                 {% for item in c.gallery %}
                 {% set imgStyle = 'style="object-position: ' + item.position + ';"' %}
@@ -99,6 +113,7 @@
                 </li>
                 {% endfor %}
             </ul>
+            {% endif %}
         </div>
     </section>
 

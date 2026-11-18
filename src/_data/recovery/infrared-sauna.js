@@ -76,7 +76,7 @@ module.exports = {
     instagram: {
         ...home.instagram,
         // sauna posts first
-        posts: inOrder(home.instagram.posts, "caption", [
+        posts: inOrder(home.instagram.library, "caption", [
             "The infrared sauna room at Revibe",
             "Infrared sauna warms the body",
             "A guest relaxing in the infrared sauna",

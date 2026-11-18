@@ -18,14 +18,14 @@ module.exports = {
         ],
         images: [
             {
-                src: "/assets/images/performance/team-track-drills.jpg",
-                alt: "A group of athletes running drills together on the track",
-                position: "center 40%"
+                src: "/assets/images/performance/tt-hero2.jpg",
+                alt: "Zee coaching an athlete through a strength test while the group watches",
+                position: "62% 50%"
             },
             {
-                src: "/assets/images/performance/team-band-sprint.jpg",
-                alt: "Two athletes laughing through a band resisted sprint",
-                position: "center 40%"
+                src: "/assets/images/performance/tt-small2.jpg",
+                alt: "Coaches and players huddled together on the court",
+                position: "50% 40%"
             }
         ]
     },
@@ -41,8 +41,9 @@ module.exports = {
                     "Speed, power and injury prevention",
                     "Athletes coached one by one"
                 ],
-                image: "/assets/images/performance/goal-compete.jpg",
-                alt: "Athletes doing band resisted sprints on the track"
+                image: "/assets/images/performance/tm-aus.jpg",
+                alt: "The AUS Elite squad with Revibe staff at the clinic",
+                position: "center 40%"
             },
             {
                 id: "school",
@@ -53,8 +54,9 @@ module.exports = {
                     "Testing that shows real progress",
                     "At your school or at Revibe"
                 ],
-                image: "/assets/images/hurt/gym-coaching.jpg",
-                alt: "A young athlete working through a single leg drill"
+                image: "/assets/images/performance/tt-school.jpg",
+                alt: "A young athlete grinning through a push-up test with Zee beside him",
+                position: "center 45%"
             },
             {
                 id: "run",
@@ -65,8 +67,9 @@ module.exports = {
                     "Mobility and running drills",
                     "Fewer setbacks through the season"
                 ],
-                image: "/assets/images/services/performance-coaching.jpg",
-                alt: "Zeeruk Rehman assessing an athlete's running on the curved treadmill"
+                image: "/assets/images/performance/tt-run.jpg",
+                alt: "The Strides to Sprints run group together at the track",
+                position: "center 45%"
             },
             {
                 id: "work",
@@ -77,8 +80,9 @@ module.exports = {
                     "For every fitness level",
                     "Built around your schedule"
                 ],
-                image: "/assets/images/hurt/barbell-cueing.jpg",
-                alt: "A Revibe coach cueing an athlete at the rack"
+                image: "/assets/images/performance/tt-work.jpg",
+                alt: "A group of adults laughing through a team session at Revibe",
+                position: "center 45%"
             }
         ]
     },
@@ -98,47 +102,41 @@ module.exports = {
                 text: "One program for the team, coached person by person, and retested at the end of the block."
             }
         ],
-        report: {
-            title: "Example team report",
-            bars: [
-                {
-                    label: "Team jump height",
-                    note: "Start of block",
-                    value: 58
-                },
-                {
-                    label: "Team sprint speed",
-                    note: "Start of block",
-                    value: 52
-                },
-                {
-                    label: "Athletes ready for full training",
-                    note: "Share of roster",
-                    value: 86
-                }
+        // the team report, as the same sheet as the baseline report (components/report-sheet.html)
+        sheet: {
+            id: "team-report",
+            label: "Team report",
+            doc: "Team report",
+            docSub: "Start of block to retest",
+            name: "Team name removed",
+            pill: "16 athletes, 8 week block",
+            title: "Faster and more available",
+            text: "The whole roster tested at the start and end of the block. Speed and power moved for most of the team, and more athletes finished ready for full training.",
+            stats: [
+                { title: "Team average vertical jump", value: "21.3", unit: "in", change: "+1.4 in", meta: "First test 19.9 in" },
+                { title: "Team average 10 m sprint", value: "1.79", unit: "s", change: "0.06 s faster", meta: "First test 1.85 s" },
+                { title: "Ready for full training", value: "15", unit: "of 16", change: "+3 athletes", meta: "First test 12 of 16" }
             ],
-            note: "Coaches get a team summary and a report for every athlete. Example only."
+            // players shown by jersey number
+            ranking: {
+                title: "Most improved",
+                sub: "start to retest",
+                rows: [
+                    { test: "Jump height", places: [["+3.2 in", "#09"], ["+2.7 in", "#02"], ["+2.4 in", "#14"]] },
+                    { test: "10 m sprint", places: [["0.12 s", "#04"], ["0.10 s", "#09"], ["0.09 s", "#12"]] }
+                ]
+            },
+            takeaways: {
+                strengthsTitle: "Team strengths",
+                strengths: [["Sprint speed", "Up for 14 of 16"], ["Availability", "15 of 16 ready"]],
+                nextTitle: "What the team works on next",
+                next: [["Upper body strength", "Next block focus"], ["Two athletes", "Back in rehab with our physios"]]
+            },
+            note: "Coaches get this report and a report for every athlete at the end of each block. Example data, shown for layout.",
+            more: "Show the full team report"
         }
     },
-    reviews: {
-        title: "What athletes say",
-        rating: home.reviews.rating,
-        note: "600+ Google reviews across both clinics",
-        items: [
-            {
-                name: "5.0600+ Google reviews across both clinics\n      KK A.",
-                quote: "If you're on the hunt for a top-notch physiotherapist / performance coach, Zeeruk is your guy! He not only knows the ins and outs of keeping your body in tip-top shape but also adds a whole new level of fun to workouts. I found him on social media; he's posting some pretty helpful things that have genuinely elevated my fitness game. Zeeruk is the real deal!"
-            },
-            {
-                name: "David G.",
-                quote: "I’ve been dealing with knee issues and Michael was incredibly helpful. He took the time to assess my situation and created a clear plan to mobilize and strengthen my knee. The difference has been night and day. He is very knowledgeable, professional and understands the struggles of athletes. Highly recommend!"
-            },
-            {
-                name: "Ramandeep B.",
-                quote: "Excellent team ,they are very professional. Trevor(chiropractor ), Jennifer, zee all of them are really helpful and supportive. Highly recommend if you are an athlete and need help with rehab work and injury."
-            }
-        ]
-    },
+    // reviews removed: none were about team training
     blocks: {
         title: "How long is a block?",
         text: "The coach sets the length around your season dates and talks it through at your consult.",
@@ -226,5 +224,6 @@ module.exports = {
     locations: {
         title: "Where can I train?"
     },
+    cta: { text: "Get your team tested and coached" },
     stickyLabel: "Team training"
 };

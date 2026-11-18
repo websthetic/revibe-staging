@@ -8,11 +8,11 @@ module.exports = {
         title: "Stretch therapy",
         text: "One to one stretching with a trained practitioner, for range of motion, recovery and the tightness that does not go away on its own. Fascial stretch therapy and the Matcha Method at every Revibe clinic.",
         proofBold: "5.0 on Google",
-        proof: "from 600+ reviews. Every session starts with a short assessment of how you move.",
+        proof: "from 700+ reviews. Every session starts with a short assessment of how you move.",
         images: [
             { src: "/assets/images/stretch/hero-leg.jpg", alt: "A practitioner taking a woman's leg into an assisted stretch", position: "center 45%" },
             { src: "/assets/images/services/stretch-therapy.jpg", alt: "A Revibe practitioner bending a client's knee into a quad stretch on the table", position: "center 22%" },
-            { src: "/assets/images/stretch/hero-hip.jpg", alt: "A practitioner guiding a client's leg into a hip stretch", position: "center 45%" },
+            { src: "/assets/images/stretch/hero-hip.jpg", alt: "A practitioner guiding a client's leg into a hip stretch", position: "50% 45%" },
         ],
     },
 
@@ -88,7 +88,7 @@ module.exports = {
         },
         coTreat: {
             title: "Clinicians who co-treat",
-            text: "Physiotherapists, chiropractors, massage therapists and osteopaths under one roof at every Revibe clinic. If the tightness is coming from a joint or an injury, the right person is down the hall.",
+            text: "Physiotherapists, chiropractors, massage therapists, osteopaths and naturopathic doctors under one roof at every Revibe clinic, treating the same case together when that is what gets you better.",
         },
         careMap: {
             title: "The Care Map",
@@ -106,21 +106,16 @@ module.exports = {
     team: {
         title: "Who will treat me?",
         text: "Practitioners trained in fascial stretch therapy and the Matcha Method, across our clinics.",
-        members: ["rachel-murray", "kyle-sunga"],
+        members: ["rachel-murray"],
         role: "Stretch therapy practitioner",
     },
 
     reviews: {
         title: "What do clients say about stretch therapy at Revibe?",
         rating: "5.0",
-        count: "600+",
+        count: "700+",
         allLabel: "Read every review on Google",
         items: [
-            {
-                name: "Kris",
-                initials: "K",
-                quote: "I visited Kyle yesterday at Revibe. I have problems with tight muscles. Kyle did a phenomenal job not only helping with assisted fascia stretching but also helping to relieve my neck and shoulder pain. He also showed me some home stretches to help. The facility is beautiful and the services offered are vast. From anything related to sports injuries to performing better in life or the gym. Highly recommended! Kris",
-            },
             {
                 name: "tatiana j.",
                 initials: "TJ",
@@ -144,7 +139,7 @@ module.exports = {
         title: "Stretch therapy is one part of performance therapy",
         items: [
             { label: "Physiotherapy", url: "/services/physiotherapy/", image: "/assets/images/services/physiotherapy.jpg", alt: "Michael Leung, physiotherapist, working a client's hip on the table", position: "center 55%" },
-            { label: "Chiropractic", url: "/services/chiropractic/", image: "/assets/images/services/chiropractic-side.jpg", alt: "A Revibe chiropractor positioning a client on her side for an adjustment", position: "center 40%" },
+            { label: "Chiropractic", url: "/services/chiropractic/", image: "/assets/images/services/chiropractic-side.jpg", alt: "A Revibe chiropractor positioning a client on her side for an adjustment", position: "50% 22%" },
             { label: "Massage therapy", url: "/services/massage/", image: "/assets/images/services/massage-hands.jpg", alt: "A massage therapist's hands working into a client's shoulder", position: "center 45%" },
             { label: "Osteopathy", url: "/services/osteopathy/", image: "/assets/images/services/osteopathy-leg.jpg", alt: "A Revibe osteopathic practitioner lifting a client's leg on the table", position: "center 35%" },
         ],

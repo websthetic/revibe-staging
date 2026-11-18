@@ -1,108 +1,148 @@
-// Content for /performance-training/, from the dev handover. Rendered by layouts/training.html.
-// "Request a free consult" buttons open components/popup-forms/free-consult.html.
+// Content for /performance-training/ (13 Nov 2026 round: "Performance, Zee edition"). Rendered by layouts/training.html.
+// Every "Book a free consult" button opens components/popup-forms/free-consult.html.
 const home = require("../home.js");
+const instagramPost = (caption, kind, code) => ({ caption, url: `https://www.instagram.com/${kind}/${code}/`, image: `/assets/images/instagram/ig-${code}.jpg` });
 
 module.exports = {
+    consult: { label: "Book a free consult", variant: "individual" },
+
+    // one large photo instead of the two-photo hero the team pages use
     hero: {
+        layout: "photo",
         title: "Performance training",
-        text: "Get faster, stronger and harder to injure. Coached strength and conditioning for athletes and active adults, tested on force plates so every block is built on your numbers. It starts with a free consultation.",
-        proof: ["5.0 on Google from 600+ reviews", "CSCS certified coaches", "Coaches who work with our physiotherapists"],
+        text: "Coached strength and conditioning for athletes and active adults in Mississauga and Markham. We test you first, train you from your numbers, then retest so you can see what changed.",
+        note: "5.0 on Google from 700+ reviews. Coaches who work beside our physiotherapists.",
         images: [
-            { src: "/assets/images/performance/hero-force-plate.jpg", alt: "An athlete mid-jump above the force plates while a coach records the test", position: "center 40%" },
-            { src: "/assets/images/performance/hero-coaching.jpg", alt: "Zeeruk Rehman coaching an athlete in the Revibe gym", position: "center 40%" },
+            { src: "/assets/images/performance/pz-hero.jpg", alt: "An athlete mid-jump above the force plates while Zee records the test on a tablet", position: "60% 50%", width: 1800, height: 1200 },
         ],
     },
 
+    // photo cards; the first three open the consult form with that goal picked, the team card links out
     goals: {
         title: "What do you want to get out of it?",
-        // one tab each; buttons replace the free consult button (team training links to its own pages)
-        items: [
-            {
-                id: "compete",
-                title: "Compete at a higher level",
-                text: "More speed, power and strength for your sport, planned around your season.",
-                points: ["Force plate tested jump, power and speed", "Sprint mechanics and plyometrics", "Programs built around games and practices"],
-                image: "/assets/images/performance/goal-compete.jpg",
-                alt: "Athletes doing band resisted sprints on the track",
-            },
-            {
-                id: "injury",
-                title: "Come back from injury",
-                text: "The bridge between rehab and full training, with coaches who work beside your physiotherapist.",
-                points: ["Left and right balance tested before you load up", "Strength rebuilt in phases", "A clear point when you are ready for sport"],
-                image: "/assets/images/performance/goal-injury.jpg",
-                alt: "A Revibe coach guiding an athlete's knee through a single leg drill",
-            },
-            {
-                id: "life",
-                title: "Get strong for life",
-                text: "For busy adults who want to move better, feel stronger and stay pain free.",
-                points: ["Strength and mobility built for real life", "Two to three sessions a week", "Progress you can see on every retest"],
-                image: "/assets/images/performance/goal-life.jpg",
-                alt: "Michael Leung coaching a client through a squat at the rack",
-            },
-            {
-                id: "team",
-                title: "Train my team",
-                text: "Testing, coaching and conditioning for teams and groups of five or more.",
-                points: ["Team training blocks at Revibe or your facility", "Combine testing days with a live leaderboard", "A report for every athlete"],
-                image: "/assets/images/performance/goal-team.jpg",
-                alt: "An athlete on the force plates while a coach records the test",
-                buttons: [
-                    { label: "Team training", url: "/performance-training/team-training/" },
-                    { label: "Team combine", url: "/team-combine/", outline: true },
-                ],
-            },
+        cards: [
+            { title: "Compete at a higher level", text: "Speed, power and strength planned around your season.", image: "/assets/images/performance/pz-compete.jpg", alt: "Zee coaching an athlete through a resisted band drill" },
+            { title: "Come back from injury", text: "Coaching beside your physio, with numbers that show you are ready.", image: "/assets/images/performance/pz-injury.jpg", alt: "Zee guiding an athlete through a kettlebell hinge" },
+            { title: "Get strong for life", text: "Train like an athlete without being one.", image: "/assets/images/performance/pz-strong2.jpg", alt: "A coach guiding a client through a banded squat at the rack", position: "46% 45%" },
+            { title: "Train my team", text: "Combine days and team training with a recap for every athlete.", image: "/assets/images/performance/pz-team2.jpg", alt: "A full team and coaches together on centre court at the Raptors 905 clinic", url: "/team-combine/", linkLabel: "See team testing" },
         ],
     },
 
+    // steps with a big photo each, on alternating sides
     how: {
-        title: "How it works",
+        title: "How does it work?",
+        layout: "photos",
         steps: [
-            { title: "Free consult", text: "15 minutes, in person or virtual. Tell us your goal, your sport and your history, and we match you with a coach." },
-            { title: "Baseline test", text: "Force plate and movement testing show where you stand today: power, speed and how evenly you load each side." },
-            { title: "Coached block, then retest", text: "Your coach writes the program from your numbers, coaches every session and retests so you can see what changed." },
+            { title: "Free consult", text: "15 minutes, in person or virtual. You tell us your goal, your sport and your history, and we match you with a coach.", image: "/assets/images/performance/pz-consult.jpg", alt: "Zee and an athlete going over goals on a tablet" },
+            {
+                id: "force-plates",
+                title: "Baseline test",
+                text: "Five jumps on our force plates, timed sprints and strength testing, compared with a D1 and pro benchmark. The plates read each foot, so they show:",
+                image: "/assets/images/performance/pz-test.jpg",
+                alt: "An athlete set on the force plates while Zee records the test on a tablet",
+                measures: [
+                    { title: "Braking", text: "How you absorb force to stop, cut and land" },
+                    { title: "Force", text: "How hard you drive into the ground" },
+                    { title: "Elasticity", text: "How fast you turn the dip into the jump" },
+                    { title: "Power", text: "Jump height and takeoff speed" },
+                ],
+            },
+            { title: "Coached block, then retest", text: "Your coach writes the program from your numbers and coaches every session, two to three times a week. Then we run the same tests and you get a new report.", image: "/assets/images/performance/pz-board.jpg", alt: "Zee planning a training block on a whiteboard" },
         ],
-        report: {
-            title: "Example baseline report",
-            // value is how full the bar is, in percent
-            bars: [
-                { label: "Jump height", note: "Where you start", value: 62 },
-                { label: "Sprint speed", note: "Where you start", value: 48 },
-                { label: "Left and right balance", note: "Even is the goal", value: 80 },
+    },
+
+    // Zeeruk's real baseline report, name removed, rebuilt as a sheet (components/report-sheet.html)
+    report: {
+        title: "The report",
+        text: "A real Revibe baseline report with the athlete's name removed. You get one after your first test and a new one after every retest.",
+        notesLeft: [
+            { title: "Profile", text: "A plain English read of how you move, compared with a D1 and pro benchmark." },
+            { title: "Change since your first test", text: "Every retest shows what moved, so progress is a number, not a feeling." },
+        ],
+        notesRight: [
+            { title: "Four categories", text: "Each graded against the benchmark, so you see what to keep and what to build." },
+            { title: "Development priorities", text: "The lowest scores become the focus of your next training block." },
+        ],
+        sheet: {
+            id: "baseline-report",
+            label: "Sample baseline report",
+            doc: "Baseline report",
+            docSub: "Force plate and sprint testing",
+            name: "Athlete name removed",
+            pill: "5 CMJ reps on file",
+            title: "The balanced competitor",
+            text: "Grades good to elite across all four categories with no clear weak point. A well-rounded force plate profile rather than one built around a single standout strength.",
+            compare: { title: "Pro comparison", text: "A steady, well-rounded two-way game without one loud standout physical trait." },
+            stats: [
+                { title: "Composite grade", value: "75", unit: "%", meta: "Vs. D1 and pro", bar: 75 },
+                { title: "Vertical jump", value: "18.5", unit: "in", change: "+1.6 in (+9.2%)", facts: [["First test", "17.0 in"], ["Personal best", "18.5 in"]] },
+                { title: "Top speed", value: "17.3", unit: "mph", change: "+2.3 mph (+15.3%)", facts: [["First test", "15.0 mph"], ["Personal best", "17.3 mph"]] },
             ],
-            note: "Every athlete gets a report like this after testing. Example only.",
+            categories: {
+                title: "Category breakdown",
+                sub: "vs. D1 and pro benchmark",
+                // value is the percent of the benchmark; elite grades show green
+                rows: [
+                    { label: "Braking ability", short: ["Braking", "ability"], value: 83, grade: "Elite" },
+                    { label: "Force production", short: ["Force", "production"], value: 54, grade: "Good" },
+                    { label: "Elasticity", short: ["Elasticity"], value: 81, grade: "Elite" },
+                    { label: "Power expression", short: ["Power", "expression"], value: 81, grade: "Elite" },
+                ],
+            },
+            takeaways: {
+                strengthsTitle: "Strengths",
+                strengths: [["Jump height", "Elite, 83rd pct"], ["Takeoff velocity", "Elite, 83rd pct"], ["mRSI", "Elite, 81st pct"]],
+                nextTitle: "Development priorities",
+                next: [["Avg propulsive force", "Below avg, 43rd pct"], ["Peak propulsive force", "Below avg, 32nd pct"]],
+            },
+            more: "Show the full report",
         },
     },
 
     reviews: {
         title: "What athletes say",
         rating: home.reviews.rating,
-        note: "600+ Google reviews across both clinics",
+        note: "700+ Google reviews across both clinics",
+        // Google reviews from the Mississauga listing; none name clinicians who have left
         items: [
             { name: "K A.", quote: "If you're on the hunt for a top-notch physiotherapist / performance coach, Zeeruk is your guy! He not only knows the ins and outs of keeping your body in tip-top shape but also adds a whole new level of fun to workouts. I found him on social media; he's posting some pretty helpful things that have genuinely elevated my fitness game. Zeeruk is the real deal!" },
+            { name: "Jayden K.", quote: "As a former professional athlete, I’m very particular about who I trust with my body and recovery, and I couldn’t be happier with Revibe. From the quality of the treatments to the overall level of care, everything feels intentional and refined. The teams at both Markham and Mississauga are exceptionally knowledgeable, and each provider complements one another so well. Highly recommend." },
+            { name: "Youssef H.", quote: "Zeeruk Rehman has been a revelation in my rehab, I’ve regained my confidence in my athletic ability after my injury, and highly recommend him. The facility and staff are top notch as well, and it’s great to be able to go to a resource like that when I need!" },
+            { name: "Rachel D.", quote: "The key thing I wanted was someone who could give me a diagnosis on an ongoing pain I was having when working out. Zeeruk not only provided that for me, but created a sustainable plan to recovery that wasn’t just stretching and a waste of time. I have been back at the gym pain free for over a month now." },
+            { name: "Omar M.", quote: "Had a great session with Zeeruk today. Worked on my unilateral stability in my legs as well as my conditioning. Highly recommend it!" },
             { name: "Perry K.", quote: "I’ve had back problems so bad where I wouldn’t be able to get out of bed in the morning, but after working with Mike for a couple months I can now workout and move injury free! I am so grateful to Mike for allowing me to perform at my best self!" },
-            { name: "Ramandeep B.", quote: "Excellent team ,they are very professional. Trevor(chiropractor ), Jennifer, zee all of them are really helpful and supportive. Highly recommend if you are an athlete and need help with rehab work and injury." },
         ],
     },
 
-    blocks: {
-        title: "How long do people train?",
-        text: "Every block starts with a baseline test and most people train two to three times a week. Your coach recommends a length at your consult.",
-        items: [
-            { label: "Short term", figure: "12", unit: "sessions", text: "A focused block for one goal, like a stronger squat or a faster start." },
-            { label: "Mid term", figure: "24", unit: "sessions", text: "The full test, train and retest cycle. Enough time to see real change.", popular: true, tag: "Most popular" },
-            { label: "Long term", figure: "48", unit: "sessions", text: "A full season or year, planned in phases around your calendar." },
+    // from Prince's pricing post; package totals and monthly payments are left off on purpose
+    pricing: {
+        title: "What does it cost?",
+        text: "Pay per session, or save on every session with a block. Every block starts with a baseline test, and your coach recommends a length at your free consult.",
+        cards: [
+            { title: "Performance training", text: "Strength and conditioning with a CSCS certified coach.", prices: [["30 minutes", "60"], ["45 minutes", "80"], ["60 minutes", "100"]], note: "Per session, plus HST" },
+            { title: "Performance rehab", text: "Training to get back from injury, led by a physiotherapist.", prices: [["45 minutes", "125"], ["60 minutes", "150"]], note: "Per session, no HST", dark: true },
+        ],
+        blocksTitle: "Save with a block",
+        blocks: [
+            { sessions: "12", off: "10% off" },
+            { sessions: "24", off: "15% off", popular: true },
+            { sessions: "48", off: "20% off" },
         ],
     },
 
-    why: {
-        title: "Why train at Revibe",
-        items: [
-            { title: "Tested, not guessed", text: "Force plates and timed drills show what to train first." },
-            { title: "Coaches who work with physios", text: "If something hurts, the person coaching you can assess it." },
-            { title: "Recovery on site", text: "Sauna, cold plunge and compression in the same building." },
-            { title: "Progress you can see", text: "Retests turn effort into numbers you can track." },
+    // "Inside the training", sections/home/instagram.html
+    instagram: {
+        ...home.instagram,
+        title: "Inside the training",
+        posts: [
+            instagramPost("The MSBA Twins team combine", "reel", "Dfaz3jgRv9Q"),
+            instagramPost("Alijah Martin after a summer of recovery", "p", "DfdGfMIo9nK"),
+            instagramPost("Zee and Naz get active", "reel", "DbRbjz7xNZt"),
+            instagramPost("Chance Adams recovers with Revibe", "reel", "DfOAP72xyjW"),
+            instagramPost("Three exercises to improve your acceleration", "p", "DcG1iw4ETF0"),
+            instagramPost("Skip drills on the track", "reel", "DcRyjBfRNsY"),
+            instagramPost("Training for Hyrox", "reel", "DdNLXLwxxRL"),
+            instagramPost("Strides to Sprints is back", "reel", "DbwVjiQRdOz"),
         ],
     },
 
@@ -116,6 +156,7 @@ module.exports = {
         text: "The questions people ask before they book, answered the way we would answer them at the front desk.",
         items: [
             { q: "Do I need to be an athlete?", a: "No, but we train everyone like one. Whether you compete at a high level, play rec league on weekends or just want to be in elite shape, your program is built around your testing and goals." },
+            { q: "How much does performance training cost?", a: "Performance training is $60 for 30 minutes, $80 for 45 minutes and $100 for 60 minutes, plus HST. Performance rehab with a physiotherapist is $125 for 45 minutes and $150 for 60 minutes, with no HST. Blocks save on every session: 10% off for 12 sessions, 15% off for 24 and 20% off for 48. The first consult is free." },
             { q: "What is force plate testing?", a: "Force plates measure how much force you produce, how fast you produce it and how evenly you load each side. We use the data to build your program and track your progress." },
             { q: "Can this help me jump higher or run faster?", a: "Yes. Plyometrics, rate of force development training and sprint work target explosive power and speed directly, and retesting shows exactly how much you have improved." },
             { q: "Can I train in-season?", a: "Yes. Your coach plans the program around your games and practices, so in-season blocks keep you strong and powerful without leaving you flat on game day." },
@@ -131,5 +172,8 @@ module.exports = {
 
     locations: { title: "Where can I train?" },
 
-    stickyLabel: "Free performance consult",
+    cta: { text: "Start with a free performance consult" },
+
+    // phones: one full-width button pinned to the bottom of the screen
+    sticky: "solo",
 };

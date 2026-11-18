@@ -8,7 +8,7 @@ module.exports = {
     text: "Here is the plan, week by week. How often you come in, what changes, and when you get back to running, jumping and long days on your feet.",
     requestService: "Physiotherapy",
     requestMessage: "Foot and ankle pain",
-    proof: "from 600+ reviews. No referral needed. We bill most insurers directly.",
+    proof: "from 700+ reviews. No referral needed. We bill most insurers directly.",
     ask: "Where does it hurt? Tap a spot.",
     problemsLabel: "Common foot and ankle problems",
     problems: [

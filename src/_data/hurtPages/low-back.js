@@ -8,7 +8,7 @@ module.exports = {
     text: "Here is the plan, week by week. How often you come in, what changes, and when you get back to lifting, sitting and sleeping without thinking about it.",
     requestService: "Physiotherapy",
     requestMessage: "Low back pain",
-    proof: "from 600+ reviews. No referral needed. We bill most insurers directly.",
+    proof: "from 700+ reviews. No referral needed. We bill most insurers directly.",
     ask: "Where does it hurt? Tap a spot.",
     problemsLabel: "Common low back problems",
     problems: [
@@ -89,7 +89,7 @@ module.exports = {
             text: "Getting out of bed and the car stops being a project. We add gentle core and hip work.",
             image: "/assets/images/services/chiropractic.jpg",
             alt: "A Revibe chiropractor adjusting a client's back on the table",
-            position: "center 40%"
+            position: "50% 17%"
         },
         {
             week: "4",
@@ -251,7 +251,7 @@ module.exports = {
                 meta: "Google review, saw Rachel Murray"
             }
         ],
-        members: ["morgan-millard", "trevor-dsouza", "erica-runnalls", "rachel-murray"]
+        members: ["morgan-millard", "trevor-dsouza", "rachel-murray"]
     },
     longTitle: true
 };

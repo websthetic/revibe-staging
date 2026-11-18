@@ -1,0 +1,1496 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// COMMUNITY PAGE STYLES
+// /community/ (content/pages/community.html). Its own layout, not the service
+// template. Phones (under 700px) get a shorter page: the "Bring Revibe" cards
+// and the event photos scroll sideways, logos sit five across, tighter padding.
+// ─────────────────────────────────────────────────────────────────────────────
+
+@gutter: (20/16rem);
+@gutterWide: (40/16rem);
+
+.community-heading() {
+	font-family: var(--headerFont);
+	font-weight: 400;
+	letter-spacing: var(--headingLetterSpacing);
+	text-transform: uppercase;
+	margin: 0;
+}
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	html.cs-scroll-lock {
+		overflow: hidden;
+	}
+
+	#main > section[id^="community"],
+	#highlights,
+	#photos,
+	#brands,
+	#picker {
+		.cs-container {
+			width: 100%;
+			max-width: (1340/16rem);
+			margin: auto;
+			padding: 0 @gutter;
+			box-sizing: border-box;
+		}
+
+		.cs-title {
+			.community-heading();
+		}
+	}
+
+	button.cs-button-solid {
+		border: 0;
+		cursor: pointer;
+	}
+
+	.cs-text-link {
+		font-size: (15/16rem);
+		font-weight: 700;
+		color: inherit;
+		text-decoration: underline;
+		text-decoration-color: var(--revibeGreen);
+		text-decoration-thickness: 2px;
+		text-underline-offset: 5px;
+	}
+
+	/* ============================== Hero ============================== */
+
+	#community-hero {
+		/* 80px fixed nav + 56px */
+		padding: calc(5rem + 3.5rem) 0 0;
+		background-color: var(--nearBlack);
+		color: var(--white);
+		overflow: hidden;
+
+		.cs-title {
+			/* 64px - 200px */
+			font-size: clamp(4rem, 12vw, 12.5rem);
+			line-height: 0.82;
+			max-width: (1240/16rem);
+			color: var(--white);
+		}
+
+		.cs-green {
+			color: var(--revibeGreen);
+		}
+
+		.cs-outline {
+			color: transparent;
+			-webkit-text-stroke: 2px var(--white);
+		}
+
+		.cs-sub {
+			margin-top: (32/16rem);
+			padding-bottom: (56/16rem);
+			display: grid;
+			gap: (24/16rem);
+		}
+
+		.cs-text {
+			font-size: (17/16rem);
+			line-height: 1.6;
+			max-width: (520/16rem);
+			margin: 0;
+			color: #d8dde0;
+		}
+
+		.cs-actions {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: (14/16rem) (26/16rem);
+		}
+
+		.cs-photo {
+			max-width: (1440/16rem);
+			margin: 0 auto;
+
+			img {
+				width: 100%;
+				height: auto;
+				aspect-ratio: 4 / 3;
+				object-fit: cover;
+				object-position: 50% 40%;
+				display: block;
+			}
+		}
+
+		/* the tilted green ticker across the bottom edge of the photo */
+		.cs-ticker {
+			margin: (-28/16rem) (-20/16rem) (24/16rem);
+			padding: (18/16rem) 0;
+			background-color: var(--revibeGreen);
+			color: var(--nearBlack);
+			overflow: hidden;
+			transform: rotate(-1.5deg);
+			position: relative;
+			z-index: 1;
+		}
+
+		.cs-ticker-track {
+			width: max-content;
+			display: flex;
+			align-items: center;
+			gap: (28/16rem);
+			animation: community-ticker 38s linear infinite;
+
+			span {
+				padding-top: 3px;
+				font-family: var(--headerFont);
+				font-size: (34/16rem);
+				line-height: 1;
+				letter-spacing: var(--headingLetterSpacing);
+				text-transform: uppercase;
+				white-space: nowrap;
+			}
+
+			i {
+				width: (14/16rem);
+				height: (14/16rem);
+				flex: none;
+				border-radius: 50%;
+				background-color: var(--nearBlack);
+			}
+		}
+	}
+
+	@keyframes community-ticker {
+		to {
+			transform: translateX(-50%);
+		}
+	}
+
+	/* ============================== Highlight reel ============================== */
+
+	#highlights {
+		padding: (64/16rem) 0;
+		background-color: var(--offWhite);
+
+		.cs-head {
+			display: flex;
+			align-items: end;
+			justify-content: space-between;
+			gap: (20/16rem);
+		}
+
+		.cs-title {
+			/* 48px - 96px */
+			font-size: clamp(3rem, 6vw, 6rem);
+			line-height: 0.88;
+			color: var(--nearBlack);
+		}
+
+		.cs-arrows {
+			display: none;
+			gap: (10/16rem);
+		}
+
+		.cs-arrow {
+			width: (56/16rem);
+			height: (56/16rem);
+			border: 0;
+			border-radius: 50%;
+			background-color: var(--nearBlack);
+			color: var(--white);
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			svg {
+				width: (22/16rem);
+				height: (22/16rem);
+			}
+
+			&:hover {
+				background-color: var(--revibeGreen);
+				color: var(--nearBlack);
+			}
+		}
+
+		.cs-reels {
+			list-style: none;
+			margin: (36/16rem) 0 0;
+			padding: (12/16rem) @gutter (28/16rem);
+			display: flex;
+			gap: (20/16rem);
+			overflow-x: auto;
+			scroll-snap-type: x mandatory;
+			scrollbar-width: none;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+		}
+
+		.cs-reel {
+			width: min(72vw, (300/16rem));
+			aspect-ratio: 9 / 16;
+			flex: none;
+			scroll-snap-align: start;
+			scroll-margin-left: @gutter;
+
+			&:nth-child(odd) {
+				transform: rotate(-1.6deg);
+			}
+
+			&:nth-child(even) {
+				transform: rotate(1.4deg) translateY(14px);
+			}
+
+			&:hover {
+				transform: none;
+			}
+
+			a {
+				height: 100%;
+				border-radius: (28/16rem);
+				background-color: var(--nearBlack);
+				color: var(--white);
+				text-decoration: none;
+				overflow: hidden;
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				transition: transform 0.3s ease;
+
+				&::after {
+					content: "";
+					background: linear-gradient(to top, rgba(6, 8, 10, 0.92) 0%, rgba(6, 8, 10, 0.4) 45%, rgba(6, 8, 10, 0) 70%);
+					position: absolute;
+					inset: 0;
+				}
+
+				&:hover,
+				&:focus-visible {
+					transform: scale(1.03);
+				}
+			}
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				position: absolute;
+				inset: 0;
+			}
+		}
+
+		.cs-date {
+			padding: (7/16rem) (12/16rem);
+			border-radius: 999px;
+			background-color: var(--white);
+			font-size: (12/16rem);
+			font-weight: 700;
+			color: var(--nearBlack);
+			position: absolute;
+			top: (18/16rem);
+			left: (18/16rem);
+			z-index: 2;
+		}
+
+		.cs-kind {
+			width: (48/16rem);
+			height: (48/16rem);
+			border-radius: 50%;
+			background-color: var(--revibeGreen);
+			color: var(--nearBlack);
+			position: absolute;
+			top: (14/16rem);
+			right: (14/16rem);
+			z-index: 2;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			svg {
+				width: (20/16rem);
+				height: (20/16rem);
+			}
+		}
+
+		.cs-reel-text {
+			padding: (22/16rem) (20/16rem) (24/16rem);
+			position: relative;
+			z-index: 2;
+			display: grid;
+			gap: (10/16rem);
+
+			b {
+				font-family: var(--headerFont);
+				font-size: (40/16rem);
+				font-weight: 400;
+				line-height: 0.9;
+				letter-spacing: 1px;
+				text-transform: uppercase;
+			}
+
+			> span {
+				font-size: (14/16rem);
+				line-height: 1.5;
+				color: #e4e8ea;
+			}
+
+			em {
+				font-size: (13/16rem);
+				font-style: normal;
+				font-weight: 700;
+				color: var(--revibeGreen);
+			}
+		}
+	}
+
+	/* ============================== Pull quote ============================== */
+
+	#community-quote {
+		padding: (64/16rem) 0;
+		background-color: var(--revibeGreen);
+		color: var(--nearBlack);
+
+		p {
+			color: var(--nearBlack);
+		}
+
+		.cs-quote {
+			margin: 0;
+
+			p {
+				max-width: (1180/16rem);
+				margin: 0;
+				.community-heading();
+				/* 48px - 124px */
+				font-size: clamp(3rem, 7.4vw, 7.75rem);
+				line-height: 0.88;
+			}
+		}
+
+		.cs-by {
+			margin: (24/16rem) 0 0;
+			font-size: (15/16rem);
+			font-weight: 600;
+
+			a {
+				color: var(--nearBlack);
+				text-underline-offset: 4px;
+			}
+		}
+	}
+
+	/* ============================== Photos from the day ============================== */
+
+	#photos {
+		padding: (64/16rem) 0;
+		background-color: var(--white);
+
+		.cs-title {
+			/* 48px - 96px */
+			font-size: clamp(3rem, 6vw, 6rem);
+			line-height: 0.88;
+			color: var(--nearBlack);
+		}
+
+		.cs-tabs {
+			margin-top: (28/16rem);
+			display: flex;
+			flex-wrap: wrap;
+			gap: (6/16rem) (28/16rem);
+
+			button {
+				all: unset;
+				padding: (4/16rem) 0;
+				cursor: pointer;
+				font-family: var(--headerFont);
+				/* 26px - 40px */
+				font-size: clamp(1.625rem, 3vw, 2.5rem);
+				line-height: 1.1;
+				letter-spacing: var(--headingLetterSpacing);
+				text-transform: uppercase;
+				color: #a6adb2;
+				background-image: linear-gradient(var(--revibeGreen), var(--revibeGreen));
+				background-size: 0 4px;
+				background-repeat: no-repeat;
+				background-position: 0 100%;
+				transition:
+					color 0.2s ease,
+					background-size 0.3s ease;
+
+				&:hover,
+				&[aria-selected="true"] {
+					color: var(--nearBlack);
+				}
+
+				&[aria-selected="true"] {
+					background-size: 100% 4px;
+				}
+
+				&:focus-visible {
+					outline: 2px solid var(--deepGreen);
+					outline-offset: 4px;
+				}
+			}
+		}
+
+		.cs-pane[hidden] {
+			display: none;
+		}
+
+		.cs-caption {
+			max-width: (640/16rem);
+			margin: (24/16rem) 0 (22/16rem);
+			display: grid;
+			gap: (4/16rem);
+
+			p {
+				font-size: (16/16rem);
+				line-height: 1.6;
+				margin: 0;
+				color: var(--charcoal);
+			}
+
+			.cs-when {
+				font-size: (15/16rem);
+				font-weight: 700;
+				color: var(--deepGreen);
+			}
+		}
+
+		/* phones: one row of photos that scrolls sideways */
+		.cs-grid {
+			list-style: none;
+			margin: 0 (-20/16rem);
+			padding: 0 @gutter (8/16rem);
+			display: flex;
+			gap: (10/16rem);
+			overflow-x: auto;
+			scroll-snap-type: x mandatory;
+			scrollbar-width: none;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+
+			li {
+				width: 78%;
+				flex: none;
+				scroll-snap-align: start;
+				scroll-margin-left: @gutter;
+			}
+		}
+
+		.cs-photo-button {
+			all: unset;
+			width: 100%;
+			box-sizing: border-box;
+			aspect-ratio: 4 / 5;
+			border-radius: (22/16rem);
+			background-color: var(--offWhite);
+			overflow: hidden;
+			cursor: zoom-in;
+			display: block;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+				transition: transform 0.5s ease;
+			}
+
+			&:hover img {
+				transform: scale(1.04);
+			}
+
+			&:focus-visible {
+				outline: 3px solid var(--revibeGreen);
+				outline-offset: 3px;
+			}
+		}
+	}
+
+	/* ============================== Brand logos ============================== */
+
+	#brands {
+		padding: (64/16rem) 0;
+		background-color: var(--offWhite);
+
+		.cs-title {
+			/* 48px - 96px */
+			font-size: clamp(3rem, 6vw, 6rem);
+			line-height: 0.88;
+			color: var(--nearBlack);
+		}
+
+		/* five across, so the ten logos make two even rows */
+		.cs-logos {
+			list-style: none;
+			margin: (28/16rem) 0 0;
+			padding: 0;
+			display: grid;
+			grid-template-columns: repeat(5, minmax(0, 1fr));
+			align-items: center;
+			gap: (18/16rem) (8/16rem);
+
+			li {
+				height: (40/16rem);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				&:hover img {
+					opacity: 1;
+					transform: scale(1.08);
+				}
+			}
+
+			img {
+				width: auto;
+				height: auto;
+				max-width: 100%;
+				max-height: (24/16rem);
+				opacity: 0.82;
+				filter: grayscale(1) brightness(0);
+				transition:
+					opacity 0.2s ease,
+					transform 0.2s ease;
+
+				&.cs-sq {
+					max-height: (34/16rem);
+				}
+			}
+		}
+	}
+
+	/* ============================== Bring Revibe: picker ============================== */
+
+	#picker {
+		padding: (64/16rem) 0;
+		background-color: var(--nearBlack);
+		color: var(--white);
+
+		> .cs-container {
+			display: grid;
+			gap: (32/16rem);
+		}
+
+		.cs-picker-side {
+			display: grid;
+			align-content: start;
+			gap: (18/16rem);
+		}
+
+		.cs-title {
+			/* 48px - 96px */
+			font-size: clamp(3rem, 6vw, 6rem);
+			line-height: 0.88;
+			color: var(--white);
+		}
+
+		.cs-text {
+			font-size: (17/16rem);
+			line-height: 1.6;
+			max-width: (440/16rem);
+			margin: 0;
+			color: #d8dde0;
+		}
+
+		/* desktop only */
+		.cs-options {
+			display: none;
+		}
+
+		.cs-n {
+			font: 700 (14/16rem) / 1 var(--bodyFont);
+			letter-spacing: 0;
+			color: var(--revibeGreen);
+		}
+
+		/* phones: every option as a card, scrolling sideways, buttons on the same line */
+		.cs-panels {
+			margin: 0 (-20/16rem);
+			padding: 0 @gutter (8/16rem);
+			display: flex;
+			align-items: stretch;
+			gap: (12/16rem);
+			overflow-x: auto;
+			scroll-snap-type: x mandatory;
+			scrollbar-width: none;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+		}
+
+		.cs-panel {
+			width: 82%;
+			flex: none;
+			scroll-snap-align: start;
+			scroll-margin-left: @gutter;
+			border-radius: (32/16rem);
+			background-color: #161819;
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.cs-panel-picture {
+			aspect-ratio: 16 / 10;
+			flex: none;
+			overflow: hidden;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+
+		.cs-panel-body {
+			padding: (20/16rem) (18/16rem) (22/16rem);
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			gap: (12/16rem);
+
+			h3 {
+				.community-heading();
+				font-size: (36/16rem);
+				line-height: 0.9;
+				color: var(--white);
+				display: flex;
+				align-items: baseline;
+				gap: (12/16rem);
+			}
+
+			p {
+				font-size: (15/16rem);
+				line-height: 1.6;
+				max-width: (460/16rem);
+				margin: 0;
+				color: #d8dde0;
+			}
+
+			ul {
+				list-style: none;
+				margin: 0 0 (22/16rem);
+				padding: 0;
+				display: grid;
+				gap: (10/16rem);
+			}
+
+			li {
+				padding-left: (22/16rem);
+				font-size: (14/16rem);
+				font-weight: 600;
+				line-height: 1.5;
+				color: var(--white);
+				position: relative;
+
+				&::before {
+					content: "";
+					width: (9/16rem);
+					height: (9/16rem);
+					border-radius: 50%;
+					background-color: var(--revibeGreen);
+					position: absolute;
+					left: 0;
+					top: (8/16rem);
+				}
+			}
+
+			.cs-button-solid {
+				margin-top: auto;
+				align-self: flex-start;
+			}
+		}
+	}
+
+	/* ============================== Instagram ============================== */
+
+	#community-instagram {
+		padding: (64/16rem) @gutter (72/16rem);
+		background-color: var(--offWhite);
+
+		.cs-gram {
+			color: var(--nearBlack);
+			text-align: center;
+			text-decoration: none;
+			display: grid;
+			justify-items: center;
+			gap: (4/16rem);
+
+			span {
+				font-size: (15/16rem);
+				font-weight: 700;
+				color: var(--deepGreen);
+			}
+
+			b {
+				font-family: var(--headerFont);
+				/* 56px - 160px */
+				font-size: clamp(3.5rem, 10vw, 10rem);
+				font-weight: 400;
+				line-height: 0.9;
+				letter-spacing: 1px;
+				overflow-wrap: anywhere;
+			}
+
+			&:hover b {
+				color: var(--deepGreen);
+			}
+		}
+	}
+
+	/* ============================== Partner pop-up ============================== */
+
+	.cs-partner,
+	.cs-lightbox {
+		max-width: none;
+		max-height: none;
+		padding: 0;
+		border: 0;
+
+		&::backdrop {
+			background-color: rgba(6, 8, 10, 0.8);
+		}
+	}
+
+	/* phones: a bottom sheet */
+	.cs-partner {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		background: transparent;
+		display: none;
+		align-items: end;
+		justify-content: center;
+
+		&[open] {
+			display: flex;
+		}
+	}
+
+	.cs-partner-card {
+		width: 100%;
+		max-height: 94vh;
+		border-radius: (28/16rem) (28/16rem) 0 0;
+		background-color: var(--white);
+		color: var(--nearBlack);
+		overflow-y: auto;
+		position: relative;
+		display: grid;
+		animation: community-sheet-up 0.35s ease;
+	}
+
+	@keyframes community-sheet-up {
+		from {
+			transform: translateY(40px);
+			opacity: 0;
+		}
+	}
+
+	/* a short photo banner on phones, the full photo panel on desktop */
+	.cs-partner-side {
+		min-height: (132/16rem);
+		background-color: var(--nearBlack);
+		color: var(--white);
+		overflow: hidden;
+		position: relative;
+		display: flex;
+		align-items: flex-end;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: 50% 45%;
+			opacity: 0.55;
+			position: absolute;
+			inset: 0;
+		}
+
+		&::after {
+			content: "";
+			background: linear-gradient(to top, rgba(13, 13, 13, 0.9) 0%, rgba(13, 13, 13, 0.2) 100%);
+			position: absolute;
+			inset: 0;
+		}
+	}
+
+	.cs-partner-steps {
+		padding: (20/16rem) (20/16rem) (18/16rem);
+		position: relative;
+		z-index: 1;
+		display: grid;
+		gap: (10/16rem);
+
+		.cs-kicker {
+			font-size: (14/16rem);
+			font-weight: 700;
+			margin: 0;
+			color: var(--revibeGreen);
+		}
+
+		ol {
+			display: none;
+		}
+	}
+
+	.cs-partner-main {
+		padding: (24/16rem) (20/16rem) (28/16rem);
+		position: relative;
+		display: grid;
+		gap: (18/16rem);
+
+		.cs-title {
+			.community-heading();
+			/* 48px - 72px */
+			font-size: clamp(3rem, 5vw, 4.5rem);
+			line-height: 0.88;
+			padding-right: (56/16rem);
+			color: var(--nearBlack);
+		}
+	}
+
+	.cs-partner .cs-close,
+	.cs-lightbox .cs-close {
+		width: (48/16rem);
+		height: (48/16rem);
+		border: 0;
+		border-radius: 50%;
+		background-color: var(--nearBlack);
+		color: var(--white);
+		cursor: pointer;
+		position: absolute;
+		top: (16/16rem);
+		right: (16/16rem);
+		z-index: 2;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		svg {
+			width: (20/16rem);
+			height: (20/16rem);
+		}
+
+		&:hover {
+			background-color: var(--revibeGreen);
+			color: var(--nearBlack);
+		}
+	}
+
+	.cs-partner-form {
+		display: grid;
+		gap: (14/16rem);
+
+		label {
+			font-size: (13/16rem);
+			font-weight: 700;
+			display: grid;
+			gap: (6/16rem);
+		}
+
+		input:not([type="radio"]),
+		textarea {
+			width: 100%;
+			box-sizing: border-box;
+			padding: (13/16rem) (15/16rem);
+			border: 1.5px solid transparent;
+			border-radius: (14/16rem);
+			background-color: var(--offWhite);
+			font: inherit;
+			font-size: (16/16rem);
+			font-weight: 400;
+			color: var(--nearBlack);
+
+			&:focus {
+				outline: none;
+				border-color: var(--deepGreen);
+				background-color: var(--white);
+			}
+		}
+	}
+
+	/* "What are you planning?" as option tiles */
+	.cs-types {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: (8/16rem);
+
+		legend {
+			margin-bottom: (8/16rem);
+			padding: 0;
+			font-size: (13/16rem);
+			font-weight: 700;
+		}
+	}
+
+	.cs-partner-form .cs-type {
+		cursor: pointer;
+		position: relative;
+		display: block;
+
+		input {
+			opacity: 0;
+			pointer-events: none;
+			position: absolute;
+		}
+
+		span {
+			height: 100%;
+			box-sizing: border-box;
+			padding: (14/16rem) (14/16rem) (13/16rem);
+			border-radius: (16/16rem);
+			background-color: var(--offWhite);
+			box-shadow: inset 0 0 0 1.5px transparent;
+			display: grid;
+			gap: (4/16rem);
+			transition:
+				background-color 0.2s ease,
+				box-shadow 0.2s ease;
+		}
+
+		b {
+			font-family: var(--headerFont);
+			font-size: (24/16rem);
+			font-weight: 400;
+			line-height: 0.95;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+		}
+
+		small {
+			font-size: (12.5/16rem);
+			font-weight: 500;
+			line-height: 1.4;
+			color: var(--charcoal);
+		}
+
+		&:hover span {
+			box-shadow: inset 0 0 0 1.5px #c9ced1;
+		}
+
+		input:checked + span {
+			background-color: var(--revibeGreen);
+			box-shadow: none;
+
+			small {
+				color: var(--nearBlack);
+			}
+		}
+
+		input:focus-visible + span {
+			box-shadow: inset 0 0 0 2px var(--deepGreen);
+		}
+
+		&.cs-type-wide {
+			grid-column: 1 / -1;
+
+			span {
+				padding: (12/16rem) (14/16rem);
+				grid-template-columns: auto 1fr;
+				align-items: baseline;
+				column-gap: (12/16rem);
+			}
+		}
+	}
+
+	.cs-form-foot {
+		display: grid;
+		gap: (12/16rem);
+
+		.cs-button-solid {
+			justify-self: start;
+		}
+
+		p {
+			font-size: (13/16rem);
+			line-height: 1.55;
+			max-width: (360/16rem);
+			margin: 0;
+			color: var(--mutedText);
+		}
+	}
+
+	/* ============================== Lightbox ============================== */
+
+	.cs-lightbox {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		background: transparent;
+		color: var(--white);
+
+		&[open] {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		figure {
+			margin: 0;
+			padding: (72/16rem) (16/16rem) (96/16rem);
+			display: grid;
+			justify-items: center;
+			gap: (14/16rem);
+		}
+
+		img {
+			width: auto;
+			height: auto;
+			max-width: min(92vw, (1100/16rem));
+			max-height: calc(100vh - 190px);
+			border-radius: (18/16rem);
+			object-fit: contain;
+		}
+
+		figcaption {
+			font-size: (14/16rem);
+			font-weight: 600;
+			color: #d8dde0;
+		}
+
+		.cs-close {
+			background-color: var(--white);
+			color: var(--nearBlack);
+		}
+	}
+
+	.cs-lb-arrow {
+		width: (56/16rem);
+		height: (56/16rem);
+		border: 0;
+		border-radius: 50%;
+		background-color: var(--revibeGreen);
+		color: var(--nearBlack);
+		cursor: pointer;
+		position: absolute;
+		bottom: (24/16rem);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		svg {
+			width: (22/16rem);
+			height: (22/16rem);
+		}
+	}
+
+	.cs-lb-prev {
+		left: calc(50% - 64px);
+	}
+
+	.cs-lb-next {
+		left: calc(50% + 8px);
+	}
+}
+
+/* Small tablet - 700px */
+@media only screen and (min-width: 43.75rem) {
+	#main > section[id^="community"],
+	#highlights,
+	#photos,
+	#brands,
+	#picker {
+		.cs-container {
+			padding: 0 @gutterWide;
+		}
+	}
+
+	#community-hero .cs-ticker {
+		margin-left: (-40/16rem);
+		margin-right: (-40/16rem);
+	}
+
+	#highlights .cs-reels {
+		padding: (12/16rem) @gutterWide (28/16rem) max(2.5rem, calc((100vw - 83.75rem) / 2 + 2.5rem));
+	}
+
+	#community-quote,
+	#photos,
+	#brands,
+	#picker {
+		padding: (88/16rem) 0;
+	}
+
+	/* photos: a big first photo with the rest in a grid */
+	#photos {
+		.cs-grid {
+			margin: 0;
+			padding: 0;
+			display: grid;
+			grid-template-columns: repeat(6, minmax(0, 1fr));
+			gap: (14/16rem);
+			overflow: visible;
+
+			li {
+				width: auto;
+				grid-column: span 2;
+			}
+
+			li:first-child {
+				grid-column: span 4;
+				grid-row: span 2;
+
+				.cs-photo-button {
+					height: 100%;
+					aspect-ratio: auto;
+				}
+			}
+		}
+
+		.cs-grid-5 li:nth-child(n + 4) {
+			grid-column: span 3;
+
+			.cs-photo-button {
+				aspect-ratio: 3 / 2;
+			}
+		}
+
+		.cs-grid-6 li:nth-child(n + 4) .cs-photo-button {
+			aspect-ratio: 4 / 3;
+		}
+
+		.cs-grid-4 li:nth-child(4) {
+			grid-column: span 6;
+
+			.cs-photo-button {
+				aspect-ratio: 21 / 9;
+			}
+		}
+	}
+
+	#brands .cs-logos {
+		margin-top: (40/16rem);
+		gap: (32/16rem) (20/16rem);
+
+		li {
+			height: (64/16rem);
+		}
+
+		img {
+			max-width: (130/16rem);
+			max-height: (44/16rem);
+
+			&.cs-sq {
+				max-height: (58/16rem);
+			}
+		}
+	}
+
+	#community-instagram {
+		padding: (72/16rem) @gutterWide (88/16rem);
+	}
+
+	.cs-partner {
+		padding: (24/16rem);
+		box-sizing: border-box;
+		align-items: center;
+	}
+
+	.cs-partner-card {
+		max-width: (760/16rem);
+		border-radius: (32/16rem);
+	}
+
+	.cs-partner-form {
+		grid-template-columns: 1fr 1fr;
+		column-gap: (14/16rem);
+
+		.cs-wide,
+		.cs-types {
+			grid-column: 1 / -1;
+		}
+	}
+
+	.cs-types {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.cs-form-foot {
+		grid-template-columns: auto 1fr;
+		align-items: center;
+		column-gap: (20/16rem);
+	}
+
+	.cs-lb-arrow {
+		top: 50%;
+		bottom: auto;
+		transform: translateY(-50%);
+	}
+
+	.cs-lb-prev {
+		left: (24/16rem);
+	}
+
+	.cs-lb-next {
+		left: auto;
+		right: (24/16rem);
+	}
+}
+
+/* Desktop - 900px */
+@media only screen and (min-width: 56.25rem) {
+	#community-hero {
+		padding-top: calc(5rem + 5rem);
+
+		.cs-sub {
+			margin-top: (44/16rem);
+			padding-bottom: (80/16rem);
+			grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+			align-items: end;
+			gap: (64/16rem);
+		}
+
+		.cs-photo img {
+			aspect-ratio: 16 / 7;
+		}
+
+		.cs-ticker-track span {
+			font-size: (44/16rem);
+		}
+	}
+
+	#highlights {
+		padding: (120/16rem) 0 (96/16rem);
+
+		.cs-arrows {
+			display: flex;
+		}
+
+		.cs-reel {
+			width: (300/16rem);
+		}
+	}
+
+	#community-quote,
+	#photos,
+	#brands {
+		padding: (128/16rem) 0;
+	}
+}
+
+/* Desktop - 1000px: picker with options on the left and one panel on the right */
+@media only screen and (min-width: 62.5rem) {
+	#picker {
+		padding: (128/16rem) 0;
+
+		> .cs-container {
+			grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+			align-items: stretch;
+			gap: (64/16rem);
+		}
+
+		.cs-options {
+			list-style: none;
+			margin: (24/16rem) 0 0;
+			padding: 0;
+			display: grid;
+			gap: (4/16rem);
+		}
+
+		.cs-option {
+			all: unset;
+			width: 100%;
+			box-sizing: border-box;
+			padding: (10/16rem) 0;
+			cursor: pointer;
+			color: #6e777c;
+			display: flex;
+			align-items: baseline;
+			gap: (16/16rem);
+			transition: color 0.2s ease;
+
+			b {
+				.community-heading();
+				/* 40px - 60px */
+				font-size: clamp(2.5rem, 3.6vw, 3.75rem);
+				line-height: 0.95;
+				transition: transform 0.25s ease;
+			}
+
+			&:not(.cs-on) .cs-n {
+				color: #6e777c;
+			}
+
+			&:hover,
+			&.cs-on {
+				color: var(--white);
+			}
+
+			&.cs-on b {
+				transform: translateX(8px);
+			}
+
+			&:focus-visible {
+				outline: 2px solid var(--revibeGreen);
+				outline-offset: 4px;
+				border-radius: 6px;
+			}
+		}
+
+		.cs-panels {
+			min-height: (640/16rem);
+			margin: 0;
+			padding: 0;
+			overflow: visible;
+			position: relative;
+			display: block;
+		}
+
+		.cs-panel {
+			width: auto;
+			border-radius: (40/16rem);
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(12px);
+			position: absolute;
+			inset: 0;
+			display: grid;
+			grid-template-rows: minmax(0, 1fr) auto;
+			transition:
+				opacity 0.35s ease,
+				transform 0.35s ease,
+				visibility 0s linear 0.35s;
+
+			&.cs-on {
+				opacity: 1;
+				visibility: visible;
+				transform: none;
+				transition:
+					opacity 0.35s ease,
+					transform 0.35s ease;
+			}
+		}
+
+		.cs-panel-picture {
+			aspect-ratio: auto;
+		}
+
+		.cs-panel-body {
+			padding: (28/16rem) (32/16rem) (32/16rem);
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+			column-gap: (32/16rem);
+
+			h3 {
+				display: none;
+			}
+
+			p,
+			.cs-button-solid {
+				grid-column: 1;
+			}
+
+			ul {
+				margin: 0;
+				grid-column: 2;
+				grid-row: 1 / span 2;
+			}
+
+			li {
+				font-size: (15/16rem);
+			}
+
+			p {
+				font-size: (16/16rem);
+			}
+
+			.cs-button-solid {
+				margin-top: (8/16rem);
+				justify-self: start;
+			}
+		}
+	}
+
+	/* desktop pop-up: photo panel with the three steps on the left, the form on the right */
+	.cs-partner-card {
+		max-width: (1120/16rem);
+		max-height: 92vh;
+		border-radius: (36/16rem);
+		grid-template-columns: (360/16rem) minmax(0, 1fr);
+	}
+
+	.cs-partner-side {
+		min-height: 0;
+
+		img {
+			opacity: 0.6;
+		}
+
+		&::after {
+			background: linear-gradient(to top, rgba(13, 13, 13, 0.92) 10%, rgba(13, 13, 13, 0) 65%);
+		}
+	}
+
+	.cs-partner-steps {
+		padding: (32/16rem);
+		gap: (18/16rem);
+
+		ol {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: grid;
+			gap: (14/16rem);
+		}
+
+		li {
+			font-size: (15/16rem);
+			font-weight: 600;
+			line-height: 1.4;
+			color: var(--white);
+			display: grid;
+			grid-template-columns: (30/16rem) 1fr;
+			align-items: center;
+			gap: (12/16rem);
+
+			span {
+				width: (30/16rem);
+				height: (30/16rem);
+				border-radius: 50%;
+				background-color: var(--revibeGreen);
+				font-size: (13/16rem);
+				font-weight: 700;
+				color: var(--nearBlack);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		}
+	}
+
+	.cs-partner-main {
+		padding: (40/16rem) (40/16rem) (36/16rem);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#community-hero .cs-ticker-track {
+		animation: none;
+	}
+
+	#highlights .cs-reel,
+	#highlights .cs-reel:nth-child(odd),
+	#highlights .cs-reel:nth-child(even) {
+		transform: none;
+	}
+
+	#highlights .cs-reel a,
+	#photos .cs-photo-button img,
+	#picker .cs-panel,
+	#picker .cs-option,
+	#picker .cs-option b,
+	.cs-partner-card,
+	.cs-partner-form .cs-type span {
+		transition: none;
+		animation: none;
+	}
+}

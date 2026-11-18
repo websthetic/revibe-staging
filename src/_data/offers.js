@@ -47,7 +47,7 @@ module.exports = {
             // a row of tall pills, one per service
             services: [
                 { label: "Physiotherapy", image: "/assets/images/first-session/conversation.jpg", alt: "Zeeruk, physiotherapist, reviewing a client's assessment with her on the table", position: "46% 40%" },
-                { label: "Chiropractic", image: "/assets/images/services/chiropractic.jpg", alt: "Dr. Morgan, chiropractor, adjusting a client on the table", position: "72% 40%" },
+                { label: "Chiropractic", image: "/assets/images/services/chiropractic.jpg", alt: "Dr. Morgan, chiropractor, adjusting a client on the table", position: "50% 17%" },
                 { label: "Massage therapy", image: "/assets/images/services/massage.jpg", alt: "A registered massage therapist working on a client's upper back", position: "50% 40%" },
                 { label: "Osteopathy", image: "/assets/images/osteopathy/step-listen.jpg", alt: "An osteopath cradling a client's head and neck as she lies on the table", position: "42% 50%" },
                 { label: "Stretch therapy", image: "/assets/images/stretch/hero-leg.jpg", alt: "A practitioner taking a client's leg into an assisted stretch", position: "45% 50%" },
@@ -232,7 +232,7 @@ module.exports = {
         formName: "naturopathic-free-consultation",
         thankYouUrl: "/services/naturopathic-medicine/free-consultation/thank-you/",
         stage: {
-            image: "/assets/images/naturopathic/stethoscope-back-check.jpg",
+            image: "/assets/images/naturopathic/stethoscope-back-check.jpg", position: "60% 33%",
             alt: "A Revibe naturopathic doctor listening to a client's back with a stethoscope",
             title: "Come with the symptom. We find the cause",
             text: "A free naturopathic consultation at any Revibe clinic, in person or virtual. A naturopathic doctor hears what has been going on and tells you whether naturopathic medicine can help, and how. No cost, nothing to buy on the call.",
@@ -276,9 +276,9 @@ module.exports = {
                     big: "Energy",
                     title: "Sleep, energy and hormones",
                     text: "Testing and treatment for the things behind feeling flat: thyroid, cortisol, sex hormones, iron and B12. DUTCH testing where it is warranted.",
-                    image: "/assets/images/naturopathic/step-listen.jpg",
-                    alt: "Dr. Jennifer Tang, naturopathic doctor, in a consult at her desk",
-                    position: "center 40%",
+                    image: "/assets/images/naturopathic/lisbeth-A7305332.jpg",
+                    alt: "Lisbeth Bitar Patino, naturopathic doctor, listening with a stethoscope",
+                    position: "50% 28%",
                     colour: "green",
                 },
                 {
@@ -292,13 +292,7 @@ module.exports = {
                 },
             ],
         },
-        reviews: {
-            title: "What clients say",
-            text: "Real Google reviews from people who have had a session with a Revibe naturopathic doctor.",
-            items: [
-                { name: "Laura B.", initials: "LB", quote: "Dr. Jennifer Tang is absolutely amazing, she has changed my way of living. I feel like a whole new person after taking all her recommendations. She made me understand the benefits of seeing a naturopathic doctor and it has paid off!" },
-            ],
-        },
+        // reviews return once Lisbeth has her own
         bar: { big: "Free", small: "consultation" },
     },
 
@@ -406,6 +400,6 @@ module.exports = {
 
     // shared by every offer page
     rating: home.reviews.rating,
-    reviewCount: "600+",
+    reviewCount: "700+",
     reviewsUrl: home.reviews.allUrl,
 };

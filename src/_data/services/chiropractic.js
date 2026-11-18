@@ -9,11 +9,11 @@ module.exports = {
         title: "Chiropractic",
         text: "Licensed chiropractors who adjust what is stuck and strengthen what is weak. Spinal and joint adjustments, soft tissue work and rehab exercise at every Revibe clinic, for backs, necks, headaches and sciatica.",
         proofBold: "5.0 on Google",
-        proof: "from 600+ reviews. Every chiropractor here is licensed by the College of Chiropractors of Ontario, and we bill most insurers directly.",
+        proof: "from 700+ reviews. Every chiropractor here is licensed by the College of Chiropractors of Ontario, and we bill most insurers directly.",
         images: [
-            { src: "/assets/images/services/chiropractic.jpg", alt: "A Revibe chiropractor adjusting a client's back on the table", position: "center 70%" },
+            { src: "/assets/images/services/chiropractic.jpg", alt: "A Revibe chiropractor adjusting a client's back on the table", position: "50% 17%" },
             { src: "/assets/images/chiropractic/hero-trevor.jpg", alt: "Dr. Trevor D'Souza, chiropractor, smiling as he treats a client on the table", position: "58% 60%" },
-            { src: "/assets/images/services/chiropractic-side.jpg", alt: "A Revibe chiropractor positioning a client on her side for an adjustment", position: "center 32%" },
+            { src: "/assets/images/services/chiropractic-side.jpg", alt: "A Revibe chiropractor positioning a client on her side for an adjustment", position: "50% 22%" },
         ],
     },
 
@@ -74,14 +74,14 @@ module.exports = {
         text: "The assessment decides the approach. These are the problems our chiropractors see most, each with its own way of working.",
         // id lets the tiles above jump to the matching row
         items: [
-            { label: "Spinal adjustments", id: "adjustments", url: "/" },
-            { label: "Sciatica", id: "sciatica", url: "/" },
-            { label: "Headaches and migraines", id: "headaches", url: "/" },
-            { label: "Posture correction", id: "posture", url: "/" },
-            { label: "Sports injuries", id: "sports", url: "/" },
-            { label: "Pregnancy", id: "pregnancy", url: "/" },
-            { label: "Chronic pain", id: "chronic-pain", url: "/" },
-            { label: "Work injuries", id: "work-injuries", url: "/" },
+            { label: "Spinal adjustments", id: "adjustments", url: "/services/chiropractic/spinal-adjustments/" },
+            { label: "Sciatica", id: "sciatica", url: "/services/chiropractic/sciatica-treatment/" },
+            { label: "Headaches and migraines", id: "headaches", url: "/services/chiropractic/headache-migraine-chiropractic/" },
+            { label: "Posture correction", id: "posture", url: "/services/chiropractic/postural-correction/" },
+            { label: "Sports injuries", id: "sports", url: "/services/chiropractic/sports-injury-chiropractic/" },
+            { label: "Pregnancy", id: "pregnancy", url: "/services/chiropractic/pregnancy-chiropractic/" },
+            { label: "Chronic pain", id: "chronic-pain", url: "/services/chiropractic/chronic-pain-chiropractic/" },
+            { label: "Work injuries", id: "work-injuries", url: "/services/chiropractic/workplace-injury-chiropractic/" },
         ],
     },
 
@@ -101,7 +101,7 @@ module.exports = {
         },
         coTreat: {
             title: "Clinicians who co-treat",
-            text: "Physiotherapists, massage therapists, osteopaths and naturopathic doctors under one roof at every Revibe clinic, treating the same case together when that is what gets you better.",
+            text: "Physiotherapists, chiropractors, massage therapists, osteopaths and naturopathic doctors under one roof at every Revibe clinic, treating the same case together when that is what gets you better.",
         },
         careMap: {
             title: "The Care Map",
@@ -125,18 +125,13 @@ module.exports = {
     reviews: {
         title: "What do clients say about chiropractic at Revibe?",
         rating: "5.0",
-        count: "600+",
+        count: "700+",
         allLabel: "Read every review on Google",
         items: [
             {
                 name: "Thea M.",
                 initials: "TM",
                 quote: "I’ve been seeing Dr. Morgan for chiropractic sessions over the past three years, and he’s been such a huge support in helping me manage my back pain and TMJ issues. You’ll truly be taken care of here. Highly recommend booking a visit if you’re in the GTA area!",
-            },
-            {
-                name: "Celest J.",
-                initials: "CJ",
-                quote: "Love the atmosphere and people here! You HAVE to do osteo with the lovely Erica Runnalls - she’s professional and friendly and overall got the magic touch. Also, chiro with Morgan Millard is a MUST! He’ll crack you back into feeling human again (physically and metaphorically). Overall couldn’t recommend Revibe more!",
             },
             {
                 name: "Sarah A.",

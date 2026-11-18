@@ -16,7 +16,7 @@
             <li class="cs-step" {{ stepStyle | safe }}>
                 <span class="cs-dot" aria-hidden="true">{{ loop.index }}</span>
                 <div class="cs-picture">
-                    <img src="{% getUrl step.image | resize({ width: 700 }) | webp %}" alt="{{ step.alt }}" width="{{ step.width }}" height="{{ step.height }}" loading="lazy" decoding="async">
+                    <img src="{% getUrl step.image | resize({ width: 700 }) | webp %}" alt="{{ step.alt }}"{% if step.position %} style="object-position: {{ step.position }};"{% endif %} width="{{ step.width }}" height="{{ step.height }}" loading="lazy" decoding="async">
                 </div>
                 <h3 class="cs-step-title">{{ step.title }}</h3>
                 <p class="cs-step-text">{{ step.text }}</p>

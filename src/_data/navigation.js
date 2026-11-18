@@ -29,8 +29,8 @@ module.exports = {
                 heading: "Training",
                 links: [
                     { label: "Performance training", url: "/performance-training/" },
-                    { label: "Return to sport and life", url: "/" },
-                    { label: "Pre and post surgical rehab", url: "/" },
+                    { label: "Return to sport and life", url: "/return-to-life-training/" },
+                    { label: "Pre and post surgical rehab", url: "/pre-post-surgical-rehabilitation/" },
                     { label: "Team training", url: "/performance-training/team-training/" },
                     { label: "Team combine", url: "/team-combine/" },
                 ],
@@ -58,9 +58,12 @@ module.exports = {
         { label: "Mississauga", url: "/locations/mississauga/" },
         { label: "Markham", url: "/markham/" },
     ],
+    // the hub; the mobile menu adds it after the two clinics (kept out of the list above: the clinic toggle expects two)
+    locationsAll: { label: "All locations", url: "/locations/" },
     about: [
         { label: "Our team", url: "/therapists/" },
         { label: "Our story", url: "/about-us/" },
+        { label: "Community", url: "/community/" },
         { label: "Direct billing", url: "/direct-billing/" },
     ],
     // listed under About on desktop, as their own rows in the mobile menu
@@ -90,6 +93,7 @@ module.exports = {
                 heading: "About",
                 links: [
                     { label: "Our Story", url: "/about-us/" },
+                    { label: "Community", url: "/community/" },
                     { label: "Careers", url: "/join-our-team/" },
                     { label: "Team", url: "/therapists/" },
                     { label: "Google Business", url: "https://www.google.com/maps/place/Revibe/@43.6033296,-79.5760288,17z/data=!4m8!3m7!1s0x882b47f56521157b:0x5cb57ef412a42783!8m2!3d43.6033296!4d-79.5760288!9m1!1b1!16s%2Fg%2F11hz7f621d" },
@@ -99,9 +103,9 @@ module.exports = {
                 heading: "Contact",
                 links: [
                     { label: "Contact us", url: "/contact-us/" },
-                    { label: "Locations", url: "/" },
+                    { label: "Locations", url: "/locations/" },
                     { label: "Instagram", url: "https://www.instagram.com/timetorevibe/" },
-                    { label: "LinkedIn", url: "/" },
+                    { label: "LinkedIn", url: "https://www.linkedin.com/company/revibetoinc/" },
                 ],
             },
             {
@@ -109,11 +113,11 @@ module.exports = {
                 links: [
                     { label: "Memberships", url: "/memberships/" },
                     { label: "Direct billing", url: "/direct-billing/" },
-                    { label: "FAQ", url: "/" },
-                    { label: "Blogs", url: "/" },
+                    { label: "FAQ", url: "/faq/" },
+                    { label: "Blogs", url: "/blogs/" },
                 ],
             },
         ],
-        legal: [{ label: "Terms of Use & Privacy", url: "/" }],
+        legal: [{ label: "Terms of Use & Privacy", url: "/terms-of-use-privacy-policy/" }],
     },
 };
