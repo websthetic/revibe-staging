@@ -13,7 +13,7 @@ imageAlt: Pelvic health
 ---
 The pelvic floor is a complex structure made up of muscles, ligaments, and connective tissues that work together to support essential organs within the pelvis. These structures play an important role in bladder and bowel control, core stability, posture, and coordinated movement. When functioning well, they allow individuals to move through daily tasks with ease and reduced discomfort. 
 
-[Pelvic health](https://revibeto.com/services/physiotherapy/pelvic-floor/) focuses on maintaining the strength, flexibility, and coordination of these muscles to support overall body mechanics. Healthy pelvic function contributes to smoother movement patterns during walking, lifting, exercising, and sitting. It also helps improve body awareness, allowing individuals to feel more stable and comfortable throughout everyday routines while reducing unnecessary strain on surrounding muscles.
+[Pelvic health](/services/pelvic-physiotherapy/) focuses on maintaining the strength, flexibility, and coordination of these muscles to support overall body mechanics. Healthy pelvic function contributes to smoother movement patterns during walking, lifting, exercising, and sitting. It also helps improve body awareness, allowing individuals to feel more stable and comfortable throughout everyday routines while reducing unnecessary strain on surrounding muscles.
 
 ## **Understanding The Role Of Pelvic Health In Everyday Function**
 
@@ -43,7 +43,7 @@ These symptoms can vary in intensity but often indicate that pelvic muscles are 
 
 ## **How Pelvic Health Therapy Supports Strength And Stability**
 
-[pelvic health](https://revibeto.com/services/physiotherapy/pelvic-floor/) therapy focuses on improving muscle function through individualized and structured care approaches. Treatment often includes improving muscle awareness so individuals can better understand how to engage and relax pelvic muscles correctly. Strength and endurance training may also be introduced to enhance support during movement and physical activity. Flexibility and relaxation techniques help reduce tension and improve overall balance. 
+[pelvic health](/services/pelvic-physiotherapy/) therapy focuses on improving muscle function through individualized and structured care approaches. Treatment often includes improving muscle awareness so individuals can better understand how to engage and relax pelvic muscles correctly. Strength and endurance training may also be introduced to enhance support during movement and physical activity. Flexibility and relaxation techniques help reduce tension and improve overall balance. 
 
 Therapy also works on restoring coordinated movement between the pelvic floor, abdominal muscles, and surrounding structures. These combined strategies support more efficient body mechanics, improved posture, and greater stability during daily tasks, contributing to long-term comfort and functional movement.
 
