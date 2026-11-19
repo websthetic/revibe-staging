@@ -52,8 +52,8 @@ module.exports = {
         },
         {
             q: "How long until I am better?",
-            a: "6 to 12 weeks",
-            note: "For most elbows and wrists. Your assessment gives you your own timeline."
+            a: "8 to 12 weeks",
+            note: "For recent tennis elbow. Long-standing cases can take 3 to 6 months."
         },
         {
             q: "Do I need a doctor's referral?",
@@ -67,11 +67,11 @@ module.exports = {
         }
     ],
     planTitle: "Your elbow and wrist, week by week",
-    planText: "A typical plan for elbow and wrist pain at Revibe. Your assessment sets your own timeline, and some people move faster.",
+    planText: "A typical plan for tennis elbow at Revibe. Your assessment sets your own timeline, and some people move faster.",
     weeks: [
         {
             week: "1",
-            phase: "Relieve",
+            phase: "Restore",
             angle: 20,
             perWeek: 2,
             title: "You know what is wrong",
@@ -82,7 +82,7 @@ module.exports = {
         },
         {
             week: "3",
-            phase: "Relieve",
+            phase: "Rebuild",
             angle: 45,
             perWeek: 2,
             title: "Gripping gets easier",
@@ -104,7 +104,7 @@ module.exports = {
         },
         {
             week: "8",
-            phase: "Return",
+            phase: "Retrain",
             angle: 110,
             perWeek: 1,
             title: "Lifting and sport",
@@ -115,7 +115,7 @@ module.exports = {
         },
         {
             week: "12",
-            phase: "Return",
+            phase: "Perform",
             angle: 130,
             perWeek: 1,
             title: "Back to what you love",
@@ -182,7 +182,7 @@ module.exports = {
         items: [
             {
                 q: "How long does tennis elbow take to heal?",
-                a: "Most tennis and golfer's elbows improve over roughly 6 to 12 weeks of the right loading. Long-standing cases can take longer. Your assessment sets a realistic timeline."
+                a: "Recent tennis elbow usually takes 8 to 12 weeks of structured care. Long-standing cases can take 3 to 6 months, sometimes longer. Golfer's elbow and wrist problems get their own timeline at your assessment."
             },
             {
                 q: "Should I wear a brace for tennis elbow or carpal tunnel?",

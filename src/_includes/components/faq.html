@@ -4,6 +4,7 @@
       faqBookButton: false to hide the "Book now" button (shown by default)
       faqButton: { label, attrs } swaps it for another button, e.g. the free consult on the performance pages
       an item's optional id lets other links jump to it; faq.js opens it when they do
+      an item's html: true prints its answer as HTML (blog answers with links)
     Styles: .cs-faq-section in global.less. The first question starts open.
 #}
 <!-- ============================================ -->
@@ -28,7 +29,7 @@
                     <span>{{ item.q }}</span>
                     <span class="cs-faq-icon" aria-hidden="true"></span>
                 </summary>
-                <p class="cs-faq-answer">{{ item.a }}</p>
+                <p class="cs-faq-answer">{% if item.html %}{{ item.a | safe }}{% else %}{{ item.a }}{% endif %}</p>
             </details>
             {% endfor %}
         </div>

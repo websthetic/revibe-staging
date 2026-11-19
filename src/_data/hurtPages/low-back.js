@@ -52,8 +52,8 @@ module.exports = {
         },
         {
             q: "How long until I am better?",
-            a: "4 to 8 weeks",
-            note: "For most backs. Your assessment gives you your own timeline."
+            a: "6 to 12 weeks",
+            note: "For recent back pain. Pain that keeps coming back can take 3 to 6 months."
         },
         {
             q: "Do I need a doctor's referral?",
@@ -71,7 +71,7 @@ module.exports = {
     weeks: [
         {
             week: "1",
-            phase: "Relieve",
+            phase: "Restore",
             angle: 15,
             perWeek: 2,
             title: "You know what is wrong",
@@ -82,7 +82,7 @@ module.exports = {
         },
         {
             week: "2",
-            phase: "Relieve",
+            phase: "Rebuild",
             angle: 30,
             perWeek: 2,
             title: "Moving gets easier",
@@ -104,7 +104,7 @@ module.exports = {
         },
         {
             week: "6",
-            phase: "Return",
+            phase: "Retrain",
             angle: 65,
             perWeek: 1,
             title: "Back to full days",
@@ -114,8 +114,8 @@ module.exports = {
             position: "center 45%"
         },
         {
-            week: "8",
-            phase: "Return",
+            week: "12",
+            phase: "Perform",
             angle: 75,
             perWeek: 1,
             title: "Back to what you love",
@@ -183,7 +183,7 @@ module.exports = {
         items: [
             {
                 q: "How long does low back pain take to heal?",
-                a: "Most low back pain moves from relief to full activity over roughly 4 to 8 weeks. Sciatica and disc pain can take longer. Your assessment sets a realistic timeline for your back."
+                a: "Recent low back pain usually takes 6 to 12 weeks of structured care. Pain that has lasted longer or keeps coming back can take 3 to 6 months. Sciatica often takes 8 to 16 weeks, and nerve symptoms can take 3 to 6 months to settle. Your assessment sets a realistic timeline for your back."
             },
             {
                 q: "Should I see a physiotherapist, chiropractor or massage therapist for back pain?",

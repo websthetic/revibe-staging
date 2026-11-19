@@ -1,4 +1,4 @@
-// Blog posts (layouts/post.html): builds the contents list from the post's h2s,
+// Blog posts (layouts/post.html): builds the contents list from the post's h2s (and the FAQ),
 // in the sidebar on desktop and a fold-open list above the text on phones,
 // and marks the section in view in the sidebar list.
 (function () {
@@ -6,6 +6,9 @@
 	if (!content) return;
 
 	const headings = [...content.querySelectorAll("h2")];
+	// the FAQ section below the article joins the list
+	const faqTitle = document.getElementById("faq-title");
+	if (faqTitle) headings.push(Object.assign(document.getElementById("faq"), { contentsLabel: faqTitle.textContent }));
 	if (!headings.length) return;
 
 	headings.forEach((h, i) => {
@@ -26,7 +29,7 @@
 			const a = document.createElement("a");
 			a.href = "#" + h.id;
 			a.className = "cs-toc-link";
-			a.textContent = h.textContent.trim();
+			a.textContent = (h.contentsLabel || h.textContent).trim();
 			li.appendChild(a);
 			list.appendChild(li);
 		});

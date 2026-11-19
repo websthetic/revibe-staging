@@ -1,9 +1,9 @@
 ---
-title: "Blogs | Revibe | 905-783-8423 - 289-806-5123"
+title: "Revibe Blog: Physio, Recovery and Performance Advice"
 description: "Explore Revibe blogs for insights, tips, and updates on physiotherapy, massage therapy, osteopathy and more. Read latest stories now!"
 permalink: "/blogs/"
 # lists every post in content/blog/ (tagged "post" by content/blog/blog.json), newest first.
-# A post's front matter gives: h1, description, date, author, category, image, imageAlt.
+# A post's front matter gives: h1, description, date, author, category, image, imageAlt, optional cardImage.
 ---
 
 {% extends "layouts/base.html" %}
@@ -18,8 +18,9 @@ permalink: "/blogs/"
     {% set arrow %}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>{% endset %}
 
     {# local images go through the image pipeline; anything else (a CDN link) is used as is #}
+    {# cards use the post's smaller cardImage when it has one #}
     {% macro postImage(post, width, height, loading) %}
-        {% set src = post.data.image %}
+        {% set src = (post.data.cardImage if width < 600 else post.data.image) or post.data.image %}
         {% if src and src.startsWith("/assets/") %}
         <img src="{% getUrl src | resize({ width: width * 2 }) | webp %}" alt="{{ post.data.imageAlt }}" width="{{ width }}" height="{{ height }}" loading="{{ loading }}" decoding="async">
         {% elif src %}

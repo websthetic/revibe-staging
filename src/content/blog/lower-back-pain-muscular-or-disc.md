@@ -112,7 +112,7 @@ You probably don't need a scan. For most back pain without red flags, imaging do
 
 No doctor's referral needed to book. Your insurance plan might want one before reimbursing, insurer rule, not law. We [direct bill](/direct-billing/) many major insurers where the plan covers it.
 
-Book at [Revibe Mississauga](/locations/mississauga/) or call (905) 783-8423. Monday to Friday 9–7, Saturday 10–4.
+Book at [Revibe Mississauga](/locations/mississauga/) or call (289) 806-5123. Monday to Friday 10–8, Saturday and Sunday 9–4.
 
 General information, not a diagnosis. Timelines are typical ranges. If you have any red flag symptoms above, seek medical assessment rather than booking physiotherapy. *Last updated: September 2026*
 

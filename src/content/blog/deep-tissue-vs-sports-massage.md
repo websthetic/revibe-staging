@@ -107,7 +107,7 @@ Our Markham clinic is inside Recess at 220 Torbay Rd, so the cold plunge, sauna 
 
 One timing note that applies here too: if you're lifting to build strength, keep cold plunging several hours away from the gym or move it to a non-lifting day. The research is consistent that cold immersion straight after resistance training blunts the adaptation.
 
-Book massage at [Revibe Markham](/markham/), or read more about [massage therapy](/services/massage/). Call (905) 783-8423. Monday to Friday 9-7, Saturday 10-4.
+Book massage at [Revibe Markham](/markham/), or read more about [massage therapy](/services/massage/). Call (905) 783-8423. Tuesday and Thursday 9-8, Wednesday 12-9, Friday to Monday 3-8.
 
 *Last updated: September 2026*
 

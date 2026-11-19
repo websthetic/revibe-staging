@@ -2,6 +2,11 @@
     A blog post (content/blog/*.md). Its front matter gives:
       title (browser tab), h1, description, date, author, image, imageAlt,
       optional category, and optional faqs: [{ question, answer }].
+    Newer posts also give: authorRole and authorUrl (a named clinician), updated, keywords,
+      imageMobile (smaller cover for phones), cardImage ("More from the blog" cards),
+      shortAnswer (list at the top), cta { title, text, label, service | url, linkLabel, linkUrl },
+      related (three post slugs) and sources.
+    Every post ends with a block linking its service page (service, from blog.11tydata.js) and a booking button.
     The address comes from url (content/blog/blog.json), the same as on the old site.
     Styles: blog-post.less. The contents list is built by blog-post.js from the post's h2s.
 #}
@@ -10,47 +15,72 @@
 {% block head %}
     <link rel="stylesheet" href="/assets/css/blog-post.css">
     <script defer src="/assets/js/blog-post.js"></script>
-    {% if image %}<link rel="preload" as="image" href="{% if image.startsWith('/assets/') %}{% getUrl image | resize({ width: 1200 }) | webp %}{% else %}{{ image }}{% endif %}">{% endif %}
+    {% if image %}<link rel="preload" as="image" href="{% if image.startsWith('/assets/') %}{% getUrl image | resize({ width: 1200 }) | webp %}{% else %}{{ image }}{% endif %}"{% if imageMobile %} media="(min-width: 700px)"{% endif %}>{% endif %}
 
     {% set imageUrl = (client.domain + image) if image and image.startsWith("/") else image %}
+    {% set published = page.date | isoDate %}
+    {% set modified = (updated | isoDate) if updated else published %}
+    {% set authorUrl = (client.domain + authorUrl) if authorUrl and authorUrl.startsWith("/") else authorUrl %}
+    <meta property="article:published_time" content="{{ published }}"/>
+    <meta property="article:modified_time" content="{{ modified }}"/>
+    {% if author %}<meta property="article:author" content="{{ author }}"/>{% endif %}
+    {% if category %}<meta property="article:section" content="{{ category }}"/>{% endif %}
+    {#
+        One JSON-LD block: BlogPosting, BreadcrumbList and (when the post has faqs) FAQPage.
+        Every value goes through dump, so quotes are escaped and there are no trailing commas.
+        A named author (authorRole in front matter) is a Person; otherwise the author is Revibe.
+    #}
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": {{ (h1 or title) | dump | safe }},
-            {% if image %}"image": [{{ imageUrl | dump | safe }}],{% endif %}
-            "datePublished": "{{ page.date | isoDate }}",
-            "author": [{ "@type": "Organization", "name": {{ (author or client.name) | dump | safe }} }],
-            "publisher": { "@type": "Organization", "name": {{ client.name | dump | safe }} },
-            "description": {{ description | dump | safe }},
-            {% if category %}"articleSection": {{ category | dump | safe }},{% endif %}
-            "url": "{{ client.domain }}{{ page.url }}"
-        }
-    </script>
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ client.domain }}/" },
-                { "@type": "ListItem", "position": 2, "name": "Blogs", "item": "{{ client.domain }}/blogs/" },
-                { "@type": "ListItem", "position": 3, "name": {{ (h1 or title) | dump | safe }}, "item": "{{ client.domain }}{{ page.url }}" }
+            "@graph": [
+                {
+                    "@type": "BlogPosting",
+                    "@id": "{{ client.domain }}{{ page.url }}#article",
+                    "mainEntityOfPage": "{{ client.domain }}{{ page.url }}",
+                    "url": "{{ client.domain }}{{ page.url }}",
+                    "headline": {{ (h1 or title) | dump | safe }},
+                    "description": {{ description | dump | safe }},
+                    {% if image %}"image": {{ imageUrl | dump | safe }},{% endif %}
+                    "datePublished": "{{ published }}",
+                    "dateModified": "{{ modified }}",
+                    {% if authorRole %}
+                    "author": { "@type": "Person", "name": {{ author | dump | safe }}, "jobTitle": {{ authorRole | dump | safe }}{% if authorUrl %}, "url": {{ authorUrl | dump | safe }}{% endif %}, "worksFor": { "@id": "{{ client.domain }}/#organization" } },
+                    {% else %}
+                    "author": { "@id": "{{ client.domain }}/#organization" },
+                    {% endif %}
+                    "publisher": { "@id": "{{ client.domain }}/#organization" },
+                    {% if keywords %}"keywords": {{ keywords | join(", ") | dump | safe }},{% endif %}
+                    {% if category %}"articleSection": {{ category | dump | safe }},{% endif %}
+                    "wordCount": {{ content | wordCount }},
+                    "inLanguage": "en-CA"
+                },
+                {
+                    "@type": "Organization",
+                    "@id": "{{ client.domain }}/#organization",
+                    "name": {{ client.name | dump | safe }},
+                    "url": "{{ client.domain }}/",
+                    "logo": { "@type": "ImageObject", "url": "https://websthetic.tor1.cdn.digitaloceanspaces.com/revibe-site-2026/revibe-logo-combo-trademark_black.png" }
+                },
+                {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ client.domain }}/" },
+                        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "{{ client.domain }}/blogs/" },
+                        { "@type": "ListItem", "position": 3, "name": {{ (h1 or title) | dump | safe }}, "item": "{{ client.domain }}{{ page.url }}" }
+                    ]
+                }{% if faqs and faqs.length %},
+                {
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {% for item in faqs %}
+                        { "@type": "Question", "name": {{ item.question | dump | safe }}, "acceptedAnswer": { "@type": "Answer", "text": {{ item.answer | plainText | dump | safe }} } }{% if not loop.last %},{% endif %}
+                        {% endfor %}
+                    ]
+                }{% endif %}
             ]
         }
     </script>
-    {% if faqs and faqs.length %}
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-                {% for item in faqs %}
-                { "@type": "Question", "name": {{ item.question | dump | safe }}, "acceptedAnswer": { "@type": "Answer", "text": {{ item.answer | dump | safe }} } }{% if not loop.last %},{% endif %}
-                {% endfor %}
-            ]
-        }
-    </script>
-    {% endif %}
 {% endblock %}
 
 {% block body %}
@@ -66,7 +96,7 @@
             {% if category %}<span class="cs-label">{{ category }}</span>{% endif %}
             <h1 class="cs-title" id="post-title">{{ h1 or title }}</h1>
             <p class="cs-meta">
-                {% if author %}<span>{{ author }}</span><span class="cs-dot" aria-hidden="true"></span>{% endif %}
+                {% if author %}<span>{% if authorRole and authorUrl %}<a href="{{ authorUrl }}" class="cs-author">{{ author }}</a>{% else %}{{ author }}{% endif %}{% if authorRole %}, {{ authorRole }}{% endif %}</span><span class="cs-dot" aria-hidden="true"></span>{% endif %}
                 <time datetime="{{ page.date | isoDate }}">{{ page.date | postDate }}</time>
             </p>
         </div>
@@ -81,7 +111,13 @@
             <article class="cs-article">
                 {% if image %}
                 <div class="cs-picture">
-                    {% if image.startsWith("/assets/") %}
+                    {% if image.startsWith("/assets/") and imageMobile %}
+                    {# phones load the smaller 4:3 cover #}
+                    <picture>
+                        <source media="(max-width: 699px)" srcset="{% getUrl imageMobile | resize({ width: 900 }) | webp %}" width="900" height="675">
+                        <img src="{% getUrl image | resize({ width: 1600 }) | webp %}" alt="{{ imageAlt }}" width="1600" height="900" decoding="async" fetchpriority="high">
+                    </picture>
+                    {% elif image.startsWith("/assets/") %}
                     <img src="{% getUrl image | resize({ width: 1200 }) | webp %}" alt="{{ imageAlt }}" width="1200" height="675" decoding="async" fetchpriority="high">
                     {% else %}
                     <img src="{{ image }}" alt="{{ imageAlt }}" width="1200" height="675" decoding="async" fetchpriority="high">
@@ -95,9 +131,48 @@
                     <ol class="cs-toc-list"></ol>
                 </details>
 
+                {% if shortAnswer %}
+                <div class="cs-short-answer">
+                    <p class="cs-short-title">Short answer</p>
+                    <ul>
+                        {% for line in shortAnswer %}<li>{{ line }}</li>{% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
                 <div class="cs-prose" id="post-content">
                     {{ content | safe }}
                 </div>
+
+                {# the post's call to action, or its service page and a booking button #}
+                <div class="cs-post-cta">
+                    {% if cta %}
+                    <p class="cs-post-cta-title">{{ cta.title }}</p>
+                    <p class="cs-post-cta-text">{{ cta.text }}</p>
+                    <div class="cs-post-cta-buttons">
+                        {% if cta.url %}<a href="{{ cta.url }}" class="cs-button-solid cs-button-dark">{{ cta.label }}</a>
+                        {% else %}<a href="/" class="cs-button-solid cs-button-dark" data-request{% if cta.service %} data-service="{{ cta.service }}"{% endif %} aria-haspopup="dialog">{{ cta.label }}</a>{% endif %}
+                        <a href="{{ service.url }}" class="cs-post-cta-link">More about {{ service.label | lower }}</a>
+                    </div>
+                    {% else %}
+                    <p class="cs-post-cta-title">Book {{ service.label | lower }} at Revibe</p>
+                    <p class="cs-post-cta-text">No referral needed. We direct bill most insurers, in Mississauga and Markham.</p>
+                    <div class="cs-post-cta-buttons">
+                        <a href="/" class="cs-button-solid cs-button-dark" data-book aria-haspopup="dialog">Book your session</a>
+                        <a href="{{ service.url }}" class="cs-post-cta-link">More about {{ service.label | lower }}</a>
+                    </div>
+                    {% endif %}
+                </div>
+
+                {% if sources %}
+                <div class="cs-sources">
+                    <p class="cs-sources-title">Sources</p>
+                    <ol>
+                        {% for source in sources %}<li>{{ source }}</li>{% endfor %}
+                    </ol>
+                </div>
+                {% endif %}
+                {% if shortAnswer %}<p class="cs-post-note">General information, not medical advice. Your assessment sets the plan and timeline for you.</p>{% endif %}
             </article>
 
             <aside class="cs-sidebar" aria-label="More from Revibe">
@@ -122,9 +197,17 @@
                 </div>
 
                 <div class="cs-book">
+                    {% if cta %}
+                    <p class="cs-book-title">{{ cta.title }}</p>
+                    <p class="cs-book-text">{{ cta.text }}</p>
+                    {% if cta.url %}<a href="{{ cta.url }}" class="cs-button-solid cs-button-dark">{{ cta.label }}</a>
+                    {% else %}<a href="/" class="cs-button-solid cs-button-dark" data-request{% if cta.service %} data-service="{{ cta.service }}"{% endif %} aria-haspopup="dialog">{{ cta.label }}</a>{% endif %}
+                    {% if cta.linkUrl %}<a href="{{ cta.linkUrl }}" class="cs-book-link">{{ cta.linkLabel }}</a>{% endif %}
+                    {% else %}
                     <p class="cs-book-small">Ready to start?</p>
                     <p class="cs-book-title">Book a session at Revibe</p>
                     <a href="/" class="cs-button-solid cs-button-dark" data-book aria-haspopup="dialog">Book your session</a>
+                    {% endif %}
                 </div>
             </aside>
         </div>
@@ -133,6 +216,38 @@
     {# faq is built from the post's faqs in content/blog/blog.11tydata.js #}
     {% if faq %}
     {% include "components/faq.html" %}
+    {% endif %}
+
+    <!-- ============================================ -->
+    <!--              More from the blog              -->
+    <!-- ============================================ -->
+
+    {% set morePosts = collections.post | relatedPosts(page, related, category) %}
+    {% if morePosts.length %}
+    <section id="post-more" aria-labelledby="post-more-title">
+        <div class="cs-container">
+            <h2 class="cs-title" id="post-more-title">More from the blog</h2>
+            <div class="cs-cards">
+                {% for post in morePosts %}
+                {% set card = post.data.cardImage or post.data.image %}
+                <a href="{{ post.url }}" class="cs-card">
+                    <div class="cs-card-picture">
+                        {% if card and card.startsWith("/assets/") %}
+                        <img src="{% getUrl card | resize({ width: 800 }) | webp %}" alt="{{ post.data.imageAlt }}" width="800" height="500" loading="lazy" decoding="async">
+                        {% elif card %}
+                        <img src="{{ card }}" alt="{{ post.data.imageAlt }}" width="800" height="500" loading="lazy" decoding="async">
+                        {% endif %}
+                    </div>
+                    <div class="cs-card-text">
+                        {% if post.data.category %}<span class="cs-card-label">{{ post.data.category }}</span>{% endif %}
+                        <h3 class="cs-card-title">{{ post.data.h1 or post.data.title }}</h3>
+                        <time class="cs-card-date" datetime="{{ post.date | isoDate }}">{{ post.date | postDate }}</time>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
     {% endif %}
 
     {% include "sections/cta.html" %}

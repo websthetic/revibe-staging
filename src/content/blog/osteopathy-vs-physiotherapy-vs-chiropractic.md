@@ -125,7 +125,7 @@ First visit is 60 minutes, $125. After that: $90 for 30 minutes, $125 for 45, $1
 
 Most people know within three to six sessions whether it's working. If you're not noticing change by the third, we'll say so and suggest something else. That isn't a sales pitch; it's how you avoid wasting a year.
 
-Direct billing is available at both clinics, plan permitting, through insurers including Manulife, Sun Life, Canada Life, Desjardins, ClaimSecure and TELUS AdjudiCare. Two things have to be true: your plan covers the service, and your insurer accepts direct submission. Osteopathy is the least consistently covered of our services. That's the regulation gap turning up in your wallet. Call (905) 783-8423 and we'll read your plan with you before you book.
+Direct billing is available at both clinics, plan permitting, through insurers including Manulife, Sun Life, Canada Life, Desjardins, ClaimSecure and TELUS AdjudiCare. Two things have to be true: your plan covers the service, and your insurer accepts direct submission. Osteopathy is the least consistently covered of our services. That's the regulation gap turning up in your wallet. Call Mississauga at (289) 806-5123 or Markham at (905) 783-8423 and we'll read your plan with you before you book.
 
 ## Why picking a clinic beats picking a discipline
 
@@ -135,7 +135,7 @@ Plenty of our clients run two disciplines at once and treat it as one plan.
 
 Which is really why we'd rather you booked something and got redirected than spent three weeks researching the right label and booking nothing.
 
-[Osteopathy in Mississauga](/location/mississauga/osteopathy/) and [Markham](/location/markham/osteopathy/) is available with our practitioners Anesto Charles, Erica Runnalls and Emily Wilson. Open Monday to Friday 9–7, Saturday 10–4. Not sure which of the three you need? Book anything and say so when you walk in. Working that out is part of the assessment.
+[Osteopathy in Mississauga](/location/mississauga/osteopathy/) and [Markham](/location/markham/osteopathy/) is available with our practitioners Anesto Charles, Erica Runnalls and Emily Wilson. Opening hours differ by clinic: see [Revibe Mississauga](/locations/mississauga/) and [Revibe Markham](/markham/). Not sure which of the three you need? Book anything and say so when you walk in. Working that out is part of the assessment.
 
 *Last updated: September 2026*
 

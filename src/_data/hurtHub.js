@@ -21,7 +21,7 @@ module.exports = {
             },
             {
                 title: "Follow the plan",
-                text: "Every page shows a typical plan, week by week: how often you come in and when you get back to sport, work and sleep.",
+                text: "Every page shows a typical plan, week by week, in four stages: Restore, Rebuild, Retrain and Perform. You see how often you come in and when you get back to sport, work and sleep.",
             },
         ],
     },

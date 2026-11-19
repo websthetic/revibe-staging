@@ -99,7 +99,7 @@ Your therapist will give you a specific plan at the first appointment rather tha
 
 Massage therapy in Ontario is regulated by the College of Massage Therapists of Ontario and "RMT" is a protected title. Because our therapists are RMTs, treatment is eligible under most extended health plans, and we direct bill plan permitting.
 
-Book at our Mississauga clinic at 2290 Dixie Rd, read more about [lymphatic drainage](/services/massage/), or call (905) 783-8423.
+Book at our Mississauga clinic at 2290 Dixie Rd, read more about [lymphatic drainage](/services/massage/), or call (289) 806-5123.
 
 General information, not medical advice. If you've had lymph nodes removed, have diagnosed lymphoedema, or any of the conditions above, speak to your physician before booking. *Last updated: September 2026*
 

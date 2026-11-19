@@ -156,7 +156,7 @@
                     </div>
                     <div class="cs-mobile-bar">
                         <a href="{{ navigation.services.promo.url }}" class="cs-bar-button" data-caremap aria-haspopup="dialog">Care Map</a>
-                        <a href="tel:{{ client.phoneForTel }}" class="cs-bar-button"{% if trainingPage %} data-call aria-haspopup="dialog"{% endif %}>Call</a>
+                        <a href="tel:{{ clinics[0].phoneForTel }}" class="cs-bar-button" data-call aria-haspopup="dialog">Call</a>
                         <a href="{{ navigation.book.url }}" class="cs-bar-button cs-bar-book" data-book aria-haspopup="dialog">Book</a>
                     </div>
                 </div>
@@ -164,8 +164,8 @@
         </nav>
         <div class="cs-nav-actions">
             <a href="{{ navigation.services.promo.url }}" class="cs-nav-caremap" data-caremap aria-haspopup="dialog">Take the Care Map</a>
-            {# on the performance pages the phone opens the "Call us" pop-up with both clinics (call-us.js) #}
-            <a href="tel:{{ client.phoneForTel }}" class="cs-nav-phone"{% if trainingPage %} data-call aria-haspopup="dialog" aria-label="Call us"{% else %} aria-label="Call us at {{ client.phoneFormatted }}"{% endif %}>
+            {# the phone opens the "Call us" pop-up with both clinics (call-us.js); the tel: href is the no-JS fallback #}
+            <a href="tel:{{ clinics[0].phoneForTel }}" class="cs-nav-phone" data-call aria-haspopup="dialog" aria-label="Call us">
                 <img src="/assets/svgs/phone.svg" alt="" width="20" height="20" aria-hidden="true" decoding="async">
             </a>
             <a href="{{ navigation.book.url }}" class="cs-button-solid cs-nav-button" data-book aria-haspopup="dialog">{{ navigation.book.label }}</a>

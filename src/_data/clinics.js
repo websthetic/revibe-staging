@@ -53,7 +53,11 @@ const tagsFor = (key) =>
         return { label, url: built ? `/location/${key}/${slug}/` : serviceUrls[label] || "/" };
     });
 
-const hours = ["Monday to Friday, 9 am to 7 pm", "Saturday, 10 am to 4 pm"];
+// opening hours per clinic (directory listings audit, 18 Nov 2026)
+const hours = {
+    mississauga: ["Monday to Friday, 10 am to 8 pm", "Saturday and Sunday, 9 am to 4 pm"],
+    markham: ["Tuesday and Thursday, 9 am to 8 pm", "Wednesday, 12 to 9 pm", "Friday to Monday, 3 to 8 pm"],
+};
 
 // location service pages (/location/<clinic>/<slug>/, content in _data/locationPages/<clinic>/),
 // in the order the "More at Revibe <clinic>" list shows them; label is followed by " in <clinic name>".
@@ -81,9 +85,9 @@ module.exports = [
         street: "2290 Dixie Rd",
         janeUrl: "https://revibeto.janeapp.com/locations/revibe-mississauga-sherway/book",
         address: "2290 Dixie Rd, Mississauga, ON L4Y 1Z4",
-        phone: "(905) 783-8423",
-        phoneForTel: "+19057838423",
-        hours,
+        phone: "(289) 806-5123",
+        phoneForTel: "+12898065123",
+        hours: hours.mississauga,
         image: "/assets/images/locations/mississauga.jpg",
         width: 1200,
         height: 800,
@@ -108,10 +112,10 @@ module.exports = [
         pageUrl: "/markham/",
         street: "220 Torbay Rd",
         janeUrl: "https://revibeto.janeapp.com/locations/revibe-markham-recess/book",
-        address: "220 Torbay Rd, Markham, ON L3R 1G6",
-        phone: "(289) 806-5123",
-        phoneForTel: "+12898065123",
-        hours,
+        address: "220 Torbay Rd, Markham, ON L3R 2P3",
+        phone: "(905) 783-8423",
+        phoneForTel: "+19057838423",
+        hours: hours.markham,
         image: "/assets/images/locations/markham.jpg",
         width: 736,
         height: 1097,

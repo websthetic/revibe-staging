@@ -52,8 +52,8 @@ module.exports = {
         },
         {
             q: "How long until I am better?",
-            a: "6 to 12 weeks",
-            note: "For most hips. Your assessment gives you your own timeline."
+            a: "Set at your assessment",
+            note: "Hip timelines depend on the cause. Most people come twice a week to start."
         },
         {
             q: "Do I need a doctor's referral?",
@@ -71,7 +71,7 @@ module.exports = {
     weeks: [
         {
             week: "1",
-            phase: "Relieve",
+            phase: "Restore",
             angle: 15,
             perWeek: 2,
             title: "You know what is wrong",
@@ -82,7 +82,7 @@ module.exports = {
         },
         {
             week: "3",
-            phase: "Relieve",
+            phase: "Rebuild",
             angle: 35,
             perWeek: 2,
             title: "Walking feels easier",
@@ -104,7 +104,7 @@ module.exports = {
         },
         {
             week: "8",
-            phase: "Return",
+            phase: "Retrain",
             angle: 85,
             perWeek: 1,
             title: "Running and lifting",
@@ -115,7 +115,7 @@ module.exports = {
         },
         {
             week: "12",
-            phase: "Return",
+            phase: "Perform",
             angle: 100,
             perWeek: 1,
             title: "Back to what you love",
@@ -183,7 +183,7 @@ module.exports = {
         items: [
             {
                 q: "How long does hip pain take to heal?",
-                a: "Most hips move from relief to full activity over roughly 6 to 12 weeks, depending on the cause. Your assessment sets a realistic timeline for your hip."
+                a: "It depends on the cause. Arthritis, a labral tear, outer hip pain and recovery after surgery all move at different speeds, so your assessment sets a realistic timeline for your hip and your physiotherapist reviews it as you go."
             },
             {
                 q: "Is my hip pain actually coming from my back?",

@@ -502,3 +502,266 @@
 		transition: none;
 	}
 }
+
+/*-- -------------------------- -->
+<---  Newer post blocks: short  -->
+<---  answer, figure, closing   -->
+<---  call to action, sources   -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#post-hero .cs-author {
+		color: var(--white);
+		text-decoration: underline;
+		text-decoration-color: var(--revibeGreen);
+		text-underline-offset: 3px;
+	}
+
+	#post {
+		.cs-picture picture {
+			display: contents;
+		}
+
+		/* "Short answer": the summary search snippets and AI answers quote */
+		.cs-short-answer {
+			margin: 0 0 (32/16rem);
+			padding: (22/16rem) (22/16rem) (20/16rem);
+			border-left: 4px solid var(--revibeGreen);
+			border-radius: 0 (20/16rem) (20/16rem) 0;
+			background-color: var(--mintTint);
+
+			ul {
+				margin: 0;
+				padding-left: (20/16rem);
+				display: grid;
+				gap: (8/16rem);
+			}
+
+			li {
+				font-size: clamp(1rem, 1.4vw, 1.0625rem);
+				line-height: 1.6;
+				color: var(--nearBlack);
+
+				&::marker {
+					color: var(--deepGreen);
+				}
+			}
+		}
+
+		.cs-short-title,
+		.cs-sources-title {
+			font-family: var(--headerFont);
+			font-size: (24/16rem);
+			line-height: 1;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+			margin: 0 0 (12/16rem);
+			color: var(--nearBlack);
+		}
+
+		.cs-prose .cs-figure {
+			margin: (28/16rem) 0;
+
+			picture {
+				display: block;
+			}
+
+			img {
+				margin: 0;
+				aspect-ratio: 3 / 2;
+				object-fit: cover;
+			}
+		}
+
+		/* closing block on every post: the call to action and the service page */
+		.cs-post-cta {
+			margin-top: (40/16rem);
+			padding: (28/16rem) (24/16rem);
+			border-radius: (28/16rem);
+			background-color: var(--revibeGreen);
+
+			p {
+				margin: 0;
+				color: var(--nearBlack);
+			}
+		}
+
+		.cs-post-cta-title {
+			font-family: var(--headerFont);
+			/* 32px - 44px */
+			font-size: clamp(2rem, 3.4vw, 2.75rem);
+			line-height: 0.92;
+			letter-spacing: var(--headingLetterSpacing);
+			text-transform: uppercase;
+		}
+
+		.cs-post-cta-text {
+			font-size: (16/16rem);
+			line-height: 1.5;
+			margin-top: (8/16rem) !important;
+		}
+
+		.cs-post-cta-buttons {
+			margin-top: (20/16rem);
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: (12/16rem) (24/16rem);
+		}
+
+		.cs-post-cta-link,
+		.cs-book-link {
+			font-size: (15/16rem);
+			font-weight: 700;
+			color: var(--nearBlack);
+			text-decoration: underline;
+			text-underline-offset: 3px;
+		}
+
+		.cs-sources {
+			margin-top: (36/16rem);
+			padding-top: (24/16rem);
+			border-top: 1px solid var(--borderGrey);
+
+			ol {
+				margin: 0;
+				padding-left: (20/16rem);
+				display: grid;
+				gap: (6/16rem);
+			}
+
+			li {
+				font-size: (14/16rem);
+				line-height: 1.5;
+				color: var(--mutedText);
+			}
+		}
+
+		.cs-post-note {
+			font-size: (14/16rem);
+			font-style: italic;
+			margin: (24/16rem) 0 0;
+			color: var(--mutedText);
+		}
+
+		.cs-book-text {
+			font-size: (15/16rem);
+			line-height: 1.5;
+		}
+
+		.cs-book-link {
+			margin-top: (4/16rem);
+		}
+	}
+
+	/* the FAQ joins the contents list; clear the fixed header when jumped to */
+	#faq {
+		scroll-margin-top: (90/16rem);
+	}
+}
+
+/*-- -------------------------- -->
+<---     More from the blog     -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+	#post-more {
+		padding: clamp(3.75rem, 7vw, 6.25rem) (20/16rem);
+		background-color: var(--white);
+
+		.cs-container {
+			width: 100%;
+			max-width: (1280/16rem);
+			margin: auto;
+		}
+
+		.cs-title {
+			/* 40px - 64px */
+			font-size: clamp(2.5rem, 5vw, 4rem);
+			line-height: 0.92;
+			margin: 0 0 (32/16rem);
+			color: var(--nearBlack);
+		}
+
+		.cs-cards {
+			display: grid;
+			gap: (20/16rem);
+		}
+
+		.cs-card {
+			border-radius: (28/16rem);
+			background-color: var(--offWhite);
+			text-decoration: none;
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+
+			&:hover .cs-card-title {
+				color: var(--deepGreen);
+			}
+
+			&:hover img {
+				transform: scale(1.04);
+			}
+		}
+
+		.cs-card-picture {
+			aspect-ratio: 8 / 5;
+			background-color: var(--softBeige);
+			overflow: hidden;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+				transition: transform 0.5s;
+			}
+		}
+
+		.cs-card-text {
+			padding: (20/16rem) (22/16rem) (24/16rem);
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: (10/16rem);
+		}
+
+		.cs-card-label {
+			font-size: (12/16rem);
+			font-weight: 700;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			color: var(--deepGreen);
+		}
+
+		.cs-card-title {
+			font-size: (26/16rem);
+			line-height: 0.98;
+			margin: 0;
+			color: var(--nearBlack);
+			transition: color 0.2s;
+		}
+
+		.cs-card-date {
+			font-size: (13/16rem);
+			font-weight: 600;
+			color: var(--mutedText);
+		}
+	}
+}
+
+/* Tablet - 700px */
+@media only screen and (min-width: 43.75rem) {
+	#post-more .cs-cards {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#post-more .cs-card img {
+		transition: none;
+	}
+}

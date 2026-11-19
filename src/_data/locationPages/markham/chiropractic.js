@@ -99,7 +99,7 @@ module.exports = {
         items: [
             {
                 q: "How do I book chiropractic in Markham?",
-                a: "Use Request to book at the top of this page and the Markham team will call you back, book online, or call Revibe Markham at (289) 806-5123. You can also email hello@revibeto.com."
+                a: "Use Request to book at the top of this page and the Markham team will call you back, book online, or call Revibe Markham at (905) 783-8423. You can also email hello@revibeto.com."
             },
             {
                 q: "How much does chiropractic cost at Revibe Markham?",
@@ -139,7 +139,7 @@ module.exports = {
             },
             {
                 q: "Where is Revibe Markham?",
-                a: "220 Torbay Rd, Markham, ON L3R 1G6, inside Recess on Torbay Road, near Highway 7. Free parking at Recess. Easy to reach from Highway 7, Highway 404 and Highway 407."
+                a: "220 Torbay Rd, Markham, ON L3R 2P3, inside Recess on Torbay Road, near Highway 7. Free parking at Recess. Easy to reach from Highway 7, Highway 404 and Highway 407."
             },
             {
                 q: "Which areas do you serve?",

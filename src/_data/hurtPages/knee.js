@@ -53,7 +53,7 @@ module.exports = {
         {
             q: "How long until I am better?",
             a: "6 to 12 weeks",
-            note: "For most knees. Your assessment gives you your own timeline."
+            note: "For kneecap pain and knee arthritis. Tendon pain can take 3 to 6 months."
         },
         {
             q: "Do I need a doctor's referral?",
@@ -71,7 +71,7 @@ module.exports = {
     weeks: [
         {
             week: "1",
-            phase: "Relieve",
+            phase: "Restore",
             angle: 15,
             perWeek: 2,
             title: "You know what is wrong",
@@ -82,7 +82,7 @@ module.exports = {
         },
         {
             week: "3",
-            phase: "Relieve",
+            phase: "Rebuild",
             angle: 40,
             perWeek: 2,
             title: "Stairs feel easier",
@@ -104,7 +104,7 @@ module.exports = {
         },
         {
             week: "8",
-            phase: "Return",
+            phase: "Retrain",
             angle: 105,
             perWeek: 1,
             title: "Running and jumping",
@@ -115,7 +115,7 @@ module.exports = {
         },
         {
             week: "12",
-            phase: "Return",
+            phase: "Perform",
             angle: 130,
             perWeek: 1,
             title: "Back to what you love",
@@ -183,7 +183,7 @@ module.exports = {
         items: [
             {
                 q: "How long does knee pain take to heal?",
-                a: "Most knees we see move from pain relief to full activity over roughly 6 to 12 weeks, depending on the injury and how long it has been there. Your physiotherapy assessment sets a realistic timeline for your knee."
+                a: "Kneecap pain and knee arthritis usually take 6 to 12 weeks of structured care, and a worn meniscus about 12 weeks of supervised exercise to start. Patellar tendon pain often takes 3 to 6 months. ACL injuries and knee surgery follow your surgeon's plan. Your physiotherapy assessment sets a realistic timeline for your knee."
             },
             {
                 q: "How many physiotherapy sessions a week do I need for knee pain?",

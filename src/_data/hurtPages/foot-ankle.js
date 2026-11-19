@@ -52,8 +52,8 @@ module.exports = {
         },
         {
             q: "How long until I am better?",
-            a: "6 to 12 weeks",
-            note: "For most feet and ankles. Achilles pain can take longer. Your assessment gives you your own timeline."
+            a: "1 to 6 weeks",
+            note: "For most ankle sprains. A severe or repeat sprain often takes 6 to 12 weeks."
         },
         {
             q: "Do I need a doctor's referral?",
@@ -67,11 +67,11 @@ module.exports = {
         }
     ],
     planTitle: "Your foot and ankle, week by week",
-    planText: "A typical plan for foot and ankle pain at Revibe. Your assessment sets your own timeline, and some people move faster.",
+    planText: "A typical plan for an ankle sprain at Revibe. Your assessment sets your own timeline, and some people move faster.",
     weeks: [
         {
             week: "1",
-            phase: "Relieve",
+            phase: "Restore",
             angle: 10,
             perWeek: 2,
             title: "You know what is wrong",
@@ -81,18 +81,18 @@ module.exports = {
             position: "center 40%"
         },
         {
-            week: "3",
-            phase: "Relieve",
+            week: "2",
+            phase: "Rebuild",
             angle: 20,
             perWeek: 2,
             title: "Walking feels easier",
-            text: "Swelling is down and first steps in the morning hurt less. We start calf, foot and balance work.",
+            text: "Swelling is down and walking feels normal again. We start calf, foot and balance work.",
             image: "/assets/images/osteopathy/step-treat.jpg",
             alt: "A Revibe osteopathic practitioner working on a client's leg on the table",
             position: "center 45%"
         },
         {
-            week: "5",
+            week: "4",
             phase: "Rebuild",
             angle: 30,
             perWeek: 2,
@@ -103,8 +103,8 @@ module.exports = {
             position: "40% 60%"
         },
         {
-            week: "8",
-            phase: "Return",
+            week: "6",
+            phase: "Retrain",
             angle: 38,
             perWeek: 1,
             title: "Running and jumping",
@@ -114,8 +114,8 @@ module.exports = {
             position: "30% 45%"
         },
         {
-            week: "12",
-            phase: "Return",
+            week: "8",
+            phase: "Perform",
             angle: 42,
             perWeek: 1,
             title: "Back to what you love",
@@ -183,7 +183,7 @@ module.exports = {
         items: [
             {
                 q: "How long does an ankle sprain take to heal?",
-                a: "A mild sprain usually settles in a few weeks. A bad sprain, Achilles pain or plantar fasciitis often takes 6 to 12 weeks to get back to full sport. Your assessment sets a realistic timeline."
+                a: "A mild to moderate ankle sprain usually takes 1 to 6 weeks to get back to sport. A severe or repeat sprain often takes 6 to 12 weeks. Achilles pain and plantar fasciitis vary more, so your assessment sets a realistic timeline for those."
             },
             {
                 q: "Should I keep running with plantar fasciitis or Achilles pain?",

@@ -82,7 +82,7 @@ Using it more than twice a month? The memberships are cheaper. Both include 30 m
 
 **The High Performer**, $150 + tax/month on 12 months ($180 on 3 months). Adds private reservations, 30-day advance booking, 30 minutes of lymphatic boots, one guest per visit.
 
-Same options at both locations. Call (905) 783-8423 if you'd rather have a practitioner work out where these fit in your week than guess.
+Same options at both locations. Call Mississauga at (289) 806-5123 or Markham at (905) 783-8423 if you'd rather have a practitioner work out where these fit in your week than guess.
 
 *Last updated: September 2026*
 

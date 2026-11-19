@@ -52,8 +52,8 @@ module.exports = {
         },
         {
             q: "How long until I am better?",
-            a: "8 to 16 weeks",
-            note: "For most shoulders. Frozen shoulder can take longer. Your assessment gives you your own timeline."
+            a: "8 to 12 weeks",
+            note: "For most shoulders, with a review at week 8. Some take longer."
         },
         {
             q: "Do I need a doctor's referral?",
@@ -71,7 +71,7 @@ module.exports = {
     weeks: [
         {
             week: "1",
-            phase: "Relieve",
+            phase: "Restore",
             angle: 20,
             perWeek: 2,
             title: "You know what is wrong",
@@ -82,7 +82,7 @@ module.exports = {
         },
         {
             week: "3",
-            phase: "Relieve",
+            phase: "Rebuild",
             angle: 50,
             perWeek: 2,
             title: "Reaching gets easier",
@@ -103,8 +103,8 @@ module.exports = {
             position: "center 40%"
         },
         {
-            week: "10",
-            phase: "Return",
+            week: "8",
+            phase: "Retrain",
             angle: 140,
             perWeek: 1,
             title: "Overhead again",
@@ -114,8 +114,8 @@ module.exports = {
             position: "center 40%"
         },
         {
-            week: "16",
-            phase: "Return",
+            week: "12",
+            phase: "Perform",
             angle: 170,
             perWeek: 1,
             title: "Back to what you love",
@@ -183,7 +183,7 @@ module.exports = {
         items: [
             {
                 q: "How long does shoulder pain take to heal?",
-                a: "Most shoulders move from relief to full activity over roughly 8 to 16 weeks. Frozen shoulder and post-surgery rehab take longer. Your assessment sets a realistic timeline for your shoulder."
+                a: "Most shoulder pain without surgery is reviewed at 8 weeks, and rehab can continue to 12 weeks or longer. After a dislocation, progress usually runs past 12 weeks. After stabilization surgery, getting back to high-demand sport often takes 4 to 6 months or more, and recovery after a repair or fracture can take 6 to 12 months. Full-thickness rotator cuff tears and frozen shoulder get their own plan. Your assessment sets a realistic timeline for your shoulder."
             },
             {
                 q: "Do I need a scan before I come in?",

@@ -133,7 +133,7 @@ First visit, 60 minutes: $125. Then $90 for 30 minutes, $125 for 45, $150 for 60
 
 Most people know within three to six sessions. If you're not noticing change by the third, I'll tell you and suggest something else.
 
-Direct billing where your plan allows, though osteopathy is our least consistently covered service because of the regulation gap. Check your extended health wording or call and we'll read it with you. (905) 783-8423, Monday to Friday 9–7, Saturday 10–4.
+Direct billing where your plan allows, though osteopathy is our least consistently covered service because of the regulation gap. Check your extended health wording or call and we'll read it with you. Mississauga (289) 806-5123, Markham (905) 783-8423.
 
 More on the [Mississauga osteopathy page](/services/osteopathy/).
 

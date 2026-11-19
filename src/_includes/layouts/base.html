@@ -16,13 +16,17 @@
         <!--Social Media Display-->
         <meta property="og:title" content="{{ title }}"/>
         <meta property="og:description" content="{{ description }}"/>
-        <meta property="og:type" content="website"/>
+        <meta property="og:type" content="{{ ogType or 'website' }}"/>
         <meta property="og:url" content="{{ client.domain }}{{ page.url }}"/>
         {# share image: a page's own hero when its front matter sets image, the logo otherwise; made absolute for social sites #}
         {% set shareImage = image or "/assets/images/logo-small.png" %}
         {% if shareImage.startsWith("/") %}{% set shareImage = client.domain + shareImage %}{% endif %}
         <meta property="og:image" content="{{ shareImage }}"/>
         <meta property="og:image:secure_url" content="{{ shareImage }}"/>
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:title" content="{{ title }}"/>
+        <meta name="twitter:description" content="{{ description }}"/>
+        <meta name="twitter:image" content="{{ shareImage }}"/>
 
         <!--Favicons-->
         <!-- https://realfavicongenerator.net/ -->
@@ -45,6 +49,7 @@
         <script defer src="/assets/js/popup-forms.js"></script>
         <script defer src="/assets/js/caremap-quiz.js"></script>
         <script defer src="/assets/js/smooth-scroll.js"></script>
+        <script defer src="/assets/js/call-us.js"></script>
 
         {% block head %}{% endblock %}
 
@@ -71,6 +76,7 @@
         {% include "components/popup-forms/book-your-session.html" %}
         {% include "components/popup-forms/request-to-book.html" %}
         {% include "components/popup-forms/caremap-popup-quiz.html" %}
+        {% include "components/popup-forms/call-us.html" %}
         {% endif %}
 
     </body>

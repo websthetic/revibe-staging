@@ -217,7 +217,7 @@ module.exports = {
             },
             {
                 q: "How do I book a combine for my team?",
-                a: "Fill in the request form on this page with your team name, sport, age group, roster size and a preferred location and dates, and we reply by email to confirm a date. Or call Mississauga on (905) 783-8423 or Markham on (289) 806-5123 and ask about the team combine."
+                a: "Fill in the request form on this page with your team name, sport, age group, roster size and a preferred location and dates, and we reply by email to confirm a date. Or call Mississauga on (289) 806-5123 or Markham on (905) 783-8423 and ask about the team combine."
             }
         ]
     },

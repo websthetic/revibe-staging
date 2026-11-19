@@ -52,8 +52,8 @@ module.exports = {
         },
         {
             q: "How long until I am better?",
-            a: "4 to 8 weeks",
-            note: "For most necks. Your assessment gives you your own timeline."
+            a: "6 to 12 weeks",
+            note: "For most necks, including tension headaches. Your assessment gives you your own timeline."
         },
         {
             q: "Do I need a doctor's referral?",
@@ -71,7 +71,7 @@ module.exports = {
     weeks: [
         {
             week: "1",
-            phase: "Relieve",
+            phase: "Restore",
             angle: 10,
             perWeek: 2,
             title: "You know what is wrong",
@@ -82,7 +82,7 @@ module.exports = {
         },
         {
             week: "2",
-            phase: "Relieve",
+            phase: "Rebuild",
             angle: 20,
             perWeek: 2,
             title: "Turning gets easier",
@@ -104,7 +104,7 @@ module.exports = {
         },
         {
             week: "6",
-            phase: "Return",
+            phase: "Retrain",
             angle: 40,
             perWeek: 1,
             title: "Long days, no headache",
@@ -114,8 +114,8 @@ module.exports = {
             position: "center 40%"
         },
         {
-            week: "8",
-            phase: "Return",
+            week: "12",
+            phase: "Perform",
             angle: 45,
             perWeek: 1,
             title: "Back to what you love",
@@ -183,7 +183,7 @@ module.exports = {
         items: [
             {
                 q: "How long does neck pain take to heal?",
-                a: "Most neck pain moves from relief to full activity over roughly 4 to 8 weeks. Pinched nerves can take longer. Your assessment sets a realistic timeline for your neck."
+                a: "Most neck pain, including neck pain with tension headaches, gets a 6 to 12 week exercise plan before it is reviewed. Pinched nerves and whiplash can take longer. Your assessment sets a realistic timeline for your neck."
             },
             {
                 q: "Can neck pain cause headaches?",

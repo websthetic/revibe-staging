@@ -101,7 +101,7 @@ Get seen urgently for a sudden pop at the back of the ankle, inability to bear w
 
 No referral needed to book physio in Ontario. Your insurer may want one before reimbursing. Their rule, not the law.
 
-Book at [Revibe Markham](/location/markham/physiotherapy/) or call (905) 783-8423. Monday to Friday 9–7, Saturday 10–4. We're at 220 Torbay Rd, serving Markham, Richmond Hill, Vaughan, Stouffville and the wider GTA.
+Book at [Revibe Markham](/location/markham/physiotherapy/) or call (905) 783-8423. Tuesday and Thursday 9–8, Wednesday 12–9, Friday to Monday 3–8. We're at 220 Torbay Rd, serving Markham, Richmond Hill, Vaughan, Stouffville and the wider GTA.
 
 General information, not a diagnosis. Timelines are typical ranges and vary a lot between people. *Last updated: September 2026*
 

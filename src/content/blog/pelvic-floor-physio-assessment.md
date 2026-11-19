@@ -104,7 +104,7 @@ No doctor's referral needed to book. Your insurance plan may want one before rei
 
 Read more about [pelvic floor physiotherapy](/services/pelvic-physiotherapy/) or book at our Mississauga clinic at 2290 Dixie Rd. If you're pregnant and also want manual therapy for the aches of later pregnancy, [prenatal massage](/services/massage/) pairs well and can go in the same visit.
 
-Call (905) 783-8423, Monday to Friday 9-7, Saturday 10-4. Want to ask a question before booking? Just phone and ask.
+Call (289) 806-5123, Monday to Friday 10-8, Saturday and Sunday 9-4. Want to ask a question before booking? Just phone and ask.
 
 General information, not a diagnosis. New, sudden or severe pelvic pain, blood in the urine, or fever with pelvic pain need medical assessment rather than physiotherapy first. *Last updated: September 2026*
 

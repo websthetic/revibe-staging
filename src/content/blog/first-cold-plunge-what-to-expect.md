@@ -137,7 +137,7 @@ None of this makes cold plunging worse. It means the timing decides whether it h
 
 Plunging more than twice a month? The membership's cheaper. Not sure you'll stick with it? Book a drop-in first — we'd rather you tried it once than signed up for twelve months on a whim.
 
-Book at [Revibe Markham](/markham/), compare memberships, or call (905) 783-8423. Monday to Friday 9-7, Saturday 10-4. We're at 220 Torbay Rd, serving Markham, Richmond Hill, Vaughan, Stouffville and the wider GTA.
+Book at [Revibe Markham](/markham/), compare memberships, or call (905) 783-8423. Tuesday and Thursday 9-8, Wednesday 12-9, Friday to Monday 3-8. We're at 220 Torbay Rd, serving Markham, Richmond Hill, Vaughan, Stouffville and the wider GTA.
 
 General information, not medical advice. If any of the conditions above apply, speak to your physician first. *Last updated: September 2026*
 

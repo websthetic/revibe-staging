@@ -85,7 +85,7 @@ module.exports = {
         items: [
             {
                 q: "How do I book performance training in Mississauga?",
-                a: "Use Request to book at the top of this page and the Mississauga team will call you back, book online, or call Revibe Mississauga at (905) 783-8423. You can also email hello@revibeto.com."
+                a: "Use Request to book at the top of this page and the Mississauga team will call you back, book online, or call Revibe Mississauga at (289) 806-5123. You can also email hello@revibeto.com."
             },
             {
                 q: "How much does performance training cost in Mississauga?",
@@ -121,7 +121,7 @@ module.exports = {
             },
             {
                 q: "What are your hours in Mississauga?",
-                a: "Monday to Friday, 9 am to 7 pm. Saturday, 10 am to 4 pm. Book ahead for evenings and Saturdays, they fill first."
+                a: "Monday to Friday, 10 am to 8 pm. Saturday and Sunday, 9 am to 4 pm. Book ahead for evenings and weekends, they fill first."
             },
             {
                 q: "Where is Revibe Mississauga?",
