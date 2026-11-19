@@ -255,3 +255,5 @@
 /location/markham  /markham/  301
 /location/mississauga/  /locations/mississauga/  301
 /location/mississauga  /locations/mississauga/  301
+# browsers and Google ask for the icon at the site root
+/favicon.ico  /assets/favicons/favicon.ico  200

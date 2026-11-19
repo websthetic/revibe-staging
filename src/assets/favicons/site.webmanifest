@@ -1,21 +1,21 @@
 {
-  "name": "Starter Kit",
-  "short_name": "Starter Kit",
+  "name": "Revibe",
+  "short_name": "Revibe",
   "icons": [
     {
       "src": "/assets/favicons/web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     },
     {
       "src": "/assets/favicons/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     }
   ],
   "theme_color": "#00ad85",
-  "background_color": "#f7f6f3",
+  "background_color": "#ffffff",
   "display": "standalone"
 }
