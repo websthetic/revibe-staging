@@ -127,7 +127,7 @@ The overlap between the three is big, and the practitioner matters more than the
 
 ## Booking and cost
 
-We're at 2290 Dixie Rd in Mississauga and also at [Markham](/location/markham/). Our osteopaths are Anesto Charles, Erica Runnalls and Emily Wilson.
+We're at 2290 Dixie Rd in Mississauga and also at [Markham](/markham/). Our osteopaths are Anesto Charles, Erica Runnalls and Emily Wilson.
 
 First visit, 60 minutes: $125. Then $90 for 30 minutes, $125 for 45, $150 for 60.
 

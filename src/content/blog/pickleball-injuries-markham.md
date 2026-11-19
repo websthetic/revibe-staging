@@ -89,7 +89,7 @@ You're not going to stop. So plan it properly instead.
 3. **Warm up properly.** Five to eight minutes: calf raises, lunges, arm circles into overhead reaches, a few gradual rallies. Most players in this bracket arrive and start hitting.
 4. **Brace or tape tactically.** A counterforce brace for the elbow, taping for the knee. These buy you enough comfort to keep loading. They aren't the treatment.
 5. **Do the strength work on non-playing days.** Two sessions a week changes your tissue capacity within about eight weeks.
-6. **Use recovery deliberately.** Our [Markham clinic](/location/markham/) sits inside Recess, so the cold plunge, sauna and recovery lounge are in the same building as the treatment rooms. One caveat: if you're lifting to build capacity, don't plunge straight after. The research shows cold immersion blunts the adaptation you're training for. Plunge after playing instead.
+6. **Use recovery deliberately.** Our [Markham clinic](/markham/) sits inside Recess, so the cold plunge, sauna and recovery lounge are in the same building as the treatment rooms. One caveat: if you're lifting to build capacity, don't plunge straight after. The research shows cold immersion blunts the adaptation you're training for. Plunge after playing instead.
 
 [Massage therapy](/location/markham/massage/) is useful for the soreness that piles up in a heavy playing week, and it pairs with the loading work rather than replacing it.
 

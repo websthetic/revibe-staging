@@ -104,7 +104,7 @@ Mention any of these when you phone and we'll point you the right way rather tha
 
 ## What an assessment looks like here
 
-At our [Mississauga clinic](/location/mississauga/) on Dixie Road, a first appointment for low back pain means screening the red flags above, a neurological check if there are leg symptoms, assessing how you move, and working out what provokes it and what settles it.
+At our [Mississauga clinic](/locations/mississauga/) on Dixie Road, a first appointment for low back pain means screening the red flags above, a neurological check if there are leg symptoms, assessing how you move, and working out what provokes it and what settles it.
 
 You should leave with an explanation in plain language, a plan, and two or three things to do. Not just a treatment and a rebooking.
 
@@ -112,7 +112,7 @@ You probably don't need a scan. For most back pain without red flags, imaging do
 
 No doctor's referral needed to book. Your insurance plan might want one before reimbursing, insurer rule, not law. We [direct bill](/direct-billing/) many major insurers where the plan covers it.
 
-Book at [Revibe Mississauga](/location/mississauga/) or call (905) 783-8423. Monday to Friday 9–7, Saturday 10–4.
+Book at [Revibe Mississauga](/locations/mississauga/) or call (905) 783-8423. Monday to Friday 9–7, Saturday 10–4.
 
 General information, not a diagnosis. Timelines are typical ranges. If you have any red flag symptoms above, seek medical assessment rather than booking physiotherapy. *Last updated: September 2026*
 

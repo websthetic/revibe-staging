@@ -250,3 +250,8 @@
 /services/naturopathic-medicine1  /services/naturopathic-medicine/  301
 /sslperks/  https://api.leadconnectorhq.com/widget/form/UCw8mBuBQyW6booOjs7b?notrack=true  302
 /sslperks  https://api.leadconnectorhq.com/widget/form/UCw8mBuBQyW6booOjs7b?notrack=true  302
+# clinic addresses linked from older posts
+/location/markham/  /markham/  301
+/location/markham  /markham/  301
+/location/mississauga/  /locations/mississauga/  301
+/location/mississauga  /locations/mississauga/  301

@@ -97,7 +97,7 @@ So: plunge after games and hard conditioning. Leave several hours after lifting.
 
 These are typical ranges, not a diagnosis. Every injury here has a version that settles on its own and a version that doesn't.
 
-Book at [Revibe Markham](/location/markham/) or call (905) 783-8423. Monday to Friday 9–7, Saturday 10–4.
+Book at [Revibe Markham](/markham/) or call (905) 783-8423. Monday to Friday 9–7, Saturday 10–4.
 
 *Last updated: September 2026*
 
