@@ -218,3 +218,35 @@
 /admin  /  301
 /cdn-cgi/l/email-protection/  /  301
 /cdn-cgi/l/email-protection  /  301
+# old Markham neighbourhood pages: all closest to Revibe Markham
+/locations/berczy-wismer/  /markham/  301
+/locations/berczy-wismer  /markham/  301
+/locations/cornell/  /markham/  301
+/locations/cornell  /markham/  301
+/locations/markville/  /markham/  301
+/locations/markville  /markham/  301
+/locations/milliken/  /markham/  301
+/locations/milliken  /markham/  301
+/locations/richmond-hill/  /markham/  301
+/locations/richmond-hill  /markham/  301
+/locations/thornhill/  /markham/  301
+/locations/thornhill  /markham/  301
+/locations/unionville/  /markham/  301
+/locations/unionville  /markham/  301
+# old post address kept the dot from its url field
+/swedish-vs.-deep-tissue-massage-in-mississauga/  /swedish-vs-deep-tissue-massage-in-mississauga/  301
+/swedish-vs.-deep-tissue-massage-in-mississauga  /swedish-vs-deep-tissue-massage-in-mississauga/  301
+# the Care Map is now a popup
+/caremap/  /  301
+/caremap  /  301
+# carried over from the old site's redirects
+/locations/riverview/  /  301
+/locations/riverview  /  301
+/pelvic-physiotherapy-for-new-moms/  /pelvic-physiotherapy-for-new-moms-why-its-essential-postpartum/  301
+/pelvic-physiotherapy-for-new-moms  /pelvic-physiotherapy-for-new-moms-why-its-essential-postpartum/  301
+/pelvic-health-therapy-for-strength-stability/  /pelvic-health-therapy-for-strength-stability-and-comfort/  301
+/pelvic-health-therapy-for-strength-stability  /pelvic-health-therapy-for-strength-stability-and-comfort/  301
+/services/naturopathic-medicine1/  /services/naturopathic-medicine/  301
+/services/naturopathic-medicine1  /services/naturopathic-medicine/  301
+/sslperks/  https://api.leadconnectorhq.com/widget/form/UCw8mBuBQyW6booOjs7b?notrack=true  302
+/sslperks  https://api.leadconnectorhq.com/widget/form/UCw8mBuBQyW6booOjs7b?notrack=true  302
